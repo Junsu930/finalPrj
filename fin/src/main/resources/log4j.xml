@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<!-- DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+	해당 부분 때문에 에러가 날 수도 있음 - > 기본으로 내장되어있는 log4j를 sts가 인식할 수 없어서
+	원격으로 가지고 오겠다고 해서 원격 경로를 작성한 구문으로 수정
+ -->
+
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd"> 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
-	<!-- Appenders -->
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+	<!-- Appenders :
+		출력되는 로그의 형태를 지정하는 부분으로, 로그를 뒤에 계속 남기는 역할을 한다.
+	-->
+	<appender name="console"
+		class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
+		</layout>
+	</appender>
+
+	<!-- sql 로그 출력용 패턴 지정 -->
+	<appender name="sql-console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
 		</layout>
 	</appender>
 	
+	
+	<!-- 날짜별 로그 파일 생성용 appender -->
+	<appender name="dailyRollingFile"  class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File"  value="C:\\workspace\\7_Framework\\comm\\logs\\runtime-log.log" />
+		<param name="encoding" value="UTF-8" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%p] %m%n" />
+		</layout>
+	</appender>
+	
+	
 	<!-- Application Loggers -->
-	<logger name="edu.kh.fin">
-		<level value="info" />
+	<!-- 이 패키지 이하에서 출력되는 로그들을 출력하겠다.
+		trace < debug < info < warn < error < fatal                                                                                                                                              
+	 -->
+	<logger name="edu.kh.comm">
+		<level value="debug" />
+		<appender-ref ref="dailyRollingFile"/>
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -30,6 +65,37 @@
 
 	<logger name="org.springframework.web">
 		<level value="info" />
+	</logger>
+	
+	<!-- SQL 로그 출력 -->
+	<logger name="java.sql.Connection">
+		<level value="debug" />
+		<appender-ref ref="sql-console" />
+	</logger>
+
+	<logger name="java.sql.Statement">
+		<level value="debug" />
+		<appender-ref ref="sql-console" />
+	</logger>
+
+	<logger name="java.sql.PreparedStatement">
+		<level value="debug" />
+		<appender-ref ref="sql-console" />
+	</logger>
+
+	<logger name="java.sql.ResultSet">
+		<level value="debug" />
+		<appender-ref ref="sql-console" />
+	</logger>
+
+	<logger name="jdbc.sqlonly" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="sql-console" />
+	</logger>
+
+	<logger name="jdbc.resultsettable" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="sql-console" />
 	</logger>
 
 	<!-- Root Logger -->
