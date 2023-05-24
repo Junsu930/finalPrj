@@ -9,7 +9,7 @@ public class Util {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		String date =sdf.format(new java.util.Date(System.currentTimeMillis()));
 		
-		int ranNum = (int)(Math.random()*100000); // 5자리 랜덤 숫자
+		int ranNum = (int)(Math.random()*100000); // 5자리 랜덤 숫자 /test
 		
 		String str = "_" + String.format("%05d", ranNum);
 		
