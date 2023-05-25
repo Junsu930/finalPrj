@@ -32,8 +32,6 @@ public class MainFilter extends HttpFilter implements Filter {
 				
 		application.setAttribute("contextPath", contextPath);
 		
-		System.out.println(contextPath);
-		
 		chain.doFilter(request, response);
 		
 		
