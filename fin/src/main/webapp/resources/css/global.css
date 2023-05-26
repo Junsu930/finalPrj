@@ -1,0 +1,26 @@
+:root{
+    --text-color:#fff;
+    --background-color:#000;
+    --accent-color: #f3b013;
+    --stroke-color: #000;
+    
+    --background-dark-color:#000;
+    --text-dark-color:#fff;
+    --accent-dark-color: #c3c3a4;
+    --stroke-dark-color:#35c97a;
+    
+
+    --background-nav-color:#fff;
+    --text-nav-color:#000;
+    
+
+    --maxFont-size:1.5em;    /*24*/
+    --mediumFont-size:1em;   /*16px*/
+    --smallFont-size:0.75em; /*12px*/
+    --tinyFont-size:0.625em; /*10px*/
+    --microFont-size: 0.5em; /*8px*/
+
+
+    --navFont-style-:'IBM Plex Sans', sans-serif;
+}
+
