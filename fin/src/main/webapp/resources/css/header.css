@@ -1,0 +1,187 @@
+
+/* ===============================다크모드 적용 css=============================== */
+
+.darkmode{
+    color: var(--text-dark-color);
+    background-color : var(--background-dark-color);
+    stroke: var(--stroke-dark-color);
+ }
+ 
+ /* ===============================다크모드 적용 css=============================== */
+ 
+
+ /* ===============================태그 css=============================== */
+body{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color:var(--text-color);
+}
+
+i{
+    color:var(--text-color);
+    font-size: var(--maxFont-size);
+}
+
+button{
+    background-color: transparent;
+    border:none;
+    cursor: pointer;
+}
+
+/* ===============================태그 css=============================== */
+
+
+
+
+.navBar{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-nav-color);
+    padding:var(--tinyFont-size) var(--smallFont-size);  
+    font-family: var(--navFont-style-);
+}
+
+
+.navBar a, .navBar i{
+    color: var(--text-nav-color);
+}
+
+
+.navUl{
+    display: flex;
+}
+
+.navUl > li{
+    padding: var(--microFont-size) var(--smallFont-size);
+}
+
+.navUl > li > a{
+    position: relative;
+}
+
+.navUl li a::after{
+    content: "";
+    height: 3px;
+    width: 0;
+    background-color: var(--accent-color);
+    transition: 0.2s;
+    bottom: -2.5px;
+    right: 45%;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.navUl li a::before{
+    content: "";
+    height: 3px;
+    width: 0;
+    background-color: var(--accent-color);
+    transition: 0.2s;
+    bottom: -2.5px;
+    left: 45%;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.navUl li a:hover::after{
+    width: 60%;
+    background-color: var(--accent-color);
+}
+
+
+.navUl li a:hover::before{
+    width: 60%;
+    background-color: var(--accent-color);
+}
+
+.navDiv > a{
+    padding-left: 0.313em;
+}
+
+.navDiv > a, .navSecond > a, .navUl > li{
+    font-size:var(--mediumFont-size);
+}
+
+
+.navSecondDiv > a, .navSecondDiv > i{
+    padding: var(--tinyFont-size);
+}
+
+.navSecondDiv{
+    padding-right: 0.938em;
+    margin-bottom: 6px;
+}
+
+.signUpIMG, .loginIMG{
+    display: none;
+}
+
+.logoutIMG{
+    display: none;
+}
+
+#hamburger{
+    display: none;
+    font-size: 1rem;
+    position: absolute;
+    right: 32px;
+}
+
+@media screen and (max-width:46.8rem){
+    .navBar, .navUl{
+        flex-direction: column;
+    }
+
+    .navDiv{
+        width: 100%;
+        padding: var(--tinyFont-size) 0 0 var(--mediumFont-size); /*상 우 하 좌*/
+    }
+
+    .navUl{
+        width: 100%;
+        text-align: center;
+        display: none;
+    }
+
+    .navSecondDiv{
+        display: none;
+        padding:0
+    }
+
+    #hamburger{
+        padding-top: var(--tinyFont-size);
+        display: block;
+    }
+
+    .navUl.active,
+    .navSecondDiv.active,
+    .signUpIMG.active,
+    .loginIMG.active{
+        display: flex;
+    }
+
+    .navSecondDiv{
+        padding-left: var(--maxFont-size);
+    }
+
+    .signUpText, .loginText{
+        display: none;
+    }
+}
+
+/* ===============================nav css=============================== */
+
