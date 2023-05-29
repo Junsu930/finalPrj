@@ -1,0 +1,82 @@
+
+/* ===============================paht css=============================== */
+
+
+
+
+.path{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-width: 3px;
+  }
+
+
+.path1 {
+  stroke-dasharray: 17285.3;
+  animation: drawPath 1.7s linear, floating 3s linear infinite;
+}
+
+.content{
+  width: 100%;
+  font-family: var(--navFont-style-);
+  color:var(--text-color);
+}
+
+
+
+.content2 h1{
+    position: absolute;
+    right: 250px;
+    top: 2000px;
+}
+
+.content3 h1{
+    position: absolute;
+    left: 150px;
+    top: 2800px;
+}
+
+.content4 h1{
+    position: absolute;
+    right: 550px;
+    top: 3700px;
+}
+
+.content1, .content3, .content5, .content6{
+  padding-top: 110px;
+  overflow: hidden;
+}
+
+.path1, .path3{
+  fill: none;
+  stroke: var(--stroke-color);
+  stroke-width: 3px;
+}
+
+.path5{
+  stroke-width: 1.5px;
+  stroke: var(--stroke-color);
+}
+
+
+
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 17285.3;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+    }
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 10px, 0);
+    }
+}
+
+/* ===============================path css=============================== */
+
