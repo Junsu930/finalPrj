@@ -22,9 +22,7 @@ const content5 = document.querySelector('.content5');
 const path5 = document.querySelector('.path5');
 const path5Length = path5.getTotalLength();
 
-const content6  = document.querySelector('content6');
-const path6 = document.querySelector('.path6');
-const path6Length = path6.getTotalLength();
+
 
 
 
@@ -41,8 +39,7 @@ path4.style.strokeDashoffset = path4Length;
 path5.style.strokeDasharray = path5Length;
 path5.style.strokeDashoffset = path5Length;
 
-path6.style.strokeDasharray = path6Length;
-path6.style.strokeDashoffset = path6Length;
+
 
 
 
@@ -58,7 +55,6 @@ function scrollHandler(){
     path3.style.strokeDashoffset = calcDashoffset(scrollY, content3, path3Length);
     path4.style.strokeDashoffset = calcDashoffset(scrollY, content4, path4Length);
     path5.style.strokeDashoffset = calcDashoffset(scrollY, content5, path5Length);
-    path6.style.strokeDashoffset = calcDashoffset(scrollY, content6, path6Length);
 }
 
 
@@ -75,6 +71,6 @@ let Mode = localStorage.getItem('darkMode');
 
 if (Mode === 'dark') {
     for(let i = 0; i< pathArr.length; i ++){
-        pathArr[i].style.stroke ="#35c97a";
-      };
+        pathArr[i].style.stroke ="#FB4F93";
+      }
   }
