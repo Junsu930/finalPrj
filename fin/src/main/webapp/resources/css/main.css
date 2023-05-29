@@ -1,5 +1,9 @@
 
 /* ===============================paht css=============================== */
+
+
+
+
 .path{
     fill: none;
     stroke: var(--stroke-color);
@@ -43,7 +47,7 @@
   overflow: hidden;
 }
 
-.path1, .path3, .path6{
+.path1, .path3{
   fill: none;
   stroke: var(--stroke-color);
   stroke-width: 3px;

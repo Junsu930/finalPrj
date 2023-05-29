@@ -1,0 +1,159 @@
+.custom-shape-divider-bottom-1685198268 {
+    position: absolute;
+    bottom: -7000px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1685198268 svg {
+    position: relative;
+    display: block;
+    width: calc(134% + 1.3px);
+    height: 255px;
+}
+
+.custom-shape-divider-bottom-1685198268 .shape-fill {
+    fill: transparent;
+    stroke: var(--stroke-color);
+}
+
+
+.footerSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: cneter;
+    justify-content: space-around;
+    margin-top: 5em;
+   	padding-bottom: 7em;
+}
+
+.footerSection li{
+    list-style: none;
+}
+
+.footerSection i{
+    font-size: 1.5em;
+}
+
+.footerSection a{
+    text-decoration: none;
+    color: var(--background-dark-color);
+    cursor: pointer;
+}
+
+.footerSection div:first-child{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.firstDiv{
+    padding: 0 0 0 1em;
+}
+
+.firstDiv > h3:first-child{
+    padding-right: 3em;
+    margin-right: 2em;
+}
+
+/*as*/
+
+.firstDiv > h2:nth-child(2){
+    display: none; /*footer Band Archive text*/
+}
+
+/* .firstDiv > h3:last-child, .firstDiv > h3:nth-child(3){
+    padding-left: 1em;
+} */
+/*as*/
+
+.footerSection div:last-of-type{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.firstUl{
+    margin-left: 1.5em;
+}
+
+.firstUl , .secondUl, .thirdUl{
+    padding-left: 5.2em;
+}
+/*as*/
+
+.footerSection div:last-of-type li{
+    padding: 1em 0 1em 0 ;
+}
+
+.socialIMG{
+    width: 78%;
+    display: flex;
+    margin-left: 3.5em;
+}
+
+.socialIMG li{
+    padding: 0 3em 0 0.5em;
+}
+
+.bi{
+    color: var(--background-dark-color);
+}
+
+
+@media screen and (max-width:46.8rem) {
+
+    .footerSection div:first-child, .firstUl{
+        flex-direction: column;
+    }
+    .displayNone{
+        display: none;
+        padding-bottom: 1em;
+    }
+
+    .firstDiv > h2:nth-child(2){
+        display: block; /*footer Band Archive text*/
+    }
+
+    .secondUl{
+        padding-right: 14.3em;
+    }
+    
+    .thirdUl{
+        padding-right: 7em
+    }
+    .socialIMG{
+        justify-content: center;
+        padding-left: 1em;
+    }
+    .socialIMG > li{
+        padding-top: 1em;
+    }
+    
+   
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-
+console.log("header");
 
 // =========================================반응형=========================================
 
@@ -54,7 +54,7 @@ let path = document.querySelectorAll('path.path');
 
 for(let i = 0; i< path.length; i ++){
   console.log("test");
-  path[i].style.stroke ="#35c97a";
+  path[i].style.stroke ="#FB4F93";
 }
  
 

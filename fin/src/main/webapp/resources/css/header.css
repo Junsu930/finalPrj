@@ -12,28 +12,25 @@
 
  /* ===============================태그 css=============================== */
 body{
-    box-sizing: border-box;
-    margin:0;
-    padding:0;
-    background-color: var(--text-color);
-    color: var(--background-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
-ul{
+.navUl{
     list-style: none;
 }
 
-a{
+.navBar a{
     text-decoration: none;
     color:var(--text-color);
 }
 
-i{
+.navBar i{
     color:var(--text-color);
     font-size: var(--maxFont-size);
 }
 
-button{
+.navSecondDiv button{
     background-color: transparent;
     border:none;
     cursor: pointer;
