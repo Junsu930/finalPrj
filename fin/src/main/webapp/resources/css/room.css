@@ -1,0 +1,20 @@
+.fc-day-past {
+    background-color: silver;
+}
+
+.fc-bg-event{
+	cursor: pointer;
+}
+
+.book{
+	width: 500px;
+	height: 100px;
+	border: 1px solid black;
+	display: flex;
+	
+}
+.book div{
+	border: 1px solid black;
+	width: 10%;
+	cursor: pointer;
+}
