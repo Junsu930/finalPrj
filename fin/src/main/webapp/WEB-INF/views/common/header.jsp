@@ -23,7 +23,9 @@
               <li><a href="room" class="navA">Reservations</a></li>
               <li><a href="" class="navA">Used</a></li>
               <li><a href="" class="navA">Lessons</a></li>
-              <li><a href="" class="navA">My Band</a></li>
+              <li><a href="room" class="navA">My Band</a></li>
+              <li><a href="findingMember" class="navA">Finding Member</a></li>
+
           </ul>
           <div class="navSecondDiv">
               <a href="" class="signUpText navA">SignUp</a>

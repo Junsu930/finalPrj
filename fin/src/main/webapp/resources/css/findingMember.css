@@ -1,0 +1,172 @@
+
+
+.title {
+    width: 1000px;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 10px;  
+}
+
+
+.mainContent {
+    width: 40rem;
+    text-align: center;
+    margin: auto;
+    
+}   
+
+
+
+/*성별*/
+.gender {
+    padding: 15px 10px;
+}
+
+
+.gender input[type=radio]{
+    display: none;
+}
+.gender input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 24px;
+    width: 90px;
+    border: 1px solid #8585E4;
+    line-height: 24px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+    border-radius: 5px;
+}
+.gender input[type=radio]+label{
+    background-color: #fff;
+    color: #8585E4;
+}
+.gender input[type=radio]:checked+label{
+    background-color: #8585E4;
+    color: #fff;
+}
+
+
+/*장르*/
+.genre {
+    padding: 15px 10px;
+}
+
+
+.genre input[type=radio]{
+    display: none;
+}
+.genre input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 24px;
+    width: 90px;
+    border: 1px solid #8585E4;
+    line-height: 24px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+    border-radius: 5px;
+}
+.genre input[type=radio]+label{
+    background-color: #fff;
+    color: #8585E4;
+}
+.genre input[type=radio]:checked+label{
+    background-color: #8585E4;
+    color: #fff;
+}
+
+/*포지션*/
+.position {
+    padding: 15px 10px;
+}
+
+.position input[type=radio]{
+    display: none;
+}
+.position input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 24px;
+    width: 90px;
+    border: 1px solid #8585E4;
+    line-height: 24px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+    border-radius: 5px;
+}
+.position input[type=radio]+label{
+    background-color: #fff;
+    color: #8585E4;
+}
+
+.position input[type=radio]:checked+label{
+    background-color: #8585E4;
+    color: #fff;
+}
+
+/*지역*/
+.location {
+    padding: 15px 10px;
+}
+
+.location input[type=radio]{
+    display: none;
+}
+.location input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 24px;
+    width: 90px;
+    border: 1px solid #8585E4;
+    line-height: 24px;
+    text-align: center;
+    font-weight:bold;
+    font-size:13px;
+    border-radius: 5px;
+}
+.location input[type=radio]+label{
+    background-color: #fff;
+    color: #8585E4;
+}
+
+.location input[type=radio]:checked+label{
+    background-color: #8585E4;
+    color: #fff;
+}
+
+#find {
+    background-color: #8585E4;
+    color: #fff;
+    border-style: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 200px;
+}
+
+.darkmode input[type=radio]+label{
+	background-color: var(--grey-color);
+    color: #fff;
+    border: 1px solid var(--grey-color);
+	
+}
+
+.darkmode input[type=radio]:checked+label {
+	background-color: #fff;
+	color: var(--grey-color);
+	
+}
+
+.darkmode button[id=find] {
+	background-color: var(--grey-color);
+    color: #fff;
+	
+}
+
+
+
