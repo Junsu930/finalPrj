@@ -9,10 +9,15 @@ public class RoomController {
 	@GetMapping("/room")
 	public String roomController() {
 		
-		return "room/room";
+		return "room/roomMain";
 		
 	}
 	
+	@GetMapping("/roomDetail")
+	public String roomDetail() {
+		
+		return "room/roomDetail";
+	}
 	
 
 }

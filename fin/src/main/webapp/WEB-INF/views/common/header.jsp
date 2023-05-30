@@ -16,14 +16,14 @@
     <header>
         <nav class="navBar">
           <div class="navDiv">
-              <a href="" class="navA">Band Archive</a>
+              <a href="${contextPath}" class="navA">Band Archive</a>
           </div>
           <ul class="navUl">
               <li><a href="" class="navA">Board</a></li>
-              <li><a href="" class="navA">Reservations</a></li>
+              <li><a href="room" class="navA">Reservations</a></li>
               <li><a href="" class="navA">Used</a></li>
               <li><a href="" class="navA">Lessons</a></li>
-              <li><a href="room" class="navA">My Band</a></li>
+              <li><a href="" class="navA">My Band</a></li>
           </ul>
           <div class="navSecondDiv">
               <a href="" class="signUpText navA">SignUp</a>

@@ -1,0 +1,145 @@
+*{
+	box-sizing: border-box;
+}
+
+/*
+div{
+	border: 1px solid;
+	border-color: var(--text-color);
+}
+
+
+body.darkmode div{
+	border-color: var(--background-color);
+}
+*/
+
+body{
+	margin: 0px;
+}
+
+.content{
+	width: 1200px;
+	margin: auto;
+	height: 2200px;
+	margin-top : 100px;
+	display: flex;
+	border: 1px solid;
+	border-radius: 3px;
+	border-color: var(--grey-color);
+}
+
+body.darkmode > .content{
+	border-color: var(--background-color);
+}
+
+
+.leftSide{
+	flex-basis: 70%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* 사진 영역 */
+.leftSide > div:nth-child(1){
+	flex-basis: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.leftSide > div:nth-child(2){
+	flex-basis: 10%;
+	padding-top: 2em;
+	padding-left: 2em;
+}
+
+.leftSide > div:nth-child(3){
+	flex-basis: 60%;
+}
+
+#pracImg{
+	width: 90%;
+	height: 90%;
+}
+
+.rightSide{
+	flex-basis: 30%;
+	height: 100%;
+	border-left: 1px solid;
+}
+
+.titleArea > p:nth-of-type(1) {
+	font-size: 3rem;
+}
+.titleArea > p:nth-of-type(2) {
+	font-size: 2rem;
+	
+}
+
+
+.introduction{
+	display: flex;
+	flex-direction: column;
+}
+
+.introduction li{
+	list-style: none;
+	float: left;
+	width: 33.3%;
+	line-height: 60px;
+	text-align: center;
+	font-size: 1.4em;
+	
+	background-color: var(--grr-color);
+}
+
+body.darkmode li{
+	background-color: var(--text-color);
+	
+}
+
+body.darkmode a{
+	color: var(--background-color);
+}
+
+.introduction a {
+	color: var(--text-color);
+	text-decoration: none;
+}
+
+.introduction > div:nth-child(1) {
+	height: 60px;
+	
+}
+
+.introduction > div:nth-child(2) {
+	flex-basis: 93%;
+	
+}
+
+.introContent{
+	display: flex;
+	flex-direction: column;
+}
+
+.introContent > div:nth-child(1) {
+	flex-basis: 33.3%;
+}
+
+.introContent  h1{
+	margin: 0.4em;
+}
+
+.introContent > div:nth-child(2) {
+	flex-basis: 33.3%;
+}
+
+.introContent > div:nth-child(3) {
+	flex-basis: 33.3%;
+}
+
+
+
