@@ -80,19 +80,29 @@
 }
 
 
+.mainQuestion > div:last-child{
+  border: 1px solid red;
+}
+
+
 .questionInput{
   padding:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .questionInput > form{
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
 .questionInput input{
   margin: 2em 0;
   height: 35px;
-  width: 500px;
+  width: 60%;
   padding: 1em 1em;
   border: 1.5px solid #868E96;
   border-radius: 5px;
@@ -111,7 +121,7 @@ input::-webkit-inner-spin-button {
 .questionInput textarea{
   margin: 2em 0;
   resize: none;
-  width: 510px;
+  width: 60%;
   height: 150px;
   padding: 1em 1em;
   border: 1.5px solid #868E96;
@@ -125,6 +135,7 @@ input::-webkit-inner-spin-button {
   background-color: transparent;
   border: 1.5px solid #868E96;
   border-radius: 5px;
+  width: 60%;
   height: 50px;
   cursor: pointer;
 }
@@ -339,6 +350,54 @@ input::-webkit-inner-spin-button {
 
 
 /* ===================main Text KeyFrames=================== */
+
+
+/* mian Text media */
+
+@media screen and (max-width:53em){
+  .mainTextP, hr{
+    display: none;
+  }
+  .mainBoard{
+    font-size: 2em;
+    position: absolute;
+    bottom: -3.5em;
+  }
+ 
+
+  .mainUsed{
+    font-size: 2em;
+    position: absolute;
+    top: -1.3em;
+    left: -2em;
+  }
+
+
+  .mainReser{
+    font-size: 2em;
+    position: absolute;
+    left: -16em;
+    top: -0.8em;
+  }
+
+
+  /* .mainForm{
+    position: relative;
+    left: 7em;
+  } */
+
+  /* .mainInput{
+    width: 300px;
+  }
+
+  .mainTextArea{
+    width: 280px;
+  } */
+
+
+}
+
+/* mian Text media */
 
 /* ===============================main Text=============================== */
 
