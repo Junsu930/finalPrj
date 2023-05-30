@@ -17,11 +17,17 @@
     
 }   
 
+.mainContent > div>h5 {
+    padding: 30px;
+}
+
 
 
 /*성별*/
 .gender {
-    padding: 15px 10px;
+    padding: 30px 20px;
+    width: 25em;
+    margin: auto;
 }
 
 
@@ -39,6 +45,7 @@
     font-weight:bold;
     font-size:13px;
     border-radius: 5px;
+    margin: 10px;
 }
 .gender input[type=radio]+label{
     background-color: #fff;
@@ -53,6 +60,8 @@
 /*장르*/
 .genre {
     padding: 15px 10px;
+    width: 25em;
+    margin: auto;
 }
 
 
@@ -70,6 +79,7 @@
     font-weight:bold;
     font-size:13px;
     border-radius: 5px;
+    margin: 5px;
 }
 .genre input[type=radio]+label{
     background-color: #fff;
@@ -83,6 +93,8 @@
 /*포지션*/
 .position {
     padding: 15px 10px;
+    width: 25em;
+    margin: auto;
 }
 
 .position input[type=radio]{
@@ -99,6 +111,7 @@
     font-weight:bold;
     font-size:13px;
     border-radius: 5px;
+    margin: 5px;
 }
 .position input[type=radio]+label{
     background-color: #fff;
@@ -113,6 +126,8 @@
 /*지역*/
 .location {
     padding: 15px 10px;
+    width: 25em;
+    margin: auto;
 }
 
 .location input[type=radio]{
@@ -129,6 +144,7 @@
     font-weight:bold;
     font-size:13px;
     border-radius: 5px;
+    margin: 5px;
 }
 .location input[type=radio]+label{
     background-color: #fff;
@@ -149,6 +165,12 @@
     width: 200px;
 }
 
+.darkmode #find{
+	background-color: #fff;
+    color: var(--grey-color);
+	
+}
+
 .darkmode input[type=radio]+label{
 	background-color: var(--grey-color);
     color: #fff;
@@ -162,10 +184,52 @@
 	
 }
 
-.darkmode button[id=find] {
-	background-color: var(--grey-color);
-    color: #fff;
-	
+
+.darkmode .title {
+	border: 1px solid #fff;
+}
+
+@media (max-width: 900px) {
+    .title {
+        width: 500px;
+        text-align: center;
+        justify-content: center;
+        margin: auto;
+        border: 1px solid black;
+        border-radius: 10px;  
+    }
+
+    .mainContent {
+        width: 20rem;
+        text-align: center;
+        margin: auto;
+        
+    }
+
+    .gender {
+        padding: 30px 20px;
+        width: 15em;
+        margin: auto;
+    }
+
+    .genre {
+        padding: 15px 10px;
+        width: 15em;
+        margin: auto;
+    }
+
+    .position {
+        padding: 15px 10px;
+        width: 15em;
+        margin: auto;
+    }
+
+    .location {
+        padding: 15px 10px;
+        width: 15em;
+        margin: auto;
+    }
+
 }
 
 
