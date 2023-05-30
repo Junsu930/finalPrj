@@ -38,9 +38,9 @@
 
 
                 <ul class="secondUl">
-                    <li><a href="" class="footerA">공지사항</a></li>
-                    <li><a href="" class="footerA">이용약관</a></li>
-                    <li><a href="" class="footerA">개인정보처리방침</a></li>
+                    <li><a href="" class=footerA>공지사항</a></li>
+                    <li><a href="" class=footerA>이용약관</a></li>
+                    <li><a href="" class=footerA>개인정보처리방침</a></li>
                 </ul>
 
 

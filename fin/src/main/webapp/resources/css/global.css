@@ -5,18 +5,23 @@
     --accent-color: #f3b013;
     --stroke-color: #474554;
     
+    --grr-color : #ebebeb;
+    
     --background-dark-color:#000;
     --text-dark-color:#fff;
     --accent-dark-color: #c3c3a4;
     --stroke-dark-color:#FB4F93;
     
     --magenta-heart-color: magenta;
+    
+    --silver-color : silver;
 
 
     --background-nav-color:#fff;
     --text-nav-color:#000;
     
 
+    
     --maxFont-size:1.5em;    /*24*/
     --mediumFont-size:1em;   /*16px*/
     --smallFont-size:0.75em; /*12px*/
@@ -32,5 +37,13 @@
     padding:0;
     margin:0;
     box-sizing: border-box;
+}
+
+
+body{
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 

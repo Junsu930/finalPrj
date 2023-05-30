@@ -30,6 +30,7 @@
     justify-content: space-around;
     margin-top: 5em;
    	padding-bottom: 7em;
+    font-family: var(--navFont-style-);
 }
 
 .footerSection li{
@@ -40,9 +41,16 @@
     font-size: 1.5em;
 }
 
-.footerSection a{
+
+.footerA{
     text-decoration: none;
     color: var(--background-dark-color);
+    cursor: pointer;
+}
+
+.footerAWhite{
+    text-decoration: none;
+    color: var(--text-dark-color);
     cursor: pointer;
 }
 
@@ -105,9 +113,9 @@
     padding: 0 3em 0 0.5em;
 }
 
-.bi{
+/* .bi{
     color: var(--background-dark-color);
-}
+} */
 
 
 @media screen and (max-width:46.8rem) {
@@ -122,6 +130,8 @@
 
     .firstDiv > h2:nth-child(2){
         display: block; /*footer Band Archive text*/
+        padding-bottom: 1em;
+    	padding-right: 1em; 
     }
 
     .secondUl{
@@ -137,10 +147,7 @@
     }
     .socialIMG > li{
         padding-top: 1em;
-    }
-    
-   
-    
+    } 
 }
 
 

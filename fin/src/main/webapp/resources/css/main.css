@@ -24,25 +24,7 @@
 
 
 
-.content2 h1{
-    position: absolute;
-    right: 250px;
-    top: 2000px;
-}
-
-.content3 h1{
-    position: absolute;
-    left: 150px;
-    top: 2800px;
-}
-
-.content4 h1{
-    position: absolute;
-    right: 550px;
-    top: 3700px;
-}
-
-.content1, .content3, .content5, .content6{
+.content1, .content3, .content5{
   padding-top: 110px;
   overflow: hidden;
 }
@@ -79,4 +61,289 @@
 }
 
 /* ===============================path css=============================== */
+
+
+.mainQuestion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20em;
+  margin-top: 5em;
+  font-family: var(--navFont-style-);
+}
+
+
+.mainQuestion > div:first-child{
+  margin-bottom: 5em;
+  padding: 3em 3em;
+}
+
+
+.questionInput{
+  padding:0;
+}
+
+.questionInput > form{
+  display: flex;
+  flex-direction: column;
+}
+
+.questionInput input{
+  margin: 2em 0;
+  height: 35px;
+  width: 500px;
+  padding: 1em 1em;
+  border: 1.5px solid #868E96;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.1em;
+  background-color:transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.questionInput textarea{
+  margin: 2em 0;
+  resize: none;
+  width: 510px;
+  height: 150px;
+  padding: 1em 1em;
+  border: 1.5px solid #868E96;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1.3em;
+  background-color:transparent;
+}
+
+.questionInput button{
+  background-color: transparent;
+  border: 1.5px solid #868E96;
+  border-radius: 5px;
+  height: 50px;
+  cursor: pointer;
+}
+
+
+
+
+/* ===============================main Text=============================== */
+
+
+.content2, .content3, .content4{
+  position: relative;
+}
+
+/* guitar Text */
+.boardText{
+  color: #000;
+  position: absolute;
+  right: 1em;
+  bottom: 16em;
+  padding: 3em 3em;
+  width: 38%;
+  opacity: 0;
+}
+
+.boardText > div{
+  height: 100%;
+}
+
+.boardText a{
+  padding: 1em 1em;
+  color: #000;
+  text-decoration: none;
+}
+
+.boardText p:first-child{
+  font-size: 1.8em;
+  padding-left: 0.5em;
+}
+
+
+.boardText p:nth-child(2){
+  padding: 1em 1em;
+}
+
+
+.boardText hr{
+  width: 100px;
+  position: relative;
+  margin-left: 1em;
+}
+
+
+/* ======================================================== */
+
+/* drum Text */
+.usedText{
+  color: #000;
+  position: absolute;
+  top: 12em;
+  right: 0;
+  bottom: 0;
+  left: 12em;
+  padding: 3em 3em;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+
+.usedText p:first-child{
+  font-size: 1.8em;
+  padding-left: 0.5em;
+}
+
+.usedText p:nth-child(2){
+  padding: 1em 1em;
+}
+
+.usedText a{
+  padding: 1em 1em;
+  color: #000;
+  text-decoration: none;
+}
+
+.usedText hr{
+  width: 100px;
+  margin-left: 0.825em;
+} 
+
+
+/* ======================================================== */
+
+
+/* headPhone Text */
+.reservationText{
+  color: #000;
+  position: absolute;
+  top: 7em;
+  right: 0;
+  bottom: 0;
+  left: 45em;
+  padding: 3em 3em;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.reservationText > div{
+  height: 100%;
+  width: 45%;
+}
+
+.reservationText p:first-child{
+  font-size: 1.8em;
+  padding-left: 0.5em;
+}
+
+.reservationText p:nth-child(2){
+  padding: 1em 1em;
+}
+
+.reservationText a{
+  padding: 1em 1em;
+  color: #000;
+  text-decoration: none;
+}
+
+.reservationText hr{
+  width: 100px;
+  margin-left: 1em;
+}
+
+/* ======================================================== */
+
+
+/* ===================main Text KeyFrames=================== */
+
+/* guitar Text */
+@keyframes slideGuitar{
+  from{
+    right: -38em;
+    opacity: 0;
+
+  }to{
+    right: 1em;
+    opacity: 1;
+  }
+}
+/* 1331 */
+
+@keyframes disappearSlideGuitar{
+  from{
+    right: 1em;
+    opacity: 1;
+  }to{
+    right: -38em;
+    opacity: 0;
+  }
+}
+/* 2050 */
+
+
+/* drum Text */
+@keyframes slideDrum{
+  from{
+    left: -12em;
+    opacity: 0;
+  }to{
+    left:12em;
+    opacity: 1;
+  }
+}
+
+/* 2108 */
+
+@keyframes disappearSlideDrum{
+  from{
+    left:12em;
+    opacity: 1;
+  }to{
+    left: -12em;
+    opacity: 0;
+  }
+}
+/* 2850 */
+
+
+@keyframes slideHeadPhone{
+  from{
+    top: 20em;
+    opacity: 0;
+  }to{
+    top: 7em;
+    opacity: 1;
+  }
+}
+
+/* 2970 */
+
+@keyframes disappearSlideHeadPhone{
+  from{
+    top: 7em;
+    opacity: 1;
+  }to{
+    top: 20em;
+    opacity: 0;
+  }
+}
+
+/* 3730 */
+
+
+/* ===================main Text KeyFrames=================== */
+
+/* ===============================main Text=============================== */
+
+
+
+
+
 

@@ -16,15 +16,16 @@
     <header>
         <nav class="navBar">
           <div class="navDiv">
-              <a href="" class="navA">Band Archive</a>
+              <a href="${contextPath}" class="navA">Band Archive</a>
           </div>
           <ul class="navUl">
               <li><a href="" class="navA">Board</a></li>
-              <li><a href="" class="navA">Reservations</a></li>
+              <li><a href="room" class="navA">Reservations</a></li>
               <li><a href="" class="navA">Used</a></li>
               <li><a href="" class="navA">Lessons</a></li>
               <li><a href="room" class="navA">My Band</a></li>
               <li><a href="findingMember" class="navA">Finding Member</a></li>
+
           </ul>
           <div class="navSecondDiv">
               <a href="" class="signUpText navA">SignUp</a>
@@ -32,7 +33,7 @@
               <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a>
               <a href="" class="loginIMG navA"><i class="bi bi-door-open" id="loginIMGI"></i></a>
               <a href="" class="logoutIMG navA"><i class="bi bi-door-closed" id="logoutIMGI"></i></a> <!-- logout IMG-->
-              <button class="light"><i class="bi bi-moon navA"  id="sun" ></i></button>
+              <button class="light"><i class="bi bi-moon navA" id="sun"></i></button>
           </div>
           <!-- 반응형 메뉴 바  -> 평소에는 display : none -->
           <a href="#" id="hamburger"><i class="fa-solid fa-bars" id="toggle"></i></a>

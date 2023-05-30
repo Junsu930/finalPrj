@@ -164,6 +164,10 @@ body{
         display: block;
     }
 
+    #sun{
+        padding-left: 0.5em;
+    }
+
     .navUl.active,
     .navSecondDiv.active,
     .signUpIMG.active,
@@ -171,9 +175,6 @@ body{
         display: flex;
     }
 
-    .navSecondDiv{
-        padding-left: var(--maxFont-size);
-    }
 
     .signUpText, .loginText{
         display: none;
