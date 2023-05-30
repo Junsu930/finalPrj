@@ -16,13 +16,14 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    <br>
+    <br>
     
     <section class="title">
+    <br>
+    <br>
             <h1>Find your band companion</h1>
-            <br>
-            <br>
-            
-        
+           
             <section class="mainContent">
             
                 <!--성별-->
@@ -32,7 +33,9 @@
                      <input type="radio" id="female" name="gender"><label for="female">여자</label>
                 </div>
     
+    			<br>
                 <hr>
+              
 
                 <!--장르-->
                 <div class="genre">
@@ -40,16 +43,13 @@
                      <input type="radio" id="electronic" name="genre"><label for="electronic">ELECTRONIC</label>
                      <input type="radio" id="rock" name="genre"><label for="rock">ROCK</label>
                      <input type="radio" id="folk" name="genre"><label for="folk">FOLK</label>
-                     <br>
-                     <br>
                      <input type="radio" id="pop" name="genre"><label for="pop">POP</label>
                      <input type="radio" id="R&B" name="genre"><label for="R&B">R&B</label>
                      <input type="radio" id="jazz" name="genre"><label for="jazz">JAZZ</label>
-                     <br>
-                     <br>
                      <input type="radio" id="metal" name="genre"><label for="metal">METAL</label>
                 </div>
 
+				<br>
                 <hr>
 
                 <!--포지션-->
@@ -58,12 +58,11 @@
                     <input type="radio" id="guitar" name="position"><label for="guitar">Guitar</label>
                     <input type="radio" id="bass" name="position"><label for="bass">Bass</label>
                     <input type="radio" id="drum" name="position"><label for="drum">Drum</label>
-                    <br>
-                    <br>
                     <input type="radio" id="vocal" name="position"><label for="vocal">Vocal</label>
                     <input type="radio" id="keyboard" name="position"><label for="keyboard">Keyboard</label>
                 </div>
 
+				<br>
                 <hr>
 
                 <!--지역-->
@@ -72,31 +71,22 @@
                     <input type="radio" id="seoul" name="location"><label for="seoul">서울</label>
                     <input type="radio" id="gyeonggi" name="location"><label for="gyeonggi">경기도</label>
                     <input type="radio" id="incheon" name="location"><label for="incheon">인천</label>
-                    <br>
-                    <br>
                     <input type="radio" id="daejeon" name="location"><label for="daejeon">대전</label>
                     <input type="radio" id="daegu" name="location"><label for="daegu">대구</label>
                     <input type="radio" id="busan" name="location"><label for="busan">부산</label>
-                    <br>
-                    <br>
                     <input type="radio" id="ulsan" name="location"><label for="ulsan">울산</label>
                     <input type="radio" id="sejong" name="location"><label for="sejong">세종</label>
                     <input type="radio" id="gwangju" name="location"><label for="gwangju">광주</label>
-                    <br>
-                    <br>
                     <input type="radio" id="N-chungcheong" name="location"><label for="N-chungcheong">충청북도</label>
                     <input type="radio" id="S-chungcheong" name="location"><label for="S-chungcheong">충청남도</label>
                     <input type="radio" id="N-gyeongsang" name="location"><label for="N-gyeongsang">경상북도</label>
-                    <br>
-                    <br>
                     <input type="radio" id="S-gyeongsang" name="location"><label for="S-gyeongsang">경상남도</label>
                     <input type="radio" id="gangwon" name="location"><label for="gangwon">강원도</label>
                     <input type="radio" id="N-jeolla" name="location"><label for="N-jeolla">전라북도</label>
-                    <br>
-                    <br>
                     <input type="radio" id="S-jeolla" name="location"><label for="S-jeolla">전라남도</label>
                     <input type="radio" id="jeju" name="location"><label for="jeju">제주도</label>
 
+				<br>
                 </div>
 
                 <hr>
