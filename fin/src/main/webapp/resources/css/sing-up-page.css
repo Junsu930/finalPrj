@@ -1,0 +1,100 @@
+
+
+.sign-up-text {
+    display: flex;
+    justify-content: center;
+}
+
+/**********바디 부분 시작***********/
+
+.content{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.content-2{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+#sign-up-area{
+    width: 600px; 
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    border-radius: 20px;
+    
+}
+
+.input-text{
+    width: 280px;
+    height: 35px;
+    background-color: rgb(240, 244, 240);
+    border:solid 1px rgb(240, 244, 240);
+    outline: 0;
+    border-radius: 5px;
+    
+}
+
+.input-text-1{
+    width: 400px;
+    height: 35px;
+    background-color: rgb(240, 244, 240);
+    border:solid 1px rgb(240, 244, 240);
+    outline: 0;
+    border-radius: 5px;
+    
+}
+
+
+#email-check-btn{
+    background-color: #ffffff;
+    color:black;
+    border-radius: 5px;
+    border: 1px solid #111111;
+    width: 110px;
+    height: 35px;
+    cursor: pointer;
+}
+
+
+
+/*회원가입 버튼부분 article*/
+.sign-up-article-1{
+
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+     
+}
+
+/*회원가입 버튼*/
+#signup-btn{
+    width: 300px;
+    height: 45px;
+    background-color: #ffffff;
+    border: 1px solid #111111;
+    color: black;
+    border-radius: 5px;
+    font-size: medium;
+    cursor: pointer;
+    
+}
+
+.sign-up-article-2 a {
+    text-decoration: none;
+}
+
+.normal{
+    margin-top: 15px;
+}
+
+.checkbox_group{
+    padding-left: 100px;
+    margin-top: 10px;
+}
+
+

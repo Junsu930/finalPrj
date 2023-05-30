@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인페이지</title>
+    <link rel="stylesheet" href="/fin/src/main/webapp/resources/css/login-page.css" />
+  </head>
+
+<body>
+    <main>
+      <!--헤더 영역 시작-->
+      <header>
+        <!--로고 영역(클릭하면 메인페이지로 넘어감)-->
+        <section>
+        </section>
+      </header>
+      <!--헤더 영역 끝-->
+
+
+      <!--바디 부분 시작-->
+      <body>
+        <!--콘텐츠 작성 영역-->
+        <section class="content">
+          <h2 class="sign-in-text">
+          <img src="/fin/src/main/webapp/src/main-logo.png" alt="로고" width="60px" height="60px"/>Band Archive</h2>
+        </section>
+
+        <section class="content-2">
+          <!--로그인시 필요한 정보 기입 영역-->
+          <form action="#" name="sign-in-form">
+            <fieldset id="sign-in-area">
+              <section class="sign-in">
+
+                <!--아이디-->
+                <h1>아이디</h1>
+                <fieldset id="id-area">
+                  <i class="id-user"></i>
+                  <input type="text" name="inputId" class="input-text" /><br />
+                </fieldset>
+                <br />
+
+                <!--비밀번호-->
+                <h1>비밀번호</h1>
+                <fieldset id="pw-area">
+                  <i class="pw-user"></i>
+                  <input
+                    type="password"
+                    input
+                    name="password"
+                    class="input-text"
+                  /><br/><br/>
+                </fieldset>
+                <br/>
+
+                <!-- 로그인 버튼-->
+                <article class="signInBtn-article">
+                  <button class="signInBtn">Login</button>
+                </article>
+
+                <!--비밀번호 찾기/ 아이디 찾기/ 회원가입 -->
+                <article class="id-pw-found">
+                  <a href="#" class="id-found">아이디/비밀번호 찾기 </a>|
+                  <a href="#" class="id-found">  일반회원</a>|
+                  <a href="#" class="id-found"> 사업자회원</a>
+                </article><br><hr>
+
+
+                <article class="signInBtn-kakao-article">
+                  <button class="signInBtn-kakao">Login with kakao</button>
+                </article>
+
+              </section>
+            </fieldset>
+
+
+            <br/>
+
+
+        
+          </form>
+        </section>
+      </body>
+    </main>
+
+
+
+   
+
+  </body>
+</html>
