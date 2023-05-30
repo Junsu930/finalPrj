@@ -61,6 +61,46 @@ function scrollHandler(){
 window.addEventListener('scroll', scrollHandler);
 
 
+// ============================@keyframes============================
+
+const boardText = document.querySelector('.boardText')
+const usedText = document.querySelector('.usedText');
+const reservationText = document.querySelector('.reservationText');
+
+window.addEventListener("scroll", ()=>{
+
+  const scrollValue = window.scrollY;
+
+// guitar Text
+  if(scrollValue > 1331){
+    boardText.style.animation = "slideGuitar 1.2s ease-out forwards"
+    if(scrollValue > 2050){
+      boardText.style.animation = "disappearSlideGuitar 1.2s ease-out forwards"
+    }
+  }
+
+// drum Text
+  if(scrollValue > 2108){
+    usedText.style.animation = "slideDrum 1.2s ease-out forwards"
+    if(scrollValue > 2850){
+      usedText.style.animation = "disappearSlideDrum 1.2s ease-out"
+    }
+  }
+
+// headphone Text
+ if(scrollValue > 2970){
+  reservationText.style.animation = "slideHeadPhone 1.2s ease-out forwards"
+  if(scrollValue > 3730){
+    reservationText.style.animation = "disappearSlideHeadPhone 1.2s ease-out forwards"
+  }
+ }
+
+});
+
+// ============================@keyframes============================
+
+
+
 
 
 // =========================================모드==========================================
@@ -69,8 +109,30 @@ let pathArr = document.querySelectorAll('path.path');
 
 let Mode = localStorage.getItem('darkMode');
 
+let mainInput = document.querySelectorAll('.mainInput');
+
+let mainTextA = document.querySelectorAll('.mainTextA');
+
+let mainTextP = document.querySelectorAll('.mainTextP')
+
 if (Mode === 'dark') {
     for(let i = 0; i< pathArr.length; i ++){
         pathArr[i].style.stroke ="#FB4F93";
       }
-  }
+      
+    for(let j = 0; j < mainInput.length; j++){
+    	mainInput[j].style.color = "#fff";
+    }
+
+    for(let q = 0; q < mainTextP.length; q++){
+      mainTextP[q].style.color = "#fff";
+    }
+
+    // boardText.style.color = "#fff";
+    // usedText.style.color = "#fff";
+    // reservationText.style.color = "#fff";
+
+    for(let k = 0; k < mainTextA.length; k++){
+      mainTextA[k].style.color = "#fff";
+    } 
+}
