@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 }
 
-
+/*
 div{
 	border: 1px solid;
 	border-color: var(--text-color);
@@ -11,6 +11,7 @@ div{
 body.darkmode div{
 	border-color: var(--background-color);
 }
+*/
 
 body{
 	margin: 0px;
