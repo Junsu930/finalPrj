@@ -116,23 +116,43 @@ let mainTextA = document.querySelectorAll('.mainTextA');
 let mainTextP = document.querySelectorAll('.mainTextP')
 
 if (Mode === 'dark') {
+  // 패스컬러 -> 핑크
     for(let i = 0; i< pathArr.length; i ++){
         pathArr[i].style.stroke ="#FB4F93";
       }
-      
+
+  // 하단 메일 보내는 인풋 요소들 
     for(let j = 0; j < mainInput.length; j++){
     	mainInput[j].style.color = "#fff";
     }
 
+  // 메인텍스트
     for(let q = 0; q < mainTextP.length; q++){
       mainTextP[q].style.color = "#fff";
     }
 
-    // boardText.style.color = "#fff";
-    // usedText.style.color = "#fff";
-    // reservationText.style.color = "#fff";
-
+  // 메인 텍스트 a태그 
     for(let k = 0; k < mainTextA.length; k++){
       mainTextA[k].style.color = "#fff";
     } 
+}else{
+  // 패스컬러 -> 블랙
+  for(let i = 0; i< pathArr.length; i ++){
+    pathArr[i].style.stroke ="#000";
+  }
+
+  // 하단 메일 보내는 인풋 요소들 
+  for(let j = 0; j < mainInput.length; j++){
+    mainInput[j].style.color = "#000";
+  }
+
+  // 메인텍스트
+  for(let q = 0; q < mainTextP.length; q++){
+    mainTextP[q].style.color = "#000";
+  }
+
+  // 메인 텍스트 a태그 
+  for(let k = 0; k < mainTextA.length; k++){
+    mainTextA[k].style.color = "#000";
+  } 
 }
