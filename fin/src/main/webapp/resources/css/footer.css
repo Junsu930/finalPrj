@@ -1,4 +1,4 @@
-.custom-shape-divider-bottom-1685198268 {
+/* .custom-shape-divider-bottom-1685198268 {
     position: absolute;
     bottom: -7000px;
     left: 0;
@@ -18,7 +18,7 @@
 .custom-shape-divider-bottom-1685198268 .shape-fill {
     fill: transparent;
     stroke: var(--stroke-color);
-}
+} */
 
 
 .footerSection{
@@ -100,6 +100,7 @@ footer ul{
 
 .footerThirdSec{
     width: 80%;
+    margin-bottom: 250px;
 }
 
 .socialdiv{

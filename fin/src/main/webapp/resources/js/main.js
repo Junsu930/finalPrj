@@ -77,7 +77,7 @@ const reservationText = document.querySelector('.reservationText');
 window.addEventListener("scroll", ()=>{
 
   const scrollValue = getCurrentScrollPercentage();
-  console.log("반응형 스크롤값", scrollValue);
+  
 
 
 
@@ -185,16 +185,15 @@ if (Mode === 'dark') {
 const forTopScroll = getCurrentScrollPercentage();
 const topBtn = document.querySelector(".topBtn");
 
-window.onload = function(){
-  window.addEventListener('scroll', ()=>{
-    if(forTopScroll > 16){
-      topBtn.classList.add('show');
-    }else{
-      topBtn.classList.remove('show');
-    }
-  });
-  
-  topBtn.addEventListener("click", () =>{
-    window.scrollTo({ top:0, behavior: 'smooth'});
-  });
-}
+
+window.addEventListener('scroll', ()=>{
+  if(forTopScroll > 16){
+    topBtn.classList.add('show');
+  }else{
+    topBtn.classList.remove('show');
+  }
+});
+
+topBtn.addEventListener("click", () =>{
+  window.scrollTo({ top:0, behavior: 'smooth'});
+});
