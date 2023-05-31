@@ -45,7 +45,7 @@ let darkMode = localStorage.getItem('darkMode');
 const darkModeFunc = () => {
   // 바디 태그에 다크모드 클래스 입히기
   document.body.classList.add('darkmode');
- 
+  
   for(let i = 0; i < navA.length; i++){
     navA[i].style.color="#fff";
   }

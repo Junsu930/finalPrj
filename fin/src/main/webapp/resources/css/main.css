@@ -166,7 +166,7 @@ input::-webkit-inner-spin-button {
   right: 1em;
   bottom: 16em;
   padding: 3em 3em;
-  width: 38%;
+  width: 45%;
   opacity: 0;
 }
 
@@ -243,19 +243,18 @@ input::-webkit-inner-spin-button {
 .reservationText{
   color: #000;
   position: absolute;
-  top: 7em;
-  right: 0;
-  bottom: 0;
-  left: 45em;
+  top: 5em;
+  right: 10em;
+  /* bottom: 0; */
+  /* left: 42em; */
   padding: 3em 3em;
   height: 100%;
-  width: 100%;
   opacity: 0;
 }
 
 .reservationText > div{
   height: 100%;
-  width: 45%;
+  width: 100%;
 }
 
 .reservationText p:first-child{
@@ -286,11 +285,11 @@ input::-webkit-inner-spin-button {
 /* guitar Text */
 @keyframes slideGuitar{
   from{
-    right: -38em;
+    bottom: 5em;
     opacity: 0;
 
   }to{
-    right: 1em;
+    bottom: 16em;
     opacity: 1;
   }
 }
@@ -338,7 +337,7 @@ input::-webkit-inner-spin-button {
     top: 20em;
     opacity: 0;
   }to{
-    top: 7em;
+    top: 5em;
     opacity: 1;
   }
 }
@@ -347,7 +346,7 @@ input::-webkit-inner-spin-button {
 
 @keyframes disappearSlideHeadPhone{
   from{
-    top: 7em;
+    top: 5em;
     opacity: 1;
   }to{
     top: 20em;
@@ -419,8 +418,6 @@ input::-webkit-inner-spin-button {
   transition: opacity 1s ease-out;
   opacity: 1 !important;
 }
-
-
 
 .topBtn{
   position: fixed;
