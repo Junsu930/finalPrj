@@ -28,126 +28,126 @@
     align-items: center;
     justify-content: cneter;
     justify-content: space-around;
-    margin-top: 5em;
-   	padding-bottom: 7em;
-    font-family: var(--navFont-style-);
 }
 
-.footerSection li{
-    list-style: none;
+
+.firstUl, 
+.secondUl, 
+.thirdUl, 
+.forthUl{
+    list-style:none;
 }
+
+footer ul{
+    padding:0;
+}
+
 
 .footerSection i{
     font-size: 1.5em;
 }
 
-
 .footerA{
     text-decoration: none;
-    color: var(--background-dark-color);
+    color: var(--text-color); /*black*/
     cursor: pointer;
 }
 
-.footerAWhite{
+/* 평소 푸터 a태그 css */
+
+.footerDarkAtag{
     text-decoration: none;
-    color: var(--text-dark-color);
+    color: var(--text-dark-color); /*white*/
     cursor: pointer;
 }
+/* 다크모드일때 푸터 a태그 컬러 화이트로 입힐 용도 */
 
-.footerSection div:first-child{
+
+.footerFirstSec{
     width: 100%;
+    font-size: 1.5em;
+    padding: 1.5em;
+}
+
+.footerFirstSec > div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.displayNone{
+    display: none;
+}
+
+
+
+.footerSecSec{
     display: flex;
     justify-content: center;
-    justify-content: space-around;
     align-items: center;
-}
-
-.firstDiv{
-    padding: 0 0 0 1em;
-}
-
-.firstDiv > h3:first-child{
-    padding-right: 3em;
-    margin-right: 2em;
-}
-
-/*as*/
-
-.firstDiv > h2:nth-child(2){
-    display: none; /*footer Band Archive text*/
-}
-
-/* .firstDiv > h3:last-child, .firstDiv > h3:nth-child(3){
-    padding-left: 1em;
-} */
-/*as*/
-
-.footerSection div:last-of-type{
+    justify-content: space-around;
     width: 100%;
+    padding: 1em 0 1em 3em
+}
+
+
+.firstUl > li , .secondUl > li, .thirdUl > li{
+    padding:0.5em;
+}
+
+
+.footerThirdSec{
+    width: 80%;
+}
+
+.socialdiv{
+    width: 50%;
+}
+
+.forthUl{
+    width: 35%;
     display: flex;
-    justify-content: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
+    padding-left: 1.3em;
 }
 
-.firstUl{
-    margin-left: 1.5em;
+.forthUl > li{
+    padding: 1em 1em;
 }
 
-.firstUl , .secondUl, .thirdUl{
-    padding-left: 5.2em;
-}
-/*as*/
-
-.footerSection div:last-of-type li{
-    padding: 1em 0 1em 0 ;
-}
-
-.socialIMG{
-    width: 78%;
-    display: flex;
-    margin-left: 3.5em;
-}
-
-.socialIMG li{
-    padding: 0 3em 0 0.5em;
-}
-
-/* .bi{
-    color: var(--background-dark-color);
-} */
 
 
-@media screen and (max-width:46.8rem) {
+/* footer media */
 
-    .footerSection div:first-child, .firstUl{
+@media screen and (max-width: 46.875rem){
+    .footerFirstSec > div{
         flex-direction: column;
     }
-    .displayNone{
+
+    .footerFirstSec > div >span:not(.displayNone){
         display: none;
-        padding-bottom: 1em;
     }
 
-    .firstDiv > h2:nth-child(2){
-        display: block; /*footer Band Archive text*/
-        padding-bottom: 1em;
-    	padding-right: 1em; 
+    .displayNone{
+        display: block;
     }
 
-    .secondUl{
-        padding-right: 14.3em;
+    .footerSecSec{
+        flex-direction: column;
+    }
+
+    .footerThirdSec,
+    .socialdiv,
+    .forthUl{
+        width: 100%;
     }
     
-    .thirdUl{
-        padding-right: 7em
+    .firstDiv, .secondDiv, .thirdDiv{
+    padding: 1em 0;
     }
-    .socialIMG{
-        justify-content: center;
-        padding-left: 1em;
-    }
-    .socialIMG > li{
-        padding-top: 1em;
-    } 
 }
 
 
