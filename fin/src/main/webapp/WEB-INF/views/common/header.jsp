@@ -22,7 +22,7 @@
               <li><a href="" class="navA">Board</a></li>
               <li><a href="room" class="navA">Reservations</a></li>
               <li><a href="" class="navA">Used</a></li>
-              <li><a href="" class="navA">Lessons</a></li>
+              <li><a href="lesson" class="navA">Lessons</a></li>
               <li><a href="" class="navA">My Band</a></li>
               <li><a href="findingMember" class="navA">Members</a></li>
 
