@@ -107,6 +107,11 @@ select::-ms-expand {
 	
 }
 
+body.darkmode .box-card{
+	border: 1px solid;
+	border-color: var(--background-color);
+}
+
 .box-card > div:nth-child(1) {
 	flex-basis: 50%;
 }

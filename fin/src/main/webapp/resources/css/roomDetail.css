@@ -21,11 +21,11 @@ body{
 .content{
 	width: 1200px;
 	margin: auto;
-	height: 2200px;
 	margin-top : 100px;
+	margin-bottom : 100px;
 	display: flex;
-	border: 1px solid;
-	border-radius: 3px;
+	border: 2px solid;
+	border-radius: 7px;
 	border-color: var(--grey-color);
 }
 
@@ -39,6 +39,7 @@ body.darkmode > .content{
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	border-right: 1px solid;
 }
 
 /* 사진 영역 */
@@ -47,6 +48,7 @@ body.darkmode > .content{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-top: 20px;
 	
 }
 
@@ -68,7 +70,6 @@ body.darkmode > .content{
 .rightSide{
 	flex-basis: 35%;
 	height: 100%;
-	border-left: 1px solid;
 }
 
 .titleArea > p:nth-of-type(1) {
@@ -142,6 +143,11 @@ body.darkmode a{
 }
 
 
+.introContent p{
+	margin : 20px;
+	
+}
+
 .fc-day-past {
     background-color: var(--grr-color);
 }
@@ -206,5 +212,40 @@ body.darkmode .fc-day-past{
 	border-radius: 5px;
 	margin: 10px;
 	margin-top: 5px;
+}
+
+.times.onTime{
+	background-color: var(--accent-color);
+}
+
+.submitDiv{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+}
+
+.submitDiv > button{
+	border: none;
+	width: 120px;
+	height: 40px;
+	border-radius: 10px;
+	cursor: pointer;
+	background-color: var(--grr-color);
+}
+
+@media (max-width:700px){
+	
+	.content{
+		width: 600px;
+		flex-direction: column;
+	}
+
+	.leftSide > div:nth-child(1){
+		margin-top: 20px;
+	}
+	
+	
+	
 	
 }
