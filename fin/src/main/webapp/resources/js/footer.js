@@ -7,6 +7,7 @@ const footerA = document.querySelectorAll('.footerA');
 // const footerIMG = document.getElementsByClassName('bi')
 // const shapeFill = document.querySelector(".shape-fill");
 
+/*
 window.onload = function(){
     
     if(mode === 'dark'){
@@ -23,6 +24,7 @@ window.onload = function(){
         }
     }
 }
+*/
 
 
 

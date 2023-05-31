@@ -143,16 +143,20 @@ if (Mode === 'dark') {
     }
 
   // 메인텍스트
+  /*
     for(let q = 0; q < mainTextP.length; q++){
       mainTextP[q].style.color = "#fff";
     }
+   */
 
   // 메인 텍스트 a태그 
+  /*
     for(let k = 0; k < mainTextA.length; k++){
       mainTextA[k].style.color = "#fff";
     } 
-
+*/
     upBtn.style.color = "#fff";
+    
 
 }else{
   // 패스컬러 -> 블랙
@@ -166,14 +170,18 @@ if (Mode === 'dark') {
   }
 
   // 메인텍스트
+  /*
   for(let q = 0; q < mainTextP.length; q++){
     mainTextP[q].style.color = "#000";
   }
+  */
 
   // 메인 텍스트 a태그 
+  /*
   for(let k = 0; k < mainTextA.length; k++){
     mainTextA[k].style.color = "#000";
   } 
+  */
   upBtn.style.color = "#000";
   
 }
@@ -182,11 +190,11 @@ if (Mode === 'dark') {
 
 
 // top 버튼
-const forTopScroll = getCurrentScrollPercentage();
 const topBtn = document.querySelector(".topBtn");
 
 
 window.addEventListener('scroll', ()=>{
+  let forTopScroll = getCurrentScrollPercentage();
   if(forTopScroll > 16){
     topBtn.classList.add('show');
   }else{
