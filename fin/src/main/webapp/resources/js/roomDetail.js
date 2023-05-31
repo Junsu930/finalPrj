@@ -6,7 +6,8 @@ let tt = today.toISOString().split('T')[0];
 let tw = weeks.toISOString().split('T')[0];
 const schedule = document.getElementById("schedule");
 const timeline = document.getElementById("timeline");
-const timetable = new Array();
+const timesClass = document.getElementsByClassName("times");
+
 
 console.log(tt +  "\n" +tw);
 
@@ -26,6 +27,10 @@ console.log(tt +  "\n" +tw);
         if(diffDate<1 && diffDate >-6){
             schedule.innerHTML=info.dateStr;
             timeline.style.display = 'flex';
+            for(let each of timesClass){
+                if(each.classList.contains("onTime")) each.classList.remove("onTime");
+            }
+
 
         }
         
@@ -50,7 +55,25 @@ const times = document.getElementsByClassName("times");
 
 for(let time of times){
     time.addEventListener("click", function(){
-        
+        if(!this.classList.contains("onTime")){
+            this.classList.add("onTime");
+        }else{
+            this.classList.remove("onTime");
+        }
     })
 
 }
+
+document.getElementById("timeSubmit").addEventListener("click", function(){
+
+    let timetable = new Array();
+
+    let timeList = document.getElementsByClassName("onTime");
+
+    for(let i= 0; i<timeList.length; i++){
+        timetable.push(timeList[i].value);
+    }
+
+    console.log("날짜 : " + schedule.innerHTML + ", 예약할 시간 : " + timetable);
+
+})

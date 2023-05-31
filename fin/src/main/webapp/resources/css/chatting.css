@@ -1,0 +1,12 @@
+#chatting-img{
+	width: 100px;
+	height:100px;
+	position: fixed;
+	right: 100px;
+	bottom: 100px;
+}
+
+#chatting-img > img{
+	width: 100%;
+	cursor: pointer;
+}
