@@ -4,3 +4,49 @@
     border: solid 1px #dddddddc;
     box-sizing: border-box;
 }
+
+.searchInputButton{
+    border: 0;
+    background-color: transparent;
+}
+
+.glass{
+position: absolute;
+}
+
+
+.topbox{
+
+}
+.totalbox{
+    border:  1px soild black;
+}
+
+.dealbox1{
+    float: left;
+    width: 100px;
+    height: 100px;
+    border:  1px soild black;
+    background-color: rgb(153, 87, 51);
+}
+.dealbox2{
+    float: left;
+    width: 100px;
+    height: 100px;
+    border:  1px soild black;
+    background-color: rebeccapurple;
+}
+.dealbox3{
+    float: left;
+    width: 100px;
+    height: 100px;
+    border:  1px soild black;
+    background-color: rgb(153, 51, 138);
+}
+.dealbox4{
+    float: left;
+    width: 100px;
+    height: 100px;
+    border:  1px soild black;
+    background-color: rgb(255, 0, 0);
+}
