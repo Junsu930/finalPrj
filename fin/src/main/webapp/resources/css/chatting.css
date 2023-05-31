@@ -3,10 +3,34 @@
 	height:100px;
 	position: fixed;
 	right: 100px;
-	bottom: 100px;
+	bottom: 50px;
 }
 
 #chatting-img > img{
 	width: 100%;
 	cursor: pointer;
+}
+
+.chatBody{
+	width:300px;
+	height: 500px;
+	position: fixed;
+	right: 100px;
+	bottom: 150px;
+	background-color: var(--grr-color);
+	border-radius: 10px;
+	display: none;
+	justify-content: center;
+	
+}
+
+#messageText{
+	position: absolute;
+	bottom: 10px;
+	width: 80%;
+	height: 3em;
+	border: none;
+	border-radius: 10px;
+	padding-left: 10px;
+	
 }

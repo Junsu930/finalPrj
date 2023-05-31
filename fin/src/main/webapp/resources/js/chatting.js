@@ -1,6 +1,12 @@
-let darks = localStorage.getItem('darkMode');
+document.getElementById("chatting-img").addEventListener("click", function(){
+	
+	let messageWindow = document.getElementById("chatBody");
+	
+	if(messageWindow.style.display=='none'){
+		messageWindow.style.display = 'flex';
+	}else{
+		messageWindow.style.display = 'none';
+	}
 
-if(darks != null){
-    console.log(darkMode);
-    document.getElementById("chatting-img").innerHTML="<img src='/resources/images/guitarduck-black.png'>"
-}
+
+});

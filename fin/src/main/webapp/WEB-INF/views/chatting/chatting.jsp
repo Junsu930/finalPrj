@@ -10,7 +10,9 @@
 <title>채팅</title>
 </head>
 <body>
-<div></div>
+<div class="chatBody" id="chatBody">
+<input type="text" id="messageText">
+</div>
 <div id="chatting-img">
 	<img src="${contextPath}/resources/images/guitarduck.png">
 </div>
