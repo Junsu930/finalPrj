@@ -175,6 +175,11 @@ body.darkmode .mainTextP{
 	color: var(--background-color);
 }
 
+body.darkmode .bi-arrow-up-short{
+	color: var(--background-color) !important;
+}
+
+
 .mainTextP{
 	color: var(--text-color);
 }
@@ -253,7 +258,7 @@ body.darkmode .mainTextP{
 .reservationText{
   color: #000;
   position: absolute;
-  top: 5em;
+  top: 3em;
   right: 10em;
   /* bottom: 0; */
   /* left: 42em; */
@@ -295,11 +300,11 @@ body.darkmode .mainTextP{
 /* guitar Text */
 @keyframes slideGuitar{
   from{
-    bottom: 5em;
+    right: -38em;
     opacity: 0;
 
   }to{
-    bottom: 16em;
+    right: 1em;
     opacity: 1;
   }
 }
@@ -347,7 +352,7 @@ body.darkmode .mainTextP{
     top: 20em;
     opacity: 0;
   }to{
-    top: 5em;
+    top: 3em;
     opacity: 1;
   }
 }
@@ -356,7 +361,7 @@ body.darkmode .mainTextP{
 
 @keyframes disappearSlideHeadPhone{
   from{
-    top: 5em;
+    top: 3em;
     opacity: 1;
   }to{
     top: 20em;
@@ -373,7 +378,7 @@ body.darkmode .mainTextP{
 /* mian Text media */
 
 @media screen and (max-width:53em){
-  .mainTextP, hr{
+  .mainTextP, hr, .topBtn{
     display: none;
   }
   .mainBoard{
@@ -397,20 +402,10 @@ body.darkmode .mainTextP{
     left: -16em;
     top: -0.8em;
   }
+  
 
 
-  /* .mainForm{
-    position: relative;
-    left: 7em;
-  } */
-
-  /* .mainInput{
-    width: 300px;
-  }
-
-  .mainTextArea{
-    width: 280px;
-  } */
+ 
 
 
 }
@@ -429,6 +424,8 @@ body.darkmode .mainTextP{
   opacity: 1 !important;
 }
 
+
+
 .topBtn{
   position: fixed;
   bottom: 1em;
@@ -437,6 +434,7 @@ body.darkmode .mainTextP{
   border: none;
   cursor: pointer;
   z-index: 99;
+  transition: opacity 0.7s ease-out;
   opacity: 0;
 }
 

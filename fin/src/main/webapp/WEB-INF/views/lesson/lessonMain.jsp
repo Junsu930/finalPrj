@@ -15,11 +15,139 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    
+    <section class="firstSec">
+	    <div class="titleBox" onclick="location.href='${contextPath}/lessonMain'">
+	        <p>Looking for your teacher?</p>
+	    </div>
+	</section>
+	
+	<section class="secondSec">
+
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	            
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	            
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	           
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	           
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	           
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	           
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	            
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	           
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	            
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	            
+	            <p>by.&nbsp이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	            
+	            <p>by.이현경</p>
+	        </div>
+	    </div>
+	
+	    <div class="imgCotentWrap">
+	        <div class="imgBox"></div>
+	        <div class="contentBox">
+	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
+	            <span>23년 05월 31일</span>
+	            
+	            <p>by.이현경</p>
+	        </div>
+	    </div>
+	</section>
 
     
     
     
-    <!-- 레슨 페이지 내용 -->
 
     
 
