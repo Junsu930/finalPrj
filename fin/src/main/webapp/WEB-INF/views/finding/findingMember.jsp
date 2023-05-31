@@ -40,13 +40,13 @@
                 <!--장르-->
                 <div class="genre">
                     <h5>장르</h5>
-                     <input type="radio" id="electronic" name="genre"><label for="electronic">ELECTRONIC</label>
-                     <input type="radio" id="rock" name="genre"><label for="rock">ROCK</label>
-                     <input type="radio" id="folk" name="genre"><label for="folk">FOLK</label>
-                     <input type="radio" id="pop" name="genre"><label for="pop">POP</label>
-                     <input type="radio" id="R&B" name="genre"><label for="R&B">R&B</label>
-                     <input type="radio" id="jazz" name="genre"><label for="jazz">JAZZ</label>
-                     <input type="radio" id="metal" name="genre"><label for="metal">METAL</label>a
+                     <input type="checkbox" id="electronic" name="genre"><label for="electronic">ELECTRONIC</label>
+                     <input type="checkbox" id="rock" name="genre"><label for="rock">ROCK</label>
+                     <input type="checkbox" id="folk" name="genre"><label for="folk">FOLK</label>
+                     <input type="checkbox" id="pop" name="genre"><label for="pop">POP</label>
+                     <input type="checkbox" id="R&B" name="genre"><label for="R&B">R&B</label>
+                     <input type="checkbox" id="jazz" name="genre"><label for="jazz">JAZZ</label>
+                     <input type="checkbox" id="metal" name="genre"><label for="metal">METAL</label>
                 </div>
 
 				<br>
@@ -60,6 +60,7 @@
                     <input type="radio" id="drum" name="position"><label for="drum">Drum</label>
                     <input type="radio" id="vocal" name="position"><label for="vocal">Vocal</label>
                     <input type="radio" id="keyboard" name="position"><label for="keyboard">Keyboard</label>
+                    <input type="radio" id="brass/horn" name="position"><label for="brass/horn">Brass/Horn</label>
                 </div>
 				<br>
                 <hr>
