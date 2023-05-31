@@ -54,17 +54,17 @@
                             나의 포지션 <hr>
 
 
-                            <div class ="checkbox_group">
-                                <input type="checkbox" id="check_all">
+                            <div class ="checkbox_group" >
+                                <input type="checkbox" id="check_all" name="checkall" onclick="checkall">
                                 <label for ="check_all">전체 동의</label><br>
 
-                                <input type="checkbox" id="check_1" class="normal">
+                                <input type="checkbox" id="check_1" class="normal" name="check" onclick="checkSelectAll">
                                 <label for="check_1">[필수] 이용약관 동의</label><br>
 
-                                <input type="checkbox" id="check_2" class="normal">
+                                <input type="checkbox" id="check_2" class="normal" name="check" onclick="checkSelectAll">
                                 <label for="check_2">[필수] 개인정보 이용 동의</label><br>
 
-                                <input type="checkbox" id="check_3" class="normal">
+                                <input type="checkbox" id="check_3" class="normal" name="check" onclick="checkSelectAll">
                                 <label for="check_3">[필수] 14세이상입니다</label>
                             </div>
 
@@ -73,17 +73,18 @@
                             <article class="sign-up-article-1">
                                 <button type="submit" id="signup-btn">회원가입</button><br>
                             </article >
-
+                       
                         </section>       
-                        
+                     
 
                     </fieldset>
+                    
                 </form>
 
             </section>
 
-         <script src="#"></script>
-
+            <script src="../js/sign-up-page.js"></script>
+                        
 </body>
         
     </main>
