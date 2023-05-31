@@ -38,18 +38,21 @@
     display: inline-block;
     cursor: pointer;
     height: 24px;
-    width: 90px;
+    width: 100px;
     border: 1px solid #8585E4;
     line-height: 24px;
     text-align: center;
     font-weight:bold;
-    font-size:13px;
+    font-size:15px;
     border-radius: 5px;
     margin: 10px;
+    
 }
+
 .gender input[type=radio]+label{
     background-color: #fff;
     color: #8585E4;
+    
 }
 .gender input[type=radio]:checked+label{
     background-color: #8585E4;
@@ -65,14 +68,14 @@
 }
 
 
-.genre input[type=radio]{
+.genre input[type=checkbox]{
     display: none;
 }
-.genre input[type=radio]+label{
+.genre input[type=checkbox]+label{
     display: inline-block;
     cursor: pointer;
     height: 24px;
-    width: 90px;
+    width: 100px;
     border: 1px solid #8585E4;
     line-height: 24px;
     text-align: center;
@@ -81,11 +84,11 @@
     border-radius: 5px;
     margin: 5px;
 }
-.genre input[type=radio]+label{
+.genre input[type=checkbox]+label{
     background-color: #fff;
     color: #8585E4;
 }
-.genre input[type=radio]:checked+label{
+.genre input[type=checkbox]:checked+label{
     background-color: #8585E4;
     color: #fff;
 }
@@ -104,7 +107,7 @@
     display: inline-block;
     cursor: pointer;
     height: 24px;
-    width: 90px;
+    width: 100px;
     border: 1px solid #8585E4;
     line-height: 24px;
     text-align: center;
@@ -137,7 +140,7 @@
     display: inline-block;
     cursor: pointer;
     height: 24px;
-    width: 90px;
+    width: 100px;
     border: 1px solid #8585E4;
     line-height: 24px;
     text-align: center;
@@ -184,6 +187,19 @@
 	
 }
 
+.darkmode input[type=checkbox]+label{
+	background-color: var(--grey-color);
+    color: #fff;
+    border: 1px solid var(--grey-color);
+	
+}
+
+.darkmode input[type=checkbox]:checked+label {
+	background-color: #fff;
+	color: var(--grey-color);
+	
+}
+
 
 .darkmode .title {
 	border: 1px solid #fff;
@@ -208,25 +224,25 @@
 
     .gender {
         padding: 30px 20px;
-        width: 15em;
+        width: 18em;
         margin: auto;
     }
 
     .genre {
         padding: 15px 10px;
-        width: 15em;
+        width: 18em;
         margin: auto;
     }
 
     .position {
         padding: 15px 10px;
-        width: 15em;
+        width: 18em;
         margin: auto;
     }
 
     .location {
         padding: 15px 10px;
-        width: 15em;
+        width: 18em;
         margin: auto;
     }
 
