@@ -46,7 +46,7 @@
                      <input type="radio" id="pop" name="genre"><label for="pop">POP</label>
                      <input type="radio" id="R&B" name="genre"><label for="R&B">R&B</label>
                      <input type="radio" id="jazz" name="genre"><label for="jazz">JAZZ</label>
-                     <input type="radio" id="metal" name="genre"><label for="metal">METAL</label>
+                     <input type="radio" id="metal" name="genre"><label for="metal">METAL</label>a
                 </div>
 
 				<br>
@@ -61,10 +61,8 @@
                     <input type="radio" id="vocal" name="position"><label for="vocal">Vocal</label>
                     <input type="radio" id="keyboard" name="position"><label for="keyboard">Keyboard</label>
                 </div>
-
 				<br>
                 <hr>
-
                 <!--지역-->
                 <div class="location">
                     <h5>지역</h5>
@@ -85,7 +83,6 @@
                     <input type="radio" id="N-jeolla" name="location"><label for="N-jeolla">전라북도</label>
                     <input type="radio" id="S-jeolla" name="location"><label for="S-jeolla">전라남도</label>
                     <input type="radio" id="jeju" name="location"><label for="jeju">제주도</label>
-
 				<br>
                 </div>
 
