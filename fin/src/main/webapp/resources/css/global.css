@@ -46,8 +46,10 @@ body{
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    width: 100vw;
-    max-width: 1440px;
+    margin: 0 auto;
+    min-height: 100vh;
+    max-width: 100vw;
+    
 }
 
 

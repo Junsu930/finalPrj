@@ -53,11 +53,19 @@ footer ul{
     cursor: pointer;
 }
 
+body.darkmode .footerDarkAtag{
+	color: var(--background-color);
+}
+
+body.darkmode .footerA{
+	color: var(--background-color);
+}
+
 /* 평소 푸터 a태그 css */
 
 .footerDarkAtag{
     text-decoration: none;
-    color: var(--text-dark-color); /*white*/
+    color: var(--text-color); /*white*/
     cursor: pointer;
 }
 /* 다크모드일때 푸터 a태그 컬러 화이트로 입힐 용도 */

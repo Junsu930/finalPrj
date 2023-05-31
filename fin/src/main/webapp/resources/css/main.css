@@ -157,6 +157,7 @@ input::-webkit-inner-spin-button {
 
 .content2, .content3, .content4{
   position: relative;
+  overflow: hidden;
 }
 
 /* guitar Text */
@@ -169,6 +170,15 @@ input::-webkit-inner-spin-button {
   width: 45%;
   opacity: 0;
 }
+
+body.darkmode .mainTextP{
+	color: var(--background-color);
+}
+
+.mainTextP{
+	color: var(--text-color);
+}
+
 
 .boardText > div{
   height: 100%;
