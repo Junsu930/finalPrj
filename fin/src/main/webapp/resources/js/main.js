@@ -25,7 +25,6 @@ const path5Length = path5.getTotalLength();
 
 
 
-
 // 기타그림
 path2.style.strokeDasharray = path2Length;
 path2.style.strokeDashoffset = calcDashoffset(window.innerHeight * 0.8, content2, path2Length);
@@ -61,7 +60,15 @@ function scrollHandler(){
 window.addEventListener('scroll', scrollHandler);
 
 
-// ============================@keyframes============================
+// ============================@keyframes scroll============================
+
+
+
+
+// 현재 높이 + view port높이 / 문서 전체높이 * 100 = 내가 현재 있는 지점을 퍼센트로 보여주는 함수
+function getCurrentScrollPercentage(){ 
+  return (window.scrollY + window.innerHeight) / document.body.clientHeight * 100
+}
 
 const boardText = document.querySelector('.boardText')
 const usedText = document.querySelector('.usedText');
@@ -69,28 +76,34 @@ const reservationText = document.querySelector('.reservationText');
 
 window.addEventListener("scroll", ()=>{
 
-  const scrollValue = window.scrollY;
+  const scrollValue = getCurrentScrollPercentage();
+  console.log("반응형 스크롤값", scrollValue);
+
+
+
+
+  
 
 // guitar Text
-  if(scrollValue > 1331){
+  if(scrollValue > 28){
     boardText.style.animation = "slideGuitar 1.2s ease-out forwards"
-    if(scrollValue > 2050){
+    if(scrollValue > 39){
       boardText.style.animation = "disappearSlideGuitar 1.2s ease-out forwards"
     }
   }
 
 // drum Text
-  if(scrollValue > 2108){
+  if(scrollValue > 40){
     usedText.style.animation = "slideDrum 1.2s ease-out forwards"
-    if(scrollValue > 2850){
+    if(scrollValue > 49){
       usedText.style.animation = "disappearSlideDrum 1.2s ease-out"
     }
   }
 
 // headphone Text
- if(scrollValue > 2970){
+ if(scrollValue > 52){
   reservationText.style.animation = "slideHeadPhone 1.2s ease-out forwards"
-  if(scrollValue > 3730){
+  if(scrollValue > 60){
     reservationText.style.animation = "disappearSlideHeadPhone 1.2s ease-out forwards"
   }
  }
@@ -105,15 +118,18 @@ window.addEventListener("scroll", ()=>{
 
 // =========================================모드==========================================
 
-let pathArr = document.querySelectorAll('path.path'); 
+const pathArr = document.querySelectorAll('path.path'); 
 
-let Mode = localStorage.getItem('darkMode');
+const Mode = localStorage.getItem('darkMode');
 
-let mainInput = document.querySelectorAll('.mainInput');
+const mainInput = document.querySelectorAll('.mainInput');
 
-let mainTextA = document.querySelectorAll('.mainTextA');
+const mainTextA = document.querySelectorAll('.mainTextA');
 
-let mainTextP = document.querySelectorAll('.mainTextP')
+const mainTextP = document.querySelectorAll('.mainTextP')
+
+const upBtn = document.querySelector('.bi-arrow-up-short');
+
 
 if (Mode === 'dark') {
   // 패스컬러 -> 핑크
@@ -135,6 +151,9 @@ if (Mode === 'dark') {
     for(let k = 0; k < mainTextA.length; k++){
       mainTextA[k].style.color = "#fff";
     } 
+
+    upBtn.style.color = "#fff";
+
 }else{
   // 패스컬러 -> 블랙
   for(let i = 0; i< pathArr.length; i ++){
@@ -155,4 +174,27 @@ if (Mode === 'dark') {
   for(let k = 0; k < mainTextA.length; k++){
     mainTextA[k].style.color = "#000";
   } 
+  upBtn.style.color = "#000";
+  
+}
+
+
+
+
+// top 버튼
+const forTopScroll = getCurrentScrollPercentage();
+const topBtn = document.querySelector(".topBtn");
+
+window.onload = function(){
+  window.addEventListener('scroll', ()=>{
+    if(forTopScroll > 16){
+      topBtn.classList.add('show');
+    }else{
+      topBtn.classList.remove('show');
+    }
+  });
+  
+  topBtn.addEventListener("click", () =>{
+    window.scrollTo({ top:0, behavior: 'smooth'});
+  });
 }

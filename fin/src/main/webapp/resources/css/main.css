@@ -79,9 +79,13 @@
   padding: 3em 3em;
 }
 
+h2{
+  padding: 1em 0 0 1.5em;
+}
+
 
 .mainQuestion > div:last-child{
-  border: 1px solid red;
+  width: 100%;
 }
 
 
@@ -96,19 +100,31 @@
 .questionInput > form{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
-.questionInput input{
+.mainInput{
   margin: 2em 0;
-  height: 35px;
-  width: 60%;
+  height: 45px;
+  width: 35%;
   padding: 1em 1em;
   border: 1.5px solid #868E96;
   border-radius: 5px;
   outline: none;
-  font-size: 1.1em;
+  font-size: 1em;
   background-color:transparent;
+  min-width: 400px;
+}
+
+.label{
+  width: 35%;
+  min-width: 400px;
+}
+
+.inputEmail{
+  font-family: var(--navFont-style-);
 }
 
 input::-webkit-outer-spin-button,
@@ -118,24 +134,17 @@ input::-webkit-inner-spin-button {
 }
 
 
-.questionInput textarea{
-  margin: 2em 0;
+.mainTextArea{
   resize: none;
-  width: 60%;
   height: 150px;
-  padding: 1em 1em;
-  border: 1.5px solid #868E96;
-  border-radius: 5px;
-  outline: none;
   font-size: 1.3em;
-  background-color:transparent;
 }
 
 .questionInput button{
   background-color: transparent;
   border: 1.5px solid #868E96;
   border-radius: 5px;
-  width: 60%;
+  width: 35%;
   height: 50px;
   cursor: pointer;
 }
@@ -402,6 +411,32 @@ input::-webkit-inner-spin-button {
 /* ===============================main Text=============================== */
 
 
+
+/* top button */
+
+
+.show{
+  transition: opacity 1s ease-out;
+  opacity: 1 !important;
+}
+
+
+
+.topBtn{
+  position: fixed;
+  bottom: 1em;
+  right: 3em;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 99;
+  opacity: 0;
+}
+
+.bi-arrow-up-short{
+  font-size: 4em;
+  color: var(--text-color);
+}
 
 
 
