@@ -1,4 +1,17 @@
+
+body{
+    margin: 0px;
+    max-width: 1440px;
+    width: 100vw;
+}
+.main{
+   
+	margin-top : 200px;
+    display: flex;
+}
+
 #searchboxInput{
+
     height: 38px;
     border-radius: 19px;
     border: solid 1px #dddddddc;
@@ -6,47 +19,119 @@
 }
 
 .searchInputButton{
-    border: 0;
-    background-color: transparent;
+    justify-content: center;
+    position: absolute;
+    right: 5px;
+    border: none;
+
 }
 
 .glass{
 position: absolute;
 }
 
+.jb-division-line {
+    border-top: 1px solid #444444;
+    margin: 30px 0px;
+  }
+
+  .thingTotalBox{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+    margin-left: 30px;
+
+  }
+
 
 .topbox{
-
-}
-.totalbox{
-    border:  1px soild black;
+    display: flex;
+    justify-content: space-between;
 }
 
-.dealbox1{
-    float: left;
-    width: 100px;
-    height: 100px;
-    border:  1px soild black;
-    background-color: rgb(153, 87, 51);
+.mainTitle{
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+    float: right;
 }
-.dealbox2{
-    float: left;
-    width: 100px;
-    height: 100px;
-    border:  1px soild black;
-    background-color: rebeccapurple;
+.searchbox{
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
 }
-.dealbox3{
-    float: left;
-    width: 100px;
-    height: 100px;
-    border:  1px soild black;
-    background-color: rgb(153, 51, 138);
+
+.thingBox{
+    background-color: rgb(216, 224, 238);
+    
+    box-sizing: border-box;
+
 }
-.dealbox4{
-    float: left;
-    width: 100px;
-    height: 100px;
-    border:  1px soild black;
-    background-color: rgb(255, 0, 0);
+
+
+.thingPicture {
+background-color: rgb(247, 234, 234);
+width: 350px;
+height: 350px;
+box-sizing: border-box;
 }
+
+
+
+
+.thingsecondbox{
+background-color: rgb(234, 235, 213);
+width: 350px;
+height: 50px;
+box-sizing: border-box;
+}
+
+.thingssecondTop{
+    display: flex;
+
+}
+.SaleOrSoldout{
+    color: #FB6400;
+    padding-left: 5px;
+    padding-right: 16px;
+    font-weight: bold;
+}
+
+.thingTitle{
+    font-weight: bold;
+
+}
+
+.thingsecondBottomBox{
+    justify-content: space-around;
+   
+}
+.thingsecondBottom{
+    padding-left: 5px;
+    float: left;
+    display: flex;
+}
+
+.sellerName{
+color: #5B696F;
+font-weight: bold;
+}
+.dot{
+    color: #5B696F;
+    font-weight: bold;
+    padding-right: 7px;
+    padding-left: 7px;
+}
+.sellerRegion{
+    color: #5B696F;
+    font-weight: bold;
+}
+
+.price{
+   
+    padding-right: 5px;
+    float: right;
+    font-weight: bold;
+}
+
+
