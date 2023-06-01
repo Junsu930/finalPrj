@@ -20,6 +20,9 @@
 	<!-- dependencies : Maven 프로젝트는 외부 저장소와 의존 관계를 맺고 있어 프로젝트에 필요한 파일을(라이브러리) 
 		사용자가 직접 받을 필요 없이 해당 태그 내에 지정된 형식으로 작성하면 네트워크를 통해 외부 저장소에서 자동으로 얻어와 세팅함. -->
 	<dependencies>
+
+
+		
 		<!-- JDBC, Mybatis, DBCP 관련 라이브러리 -->
 		<!-- JDBC 드라이버 (ojdbc11) -->
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11 -->
@@ -246,13 +249,18 @@
 		    <version>1.4</version>
 		</dependency>
 		
-	  <!-- Spring WebSocket -->
-      <!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-websocket</artifactId>
-         <version>${org.springframework-version}</version>
-      </dependency>
+		<!-- Web-Socket -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>4.0.9.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+		</dependency>
 
 
       <!-- jackson bind -->
