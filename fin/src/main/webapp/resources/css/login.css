@@ -1,6 +1,4 @@
 
-/*****************************헤더 부분 시작*******************************/
-/****************************바디 부분 시작***********************************/
 
 .content{
 
@@ -16,7 +14,7 @@
     
 }
 
-/*상자 테두리*/
+
 #sign-in-area{
     width: 500px; 
     height: 500px;
@@ -25,44 +23,45 @@
     padding-top: 10px;
     border-radius: 20px;
     border: 1px solid gray;
+    margin-top : 20px;
     
 }
 
 .input-text{
-    
     border: none;
-    outline : 0;
-    width: 200px;
-    height: 40px;
-    font-size: large;
-    background-color:rgb(240, 244, 240);
+    outline: 0;
+    width: 300px;
+    height: 38px;
+    background-color: rgb(240, 244, 240);
+    border-radius: 20px;
 }
 
 .sign-in-text{
-    font-size: 4.5em;
+    font-size: 4em;
+    margin-top: 40px;
 }
 
-/*아이디 입력창*/
+
 #id-area{
 
     width: 20em;
-    height: 3em;
+    height: 2.5em;
     border:1px solid rgb(240, 244, 240);
     border-radius: 10px;
     background-color:rgb(240, 244, 240);
 }
 
-/*비밀번호 입력창*/
+
 #pw-area{
     width: 20em;
-    height: 3em;
+    height: 2.5em;
     border:1px solid rgb(240, 244, 240);
     border-radius: 10px;
     background-color:rgb(240, 244, 240);    
 }
 
 
-/*로그인 버튼부분*/
+
 .signInBtn-article{
     display: flex;
     justify-content: center;
@@ -83,7 +82,7 @@
     cursor: pointer;
 }
 
-/*비밀번호 찾기/ 아이디 찾기/ 회원가입*/
+
 
 .id-pw-found{
     display: flex;
@@ -98,12 +97,12 @@
 
 
 
-/*카카오로 로그인하기 부분 article*/
+
 .signInBtn-kakao-article{
     padding-top: 15px;
 }
 
-/*카카오로 로그인 버튼*/
+/*
 .signInBtn-kakao{
     background-color: yellow;
     color: black;
@@ -116,9 +115,7 @@
     padding-top: 10px;
     cursor: pointer; 
 }
-
-
-/*******************************************푸터*******************************************/
+*/
 
   
 

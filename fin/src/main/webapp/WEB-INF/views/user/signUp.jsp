@@ -7,7 +7,7 @@
 	<title>로그인</title>
 
 	<link rel="stylesheet" href="${contextPath}/resources/css/global.css">
-	<link rel="stylesheet" href="${contextPath}/resources/css/sign-up.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/signUp.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 	<script src="https://kit.fontawesome.com/44f3dd3f25.js" crossorigin="anonymous"></script>
@@ -52,7 +52,7 @@
 
                             <!--포지션-->
                             나의 포지션
-                            <div id='dis'><h1></h1></div>
+                            <div id='dis'><h1>준비중</h1></div>
                             <button id='show' onclick="dis()">버튼</button>
                             <hr>
 
@@ -79,14 +79,15 @@
                        
                         </section>       
                      
-
                     </fieldset>
                     
                 </form>
 
             </section>
 
-           <script src="${contextPath}/resources/js/sign-up.js"></script>
+				<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+           <script src="${contextPath}/resources/js/signUp.js"></script>
                         
 </body>
         
