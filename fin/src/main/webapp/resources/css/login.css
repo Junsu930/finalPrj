@@ -1,7 +1,6 @@
 
 
 .content{
-
     display: flex;
     justify-content: center;
 
@@ -10,8 +9,12 @@
 .content-2{
     display: flex;
     justify-content: center;
-    padding-top: 1px;
+	padding-top: 20px;
+    padding-bottom: 100px;
     
+}
+.sign-in{
+	margin-top : 60px;
 }
 
 
@@ -23,7 +26,7 @@
     padding-top: 10px;
     border-radius: 20px;
     border: 1px solid gray;
-    margin-top : 20px;
+    margin-top : 30px;
     
 }
 
@@ -34,11 +37,20 @@
     height: 38px;
     background-color: rgb(240, 244, 240);
     border-radius: 20px;
+    padding-left : 10px;
 }
 
 .sign-in-text{
-    font-size: 4em;
-    margin-top: 40px;
+    font-size: 4rem;
+    margin-top: 60px;
+}
+
+.id-form{
+	margin-bottom : 10px;
+}
+
+.pw-form{
+	margin-bottom : 10px;
 }
 
 
@@ -46,7 +58,7 @@
 
     width: 20em;
     height: 2.5em;
-    border:1px solid rgb(240, 244, 240);
+    border:none;
     border-radius: 10px;
     background-color:rgb(240, 244, 240);
 }
@@ -55,7 +67,7 @@
 #pw-area{
     width: 20em;
     height: 2.5em;
-    border:1px solid rgb(240, 244, 240);
+    border:none;
     border-radius: 10px;
     background-color:rgb(240, 244, 240);    
 }
@@ -66,7 +78,7 @@
     display: flex;
     justify-content: center;
     padding-top: 10px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 .signInBtn{
     border: 1px solid #000000; 
@@ -86,14 +98,29 @@
 
 .id-pw-found{
     display: flex;
-    justify-content: center;
     column-gap:5px;
 }
 
-.id-found{
-    text-decoration: none;    
-    color: black;
+.id-found-1{
+    text-decoration: none;  
+    font-size: 0.8rem;
+    color: #474554;
 }
+
+.id-found-2{
+	text-decoration: none;
+    font-size: 0.8rem;
+    color: #474554;
+    margin-left: 65px;
+}
+
+.id-found-3{
+	text-decoration: none;
+    font-size: 0.8rem;
+    color: #474554;
+}
+
+
 
 
 

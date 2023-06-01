@@ -11,7 +11,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 	<script src="https://kit.fontawesome.com/44f3dd3f25.js" crossorigin="anonymous"></script>
-
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
 
@@ -52,10 +52,10 @@
 
                             <!--포지션-->
                             나의 포지션
-                            <div id='dis'><h1>준비중</h1></div>
-                            <button id='show' onclick="dis()">버튼</button>
-                            <hr>
-
+                            <button id='hide' onclick="mainContent()">show</button>
+                             <section class="mainContent">
+            
+               
 
                             <div class ="checkbox_group" >
                                 <input type="checkbox" id="check_all" name="checkall" onclick="checkall">
@@ -70,7 +70,8 @@
                                 <input type="checkbox" id="check_3" class="normal" name="check" onclick="checkSelectAll">
                                 <label for="check_3">[필수] 14세이상입니다</label>
                             </div>
-
+							
+							
             
                     
                             <article class="sign-up-article-1">
