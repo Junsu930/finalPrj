@@ -1,3 +1,12 @@
+function dis(){
+  if($('#dis').css('display') == 'none'){
+  $('#dis').hide();
+}else{
+  $('#dis').show();
+}
+}
+
+
 function checkSelectAll()  {
     // 전체 체크박스
     const checkboxes 
