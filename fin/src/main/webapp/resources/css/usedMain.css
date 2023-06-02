@@ -1,0 +1,177 @@
+*{
+	box-sizing: border-box;
+}
+body{
+    margin: 0px;
+}
+
+.main{
+    width: 80%;
+    margin: auto;
+    margin-top: 200px;
+	
+
+}
+
+#searchboxInput{
+	width: 250px;
+    height: 38px;
+    border-radius: 19px;
+    border: solid 1px var( --grey-color);
+    box-sizing: border-box;
+}
+
+.searchInputButton{
+    justify-content: center;
+    position: absolute;
+	
+    border: none;
+     float: right;
+	margin-top: 10px;
+	margin-right: 170px;
+}
+
+.fa-solid fa-magnifying-glass{
+	position: absolute;
+ 	margin-right: 30px;
+  	border: solid 1px var( --grey-color);
+}
+
+ .jb-division-line {
+    border-top: 1px solid var(--grey-color);
+    margin: 15px 0px;
+  }
+
+  .thingTotalBox{
+    display: flex;
+    justify-content: space-between;
+        justify-content: space-around;
+    flex-wrap: wrap;
+
+
+  }
+
+
+.topbox{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainTitle{
+	  font-weight: bold;
+padding-left: 50px;
+    display: flex;
+    justify-content: center;
+    float: right;
+}
+.searchbox{
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+}
+#guitarImg{
+	width: 300px;
+	height: 300px;
+	border-radius:10px;
+}
+.thingBox{
+	border-radius:10px;
+    border: 1px solid var(--stroke-color);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 2em;
+
+}
+
+
+.thingPicture {
+    background-color:var(#868E96);
+	width: 300px;
+	height: 300px;
+	box-sizing: border-box;
+}
+
+
+
+
+.thingsecondbox{
+ 
+	
+	width: 300px;
+	height: 50px;
+	box-sizing: border-box;
+}
+
+.thingssecondTop{
+    display: flex;
+
+}
+.SaleOrSoldout{
+    color: var( --accent-color);
+    padding-left: 5px;
+    padding-right: 16px;
+    font-weight: bold;
+}
+
+.thingTitle{
+    font-weight: bold;
+
+}
+
+.thingsecondBottomBox{
+    justify-content: space-around;
+   
+}
+.thingsecondBottom{
+    padding-left: 5px;
+    float: left;
+    display: flex;
+}
+
+.sellerName{
+    color: var(#474554);
+	font-weight: bold;
+}
+.dot{
+    color: var(#474554);
+    font-weight: bold;
+    padding-right: 7px;
+    padding-left: 7px;
+}
+.sellerRegion{
+    color: var(#474554);
+    font-weight: bold;
+}
+
+.price{
+  
+    padding-right: 17px;
+    float: right;
+    font-weight: bold;
+}
+
+
+
+@media (max-width:700px){
+	
+	.main{
+	width: 500px;
+	margin: auto;
+	
+	}
+	
+.mainTitle{
+	  font-weight: bold;
+  
+    display: flex;
+    justify-content: center;
+    float: right;
+}
+.searchbox{
+    flex-basis: 30%;
+    display: flex;
+    justify-content: center;
+}
+	
+}
