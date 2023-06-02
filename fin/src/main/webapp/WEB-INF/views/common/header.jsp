@@ -24,7 +24,11 @@
               <li><a href="used" class="navA">Used</a></li>
               <li><a href="lesson" class="navA">Lessons</a></li>
               <li><a href="" class="navA">My Band</a></li>
-              <li><a href="findingMember" class="navA">Members</a></li>
+              <li>
+              	<form action="findingMember" method="get">
+              		<button typ="button" id="findingMember">모달TEST</button>
+              	</form>
+              </li>
 
           </ul>
           <div class="navSecondDiv">
