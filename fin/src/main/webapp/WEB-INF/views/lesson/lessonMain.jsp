@@ -39,6 +39,8 @@
 	</section>
 	
 	<section class="filterSec">
+	
+		<a href="#"><i class="bi bi-pencil-square"></i></a>
 	    <div>
 	        <button class="labelLesson lessonList" onclick="selctLesson()"><span>레슨 악기</span><i class="bi bi-caret-down" id="bi"></i></button>
 	        <ul class="listBox">
@@ -54,22 +56,25 @@
 	    </div>
 	
 	    <div>
-        <button class="labelLocation locationListBtn" onclick="selectLocation()"><span>지역 선택</span><i class="bi bi-caret-down" id="bi2"></i></button>
-        <ul class="listBox locationListBox">
-            <li><button class="list locationList">서울</button></li>
-            <li><button class="list locationList">대전</button></li>
-            <li><button class="list locationList">대구</button></li>
-            <li><button class="list locationList">부산</button></li>
-            <li><button class="list locationList">광주</button></li>
-            <li><button class="list locationList">충청도</button></li>
-            <li><button class="list locationList">경상북도</button></li>
-            <li><button class="list locationList">경상남도</button></li>
-            <li><button class="list locationList">전라북도</button></li>
-            <li><button class="list locationList">전라남도</button></li>
-            <li><button class="list locationList">제주도</button></li>
-        </ul>
-    </div>
+			<button class="labelLocation locationListBtn" onclick="selectLocation()"><span>지역 선택</span><i class="bi bi-caret-down" id="bi2"></i></button>
+			<ul class="listBox locationListBox">
+				<li><button class="list locationList">서울</button></li>
+				<li><button class="list locationList">대전</button></li>
+				<li><button class="list locationList">대구</button></li>
+				<li><button class="list locationList">부산</button></li>
+				<li><button class="list locationList">광주</button></li>
+				<li><button class="list locationList">충청도</button></li>
+				<li><button class="list locationList">경상북도</button></li>
+				<li><button class="list locationList">경상남도</button></li>
+				<li><button class="list locationList">전라북도</button></li>
+				<li><button class="list locationList">전라남도</button></li>
+				<li><button class="list locationList">제주도</button></li>
+			</ul>
+    	</div>
 
+		<div>
+			<a href="#">글쓰기</a>
+		</div>
 
 	</section>
 

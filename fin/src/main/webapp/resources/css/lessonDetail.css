@@ -17,10 +17,17 @@
 }
 
 
-.explain > li > i, .chatBox > button > i{
+.explain > li > i{
     color: var(--text-color); 
     font-size: 1.8em;
 }
+
+.chatBox > button > i{
+    color: var(--text-color); 
+    font-size: 3em;
+}
+
+
 
 body.darkmode .explain > li > i,
 body.darkmode .chatBox > button >i{
@@ -80,6 +87,12 @@ body.darkmode .chatBox > button >i{
 .imgBox > div:nth-child(2) > p:first-child{
     padding-left: 2.2em;
 }
+
+.imgBox > div:nth-child(2) > p{
+    font-size: 1.1em;
+}
+
+
 
 .imgBox > div:not(.chatBox){
     margin-bottom: 4em;
