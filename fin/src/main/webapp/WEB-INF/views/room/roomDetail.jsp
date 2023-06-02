@@ -139,6 +139,35 @@
 					<button type="button" class="times" value="24">24:00</button>
 				</div>
 			</div>
+			<div class="roomDetailPhoto" id="roomDetailPhoto">
+				<img src="${contextPath}/resources/images/band.jpg" id="detailImages">
+			</div>
+			<div class="picto" id="picto">
+				<div class="eachPicto">
+					<i class="fa-solid fa-burger"></i>
+					<p>음식물 반입 허용</p>
+				</div>
+				<div class="eachPicto">
+					<i class="fa-solid fa-ban-smoking"></i>
+					<p>금연</p>
+				</div>
+				
+				<div class="eachPicto">
+					<i class="fa-solid fa-car-side"></i>
+					<p>주차</p>
+				</div>
+				<div class="eachPicto">
+					<i class="fa-solid fa-wifi"></i>
+					<p>인터넷 사용 가능</p>
+				</div>				
+			</div>
+			<div class="price-tag">
+				<p style="font-size: 1.4em"> 이용 시간 </p>
+				<p id="hoursOfUse"></p><br>
+				<p style="font-size: 1.4em"> 가격 </p>
+				<p id="totalPrice" style="font-size: 1.2em">총 6000 원</p>
+				
+			</div>
 			<div class="submitDiv">
 				<!-- 정보 전송 버튼 -->
 				<button type="button" id="timeSubmit">신청하기</button>

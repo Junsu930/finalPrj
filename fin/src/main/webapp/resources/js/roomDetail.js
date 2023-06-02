@@ -7,9 +7,7 @@ let tw = weeks.toISOString().split('T')[0];
 const schedule = document.getElementById("schedule");
 const timeline = document.getElementById("timeline");
 const timesClass = document.getElementsByClassName("times");
-
-
-console.log(tt +  "\n" +tw);
+let greenList = new Array();
 
 	document.addEventListener('DOMContentLoaded', function() {
     let calendarEl = document.getElementById('calendar');
@@ -20,12 +18,30 @@ console.log(tt +  "\n" +tw);
         expandRows: true, // 화면에 맞게 높이 재설정
         height: '500px', // calendar 높이 설정
         dateClick: function(info) {
+        
+        greenList = document.getElementsByClassName("greenDay");
+
+
+        for(let i = 0; i<greenList.length; i++){
+            if(greenList[i].classList.contains('greenDay')){
+
+                greenList[i].classList.remove('greenDay');
+            }else{
+
+            }
+        }
+        
 
         const diffMSec = today.getTime() - info.date.getTime();
         const diffDate = diffMSec / (24 * 60 * 60 * 1000);
-        
+
         if(diffDate<1 && diffDate >-6){
+
+            $(info.dayEl).addClass('greenDay');
+ 
             schedule.innerHTML=info.dateStr;
+
+
             timeline.style.display = 'flex';
             for(let each of timesClass){
                 if(each.classList.contains("onTime")) each.classList.remove("onTime");
@@ -34,6 +50,7 @@ console.log(tt +  "\n" +tw);
 
         }
         
+
         },
         events: [
             {
@@ -43,6 +60,7 @@ console.log(tt +  "\n" +tw);
                 display: 'background'
             }
         ]
+
 	});
 
     
@@ -51,15 +69,41 @@ console.log(tt +  "\n" +tw);
 
 
 
+
 const times = document.getElementsByClassName("times");
+const submitBtn = $('#timeSubmit');
+
 
 for(let time of times){
     time.addEventListener("click", function(){
+        
+        
+        
         if(!this.classList.contains("onTime")){
             this.classList.add("onTime");
         }else{
             this.classList.remove("onTime");
         }
+
+        
+        if(document.getElementsByClassName("onTime").length == 0){
+            submitBtn.css('display', 'none');
+            $('#roomDetailPhoto').css('display', 'none');
+            $('#picto').css('display','none');
+            $('.price-tag').css('display','none');
+        }else{
+            submitBtn.css('display', 'block');
+            $('#roomDetailPhoto').css('display', 'flex');
+            $('#picto').css('display','flex');
+            $('.price-tag').css('display','flex');
+        }
+
+
+        let timeList = document.getElementsByClassName("onTime");
+        
+        $('#hoursOfUse').html(timeList.length + " 시간");
+
+        $('#totalPrice').html("총 "+ timeList.length * 3000 + '원');
     })
 
 }

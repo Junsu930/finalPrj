@@ -27,6 +27,7 @@ body{
 	border: 2px solid;
 	border-radius: 7px;
 	border-color: var(--grey-color);
+	height: 320vh;
 }
 
 body.darkmode > .content{
@@ -44,7 +45,7 @@ body.darkmode > .content{
 
 /* 사진 영역 */
 .leftSide > div:nth-child(1){
-	flex-basis: 25%;
+	flex-basis: 17%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -53,18 +54,19 @@ body.darkmode > .content{
 }
 
 .leftSide > div:nth-child(2){
-	flex-basis: 10%;
+	flex-basis: 8%;
 	padding-top: 2em;
 	padding-left: 2em;
 }
 
 .leftSide > div:nth-child(3){
-	flex-basis: 65%;
+	flex-basis: 70%;
 }
 
 #pracImg{
 	width: 90%;
 	height: 90%;
+	border-radius: 10px;
 }
 
 .rightSide{
@@ -76,7 +78,8 @@ body.darkmode > .content{
 	font-size: 3rem;
 }
 .titleArea > p:nth-of-type(2) {
-	font-size: 2rem;
+	font-size: 1.3rem;
+	margin-bottom: 20px;
 	
 }
 
@@ -86,15 +89,21 @@ body.darkmode > .content{
 	flex-direction: column;
 }
 
+.introduction ul{
+	display: flex;
+	justify-content: space-around;
+}
+
 .introduction li{
 	list-style: none;
 	float: left;
-	width: 33.3%;
+	width: 20%;
 	line-height: 60px;
 	text-align: center;
 	font-size: 1.4em;
+	border-bottom: 3px solid;
+	border-color: var(--stroke-color);
 	
-	background-color: var(--grr-color);
 }
 
 body.darkmode li{
@@ -109,6 +118,16 @@ body.darkmode a{
 .introduction a {
 	color: var(--text-color);
 	text-decoration: none;
+	width: 100%;
+    display: block;
+    transition-duration: 1s;
+
+}
+
+.introduction a:hover {
+	background-color: var(--grr-color);
+	border-radius: 10px;
+
 }
 
 .introduction > div:nth-child(1) {
@@ -128,6 +147,8 @@ body.darkmode a{
 
 .introContent > div:nth-child(1) {
 	flex-basis: 33.3%;
+	margin-top: 20px;
+	overflow: auto;
 }
 
 .introContent  h1{
@@ -136,10 +157,12 @@ body.darkmode a{
 
 .introContent > div:nth-child(2) {
 	flex-basis: 33.3%;
+	overflow: auto;
 }
 
 .introContent > div:nth-child(3) {
 	flex-basis: 33.3%;
+	overflow: auto;
 }
 
 
@@ -174,7 +197,28 @@ body.darkmode .fc-day-past{
 
 .fc .fc-button-primary{
 	border:none;
-	background-color: var(--stroke-color);
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.fc-today-button{
+	display: none !important;
+}
+
+.fc .fc-button-primary:hover{
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.fc .fc-button-primary:hover{
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
+	background-color: var(--background-color);
+	color: var(--text-color);
+	border-color: none;
 }
 
 .calDiv p{
@@ -183,7 +227,9 @@ body.darkmode .fc-day-past{
 	border-bottom : 2px solid;
 	border-color : var(--grey-color);
 	text-align: center;
+	margin-top: 20px;
 }
+
 
 .days{
 	display : flex;
@@ -227,18 +273,86 @@ body.darkmode .fc-day-past{
 
 .submitDiv > button{
 	border: none;
-	width: 120px;
+	width: 80%;
 	height: 40px;
 	border-radius: 10px;
 	cursor: pointer;
 	background-color: var(--grr-color);
+	display: none;
+	font-size: 1.3em;
 }
 
-@media (max-width:700px){
+.fc .fc-bg-event{
+	background-color: #D0F5BE;
+}
+
+.greenDay{
+	background-color: #98EECC !important;
+}
+
+.roomDetailPhoto{
+
+	display: none;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	margin-top: 20px;
+	
+}
+
+.picto{
+	width : 90%;
+	display: none;
+	justify-content: space-around;
+	align-items: center;
+	margin: auto;
+	margin-top: 20px;
+	flex-wrap: wrap;
+	border: 1px solid;
+	border-color : var(--grey-color);
+	border-radius: 7px;
+	padding: 1rem;
+}
+
+.picto i{
+	font-size: 2em;
+	color: var(--grey-color);
+}
+
+.eachPicto{
+	display: flex;
+	margin: 3px;
+	margin-top: 7px;
+}
+.eachPicto p {
+    line-height: 2em;
+    margin-left: 0.6em;
+    margin-right : 0.4em;
+    color: var(--grey-color);
+}
+
+#detailImages{
+	width: 90%;
+	border-radius: 10px;
+}
+
+.price-tag{
+	width: 90%;
+	margin: auto;
+	display: none;
+	margin-top: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	
+}
+
+@media (max-width:46.875rem){
 	
 	.content{
 		width: 600px;
 		flex-direction: column;
+		height: 120%;
 	}
 
 	.leftSide > div:nth-child(1){

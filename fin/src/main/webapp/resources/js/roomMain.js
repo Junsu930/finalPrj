@@ -51,4 +51,9 @@ const obsever = new IntersectionObserver(
 
 obsever.observe($lastBox);
 
+// 로고 애니메이션
+const titleLogo = document.querySelectorAll("#titleLogo path");
 
+for(let i = 0; i<titleLogo.length; i++){
+	console.log(`Letter ${i} is ${titleLogo[i].getTotalLength()}`);
+}
