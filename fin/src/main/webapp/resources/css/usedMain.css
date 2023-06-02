@@ -19,6 +19,7 @@ body{
     border-radius: 19px;
     border: solid 1px var( --grey-color);
     box-sizing: border-box;
+    padding:15px;
 }
 
 .searchInputButton{
@@ -71,8 +72,9 @@ padding-left: 50px;
 }
 #guitarImg{
 	width: 300px;
-	height: 300px;
+	height: 250px;
 	border-radius:10px;
+
 }
 .thingBox{
 	border-radius:10px;
@@ -88,8 +90,12 @@ padding-left: 50px;
 .thingPicture {
     background-color:var(#868E96);
 	width: 300px;
-	height: 300px;
+	height: 250px;
 	box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+	   
 }
 
 
@@ -99,29 +105,36 @@ padding-left: 50px;
  
 	
 	width: 300px;
-	height: 50px;
+	height: 100px;
 	box-sizing: border-box;
+    padding: 10px;
+
 }
 
 .thingssecondTop{
     display: flex;
-
+	padding-left: 5px;
+	
+    padding-top: 10px;
 }
 .SaleOrSoldout{
     color: var( --accent-color);
     padding-left: 5px;
     padding-right: 16px;
     font-weight: bold;
+        padding : 3px;
 }
 
 .thingTitle{
     font-weight: bold;
+      padding : 10px;
+           padding : 3px;
 
 }
 
 .thingsecondBottomBox{
     justify-content: space-around;
-   
+padding-top: 5px;  
 }
 .thingsecondBottom{
     padding-left: 5px;
@@ -132,16 +145,19 @@ padding-left: 50px;
 .sellerName{
     color: var(#474554);
 	font-weight: bold;
+      padding : 3px;
 }
 .dot{
     color: var(#474554);
     font-weight: bold;
     padding-right: 7px;
     padding-left: 7px;
+      padding : 3px;
 }
 .sellerRegion{
     color: var(#474554);
     font-weight: bold;
+      padding : 3px;
 }
 
 .price{
@@ -149,6 +165,7 @@ padding-left: 50px;
     padding-right: 17px;
     float: right;
     font-weight: bold;
+      padding : 3px;
 }
 
 
