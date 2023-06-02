@@ -1,0 +1,162 @@
+.firstSection{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap:wrap-reverse;
+    margin-top: 10em;
+}
+
+.explainBox{
+    /* border: 1px solid red; */
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+
+.explain > li > i, .chatBox > button > i{
+    color: var(--text-color); 
+    font-size: 1.8em;
+}
+
+body.darkmode .explain > li > i,
+body.darkmode .chatBox > button >i{
+    color: var(--text-dark-color);
+}
+
+.explain{
+    /* border: 1px solid yellowgreen; */
+    width: 50%;
+    padding: 1em 1em;
+    list-style: none;
+}
+
+.explain > li{
+    padding: 1em 1em;
+}
+
+.explain > li > i{
+    padding: 0 1em;
+}
+
+#profileExpalin{
+    line-height: 200%;
+    white-space: pre-line;
+}
+
+
+
+
+.imgWrap{
+    /* border: 1px solid green; */
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.imgBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--stroke-color);
+    width: 70%;
+    height: 100%;
+    border-radius: 0.5em;
+}
+
+.imgBox > div:first-child{
+    flex-basis: 60%;
+    border: 1px solid goldenrod;
+    overflow: hidden;
+}
+
+.imgBox > div:nth-child(2) > p:first-child{
+    padding-left: 2.2em;
+}
+
+.imgBox > div:not(.chatBox){
+    margin-bottom: 4em;
+}
+
+.chatBox{
+    padding: 2em 1em;
+}
+
+.chatBox > button{
+    padding: 1em 1em;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.imgBox > div:nth-child(2) > p{
+    padding: 1em 1em;
+}
+
+
+
+
+
+
+
+
+
+.secondSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* border:1px solid black; */
+    margin-bottom: 15em;
+    margin-top: 15em;
+}
+
+.secondSection > div:first-child{
+    text-align: center;
+    font-size: 2em;
+}
+
+.recommendImgBox{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 1px solid black; */
+    margin-top: 5em;
+}
+
+.recommendImgBox > div{
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    overflow: hidden;
+    width: 150px;
+    text-align: center;
+}
+
+.recommendName{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 5em;
+}
+
+.recommendName > div > p{
+    padding: 1em 1em;
+}
+
+
+
+/* 반응형 */
+
+
+@media screen and (max-width:46.875rem) {
+    .imgBox{
+        width: 90%;
+    }
+}

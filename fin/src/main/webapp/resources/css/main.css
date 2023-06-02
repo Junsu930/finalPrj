@@ -171,14 +171,15 @@ input::-webkit-inner-spin-button {
   opacity: 0;
 }
 
-body.darkmode .mainTextP{
+body.darkmode .mainTextP, body.darkmode .mainTextA{
 	color: var(--background-color);
 }
 
-body.darkmode .bi-arrow-up-short{
-	color: var(--background-color) !important;
+body.darkmode .bi-chevron-compact-up{
+	color: var(--background-color);
 }
 
+/*bi-arrow-up-short*/
 
 .mainTextP{
 	color: var(--text-color);
@@ -438,8 +439,8 @@ body.darkmode .bi-arrow-up-short{
   opacity: 0;
 }
 
-.bi-arrow-up-short{
-  font-size: 4em;
+.bi-chevron-compact-up{
+  font-size: 3em;
   color: var(--text-color);
 }
 
