@@ -28,7 +28,7 @@
             
                 <!--성별-->
                 <div class="gender">
-                    <h5>성별</h5>
+                    <h4>성별</h4>
                      <input type="radio" id="male" name="gender"><label for="male">남자</label>
                      <input type="radio" id="female" name="gender"><label for="female">여자</label>
                 </div>
@@ -39,7 +39,7 @@
 
                 <!--장르-->
                 <div class="genre">
-                    <h5>장르</h5>
+                    <h4>장르</h4>
                      <input type="checkbox" id="electronic" name="genre"><label for="electronic">ELECTRONIC</label>
                      <input type="checkbox" id="rock" name="genre"><label for="rock">ROCK</label>
                      <input type="checkbox" id="folk" name="genre"><label for="folk">FOLK</label>
@@ -54,7 +54,7 @@
 
                 <!--포지션-->
                 <div class="position">
-                    <h5>포지션</h5>
+                    <h4>포지션</h4>
                     <input type="radio" id="guitar" name="position"><label for="guitar">Guitar</label>
                     <input type="radio" id="bass" name="position"><label for="bass">Bass</label>
                     <input type="radio" id="drum" name="position"><label for="drum">Drum</label>
@@ -66,7 +66,7 @@
                 <hr>
                 <!--지역-->
                 <div class="location">
-                    <h5>지역</h5>
+                    <h4>지역</h4>
                     <input type="radio" id="seoul" name="location"><label for="seoul">서울</label>
                     <input type="radio" id="gyeonggi" name="location"><label for="gyeonggi">경기도</label>
                     <input type="radio" id="incheon" name="location"><label for="incheon">인천</label>
@@ -93,6 +93,7 @@
                
 
                 <button id="find">숨은 나의 멤버 찾기</button>
+                <a href="memberList">MemberList</a>
                 <br>
                 <br>
                 <br>
