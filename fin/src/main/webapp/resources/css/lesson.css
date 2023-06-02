@@ -14,7 +14,7 @@
 .titleBox{
     padding: 1em 1em;
     cursor: pointer;
-    width: 50%;
+    width: 43%;
 }
 
 path{
@@ -168,9 +168,41 @@ hr{
     background-color: transparent;
 }
 
-.filterSec > div:last-child{
+.filterSec > div:nth-child(3){
     margin-left: 3em;
+    font-size: 1.1em;
 }
+
+
+/* ====== */
+.filterSec > div:last-child{
+    width: 150px;
+    height: 40px;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 0.5em 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    position: absolute;
+    right: 10%;
+}
+
+.filterSec > div:last-child > a{
+    padding: 1.5em 1.5em;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.filterSec > a:first-child{
+    font-size: 2em;
+    display: none;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+
+/* ===== */
 
 .lessonList > i, .locationListBtn > i{
     color: var(--text-color);
@@ -238,8 +270,8 @@ hr{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px;
-    height: 300px;
+    width: 307px;
+    height: 307px;
     margin: 2em;
     border-radius: 0.5em;
     border: 1.5px solid var(--stroke-color);
@@ -251,6 +283,77 @@ hr{
         width: 450px;
         height: 450px;
     }
+
+    .filterSec > div:last-child{
+        display: none;
+    }
+
+    .filterSec > a:first-child{
+        display: block;
+        position: absolute;
+        top: 56%;
+        bottom: 38%;
+        left: 80%;
+    }
+}
+
+@media screen and (max-width:39.438rem) {
+    .filterSec > a:first-child{
+        display: block;
+        position: absolute;
+        /* top: 43%;
+        bottom: 38%; */
+        left: 14%;
+    }
+}
+
+@media screen and (max-width:35.625rem) {
+    .filterSec > a:first-child{
+        display: block;
+        position: absolute;
+        top: 43%;
+        bottom: 38%;
+        left: 20%;
+    }
+    
+}
+
+/* 아이폰 12, se, 갤럭시 울트라 */
+@media screen and (max-width:25rem) and (max-width:26rem), (max-width:26rem){
+
+    .filterSec > a:first-child{
+        display: block;
+        position: absolute;
+        top:36%;
+        bottom: 38%;
+        left:5%;
+    }
+
+    .filterSec{
+        display: flex;
+        align-content: center;
+        width: 100%;
+        padding-left: 1em;
+        margin-bottom: 3em;
+    }
+
+    .filterSec > div:nth-child(3){
+        margin-left: 2em;
+    }
+}
+
+
+/* 갤럭시 8 */
+
+@media screen and (max-width:22.500rem) {
+    .filterSec > a:first-child{
+        display: block;
+        position: absolute;
+        top: 43%;
+        bottom:38%;
+        left:5%;
+    }
+    
 }
 
 .imgBox{
