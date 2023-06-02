@@ -60,7 +60,7 @@
 	
 			<div></div>
 	
-			<div>
+			<div class="space-name">
 				<p>응왕 연습실</p>
 			</div>
 	
@@ -68,12 +68,12 @@
 	
 				<div>
 
-					<div></div>
+					<div> <i class="fa-solid fa-location-dot"></i>&nbsp;경기도 의정부시</div>
 
-					<div></div>
+					<div><i class="fa-solid fa-tags" style="margin-top: 2px;"></i> &nbsp; #pearl 드럼 구비 <br> &nbsp;#5인 이상 연습 가능</div>
 				</div>
 
-				<div></div>
+				<div><i class="fa-solid fa-money-check"></i> 3000원 / 시간</div>
 			</div>
 	    </div>
 	

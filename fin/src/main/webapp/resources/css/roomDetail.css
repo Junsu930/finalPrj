@@ -147,7 +147,7 @@ body.darkmode a{
 
 .introContent > div:nth-child(1) {
 	flex-basis: 33.3%;
-	margin-top: 20px;
+	margin-top: 100px;
 	overflow: auto;
 }
 
@@ -280,6 +280,7 @@ body.darkmode .fc-day-past{
 	background-color: var(--grr-color);
 	display: none;
 	font-size: 1.3em;
+	margin-top: 2em;
 }
 
 .fc .fc-bg-event{
@@ -346,6 +347,15 @@ body.darkmode .fc-day-past{
     align-items: center;
 	
 }
+
+.lineDiv{
+	border: 2px solid;
+	margin-left: 0.8em;
+	width: 20em;
+	border-color: var(--grr-color);
+}
+
+
 
 @media (max-width:46.875rem){
 	

@@ -17,8 +17,8 @@ let ws;
 
 
 function wsOpen(){
-	ws = new WebSocket("ws://" + location.host + "/fin/chatting");
-	console.log("소켓 주소 : " + "ws://" + location.host + "/fin/chatting");
+	ws = new WebSocket("ws://" + '192.168.140.235:8080' + "/fin/chatting");
+	console.log("소켓 주소 : " + "ws://" + '192.168.140.235:8080' + "/fin/chatting");
 	wsEvt();
 }
 
@@ -31,39 +31,71 @@ function wsEvt(){
 		let msg = data.data;
 		if(msg != null && msg.trim() !=""){
 			// 메시지가 있다면
-			let chatMessage = msg.split(",,");
-			let tokBox = document.createElement("div");
-			tokBox.className = 'tok';
-			let nameBox = document.createElement("div");
-			nameBox.innerHTML = chatMessage[0];
-			let tokMessageBox = document.createElement("div");
-			tokMessageBox.className = 'tokMessage';
-			tokMessageBox.innerHTML = chatMessage[1];
-			tokBox.append(nameBox);
-			tokBox.append(tokMessageBox);
-			$('#messageBox').append(tokBox);
+			let chatMessage = JSON.parse(msg);
 
-			$("#messageBox").scrollTop($("#messageBox")[0].scrollHeight);
+			if(chatMessage.type == 'getId'){
+				let si = chatMessage.sessionId != null? chatMessage.sessionId : "";
+				if(si != ""){
+					$('#sessionId').val(si);
+				}
+			}else if(chatMessage.type == 'message'){
+				if(chatMessage.sessionId == $('#sessionId').val()){
+					let tokBox = document.createElement("div");
+					tokBox.className = 'me-tok';
+					//let nameBox = document.createElement("div");
+					//nameBox.innerHTML = chatMessage.userName;
+					let tokMessageBox = document.createElement("div");
+					tokMessageBox.className = 'tokMessage';
+					tokMessageBox.innerHTML = chatMessage.msg;
+					//tokBox.append(nameBox);
+					tokBox.append(tokMessageBox);
+					$('#messageBox').append(tokBox);
+		
+					$("#messageBox").scrollTop($("#messageBox")[0].scrollHeight);
+				}else{
+					let tokBox = document.createElement("div");
+					tokBox.className = 'other-tok';
+					let nameBox = document.createElement("div");
+					nameBox.innerHTML = chatMessage.userName;
+					let tokMessageBox = document.createElement("div");
+					tokMessageBox.className = 'tokMessage';
+					tokMessageBox.innerHTML = chatMessage.msg;
+					tokBox.append(nameBox);
+					tokBox.append(tokMessageBox);
+					$('#messageBox').append(tokBox);
+		
+					$("#messageBox").scrollTop($("#messageBox")[0].scrollHeight);
+
+				}
+			}
+
+
 		}
 	}
 
 
 
-	document.addEventListener("keyup", function(e){
+	document.addEventListener("keypress", function(e){
 		let key = e.key || e.keyCode;
 		if(e.key === 'Enter' || key === 13){
-			send(e);
+			send();
 		}
 	})
 
 }
 
 function send(){
+	let option={
+		type : "message",
+		sessionId : $("#sessionId").val(),
+		userName : '깅깅이',
+		msg : $('#messageText').val()
+	}
+
 	let uN = "강강이";
 	console.log("메세지 보내버렷");
-	let msg = $("#messageText").val();
-	if(msg != null && msg != ""){
-		ws.send(uN + ",," + msg);
+	if(option.msg != null && option.msg != ""){
+		ws.send(JSON.stringify(option));
 		$('#messageText').val("");
 	}
 }

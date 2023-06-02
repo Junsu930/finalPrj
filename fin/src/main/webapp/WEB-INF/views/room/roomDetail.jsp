@@ -39,7 +39,7 @@
 					<!-- 공간 소개 -->
 					<div id="space">
 						<h1>공간 소개</h1>
-						<hr>
+						<div class="lineDiv"></div>
 						<p>
 						
 						
@@ -62,7 +62,7 @@
 					<!-- 시설 안내 -->
 					<div id="facility">
 						<h1>시설 안내</h1>
-						<hr>
+						<div class="lineDiv"></div>
 						<p>
 						
 						
@@ -85,7 +85,7 @@
 					<!-- 유의 사항 -->
 					<div id="warn">
 						<h1>유의 사항</h1>
-						<hr>
+						<div class="lineDiv"></div>
 						<p>
 						
 						
@@ -162,9 +162,9 @@
 				</div>				
 			</div>
 			<div class="price-tag">
-				<p style="font-size: 1.4em"> 이용 시간 </p>
+				<p style="font-size: 1.4em; margin:1em 0"> 이용 시간 </p>
 				<p id="hoursOfUse"></p><br>
-				<p style="font-size: 1.4em"> 가격 </p>
+				<p style="font-size: 1.4em; margin: 1em 0;"> 가격 </p>
 				<p id="totalPrice" style="font-size: 1.2em">총 6000 원</p>
 				
 			</div>
