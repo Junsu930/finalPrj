@@ -18,7 +18,7 @@
 
   <section class="mainSection">
     
-    <button class="topBtn"><i class="bi bi-arrow-up-short"></i></button>
+    <button class="topBtn"><i class="bi bi-chevron-compact-up"></i></button>
       <!-- ===============band================== -->
     <div class="content content1">
       <svg id="band" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1529.96 838.32">

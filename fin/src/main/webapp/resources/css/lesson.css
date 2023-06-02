@@ -9,10 +9,222 @@
     font-family: var(--navFont-style-);
 }
 
+
+
 .titleBox{
     padding: 1em 1em;
     cursor: pointer;
+    width: 50%;
 }
+
+path{
+    stroke: var(--text-color);
+}
+
+#logo{
+    animation: fill 1s ease-out;
+}
+
+
+body.darkmode path{
+	stroke:var(--stroke-dark-color);
+}
+
+#logo path:nth-child(1){
+    stroke-dasharray: 297.216064453125;
+    stroke-dashoffset: 297.216064453125;
+    animation: line 1s ease-out forwards 0.7s;
+}
+
+#logo path:nth-child(2){
+    stroke-dasharray: 463.9693603515625;
+    stroke-dashoffset: 463.9693603515625;
+    animation: line 1s ease-out forwards 0.6s;
+}
+
+#logo path:nth-child(3){
+    stroke-dasharray: 493.9131774902344;
+    stroke-dashoffset: 493.9131774902344;
+    animation: line 1s ease-out forwards 0.3s;
+}
+
+#logo path:nth-child(4){
+    stroke-dasharray: 493.912353515625;
+    stroke-dashoffset: 493.912353515625;
+    animation: line 1s ease-out forwards 0.2s;
+}
+
+#logo path:nth-child(5){
+    stroke-dasharray: 565.9508056640625;
+    stroke-dashoffset: 565.9508056640625;
+    animation: line 1s ease-out forwards 0.3s;
+}
+
+#logo path:nth-child(6){
+    stroke-dasharray: 604.4832763671875;
+    stroke-dashoffset: 604.4832763671875;
+    animation: line 1s ease-out forwards 0.1s;
+}
+
+
+#logo path:nth-child(7){
+    animation: line2 1.3s ease-in-out forwards;
+}
+
+#logo path:nth-child(8){
+    stroke-dasharray: 463.9693603515625;
+    stroke-dashoffset: 463.9693603515625;
+    animation: line 1s ease-out forwards 0.1s;
+}
+
+#logo path:nth-child(9){
+    stroke-dasharray: 493.9131774902344;
+    stroke-dashoffset: 493.9131774902344;
+    animation: line 1s ease-out forwards 0.2s;
+}
+
+#logo path:nth-child(10){
+    stroke-dasharray: 493.912353515625;
+    stroke-dashoffset: 493.912353515625;
+    animation: line 1s ease-out forwards 0.3s;
+}
+
+#logo path:nth-child(11){
+    stroke-dasharray: 565.9508056640625;
+    stroke-dashoffset: 565.9508056640625;
+    animation: line 1s ease-out forwards 0.5s;
+}
+
+#logo path:nth-child(12){
+    stroke-dasharray: 604.4832763671875;
+    stroke-dashoffset: 604.4832763671875;
+    animation: line 1s ease-out forwards 0.6s;
+}
+
+
+
+
+
+@keyframes line {
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes line2 {
+    from{
+        stroke-dasharray: 260;
+        stroke-dashoffset: 260;
+        
+    }to{
+        stroke-dashoffset: 0;
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill {
+    to{
+        fill:var(--text-color);
+    }
+}
+
+
+
+/* filter */
+
+body.darkmode .labelLesson > span, 
+body.darkmode .labelLesson >i,
+body.darkmode .labelLocation > span,
+body.darkmode .labelLocation > i,
+body.darkmode .list{
+    color: var(--text-dark-color);
+}
+
+body.darkmode .listBox{
+    background-color: var(--background-dark-color);
+}
+
+.filterSec{
+    display: flex;
+    align-content: center;
+    width: 100%;
+    padding-left: 5.5em;
+    margin-bottom: 3em;
+}
+
+hr{
+    margin: auto;
+    width: 87%;
+    color: var(--stroke-color);
+}
+
+.lessonList, .locationListBtn{
+    width: 150px;
+    height: 40px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    font-size: 1.1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: transparent;
+}
+
+.filterSec > div:last-child{
+    margin-left: 3em;
+}
+
+.lessonList > i, .locationListBtn > i{
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.listBox{
+    display: none;
+    width: 150px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    padding: 0.5em 0.5em;
+    margin-top: 0.3em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+
+.listBoxAdd{
+    display: block;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+}
+
+
+.listBox > li{
+    padding: 0.5em 0.5em;
+    cursor: pointer;
+    list-style: none;
+}
+
+.listBox > li > button{
+    background-color: transparent;
+    border:none;
+}
+
+.listBox > li:hover , .locationListBox >li:hover{
+    background-color: var(--accent-color);
+    width: 100%;
+    border-radius: 0.5em;
+}
+
+.lessonList > i, .lessonList > span , 
+.locationListBtn > span, .locationListBtn > i{
+    padding: 0 0.6em;
+}
+
+
+/* location */
+
+
+/* filter */
+
+
 
 .secondSec{
     display: flex;
@@ -30,7 +242,8 @@
     height: 300px;
     margin: 2em;
     border-radius: 0.5em;
-    border: 1.5px solid var(--stroke-color);  /* stroke color 변수로 바꿔주기*/
+    border: 1.5px solid var(--stroke-color);
+    cursor: pointer;
 }
 
 @media screen and (max-width:46.875rem) {
@@ -55,9 +268,6 @@
     padding: 0.5em 1em;
 }
 
-#scrollOver{
-    overflow: scroll;
-}
 
 
 .contentBox > p:nth-child(2){

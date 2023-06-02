@@ -77,12 +77,6 @@ const reservationText = document.querySelector('.reservationText');
 window.addEventListener("scroll", ()=>{
 
   const scrollValue = getCurrentScrollPercentage();
-  
-
-
-
-
-  
 
 // guitar Text
   if(scrollValue > 28){
@@ -124,11 +118,9 @@ const Mode = localStorage.getItem('darkMode');
 
 const mainInput = document.querySelectorAll('.mainInput');
 
-const mainTextA = document.querySelectorAll('.mainTextA');
 
-const mainTextP = document.querySelectorAll('.mainTextP')
 
-const upBtn = document.querySelector('.bi-arrow-up-short');
+
 
 
 if (Mode === 'dark') {
@@ -136,28 +128,11 @@ if (Mode === 'dark') {
     for(let i = 0; i< pathArr.length; i ++){
         pathArr[i].style.stroke ="#FB4F93";
       }
-
   // 하단 메일 보내는 인풋 요소들 
     for(let j = 0; j < mainInput.length; j++){
     	mainInput[j].style.color = "#fff";
     }
-
-  // 메인텍스트
-  /*
-    for(let q = 0; q < mainTextP.length; q++){
-      mainTextP[q].style.color = "#fff";
-    }
-   */
-
-  // 메인 텍스트 a태그 
-  /*
-    for(let k = 0; k < mainTextA.length; k++){
-      mainTextA[k].style.color = "#fff";
-    } 
-*/
-    upBtn.style.color = "#fff";
     
-
 }else{
   // 패스컬러 -> 블랙
   for(let i = 0; i< pathArr.length; i ++){
@@ -167,23 +142,7 @@ if (Mode === 'dark') {
   // 하단 메일 보내는 인풋 요소들 
   for(let j = 0; j < mainInput.length; j++){
     mainInput[j].style.color = "#000";
-  }
-
-  // 메인텍스트
-  /*
-  for(let q = 0; q < mainTextP.length; q++){
-    mainTextP[q].style.color = "#000";
-  }
-  */
-
-  // 메인 텍스트 a태그 
-  /*
-  for(let k = 0; k < mainTextA.length; k++){
-    mainTextA[k].style.color = "#000";
   } 
-  */
-  upBtn.style.color = "#000";
-  
 }
 
 

@@ -12,5 +12,11 @@ public class LesssonController {
 		return "lesson/lessonMain";
 	}
 	
+	@GetMapping("/lessonDetail")
+	public String lessonDetailController() {
+		
+		return "lesson/lessonDetail";
+	}
+	
 
 }
