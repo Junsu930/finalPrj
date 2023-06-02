@@ -111,9 +111,14 @@ body.darkmode .box-card{
 	border: 1px solid;
 	border-color: var(--background-color);
 }
-
+/* 사진 영역 */
 .box-card > div:nth-child(1) {
 	flex-basis: 50%;
+	background-image: url('../images/band.jpg');
+	background-size: cover;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-bottom: 5px;
 }
 /* 제목 글씨 */
 .box-card > div:nth-child(2) {
@@ -140,13 +145,33 @@ body.darkmode .box-card{
 	flex-direction: column;
 }
 
+/* 지역 영역 */
 #detail-part > div:nth-child(1) > div:first-child{
 	flex-basis: 50%;
+	display: flex;
+	align-items: center;
+	margin-left: 5px;
 }
 
+/* 구성 영역 */
+#detail-part > div:nth-child(1) > div:last-child{
+	flex-basis: 50%;
+	display: flex;
+	font-size: 0.7em;
+	margin-left: 5px;
+}
 
+/* 가격 영역 */
 #detail-part > div:nth-child(2) {
 	flex-basis: 50%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 2em;
+	align-items: center;
+}
+
+#detail-part > div:nth-child(2) > i{
+	margin: 10px;
 }
 
 
@@ -196,6 +221,11 @@ body.darkmode #titleLogo{
 	animation: fill-dark 0.2s ease forwards 0.6s;
 }
 
+.space-name > p{
+	font-size: 1.3em;	
+}
+
+
 
 @keyframes line-anim{
 	to{
@@ -231,8 +261,11 @@ body.darkmode #titleLogo{
 @media (max-width:46.875rem){
 	
 	.content{
+
 	width: 500px;
 	margin: auto;
+	margin-top: 100px;
+	margin-bottom: 100px;
 	
 	}
 	select {
