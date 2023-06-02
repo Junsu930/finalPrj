@@ -27,6 +27,8 @@ public class SocketHandler extends TextWebSocketHandler {
 		}
 	}
 	
+	
+	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		//소켓 연결
