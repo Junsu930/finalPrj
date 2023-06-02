@@ -3,6 +3,7 @@
 .sign-up-text {
     display: flex;
     justify-content: center;
+    font-size : 3rem;
 }
 
 /**********바디 부분 시작***********/
@@ -10,18 +11,20 @@
 .content{
     display: flex;
     justify-content: center;
-    padding-top: 30px;
+    padding-top: 70px;
+    padding-bottom : 30px;
 }
 
 .content-2{
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    padding-bottom : 100px;
 }
+
 
 #sign-up-area{
     width: 600px; 
-    height: 750px;
     display: flex;
     justify-content: center;
     padding-top: 50px;
@@ -36,6 +39,7 @@
     border:solid 1px rgb(240, 244, 240);
     outline: 0;
     border-radius: 5px;
+    margin-top : 0.8rem;
     
 }
 
@@ -46,7 +50,7 @@
     border:solid 1px rgb(240, 244, 240);
     outline: 0;
     border-radius: 5px;
-    
+    margin-top : 0.8rem;
 }
 
 
@@ -81,6 +85,7 @@
     border-radius: 5px;
     font-size: medium;
     cursor: pointer;
+    margin-bottom : 3rem;
     
 }
 
@@ -92,9 +97,30 @@
     margin-top: 15px;
 }
 
+#btn_toggle{
+  font-size:14px;
+  padding:10px 15px;
+  border:1px solid #ddd;
+  background-color:#0a76b7;
+  border-radius:5px;
+  color:#fff;
+  font-weight:bold;
+  margin-bottom : 2rem;
+}
+#Toggle{
+  font-size:14px;
+  color: #666;
+}
+
 .checkbox_group{
     padding-left: 100px;
     margin-top: 10px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
+
+
+
+
 
 
