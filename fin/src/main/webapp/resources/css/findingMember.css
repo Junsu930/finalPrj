@@ -7,6 +7,7 @@
     margin: auto;
     border: 1px solid black;
     border-radius: 10px;  
+  
 }
 
 .section > hr {
@@ -30,7 +31,7 @@
 /*성별*/
 .gender {
     padding: 30px 20px;
-    width: 70%;
+    width: 30em;
     margin: auto;
 }
 
@@ -43,23 +44,24 @@
     cursor: pointer;
     height: 40px;
     width: 120px;
-    border: 1px solid #8585E4;
     line-height: 40px;
     text-align: center;
     font-weight:bold;
     font-size:15px;
     border-radius: 5px;
-    margin: 10px;
+    margin: 20px;
     justify-content: center;
+
 }
 
 .gender input[type=radio]+label{
-    background-color: #fff;
-    color: #8585E4;
+   color: #fff;
+
+    
     
 }
 .gender input[type=radio]:checked+label{
-    background-color: #8585E4;
+	border: 1px solid #08bc9a;
     color: #fff;
 }
 
@@ -67,7 +69,7 @@
 /*장르*/
 .genre {
     padding: 15px 10px;
-    width: 30em;
+    width: 32em;
     margin: auto;
 }
 
@@ -80,20 +82,19 @@
     cursor: pointer;
     height: 40px;
     width: 120px;
-    border: 1px solid #8585E4;
     line-height: 40px;
     text-align: center;
     font-weight:bold;
     font-size:14px;
     border-radius: 5px;
-    margin: 5px;
+    margin: 15px;
 }
 .genre input[type=checkbox]+label{
-    background-color: #fff;
-    color: #8585E4;
+  	color: #fff;
+
 }
 .genre input[type=checkbox]:checked+label{
-    background-color: #8585E4;
+	border: 1px solid #08bc9a;
     color: #fff;
 }
 
@@ -112,21 +113,20 @@
     cursor: pointer;
     height: 40px;
     width: 120px;
-    border: 1px solid #8585E4;
     line-height: 40px;
     text-align: center;
     font-weight:bold;
     font-size:14px;
     border-radius: 5px;
-    margin: 5px;
+    margin: 15px;
 }
 .position input[type=radio]+label{
-    background-color: #fff;
-    color: #8585E4;
+    color: #fff;
+
 }
 
 .position input[type=radio]:checked+label{
-    background-color: #8585E4;
+	border: 1px solid #00C9C8;;
     color: #fff;
 }
 
@@ -145,26 +145,25 @@
     cursor: pointer;
     height: 40px;
     width: 120px;
-    border: 1px solid #8585E4;
     line-height: 40px;
     text-align: center;
     font-weight:bold;
     font-size:14px;
     border-radius: 5px;
-    margin: 5px;
+    margin: 15px;
 }
 .location input[type=radio]+label{
-    background-color: #fff;
-    color: #8585E4;
+    color: #fff;
+
 }
 
 .location input[type=radio]:checked+label{
-    background-color: #8585E4;
+	border: 1px solid #00C9C8;;
     color: #fff;
 }
 
 #find {
-    background-color: #8585E4;
+    background-color: #00C9C8;;
     color: #fff;
     border-style: none;
     border-radius: 5px;
@@ -253,5 +252,32 @@
 
 }
 
+#tt {
+	font-size:30px;
+	font-weight: bold;
+}
 
+.cate {
+	font-size: 25px;
+	text-align: center;
+}
 
+.gender input[type=radio]+label{background-color: #00C9C8; border-color: #00C9C8; -webkit-box-shadow: 0 3px 0 #00C9C8; box-shadow: 0 3px 0 #009292}
+.gender input[type=radio]+label:hover{background-color:#00C9C8;}
+.gender input[type=radio]+label:active{ top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+.gender input[type=radio]:checked+label {color: #00C9C8; background-color: #fff; border-color: #00C9C8; }
+
+.genre input[type=checkbox]+label{background-color: #00C9C8; border-color: #00C9C8; -webkit-box-shadow: 0 3px 0 #00C9C8; box-shadow: 0 3px 0 #009292}
+.genre input[type=checkbox]+label:hover{background-color:#00C9C8;}
+.genre input[type=checkbox]+label:active{ top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+.genre input[type=checkbox]:checked+label {color: #00C9C8; background-color: #fff; border-color: #00C9C8; }
+
+.position input[type=radio]+label{background-color: #00C9C8; border-color: #00C9C8; -webkit-box-shadow: 0 3px 0 #00C9C8; box-shadow: 0 3px 0 #009292}
+.position input[type=radio]+label:hover{background-color:#00C9C8;}
+.position input[type=radio]+label:active{ top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+.position input[type=radio]:checked+label {color: #00C9C8; background-color: #fff; border-color: #00C9C8; }
+
+.location input[type=radio]+label{background-color: #00C9C8; border-color: #00C9C8;-webkit-box-shadow: 0 3px 0 #00C9C8; box-shadow: 0 3px 0 #009292}
+.location input[type=radio]+label:hover{background-color:#00C9C8;}
+.locationinput[type=radio]+label:active{ top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
+.location input[type=radio]:checked+label {color: #00C9C8; background-color: #fff; border-color: #00C9C8;}
