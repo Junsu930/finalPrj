@@ -26,9 +26,7 @@ path{
 }
 
 
-body.darkmode path{
-	stroke:var(--stroke-dark-color);
-}
+
 
 #logo path:nth-child(1){
     stroke-dasharray: 297.216064453125;
@@ -130,7 +128,11 @@ body.darkmode path{
 
 
 
-/* filter */
+
+
+
+
+/* 다크모드 모음 */
 
 body.darkmode .labelLesson > span, 
 body.darkmode .labelLesson >i,
@@ -143,6 +145,24 @@ body.darkmode .list{
 body.darkmode .listBox{
     background-color: var(--background-dark-color);
 }
+
+body.darkmode path{
+	stroke:var(--stroke-dark-color);
+}
+
+body.darkmode .filterSec > div:last-child > a,
+body.darkmode .bi-pencil-square{
+    color: var(--text-dark-color);
+}
+
+
+
+/* 다크모드 모음 */
+
+
+
+
+/* filter */
 
 .filterSec{
     display: flex;
@@ -278,6 +298,36 @@ hr{
     cursor: pointer;
 }
 
+
+
+.imgBox{
+    width: 100%;
+    height: 100%;
+}
+
+.contentBox{
+    border-top: 1.5px solid var(--stroke-color);
+    width: 100%;
+    height: 150px;
+}
+
+.contentBox > p, .contentBox > span{
+    padding: 0.5em 1em;
+}
+
+
+
+.contentBox > p:nth-child(2){
+    color: #868e96; 
+    /* 박스안 날짜 컬러 */
+}
+
+
+
+
+/* 미디어쿼리 */
+
+
 @media screen and (max-width:46.875rem) {
     .imgCotentWrap{
         width: 450px;
@@ -355,28 +405,4 @@ hr{
     }
     
 }
-
-.imgBox{
-    width: 100%;
-    height: 100%;
-}
-
-.contentBox{
-    border-top: 1.5px solid var(--stroke-color);
-    width: 100%;
-    height: 150px;
-}
-
-.contentBox > p, .contentBox > span{
-    padding: 0.5em 1em;
-}
-
-
-
-.contentBox > p:nth-child(2){
-    color: #868e96; 
-    /* 박스안 날짜 컬러 */
-}
-
-
 

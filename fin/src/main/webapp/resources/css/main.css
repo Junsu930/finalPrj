@@ -376,42 +376,7 @@ body.darkmode .bi-chevron-compact-up{
 /* ===================main Text KeyFrames=================== */
 
 
-/* mian Text media */
 
-@media screen and (max-width:53em){
-  .mainTextP, hr, .topBtn{
-    display: none;
-  }
-  .mainBoard{
-    font-size: 2em;
-    position: absolute;
-    bottom: -3.5em;
-  }
- 
-
-  .mainUsed{
-    font-size: 2em;
-    position: absolute;
-    top: -1.3em;
-    left: -2em;
-  }
-
-
-  .mainReser{
-    font-size: 2em;
-    position: absolute;
-    left: -16em;
-    top: -0.8em;
-  }
-  
-
-
- 
-
-
-}
-
-/* mian Text media */
 
 /* ===============================main Text=============================== */
 
@@ -443,6 +408,57 @@ body.darkmode .bi-chevron-compact-up{
   font-size: 3em;
   color: var(--text-color);
 }
+
+
+
+
+/* 미디어 쿼리 */
+
+/* mian Text media */
+
+@media screen and (max-width:53em){
+  .mainTextP, hr, .topBtn{
+    display: none;
+  }
+  .mainBoard{
+    font-size: 2em;
+    position: absolute;
+    bottom: -3.5em;
+  }
+ 
+
+  .mainUsed{
+    font-size: 2em;
+    position: absolute;
+    top: -1.3em;
+    left: -2em;
+  }
+
+
+  .mainReser{
+    font-size: 2em;
+    position: absolute;
+    left: -16em;
+    top: -0.8em;
+  }
+}
+
+/* mian Text media */
+
+
+/* 하단 인풋 미디어쿼리 */
+/* 아이폰 xr, 갤럭시 울트라 */
+@media screen and (max-width:26rem) {
+  .label, .mainInput, .questionInput button{
+    width: 80%;
+    min-width: 0;
+  }
+}
+
+/* 미디어쿼리 */
+
+
+
 
 
 
