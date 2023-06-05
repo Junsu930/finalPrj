@@ -16,13 +16,25 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    
     <br>
     <br>
+    
+    <button id="open-modal">모달 창 열기 버튼</button>
+    
+    <div id="modal">
+  <div class="modal-content">
+    <h2>모달창 제목</h2>
+    <p>모달창 내용</p>
+    <button id="close-modal">닫기</button>
+ 
+ 
    
-    <section class="title">
+   	<div id="modalWrap">
+   		<div id="modalBody">
+    	<section class="title">
 		<br>
 		<br>
-				<span id="closeBtn">&times;</span>
 				<p id="tt">Find your band companion</p>
 			   
 				<section class="mainContent">
@@ -106,7 +118,12 @@
 	
 		
 				</section>
-			</section>
+		</section>
+		</div>
+	</div>		
+	
+	 </div>
+</div>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
