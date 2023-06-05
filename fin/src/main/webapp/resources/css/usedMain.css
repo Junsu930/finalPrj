@@ -14,28 +14,35 @@ body{
 }
 
 #searchboxInput{
-	width: 250px;
-    height: 38px;
+	width : 90%;
+
     border-radius: 19px;
     border: solid 1px var( --grey-color);
     box-sizing: border-box;
     padding:15px;
+    display: flex;
+	margin: auto;
 }
 
 .searchInputButton{
     justify-content: center;
     position: absolute;
-	
-    border: none;
-     float: right;
-	margin-top: 10px;
-	margin-right: 170px;
+	border: none;
+    float: right;
+	margin-top: 15px;
+    margin-left: 200px;
+    background: transparent;
 }
 
+
+body.darkmode .fa-magnifying-glass{
+	color:var(--text-dark-color);
+}
 .fa-solid fa-magnifying-glass{
 	position: absolute;
  	margin-right: 30px;
   	border: solid 1px var( --grey-color);
+  	
 }
 
  .jb-division-line {
@@ -44,56 +51,63 @@ body{
   }
 
   .thingTotalBox{
+    padding-top: 20px;
     display: flex;
     justify-content: space-between;
-        justify-content: space-around;
+    justify-content: space-around;
     flex-wrap: wrap;
-
-
   }
 
 
 .topbox{
+	
     display: flex;
     justify-content: space-between;
+    
 }
 
 .mainTitle{
-	  font-weight: bold;
-padding-left: 50px;
+	
+	font-weight: bold;
+	padding-left: 50px;
     display: flex;
     justify-content: center;
     float: right;
+    
 }
 .searchbox{
+	
     flex-basis: 30%;
     display: flex;
     justify-content: center;
+    
 }
 #guitarImg{
+	
 	width: 300px;
 	height: 250px;
 	border-radius:10px;
 
 }
 .thingBox{
+	
 	border-radius:10px;
     border: 1px solid var(--stroke-color);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    margin: 2em;
+    margin: 1px;
 
 }
 
 
 .thingPicture {
+	
     background-color:var(#868E96);
 	width: 300px;
 	height: 250px;
 	box-sizing: border-box;
-
-    display: flex;
+	display: flex;
     justify-content: center;
 	   
 }
@@ -102,8 +116,7 @@ padding-left: 50px;
 
 
 .thingsecondbox{
- 
-	
+
 	width: 300px;
 	height: 100px;
 	box-sizing: border-box;
@@ -112,29 +125,32 @@ padding-left: 50px;
 }
 
 .thingssecondTop{
+    
     display: flex;
-	padding-left: 5px;
-	
+	padding-left: 5px;	
     padding-top: 10px;
+    
 }
 .SaleOrSoldout{
+	
     color: var( --accent-color);
     padding-left: 5px;
     padding-right: 16px;
     font-weight: bold;
-        padding : 3px;
+    padding : 3px;
+    
 }
 
 .thingTitle{
     font-weight: bold;
-      padding : 10px;
-           padding : 3px;
+    padding : 10px;
+    padding : 3px;
 
 }
 
 .thingsecondBottomBox{
     justify-content: space-around;
-padding-top: 5px;  
+	padding-top: 5px;  
 }
 .thingsecondBottom{
     padding-left: 5px;
@@ -145,19 +161,19 @@ padding-top: 5px;
 .sellerName{
     color: var(#474554);
 	font-weight: bold;
-      padding : 3px;
+    padding : 3px;
 }
 .dot{
     color: var(#474554);
     font-weight: bold;
     padding-right: 7px;
     padding-left: 7px;
-      padding : 3px;
+    padding : 3px;
 }
 .sellerRegion{
     color: var(#474554);
     font-weight: bold;
-      padding : 3px;
+    padding : 3px;
 }
 
 .price{
@@ -165,23 +181,25 @@ padding-top: 5px;
     padding-right: 17px;
     float: right;
     font-weight: bold;
-      padding : 3px;
+    padding : 3px;
 }
+
 
 
 
 @media (max-width:700px){
 	
-	.main{
+.main{
+	
 	width: 500px;
 	margin: auto;
 	
-	}
+}
 	
 .mainTitle{
-	  font-weight: bold;
-  
-    display: flex;
+	
+	font-weight: bold;
+ 	display: flex;
     justify-content: center;
     float: right;
 }
@@ -191,4 +209,237 @@ padding-top: 5px;
     justify-content: center;
 }
 	
+}
+
+/*아이폰 SE*/
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 375px) {
+
+
+.thingTotalBox {
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;/**/
+
+}
+.main{
+	width: 80%;/**/
+	margin: auto;/**/
+	
+}
+.topbox{
+	display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    margin: auto;/**/
+	width: 80%; /**/
+}
+#searchboxInput{
+	width: 120px; /**/
+	height: 0px;
+    border-radius: 19px;
+    border: solid 1px var(--grey-color);
+    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    margin: auto;
+ 	background: transparent;
+}
+.searchInputButton {
+	position: absolute;
+    border: none;
+    float: right;
+    margin-top: 10px;
+    margin-right: 120px; /**/
+    background: transparent;/**/
+}
+.mainTitle {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    float: right;
+    padding-left: 2px;
+}
+
+
+
+}
+
+
+/*아이폰 12 pro*/
+@media only screen and (min-device-width : 376px) and (max-device-width : 390px) {
+    
+    
+.thingTotalBox {
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;/**/
+
+}
+.main{
+	width: 80%;/**/
+	margin: auto;/**/
+	
+}
+.topbox{
+	display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    margin: auto;/**/
+	width: 80%; /**/
+}
+#searchboxInput{
+	width: 120px; /**/
+	height: 0px;
+    border-radius: 19px;
+    border: solid 1px var(--grey-color);
+    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    margin: auto;
+ 	background: transparent;
+}
+.searchInputButton {
+	position: absolute;
+    border: none;
+    float: right;
+    margin-top: 10px;
+    margin-right: 120px; /**/
+    background: transparent;/**/
+}
+.mainTitle {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    float: right;
+    padding-left: 2px;
+}    
+    
+    
+    
+    
+}
+/*아이폰 xr*/
+
+@media only screen and (min-device-width : 391px) and (max-device-width : 414px) {    
+    
+.thingTotalBox {
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;/**/
+
+}
+.main{
+	width: 80%;/**/
+	margin: auto;/**/
+	
+}
+.topbox{
+	display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    margin: auto;/**/
+	width: 80%; /**/
+}
+#searchboxInput{
+	width: 120px; /**/
+	height: 0px;
+    border-radius: 19px;
+    border: solid 1px var(--grey-color);
+    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    margin: auto;
+ 	background: transparent;
+}
+.searchInputButton {
+	position: absolute;
+    border: none;
+    float: right;
+    margin-top: 10px;
+    margin-right: 120px; /**/
+    background: transparent;/**/
+}
+.mainTitle {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    float: right;
+    padding-left: 2px;
+}    
+    
+    
+    
+    
+}
+
+
+/*아이패드 에어 */
+@media only screen (min-device-width : 769px)  and (max-device-width : 820px){ 
+	
+.thingTotalBox {
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;/**/
+
+}
+.main{
+	width: 80%;/**/
+	margin: auto;/**/
+	
+}
+.topbox{
+	display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    margin: auto;/**/
+	width: 80%; /**/
+}
+#searchboxInput{
+	width: 120px; /**/
+	height: 0px;
+    border-radius: 19px;
+    border: solid 1px var(--grey-color);
+    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    margin: auto;
+ 	background: transparent;
+}
+.searchInputButton {
+	position: absolute;
+    border: none;
+    float: right;
+    margin-top: 10px;
+     margin-right: 120px; /**/
+    background: transparent;/**/
+}
+.mainTitle {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    float: right;
+    padding-left: 2px;
+}    
+    
+.thingBox > nth-child {
+	
+	weight: 30%
+	
+	
+	
+}
 }

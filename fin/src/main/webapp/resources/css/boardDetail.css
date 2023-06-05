@@ -1,0 +1,84 @@
+*{
+	box-sizing: border-box;
+}
+body{
+    margin: 0px;
+}
+.main{
+    width: 70%;
+    margin: auto;
+    margin-top: 100px;
+
+   
+}
+.mainTitle{
+    font-size: 20px;
+
+}    
+.tagTitleBox{
+
+
+}
+.tagTitle{
+    margin-right: 50px;
+    text-align: center;
+    font-size: 15px;
+}
+.tags{
+    display: flex;
+    width: 80%;
+}
+.notice{
+    padding: 5px;
+    margin-right: 10px;
+    width: 10%;
+    background-color: white;
+}
+.basicBoard{
+    padding: 5px;
+    margin-right: 10px;
+    width: 10%;
+    background-color: white;
+}
+.hotBoard{
+    padding: 5px;
+    margin-right: 10px;
+    width: 10%;
+    background-color: white;
+}
+
+.tagTitleBox{
+    display: flex;
+    margin-top: 30px;
+}
+.titlDetail{
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    width: 80%;
+}
+.contentTitleDetail{
+
+    margin-top: 15px;
+}
+.contentDetail{
+    width: 80%;
+    height: 300px;
+}
+.PostTitle{
+    font-size: 15px;
+    margin-top: 10px;
+}
+.contentTitle{
+    font-size: 15px;
+    margin-top: 15px;
+}
+.writeButtonBox{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 120px;
+    margin-top: 30px;
+}
+.writeButton{
+    padding: 10px;
+}
