@@ -4,11 +4,13 @@
 	position: fixed;
 	right: 100px;
 	bottom: 50px;
+	z-index: 10;
 }
 
 #chatting-img > img{
 	width: 100%;
 	cursor: pointer;
+
 }
 
 .chatBody{
@@ -21,22 +23,26 @@
 	border-radius: 10px;
 	display: none;
 	justify-content: center;
-	z-index: 10;
+	z-index: 100;
+	transition-duration : 1s;
 }
 
 #messageText{
 	position: absolute;
 	bottom: 10px;
+	width : 0;
+	height : 0;
 	width: 80%;
 	height: 3em;
 	border: none;
 	border-radius: 10px;
 	padding-left: 10px;
-	
+	padding-right: 70px;
+	transition-duration : 1s;
 }
 
 #sendBtn{
-	width:4em;
+	width:4em;	
 	height: 2.5em;
 	position: absolute;
 	bottom: 13px;
@@ -44,6 +50,7 @@
 	border: none;
 	border-radius: 10px;
 	cursor: pointer;
+	transition-duration : 1s;
 }
 
 .me-tok{
@@ -62,6 +69,10 @@
 	margin-top: 10px;
 }
 
+.other-tok > div{
+	color: black;
+}
+
 .messageBox{
 	width: 90%;
 	height: 80%;
@@ -75,20 +86,30 @@
 	background-color: white;
 	border-radius: 14px;
 	margin-top: 4px;
+	color: black;
 }
+
 
 
 .messageBox::-webkit-scrollbar {
-    width: 8px;  /* 스크롤바의 너비 */
+    width: 4px;  /* 스크롤바의 너비 */
 }
 
 .messageBox::-webkit-scrollbar-thumb {
-    height: 30%; /* 스크롤바의 길이 */
+    height: 15%; /* 스크롤바의 길이 */
     background: var(--grey-color); /* 스크롤바의 색상 */
-    
     border-radius: 10px;
 }
 
 .messageBox::-webkit-scrollbar-track {
-    background: var(--grr-color);  /*스크롤바 뒷 배경 색상*/
+    background: var(--scroll-background-color);  /*스크롤바 뒷 배경 색상*/
 }
+
+.darkmode .messageBox::-webkit-scrollbar-track {
+    background: transparent;  /*스크롤바 뒷 배경 색상*/
+}
+
+body.darkmode .messageBox::-webkit-scrollbar-thumb {
+    background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
+}
+

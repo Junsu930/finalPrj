@@ -1,24 +1,36 @@
+let ws;
+
 document.getElementById("chatting-img").addEventListener("click", function(){
 	
 	let messageWindow = document.getElementById("chatBody");
-	let messageStyle = messageWindow.style.display;
 	
-	console.log(messageStyle);
-	if(messageStyle =='none' || messageStyle == "" ){
+	if(messageWindow.style.display =='none' || messageWindow.style.display == 0 ){
 		messageWindow.style.display = 'flex';
-		wsOpen();
+		
+		// 소켓이 닫혀있으면 연다
+		if(ws == null){
+			wsOpen();
+		}
+		if(document.getElementById("faqBox").style.width != '0px' || document.getElementById("faqBox").style.width != 0){
+			document.getElementById("faqBox").style.width = '0';
+			document.getElementById("faqBox").style.height = '0';
+		}
+		
+		
+		
 	}else{
 		messageWindow.style.display = 'none';
 	}
-
 });
 
-let ws;
+
 
 
 function wsOpen(){
 	ws = new WebSocket("ws://" + '192.168.140.235:8080' + "/fin/chatting");
 	console.log("소켓 주소 : " + "ws://" + '192.168.140.235:8080' + "/fin/chatting");
+	
+	console.log(ws);
 	wsEvt();
 }
 
@@ -49,8 +61,9 @@ function wsEvt(){
 					tokMessageBox.innerHTML = chatMessage.msg;
 					//tokBox.append(nameBox);
 					tokBox.append(tokMessageBox);
+
 					$('#messageBox').append(tokBox);
-		
+					
 					$("#messageBox").scrollTop($("#messageBox")[0].scrollHeight);
 				}else{
 					let tokBox = document.createElement("div");
@@ -63,6 +76,7 @@ function wsEvt(){
 					tokBox.append(nameBox);
 					tokBox.append(tokMessageBox);
 					$('#messageBox').append(tokBox);
+				
 		
 					$("#messageBox").scrollTop($("#messageBox")[0].scrollHeight);
 
