@@ -40,7 +40,7 @@
 	
 	<section class="filterSec">
 	
-		<a href="#"><i class="bi bi-pencil-square"></i></a>
+		<a href="${contextPath}/lessonWriting" class="lessonA"><i class="bi bi-pencil-square"></i></a>
 	    <div>
 	        <button class="labelLesson lessonList" onclick="selctLesson()"><span>레슨 악기</span><i class="bi bi-caret-down" id="bi"></i></button>
 	        <ul class="listBox">
@@ -73,7 +73,7 @@
     	</div>
 
 		<div>
-			<a href="#">글쓰기</a>
+			<a href="${contextPath}/lessonWriting">글쓰기</a>
 		</div>
 
 	</section>

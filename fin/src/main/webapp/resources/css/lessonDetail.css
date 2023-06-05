@@ -165,7 +165,7 @@ body.darkmode .chatBox > button >i{
 
 
 
-/* 반응형 */
+/* 미디어쿼리 */
 
 
 @media screen and (max-width:46.875rem) {
@@ -173,3 +173,22 @@ body.darkmode .chatBox > button >i{
         width: 90%;
     }
 }
+/* 아이폰 xr, 갤럭시 울트라 */
+@media screen and (max-width:26rem) {
+    .explain > li > i {
+        margin-right: 0.5em;
+        padding: 0;
+    }
+
+    .recommendImgBox > div {
+        width: 70px;
+    }
+}
+
+/* 아이폰 xr, 갤럭시 울트라 제외 모든 모바일 기준 */
+@media screen and (max-width:25rem) {
+    .explain > li {
+        padding: 1em 0;
+    }
+}
+

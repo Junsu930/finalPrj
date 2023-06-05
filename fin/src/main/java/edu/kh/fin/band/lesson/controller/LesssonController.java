@@ -18,5 +18,13 @@ public class LesssonController {
 		return "lesson/lessonDetail";
 	}
 	
+	@GetMapping("/lessonWriting")
+	public String lessonWritingController() {
+		
+		return "lesson/lessonWriting";
+	}
+	
+	
+	
 
 }

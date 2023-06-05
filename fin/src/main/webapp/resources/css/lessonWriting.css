@@ -1,0 +1,301 @@
+
+
+body.darkmode .inputBox > textarea,
+body.darkmode .inputBox > input{
+    color: var(--text-dark-color);
+}
+
+
+.allSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* border: 1px solid black; */
+    margin: 15em 0;
+}
+
+.allSection > form{
+    /* border: 1px solid green; */
+    width: 70%;
+}
+
+.imgBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5em;
+    /* border: 1px solid black; */
+    margin: auto;
+    width: 20%;
+}
+
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* border: 1px solid red; */
+    margin-top: 8em;
+}
+
+.inputBox > input, 
+.inputBox > textarea,
+.inputBox > label{
+    padding: 1em 1em;
+    width: 40%;
+    resize: none;
+    border-radius: 0.5em;
+    outline: none;
+    min-width: 300px;
+}
+
+.inputBox > textarea{
+    height: 150px;
+    background-color: transparent;
+    border: 1px solid var(--stroke-color);
+    font-size: 1.1em;
+}
+
+
+.inputBox > input{
+    height: 45px;
+    border: 1px solid var(--stroke-color);
+    font-size: 1em;
+    background-color: transparent;
+}
+
+
+
+
+/* genre */
+
+.genreBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10em;
+    flex-wrap: wrap;
+    /* border: 1px solid blue; */
+}
+
+.genreBox > hr{
+    border: 1px solid var(--stroke-color);
+    width: 30%;
+    margin:auto;
+    margin-left: 35%;
+    margin-bottom: 2em;
+}
+
+.genreBox > span{
+    font-size: 1.7em;
+    padding: 1em 1em 0.2em 1em;
+}
+
+
+
+.genreBox label{
+    cursor: pointer;
+    padding: 1em 5em;
+}
+
+.genreBox td{
+    padding: 2em 1em;
+}
+
+
+.genreBox input[type=checkbox] {
+    display: none;
+}
+
+  
+.genreBox input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 0.1em solid var(--stroke-color);
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding-left: 0.2em;
+    padding-bottom: 0.2em;
+    margin-right: 0.5em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+}
+
+.genreBox input[type=checkbox]:checked + label:before {
+    background-color: MediumSeaGreen;
+    border-color: MediumSeaGreen;
+    color: var(--background-color);
+}
+
+
+
+/* genre */
+
+
+/* lessons */
+
+
+.lessonBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10em;
+    /* border: 1px solid blue; */
+}
+
+.lessonBox > hr{
+    border: 1px solid grey;
+    width: 30%;
+    margin:auto;
+    margin-left: 35%;
+    margin-bottom: 2em;
+}
+
+
+
+.lessonBox > span{
+    font-size: 1.7em;
+    padding: 1em 1em 0.2em 1em;
+}
+
+
+
+.lessonBox label{
+    cursor: pointer;
+    padding: 1em 5em;
+}
+
+.lessonBox td{
+    padding: 2em 1em;
+}
+
+
+.lessonBox input[type=checkbox] {
+    display: none;
+}
+
+  
+.lessonBox input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 0.1em solid var(--stroke-color);
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    padding-left: 0.2em;
+    padding-bottom: 0.2em;
+    margin-right: 0.5em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+}
+
+.lessonBox input[type=checkbox]:checked + label:before {
+    background-color: MediumSeaGreen;
+    border-color: MediumSeaGreen;
+    color: var(--background-color);
+}
+
+/* lessons */
+
+
+
+
+/* media query */
+
+@media screen and (max-width:76rem) {
+    .genreBox label, .lessonBox label{
+        cursor: pointer;
+        padding: 1em 4em;
+    }
+}
+
+@media screen and (max-width:68rem) {
+    .genreBox label, .lessonBox label{
+        cursor: pointer;
+        padding: 1em 3em;
+    }
+}
+
+@media screen and (max-width:59rem) {
+    .genreBox label, .lessonBox label{
+        cursor: pointer;
+        padding: 1em 2em;
+    }
+}
+
+@media screen and (max-width:52rem) {
+    .genreBox label, .lessonBox label{
+        cursor: pointer;
+        padding: 1em 1em;
+    }
+    
+}
+
+@media screen and (max-width:43.7rem) {
+    .genreBox label, .lessonBox label{
+        cursor: pointer;
+        padding: 1em 0;
+    }
+}
+
+@media screen and (max-width:34rem) {
+    .genreBox label, .lessonBox label{
+        cursor: pointer;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 33.688) {
+    .genreBox label, .lessonBox label{
+        cursor: pointer;
+        padding: 0 1.5em 1em;
+    }
+}
+
+
+
+/* 360px 갤럭시 8 */
+
+
+@media screen and (max-width:22.5rem) {
+    .genreBox label, .lessonBox label{
+        padding: 0;
+    }
+    .genreBox > hr, .lessonBox > hr {
+        display: none;
+    }
+}
+
+/* 390px 아이폰 12프로 */
+
+@media screen and (max-width:26rem) {
+    .genreBox label, .lessonBox label{
+        padding: 0;
+    }
+    .genreBox > hr, .lessonBox > hr {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
