@@ -35,7 +35,7 @@
 
                             <!--이메일--> 
                             아이디<br><input type="email" name="email" class="input-text" placeholder="아이디를 입력해주세요.">
-                            <button id="email-check-btn">인증번호 받기</button><br><br>
+                            <button id="email-check-btn">인증번호받기</button><br><br>
 
                              <!--이메일 인증번호 확인--> 
                              인증번호<br><input type="text" name="auth_number" class="input-text" placeholder="인증번호를 입력해주세요.">
