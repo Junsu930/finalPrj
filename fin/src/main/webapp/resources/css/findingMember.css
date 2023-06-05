@@ -1,5 +1,4 @@
 
-
 .title {
     width: 70%;
     text-align: center;
@@ -10,28 +9,23 @@
   
 }
 
-.section > hr {
-	width: 70%;
+
+.mainContent > hr {
+    color: red;
 }
 
-
 .mainContent {
-    width: 30rem;
+    width: 35rem;
     text-align: center;
     margin: auto;
     
 }   
 
-.mainContent > div>h5 {
-    padding: 30px;
-}
-
-
 
 /*성별*/
 .gender {
     padding: 30px 20px;
-    width: 30em;
+    width: 32em;
     margin: auto;
 }
 
@@ -101,7 +95,7 @@
 /*포지션*/
 .position {
     padding: 15px 10px;
-    width: 30em;
+    width: 32em;
     margin: auto;
 }
 
@@ -133,7 +127,7 @@
 /*지역*/
 .location {
     padding: 15px 10px;
-    width: 30em;
+    width: 32em;
     margin: auto;
 }
 
@@ -209,7 +203,7 @@
 	border: 1px solid #fff;
 }
 
-@media (max-width: 46.875rem) {
+@media (max-width: 900px) {
     .title {
         width: 500px;
         text-align: center;
@@ -252,16 +246,6 @@
 
 }
 
-#tt {
-	font-size:30px;
-	font-weight: bold;
-}
-
-.cate {
-	font-size: 25px;
-	text-align: center;
-}
-
 .gender input[type=radio]+label{background-color: #00C9C8; border-color: #00C9C8; -webkit-box-shadow: 0 3px 0 #00C9C8; box-shadow: 0 3px 0 #009292}
 .gender input[type=radio]+label:hover{background-color:#00C9C8;}
 .gender input[type=radio]+label:active{ top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
@@ -281,3 +265,38 @@
 .location input[type=radio]+label:hover{background-color:#00C9C8;}
 .locationinput[type=radio]+label:active{ top: 3px; outline: none; -webkit-box-shadow: none; box-shadow: none;}
 .location input[type=radio]:checked+label {color: #00C9C8; background-color: #fff; border-color: #00C9C8;}
+
+
+
+
+/*모달*/
+#modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
