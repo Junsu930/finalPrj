@@ -1,0 +1,56 @@
+.modal-body div{
+	border: 1px solid black;
+}
+
+.modal-body{
+	display: flex;
+	flex-direction : column;
+	justify-content : center;
+	align-items : center;
+	
+}
+
+.mainProfile{
+	display: flex;
+	justify-content : center;
+	align-items : center;
+	height: 6em;
+	width: 80%;
+}
+
+/* 이미지 구역 */
+.mainProfile > div:nth-child(1) {
+	flex-basis: 30%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#imgProfileRoundBox{
+	width: 70px;
+	height: 70px;
+	border-radius: 70%;
+}
+
+/* 닉네임과 이메일 */
+.mainProfile > div:nth-child(2) {
+	flex-basis: 70%;
+	height: 100%;
+	display: flex;	
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 닉네임 구역 */
+.mainProfile > div:nth-child(2) > div:nth-child(1) {
+	flex-basis: 60%;
+	width: 100%;
+}
+
+/* 이메일 구역 */
+.mainProfile > div:nth-child(2) > div:nth-child(2) {
+	flex-basis: 40%;
+	width: 100%;
+}

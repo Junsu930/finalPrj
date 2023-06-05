@@ -106,7 +106,7 @@ body.darkmode > .content{
 	
 }
 
-body.darkmode li{
+body.darkmode .introduction li{
 	background-color: var(--text-color);
 	
 }
@@ -356,11 +356,33 @@ body.darkmode .fc-day-past{
 }
 
 
+.fc-scroller::-webkit-scrollbar {
+    width: 4px;  /* 스크롤바의 너비 */
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: var(--grey-color); /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+.fc-scroller::-webkit-scrollbar-track {
+    background: var(--scroll-background-color);  /*스크롤바 뒷 배경 색상*/
+}
+
+.darkmode .fc-scroller::-webkit-scrollbar-track {
+    background: transparent;  /*스크롤바 뒷 배경 색상*/
+}
+
+.darkmode .fc-scroller::-webkit-scrollbar-thumb {
+    background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
+}
+
 
 @media (max-width:46.875rem){
 	
 	.content{
-		width: 600px;
+		width: 80%;
 		flex-direction: column;
 		height: 120%;
 	}
@@ -368,8 +390,19 @@ body.darkmode .fc-day-past{
 	.leftSide > div:nth-child(1){
 		margin-top: 20px;
 	}
+		
 	
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:767px) {
+	.introduction li {
+		line-height: inherit;
 	
+	}
 	
+	.introduction ul{
+		margin-top: 20px;
+	}
 	
 }

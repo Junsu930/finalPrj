@@ -121,3 +121,5 @@ document.getElementById("timeSubmit").addEventListener("click", function(){
     console.log("날짜 : " + schedule.innerHTML + ", 예약할 시간 : " + timetable);
 
 })
+
+

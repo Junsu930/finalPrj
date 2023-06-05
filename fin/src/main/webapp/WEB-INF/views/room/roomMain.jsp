@@ -6,11 +6,45 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/roomMain.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/lookProfile.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/44f3dd3f25.js" crossorigin="anonymous"></script>
 <title>예약페이지</title>
 </head>
 <body>
+<div class="modal" tabindex="-1" id="exampleModal">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">깅깅이 님의 프로필</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+ 		<div class="mainProfile">
+ 			<!-- 프로필 이미지  -->
+ 			<div>
+ 				<div id="imgProfileRoundBox">
+ 					<img class="imgProfileImage" src="">
+ 				</div>
+ 			</div>
+ 			<!-- 닉네임과 이메일 -->
+ 			<div>
+ 				<div></div>
+ 				<div></div>
+ 			</div>
+ 		</div>
+ 		<!-- 프로필 아이콘 -->
+ 		<div></div>
+ 		<!-- 소개 멘트 -->
+ 		<div></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="content" id="content">
 	<div class="logoDiv">
@@ -22,8 +56,9 @@
 		<path d="M233.082 89.624H282.042V101H217.53V90.632L266.202 12.008H218.106V0.632004H281.754V11L233.082 89.624Z" stroke="black" stroke-width="5"/>
 		</svg>
 	</div>
-		
-		
+	
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">프로필보기</button>	
+			
 	<!-- 분류 창 -->
 	<div class="sorting-bar">
 		<!-- 각각의 메뉴 -->
@@ -271,6 +306,7 @@
 
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script type="text/javascript" src="${contextPath}/resources/js/roomMain.js"></script>
 </body>
 </html>

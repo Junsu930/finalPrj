@@ -21,7 +21,6 @@ public class SocketHandler extends TextWebSocketHandler {
 		//메시지 발송
 		String msg = message.getPayload();
 		
-		System.out.println("받은 메세지 : " + msg);
 		JSONObject obj = JsonToObjectParser(msg);
 		for(String key : sessionMap.keySet()) {
 			WebSocketSession wss = sessionMap.get(key);
