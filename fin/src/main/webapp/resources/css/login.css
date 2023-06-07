@@ -33,7 +33,7 @@
 .input-text{
     border: none;
     outline: 0;
-    width: 300px;
+    width: 320px;
     height: 38px;
     background-color: rgb(240, 244, 240);
     border-radius: 20px;
@@ -96,25 +96,34 @@
 
 
 
-.id-pw-found{
+.id-pw-found-signup{
     display: flex;
     column-gap:5px;
-}
-
-.id-found-1{
     text-decoration: none;  
     font-size: 0.8rem;
     color: #474554;
 }
 
-.id-found-2{
+.id-found{
+    text-decoration: none;  
+    font-size: 0.8rem;
+    color: #474554;
+}
+
+.pw-found{
+    text-decoration: none;  
+    font-size: 0.8rem;
+    color: #474554;
+}
+
+.signup-found-1{
 	text-decoration: none;
     font-size: 0.8rem;
     color: #474554;
     margin-left: 65px;
 }
 
-.id-found-3{
+.signup-found-2{
 	text-decoration: none;
     font-size: 0.8rem;
     color: #474554;
@@ -144,6 +153,39 @@
 }
 */
 
+
+.pw{
+    position: relative;
+    width: 300px;
+}
+
+#password{
+    border: none;
+    outline: 0;
+    width: 320px;
+    height: 38px;
+    background-color: rgb(240, 244, 240);
+    border-radius: 10px;
+    padding-left : 10px;   
+}
+
+.pw > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    top: 3px;
+    left: 260px;
+    cursor: pointer;
+}
+   
+
+
+.pw > div > i{
+    color: #068488;
+}
   
 
 
