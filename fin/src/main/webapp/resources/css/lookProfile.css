@@ -1,12 +1,10 @@
-.modal-body div{
-	border: 1px solid black;
-}
 
 .modal-body{
 	display: flex;
 	flex-direction : column;
-	justify-content : center;
+	justify-content : space-around;
 	align-items : center;
+	height: 700px;
 	
 }
 
@@ -15,7 +13,7 @@
 	justify-content : center;
 	align-items : center;
 	height: 6em;
-	width: 80%;
+	width: 90%;
 }
 
 /* 이미지 구역 */
@@ -28,9 +26,15 @@
 }
 
 #imgProfileRoundBox{
-	width: 70px;
-	height: 70px;
+	width: 80px;
+	height: 80px;
 	border-radius: 70%;
+	overflow: hidden;
+}
+
+.imgProfileImage{
+	width: 100%;
+	object-fit: cover;
 }
 
 /* 닉네임과 이메일 */
@@ -47,10 +51,110 @@
 .mainProfile > div:nth-child(2) > div:nth-child(1) {
 	flex-basis: 60%;
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
 }
 
 /* 이메일 구역 */
 .mainProfile > div:nth-child(2) > div:nth-child(2) {
 	flex-basis: 40%;
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1em;
+}
+
+.profileIcons{
+	margin-top : 20px;
+	height: 12em;
+	width: 90%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:center;
+	align-items: center;
+}
+
+.profileIcons > div{
+	width: 43%;
+	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size:  1.3em;
+	border: 2px solid;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px;
+	margin: 7px;
+}
+
+.eachIconDiv{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.eachIconDiv > div:nth-child(1){
+	flex-basis: 30%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.7em;
+	border-bottom: 3px solid;
+}
+.eachIconDiv > div:nth-child(2){
+	flex-basis: 70%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.7em;
+	
+}
+
+.profileIcons i{
+	font-size:  1em;
+	margin: 10px;
+}
+
+
+.introMentInput{
+    width: 100%;
+    height: 9em;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.mentBox{
+	border: 2px solid;
+	display: flex;
+	padding: 5px;
+	width: 95%;
+	height: 100%;
+	border-radius: 10px;
+}
+
+.modal-footer{
+	justify-content: space-around !important;
+}
+
+
+/* 폰 */
+@media (max-width: 420px) {
+  	.modal-content{
+  		width: 300px;
+  		height: 700px;
+  	}
+	.profileIcons > div{
+		font-size: 1em;
+	}
+	.eachIconDiv  i{
+		display: none;
+	}
+	
+	
 }

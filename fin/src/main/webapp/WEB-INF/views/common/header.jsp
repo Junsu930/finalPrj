@@ -31,7 +31,7 @@
 
               <!-- <a href="signUp" class="signUpText navA">SignUp</a> -->
               <a href="${contextPath}/myPage" class="myPageText navA">My Page</a>
-              <a href="login" class="loginText navA">Login</a>
+              <a href="${contextPath }/login" class="loginText navA">Login</a>
 			  <button id="alertBell" class="alertBell navA"><i class="bi bi-bell"></i></button> <!-- 로그인 시 알림 아이콘-->
             
               <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a>

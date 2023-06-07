@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginRegisterController {
 	
-	@GetMapping("/LoginRegister")
+	@GetMapping("/login")
 	public String roomController() {
 		
 		return "user/LoginRegister";

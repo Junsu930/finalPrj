@@ -12,6 +12,7 @@
 <title>채팅</title>
 </head>
 <body>
+<input type="hidden" id="ipAddr" value="${ ipAddr}">
 <input type="hidden" id="sessionId" value="">
 <div class="chatBody" id="chatBody">
 	<div class="messageBox" id="messageBox">

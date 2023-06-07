@@ -1,6 +1,4 @@
 #faqBox{
-	width:0px;
-	height: 0px;
 	position: fixed;
 	left: 50px;
 	bottom: 130px;
@@ -93,13 +91,34 @@
 }
 
 
+/* display를 나타나게 하는 속성 */
+.appear{
+	width: 500px;
+	height: 500px;
+}
+
+/* dispaly를 사라지게 하는 속성 */
+.disappear{
+	width: 0px;
+	height: 0px;
+}
+
+
 @media (max-width:46.875rem){
 	#faqBox{
-		width: 80%;
+		width: 400px;
 	}
 		
 	
 }
+
+/* 폰 */
+@media (max-width: 420px) {
+  	#faqBox{
+  		width: 300px;
+  	}
+}
+
 
 
 
@@ -125,5 +144,21 @@
     background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
 }
 
+.moreQuestion{
+	padding: 5px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    list-style: none;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
+.replayQuestion {
+	margin-bottom: 30px;
+	background-color: var(--accent-color);
+	border-radius: 10px;
+	width: fit-content;
+    padding: 0 10px;
+}
 

@@ -16,10 +16,22 @@ public class UsedController {
 	}
 	
 	
-		@GetMapping("/usedDetail")
-		public String useDetail() {
-			
-			return "used/usedDetail";
-		}
+	@GetMapping("/usedDetail")
+	public String useDetail() {
+		
+		return "used/usedDetail";
 	}
+		
+	@GetMapping("/usedWriting")
+	public String usedWriting() {
+		
+		return "usedWriting/usedWriting";
+	}
+		
+		
+		
+	}
+
+
+
 
