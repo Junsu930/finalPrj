@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>회원가입</title>
+	<title>사업자 회원가입</title>
 
 	<link rel="stylesheet" href="${contextPath}/resources/css/global.css">
-	<link rel="stylesheet" href="${contextPath}/resources/css/signUp.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/buisnessSignUp.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 	<script src="https://kit.fontawesome.com/44f3dd3f25.js" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
         <body>
             <!--콘텐츠 작성 영역-->
             <section class="content">
-                <h1 class="sign-up-text">회원가입</h1>
+                <h1 class="sign-up-text">사업자 회원가입</h1>
             </section>
 
             <section class="content-2">
@@ -46,15 +46,11 @@
                                     <span id = "result1" class="confirm"></span><br>
                             비밀번호 확인<br><input type="password" input name="password-check" id="pw2" class="input-text-1" placeholder="비밀번호를 확인해주세요."><br>
                                     <span id = "result2" class="confirm"></span><br>
-                            <!--닉네임-->
-                            닉네임<br><input type="text" name="Nickname" class="input-text-1" placeholder="닉네임을 입력해주세요.">
+                            <!--사업자 번호-->
+                            사업자 번호 <br><input type="text" name="Nickname" class="input-text-1" placeholder="사업자 번호를 입력해주세요.">
                             <br><br><br>
 
-                            <!--포지션-->
-                            나의 포지션
-                            <button id='hide' onclick="mainContent()">show</button>
-                             <section class="mainContent">
-            
+                            
                
 
                             <div class ="checkbox_group" >

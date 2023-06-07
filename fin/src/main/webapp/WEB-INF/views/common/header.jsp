@@ -30,7 +30,7 @@
           <div class="navSecondDiv">
               <a href="signUp" class="signUpText navA">SignUp</a>
               <a href="#" class="myPage navA" style="display:none;">My Page</a>
-              <a href="login" class="loginText navA">Login</a>
+              <a href="LoginRegister" class="loginText navA">Login</a>
               <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a>
               <a href="" class="loginIMG navA"><i class="bi bi-door-open" id="loginIMGI"></i></a>
               <a href="" class="logoutIMG navA"><i class="bi bi-door-closed" id="logoutIMGI"></i></a> <!-- logout IMG-->

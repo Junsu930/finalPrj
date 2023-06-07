@@ -1,0 +1,269 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+    min-height: 100vh;
+    background: url('${contextPath}/resources/images/loginBack.jpeg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.loginSection{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 5em 0 15em 0;
+}
+
+.wrapper{
+    position: relative;
+    width: 500px;
+    height: 550px;
+    background-color: transparent;
+    border: 2px soild rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: height .4s ease-out;
+}
+
+
+.wrapper.active{
+    height: 760px;
+}
+
+
+
+.wrapper .formBox{
+    width: 100%;
+    padding: 40px;
+}
+
+
+
+
+/* register 버튼 눌렀을 때, 로그인 화면 왼쪽으로 옮기기 */
+
+.wrapper.active .formBox.login{
+    transition: none;
+    transform: translateX(-500px);
+}
+
+/* 로그인 화면 나오기 */
+.wrapper .formBox.login{
+    transition: transfrom .18s ease;
+    transform: translateX(0);
+}
+
+
+
+/* Login 버튼 눌럿을 떄, 회원가입 화면 오른쪽으로 옮기기 */
+.wrapper .formBox.register{
+    position: absolute;
+    transition: none;
+    transform: translateX(500px);
+}
+
+/* 회원 가입 화면에 나오기 */
+.wrapper.active .formBox.register{
+    transition: transfrom .18s ease;
+    transform: translateX(0);
+}
+
+
+
+
+
+
+.wrapper .iconClose{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background-color: #162938;
+    font-size: 2em;
+    color: #eae7e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-bottom-left-radius: 20px;
+    z-index: 1;
+}
+
+
+
+
+.formBox h2{
+    font-size: 2em;
+    color: #eae7e7;
+    text-align: center;
+    margin-bottom: 1.5em;
+    letter-spacing: 0.1em;
+}
+
+.inputBox{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #152c3d;
+    margin: 30px 0;
+}
+
+.inputBox label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #eae7e7;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s;
+    padding: 0 2.3em 0 0.5em;
+    letter-spacing: 0.1em;
+}
+
+.inputBox input:focus~label,
+.inputBox input:valid~label {
+    top: -5px;
+}
+
+.inputBox input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline:  none;
+    font-size: 1em;
+    color: #eae7e7;
+    font-weight: 600;
+    padding: 0 2.3em 0 0.5em;
+}
+
+.inputBox .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #eae7e7;
+    line-height: 57px;
+}
+
+#eye{
+    font-size: 1em;
+}
+
+
+.rememberForgot{
+    position: relative;
+    font-size: 0.9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -1em 0 3em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rememberForgot label input {
+    accent-color: #162938;
+    margin-right: 3px;
+}
+
+.rememberForgot a{
+    color: #eae7e7;
+    text-decoration: none;
+}
+
+#showBusiness{
+    position: absolute;
+    right: 0;
+    top: 1.3em;
+}
+
+
+
+.rememberForgot a:hover{
+    text-decoration: underline;
+}
+
+
+.btn{
+    width: 100%;
+    height: 45px;
+    background-color: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #eae7e7;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+}
+
+.btn:hover{
+    animation: btn .5s ease-out;
+}
+
+@keyframes btn{
+    0%{
+        letter-spacing: 0.1em
+    }50%{
+        letter-spacing: 0.4em;
+    }100%{
+        letter-spacing: 0.2em;
+    }
+}
+
+
+
+.loginRegister{
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.loginRegister p a{
+    color: #eae7e7;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0 10px 0 10px;
+}
+
+.loginRegister p a:hover{
+    text-decoration: underline;
+}
+
+.busniessBox{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
