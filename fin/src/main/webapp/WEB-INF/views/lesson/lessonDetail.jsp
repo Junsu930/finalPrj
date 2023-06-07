@@ -66,9 +66,11 @@
                     </div>
                     <div class="chatBox">
                         <button ><i class="bi bi-chat-dots"></i></button>
+                        <button id="deleteBtn">DELETE</button>
                     </div>
                 </div>
             </div>
+
     </section>
 
 

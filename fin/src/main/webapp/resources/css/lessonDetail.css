@@ -78,6 +78,10 @@ body.darkmode .chatBox > button >i{
     border-radius: 0.5em;
 }
 
+body.darkmode .imgBox{
+    border: 1px solid var(--border-color);
+}
+
 .imgBox > div:first-child{
     flex-basis: 60%;
     border: 1px solid goldenrod;
@@ -116,6 +120,32 @@ body.darkmode .chatBox > button >i{
 
 
 
+/* 
+    평소 displayNone인데 강사가 본인 게시글을 들어갔을 때, 혹은 관리자일때 채팅 보내기 
+    아이콘 말고 delelte 버튼이 있어야함.
+ */
+#deleteBtn{
+    width: 150px;
+    height: 40px;
+    border: 1px solid var(--label-color);
+    background: transparent;
+    border-radius: 0.5em;
+    letter-spacing: 0.3em;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+}
+
+body.darkmode #deleteBtn{
+    color: var(--text-dark-color);
+    border: 1px solid var(--accent-color);
+}
+
+
+
+
+
+
 
 
 
@@ -151,6 +181,12 @@ body.darkmode .chatBox > button >i{
     width: 150px;
     text-align: center;
 }
+
+body.darkmode .recommendImgBox > div{
+    border: 1px solid var(--border-color);
+}
+
+
 
 .recommendName{
     display: flex;

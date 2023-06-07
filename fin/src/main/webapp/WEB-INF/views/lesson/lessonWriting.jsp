@@ -28,20 +28,46 @@
 
             <!-- input 박스 요소들 -->
             <div class="inputBox">
-                <label for="">이름</label>
-                <input type="text">
 
-                <label for="">지역</label>
-                <input type="text">
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail"></ion-icon>
+                    </span>
+                    <input type="text" required>
+                    <label>NAME</label>
+                </div>
 
-                <label for="">소셜미디어</label>
-                <input type="text">
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <input type="text" required>
+                    <label>LOCATION</label>
+                </div>
 
-                <label for="">소개</label>
-                <input type="text">
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <input type="text" required>
+                    <label>SOCIAL MEDIA</label>
+                </div>
 
-                <label for="">상세내용</label>
-                <textarea type="text"></textarea>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <input type="text" required>
+                    <label>MOTTO</label>
+                </div>
+
+                <div class="input-box inputBoxText">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <textarea name="" id="" cols="30" rows="10" required></textarea>
+                    <label class="textLabel">TELL YOUR STROY</label>
+                </div>
 
             </div>
 
@@ -147,6 +173,10 @@
             </div>
 
         </form>
+
+        <div class="writingBtnBox">
+            <button id="writingBtn">SUBMIT</button>
+        </div>
     </section>
 
 

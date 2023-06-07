@@ -36,13 +36,15 @@
 	            <path d="M502.484 107H489.38L436.676 27.0799V107H423.572V6.48794H436.676L489.38 86.2639V6.48794H502.484V107Z" stroke="white" stroke-width="10" mask="url(#path-1-outside-1_517_606)"/>
        	 	</svg> 
 	    </div>
+
+		
 	</section>
 	
 	<section class="filterSec">
 	
 		<a href="${contextPath}/lessonWriting" class="lessonA"><i class="bi bi-pencil-square"></i></a>
 	    <div>
-	        <button class="labelLesson lessonList" onclick="selctLesson()"><span>레슨 악기</span><i class="bi bi-caret-down" id="bi"></i></button>
+	        <button class="labelLesson lessonList" onclick="selctLesson()"><span>LESSON</span><i class="bi bi-caret-down" id="bi"></i></button>
 	        <ul class="listBox">
 	            <li><button class="list">GUITAR</button></li>
 	            <li><button class="list">BASS</button></li>
@@ -56,7 +58,7 @@
 	    </div>
 	
 	    <div>
-			<button class="labelLocation locationListBtn" onclick="selectLocation()"><span>지역 선택</span><i class="bi bi-caret-down" id="bi2"></i></button>
+			<button class="labelLocation locationListBtn" onclick="selectLocation()"><span>LOC</span><i class="bi bi-caret-down" id="bi2"></i></button>
 			<ul class="listBox locationListBox">
 				<li><button class="list locationList">서울</button></li>
 				<li><button class="list locationList">대전</button></li>
@@ -73,7 +75,7 @@
     	</div>
 
 		<div>
-			<a href="${contextPath}/lessonWriting">글쓰기</a>
+			<a href="${contextPath}/lessonWriting" id="writingBtn">WRITING</a>
 		</div>
 
 	</section>

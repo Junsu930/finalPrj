@@ -34,6 +34,7 @@ body{
     background-color: transparent;
     border:none;
     cursor: pointer;
+    outline: none;
 }
 
 /* ===============================�깭洹� css=============================== */
@@ -114,7 +115,7 @@ body{
 }
 
 
-.navSecondDiv > a, .navSecondDiv > i{
+.navSecondDiv > a, .navSecondDiv > i , .navSecondDiv > button > i{
     padding: var(--tinyFont-size);
 }
 
@@ -129,6 +130,14 @@ body{
 
 .logoutIMG{
     display: none;
+}
+
+.alertBell{
+    display: none;
+}
+
+body.darkmode .alertBell > i{
+    color: var(--text-dark-color);
 }
 
 #hamburger{
@@ -176,7 +185,7 @@ body{
     }
 
 
-    .signUpText, .loginText{
+    .myPageText, .loginText{
         display: none;
     }
 }
