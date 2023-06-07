@@ -175,18 +175,26 @@ body.darkmode .bi-pencil-square{
 hr{
     margin: auto;
     width: 87%;
-    color: var(--stroke-color);
+    color: var(--border-color);
 }
 
-.lessonList, .locationListBtn{
+.lessonList, 
+.locationListBtn{
     width: 150px;
     height: 40px;
     border: 1px solid var(--stroke-color);
     border-radius: 0.5em;
-    font-size: 1.1em;
+    font-size: 1em;
     box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
     background-color: transparent;
+    cursor: pointer;
 }
+
+body.darkmode .lessonList, 
+body.darkmode .locationListBtn{
+    border: 1px solid var(--border-color);
+}
+
 
 .filterSec > div:nth-child(3){
     margin-left: 3em;
@@ -208,11 +216,19 @@ hr{
     right: 10%;
 }
 
+body.darkmode .filterSec > div:last-child{
+    border: 1px solid var(--border-color);
+}
+
 .filterSec > div:last-child > a{
-    padding: 1.5em 1.5em;
     color: var(--text-color);
     text-decoration: none;
+    letter-spacing: 0.2em;
 }
+
+
+
+
 
 .filterSec > a:first-child{
     font-size: 2em;
@@ -268,6 +284,7 @@ hr{
 .lessonList > i, .lessonList > span , 
 .locationListBtn > span, .locationListBtn > i{
     padding: 0 0.6em;
+    letter-spacing: 0.1em;
 }
 
 
@@ -296,6 +313,10 @@ hr{
     border-radius: 0.5em;
     border: 1.5px solid var(--stroke-color);
     cursor: pointer;
+}
+
+body.darkmode .imgCotentWrap{
+    border:1.5px solid var(--border-color);
 }
 
 

@@ -109,11 +109,22 @@
 	    <div>
         <ul class="questionInput">
           <form action="" class="mainForm">
-            <label for="" class="label">NAME*</label><input type="text" class="mainInput">
-            <label for="" class="label">EMAIL*</label><input type="email" class="mainInput inputEmail">
-            <label for="" class="label">PHONE*</label><input type="number" class="mainInput">
-            <label for="" class="label">TELL US*</label><textarea name="" class="mainInput mainTextArea"></textarea>
-            <button class="mainInput">SEND YOUR MESSAGE</button>
+
+            <label for="" class="label">NAME*</label>
+            <input type="text" class="mainInput inputName">
+            
+            <label for="" class="label">EMAIL*</label>
+            <input type="email" class="mainInput inputEmail">
+            
+            <label for="" class="label">PHONE*</label>
+            <input type="number" class="mainInput inputPhone">
+            
+            
+            <label for="" class="label">TELL US*</label>
+            <textarea name="" class="mainInput mainTextArea"></textarea>
+            
+
+            <button class="mainInput" id="mainBtn">SEND YOUR MESSAGE</button>
           </form>
         </ul>
       </div>
