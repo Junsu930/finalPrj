@@ -1,84 +1,908 @@
-*{
-	box-sizing: border-box;
-}
-body{
-    margin: 0px;
-}
-.main{
-    width: 70%;
-    margin: auto;
-    margin-top: 100px;
-
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 14px;
+  }
+  
+  .title-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tagsss {
+    background-color: #474554;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: flex;
+    align-items: flex-end;
    
-}
-.mainTitle{
-    font-size: 20px;
-
-}    
-.tagTitleBox{
-
-
-}
-.tagTitle{
-    margin-right: 50px;
-    text-align: center;
-    font-size: 15px;
-}
-.tags{
+  }
+  
+  .title {
+    font-weight: bold;
+  }
+  
+  .info {
     display: flex;
-    width: 80%;
-}
-.notice{
-    padding: 5px;
-    margin-right: 10px;
-    width: 10%;
-    background-color: white;
-}
-.basicBoard{
-    padding: 5px;
-    margin-right: 10px;
-    width: 10%;
-    background-color: white;
-}
-.hotBoard{
-    padding: 5px;
-    margin-right: 10px;
-    width: 10%;
-    background-color: white;
-}
-
-.tagTitleBox{
-    display: flex;
-    margin-top: 30px;
-}
-.titlDetail{
-    border: none;
-    border-bottom: 1px solid black;
-    outline: none;
-    width: 80%;
-}
-.contentTitleDetail{
-
-    margin-top: 15px;
-}
-.contentDetail{
-    width: 80%;
-    height: 300px;
-}
-.PostTitle{
-    font-size: 15px;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 10px;
-}
-.contentTitle{
-    font-size: 15px;
-    margin-top: 15px;
-}
-.writeButtonBox{
+  }
+  
+  .left {
     display: flex;
-    justify-content: flex-end;
-    margin-right: 120px;
-    margin-top: 30px;
+    align-items: center;
+  }
+  
+  .nickname {
+    margin-right: 10px;
+    
+  }
+  .left, .content{
+font-size: 13px;
+  }
+  .content {
+    margin-top: 50px;
+  }
+  .comment{
+    font-weight: bold;
+  }
+  .comments {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    margin-top: 50px;
+  }
+  
+  .commentBox,
+  .commentBox2 {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; 
+  }
+  .commentBox i{
+    margin-top: 3px;
+  }
+  .commentBox i,
+  .commentBox2 i {
+    margin-right: 5px;
+  }
+  
+  .edit, .reply, .and, .delete{
+    font-size: 5px;
+    color: #474554;
+  }
+  .edit, .and, .delete{
+    margin-right: 10px;
+  }
+ .and{
+    color: #868E96;
+ }
+  .report {
+    margin-left: auto; 
+    font-weight: bold;
+    padding-right: 30px;
+  }
+  .divider {
+    border-bottom: 1px solid #edeeef;
+    margin-top: 20px;
+  }
+  
+  .author {
+    display: flex;
+    align-items: center;
+   
+    padding-left: 30px;
+  }
+  .commentNickName{
+    padding-right: 20px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .author-name{
+    border: 1px solid magenta;
+    color: magenta;
+    border-radius: 15px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 30px;
+    font-size: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+  }
+  .author-date{
+    margin-right: 5px;
+    color: #868E96;
+    font-size: 12px;
+ 
+  }
+  
+  .author-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .author-comment {
+    margin-top: -20px;
+    font-size: 14px;
+    color: #868E96;
+  
+    padding-left: 30px;
+  
+  }
+  .inputDetail{
+    margin-left: 40px;
+   
+  }
+  .comment-input {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    
+  }
+  .comment-input input[type="text"]{
+    padding-top: 20px;
+  }
+
+  
+  .comment-input input[type="text"] {
+    flex: 1;
+    margin-right: 10px;
+    padding-right: 400px;
+  }
+
+  button {
+    height: 85px;
+
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nickname {
+    margin-right: 10px;
+  }
+  
+  .views {
+    margin-right: 10px;
+  }
+  .hearts{
+    margin-right: 20px;
+    
+  }
+  .date{
+    margin-right: 10px; 
+  
+  }
+  
+  
+  
+.right {
+    display: flex;
+  margin-left: auto;
+  padding-right: 30px;
 }
-.writeButton{
+
+.author-reply{
+    display: flex;
+    padding-left: 70px;
+
+}
+
+.right-reply{
+    padding-left: 20px;
+
+}
+.replyDelete{
+    font-size: 5px;
+    padding-bottom: 5px;
+    color: #474554;
+}
+.author-comment-reply{
+    margin-top: -20px;
+    font-size: 14px;
+    color: #868E96;
+    padding-bottom: 15px;
+    padding-left: 70px;
+  }
+
+  .commentBoxBox{
+    display: flex;
+    padding-left: 30px;
+  }
+  .submit {
+    border: 1px solid #474554;
+ background-color: #474554;
+ color: #fff;
+    width: 100px;
+    border-radius: 3px;
+  }
+.inputWi{
+    
+}
+textarea{
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    width: 550px;
+    height: 86px;
+    margin-right: 10px;
+    border-radius: 3px;
+    border: 1px solid #474554;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .boardContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 5px;
+  }
+  
+  nav {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  nav li {
+    margin-right: 10px;
+  }
+  
+  nav a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-size: 5px;
+    border-radius: 10px; 
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #474554;
+    border: 1px solid #edeeef;
+  }
+  .total{
+    background-color: #474554;
+    color: #ffffff;
+  }
+  h1 {
+    text-align: left;
+    padding-bottom: 30px;
+    padding-top: 100px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px; 
+    overflow: hidden; 
+    color: #474554;
+  }
+  
+  table th,
+  table td {
     padding: 10px;
+    text-align: center;
+  }
+  thead{
+    background-color: rgba(231, 239, 238, 0.5);
+    color: #868E96;
+  }
+  tbody tr:nth-child(1),
+  tbody tr:nth-child(2) {
+    background-color: rgba(237, 238, 239, 0.3); 
+
+}
+
+table thead,
+tbody tr {
+    border-bottom: 1px solid #edeeef; 
+}
+
+table {
+  border: 1px solid #edeeef;
+}
+
+
+
+
+  
+  .pagination-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination {
+    display: inline-block;
+  }
+  
+  .pagination a {
+    display: inline-block;
+
+    text-decoration: none;
+  }
+  
+  .pagination a span {
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #474554;
+  color: #ffffff;
+  text-decoration: none; 
+  }
+  .pagination a.active span {
+    background-color: silver;
+    color: #ffffff;
+  }
+  .search-box {
+    display: flex;
+    align-items: center;
+  }
+  .search-box select{
+    width: 25%;
+  }
+  .search-box select,
+  .search-box input[type="text"] {
+    padding: 5px;
+
+    text-align: center;
+    border: 1px solid silver;
+  }
+  
+  .search-box button {
+    padding: 5px 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 0;
+    background-color: transparent;
+    border:1px solid silver;
+    margin: 0;
+    box-sizing: border-box;
+    height: 30px; 
+  }
+
+
+.search-box select,
+.search-box input[type="text"] {
+  height: 30px; 
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+  .tagBasic, .tagHot, .tagNotice {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #474554;
+    color: #fff;
+  }
+  .tagNotice{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  table th i {
+    margin-right: 10px; 
+    margin-left: 10px;
+  }
+  .title{
+    text-align: left;
+    font-weight: bold;
+  }
+  .boardNumber{
+    margin-right: 10px;
+  }
+  
+
+
+
+
+/*아이폰 SE*/
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 375px) {
+
+    h1 {
+        padding-bottom: 1px;
+    padding-top: 100px;
+    }
+    .tagsss {
+        background-color: #474554;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+   .content {
+        font-size: 10px;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    .commentNickName {
+        padding-right: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .author-comment {
+        margin-top: -20px;
+        font-size: 12px;
+        color: #868E96;
+        padding-left: 30px;
+    }
+    .author-comment-reply {
+        margin-top: -20px;
+        font-size: 13px;
+        color: #868E96;
+        padding-bottom: 15px;
+        padding-left: 70px;
+    }
+    .commentBoxBox {
+        display: flex;
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    textarea {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 565px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+    }
+    .author-name {
+        border: 1px solid magenta;
+        color: magenta;
+        border-radius: 15px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 30px;
+        font-size: 16px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .edit, .reply, .and, .delete {
+        font-size: 19px;
+        color: #474554;
+    }
+
+    .replyDelete {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: #474554;
+    }
+}
+
+
+
+
+/*아이폰 12 pro*/
+@media only screen and (min-device-width : 376px) and (max-device-width : 390px) {
+    
+    h1 {
+        padding-bottom: 1px;
+    padding-top: 100px;
+    }
+    .tagsss {
+        background-color: #474554;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+   .content {
+        font-size: 10px;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    .commentNickName {
+        padding-right: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .author-comment {
+        margin-top: -20px;
+        font-size: 12px;
+        color: #868E96;
+        padding-left: 30px;
+    }
+    .author-comment-reply {
+        margin-top: -20px;
+        font-size: 13px;
+        color: #868E96;
+        padding-bottom: 15px;
+        padding-left: 70px;
+    }
+    .commentBoxBox {
+        display: flex;
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    textarea {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 565px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+    }
+    .author-name {
+        border: 1px solid magenta;
+        color: magenta;
+        border-radius: 15px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 30px;
+        font-size: 16px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .edit, .reply, .and, .delete {
+        font-size: 19px;
+        color: #474554;
+    }
+
+    .replyDelete {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: #474554;
+    }
+}
+
+
+/*아이폰 xr*/
+
+@media only screen and (min-device-width : 391px) and (max-device-width : 414px) {    
+    
+    h1 {
+        padding-bottom: 1px;
+    padding-top: 100px;
+    }
+    .tagsss {
+        background-color: #474554;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+   .content {
+        font-size: 10px;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    .commentNickName {
+        padding-right: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .author-comment {
+        margin-top: -20px;
+        font-size: 12px;
+        color: #868E96;
+        padding-left: 30px;
+    }
+    .author-comment-reply {
+        margin-top: -20px;
+        font-size: 13px;
+        color: #868E96;
+        padding-bottom: 15px;
+        padding-left: 70px;
+    }
+    .commentBoxBox {
+        display: flex;
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    textarea {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 565px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+    }
+    .author-name {
+        border: 1px solid magenta;
+        color: magenta;
+        border-radius: 15px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 30px;
+        font-size: 16px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .edit, .reply, .and, .delete {
+        font-size: 19px;
+        color: #474554;
+    }
+
+    .replyDelete {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: #474554;
+    }
+
+
+}
+
+/*아이패드 에어 */
+@media only screen and (min-device-width : 769px)  and (max-device-width : 820px){ 
+	
+
+    h1 {
+        padding-bottom: 1px;
+    padding-top: 100px;
+    }
+    .tagsss {
+        background-color: #474554;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+   .content {
+        font-size: 10px;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    .commentNickName {
+        padding-right: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .author-comment {
+        margin-top: -20px;
+        font-size: 12px;
+        color: #868E96;
+        padding-left: 30px;
+    }
+    .author-comment-reply {
+        margin-top: -20px;
+        font-size: 13px;
+        color: #868E96;
+        padding-bottom: 15px;
+        padding-left: 70px;
+    }
+    .commentBoxBox {
+        display: flex;
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    textarea {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 565px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+    }
+    .author-name {
+        border: 1px solid magenta;
+        color: magenta;
+        border-radius: 15px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 30px;
+        font-size: 16px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .edit, .reply, .and, .delete {
+        font-size: 19px;
+        color: #474554;
+    }
+
+    .replyDelete {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: #474554;
+    }
+
+}
+
+  /*iPad Mini  */
+@media only screen 
+  and (device-width: 768px) 
+  and (-webkit-device-pixel-ratio: 2) {
+
+    h1 {
+        padding-bottom: 1px;
+    padding-top: 100px;
+    }
+    .tagsss {
+        background-color: #474554;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+   .content {
+        font-size: 10px;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    .commentNickName {
+        padding-right: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .author-comment {
+        margin-top: -20px;
+        font-size: 12px;
+        color: #868E96;
+        padding-left: 30px;
+    }
+    .author-comment-reply {
+        margin-top: -20px;
+        font-size: 13px;
+        color: #868E96;
+        padding-bottom: 15px;
+        padding-left: 70px;
+    }
+    .commentBoxBox {
+        display: flex;
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    textarea {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 565px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+    }
+    .author-name {
+        border: 1px solid magenta;
+        color: magenta;
+        border-radius: 15px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 30px;
+        font-size: 16px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .edit, .reply, .and, .delete {
+        font-size: 19px;
+        color: #474554;
+    }
+
+    .replyDelete {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: #474554;
+    }
+
 }
