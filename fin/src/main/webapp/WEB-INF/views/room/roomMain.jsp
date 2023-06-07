@@ -13,6 +13,8 @@
 <title>예약페이지</title>
 </head>
 <body>
+
+<!-- 모달 파트 -->
 <div class="modal" tabindex="-1" id="exampleModal">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
@@ -25,26 +27,70 @@
  			<!-- 프로필 이미지  -->
  			<div>
  				<div id="imgProfileRoundBox">
- 					<img class="imgProfileImage" src="">
+ 					<img class="imgProfileImage" src="${contextPath}/resources/images/bill.jpg">
  				</div>
  			</div>
  			<!-- 닉네임과 이메일 -->
  			<div>
- 				<div></div>
- 				<div></div>
+ 				<div>깅깅이</div>
+ 				<div>gingging@naver.com</div>
  			</div>
  		</div>
  		<!-- 프로필 아이콘 -->
- 		<div></div>
+ 		<div class="profileIcons">
+ 			<!-- 악기 -->
+ 			<div class="eachIconDiv">
+ 				<div>
+ 					<i class="fa-solid fa-guitar"></i>Instrument
+ 				</div>
+ 				<div>
+	 				기타
+ 				</div>
+ 			</div>
+ 			<!-- 장르 -->
+ 			 <div class="eachIconDiv">
+ 				<div>
+					<i class="fa-solid fa-music"></i>Genre
+ 				</div>
+	 			<div>
+	 				재즈
+	 			</div>
+ 			</div>
+
+ 			<!-- 지역 -->
+ 			 <div class="eachIconDiv">
+ 				<div>
+ 					<i class="fa-solid fa-house"></i>Address
+ 				</div>
+	 			<div>
+	 				경기도 의정부시
+	 			</div>
+ 			</div>
+ 			<!-- 경력 -->
+ 			 <div class="eachIconDiv">
+ 				<div>
+ 					<i class="fa-solid fa-calendar-days"></i>YearsOfExp
+ 				</div>
+	 			<div>
+	 				4년
+	 			</div>
+ 			</div> 		
+ 		</div>
  		<!-- 소개 멘트 -->
- 		<div></div>
+ 		<div class="introMentInput">
+ 			<div class="mentBox">안녕하세요.<br> 재즈를 좋아하는 깅깅이입니다.<br>
+ 			재즈 밴드 깅깅스의 기타리스트입니다.</div>
+ 		</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">채팅하기</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
       </div>
     </div>
   </div>
 </div>
+
+
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="content" id="content">
 	<div class="logoDiv">
@@ -58,7 +104,7 @@
 	</div>
 	
 	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">프로필보기</button>	
-			
+	<a href="${contextPath}/usedWriting">중고글 작성</a>
 	<!-- 분류 창 -->
 	<div class="sorting-bar">
 		<!-- 각각의 메뉴 -->

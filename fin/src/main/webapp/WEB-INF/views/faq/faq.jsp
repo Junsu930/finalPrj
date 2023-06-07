@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/faq.css">
 </head>
 <body>
-	<div class="faqBox" id="faqBox">
+	<div class="faqBox disappear" id="faqBox">
 		<div class="faqQuestion">
 			<div class="faqDuck"><img src="${contextPath}/resources/images/guitarduckelec.png"></div>
 			<div class="talking">무엇을 도와드릴까요?</div>

@@ -12,8 +12,8 @@ document.getElementById("chatting-img").addEventListener("click", function(){
 			wsOpen();
 		}
 		if(document.getElementById("faqBox").style.width != '0px' || document.getElementById("faqBox").style.width != 0){
-			document.getElementById("faqBox").style.width = '0';
-			document.getElementById("faqBox").style.height = '0';
+			document.getElementById("faqBox").classList.remove('appear');
+			document.getElementById("faqBox").classList.add('disappear');
 		}
 		
 		
@@ -26,7 +26,11 @@ document.getElementById("chatting-img").addEventListener("click", function(){
 
 
 
+
+
 function wsOpen(){
+
+    
 	ws = new WebSocket("ws://" + '192.168.140.235:8080' + "/fin/chatting");
 	console.log("소켓 주소 : " + "ws://" + '192.168.140.235:8080' + "/fin/chatting");
 	

@@ -1,0 +1,328 @@
+.usedContent{
+	width: 80%;
+	height: 200vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	margin-top: 10em;
+	margin-bottom: 6em;
+	flex-direction: column;
+	
+}
+
+.usedContent >div{
+	width: 100%;
+}
+
+
+/* 기본 정보 */
+.usedContent > div:nth-of-type(1) {
+	flex-basis: 5%;
+	display: flex;
+	justify-content: flex-start;
+	align-items : flex-end;
+	border-bottom: 2px solid var(--grey-color);
+	padding: 1em;
+	
+}
+
+.usedContent > div:nth-of-type(1) > p:nth-child(1){
+	font-size: 1.4em;
+	margin-right: 10px;
+}
+
+.usedContent > div:nth-of-type(1) > p:nth-child(2){
+	color: var(--red-color);
+}
+/* 상품 이미지 */
+.usedContent > div:nth-of-type(2) {
+	flex-basis: 20%;
+	display: flex;
+	border-bottom: 2px solid var(--grey-color);
+	padding: 1em;
+}
+.usedContent > div:nth-of-type(2) > div:nth-of-type(1){
+	flex-basis: 20%;
+}
+/* 사진 칸 */
+.usedContent > div:nth-of-type(2) > div:nth-of-type(2){
+	width: 300px;
+	height: 250px;
+	cursor: pointer;
+
+}
+
+#imageInsertPic{
+	width: 100%;
+	height: 100%;
+}
+/* 제목 */
+.usedContent > div:nth-of-type(3) {
+	flex-basis: 5%;
+	display: flex;
+	border-bottom: 2px solid var(--grey-color);
+	padding: 1em;
+}
+
+usedTitleInputTextLength{
+	align-self: flex-end;
+}
+
+.usedContent > div:nth-of-type(3) > div:nth-child(1){
+	flex-basis: 20%;
+}
+
+.usedTitleDiv{
+	display: flex;
+	width: 90%;
+	
+}
+
+.usedTitleDiv > input{
+	width: 70%;
+	margin-right: 10px;
+	height: 3em;
+	border : 1px solid;
+	border-color: var(--grey-color);
+}
+
+
+/* 거래 지역 */
+.usedContent > div:nth-of-type(4) {
+	flex-basis: 20%;
+	display: flex;
+	padding: 1em;
+	border-bottom: 2px solid var(--grey-color);
+	
+}
+
+.usedContent > div:nth-of-type(4) > div:nth-child(1){
+	flex-basis: 17%;
+}
+
+.regionCardBox{
+	width: 60%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.regionCard{
+	width: 7em;
+	height: 3em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+	margin-top: 0;
+	cursor: pointer;
+}
+
+.regionCard > label{
+	width: 100%;
+	height : 100%;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--grey-color);
+}
+
+.regionBtn{
+	display: none;
+}
+
+.regionBtn:checked + label{
+	background-color: var(--accent-color);
+}
+
+
+
+
+/* 상태 */
+.usedContent > div:nth-of-type(5) {
+	flex-basis: 5%;
+	display: flex;
+	padding: 1em;
+	border-bottom: 2px solid var(--grey-color);
+	
+}
+
+.usedContent > div:nth-of-type(5) label{
+	margin-right: 10px;
+}
+
+.usedContent > div:nth-of-type(5) > div:nth-child(1){
+	flex-basis: 20%;
+}
+
+
+/* 가격 */
+.usedContent > div:nth-of-type(6) {
+	flex-basis: 10%;
+	display: flex;
+	border-bottom: 2px solid var(--grey-color);
+	padding: 1em;
+}
+
+.usedContent > div:nth-of-type(6) > div:first-child{
+	flex-basis: 20%;
+}
+
+.usedContent > div:nth-of-type(6) > div:last-child{
+	flex-basis: 88%;
+}
+
+#priceInput{
+	height: 3em;
+	width: 50%;
+	padding: 1em;
+	border : 1px solid;
+	border-color: var(--grey-color);
+}
+
+.usedPriceDiv > div{
+	margin-bottom: 1em;
+}
+/* 설명 */
+.usedContent > div:nth-of-type(7) {
+	flex-basis: 30%;
+	display: flex;
+	padding: 1em;
+	margin-bottom: 10px;
+}
+
+.usedContent > div:nth-of-type(7) > div:first-child{
+	flex-basis: 20%;
+}
+
+.usedContent > div:nth-of-type(7) > div:last-child{
+	flex-basis: 88%;
+}
+
+#usedDetailExplain{
+	resize: none;
+	width: 90%;
+	height: 90%;
+	padding: 1em;
+	border-color: var(--grey-color);
+}
+
+#detailExplainTextAmount{
+	width: 90%;
+	text-align: end;
+}
+/* 버튼 */
+.usedContent > div:nth-of-type(8) {
+	flex-basis: 5%;
+	display: flex;
+	width: 80%;
+	justify-content: flex-end;
+}
+
+#usedBoardInsertBtn{
+	width: 6em;
+	height: 3em;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: var(--grr-color);
+}
+
+@media (max-width:46.875rem){
+	
+	.regionCard{
+		width: 5em;
+	}
+	
+	#imageInsertPic {
+		width: 80%;
+		height: 80%;
+	
+	}
+	
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:415px) {
+	
+	.usedContent > div:nth-of-type(1) {
+		align-items: flex-start;
+		flex-direction: row;
+	}
+	
+	.usedContent > div {
+		flex-direction: column;
+	}
+	
+	.usedTitleDiv {
+		flex-direction: column;
+		
+	}
+	.usedContent > div:nth-of-type(3) >div{
+		margin: 7px;
+	}
+	
+	#usedTitleInputTextLength {
+		text-align: end;
+	}
+	.usedTitleDiv > input {
+		width: 100%;
+		padding: 5px;
+	}
+	
+	
+	#imageInsertPic {
+		width: 80%;
+		height: 80%;
+	
+	}
+	
+	.regionCardBox {
+		width: 100%;
+	}
+	
+	.usedContent > div:nth-of-type(4) > div:nth-child(1) {
+		margin-bottom: 10px;
+	}
+	
+	.regionCard{
+		font-size: 0.9em;
+	}
+	
+	.usedContent > div:nth-of-type(5) > div:nth-child(1) {
+		margin-bottom: 10px;
+	}
+	
+	.usedContent > div:nth-of-type(6) > div:first-child {
+		margin-bottom: 10px;
+	}
+	
+	#priceInput {
+		width: 80%;
+	}
+	
+	#usedDetailExplain {
+		width: 100%;
+		height: 70%;
+	}
+	
+	.usedContent > div:nth-of-type(7) > div:first-child {
+		flex-basis: 10%;
+	}
+	
+	.usedContent > div:nth-of-type(8) {
+		align-items: center;
+		justify-content: flex-start;
+	}
+	
+}
+
+@media all and (max-width:415px) {
+	
+	.regionCard {
+    	font-size: 0.8em;
+	}
+	
+}

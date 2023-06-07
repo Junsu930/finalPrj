@@ -113,3 +113,10 @@ body.darkmode .messageBox::-webkit-scrollbar-thumb {
     background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
 }
 
+/* 폰 */
+@media (max-width: 420px) {
+  .chatBody{
+  	width: 260px;
+  }
+}
+
