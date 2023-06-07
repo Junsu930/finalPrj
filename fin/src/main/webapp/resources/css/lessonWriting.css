@@ -41,32 +41,133 @@ body.darkmode .inputBox > input{
     margin-top: 8em;
 }
 
-.inputBox > input, 
-.inputBox > textarea,
-.inputBox > label{
-    padding: 1em 1em;
-    width: 40%;
-    resize: none;
-    border-radius: 0.5em;
+
+
+
+
+
+/* input */
+
+.input-box input:not(.inputBoxText) {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
     outline: none;
-    min-width: 300px;
+    font-size: 1em;
+    color: var(--label-color);
+    font-weight: 600;
+    padding: 0 35px 0 5px;
 }
 
-.inputBox > textarea{
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: var(--label-color);
+    line-height: 57px;
+}
+
+.input-box:not(.inputBoxText) {
+    position: relative;
+    width: 50%;
+    height: 50px;
+    border-bottom: 1px solid var(--stroke-color);
+    margin: 50px 0;
+}
+
+body.darkmode .input-box:not(.inputBoxText){
+    border-bottom: 1px solid var(--accent-color);
+}
+
+body.darkmode .input-box label:not(.textLabel){
+    color: var(--text-dark-color);
+}
+
+body.darkmode .input-box input{
+    color: var(--text-dark-color);
+}
+
+
+.input-box label:not(.textLabel) {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: var(--label-color);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+    letter-spacing: 0.3em;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+
+.inputBoxText textarea:focus~label,
+.iinputBoxText textarea:valid~label {
+    top: -1px;
+}
+
+/* input */
+
+
+/* textarea */
+
+body.darkmode .inputBoxText > textarea{
+    border: 1px solid var(--accent-color);
+    color: var(--text-dark-color);
+}
+
+body.darkmode .textLabel{
+    color: var(--text-dark-color);
+}
+
+
+.textLabel {
+    position: absolute;
+    top: 60%;
+    right:155px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: var(--label-color);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+    letter-spacing: 0.3em;
+}
+
+
+.inputBoxText{
+    position: relative;
+    margin-top: 3em;
+}
+
+.inputBoxText > textarea{
     height: 150px;
     background-color: transparent;
     border: 1px solid var(--stroke-color);
     font-size: 1.1em;
 }
 
-
-.inputBox > input{
-    height: 45px;
-    border: 1px solid var(--stroke-color);
-    font-size: 1em;
-    background-color: transparent;
+.inputBoxText > textarea{
+    padding: 1em 1em;
+    width: 50%;
+    resize: none;
+    border-radius: 0.5em;
+    outline: none;
+    min-width: 510px;
+    margin-top: 4em;
 }
 
+
+
+/* textarea */
 
 
 
@@ -84,7 +185,7 @@ body.darkmode .inputBox > input{
 }
 
 .genreBox > hr{
-    border: 1px solid var(--stroke-color);
+    border: 1px solid var(--border-color);
     width: 30%;
     margin:auto;
     margin-left: 35%;
@@ -115,7 +216,7 @@ body.darkmode .inputBox > input{
   
 .genreBox input[type=checkbox] + label:before {
     content: "\2714";
-    border: 0.1em solid var(--stroke-color);
+    border: 0.1em solid var(--border-color);
     border-radius: 0.2em;
     display: inline-block;
     width: 1em;
@@ -131,6 +232,12 @@ body.darkmode .inputBox > input{
 .genreBox input[type=checkbox]:checked + label:before {
     background-color: MediumSeaGreen;
     border-color: MediumSeaGreen;
+    color: var(--background-color);
+}
+
+body.darkmode .genreBox input[type=checkbox]:checked + label:before {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
     color: var(--background-color);
 }
 
@@ -153,7 +260,7 @@ body.darkmode .inputBox > input{
 }
 
 .lessonBox > hr{
-    border: 1px solid grey;
+    border: 1px solid var(--border-color);
     width: 30%;
     margin:auto;
     margin-left: 35%;
@@ -186,7 +293,7 @@ body.darkmode .inputBox > input{
   
 .lessonBox input[type=checkbox] + label:before {
     content: "\2714";
-    border: 0.1em solid var(--stroke-color);
+    border: 0.1em solid var(--border-color);
     border-radius: 0.2em;
     display: inline-block;
     width: 1em;
@@ -205,7 +312,56 @@ body.darkmode .inputBox > input{
     color: var(--background-color);
 }
 
+body.darkmode .lessonBox input[type=checkbox]:checked + label:before {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--background-color);
+}
+
 /* lessons */
+
+
+/* SUBMIT 버튼 */
+
+.writingBtnBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 10em;
+}
+
+#writingBtn{
+    width: 150px;
+    height: 40px;
+    border: 1px solid var(--label-color);
+    background: transparent;
+    border-radius: 0.5em;
+    letter-spacing: 0.3em;
+    text-align: center;
+    cursor: pointer;
+}
+
+#writingBtn:hover{
+    animation: in .8s ease-out;
+}
+
+@keyframes in{
+    0%{
+      letter-spacing: 0.3em;
+    }
+    50%{
+      letter-spacing: 0.6em
+    }
+    100%{
+      letter-spacing: 0.3em
+    }
+  }
+
+body.darkmode #writingBtn{
+    color: var(--text-dark-color);
+    border: 1px solid var(--accent-color);
+}
 
 
 
