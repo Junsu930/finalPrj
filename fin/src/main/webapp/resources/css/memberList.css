@@ -6,7 +6,7 @@
 }
 
 .item{
-	width: 350px;
+	width: 400px;
 	height: 200px;
 	margin: 2em;
 	border-radius: 10px;
@@ -77,5 +77,10 @@
 
 .darkmode .item {
 	border: 1px solid #fff;
+}
+
+
+.fa-solid fa-guitar {
+	width:16px;
 }
 

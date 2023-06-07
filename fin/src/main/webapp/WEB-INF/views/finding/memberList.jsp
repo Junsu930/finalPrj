@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/memberList.css">
+    
+    <script src="https://kit.fontawesome.com/cbcad42a26.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/marshallku/infinite-scroll/dist/infiniteScroll.js"></script>
     <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
@@ -24,45 +26,47 @@
 		<div class="item">
 	
 			<div class="namebox">
-                <p>아이콘 이름</p>
-            </div>
-	
-			<div class="info">
-                <div>악기</div>
-
-				<div>장르</div>
-
-				<div>거주지</div>
-			</div>
-	
-			<div class="chat">
-	
-				<div>채팅하기</div>
-
-				<div>프로필 보기</div>
-			</div>
-	    </div>
-	
-		<div class="item">
-	
-			<div class="namebox">
-                <p>아이콘 이름</p>
+                <p><i class="fa-solid fa-user"></i>이름</p>
             </div>
 	
             <!--악기 장르 거주지-->
 			<div class="info">
                 <div>악기</div>
 
-				<div>장르</div>
+				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
 
-				<div>거주지</div>
+				<div><i class="fa-solid fa-building"></i>거주지</div>
 			</div>
 	
 			<div class="chat">
 	
-				<div>채팅하기</div>
+				<div><i class="fa-regular fa-comment-dots"></i></div>
 
-				<div>프로필 보기</div>
+				<div><i class="fa-solid fa-circle-user"></i></div>
+			</div>
+	    </div>
+		
+	
+		<div class="item">
+	
+			<div class="namebox">
+                <p><i class="fa-solid fa-user"></i>이름</p>
+            </div>
+	
+            <!--악기 장르 거주지-->
+			<div class="info">
+                <div>악기</div>
+
+				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
+
+				<div><i class="fa-solid fa-building"></i>거주지</div>
+			</div>
+	
+			<div class="chat">
+	
+				<div><i class="fa-regular fa-comment-dots"></i>채팅하기</div>
+
+				<div><i class="fa-solid fa-circle-user"></i>프로필 보기</div>
 			</div>
 	    </div>
 
@@ -73,7 +77,7 @@
             </div>
 	
 			<div class="info">
-                <div>악기</div>
+                <div><i class="fa-solid fa-drum"></i>악기</div>
 
 				<div>장르</div>
 
@@ -152,6 +156,8 @@
 
 				<div>프로필 보기</div>
 			</div>
+	    </div>
+	    
 	    </div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
