@@ -1,0 +1,178 @@
+.boardContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 5px;
+  }
+  
+.naviBar {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.naviBar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.naviBar li {
+  margin-right: 10px;
+}
+
+.naviBar li a {
+  display: inline-block;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 5px;
+  border: none;
+  color: #474554;
+  cursor: pointer;
+}
+
+.naviBar li a.total {
+  background-color: #474554;
+  color: #ffffff;
+}
+
+.naviBar li a:hover {
+  background-color: #ffffff;
+  color: #474554;
+  border: 1px solid #edeeef;
+}
+  h1 {
+    text-align: left;
+    padding-bottom: 30px;
+    padding-top: 100px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px; 
+    overflow: hidden; 
+    color: #474554;
+  }
+  
+  table th,
+  table td {
+    padding: 10px;
+    text-align: center;
+  }
+  thead{
+    background-color: rgba(231, 239, 238, 0.5);
+    color: #868E96;
+  }
+  tbody tr:nth-child(1),
+  tbody tr:nth-child(2) {
+    background-color: rgba(237, 238, 239, 0.3); 
+
+}
+
+table thead,
+tbody tr {
+    border-bottom: 1px solid #edeeef; 
+}
+
+table {
+  border: 1px solid #edeeef;
+}
+
+
+
+
+  .pagination-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination {
+    display: inline-block;
+  }
+  
+  .pagination a {
+    display: inline-block;
+
+    text-decoration: none;
+  }
+  
+  .pagination a span {
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #474554;
+  color: #ffffff;
+  text-decoration: none; 
+  }
+  .pagination a.active span {
+    background-color: silver;
+    color: #ffffff;
+  }
+  .search-box {
+    display: flex;
+    align-items: center;
+  }
+  .search-box select{
+    width: 25%;
+  }
+  .search-box select,
+  .search-box input[type="text"] {
+    padding: 5px;
+
+    text-align: center;
+    border: 1px solid silver;
+  }
+  
+  .search-box button {
+    padding: 5px 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 0;
+    background-color: transparent;
+    border:1px solid silver;
+    margin: 0;
+    box-sizing: border-box;
+    height: 30px; 
+  }
+
+
+.search-box select,
+.search-box input[type="text"] {
+  height: 30px; 
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+  .tagBasic, .tagHot, .tagNotice {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #474554;
+    color: #fff;
+  }
+  .tagNotice{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  table th i {
+    margin-right: 10px; 
+    margin-left: 10px;
+  }
+  .title{
+    text-align: left;
+    font-weight: bold;
+  }
+  .boardNumber{
+    margin-right: 10px;
+  }
+  
