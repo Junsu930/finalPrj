@@ -9,7 +9,7 @@ public class BoardController {
 	@GetMapping("/board")
 	public String boardController() {
 		
-		return "board/boardDetail";
+		return "board/boardMain";
 		
 	}
 	
@@ -17,6 +17,13 @@ public class BoardController {
 	public String boardDetailController() {
 		
 		return "board/boardDetail";
+		
+	}
+	
+	@GetMapping("/boardWrite")
+	public String boardWriteController() {
+		
+		return "board/boardWrite";
 		
 	}
 

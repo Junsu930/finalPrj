@@ -19,7 +19,7 @@
               <a href="${contextPath}/main" class="navA">Band Archive</a>
           </div>
           <ul class="navUl">
-              <li><a href="" class="navA">Board</a></li>
+              <li><a href="board" class="navA">Board</a></li>
               <li><a href="room" class="navA">Reservations</a></li>
               <li><a href="used" class="navA">Used</a></li>
               <li><a href="lesson" class="navA">Lessons</a></li>
