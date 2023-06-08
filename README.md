@@ -1,4 +1,4 @@
-# 🎸 밴드 아카이브 (음악 밴드 커뮤니티) - 기타치는오리🦆 조 
+# 🎸 밴드 아카이브 (음악 밴드 커뮤니티) - 기타치는오리🦆 
 
 <h3>조장 : 이현경</h3>
 <h3>조원 : 김민성, 김준수, 이진영, 임정우</h3>
@@ -36,6 +36,7 @@
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)<br>
 ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![Maven](https://img.shields.io/badge/maven-C71A36.svg?style=for-the-badge&logo=apachemaven&logoColor=white)
 
 
 ### 🛠️ 사용 툴
@@ -43,4 +44,6 @@
 ![DBeaver](https://img.shields.io/badge/DBeaver-%23CC342D.svg?style=for-the-badge&logo=Databricks&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-### 사용 라이브러리
+### 🪵 사용 라이브러리
+![slick](https://img.shields.io/badge/Slick-C71A36.svg?style=for-the-badge&logo=SlickPic&logoColor=white)
+![fullCalendar](https://img.shields.io/badge/fullcalendar-4285F4.svg?style=for-the-badge&logo=googlecalendar&logoColor=white)
