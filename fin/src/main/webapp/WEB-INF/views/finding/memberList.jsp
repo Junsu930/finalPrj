@@ -158,6 +158,8 @@
 				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
 
 				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
+			</div>	
+				
 	    </div>
 	    
 	    </div>

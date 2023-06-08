@@ -29,9 +29,6 @@ window.addEventListener("load", () => {
 
 
 
-
-
-
 const loader = document.querySelector('.loadingio-spinner-magnify-khdk4exhsp9');
 const html = document.querySelector('html');
 
@@ -57,4 +54,5 @@ window.addEventListener('load', ()=>{
 $(window).load(function() {
     $('.loadingio-spinner-magnify-khdk4exhsp9').hide();
 });
+
 
