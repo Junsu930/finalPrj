@@ -23,7 +23,6 @@
               <li><a href="room" class="navA">Reservations</a></li>
               <li><a href="used" class="navA">Used</a></li>
               <li><a href="lesson" class="navA">Lessons</a></li>
-              <li><a href="findingMember" class="navA">test</a></li>
               
 
           </ul>

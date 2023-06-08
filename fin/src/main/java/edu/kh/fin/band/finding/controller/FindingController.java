@@ -13,6 +13,13 @@ public class FindingController {
 		
 	}
 	
+	@GetMapping("/findingLoder")
+	public String findingLoderController() {
+		
+		return "finding/findingLoder";
+		
+	}
+	
 
 	@GetMapping("/memberList")
 	public String memberListController() {

@@ -20,7 +20,6 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
 	<div class="container">
 
 		<div class="item">
@@ -31,7 +30,7 @@
 	
             <!--악기 장르 거주지-->
 			<div class="info">
-                <div>악기</div>
+                <div><i class="fa-solid fa-drum"></i></div>
 
 				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
 
@@ -40,9 +39,9 @@
 	
 			<div class="chat">
 	
-				<div><i class="fa-regular fa-comment-dots"></i></div>
+				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
 
-				<div><i class="fa-solid fa-circle-user"></i></div>
+				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
 			</div>
 	    </div>
 		
@@ -55,7 +54,7 @@
 	
             <!--악기 장르 거주지-->
 			<div class="info">
-                <div>악기</div>
+                <div><i class="fa-solid fa-drum"></i></div>
 
 				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
 
@@ -64,98 +63,101 @@
 	
 			<div class="chat">
 	
-				<div><i class="fa-regular fa-comment-dots"></i>채팅하기</div>
+				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
 
-				<div><i class="fa-solid fa-circle-user"></i>프로필 보기</div>
+				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
 			</div>
 	    </div>
 
         <div class="item">
 	
 			<div class="namebox">
-                <p>아이콘 이름</p>
+                <p><i class="fa-solid fa-user"></i>이름</p>
             </div>
 	
+            <!--악기 장르 거주지-->
 			<div class="info">
-                <div><i class="fa-solid fa-drum"></i>악기</div>
+                <div><i class="fa-solid fa-drum"></i></div>
 
-				<div>장르</div>
+				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
 
-				<div>거주지</div>
+				<div><i class="fa-solid fa-building"></i>거주지</div>
 			</div>
 	
 			<div class="chat">
 	
-				<div>채팅하기</div>
+				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
 
-				<div>프로필 보기</div>
+				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
 			</div>
 	    </div>
 
         <div class="item">
 	
 			<div class="namebox">
-                <p>아이콘 이름</p>
+                <p><i class="fa-solid fa-user"></i>이름</p>
             </div>
 	
+            <!--악기 장르 거주지-->
 			<div class="info">
-                <div>악기</div>
+                <div><i class="fa-solid fa-drum"></i></div>
 
-				<div>장르</div>
+				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
 
-				<div>거주지</div>
+				<div><i class="fa-solid fa-building"></i>거주지</div>
 			</div>
 	
 			<div class="chat">
 	
-				<div>채팅하기</div>
+				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
 
-				<div>프로필 보기</div>
+				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
 			</div>
 	    </div>
 
         <div class="item">
 	
 			<div class="namebox">
-                <p>아이콘 이름</p>
+                <p><i class="fa-solid fa-user"></i>이름</p>
             </div>
 	
+            <!--악기 장르 거주지-->
 			<div class="info">
-                <div>악기</div>
+                <div><i class="fa-solid fa-drum"></i></div>
 
-				<div>장르</div>
+				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
 
-				<div>거주지</div>
+				<div><i class="fa-solid fa-building"></i>거주지</div>
 			</div>
 	
 			<div class="chat">
 	
-				<div>채팅하기</div>
+				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
 
-				<div>프로필 보기</div>
+				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
 			</div>
 	    </div>
         
         <div class="item">
 	
 			<div class="namebox">
-                <p>아이콘 이름</p>
+                <p><i class="fa-solid fa-user"></i>이름</p>
             </div>
 	
+            <!--악기 장르 거주지-->
 			<div class="info">
-                <div>악기</div>
+                <div><i class="fa-solid fa-drum"></i></div>
 
-				<div>장르</div>
+				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
 
-				<div>거주지</div>
+				<div><i class="fa-solid fa-building"></i>거주지</div>
 			</div>
 	
 			<div class="chat">
 	
-				<div>채팅하기</div>
+				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
 
-				<div>프로필 보기</div>
-			</div>
+				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
 	    </div>
 	    
 	    </div>
