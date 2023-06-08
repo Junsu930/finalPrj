@@ -30,9 +30,10 @@ document.getElementById("chatting-img").addEventListener("click", function(){
 
 function wsOpen(){
 
+    let ipAddr = document.getElementById("ipAddr").value;
     
-	ws = new WebSocket("ws://" + '192.168.140.235:8080' + "/fin/chatting");
-	console.log("소켓 주소 : " + "ws://" + '192.168.140.235:8080' + "/fin/chatting");
+	ws = new WebSocket("ws://" + ipAddr +':8080' + "/fin/chatting");
+	console.log("소켓 주소 : " + "ws://" + ipAddr + ':8080' + "/fin/chatting");
 	
 	console.log(ws);
 	wsEvt();

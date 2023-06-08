@@ -86,7 +86,7 @@
 	font-size:  1.3em;
 	border: 2px solid;
 	border-radius: 10px;
-	box-shadow: 2px 2px 2px;
+	box-shadow: 2px 2px 3px var(--silver-color);
 	margin: 7px;
 }
 
@@ -132,15 +132,12 @@
 .mentBox{
 	border: 2px solid;
 	display: flex;
-	padding: 5px;
+	padding: 10px;
 	width: 95%;
 	height: 100%;
 	border-radius: 10px;
 }
 
-.modal-footer{
-	justify-content: space-around !important;
-}
 
 
 /* 폰 */
@@ -158,3 +155,25 @@
 	
 	
 }
+	.wrap-loading{ /*화면 전체를 어둡게 합니다.*/
+		position: fixed;
+		left:0;
+		right:0;
+		top:0;
+		bottom:0;
+		background: rgba(0,0,0,0.2); /*not in ie */
+		z-index: 10;
+		filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
+	}
+    .wrap-loading div{ /*로딩 이미지*/
+        position: fixed;
+        top:50%;
+        left:50%;
+        margin-left: -21px;
+        margin-top: -21px;
+		z-index: 1000;
+    }
+
+    .display-none{ /*감추기*/
+        display:none;
+    }

@@ -20,9 +20,9 @@
 
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<!-- <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" /> -->
-		<property name="url" value="jdbc:oracle:thin:@localhost:xe" />
-		<property name="username" value="community" />
-		<property name="password" value="1234" />
+		<property name="url" value="jdbc:oracle:thin:@112.220.137.37:1521:xe" />
+		<property name="username" value="bandarchive" />
+		<property name="password" value="bandarchive" />
 		
 		<!-- defaultAutoCommit: SQL 수행 후 자동 COMMIT 설정. (기본값 : true) -->
 		<property name="defaultAutoCommit" value="false" />

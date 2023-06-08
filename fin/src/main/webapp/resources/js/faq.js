@@ -65,7 +65,15 @@ for(let each of qList){
 
 			let div2 = document.createElement("div");
 			div2.className = 'answerBox';
-			div2.innerHTML = '<p class="replayQuestion">🎸 밴드 아카이브는 어떤 사이트인가요?</p>'
+
+			let replayQuesetion = document.createElement("p");
+			replayQuesetion.className="replayQuestion";
+			replayQuesetion.innerHTML = '🎸 밴드 아카이브는 어떤 사이트인가요?';
+
+			console.log(drDuck);
+			drDuck.appendChild(replayQuesetion);
+
+			
 			div2.innerHTML += '밴드 아카이브는 종합 밴드 커뮤니티입니다.<br>일반적인 게시판 이용은 물론<br>밴드 멤버 검색과 연습실 예약<br>' +
 						 '중고 물품 거래 또한 이용 가능합니다.'; 
 
@@ -83,7 +91,17 @@ for(let each of qList){
 
 			let div2 = document.createElement("div");
 			div2.className = 'answerBox';
-			div2.innerHTML = '<p class="replayQuestion">🔎 밴드 멤버를 찾고 싶어요</p>'
+
+			let replayQuesetion = document.createElement("p");
+			replayQuesetion.className="replayQuestion";
+			replayQuesetion.innerHTML = '🔎 밴드 멤버를 찾고 싶어요';
+			
+			console.log(drDuck);
+
+			drDuck.appendChild(replayQuesetion);
+
+			console.log(drDuck);
+
 			div2.innerHTML += '밴드 아카이브는 멤버 찾기 기능을 제공합니다.<br>마이페이지의 밴드 찾기를 이용해보세요<br>간단한 조건을 입력하시고<br>' +
 						 '원하시는 멤버를 검색하실 수 있습니다.<br>'+'채팅하기를 통해 이야기를 나누고 밴드를 결성해보세요.'; 
 
@@ -101,7 +119,15 @@ for(let each of qList){
 
 			let div2 = document.createElement("div");
 			div2.className = 'answerBox';
-			div2.innerHTML = '<p class="replayQuestion">📻 중고 물품 거래는 안전거래인가요?</p>'
+
+			
+			let replayQuesetion = document.createElement("p");
+			replayQuesetion.className="replayQuestion";
+			replayQuesetion.innerHTML = '📻 중고 물품 거래는 안전거래인가요?';
+
+
+			drDuck.append(replayQuesetion);
+
 			div2.innerHTML += '밴드 아카이브는 중고 거래 게시판 제공만 지원합니다.<br>더치트 및 사기 조회에 힘써주시고<br>직거래 위주로 거래해주세요.<br>' +
 						 '밴드 아카이브는 거래 중 발생한 일에 대해서<br>'+'민, 형사적 책임을 지지 않습니다.'; 
 
@@ -118,7 +144,13 @@ for(let each of qList){
 
 			let div2 = document.createElement("div");
 			div2.className = 'answerBox';
-			div2.innerHTML = '<p class="replayQuestion">🤣 밴드 멤버가 나갔어요</p>'
+						
+			let replayQuesetion = document.createElement("p");
+			replayQuesetion.className="replayQuestion";
+			replayQuesetion.innerHTML = '🤣 밴드 멤버가 나갔어요';
+
+			drDuck.append(replayQuesetion);
+
 			div2.innerHTML += '밴드 아카이브의 밴드 리더는 멤버 추방 기능을 제공합니다.<br>나간 멤버는 더 이상 밴드 게시판을 이용하지 못하도록<br>멤버 추방 기능을 이용해보세요.<br>' +
 						 '새로운 멤버는 멤버 찾기 기능을 이용해 <br>수월하게 구할 수 있습니다.'; 
 
@@ -135,7 +167,13 @@ for(let each of qList){
 
 			let div2 = document.createElement("div");
 			div2.className = 'answerBox';
-			div2.innerHTML = '<p class="replayQuestion">✖️ 연습실 예약 취소는 어떻게 하나요?</p>'
+
+			let replayQuesetion = document.createElement("p");
+			replayQuesetion.className="replayQuestion";
+			replayQuesetion.innerHTML = '✖️ 연습실 예약 취소는 어떻게 하나요?';
+
+			drDuck.append(replayQuesetion);
+
 			div2.innerHTML += '마이페이지의 예약 내역에서 취소하기를 누르시면 됩니다.<br>연습실 주인에게 즉시 알림이 가게 되며<br>승인 시 연습실 예약이 취소됩니다.<br>' +
 						 '빠른 처리를 위해서는 페이지 내에 기입된 <br>연습실 번호로 전화 문의를 해주시면 됩니다.'; 
 

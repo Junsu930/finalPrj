@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.net.InetAddress"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,19 @@
 <title>채팅</title>
 </head>
 <body>
-<input type="hidden" id="ipAddr" value="${ ipAddr}">
+<%
+	String strIpAddress = "";
+
+	try {
+		InetAddress inetAddress = InetAddress.getLocalHost();
+		strIpAddress = inetAddress.getHostAddress();
+		
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+%>
+<input type="hidden" id="ipAddr" value="<%=strIpAddress%>">
 <input type="hidden" id="sessionId" value="">
 <div class="chatBody" id="chatBody">
 	<div class="messageBox" id="messageBox">
