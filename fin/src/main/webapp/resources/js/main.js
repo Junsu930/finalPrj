@@ -76,7 +76,9 @@ const reservationText = document.querySelector('.reservationText');
 
 window.addEventListener("scroll", ()=>{
 
+
   const scrollValue = getCurrentScrollPercentage();
+  console.log(scrollValue);
 
 // guitar Text
   if(scrollValue > 28){
@@ -90,21 +92,63 @@ window.addEventListener("scroll", ()=>{
   if(scrollValue > 40){
     usedText.style.animation = "slideDrum 1.2s ease-out forwards"
     if(scrollValue > 49){
-      usedText.style.animation = "disappearSlideDrum 1.2s ease-out"
+      usedText.style.animation = "disappearSlideDrum 1.2s ease-out forwards"
     }
   }
 
 // headphone Text
- if(scrollValue > 52){
-  reservationText.style.animation = "slideHeadPhone 1.2s ease-out forwards"
-  if(scrollValue > 60){
-    reservationText.style.animation = "disappearSlideHeadPhone 1.2s ease-out forwards"
+  if(scrollValue > 52){
+    reservationText.style.animation = "slideHeadPhone 1.2s ease-out forwards"
+    if(scrollValue > 60){
+      reservationText.style.animation = "disappearSlideHeadPhone 1.2s ease-out forwards"
+    }
   }
- }
+
+
+
+
+//  i-pad 미디어쿼리 폰 반응형
+
+  const media = window.matchMedia("screen and (min-width:47.5rem) and (max-width: 52rem)");
+
+  if(media.matches){
+    if(scrollValue > 26){
+      boardText.style.animation = "slideGuitar 1.2s ease-out forwards"
+    }else if(scrollValue > 37.6){
+      boardText.style.animation = "disappearSlideGuitar 1.2s ease-out forwards"
+    }
+  }
+
+  if(media.matches){
+    if(scrollValue > 38){
+      usedText.style.animation = "slideDrum 1.2s ease-out forwards"
+    }else if(scrollValue == 50 ){
+      usedText.style.animation = "disappearSlideDrum 1.2s ease-out forwards"
+    }
+  }
+
+  if(media.matches){
+    if(scrollValue > 51){
+      reservationText.style.animation = "slideHeadPhone 1.2s ease-out forwards"
+    }else if(scrollValue == 60 ){
+      reservationText.style.animation = "disappearSlideHeadPhone 1.2s ease-out forwards"
+    }
+  }
+
 
 });
 
+
+
+
+
+
+
+
 // ============================@keyframes============================
+
+
+
 
 
 

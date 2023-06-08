@@ -180,7 +180,7 @@ input::-webkit-inner-spin-button {
 
 
 #mainBtn:hover{
-  animation: in .8s ease-out;
+  animation: in .5s ease-out;
 }
 
 @keyframes in{
@@ -423,7 +423,6 @@ body.darkmode .bi-chevron-compact-up{
 
 
 
-
 /* ===============================main Text=============================== */
 
 
@@ -456,38 +455,42 @@ body.darkmode .bi-chevron-compact-up{
 }
 
 
-
+.textWrapper{
+  position: relative;
+}
 
 /* 미디어 쿼리 */
 
 /* mian Text media */
 
-@media screen and (max-width:53em){
+/* @media screen and (max-width:52rem){
   .mainTextP, hr, .topBtn{
     display: none;
   }
+
+
   .mainBoard{
-    font-size: 2em;
+    font-size: 1.8em;
     position: absolute;
-    bottom: -3.5em;
+    top: 5em;
   }
  
 
   .mainUsed{
-    font-size: 2em;
+    font-size: 1.8em;
     position: absolute;
-    top: -1.3em;
-    left: -2em;
+    bottom: 3em;
+    left: -4em;
   }
 
 
   .mainReser{
-    font-size: 2em;
+    font-size: 1.8em;
     position: absolute;
-    left: -16em;
-    top: -0.8em;
+    top: 2em;
+    right: -1em;
   }
-}
+} */
 
 /* mian Text media */
 
@@ -501,9 +504,105 @@ body.darkmode .bi-chevron-compact-up{
   }
 }
 
+
+@media screen and (width:48.2rem) {
+
+  .mainBoard{
+    font-size: 1.8em;
+    position: absolute;
+    top: 15em;
+    left: 4em;
+  }
+  
+  
+}
+
+
+
+
+
 /* 미디어쿼리 */
 
 
+/* 반응형 키프레임 */
+
+/* guitar Text */
+/* 26 */
+@keyframes slideGuitarMedia{
+  from{
+    right: -10em;
+    opacity: 0;
+
+  }to{
+    top: 5em;
+    right: 3em;
+    opacity: 1;
+  }
+}
+
+/* 30 */
+@keyframes disappearSlideGuitarMedia{
+  from{
+    top: 5em;
+    right: 3em;
+    opacity: 1;
+  }to{
+    right: -10em;
+    opacity: 0;
+  }
+}
+
+
+
+/* drum Text */
+/* 32 */
+@keyframes slideDrumMedia{
+  from{
+    left: 0;
+    opacity: 0;
+  }to{
+    left: 10em;
+    opacity: 1;
+  }
+}
+
+
+/* 37 */
+@keyframes disappearSlideDrumMedia{
+  from{
+    left: 10em;
+    opacity: 1;
+  }to{
+    left: 0;
+    opacity: 0;
+  }
+}
+
+
+/* 37.5 */
+@keyframes slideHeadPhoneMedia{
+  from{
+    top: 5em;
+    opacity: 0;
+  }to{
+    opacity: 1;
+    top: -3em;
+    right: 4em;
+  }
+}
+
+
+/* 43 */
+@keyframes disappearSlideHeadPhoneMedia{
+  from{
+    opacity: 1;
+    top: -3em;
+    right: 4em;
+  }to{
+    top: 5em;
+    opacity: 0;
+  }
+}
 
 
 

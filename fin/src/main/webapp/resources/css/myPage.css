@@ -100,11 +100,13 @@
     justify-content: space-around;
     width: 100%;
     margin-top: 1em;
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.7em;
 }
 
 .myPageInfo > div:last-child > div{
     width: 50%;
-    padding-left: 4em;
+    padding-left: 3em;
 }
 
 .myPageInfo > div:last-child > div > ul,
@@ -120,6 +122,11 @@
 
 .secondUlBox > ul > li{
     font-size: 1.1em;
+}
+
+.secondUlBox i {
+    padding: 0 0.5em;
+    cursor: pointer;
 }
 
 .secondUlBox > ul > li:nth-child(3){

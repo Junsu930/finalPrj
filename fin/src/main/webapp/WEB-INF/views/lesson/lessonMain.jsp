@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     
     <section class="firstSec">
-	    <div class="titleBox" onclick="location.href='${contextPath}/lessonMain'">
+	    <div class="titleBox" onclick="location.href='${contextPath}/lesson'">
         	<svg id="logo" viewBox="0 0 508 114" fill="none" xmlns="http://www.w3.org/2000/svg">
 	            <mask id="path-1-outside-1_517_606" maskUnits="userSpaceOnUse" x="0.353516" y="0.335938" width="508" height="113" fill="black">
 	            <rect fill="white" x="0.353516" y="0.335938" width="508" height="113"/>
@@ -44,7 +44,7 @@
 	
 		<a href="${contextPath}/lessonWriting" class="lessonA"><i class="bi bi-pencil-square"></i></a>
 	    <div>
-	        <button class="labelLesson lessonList" onclick="selctLesson()"><span>LESSON</span><i class="bi bi-caret-down" id="bi"></i></button>
+	        <button class="labelLesson lessonList" onclick="selctLesson()" id="lessonBtn"><span>LESSON</span><i class="bi bi-caret-down" id="bi"></i></button>
 	        <ul class="listBox">
 	            <li><button class="list">GUITAR</button></li>
 	            <li><button class="list">BASS</button></li>
@@ -58,7 +58,7 @@
 	    </div>
 	
 	    <div>
-			<button class="labelLocation locationListBtn" onclick="selectLocation()"><span>LOC</span><i class="bi bi-caret-down" id="bi2"></i></button>
+			<button class="labelLocation locationListBtn" onclick="selectLocation()" id="locBtn"><span>LOC</span><i class="bi bi-caret-down" id="bi2"></i></button>
 			<ul class="listBox locationListBox">
 				<li><button class="list locationList">서울</button></li>
 				<li><button class="list locationList">대전</button></li>
