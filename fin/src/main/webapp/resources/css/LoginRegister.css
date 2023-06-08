@@ -1,16 +1,12 @@
-*{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-}
-
-
-
 body{
     min-height: 100vh;
-    background: url('${contextPath}/resources/images/loginBack.jpeg') no-repeat;
+    background: url('../images/loginBack.jpeg') no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+body.darkmode{
+    background: url('../images/login-dark.jpeg') no-repeat;
 }
 
 .loginSection{
@@ -247,10 +243,13 @@ body{
     text-decoration: underline;
 }
 
-.busniessBox{
+ .busniessBox{
     display: none;
-}
+} 
 
+.busniessBox.visible {
+    display: block;
+}
 
 
 
