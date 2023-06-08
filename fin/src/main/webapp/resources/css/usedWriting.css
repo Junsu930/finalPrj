@@ -1,12 +1,12 @@
 .usedContent{
-	width: 80%;
+	width: 65%;
 	height: 200vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: auto;
 	margin-top: 10em;
-	margin-bottom: 6em;
+	margin-bottom: 10em;
 	flex-direction: column;
 	
 }
@@ -28,7 +28,7 @@
 }
 
 .usedContent > div:nth-of-type(1) > p:nth-child(1){
-	font-size: 1.4em;
+	font-size: 1.8em;
 	margin-right: 10px;
 }
 
@@ -43,6 +43,7 @@
 	padding: 1em;
 }
 .usedContent > div:nth-of-type(2) > div:nth-of-type(1){
+	font-size: 1.2em;
 	flex-basis: 20%;
 }
 /* 사진 칸 */
@@ -70,6 +71,7 @@ usedTitleInputTextLength{
 }
 
 .usedContent > div:nth-of-type(3) > div:nth-child(1){
+	font-size: 1.2em;
 	flex-basis: 20%;
 }
 
@@ -80,11 +82,13 @@ usedTitleInputTextLength{
 }
 
 .usedTitleDiv > input{
+	padding : 10px;
 	width: 70%;
 	margin-right: 10px;
 	height: 3em;
 	border : 1px solid;
 	border-color: var(--grey-color);
+	border-radius: 10px;
 }
 
 
@@ -98,6 +102,7 @@ usedTitleInputTextLength{
 }
 
 .usedContent > div:nth-of-type(4) > div:nth-child(1){
+	font-size: 1.2em;
 	flex-basis: 17%;
 }
 
@@ -117,6 +122,7 @@ usedTitleInputTextLength{
 	margin: 10px;
 	margin-top: 0;
 	cursor: pointer;
+	border-radius: 10px;
 }
 
 .regionCard > label{
@@ -127,6 +133,7 @@ usedTitleInputTextLength{
 	justify-content: center;
 	align-items: center;
 	border: 1px solid var(--grey-color);
+	border-radius: 10px;
 }
 
 .regionBtn{
@@ -154,6 +161,7 @@ usedTitleInputTextLength{
 }
 
 .usedContent > div:nth-of-type(5) > div:nth-child(1){
+	font-size: 1.2em;
 	flex-basis: 20%;
 }
 
@@ -167,6 +175,7 @@ usedTitleInputTextLength{
 }
 
 .usedContent > div:nth-of-type(6) > div:first-child{
+	font-size: 1.2em;
 	flex-basis: 20%;
 }
 
@@ -180,6 +189,7 @@ usedTitleInputTextLength{
 	padding: 1em;
 	border : 1px solid;
 	border-color: var(--grey-color);
+	border-radius: 10px;
 }
 
 .usedPriceDiv > div{
@@ -194,6 +204,7 @@ usedTitleInputTextLength{
 }
 
 .usedContent > div:nth-of-type(7) > div:first-child{
+	font-size: 1.2em;
 	flex-basis: 20%;
 }
 
@@ -207,6 +218,8 @@ usedTitleInputTextLength{
 	height: 90%;
 	padding: 1em;
 	border-color: var(--grey-color);
+	font-size: 1.4em;
+	border-radius: 10px;
 }
 
 #detailExplainTextAmount{
@@ -222,6 +235,7 @@ usedTitleInputTextLength{
 }
 
 #usedBoardInsertBtn{
+	font-size: 1em;
 	width: 6em;
 	height: 3em;
 	border: none;
@@ -288,7 +302,7 @@ usedTitleInputTextLength{
 	}
 	
 	.regionCard{
-		font-size: 0.9em;
+		font-size: 1.2em;
 	}
 	
 	.usedContent > div:nth-of-type(5) > div:nth-child(1) {
@@ -319,7 +333,7 @@ usedTitleInputTextLength{
 	
 }
 
-@media all and (max-width:415px) {
+@media all and (max-width:400px) {
 	
 	.regionCard {
     	font-size: 0.8em;

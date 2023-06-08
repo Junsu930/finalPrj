@@ -1,7 +1,5 @@
 package edu.kh.fin.band.chatting.controller;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,20 +13,6 @@ public class ChattingController {
 	public ModelAndView chat(Model model) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("chatting/chatting");
-		
-		String strIpAddress = "";
-
-		try {
-			InetAddress inetAddress = InetAddress.getLocalHost();
-			strIpAddress = inetAddress.getHostAddress();
-			
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		model.addAttribute("ipAddr", strIpAddress);
 		
 		
 		return mv;

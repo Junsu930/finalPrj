@@ -1,6 +1,7 @@
-*{
-	box-sizing: border-box;
-}
+
+html { 
+  scroll-behavior: smooth; 
+} 
 
 /*
 div{
@@ -22,17 +23,13 @@ body{
 	width: 80%;
 	margin: auto;
 	margin-top : 100px;
-	margin-bottom : 100px;
+	margin-bottom : 150px;
 	display: flex;
-	border: 2px solid;
 	border-radius: 7px;
-	border-color: var(--grey-color);
 	height: 320vh;
 }
 
-body.darkmode > .content{
-	border-color: var(--background-color);
-}
+
 
 
 .leftSide{
@@ -40,7 +37,6 @@ body.darkmode > .content{
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	border-right: 1px solid;
 }
 
 /* 사진 영역 */
@@ -102,7 +98,7 @@ body.darkmode > .content{
 	text-align: center;
 	font-size: 1.4em;
 	border-bottom: 3px solid;
-	border-color: var(--stroke-color);
+	border-color: var(--grr-color);
 	
 }
 
@@ -124,11 +120,6 @@ body.darkmode a{
 
 }
 
-.introduction a:hover {
-	background-color: var(--grr-color);
-	border-radius: 10px;
-
-}
 
 .introduction > div:nth-child(1) {
 	height: 60px;
@@ -228,6 +219,7 @@ body.darkmode .fc-day-past{
 	border-color : var(--grey-color);
 	text-align: center;
 	margin-top: 20px;
+	padding: 10px;
 }
 
 
@@ -378,6 +370,16 @@ body.darkmode .fc-day-past{
     background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
 }
 
+@media (max-width:1200px){
+	
+	.content{
+		flex-direction: column;
+		height: 120%;
+
+	}
+	
+}
+		
 
 @media (max-width:46.875rem){
 	
@@ -391,7 +393,6 @@ body.darkmode .fc-day-past{
 		margin-top: 20px;
 	}
 		
-	
 }
 
 /* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/

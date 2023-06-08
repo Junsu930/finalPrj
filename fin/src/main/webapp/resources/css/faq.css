@@ -4,13 +4,15 @@
 	bottom: 130px;
 	background-color: var(--grr-color);
 	border-radius: 10px;
-	display: flex;
 	justify-content: center;
 	z-index: 100;
 	flex-direction: column;
     justify-content: flex-start;
     overflow: auto;
     transition-duration : 1s;
+    padding-top: 3em;
+    padding-bottom: 5em;
+    height: -webkit-fill-available;
 }
 
 #faq-img{
@@ -28,7 +30,6 @@
 
 .faqQuestion{
 	display: flex;
-	flex-direction: column;
 	align-items: flex-start;
 	margin-right: 10px;
 	margin-top: 10px;
@@ -39,11 +40,14 @@
 	background-color: var(--background-color);
 	color: var(--text-color);
 	border-radius: 10px;
+	margin-left: 10px;
 }
 
 
+
 .talking{
-	padding : 5px;
+	padding : 10px;
+
 }
 
 .faqDuck{
@@ -74,7 +78,7 @@
 }
 
 .Q-lists li{
-	padding: 5px;
+	padding: 10px;
 	background-color: var(--background-color);
 	color: var(--text-color);
 	list-style: none;
@@ -85,7 +89,7 @@
 
 .answerBox{
 	background: white;
-    padding: 5px;
+    padding: 10px;
     border-radius: 10px;
     color: black;
 }
@@ -93,14 +97,12 @@
 
 /* display를 나타나게 하는 속성 */
 .appear{
-	width: 500px;
-	height: 500px;
+	display: flex;
 }
 
 /* dispaly를 사라지게 하는 속성 */
 .disappear{
-	width: 0px;
-	height: 0px;
+	display: none;
 }
 
 
@@ -145,7 +147,7 @@
 }
 
 .moreQuestion{
-	padding: 5px;
+	padding: 10px;
     background-color: var(--background-color);
     color: var(--text-color);
     list-style: none;
@@ -156,9 +158,12 @@
 
 .replayQuestion {
 	margin-bottom: 30px;
-	background-color: var(--accent-color);
+	margin-left: 10px;
+	background-color: var(--scroll-dark-color);
 	border-radius: 10px;
 	width: fit-content;
     padding: 0 10px;
+    height: 3em;
+    line-height: 3em;
 }
 

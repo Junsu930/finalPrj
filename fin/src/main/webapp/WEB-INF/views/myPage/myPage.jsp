@@ -18,13 +18,16 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-    
+    <jsp:include page="/WEB-INF/views/profile/lookProfile.jsp"/>
     
     <section class="myPageWrapper">
         <section class="myPageInfo">
             <div>
                 <span>개다리방방</span>
-                <ion-icon name="person-circle" id="profileIcon"></ion-icon>
+	               <input type="hidden" value="1" id="hiddenUserNo">
+	               <div id="toModalDiv" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	                	<ion-icon name="person-circle" id="profileIcon"></ion-icon>
+	               </div>
             </div>
 
             <div class="imgBox">
@@ -876,9 +879,7 @@
     
     
 
-
-
-
+ 
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

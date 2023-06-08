@@ -1,26 +1,10 @@
-*{
-	box-sizing: border-box;
-}
 
-/*
-div{
-	border: 1px solid;
-	border-color: var(--text-color);
-}
-
-body.darkmode div{
-	border-color: var(--background-color);
-}
-*/
-
-body{
-	margin: 0px;
-}
 
 .content{
 	width: 80%;
 	margin: auto;
-	margin-top : 200px;
+	margin-top : 12em;
+	margin-bottom: 20em;
 	
 }
 
@@ -39,18 +23,76 @@ body{
 .sorting-bar > div:first-child{
 	flex-basis: 30%;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .sorting-bar > div:last-child {
-	flex-basis: 70%;
+	width : 65%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
   	position: relative;
 }
 
+.regionBtn{
+	width: 150px;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.regionBtn > span{
+	font-size: 1.2em;
+	margin-right: 3px;
+}
+
+.regionListUl{
+    width: 150px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    padding: 0.5em 0.5em;
+    margin-top: 0.3em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: var(--background-color);
+    z-index: 10;
+    position: absolute;
+    top: 8em;
+}
+
+.disappearList{
+	display: none;
+}
+
+.regionListUl li{
+	padding: 0.5em 0.5em;
+    cursor: pointer;
+    list-style: none;
+}
+
+.darkmode .regionListUl li{
+	
+	color: var(--text-color);
+}
+
+.regionListUl li:hover{
+	background-color: var(--accent-color);
+	border-radius: 10px;
+}
+
+.darkmode .regionBtn{
+	background-color: var(--background-nav-color);
+}
+/*
 select{
 	width: 200px; 
 	padding: .8em .5em; 
@@ -65,15 +107,18 @@ select{
 select::-ms-expand {
     display: none;
 }
+*/
 
 #room-search{
-	width: 75%; 
+	width: 100%; 
 	padding: .8em .5em; 
+	height : 40px;
 	border: 1px solid #999;
 	border-radius: 10px;
 	-webkit-appearance: none; 
 	-moz-appearance: none;
 	appearance: none;
+	box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 /* 검색 버튼 */
@@ -82,7 +127,7 @@ select::-ms-expand {
 	background-color: transparent;
 	cursor: pointer;
 	position: absolute;
-	right: 9em;
+	right: 5%;
 	
 }
 
@@ -100,12 +145,19 @@ select::-ms-expand {
 	height: 300px;
 	margin: 2em;
 	border-radius: 10px;
-	border: 1px solid black;
+	border: 2px solid var(--silver-color);
+	box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
 	display: flex;
 	flex-direction: column;
 	cursor: pointer;
 	
 }
+
+.darkmode .box-card{
+	box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+
 
 body.darkmode .box-card{
 	border: 1px solid;
@@ -116,8 +168,8 @@ body.darkmode .box-card{
 	flex-basis: 50%;
 	background-image: url('../images/band.jpg');
 	background-size: cover;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 	margin-bottom: 5px;
 }
 /* 제목 글씨 */
@@ -151,6 +203,7 @@ body.darkmode .box-card{
 	display: flex;
 	align-items: center;
 	margin-left: 15px;
+	font-size: 0.9em;
 }
 
 /* 구성 영역 */
@@ -261,24 +314,38 @@ body.darkmode #titleLogo{
 @media (max-width:46.875rem){
 	
 	.content{
-
-	width: 500px;
-	margin: auto;
-	margin-top: 100px;
-	margin-bottom: 100px;
 	
-	}
-	select {
+		margin: auto;
+		margin-top: 100px;
+		margin-bottom: 100px;
 	
-		width: 100px;
 	}
 	
 	#s-btn{
-	border: 0;
-	background-color: transparent;
-	cursor: pointer;
-	position: absolute;
-	right: 6em;
+		border: 0;
+		background-color: transparent;
+		cursor: pointer;
+		position: absolute;
 	
 	}
+	
+	#room-search {
+	
+		margin-left: 10px;
+	}
+}
+
+@media all and (max-width:415px) {
+	
+	.logoDiv{
+		margin-left: 0;
+	}
+	
+	.sorting-bar{
+		
+		flex-direction: column;
+		align-items: center;
+		margin-top: 20%;
+	}
+	
 }
