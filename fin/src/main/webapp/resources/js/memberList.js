@@ -58,16 +58,3 @@ $(window).load(function() {
     $('.loadingio-spinner-magnify-khdk4exhsp9').hide();
 });
 
-.loadingio-spinner-magnify-khdk4exhsp9 {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    display: block;
-    opacity: 0.8;
-    background: white;
-    z-index: 99;
-    text-align: center;
-}
-
