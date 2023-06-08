@@ -17,15 +17,18 @@
    <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="boardContainer">
-    <h1>전체 게시판</h1>
+    <div class="totalTitle">전체 게시판</div>
+    
     <div class="naviBar">
       <ul>
         <li><a href="#" class="total">전체</a></li>
         <li><a href="#">공지</a></li>
         <li><a href="#">인기게시판</a></li>
         <li><a href="#">일반게시판</a></li>
+       <button class="write"><a href="boardWrite">글쓰기</a></button>
       </ul>
    </div>
+   
 <div>
 
 </div>
@@ -43,7 +46,7 @@
       <tbody>
         <tr>
           <th class="boardNumber">공지</td>
-          <th  a href="#" class="title">게시물 제목 1</td>
+          <th   class="title"><a href="boardDetail">게시물 제목 1</a></td>
           <td><span class="tagNotice">공지사항</span></td>
           <th class="ninkName">작성자1</td>
           <th class="views">10</td>
@@ -51,7 +54,7 @@
         </tr>
         <tr>
             <th class="boardNumber">공지</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+          <th class="title"><a href="#">게시물 제목 2</a></td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -59,7 +62,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="boardDetail" class="title">게시물 제목 2</a></td>
+          <th  class="title"><a href="#">게시물 제목 2</a></td>
           <td><span class="tagHot">인기게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -67,7 +70,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+          <th class="title"><a href="#">게시물 제목 2</td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -75,7 +78,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+       <th class="title"><a href="#">게시물 제목 2</a></td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -83,7 +86,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+          <th  class="title"><a href="#">게시물 제목 2</a></td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -91,7 +94,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+          <th  class="title"><a href="#">게시물 제목 2</td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -99,7 +102,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+               <th  class="title"><a href="#">게시물 제목 2</td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -107,7 +110,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+          <th  class="title"><a href="#">게시물 제목 2</td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -115,7 +118,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+             <th  class="title"><a href="#">게시물 제목 2</td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -123,7 +126,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+            <th  class="title"><a href="#">게시물 제목 2</td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -131,7 +134,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+               <th  class="title"><a href="#">게시물 제목 2</td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -139,7 +142,7 @@
         </tr>
         <tr>
             <th class="boardNumber">2</td>
-          <th  a href="#" class="title">게시물 제목 2</td>
+             <th  class="title"><a href="#">게시물 제목 2</td>
           <td><span class="tagBasic">일반게시판</span></td>
           <th class="ninkName">작성자2</td>
           <th class="views">5</td>
@@ -166,7 +169,7 @@
       </div>
     </div>
   </div>
-  <button class="write"><a href="boardWrite">글쓰기</a></button>
+  
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
 </html>

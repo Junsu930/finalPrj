@@ -43,13 +43,14 @@
       <p>공모명: [국방난제해결 아이디어 공모전] 해군 함정 기동 시 소음의 획기적 감소 방안
         분야: 기획/ 아이디어/ 공학/ 기타
         주최사: 정부/공공기관
+        <br>
         
         주제: 해군 함정 기동 시 획기적인 수중 소음 감소
-        
+        <br>
         활동내용: 적군 잠수함이 우리 해군 함정을 포착하기 어렵도록 함정 기동 시 적의 탐지를 회피할 수 있는 방안을 마련해주세요.
-        
+        <br>
         과제 배경 : 북한이 주요 비대칭 전략으로 운영 중인 잠수함은 전시에 아군 함정에 가장 위협이 되는 전력.
-        
+        <br>
         
         
         
@@ -82,7 +83,6 @@
       </div>
       <div class="right">
         <button class="edit">수정</button>
-        <p class="and">｜</p>
         <button class="reply">답글</button>
       </div>
     </div>
@@ -100,7 +100,6 @@
         </div>
         <div class="right">
           <button class="edit">수정</button>
-          <p class="and">｜</p>
           <button class="reply">답글</button>
         </div>
       </div>
@@ -135,7 +134,7 @@
   </div>
   <div class="boardContainer">
   
-    <nav>
+    <nav class="boardNav">
       <ul>
         <li><a href="#" class="total">전체</a></li>
         <li><a href="#">공지</a></li>
