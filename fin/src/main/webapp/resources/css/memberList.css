@@ -13,7 +13,6 @@
 	border: 1px solid black;
 	display: flex;
 	flex-direction: column;
-	cursor: pointer;
 	
 }
 
@@ -82,5 +81,13 @@
 
 .fa-solid fa-guitar {
 	width:16px;
+}
+
+.sendchat {
+	cursor: pointer;
+}
+
+.userinfo {
+	cursor: pointer;
 }
 

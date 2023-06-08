@@ -32,6 +32,30 @@ let showBusiness = document.getElementById('showBusiness');
 let busniessBox = document.querySelector('.busniessBox');
 
 showBusiness.addEventListener('click', () =>{
-    busniessBox.classList.toggle('busniessBox');
+    busniessBox.classList.toggle('USER');
+    setText();
+       if (showBusiness.innerText === 'USER') {
+        busniessBox.classList.add('visible');
+        console.log(busniessBox);
+    } else {
+        busniessBox.classList.remove('visible');
+    }
 });
 
+
+function setText() {
+    const $showBusiness = document.getElementById("showBusiness")
+    const text = $showBusiness.innerText;
+    $showBusiness.innerText = text === "USER" ? "Business" : "USER";
+}
+
+    document.querySelector('.js-static-modal-toggle').addEventListener('click', function() {
+      new Modal({el: document.getElementById('static-modal')}).show();
+    });
+    
+    
+
+
+
+
+	

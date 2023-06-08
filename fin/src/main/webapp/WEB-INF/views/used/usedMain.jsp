@@ -34,9 +34,10 @@
         <!-- 분류선  -->
 
 
-
+<div class="thingTotalContainer">
         <div class="thingTotalBox">
         <!-- 중고거래박스들  -->
+
 
 
 
@@ -253,7 +254,7 @@
             </div>
         </div>
 </div>
-
+</div>
 
     
 </div>
