@@ -32,7 +32,7 @@
                     <label id="labelCheck">PASSWORD</label>
                 </div>
         
-                <button type="submit" id="checkBtn">SUBMIT</button>
+                <button type="submit" id="checkBtn" onclick="location.href='myPage'">SUBMIT</button>
             </div>
         </form>
     </section>

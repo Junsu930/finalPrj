@@ -44,33 +44,33 @@
 	
 		<a href="${contextPath}/lessonWriting" class="lessonA"><i class="bi bi-pencil-square"></i></a>
 	    <div>
-	        <button class="labelLesson lessonList" onclick="selctLesson()" id="lessonBtn"><span>LESSON</span><i class="bi bi-caret-down" id="bi"></i></button>
-	        <ul class="listBox">
-	            <li><button class="list">GUITAR</button></li>
-	            <li><button class="list">BASS</button></li>
-	            <li><button class="list">KEYBOARD</button></li>
-	            <li><button class="list">VOCAL</button></li>
-	            <li><button class="list">DRUM</button></li>
-	            <li><button class="list">HORN</button></li>
-	            <li><button class="list">작곡/편곡</button></li>
-	            <li><button class="list">음향/미디어</button></li>
+	        <button class="labelLesson lessonList" onclick="selctLesson()" id="lessonBtn"><span id="lessonBtnTitle">LESSON</span><i class="bi bi-caret-down" id="bi"></i></button>
+	        <ul class="listBox" id="lessonId">
+				<li class="list">GUITAR</li>
+	            <li class="list">BASS</li>
+	            <li class="list">KEYBOARD</li>
+	            <li class="list">VOCAL</li>
+	            <li class="list">DRUM</li>
+	            <li class="list">HORN</li>
+	            <li class="list">작곡/편곡</li>
+	            <li class="list">음향/미디어</li>
 	        </ul>
 	    </div>
 	
 	    <div>
-			<button class="labelLocation locationListBtn" onclick="selectLocation()" id="locBtn"><span>LOC</span><i class="bi bi-caret-down" id="bi2"></i></button>
-			<ul class="listBox locationListBox">
-				<li><button class="list locationList">서울</button></li>
-				<li><button class="list locationList">대전</button></li>
-				<li><button class="list locationList">대구</button></li>
-				<li><button class="list locationList">부산</button></li>
-				<li><button class="list locationList">광주</button></li>
-				<li><button class="list locationList">충청도</button></li>
-				<li><button class="list locationList">경상북도</button></li>
-				<li><button class="list locationList">경상남도</button></li>
-				<li><button class="list locationList">전라북도</button></li>
-				<li><button class="list locationList">전라남도</button></li>
-				<li><button class="list locationList">제주도</button></li>
+			<button class="labelLocation locationListBtn" onclick="selectLocation()" id="locBtn"><span id="locBtnTitle">LOC</span><i class="bi bi-caret-down" id="bi2"></i></button>
+			<ul class="listBox locationListBox" id="locId">
+				<li class="list locationList">서울</li>
+				<li class="list locationList">대전</li>
+				<li class="list locationList">대구</li>
+				<li class="list locationList">부산</li>
+				<li class="list locationList">광주</li>
+				<li class="list locationList">충청도</li>
+				<li class="list locationList">경상북도</li>
+				<li class="list locationList">경상남도</li>
+				<li class="list locationList">전라북도</li>
+				<li class="list locationList">전라남도</li>
+				<li class="list locationList">제주도</li>
 			</ul>
     	</div>
 
