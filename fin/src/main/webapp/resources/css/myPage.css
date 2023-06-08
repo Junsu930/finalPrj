@@ -132,7 +132,7 @@
 
 
 
-/* 버튼 디스플레이 none 되면  == 밴드 생성됨 .ulBox가 나와야함 */
+/* 踰꾪듉 �뵒�뒪�뵆�젅�씠 none �릺硫�  == 諛대뱶 �깮�꽦�맖 .ulBox媛� �굹���빞�븿 */
 
 .btnDisplay{
     display: none;
@@ -144,7 +144,7 @@
 
 
 
-/* 오른쪽 영역 */
+/* �삤瑜몄そ �쁺�뿭 */
 
 
 
@@ -187,16 +187,26 @@
     cursor: pointer;
 }
 
+
 .myPageSecBox > p:last-child{
     margin-bottom: 0.8em;
 }
 
+.findMember {
+	text-decoration: none;
+	color: black;
+}
+
+.findMember:hover {
+	text-decoration: none;
+	color: black;
+}
 
 
 
-/* 모달 */
+/* 紐⑤떖 */
 
-/* 차단 회원 모달 */
+/* 李⑤떒 �쉶�썝 紐⑤떖 */
 .modalBlockWrapper{
     display: flex;
     flex-direction: column;
@@ -238,10 +248,10 @@
     cursor: pointer;
 }
 
-/* 차단 회원 모달 */
+/* 李⑤떒 �쉶�썝 紐⑤떖 */
 
 
-/* 댓글 모달 */
+/* �뙎湲� 紐⑤떖 */
 
 .modalReplyWrapper{
     display: flex;
@@ -289,9 +299,9 @@
     margin-right: 7em;
 }
 
-/* 댓글 모달 */
+/* �뙎湲� 紐⑤떖 */
 
-/* 게시글 모달 */
+/* 寃뚯떆湲� 紐⑤떖 */
 
 .modalBoardWrapper{
     display: flex;
@@ -329,7 +339,7 @@
 
 
 
-/* 밴드 모달 */
+/* 諛대뱶 紐⑤떖 */
 
 .modalBandWrapper{
     display: flex;
@@ -441,9 +451,9 @@
     margin-bottom: 3em;
 }
 
-/* 밴드 모달 */
+/* 諛대뱶 紐⑤떖 */
 
-/* 회원정보 수정 모달 */
+/* �쉶�썝�젙蹂� �닔�젙 紐⑤떖 */
 
 .modalInfoWrapper{
     display: flex;
@@ -499,7 +509,7 @@
 
 
 
-/* 회원정보 수정 인풋 태그 css */
+/* �쉶�썝�젙蹂� �닔�젙 �씤�뭼 �깭洹� css */
 
 .input-box input {
     width: 100%;
@@ -549,7 +559,7 @@
 
 
 
-/* 회원정보 수정 인풋 태그 css */
+/* �쉶�썝�젙蹂� �닔�젙 �씤�뭼 �깭洹� css */
 
 
 
@@ -673,8 +683,7 @@ input[type="checkbox"]:checked + label:before {
   transform: rotate(45deg);
 }
 
-
-  /*radioboxes styles*/
+/*radioboxes styles*/
   input[type="radio"] { display: none; }
 
   input[type="radio"] + label {
@@ -716,57 +725,15 @@ input[type="checkbox"]:checked + label:before {
     border-left-color: transparent;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
-  }
+  } 
+  
+  
+ 
 
 
+/* �쉶�썝�젙蹂� �닔�젙 紐⑤떖 */
 
-/* 회원정보 수정 모달 */
-
-/* 모달 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* 紐⑤떖 */
 
 
 
