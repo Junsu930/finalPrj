@@ -72,10 +72,127 @@
             </div>
 
 
+
+
+            <div class="lessonCheckWrapper">
+
+                <div class="genreWrapper">
+                    <p id="genreP" class="">GENRE</p>
+                    <div class="genreBox">
+                        <table class="genreTable">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="ELECTRONIC" name="ELECTRONIC" value="ELECTRONIC">
+                                    <label for="ELECTRONIC">ELECTRONIC</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="AQUSTIC" name="AQUSTIC" value="AQUSTIC">
+                                    <label for="AQUSTIC">AQUSTIC</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="FOLK" name="FOLK" value="FOLK">
+                                    <label for="FOLK">FOLK</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="BLUES" name="BLUES" value="BLUES">
+                                    <label for="BLUES">BLUES</label>
+                                </td>
+
+                                <td>
+                                    <input type="checkbox" id="METAL" name="METAL" value="METAL">
+                                    <label for="METAL">METAL</label>
+                                </td>
+
+                                <td>
+                                    <input type="checkbox" id="JAZZ" name="JAZZ" value="JAZZ">
+                                    <label for="JAZZ">JAZZ</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="ROCK" name="ROCK" value="ROCK">
+                                    <label for="ROCK">ROCK</label>
+                                </td>
+
+                                <td>
+                                    <input type="checkbox" id="POP" name="POP" value="POP">
+                                    <label for="POP">POP</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="lessonWrapper">
+                    <p id="lessonP" class="">LESSON</p>
+                    <div class="lessonBox">
+                        <table class="lessonTable">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="GUITAR" name="GUITAR" value="GUITAR">
+                                    <label for="GUITAR">GUITAR</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="BASS" name="BASS" value="BASS">
+                                    <label for="BASS">BASS</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="KEYBOARD" name="KEYBOARD" value="KEYBOARD">
+                                    <label for="KEYBOARD">KEYBOARD</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="VOCAL" name="VOCAL" value="VOCAL">
+                                    <label for="VOCAL">VOCAL</label>
+                                </td>
+
+                                <td>
+                                    <input type="checkbox" id="SOUND" name="SOUND" value="SOUND">
+                                    <label for="SOUND">SOUND</label>
+                                </td>
+
+                                <td>
+                                    <input type="checkbox" id="COMPOSITION" name="COMPOSITION" value="COMPOSITION">
+                                    <label for="COMPOSITION">COMPOSITION</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="DRUM" name="DRUM" value="DRUM">
+                                    <label for="DRUM">DRUM</label>
+                                </td>
+
+                                <td>
+                                    <input type="checkbox" id="HORN" name="HORN" value="HORN">
+                                    <label for="HORN">HORN</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                
+            </div>
+
+
+
+
+
+
+
+
             
                         
             <!-- 장르 구역 -->
-            <div class="genreBox">
+            <!-- <div class="genreBox">
                 <span>장르</span>
                 <hr>
                 <table>
@@ -119,14 +236,14 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
                 
                 
 
 
 
             <!-- 레슨 구역 -->
-            <div class="lessonBox">
+            <!-- <div class="lessonBox">
                 <span>레슨</span>
                 <hr>
                 <table>
@@ -170,7 +287,7 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
 
         </form>
 

@@ -11,7 +11,4 @@ public class MypageController {
 		
 		return "myPage/myPage";
 	}
-	
-	
-
 }

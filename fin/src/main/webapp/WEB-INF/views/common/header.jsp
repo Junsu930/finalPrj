@@ -24,14 +24,11 @@
               <li><a href="used" class="navA">Used</a></li>
               <li><a href="lesson" class="navA">Lessons</a></li>
               <li><a href="findingMember" class="navA">test</a></li>
-              
-
           </ul>
           <div class="navSecondDiv">
-
               <!-- <a href="signUp" class="signUpText navA">SignUp</a> -->
-              <a href="${contextPath}/myPage" class="myPageText navA">My Page</a>
-              <a href="${contextPath }/login" class="loginText navA">Login</a>
+              <a href="${contextPath}/checkPw" class="myPageText navA">My Page</a>
+              <a href="${contextPath}/login" class="loginText navA">Login</a>
 			  <button id="alertBell" class="alertBell navA"><i class="bi bi-bell"></i></button> <!-- 로그인 시 알림 아이콘-->
             
               <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a>
@@ -42,10 +39,12 @@
           <!-- 반응형 메뉴 바  -> 평소에는 display : none -->
           <a href="#" id="hamburger"><i class="fa-solid fa-bars" id="toggle"></i></a>
         </nav>
-        
+
+
+
        
         
       </header>
-  <script src="${contextPath}/resources/js/header.js"></script>
+    <script src="${contextPath}/resources/js/header.js"></script>
 </body>
 </html>

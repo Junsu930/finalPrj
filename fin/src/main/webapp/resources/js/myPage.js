@@ -55,7 +55,9 @@ showBtn.addEventListener('click', function(){
     new Modal({el: document.getElementById('static-modalBand')}).show();
   });
 
-  // 모달 회원정보 수정
+
+   // 모달 회원정보 수정
+  
   document.querySelector('.js-static-modal-toggleInfo').addEventListener('click', function() {
     new Modal({el: document.getElementById('static-modalInfo')}).show();
   });

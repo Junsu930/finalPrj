@@ -106,6 +106,10 @@ body{
     background-color: var(--accent-color);
 }
 
+.navDiv{
+    padding-left: 0.8em;
+}
+
 .navDiv > a{
     padding-left: 0.313em;
 }
@@ -120,7 +124,7 @@ body{
 }
 
 .navSecondDiv{
-    padding-right: 0.938em;
+    /* padding-right: 0.938em; */
     margin-bottom: 6px;
 }
 
@@ -191,3 +195,13 @@ body.darkmode .alertBell > i{
 }
 
 /* ===============================nav css=============================== */
+
+
+
+
+
+
+
+
+
+

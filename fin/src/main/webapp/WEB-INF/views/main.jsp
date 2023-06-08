@@ -36,7 +36,7 @@
 
     <!-- 게시판 링크 -->
     <div class="boardText">
-      <div>
+      <div class="textWrapper">
         <p class="mainTextP">Band Archive!<br></p>
         <p class="mainTextP">밴드를 사랑하는 사람들의 모임으로써,<br><br>
            수 많은 회원들의 커뮤니티 활동을 할 수 있게 서비스를 제공해주는 사이트입니다.
@@ -58,7 +58,7 @@
 
     <!-- 중고 게시판 링크 -->
     <div class="usedText">
-      <div>
+      <div class="textWrapper">
         <p class="mainTextP">Selling your instruments!<br></p>
         <p class="mainTextP">
           다양한 커뮤니티 활동뿐만이 아니라<br><br>
@@ -80,7 +80,7 @@
 
     <!-- 예약 게시판 -->
     <div class="reservationText">
-      <div>
+      <div class="textWrapper">
         <p class="mainTextP">Make a reservation!<br></p>
         <p class="mainTextP">
           밴드 멤버들과 함께 연습할 수 있는 다양한 연습실 목록들을 제공하며<br><br>

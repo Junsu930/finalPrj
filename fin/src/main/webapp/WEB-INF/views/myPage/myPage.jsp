@@ -51,13 +51,13 @@
 
                 <div class="secondUlBox">
                     <ul>
-                        <li>러시아워</li>
-                        <li>개다리방방</li>
-                        <li>초파초</li>
-                        <li>길에반스</li>
-                        <li>이현경</li>
-                        <li>기타못참</li>
-                        <li>빌스릴</li>
+                        <li><i class="fa-solid fa-headphones-simple"></i>러시아워</li>
+                        <li><i class="fa-solid fa-crown"></i>개다리방방</li>
+                        <li><i class="fa-solid fa-user-astronaut"></i>초파초</li>
+                        <li><i class="fa-solid fa-user-astronaut"></i>길에반스</li>
+                        <li><i class="fa-solid fa-user-astronaut"></i>이현경</li>
+                        <li><i class="fa-solid fa-user-astronaut"></i>기타못참</li>
+                        <li><i class="fa-solid fa-user-astronaut"></i>빌스릴</li>
                     </ul>
                 </div>
             </div>
@@ -506,24 +506,16 @@
             <div class="modal-body">
             
             <section class="modalInfoWrapper">
-
-
                 <div class="modalInfoTitleBox">
                     <p>회원 정보 수정</p>
                 </div>
-
-
-
                 <form action="">
                     <div class="modalImgBox">
                         <img src="" alt="프사">
                         <i class="bi bi-camera-fill"></i>
                     </div>
-                </form>
 
-                <div class="modalInputBox">
-
-                    <form action="">
+                    <div class="modalInputBox">
                         <div class="input-box">
                             <span class="icon">
                                 <ion-icon name="mail"></ion-icon>
@@ -546,17 +538,14 @@
                             <input type="text" required>
                             <label>NICKNAME</label>
                         </div>
-                    </form>
+                        
 
-                    <div class="arrowBox">
-                        <label for="">나의 포지션</label>
-                        <i class="bi bi-caret-down" id="show"></i>
+                        <div class="arrowBox">
+                            <label for="">나의 포지션</label>
+                            <i class="bi bi-caret-down" id="show"></i>
+                        </div>
                     </div>
-                </div>
 
-
-                
-                <form action=""> 
                     <div class="checkWrapper">
                         <p id="positionP" class="disPlayNone">POSITION</p>
                         <div class="positionBox disPlayNone">
@@ -753,13 +742,11 @@
                         
                         </div>
                     </div>
-                </form>
-
-                <div class="infoModifyBtn">
-                    <button>수정하기</button>
-                </div>
                 
-
+                    <div class="infoModifyBtn">
+                        <button>수정하기</button>
+                    </div>
+                </form>
             </section>
 
             
@@ -773,6 +760,23 @@
         </div><!-- /.modal-dialog -->
     </div>
     </div>
+
+
+
+
+
+
+    
+    
+    
+    
+    
+   
+    
+    
+    
+    
+    
 
 
 

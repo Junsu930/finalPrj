@@ -78,7 +78,7 @@ body.darkmode .inputBox > input{
 }
 
 body.darkmode .input-box:not(.inputBoxText){
-    border-bottom: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 body.darkmode .input-box label:not(.textLabel){
@@ -110,7 +110,7 @@ body.darkmode .input-box input{
 
 
 .inputBoxText textarea:focus~label,
-.iinputBoxText textarea:valid~label {
+.inputBoxText textarea:valid~label {
     top: -1px;
 }
 
@@ -120,7 +120,7 @@ body.darkmode .input-box input{
 /* textarea */
 
 body.darkmode .inputBoxText > textarea{
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--border-color);
     color: var(--text-dark-color);
 }
 
@@ -171,155 +171,6 @@ body.darkmode .textLabel{
 
 
 
-/* genre */
-
-.genreBox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 10em;
-    flex-wrap: wrap;
-    /* border: 1px solid blue; */
-}
-
-.genreBox > hr{
-    border: 1px solid var(--border-color);
-    width: 30%;
-    margin:auto;
-    margin-left: 35%;
-    margin-bottom: 2em;
-}
-
-.genreBox > span{
-    font-size: 1.7em;
-    padding: 1em 1em 0.2em 1em;
-}
-
-
-
-.genreBox label{
-    cursor: pointer;
-    padding: 1em 5em;
-}
-
-.genreBox td{
-    padding: 2em 1em;
-}
-
-
-.genreBox input[type=checkbox] {
-    display: none;
-}
-
-  
-.genreBox input[type=checkbox] + label:before {
-    content: "\2714";
-    border: 0.1em solid var(--border-color);
-    border-radius: 0.2em;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    padding-left: 0.2em;
-    padding-bottom: 0.2em;
-    margin-right: 0.5em;
-    vertical-align: bottom;
-    color: transparent;
-    transition: .2s;
-}
-
-.genreBox input[type=checkbox]:checked + label:before {
-    background-color: MediumSeaGreen;
-    border-color: MediumSeaGreen;
-    color: var(--background-color);
-}
-
-body.darkmode .genreBox input[type=checkbox]:checked + label:before {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-    color: var(--background-color);
-}
-
-
-
-/* genre */
-
-
-/* lessons */
-
-
-.lessonBox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 10em;
-    /* border: 1px solid blue; */
-}
-
-.lessonBox > hr{
-    border: 1px solid var(--border-color);
-    width: 30%;
-    margin:auto;
-    margin-left: 35%;
-    margin-bottom: 2em;
-}
-
-
-
-.lessonBox > span{
-    font-size: 1.7em;
-    padding: 1em 1em 0.2em 1em;
-}
-
-
-
-.lessonBox label{
-    cursor: pointer;
-    padding: 1em 5em;
-}
-
-.lessonBox td{
-    padding: 2em 1em;
-}
-
-
-.lessonBox input[type=checkbox] {
-    display: none;
-}
-
-  
-.lessonBox input[type=checkbox] + label:before {
-    content: "\2714";
-    border: 0.1em solid var(--border-color);
-    border-radius: 0.2em;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    padding-left: 0.2em;
-    padding-bottom: 0.2em;
-    margin-right: 0.5em;
-    vertical-align: bottom;
-    color: transparent;
-    transition: .2s;
-}
-
-.lessonBox input[type=checkbox]:checked + label:before {
-    background-color: MediumSeaGreen;
-    border-color: MediumSeaGreen;
-    color: var(--background-color);
-}
-
-body.darkmode .lessonBox input[type=checkbox]:checked + label:before {
-    background-color: var(--accent-color);
-    border-color: var(--accent-color);
-    color: var(--background-color);
-}
-
-/* lessons */
-
 
 /* SUBMIT 버튼 */
 
@@ -343,7 +194,7 @@ body.darkmode .lessonBox input[type=checkbox]:checked + label:before {
 }
 
 #writingBtn:hover{
-    animation: in .8s ease-out;
+    animation: in .5s ease-out;
 }
 
 @keyframes in{
@@ -360,91 +211,143 @@ body.darkmode .lessonBox input[type=checkbox]:checked + label:before {
 
 body.darkmode #writingBtn{
     color: var(--text-dark-color);
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--border-color);
 }
+
+
+
+
+
+.lessonCheckWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 5em;
+}
+
+
+
+/* genre */
+
+.genreWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8em;
+}
+
+.genreTable td{
+    padding: 1.5em 1.5em;
+}
+
+#genreP{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 2em;
+}
+
+/* genre */
+
+
+/* lessons */
+
+.lessonWrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lessonTable td{
+    padding: 1.5em 1.5em;
+}
+
+#lessonP{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 2em;
+}
+
+/* lessons */
+
+
+
+
+
+ /*Checkboxes styles*/
+ input[type="checkbox"] { display: none; }
+
+ input[type="checkbox"] + label {
+   display: block;
+   position: relative;
+   padding-left: 35px;
+   margin-bottom: 20px;
+   font: 14px/20px 'Open Sans', Arial, sans-serif;
+   color: var(--stroke-color);
+   cursor: pointer;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+ }
+
+ body.darkmode input[type="checkbox"] + label{
+    color: var(--border-color);
+ }
+ 
+ input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+ 
+ input[type="checkbox"] + label:before {
+   content: '';
+   display: block;
+   width: 20px;
+   height: 20px;
+   border: 1px solid #ED820A;
+   position: absolute;
+   left: 0;
+   top: 0;
+   opacity: .6;
+   -webkit-transition: all .12s, border-color .08s;
+   transition: all .12s, border-color .08s;
+ }
+
+
+ 
+ input[type="checkbox"]:checked + label:before {
+   width: 10px;
+   top: -5px;
+   left: 5px;
+   border-radius: 0;
+   opacity: 1;
+   border-top-color: transparent;
+   border-left-color: transparent;
+   -webkit-transform: rotate(45deg);
+   transform: rotate(45deg);
+ }
 
 
 
 
 /* media query */
 
-@media screen and (max-width:76rem) {
-    .genreBox label, .lessonBox label{
-        cursor: pointer;
-        padding: 1em 4em;
+@media screen and (min-width:22.5rem) and (max-width:46.875rem) {
+    .input-box:not(.inputBoxText){
+        width: 100%;
+    }
+    .inputBoxText > textarea{
+        min-width: 330px;
+    }
+
+    .textLabel{
+        right: 60px;
     }
 }
-
-@media screen and (max-width:68rem) {
-    .genreBox label, .lessonBox label{
-        cursor: pointer;
-        padding: 1em 3em;
-    }
-}
-
-@media screen and (max-width:59rem) {
-    .genreBox label, .lessonBox label{
-        cursor: pointer;
-        padding: 1em 2em;
-    }
-}
-
-@media screen and (max-width:52rem) {
-    .genreBox label, .lessonBox label{
-        cursor: pointer;
-        padding: 1em 1em;
-    }
-    
-}
-
-@media screen and (max-width:43.7rem) {
-    .genreBox label, .lessonBox label{
-        cursor: pointer;
-        padding: 1em 0;
-    }
-}
-
-@media screen and (max-width:34rem) {
-    .genreBox label, .lessonBox label{
-        cursor: pointer;
-        padding: 0;
-    }
-}
-
-@media screen and (max-width: 33.688) {
-    .genreBox label, .lessonBox label{
-        cursor: pointer;
-        padding: 0 1.5em 1em;
-    }
-}
-
-
-
-/* 360px 갤럭시 8 */
-
-
-@media screen and (max-width:22.5rem) {
-    .genreBox label, .lessonBox label{
-        padding: 0;
-    }
-    .genreBox > hr, .lessonBox > hr {
-        display: none;
-    }
-}
-
-/* 390px 아이폰 12프로 */
-
-@media screen and (max-width:26rem) {
-    .genreBox label, .lessonBox label{
-        padding: 0;
-    }
-    .genreBox > hr, .lessonBox > hr {
-        display: none;
-    }
-}
-
-
-
 
 
 
