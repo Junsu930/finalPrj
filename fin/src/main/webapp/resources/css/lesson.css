@@ -307,8 +307,8 @@ body.darkmode .filterSec > div:last-child{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 310px;
-    height: 310px;
+    width: 320px;
+    height: 320px;
     margin: 2em;
     border-radius: 0.5em;
     border: 1.5px solid var(--stroke-color);
