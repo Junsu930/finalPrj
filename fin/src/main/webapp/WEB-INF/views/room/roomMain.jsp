@@ -12,8 +12,13 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<jsp:include page="/WEB-INF/views/profile/lookProfile.jsp"/>
 
 <a href="${contextPath}/usedWriting">중고글 작성</a>
+<div  data-bs-toggle="modal" data-bs-target="#exampleModal" id="toModalDiv" style="cursor: pointer;">
+	<input type="hidden" value="1" id="hiddenUserNo">
+	<span>프로필보기 넘어가기</span>
+</div>
 <div class="content" id="content">
 	<div class="logoDiv">
 		<svg id="titleLogo" width="283" height="102" viewBox="0 0 283 102" fill="none" xmlns="http://www.w3.org/2000/svg">

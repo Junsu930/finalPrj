@@ -87,7 +87,7 @@
    width: 120px;
    text-align: center;
    font-weight:bold;
-   font-size:14px;
+   font-size:16px;
    border-radius: 5px;
    margin: 15px;
 }
@@ -99,7 +99,7 @@
    width: 120px;
    text-align: center;
    font-weight:bold;
-   font-size:14px;
+   font-size:16px;
    border-radius: 5px;
    margin: 15px;
 }
@@ -112,7 +112,7 @@
    width: 120px;
    text-align: center;
    font-weight:bold;
-   font-size:14px;
+   font-size:16px;
    border-radius: 5px;
    margin: 15px;
 }
@@ -124,7 +124,7 @@
    width: 120px;
    text-align: center;
    font-weight:bold;
-   font-size:14px;
+   font-size:16px;
    border-radius: 5px;
    margin: 15px;
 }
@@ -198,12 +198,13 @@
 
    
 .title {
-   width: 70%;
+   width: 55%;
    text-align: center;
    justify-content: center;
    margin: auto;
    border: 1px solid black;
    border-radius: 10px;  
+   padding:10px;
  
 }
 
@@ -267,9 +268,6 @@
 .cate {
 	font-size: 20px;
 }
-
-
-
 
 
 

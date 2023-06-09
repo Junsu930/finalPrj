@@ -66,10 +66,10 @@ showBtn.addEventListener('click', function(){
     new Modal({el: document.getElementById('static-modalInfo')}).show();
   });
 
+ 
   document.querySelector('.js-static-modal-togglefindMemberP').addEventListener('click', function() {
     new Modal({el: document.getElementById('static-modalfindMember')}).show();
   });
-
 
 
 
