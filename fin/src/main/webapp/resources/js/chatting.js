@@ -1,5 +1,6 @@
 let ws;
 
+/*
 document.getElementById("chatting-img").addEventListener("click", function(){
 	
 	let messageWindow = document.getElementById("chatBody");
@@ -22,9 +23,43 @@ document.getElementById("chatting-img").addEventListener("click", function(){
 		messageWindow.style.display = 'none';
 	}
 });
+*/
+
+document.getElementById("chatting-img").addEventListener("click", function(){
+
+	let chatRoomList = document.getElementById("roomList");
+	let chatBody = document.getElementById("chatBody");
+	
+	if(chatRoomList.style.display == 'none' || chatRoomList.style.display == 0 ){
+		chatRoomList.style.display = 'flex';
+		
+		if(document.getElementById("faqBox").style.width != '0px' || document.getElementById("faqBox").style.width != 0){
+			document.getElementById("faqBox").classList.remove('appear');
+			document.getElementById("faqBox").classList.add('disappear');
+		}
+	}else{
+		chatRoomList.style.display = 'none';
+	}
+
+	if(chatBody.style.display != 'none' && chatRoomList.style.display !='none'){
+		chatBody.style.display = 'none';
+		chatRoomList.style.display = 'none';
+	}
+
+});
+
+let eachRoomList = document.getElementsByClassName("eachRoomList");
+
+for(let eachRoom of eachRoomList){
+	eachRoom.addEventListener("click", e=>{
 
 
 
+		$("#roomList").css("display", "none");
+		$("#chatBody").css("display", "flex");
+	});
+
+}
 
 
 

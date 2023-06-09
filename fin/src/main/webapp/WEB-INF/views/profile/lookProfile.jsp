@@ -18,7 +18,11 @@
 	}
 	
 	a:hover {
-    color: revert;
+    	color: revert;
+	}
+	
+	a{
+		color: revert;
 	}
 </style>
 <!-- 모달 파트 -->

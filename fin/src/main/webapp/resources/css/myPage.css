@@ -27,7 +27,6 @@
     width: 380px;
 }
 
-
 .myPageInfo > div:first-child{
     display: flex;
     justify-content: space-around;
