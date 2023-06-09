@@ -9,124 +9,45 @@
     font-family: var(--navFont-style-);
 }
 
-
-
 .titleBox{
     padding: 1em 1em;
     cursor: pointer;
-    width: 43%;
-}
-
-path{
-    stroke: var(--text-color);
-}
-
-#logo{
-    animation: fill 1s ease-out;
+    width: 100%;
 }
 
 
-
-
-#logo path:nth-child(1){
-    stroke-dasharray: 297.216064453125;
-    stroke-dashoffset: 297.216064453125;
-    animation: line 1s ease-out forwards 0.7s;
+.lessonBackPath{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-width: 2px;
+    stroke-dasharray: 8485.939453125;
+    animation: drawPath 1.7s linear, floating 3s linear infinite;
+    stroke-miterlimit: 10;
 }
 
-#logo path:nth-child(2){
-    stroke-dasharray: 463.9693603515625;
-    stroke-dashoffset: 463.9693603515625;
-    animation: line 1s ease-out forwards 0.6s;
-}
-
-#logo path:nth-child(3){
-    stroke-dasharray: 493.9131774902344;
-    stroke-dashoffset: 493.9131774902344;
-    animation: line 1s ease-out forwards 0.3s;
-}
-
-#logo path:nth-child(4){
-    stroke-dasharray: 493.912353515625;
-    stroke-dashoffset: 493.912353515625;
-    animation: line 1s ease-out forwards 0.2s;
-}
-
-#logo path:nth-child(5){
-    stroke-dasharray: 565.9508056640625;
-    stroke-dashoffset: 565.9508056640625;
-    animation: line 1s ease-out forwards 0.3s;
-}
-
-#logo path:nth-child(6){
-    stroke-dasharray: 604.4832763671875;
-    stroke-dashoffset: 604.4832763671875;
-    animation: line 1s ease-out forwards 0.1s;
-}
-
-
-#logo path:nth-child(7){
-    animation: line2 1.3s ease-in-out forwards;
-}
-
-#logo path:nth-child(8){
-    stroke-dasharray: 463.9693603515625;
-    stroke-dashoffset: 463.9693603515625;
-    animation: line 1s ease-out forwards 0.1s;
-}
-
-#logo path:nth-child(9){
-    stroke-dasharray: 493.9131774902344;
-    stroke-dashoffset: 493.9131774902344;
-    animation: line 1s ease-out forwards 0.2s;
-}
-
-#logo path:nth-child(10){
-    stroke-dasharray: 493.912353515625;
-    stroke-dashoffset: 493.912353515625;
-    animation: line 1s ease-out forwards 0.3s;
-}
-
-#logo path:nth-child(11){
-    stroke-dasharray: 565.9508056640625;
-    stroke-dashoffset: 565.9508056640625;
-    animation: line 1s ease-out forwards 0.5s;
-}
-
-#logo path:nth-child(12){
-    stroke-dasharray: 604.4832763671875;
-    stroke-dashoffset: 604.4832763671875;
-    animation: line 1s ease-out forwards 0.6s;
+body.darkmode .lessonBackPath{
+	stroke: var(--stroke-dark-color);
 }
 
 
 
 
+@keyframes drawPath {
 
-@keyframes line {
-    to{
+    0% {
+        stroke-dashoffset: 8485.939453125;
+    }
+    100% {
         stroke-dashoffset: 0;
     }
 }
 
-@keyframes line2 {
-    from{
-        stroke-dasharray: 260;
-        stroke-dashoffset: 260;
-        
-    }to{
-        stroke-dashoffset: 0;
-        stroke-dashoffset: 0;
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
     }
 }
-
-@keyframes fill {
-    to{
-        fill:var(--text-color);
-    }
-}
-
-
 
 
 

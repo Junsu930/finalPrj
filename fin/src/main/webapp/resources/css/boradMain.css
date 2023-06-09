@@ -1,3 +1,40 @@
+
+
+
+
+.boardPath{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-width: 1.5px;
+    stroke-dasharray: 5055.95068359375;
+    animation: drawPath 2s linear, floating 3s linear infinite;
+}
+
+
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 5055.95068359375;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+
+
+
+
+
+
 .totalTitle{
     font-weight: bold;
     font-size: 20px;

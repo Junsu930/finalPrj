@@ -5,6 +5,9 @@ body{
     margin: 0px;
 }
 
+
+
+
 .main{
     width: 80%;
     margin: auto;
@@ -13,6 +16,39 @@ body{
 	
 
 }
+
+
+
+
+.usedPath{
+    fill: none;
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 1.5px;
+    stroke-dasharray: 4638.24365234375;
+    animation: drawPath 2s linear, floating 3s linear infinite;
+}
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 4638.24365234375;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+
+
+
 
 #searchboxInput{
 	width : 90%;

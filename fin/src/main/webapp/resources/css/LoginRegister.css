@@ -1,13 +1,59 @@
 body{
     min-height: 100vh;
-    background: url('../images/loginBack.jpeg') no-repeat;
-    background-size: cover;
-    background-position: center;
+    position: relative;
 }
 
-body.darkmode{
-    background: url('../images/login-dark.jpeg') no-repeat;
+.svgBox{
+    position: absolute;
+    width: 100%;
+    right: 10px;
 }
+
+.loginPath {
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-width: 2px;
+    stroke-dasharray: 2937.191650390625;
+    animation: drawPath 1.7s linear, floating 3s linear infinite;
+}
+
+body.darkmode .loginPath{
+	stroke: var(--stroke-dark-color);
+}
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 2937.191650390625;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .loginSection{
     display: flex;
@@ -31,6 +77,10 @@ body.darkmode{
     align-items: center;
     overflow: hidden;
     transition: height .4s ease-out;
+}
+
+body.darkmode .wrapper{
+	background-color: var(--border-color);
 }
 
 
@@ -103,10 +153,14 @@ body.darkmode{
 
 .formBox h2{
     font-size: 2em;
-    color: #eae7e7;
+    color: var(--label-color);
     text-align: center;
     margin-bottom: 1.5em;
     letter-spacing: 0.1em;
+}
+
+dark.mode .formBox h2{
+	color: var(--border-color);
 }
 
 .inputBox{
@@ -123,13 +177,15 @@ body.darkmode{
     left: 5px;
     transform: translateY(-50%);
     font-size: 1em;
-    color: #eae7e7;
+    color: var(--label-color);
     font-weight: 500;
     pointer-events: none;
     transition: .3s;
     padding: 0 2.3em 0 0.5em;
     letter-spacing: 0.1em;
 }
+
+
 
 .inputBox input:focus~label,
 .inputBox input:valid~label {
@@ -143,16 +199,20 @@ body.darkmode{
     border: none;
     outline:  none;
     font-size: 1em;
-    color: #eae7e7;
+    color: var(--label-color);
     font-weight: 600;
     padding: 0 2.3em 0 0.5em;
 }
+
+
+
+
 
 .inputBox .icon{
     position: absolute;
     right: 8px;
     font-size: 1.2em;
-    color: #eae7e7;
+    color: var(--label-color);
     line-height: 57px;
 }
 
@@ -177,9 +237,11 @@ body.darkmode{
 }
 
 .rememberForgot a{
-    color: #eae7e7;
+    color: var(--label-color);
     text-decoration: none;
 }
+
+
 
 #showBusiness{
     position: absolute;
@@ -233,11 +295,13 @@ body.darkmode{
 }
 
 .loginRegister p a{
-    color: #eae7e7;
+    color: var(--label-color);
     text-decoration: none;
     font-weight: 600;
     padding: 0 10px 0 10px;
 }
+
+
 
 .loginRegister p a:hover{
     text-decoration: underline;
