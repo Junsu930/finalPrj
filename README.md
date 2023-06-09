@@ -14,31 +14,31 @@
 </pre>
 
 <h3>🧑‍🤝‍👩 멤버 소개</h3>
-<div>
+<h4>이현경</h4>
 <img src="https://github.com/Junsu930/finalPrj/assets/119837015/e9440cba-94d6-4b99-8026-c49edca0f36c" width="100" height="100">
-<span>이현경</span>
-</div>
+
+
 
  <pre>
 </pre>
 
-<img src="https://github.com/Junsu930/finalPrj/assets/119837015/9386a360-2fb3-4eb2-b838-39a4c1744a19" width="100" height="100">
 <h4>김민성</h4>
+<img src="https://github.com/Junsu930/finalPrj/assets/119837015/9386a360-2fb3-4eb2-b838-39a4c1744a19" width="100" height="100">
  <pre>
 </pre>
 
-<img src="https://github.com/Junsu930/finalPrj/assets/119837015/9efb265e-a415-411f-974c-810f7ab170be" width="100" height="100">
 <h4>김준수</h4>
+<img src="https://github.com/Junsu930/finalPrj/assets/119837015/9efb265e-a415-411f-974c-810f7ab170be" width="100" height="100">
  <pre>
 </pre>
 
-<img src="https://github.com/Junsu930/finalPrj/assets/119837015/c822e3ee-b3c8-4b3a-9b41-21396ba715f9" width="100" height="100">
 <h4>이진영</h4>
+<img src="https://github.com/Junsu930/finalPrj/assets/119837015/c822e3ee-b3c8-4b3a-9b41-21396ba715f9" width="100" height="100">
  <pre>
 </pre>
 
-<img src="https://github.com/Junsu930/finalPrj/assets/119837015/791a259d-35c6-4496-8a34-e2282cfe7835" width="100" height="100">
 <h4>임정우</h4>
+<img src="https://github.com/Junsu930/finalPrj/assets/119837015/791a259d-35c6-4496-8a34-e2282cfe7835" width="100" height="100">
  <pre>
 </pre>
 
