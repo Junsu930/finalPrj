@@ -64,13 +64,11 @@
   color: #474554;
   border: 1px solid #edeeef;
 }
- h1 {
-    text-align: left;
-    padding-bottom: 30px;
-    padding-top: 100px;
-}
-  
+
+
+
 table {
+	
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -79,17 +77,24 @@ table {
     color: #474554;
      
 }
-  
+th {
+height: 46px;	
+}
+table, td, th {
+
+}
+
 table th,
 table td {
     padding: 10px;
     text-align: center;
+   
 }
   
 table td {
 	
     font-weight: bold;
-    padding-right: 70px;
+    
 
 }
 thead{
@@ -203,6 +208,7 @@ table {
  .title{
     
     font-weight: bold;
+    text-align: inherit;
  }
  .boardNumber{
     margin-right: 10px;
@@ -222,6 +228,7 @@ a {
  .boardNumber
  {
     color: #474554;
+    padding-right: 10px;
 }
 
 

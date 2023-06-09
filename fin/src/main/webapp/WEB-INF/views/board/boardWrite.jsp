@@ -29,7 +29,9 @@
     </div>
     
     <div class="boardTitle">제목</div>
+   <div>
     <input type="text" class="title-input">
+    </div>
     <div class="border"></div>
     <div class="boardContent">내용</div>
     <textarea class="content-input"></textarea>
