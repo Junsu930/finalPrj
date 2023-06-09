@@ -1,12 +1,14 @@
 .container{
+	width: 80%;
 	display: flex;
 	justify-content : space-around;
 	flex-wrap: wrap;
+	margin: auto;
 	
 }
 
 .item{
-	width: 400px;
+	width: 350px;
 	height: 200px;
 	margin: 2em;
 	border-radius: 10px;
@@ -64,6 +66,7 @@
     align-items: center;
 }
 
+
 .chat > div:nth-child(1) {
     flex-basis: 50%;
     display: flex;
@@ -85,9 +88,14 @@
 
 .sendchat {
 	cursor: pointer;
+	
 }
 
 .userinfo {
 	cursor: pointer;
+}
+
+.fa-regular fa-comment-dots {
+	width:20px;
 }
 
