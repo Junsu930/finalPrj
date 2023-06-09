@@ -12,9 +12,17 @@
 <title>예약실 상세</title>
 </head>
 <body>
+
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 	<div class="content">
+	<form>
+		<div>1번회원과 채팅하기</div>
+		<div>2번회원과 채팅하기</div>
+		<div>3번회원과 채팅하기</div>
+		<button>채팅시작</button>
+		<input type="text" readonly="readonly" name="whoChat" id="whoChat">
+	</form>
 		<!-- left -->
 		<div class="leftSide">
 			<!-- 사진 영역 -->

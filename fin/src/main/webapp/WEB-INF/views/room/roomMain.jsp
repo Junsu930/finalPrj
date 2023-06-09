@@ -29,7 +29,16 @@
 		<path d="M233.082 89.624H282.042V101H217.53V90.632L266.202 12.008H218.106V0.632004H281.754V11L233.082 89.624Z" stroke="black" stroke-width="5"/>
 		</svg>
 	</div>
-
+	<!-- 임시 회원 기능 설정 -->
+	<form action="${contextPath}/tempUserSession" method="post">
+		<div id="first-user" style="cursor: pointer;">1번회원되기</div>
+		<div id="second-user"  style="cursor: pointer;">2번회원되기</div>
+		<div id="third-user"  style="cursor: pointer;">3번회원되기</div>
+		<input type="text" name="nowUser" readonly="readonly" id="beingUserInput">
+		<button>세션에 넣기</button>
+	</form>
+	<div>현재 세션에 넣은 user : "${sessionScope.tempUser}"</div>
+	<div>현재 채팅방 리스트 : "${sessionScope.chatRoomList }"</div>
 	<!-- 분류 창 -->
 	<div class="sorting-bar">
 		<!-- 각각의 메뉴 -->

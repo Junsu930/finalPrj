@@ -20,6 +20,7 @@ public class DBTestVO {
 	private String matchingFl;
 	private String userType;
 	private String introMent;
+	private String bannedFl;
 	private String inst;
 	private String genreFavor;
 	private String region;
@@ -27,13 +28,7 @@ public class DBTestVO {
 	private String yoe;
 	
 	
-	@Override
-	public String toString() {
-		return "DBTestVO [userNo=" + userNo + ", userEmail=" + userEmail + ", userPwd=" + userPwd + ", userDate="
-				+ userDate + ", secessionFl=" + secessionFl + ", userName=" + userName + ", matchingFl=" + matchingFl
-				+ ", userType=" + userType + ", introMent=" + introMent + ", inst=" + inst + ", genreFavor="
-				+ genreFavor + ", region=" + region + ", gender=" + gender + ", yoe=" + yoe + "]";
-	}
+
 	
 
 		
