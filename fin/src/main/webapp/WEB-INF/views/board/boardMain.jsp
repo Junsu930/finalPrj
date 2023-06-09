@@ -46,8 +46,8 @@
       <thead>
         <tr>
           <th class="boardNumber">번호</th>
+             <th></th>
           <th class="title">제목</th>
-          <th></th>
           <th class="ninkName"><i class="fa-solid fa-user"></i></th>
           <th class="views"><i class="fa-solid fa-eye"></i></th>
           <th class="heart"><i class="fa-solid fa-heart"></i></th>
@@ -55,110 +55,109 @@
       </thead>
       <tbody>
         <tr>
-          <th class="boardNumber">공지</td>
-          <th   class="title"><a href="boardDetail">게시물 제목 1</a></td>
+          <td class="boardNumber">공지</td>
           <td><span class="tagNotice">공지사항</span></td>
-          <th class="ninkName">작성자1</td>
-          <th class="views">10</td>
-          <th class="heart">5</td>
+          <td   class="title"><a href="boardDetail">안녕하세요 이갈치입니다 </a></td>
+          <td class="ninkName">작성자1</td>
+          <td class="views">10</td>
+          <td class="heart">5</td>
         </tr>
         <tr>
-            <th class="boardNumber">공지</td>
-          <th class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="boardNumber">공지</td>
           <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
         </tr>
         <tr>
-            <th class="boardNumber">2</td>
-          <th  class="title"><a href="#">게시물 제목 2</a></td>
-          <td><span class="tagHot">인기게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
-        </tr>
-        <tr>
-            <th class="boardNumber">2</td>
-          <th class="title"><a href="#">게시물 제목 2</td>
+          <td class="boardNumber">13</td>
           <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
+        </tr>
+          <tr>
+          <td class="boardNumber">14</td>
+          <td><span class="tagBasic">일반게시판</span></td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
+        </tr>
+       <tr>
+          <td class="boardNumber">15</td>
+          <td><span class="tagBasic">일반게시판</span></td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
         </tr>
         <tr>
-            <th class="boardNumber">2</td>
-       <th class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="boardNumber">16</td>
           <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
         </tr>
         <tr>
-            <th class="boardNumber">2</td>
-          <th  class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="boardNumber">17</td>
           <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
         </tr>
         <tr>
-            <th class="boardNumber">2</td>
-          <th  class="title"><a href="#">게시물 제목 2</td>
+          <td class="boardNumber">18</td>
           <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
+        </tr>
+      <tr>
+          <td class="boardNumber">19</td>
+          <td><span class="tagBasic">일반게시판</span></td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
         </tr>
         <tr>
-            <th class="boardNumber">2</td>
-               <th  class="title"><a href="#">게시물 제목 2</td>
+          <td class="boardNumber">20</td>
           <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
         </tr>
         <tr>
-            <th class="boardNumber">2</td>
-          <th  class="title"><a href="#">게시물 제목 2</td>
+          <td class="boardNumber">21</td>
           <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
+        </tr>
+           <tr>
+          <td class="boardNumber">22</td>
+          <td><span class="tagBasic">일반게시판</span></td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
         </tr>
         <tr>
-            <th class="boardNumber">2</td>
-             <th  class="title"><a href="#">게시물 제목 2</td>
+          <td class="boardNumber">23</td>
           <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
+          <td class="title"><a href="#">게시물 제목 2</a></td>
+          <td class="ninkName">작성자2</td>
+          <td class="views">5</td>
+          <td class="heart">3</td>
         </tr>
-        <tr>
-            <th class="boardNumber">2</td>
-            <th  class="title"><a href="#">게시물 제목 2</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
-        </tr>
-        <tr>
-            <th class="boardNumber">2</td>
-               <th  class="title"><a href="#">게시물 제목 2</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
-        </tr>
-        <tr>
-            <th class="boardNumber">2</td>
-             <th  class="title"><a href="#">게시물 제목 2</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <th class="ninkName">작성자2</td>
-          <th class="views">5</td>
-          <th class="heart">3</td>
-        </tr>
-        
   
       </tbody>
     </table>
