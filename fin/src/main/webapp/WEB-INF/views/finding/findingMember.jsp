@@ -23,6 +23,8 @@
     
     <br>
     <br>
+    <br>
+    <br>
     <section class="title">
 		<br>
 		<br>
@@ -111,6 +113,10 @@
 		
 				</section>
 			</section>
+			<br>
+			<br>
+			<br>
+			<br>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
