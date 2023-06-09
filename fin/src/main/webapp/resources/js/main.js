@@ -64,6 +64,8 @@ window.addEventListener('scroll', scrollHandler);
 
 
 
+ 
+
 
 // 현재 높이 + view port높이 / 문서 전체높이 * 100 = 내가 현재 있는 지점을 퍼센트로 보여주는 함수
 function getCurrentScrollPercentage(){ 
@@ -75,68 +77,37 @@ const usedText = document.querySelector('.usedText');
 const reservationText = document.querySelector('.reservationText');
 
 window.addEventListener("scroll", ()=>{
-
-
+  const mediaQuery = window.matchMedia("screen and (min-width: 56rem)"); // 56 rem 이상 다 적용
   const scrollValue = getCurrentScrollPercentage();
-  console.log(scrollValue);
-
-// guitar Text
-  if(scrollValue > 28){
-    boardText.style.animation = "slideGuitar 1.2s ease-out forwards"
-    if(scrollValue > 39){
-      boardText.style.animation = "disappearSlideGuitar 1.2s ease-out forwards"
-    }
-  }
-
-// drum Text
-  if(scrollValue > 40){
-    usedText.style.animation = "slideDrum 1.2s ease-out forwards"
-    if(scrollValue > 49){
-      usedText.style.animation = "disappearSlideDrum 1.2s ease-out forwards"
-    }
-  }
-
-// headphone Text
-  if(scrollValue > 52){
-    reservationText.style.animation = "slideHeadPhone 1.2s ease-out forwards"
-    if(scrollValue > 60){
-      reservationText.style.animation = "disappearSlideHeadPhone 1.2s ease-out forwards"
-    }
-  }
-
-
-
-
-//  i-pad 미디어쿼리 폰 반응형
-
-  const media = window.matchMedia("screen and (min-width:47.5rem) and (max-width: 52rem)");
-
-  if(media.matches){
-    if(scrollValue > 26){
+  if(mediaQuery.matches){
+      // guitar Text
+    if(scrollValue > 28){
       boardText.style.animation = "slideGuitar 1.2s ease-out forwards"
-    }else if(scrollValue > 37.6){
-      boardText.style.animation = "disappearSlideGuitar 1.2s ease-out forwards"
+      if(scrollValue > 38){
+        boardText.style.animation = "disappearSlideGuitar 1.2s ease-out forwards"
+      }
     }
-  }
 
-  if(media.matches){
-    if(scrollValue > 38){
+  // drum Text
+    if(scrollValue > 40){
       usedText.style.animation = "slideDrum 1.2s ease-out forwards"
-    }else if(scrollValue == 50 ){
-      usedText.style.animation = "disappearSlideDrum 1.2s ease-out forwards"
+      if(scrollValue > 47.7){
+        usedText.style.animation = "disappearSlideDrum 1.2s ease-out forwards"
+      }
     }
-  }
 
-  if(media.matches){
-    if(scrollValue > 51){
+  // headphone Text
+    if(scrollValue > 52){
       reservationText.style.animation = "slideHeadPhone 1.2s ease-out forwards"
-    }else if(scrollValue == 60 ){
-      reservationText.style.animation = "disappearSlideHeadPhone 1.2s ease-out forwards"
+      if(scrollValue > 58.8){
+        reservationText.style.animation = "disappearSlideHeadPhone 1.2s ease-out forwards"
+      }
     }
   }
-
 
 });
+
+
 
 
 
@@ -162,40 +133,34 @@ const Mode = localStorage.getItem('darkMode');
 
 const mainInput = document.querySelectorAll('.mainInput');
 
-
-
-
-
-
 if (Mode === 'dark') {
   // 패스컬러 -> 핑크
     for(let i = 0; i< pathArr.length; i ++){
         pathArr[i].style.stroke ="#FB4F93";
       }
   // 하단 메일 보내는 인풋 요소들 
-    for(let j = 0; j < mainInput.length; j++){
-    	mainInput[j].style.color = "#fff";
-    }
+    // for(let j = 0; j < mainInput.length; j++){
+    // 	mainInput[j].style.color = "#fff";
+    // }
     
 }else{
   // 패스컬러 -> 블랙
   for(let i = 0; i< pathArr.length; i ++){
     pathArr[i].style.stroke ="#000";
   }
-
   // 하단 메일 보내는 인풋 요소들 
-  for(let j = 0; j < mainInput.length; j++){
-    mainInput[j].style.color = "#000";
-  } 
+  // for(let j = 0; j < mainInput.length; j++){
+  //   mainInput[j].style.color = "#000";
+  // } 
 }
+
+
 
 
 
 
 // top 버튼
 const topBtn = document.querySelector(".topBtn");
-
-
 window.addEventListener('scroll', ()=>{
   let forTopScroll = getCurrentScrollPercentage();
   if(forTopScroll > 16){
@@ -208,3 +173,101 @@ window.addEventListener('scroll', ()=>{
 topBtn.addEventListener("click", () =>{
   window.scrollTo({ top:0, behavior: 'smooth'});
 });
+
+
+
+// 탑버튼 패드 미디어쿼리
+const topPadMedia = window.matchMedia("screen and (min-width:47.8rem) and (max-width:53rem)"); // 패드 width 영역 768 ~ 820px
+// 탑버튼 폰 미디어쿼리
+const topPhoneMedia = window.matchMedia("screen and (min-width:21rem) and (max-width: 26rem)"); // 폰 width 영역 360 ~ 414px
+
+
+if(topPadMedia.matches){
+  window.addEventListener('scroll', () =>{
+    let mediaTopValue1 = getCurrentScrollPercentage();
+    if(mediaTopValue1 > 23){
+      topBtn.classList.add('show');
+    }else{
+      topBtn.classList.remove('show');
+    }
+  });
+}
+
+
+if(topPhoneMedia.matches){
+  window.addEventListener('scroll', ()=>{
+    let mediaTopValue = getCurrentScrollPercentage(); // Y스크롤 위치 구하기
+    if(mediaTopValue > 25 ){
+      topBtn.classList.add('show');
+    }else{
+      topBtn.classList.remove('show');
+    }
+  });
+}
+
+
+
+// 패드일 때 mainText mediaQuery
+
+window.addEventListener('scroll', () => {
+  if (topPadMedia.matches) {
+    let mediaTopValue2 = getCurrentScrollPercentage();
+    if (mediaTopValue2 > 26) {
+      boardText.style.animation = "slideGuitarMedia 1.2s ease-out forwards";
+      // boardText 나오는 거
+      if (mediaTopValue2 > 37){
+        usedText.style.animation = "slideDrumMedia 1.2s ease-out forwards"
+        // usedText 나오는 거
+      }
+      if (mediaTopValue2 > 46) {
+        boardText.style.animation = "disappearSlideGuitarMedia 1.2s ease-out forwards";
+        // boardText 들어가는 거
+      }
+      if(mediaTopValue2 > 47){
+        reservationText.style.animation = "slideHeadPhoneMedia 1.2s ease-out forwards"
+        // reservationText 나오는 거
+      }
+      if(mediaTopValue2 > 53){
+        usedText.style.animation = "disappearSlideDrumMedia 1.2s ease-out forwards"
+        // usedText 들어가는 거
+      }
+      if(mediaTopValue2 > 65){
+        reservationText.style.animation = "disappearSlideHeadPhoneMedia 1.2s ease-out forwards"
+        // reservationText 들어가는 거
+      }
+    }
+  }
+});
+
+// 패드일 때 mainText mediaQuery
+
+
+// 폰 일때 mainText mediaQuery
+window.addEventListener('scroll', () => {
+  if(topPhoneMedia.matches){ 
+    console.log("phoneMedia!");
+    let mediaTopValue3 = getCurrentScrollPercentage();
+    if(mediaTopValue3 > 22){
+      boardText.style.animation = "slideGuitarMediaPhone 1.2s ease-out forwards"
+      if(mediaTopValue3 > 27){
+        usedText.style.animation = "slideDrumMediaPhone 1.2s ease-out forwards";
+      }
+      if(mediaTopValue3 > 34){
+        reservationText.style.animation = "slideHeadPhoneMediaPhone 1.2s ease-out forwards";
+      }
+      if(mediaTopValue3 > 35.6){
+        boardText.style.animation = "disappearSlideGuitarMediaPhone 1.2s ease-out forwards";
+      }
+      if(mediaTopValue3 > 42){
+        usedText.style.animation = "disappearSlideDrumMediaPhone 1.2s ease-out forwards";
+      }
+      if(mediaTopValue3 > 47.8){
+        reservationText.style.animation = "disappearSlideHeadPhoneMediaPhone 1.2s ease-out forwards";
+      }
+    }
+  }
+});
+
+// 폰 일때 mainText mediaQuery
+
+

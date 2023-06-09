@@ -123,6 +123,11 @@ h2{
   min-width: 400px;
 }
 
+body.darkmode .mainInput{
+  border: 1px solid var(--border-color);
+  color: var(--text-dark-color);
+}
+
 
 .label{
   width: 35%;
@@ -132,24 +137,13 @@ h2{
 }
 
 
-
-
-body.darkmode .mainInput{
-  border: 1px solid var(--text-dark-color);
-}
 body.darkmode .label{
-  color: var(--text-dark-color);
+  color: var(--border-color);
 }
 
 
 
 
-
-
-
-.inputEmail{
-  font-family: var(--navFont-style-);
-}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -161,17 +155,23 @@ input::-webkit-inner-spin-button {
 .mainTextArea{
   resize: none;
   height: 150px;
-  font-size: 1.3em;
+  font-size: 1.1em;
 }
 
-.questionInput button{
+#mainBtn{
   background-color: transparent;
-  border: 1.5px solid var(--label-color);
+  border: 1px solid var(--label-color);
   border-radius: 5px;
   width: 35%;
   height: 50px;
   cursor: pointer;
   letter-spacing: 0.3em;
+  color: var(--text-color);
+}
+
+body.darkmode #mainBtn{
+  color: var(--text-dark-color);
+  border: 1px solid var(--border-color);
 }
 
 
@@ -399,7 +399,7 @@ body.darkmode .bi-chevron-compact-up{
     top: 20em;
     opacity: 0;
   }to{
-    top: 3em;
+    top: 6em;
     opacity: 1;
   }
 }
@@ -408,7 +408,7 @@ body.darkmode .bi-chevron-compact-up{
 
 @keyframes disappearSlideHeadPhone{
   from{
-    top: 3em;
+    top: 6em;
     opacity: 1;
   }to{
     top: 20em;
@@ -443,6 +443,7 @@ body.darkmode .bi-chevron-compact-up{
   right: 3em;
   background-color: transparent;
   border: none;
+  outline: none;
   cursor: pointer;
   z-index: 99;
   transition: opacity 0.7s ease-out;
@@ -463,34 +464,6 @@ body.darkmode .bi-chevron-compact-up{
 
 /* mian Text media */
 
-/* @media screen and (max-width:52rem){
-  .mainTextP, hr, .topBtn{
-    display: none;
-  }
-
-
-  .mainBoard{
-    font-size: 1.8em;
-    position: absolute;
-    top: 5em;
-  }
- 
-
-  .mainUsed{
-    font-size: 1.8em;
-    position: absolute;
-    bottom: 3em;
-    left: -4em;
-  }
-
-
-  .mainReser{
-    font-size: 1.8em;
-    position: absolute;
-    top: 2em;
-    right: -1em;
-  }
-} */
 
 /* mian Text media */
 
@@ -505,17 +478,19 @@ body.darkmode .bi-chevron-compact-up{
 }
 
 
-@media screen and (width:48.2rem) {
 
-  .mainBoard{
-    font-size: 1.8em;
-    position: absolute;
-    top: 15em;
-    left: 4em;
+/* 반응형 미디어 쿼리 폰 */
+@media screen and (min-width:21.5rem) and (max-width: 26rem) {
+  .mainTextP{
+    display: none;
   }
-  
-  
+  .boardText hr,
+  .usedText hr{
+    width: 60px;
+  }
 }
+
+
 
 
 
@@ -524,30 +499,30 @@ body.darkmode .bi-chevron-compact-up{
 /* 미디어쿼리 */
 
 
-/* 반응형 키프레임 */
+/* 반응형 키프레임 for pad*/
 
 /* guitar Text */
 /* 26 */
+
 @keyframes slideGuitarMedia{
   from{
-    right: -10em;
+    right: -38em;
+    top: 500px;
     opacity: 0;
-
   }to{
-    top: 5em;
-    right: 3em;
     opacity: 1;
+    bottom: 50px;
   }
 }
 
 /* 30 */
 @keyframes disappearSlideGuitarMedia{
   from{
-    top: 5em;
-    right: 3em;
     opacity: 1;
+    bottom: 50px;
   }to{
-    right: -10em;
+    right: -38em;
+    top: 500px;
     opacity: 0;
   }
 }
@@ -561,8 +536,9 @@ body.darkmode .bi-chevron-compact-up{
     left: 0;
     opacity: 0;
   }to{
-    left: 10em;
     opacity: 1;
+    left: 1em;
+    top: 7em;
   }
 }
 
@@ -570,8 +546,9 @@ body.darkmode .bi-chevron-compact-up{
 /* 37 */
 @keyframes disappearSlideDrumMedia{
   from{
-    left: 10em;
     opacity: 1;
+    left: 1em;
+    top: 7em;
   }to{
     left: 0;
     opacity: 0;
@@ -586,8 +563,7 @@ body.darkmode .bi-chevron-compact-up{
     opacity: 0;
   }to{
     opacity: 1;
-    top: -3em;
-    right: 4em;
+    right: -1em;
   }
 }
 
@@ -596,13 +572,106 @@ body.darkmode .bi-chevron-compact-up{
 @keyframes disappearSlideHeadPhoneMedia{
   from{
     opacity: 1;
-    top: -3em;
-    right: 4em;
+    right: -1em;
   }to{
     top: 5em;
     opacity: 0;
   }
 }
+
+
+
+
+
+/* 반응형 키프레임 for Phone */
+
+/* 22 */
+@keyframes slideGuitarMediaPhone {
+  from{
+    opacity: 0;
+    bottom: 3em;
+    right: -8em;
+  }to{
+    opacity: 1;
+    bottom: 3em;
+    right: 2em;
+  }
+}
+/* 35.6 */
+@keyframes disappearSlideGuitarMediaPhone {
+  from{
+    opacity: 1;
+    bottom: 3em;
+    right: 4em;
+  }to{
+    opacity: 0;
+    bottom: 3em;
+    right: -8em;
+  }
+}
+
+/* 27 */
+@keyframes slideDrumMediaPhone{
+  from{
+    opacity: 0;
+    left: -10em;
+    top: 7em;
+
+  }to{
+    opacity: 1;
+    left: -0.5em;
+    top: 7em;
+  }
+}
+
+
+/* 42 */
+@keyframes disappearSlideDrumMediaPhone{
+  from{
+    opacity: 1;
+    left: -0.5em;
+    top: 7em;
+  }to{
+    opacity: 0;
+    left: -10em;
+    top: 7em;
+  }
+}
+
+
+/* 34 */
+
+@keyframes slideHeadPhoneMediaPhone {
+  from{
+    opacity: 0;
+    top: 9em;
+    left: 8em;
+  }to{
+    opacity: 1;
+    top: 1em;
+    left: 8em;
+  }
+}
+
+/* 47.8 */
+@keyframes disappearSlideHeadPhoneMediaPhone {
+  from{
+    opacity: 1;
+    top: 1em;
+    left: 8em;
+  }to{
+    opacity: 0;
+    top: 9em;
+    left: 8em;
+  }
+}
+
+/* 반응형 키프레임 for Phone */
+
+
+
+
+
 
 
 

@@ -164,6 +164,12 @@ body.darkmode .bi-pencil-square{
 
 /* filter */
 
+
+
+.displayNoneList{
+    display: none;
+}
+
 .filterSec{
     display: flex;
     align-content: center;
@@ -184,7 +190,7 @@ hr{
     height: 40px;
     border: 1px solid var(--stroke-color);
     border-radius: 0.5em;
-    font-size: 1em;
+    font-size: 0.93em;
     box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
     background-color: transparent;
     cursor: pointer;
@@ -268,6 +274,7 @@ body.darkmode .filterSec > div:last-child{
     padding: 0.5em 0.5em;
     cursor: pointer;
     list-style: none;
+    font-size: 0.93em;
 }
 
 .listBox > li > button{

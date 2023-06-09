@@ -57,12 +57,14 @@ for(let i = 0; i< path.length; i ++){
   path[i].style.stroke ="#FB4F93";
 }
 
-let mainInput = document.querySelectorAll('.mainInput');
 
 
-for(let j = 0; j < mainInput.length; j++){
-    	mainInput[j].style.color = "#fff";
-}
+// let mainInput = document.querySelectorAll('.mainInput');
+
+
+// for(let j = 0; j < mainInput.length; j++){
+//     	mainInput[j].style.color = "#fff";
+// }
  
 
   // 각각 요소 색깔 바꾸기

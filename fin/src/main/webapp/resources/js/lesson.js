@@ -5,6 +5,32 @@ const locationListBox = document.querySelector('.locationListBox');
 const bi = document.getElementById('bi');
 const bi2 = document.getElementById('bi2');
 
+
+const lessonBtn = document.getElementById('lessonBtn');
+const lessonBtnTitle = document.getElementById('lessonBtnTitle');
+const liArr = document.getElementById('lessonId').children; // lessonId(ul) > li
+
+// 필터 클릭 하고 목록 클릭 시, 목록 타이틀로 필터 버튼 타이틀이 바뀜
+for(let eachLi of liArr){
+    eachLi.addEventListener("click", ()=>{
+        console.log("click");
+        lessonBtnTitle.innerText = eachLi.innerText;
+        selctLesson(); // 버튼 클릭하고 버튼 다시 닫히는 함수
+    })
+}
+
+const locBtn = document.getElementById('locBtn');
+const locBtnTitle = document.getElementById('locBtnTitle');
+const liArr2 = document.getElementById('locId').children; // locId(ul) > li
+
+// 필터 클릭 하고 목록 클릭 시, 목록 타이틀로 필터 버튼 타이틀이 바뀜
+for(let eachLi2 of liArr2){
+    eachLi2.addEventListener('click', () =>{
+        locBtnTitle.innerText = eachLi2.innerText;
+        selectLocation(); // 버튼 클릭하고 버튼 다시 닫히는 함수
+    })
+}
+
 // 외부영역 클릭시 닫기 하기 위한 요소
 
 let listBoxOpen = false;
@@ -96,6 +122,32 @@ window.addEventListener('click', function(e){
 
 
 // filter 온클릭 이벤트
+
+
+
+// let liLesson = $('#lessonId > li');
+// let liloc = $('#locId > li ');
+
+// for(let lessonEach of liLesson){
+//     $(lessonEach).click( () => {
+//         $('#lessonBtnTitle').html($(lessonEach).html());
+//         $('#lessonId').addClass("displayNoneList");
+//     })
+// }
+
+// for(let locEach of liloc){
+//     $(locEach).click( () => {
+//         $('#locBtnTitle').html($(locEach).html());
+//         $('#locId').addClass("displayNoneList");
+//     })
+// }
+
+// $('$lessonBtn').click ( () =>{
+//     if($('#lessonId').hasClass("displayNoneList")){
+//         $('#lessonId').removeClass("displayNoneList");
+//     }
+// });
+
 
 
 
