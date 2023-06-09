@@ -1,5 +1,35 @@
 
 
+
+.reservationPath{
+    fill: none;
+    stroke: black;
+    stroke-width: 1.5px;
+    stroke-dasharray: 5478.7744140625;
+    animation: drawPath 2s linear, floating 3s linear infinite;
+}
+
+
+
+
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 5478.7744140625;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
 .content{
 	width: 80%;
 	margin: auto;

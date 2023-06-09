@@ -15,6 +15,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
 
+
+<style>
+	dl, ol, ul {
+	    margin-top: 0;
+	    margin-bottom: 0;
+	    padding-left: 0;
+	}
+	body{
+		line-height: normal;	
+	}
+	button, input, optgroup, select, textarea {
+	    font-family : revert;
+	    font-size: revert;
+	    line-height: inherit;
+	}
+	
+	a:hover {
+    color: revert;
+	}
+</style>
+
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
