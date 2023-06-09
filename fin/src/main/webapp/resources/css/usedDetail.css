@@ -10,7 +10,6 @@ body{
     padding-bottom: 400px;
     padding-top: 400px;
 	
-
 }
 .topBox{
 	margin-top: 100px;
@@ -177,9 +176,9 @@ body{
 
 
 .rightButton i, .leftButton i{
-	color:;
+	color: #474554;
 }
-body.darkmode .rightButton i, .leftButton i{
+body.darkmode .rightButton i, {
 	color:var(--text-dark-color);
 }
 
