@@ -182,7 +182,7 @@
             <li class="terms__box">
               <div class="input__check">
                 <input type="checkbox" name="agreement" id="allowPromotions" value="allowPromotions" />
-                <label for="allowPromotions">정보 수신 동의</label>
+                <label for="allowPromotions"  class="required">정보 수신 동의</label>
               </div>
               <div class="terms__content">
                 BandArchive에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(BandArchive앱 알림 또는 문자), 이메일로 받아보실 수
