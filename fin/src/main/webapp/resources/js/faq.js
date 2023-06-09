@@ -8,8 +8,8 @@ document.getElementById("faq-img").addEventListener("click", function(){
 		faqWindow.classList.add("appear");
 		faqWindow.classList.remove("disappear");
 		
-		if(document.getElementById("chatBody").style.display !='none' || document.getElementById("chatBody").style.display != 0){
-			document.getElementById("chatBody").style.display = 'none';
+		if(document.getElementById("roomList").style.display !='none' || document.getElementById("chatBody").style.display != 0){
+			document.getElementById("roomList").style.display = 'none';
 		}
 		
 		

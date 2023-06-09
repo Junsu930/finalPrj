@@ -43,12 +43,12 @@
             <div class="formBox login"> <!--for-box login-->
                 <h2>LOGIN</h2>
 
-                <form action="#">
+                <form action="fin/login" method="POST" name="login-form">
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">
                             <ion-icon name="mail"></ion-icon>
                         </span>
-                        <input type="email" required>
+                        <input type="email" name="userEmail" required>
                         <label>EMAIL</label>
                     </div>
 
@@ -56,12 +56,12 @@
                         <span class="icon" onclick="showAndHide()">
                             <i id="eye" class="bi bi-eye-fill"></i>
                         </span>
-                        <input type="password" id="password" required>
+                        <input type="password" id="password" name="userPw" required>
                         <label>PASSWORD</label>
                     </div>
 
                     <div class="rememberForgot">  <!--remember-forgot-->
-                        <label><input type="checkbox"> Remember me</label>
+                        <label><input type="checkbox" name="saveId"> Remember me</label>
                         <a href="#">Forgot Password?</a>
                     </div>
 
@@ -79,7 +79,7 @@
             <div class="formBox register"> 
                 <h2>REGISTRATION</h2>
 
-                <form id ="form" action="#">
+                <form id ="form" action="fin/login" method="POST" name="regi-form">
 
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">

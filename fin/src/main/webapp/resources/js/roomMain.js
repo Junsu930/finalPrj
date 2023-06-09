@@ -132,3 +132,17 @@ $('#toModalDiv').click(()=>{
   })
 
 });
+
+
+// 회원 임시 설정하기
+$("#first-user").click(()=>{
+    $("#beingUserInput").val("1");
+});
+
+$("#second-user").click(()=>{
+  $("#beingUserInput").val("2");
+});
+
+$("#third-user").click(()=>{
+  $("#beingUserInput").val("3");
+});

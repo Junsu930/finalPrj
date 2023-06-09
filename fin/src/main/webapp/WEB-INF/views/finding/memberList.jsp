@@ -20,6 +20,10 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<br>
+	<br>
+	<br>
+	<br>
 	<div class="container">
 
 		<div class="item">
@@ -118,16 +122,16 @@
         <div class="item">
 	
 			<div class="namebox">
-                <p><i class="fa-solid fa-user"></i>이름</p>
+                <p><i class="fa-solid fa-user"></i>임정우</p>
             </div>
 	
             <!--악기 장르 거주지-->
 			<div class="info">
-                <div><i class="fa-solid fa-drum"></i></div>
+                <div><i class="fa-solid fa-drum"></i>드럼</div>
 
-				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
+				<div><i class="fa-solid fa-compact-disc"></i>JPOP</div>
 
-				<div><i class="fa-solid fa-building"></i>거주지</div>
+				<div><i class="fa-solid fa-building"></i>서울시</div>
 			</div>
 	
 			<div class="chat">
@@ -163,7 +167,10 @@
 	    </div>
 	    
 	    </div>
-	
+	<br>
+	<br>
+	<br>
+	<br>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 

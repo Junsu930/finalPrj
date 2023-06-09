@@ -22,6 +22,7 @@
 <div class="content" id="content">
 
 
+
 	<div class="resrSvgBox">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1361 768">
             <g id="reservationBack">
@@ -30,7 +31,17 @@
         </svg>
     </div>
 	
-
+	</div>
+	<!-- 임시 회원 기능 설정 -->
+	<form action="${contextPath}/tempUserSession" method="post">
+		<div id="first-user" style="cursor: pointer;">1번회원되기</div>
+		<div id="second-user"  style="cursor: pointer;">2번회원되기</div>
+		<div id="third-user"  style="cursor: pointer;">3번회원되기</div>
+		<input type="text" name="nowUser" readonly="readonly" id="beingUserInput">
+		<button>세션에 넣기</button>
+	</form>
+	<div>현재 세션에 넣은 user : "${sessionScope.tempUser}"</div>
+	<div>현재 채팅방 리스트 : "${sessionScope.chatRoomList }"</div>
 
 	<!-- 분류 창 -->
 	<div class="sorting-bar">
