@@ -15,7 +15,7 @@ public class User {
 	private String userEmail;
 	private String userPw;
 	private String joinDate;
-	private String sessionFl;
+	private String secessionFl;
 	private String userNick;
 	private String matchFl;
 	private String userType;

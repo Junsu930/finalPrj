@@ -17,15 +17,21 @@
 		<id property="chatRoomNo" column="CHAT_ROOM_NO"/>
 		<result property="chatTitle" column="TITLE"/>
 		<result property="chatMasterNo" column="USER_NO"/>
-		<result property="chatGuestNo" column="GUEST_USER_NO"/>
+		<result property="chatGuestNo" column="GUEST_NO"/>
 	</resultMap>
 	
 	<select id="tempUser" resultMap="tempUser_rm" parameterType="_int">
 		SELECT * FROM "USER" WHERE USER_NO = ${nowUser}
 	</select>
 	<select id="roomList" resultMap="chat_rm" parameterType="_int">
-		SELECT CHAT_ROOM_NO, GUEST_USER_NO, USER_NO, TITLE  
-		FROM CHAT_ROOM JOIN CHAT_ROOM_JOIN USING(CHAT_ROOM_NO) 
-		WHERE USER_NO = #{nowUser} OR GUEST_USER_NO = #{nowUser}
+		SELECT CHAT_ROOM_NO, GUEST_NO, USER_NO, TITLE  
+		FROM CHAT_ROOM 
+		WHERE USER_NO = #{nowUser} OR GUEST_NO = #{nowUser}
 	</select>
+	
+	<insert id="saveMsg" parameterType="map">
+		INSERT INTO CHAT_MESSAGE 
+		VALUES(CHAT_MSG_NO_SEQ, #{chatRoomNo}, #{msg}, SYSDATE, ${sessionUserNo})
+	</insert>
+	
 </mapper>

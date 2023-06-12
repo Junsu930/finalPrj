@@ -31,7 +31,6 @@
         </svg>
     </div>
 	
-	</div>
 	<!-- 임시 회원 기능 설정 -->
 	<form action="${contextPath}/tempUserSession" method="post">
 		<div id="first-user" style="cursor: pointer;">1번회원되기</div>
@@ -41,7 +40,6 @@
 		<button>세션에 넣기</button>
 	</form>
 	<div>현재 세션에 넣은 user : "${sessionScope.tempUser}"</div>
-	<div>현재 채팅방 리스트 : "${sessionScope.chatRoomList }"</div>
 
 	<!-- 분류 창 -->
 	<div class="sorting-bar">

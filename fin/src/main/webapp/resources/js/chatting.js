@@ -1,4 +1,8 @@
+/*
 let ws;
+// 채팅방 번호를 저장
+let chatRoomNo;
+*/
 
 /*
 document.getElementById("chatting-img").addEventListener("click", function(){
@@ -24,7 +28,7 @@ document.getElementById("chatting-img").addEventListener("click", function(){
 	}
 });
 */
-
+/*
 document.getElementById("chatting-img").addEventListener("click", function(){
 
 	let chatRoomList = document.getElementById("roomList");
@@ -49,11 +53,29 @@ document.getElementById("chatting-img").addEventListener("click", function(){
 });
 
 let eachRoomList = document.getElementsByClassName("eachRoomList");
-
+*/
+// 열려 있는 채팅방을 눌렀을 때, 채팅방 주소 규칙(/fin/chatting/호스트유저넘_게스트유저넘)
+/*
 for(let eachRoom of eachRoomList){
 	eachRoom.addEventListener("click", e=>{
 
+		// 다음 요소인 input에 담아둔 hidden 요소 
+		chatRoomNo =  $(e.target).next().val();
 
+		console.log("채팅방 넘버 : " + chatRoomNo);
+
+		// 열려진 채팅방 넘버 클래스
+		let chatRooms = document.getElementsByClassName("chatRooms");
+		
+		let chatArr = new Array;
+	
+		if(chatArr.indexOf(chatRoomNo) < 0){
+			// 소켓 안 열려 있으면
+			wsOpen(chatRoomNo); //소켓 열고 arr에 넣는다
+			chatArr.push(chatRoomNo);
+		}
+
+		
 
 		$("#roomList").css("display", "none");
 		$("#chatBody").css("display", "flex");
@@ -61,26 +83,42 @@ for(let eachRoom of eachRoomList){
 
 }
 
+*/
+/*
 
+let sockArr = new Array;
 
-function wsOpen(){
-
-    let ipAddr = document.getElementById("ipAddr").value;
-    
-	ws = new WebSocket("ws://" + ipAddr +':8080' + "/fin/chatting");
-	console.log("소켓 주소 : " + "ws://" + ipAddr + ':8080' + "/fin/chatting");
+if($("#roomNumber").val() != null && $("#roomNumber").val() != ""){
+	if(!sockArr.includes($("#roomNumber").val())){
+		wsOpen($("#roomNumber").val());
+		sockArr.push($("#roomNumber").val());
+	}else{
+		// 만약 열려있으면
+		location.href="/fin/moveChatting?"+"roomNumber="+$("#roomNumber").val();
+	}
 	
-	console.log(ws);
+}
+
+function wsOpen(chatRoomNo){
+
+	let ipAddr = document.getElementById("ipAddr").value;
+	ws = new WebSocket("ws://" + ipAddr +':8080' + "/fin/chatting/" + chatRoomNo);
 	wsEvt();
+
 }
 
 function wsEvt(){
 	ws.onopen = function(data){
 		// 소켓이 열리면 초기화 세팅하기
+		
+
 	}
 
 	ws.onmessage = function(data){
 		let msg = data.data;
+
+		console.log(data);
+		
 		if(msg != null && msg.trim() !=""){
 			// 메시지가 있다면
 			let chatMessage = JSON.parse(msg);
@@ -101,11 +139,15 @@ function wsEvt(){
 					tokMessageBox.innerHTML = chatMessage.msg;
 					//tokBox.append(nameBox);
 					tokBox.append(tokMessageBox);
-
+					
 					$('#messageBox').append(tokBox);
+					
+					$("#messageBox").append("<div class='me-tok'>나 :" + chatMessage.msg + "</div>");	
+
 					
 					$("#messageBox").scrollTop($("#messageBox")[0].scrollHeight);
 				}else{
+					
 					let tokBox = document.createElement("div");
 					tokBox.className = 'other-tok';
 					let nameBox = document.createElement("div");
@@ -116,7 +158,8 @@ function wsEvt(){
 					tokBox.append(nameBox);
 					tokBox.append(tokMessageBox);
 					$('#messageBox').append(tokBox);
-				
+					
+					$("#messageBox").append("<div class='other-tok'>상대 :" + chatMessage.msg + "</div>");
 		
 					$("#messageBox").scrollTop($("#messageBox")[0].scrollHeight);
 
@@ -142,16 +185,18 @@ function send(){
 	let option={
 		type : "message",
 		sessionId : $("#sessionId").val(),
-		userName : '깅깅이',
-		msg : $('#messageText').val()
+		userName : $("#sessionUserName").val(),
+		msg : $('#messageText').val(),
+		chatRoomNo : $("#roomNumber").val()
 	}
 
-	let uN = "강강이";
-	console.log("메세지 보내버렷");
 	if(option.msg != null && option.msg != ""){
 		ws.send(JSON.stringify(option));
 		$('#messageText').val("");
 	}
 }
+
+*/
+
 
 

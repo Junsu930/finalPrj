@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +15,7 @@
 <body>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
 	<div class="content">
-	<form>
-		<div>1번회원과 채팅하기</div>
-		<div>2번회원과 채팅하기</div>
-		<div>3번회원과 채팅하기</div>
-		<button>채팅시작</button>
-		<input type="text" readonly="readonly" name="whoChat" id="whoChat">
-	</form>
 		<!-- left -->
 		<div class="leftSide">
 			<!-- 사진 영역 -->
@@ -182,7 +175,7 @@
 			</div>
 		</div>
 	</div>
-<jsp:include page="/WEB-INF/views/chatting/chatting.jsp"/>
+<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/js/roomDetail.js"></script>
