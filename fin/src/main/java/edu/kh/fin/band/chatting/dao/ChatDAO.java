@@ -27,4 +27,11 @@ public class ChatDAO {
 		
 		
 	}
+
+	public int saveMsg(Map<String, Object> msgMap) {
+		
+		return sqlSession.insert("chat-mapper.saveMsg", msgMap);
+				
+	}
+
 }

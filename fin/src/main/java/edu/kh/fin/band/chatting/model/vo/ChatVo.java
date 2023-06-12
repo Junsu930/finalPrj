@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ChatVo {
 	
-	int chatRoomNo;
+	String chatRoomNo;
 	String chatTitle;
 	int chatMasterNo;
 	int chatGuestNo;

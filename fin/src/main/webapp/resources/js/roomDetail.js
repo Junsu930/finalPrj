@@ -122,5 +122,167 @@ document.getElementById("timeSubmit").addEventListener("click", function(){
     console.log("날짜 : " + schedule.innerHTML + ", 예약할 시간 : " + timetable);
 
 })
+/*
+let webSoc; //웹소켓 변수 선언
+let socUrl; // 현재 열린 소켓이 있다면 주소
+let sockList = new Array; // 열린 소켓을 담을 배열
+
+// 채팅방 연결용 !
+$("#oneChat").click(e=>{
+    let ipAddr = document.getElementById("ipAddr").value;
+    let rN = e.target.value;
+
+    console.log(rN);
+
+    if(webSoc != null){
+        socUrl = webSoc.url.split("/chatting/")[1]; // 소켓의 주소값을 가져온다
+        if(socUrl != rN){ // 현재 열린 소켓의 주소와  버튼으로 가져온 주소가 같지 않다면 
+            if(!sockList.includes(rN)){ // 현재 연 소켓이 없다면
+                webSoc = new WebSocket("ws://" + ipAddr +':8080' + "/fin/chatting/" + rN);
+                commonChatAjax(rN);
+                // 소켓 연다
+                wsOpen(rN);
+            }else{
+                console.log("이미 열려있다.");
+                commonChatAjax(rN);
+            }
+        }else{
+            console.log("이미 열려있다");
+            commonChatAjax(rN);
+        }
+
+    }else{ // 만약 소켓이 닫혀있다면
+        webSoc = new WebSocket("ws://" + ipAddr +':8080' + "/fin/chatting/" + rN);
+        commonChatAjax(rN);
+        sockList.push(rN);
+        wsOpen(rN);
+    }
+
+    
+    console.log(webSoc);
 
 
+    let messageWindow = document.getElementById("chatBody");
+	
+	if(messageWindow.style.display =='none' || messageWindow.style.display == 0 ){
+		messageWindow.style.display = 'flex';
+
+		if(document.getElementById("faqBox").style.width != '0px' || document.getElementById("faqBox").style.width != 0){
+			document.getElementById("faqBox").classList.remove('appear');
+			document.getElementById("faqBox").classList.add('disappear');
+		}
+	}
+});
+
+$("#twoChat").click(e=>{
+    let ipAddr = document.getElementById("ipAddr").value;
+    let rN = e.target.value;
+
+    console.log(rN);
+
+    if(webSoc != null){
+        socUrl = webSoc.url.split("/chatting/")[1]; // 소켓의 주소값을 가져온다
+        if(socUrl != rN){ // 현재 열린 소켓의 주소와  버튼으로 가져온 주소가 같지 않다면 
+            if(!sockList.includes(rN)){ // 현재 연 소켓이 없다면
+                webSoc = new WebSocket("ws://" + ipAddr +':8080' + "/fin/chatting/" + rN);
+                commonChatAjax(rN);
+                // 소켓 연다
+                wsOpen(rN);
+            }else{
+                console.log("이미 열려있다.");
+                commonChatAjax(rN);
+            }
+        }else{
+            console.log("이미 열려있다");
+            commonChatAjax(rN);
+        }
+
+    }else{ // 만약 소켓이 닫혀있다면
+        webSoc = new WebSocket("ws://" + ipAddr +':8080' + "/fin/chatting/" + rN);
+        commonChatAjax(rN);
+        sockList.push(rN);//쏙 리스트에 넣는다.
+        wsOpen(rN);
+    }
+
+    
+    console.log(webSoc);
+
+
+    let messageWindow = document.getElementById("chatBody");
+	
+	if(messageWindow.style.display =='none' || messageWindow.style.display == 0 ){
+		messageWindow.style.display = 'flex';
+
+		if(document.getElementById("faqBox").style.width != '0px' || document.getElementById("faqBox").style.width != 0){
+			document.getElementById("faqBox").classList.remove('appear');
+			document.getElementById("faqBox").classList.add('disappear');
+		}
+	}
+});
+
+$("#threeChat").click(e=>{
+    let ipAddr = document.getElementById("ipAddr").value;
+    let rN = e.target.value;
+
+    console.log(rN);
+
+    if(webSoc != null){
+        socUrl = webSoc.url.split("/chatting/")[1]; // 소켓의 주소값을 가져온다
+        if(socUrl != rN){ // 현재 열린 소켓의 주소와  버튼으로 가져온 주소가 같지 않다면 
+            if(!sockList.includes(rN)){ // 현재 연 소켓이 없다면
+                webSoc = new WebSocket("ws://" + ipAddr +':8080' + "/fin/chatting/" + rN);
+                commonChatAjax(rN);
+                // 소켓 연다
+                wsOpen(rN);
+            }else{
+                console.log("이미 열려있다.");
+                commonChatAjax(rN);
+            }
+            
+        }else{
+            console.log("이미 열려있다");
+            commonChatAjax(rN);
+        }
+
+    }else{ // 만약 소켓이 닫혀있다면
+        webSoc = new WebSocket("ws://" + ipAddr +':8080' + "/fin/chatting/" + rN);
+        commonChatAjax(rN);
+        sockList.push(rN);
+        wsOpen(rN);
+    }
+
+    
+    console.log(webSoc);
+
+
+    let messageWindow = document.getElementById("chatBody");
+	
+	if(messageWindow.style.display =='none' || messageWindow.style.display == 0 ){
+		messageWindow.style.display = 'flex';
+
+		if(document.getElementById("faqBox").style.width != '0px' || document.getElementById("faqBox").style.width != 0){
+			document.getElementById("faqBox").classList.remove('appear');
+			document.getElementById("faqBox").classList.add('disappear');
+		}
+	}
+});
+
+
+function commonChatAjax(chatRoomNo){
+    
+    alert("commonChatAjax 실행");
+
+    $.ajax({
+        type: 'get',
+        url: "/fin/chatRoom/"+chatRoomNo,
+        data: {"chatRoomNo" : chatRoomNo},
+        success: function(data){  
+            document.getElementById("messageBox").innerHTML += chatRoomNo;
+        }
+    })
+
+
+}
+
+
+*/
