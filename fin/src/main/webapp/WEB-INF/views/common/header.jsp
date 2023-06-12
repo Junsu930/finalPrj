@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,14 @@
           <div class="navSecondDiv">
               <!-- <a href="signUp" class="signUpText navA">SignUp</a> -->
               <a href="${contextPath}/checkPw" class="myPageText navA">My Page</a>
-              <a href="${contextPath}/login" class="loginText navA">Login</a>
+              <c:choose>
+              	<c:when test="${ empty sessionScope.loginUser }"> 
+              		<a href="${contextPath}/login" class="loginText navA">Login</a>
+              	</c:when>
+              	<c:otherwise>
+              		<a href="${contextPath}/logout" class="loginText navA">Logout</a>
+              	</c:otherwise>
+              </c:choose>
 			  <button id="alertBell" class="alertBell navA"><i class="bi bi-bell"></i></button> <!-- 로그인 시 알림 아이콘-->
             
               <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a>

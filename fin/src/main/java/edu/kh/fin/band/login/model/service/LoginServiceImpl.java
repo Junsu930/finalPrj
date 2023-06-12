@@ -15,20 +15,25 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired 
 	private LoginDAO dao;
 	
-
 	
 	private Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 	
 	@Override
 	public User login(User inputUser) {
 		
+		System.out.println("서비스"+ inputUser);
 		
 		User loginUser = dao.login(inputUser);
-
 		
 		
 		return loginUser;
 		
 	}
+	
+	// 이메일 중복 검사 서비스 구현
+		@Override
+		public int emailDupCheck(String userEmail) {
+			return dao.emailDupCheck(userEmail);
+		}
 
 }

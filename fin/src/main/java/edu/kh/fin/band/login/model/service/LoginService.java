@@ -9,6 +9,15 @@ public interface LoginService {
 	 * @return loginUser
 	 */
 	public abstract User login(User inputUser);
+
+	
+	
+	/** 이메일 중복 검사 서비스
+	 * @param userEmail
+	 * @return result
+	 */ 
+	public abstract int emailDupCheck(String userEmail);
+	
 		
 	
 	
