@@ -1,6 +1,7 @@
 package edu.kh.fin.band.chatting.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,15 @@ public class ChatService {
 	public List<ChatVo> onChatRoom(int nowUser) {
 		return dao.onChatRoom(nowUser);
 	}
+
 	
-	
+	/** 메세지 저장 기능
+	 * @param msgMap
+	 * @return
+	 */
+	public int savaMsg(Map<String, Object> msgMap) {
+		return dao.saveMsg(msgMap);
+	}
+
 
 }
