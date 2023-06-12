@@ -17,10 +17,12 @@
 		<typeAlias type="edu.kh.fin.band.dbTest.DBTestVO" alias="dbTest"/>
 		<typeAlias type="edu.kh.fin.band.chatting.model.vo.TempUserVo" alias="tempUser"/>
 		<typeAlias type="edu.kh.fin.band.chatting.model.vo.ChatVo" alias="chat"/>
+		<typeAlias type="edu.kh.fin.band.login.model.vo.User" alias="user"/>
 	</typeAliases>
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
 		<mapper resource="/mapper/mapper.xml"/>
 		<mapper resource="/mapper/chat-mapper.xml"/>
+		<mapper resource="/mapper/login-mapper.xml"/>
 	</mappers>
 </configuration>

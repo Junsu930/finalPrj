@@ -83,17 +83,18 @@
 
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">
-                            <ion-icon name="mail"></ion-icon>
+                            <ion-icon name="mail" id="sendEmail"></ion-icon>
                         </span>
                         <input type="email" id="email" required>
                         <label>EMAIL</label>
+                        <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
                     </div>
 
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">
                             <ion-icon name="key-outline"></ion-icon>
                         </span>
-                        <input type="text" required>
+                        <input type="text" required id="checkEmail">
                         <label>CERTIFICATION NUMBER</label>
                     </div>
 
@@ -103,6 +104,7 @@
                         </span>
                         <input type="password" id="password" required>
                         <label>PASSWORD</label>
+                        <span class="signUp-message" id="pwMessage">영어, 숫자 10글자 이하로 작성.</span>
                     </div>
 
                     <div class="inputBox">  <!--input-box-->
