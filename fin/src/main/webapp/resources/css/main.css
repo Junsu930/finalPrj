@@ -7,7 +7,7 @@
 .path{
     fill: none;
     stroke: var(--stroke-color);
-    stroke-width: 3px;
+    stroke-width: 2px;
   }
 
 
@@ -32,11 +32,11 @@
 .path1, .path3{
   fill: none;
   stroke: var(--stroke-color);
-  stroke-width: 3px;
+  stroke-width: 2px;
 }
 
 .path5{
-  stroke-width: 1.5px;
+  stroke-width: 1px;
   stroke: var(--stroke-color);
 }
 
@@ -100,17 +100,18 @@ h2{
   justify-content: center;
   align-items: center;
   width: 100%;
+  flex-direction: column;
 }
 
-.questionInput > form{
+/* .questionInput > form{
   display: flex;
-  flex-direction: column;
+  
   width: 100%;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.mainInput{
+.mainInput, .inputFromEmail{
   margin: 2em 0;
   height: 45px;
   width: 35%;
@@ -119,7 +120,7 @@ h2{
   border-radius: 5px;
   outline: none;
   font-size: 1em;
-  background-color:transparent;
+  background-color: transparent !important;
   min-width: 400px;
 }
 
@@ -142,9 +143,6 @@ body.darkmode .label{
 }
 
 
-
-
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -158,18 +156,22 @@ input::-webkit-inner-spin-button {
   font-size: 1.1em;
 }
 
-#mainBtn{
+
+
+#sendEmailBtn{
   background-color: transparent;
   border: 1px solid var(--label-color);
   border-radius: 5px;
   width: 35%;
   height: 50px;
   cursor: pointer;
+  outline: none;
   letter-spacing: 0.3em;
   color: var(--text-color);
+  font-size: 1em;
 }
 
-body.darkmode #mainBtn{
+body.darkmode #sendEmailBtn{
   color: var(--text-dark-color);
   border: 1px solid var(--border-color);
 }
@@ -179,7 +181,7 @@ body.darkmode #mainBtn{
 
 
 
-#mainBtn:hover{
+#sendEmailBtn:hover{
   animation: in .5s ease-out;
 }
 

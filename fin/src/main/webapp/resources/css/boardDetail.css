@@ -1,3 +1,68 @@
+#heart{
+    width: 30px; /*크기에 맞게 쓰세요*/
+    fill: var(--grey-color); /* #ccc 색깔코드 */
+    stroke: var(--magenta-heart-color); /* #f06 색깔코드*/
+    stroke-dasharray: 56.6;
+    stroke-dashoffset: 56.6;
+}
+
+#heart.like{
+    animation: 1s ease-in forwards like, 
+    0.8s linear 1s 1 forwards beat;
+}
+
+#heart.unlike{
+    animation: 1s ease-out forwards unlike;
+}
+
+@keyframes like{
+    0%{
+        stroke-dashoffset: 56.6;
+    }
+    70%{
+        stroke-dashoffset: 0;
+        fill:var(--grey-color);
+    }
+    100%{
+        stroke-dashoffset: 0;
+        fill: var(--magenta-heart-color);
+    }
+}
+@keyframes beat {
+    0%{
+        transform: scale(1, 1);
+    }
+    50%{
+        transform: scale(0.9, 0.9);
+    }
+    100%{
+        transform: scale(1, 1);
+    } 
+}
+
+@keyframes unlike{
+    0%{
+        stroke-dashoffset: 0;
+        fill: var(--magenta-heart-color);
+    }
+    70%{
+        stroke-dashoffset: 0;
+        fill:var(--grey-color);
+    }
+    100%{
+        stroke-dashoffset: 56.6;
+    }
+}
+
+ .commentBox2{
+  	cursor: pointer;
+  }
+
+
+/* 좋아요 css  */
+
+
+
 .container {
     width: 80%;
     margin: 0 auto;
@@ -60,6 +125,10 @@ font-size: 20px;
     flex-wrap: wrap; 
     margin-top: 50px;
   }
+  
+  
+ 
+  
   
   .commentBox,
   .commentBox2 {

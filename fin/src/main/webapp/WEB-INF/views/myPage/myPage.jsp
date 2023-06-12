@@ -28,6 +28,10 @@
 	    font-size: revert;
 	    line-height: inherit;
 	}
+
+    p{
+        margin-bottom: 0;
+    }
 	
 	a:hover {
     color: revert;
@@ -93,22 +97,22 @@
                 <div class="myPageFirstBox">
                     <ul>
                         <li class="js-static-modal-toggleInfo"><i class="bi bi-person-bounding-box"></i></li>
-                        <li class="js-static-modal-toggleBand"><i class="bi bi-people-fill"></i></li>
-                        <li class="js-static-modal-togglefindMember"><i class="bi bi-search"></i></li>
+                        <li class="js-static-modal-toggleBand"><i class="bi bi-people"></i></li>
                         <li class="js-static-modal-toggleBoard"><i class="bi bi-clipboard"></i></li>
                         <li class="js-static-modal-toggleReply"><i class="bi bi-chat"></i></li>
-                        <li class="js-static-modal-toggleBlock"><i class="bi bi-eye-slash"></i></li>
+                        <li class="js-static-modal-toggleBlock"><i class="bi bi-emoji-angry"></i></li>
                         
                     </ul>
                 </div>
 
                 <div class="myPageSecBox">
-                    <p class="js-static-modal-toggleInfoP">회원 정보 수정</p>
-                    <p class="js-static-modal-toggleBandP">나의 밴드</p>
-                    <p><a href="findingMember" class="findMember">밴드찾기</a></p>
-                    <p class="js-static-modal-toggleBoardP">내가 작성한 게시글</p>
-                    <p class="js-static-modal-toggleReplyP">내가 작성한 댓글</p>
-                    <p class="js-static-modal-toggleBlockP">차단 회원 목록</p>
+                    <ul>
+                        <li class="js-static-modal-toggleInfoP"><p>회원 정보 수정</p></li>
+                        <li class="js-static-modal-toggleBandP"><p>나의 밴드</p></li>
+                        <li class="js-static-modal-toggleBoardP"><p>내가 작성한 게시글</p></li>
+                        <li class="js-static-modal-toggleReplyP"><p>내가 작성한 댓글</p></li>
+                        <li class="js-static-modal-toggleBlockP"><p>차단 회원 목록</p></li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -185,8 +189,7 @@
                 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+               
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -272,8 +275,7 @@
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -374,8 +376,7 @@
                 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -406,21 +407,21 @@
                         <table>
                             <tr>
                                 <td>
-                                    <p class="tdTitle">밴드관리</p>
+                                    <p class="tdTitle upTitle">밴드관리</p>
                                 </td>
 
                                 <td>
-                                    <p>러시아워</p> 
+                                    <p class="tdTitle upTitle">러시아워</p> 
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <p class="tdTitle">리더</p>
+                                    <p class="tdTitle upTitle">리더</p>
                                 </td>
 
                                 <td>
-                                    <p>이현경</p>
+                                    <p class="tdTitle upTitle">이현경</p>
                                 </td>
                             </tr>
 
@@ -502,8 +503,7 @@
                 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -666,22 +666,17 @@
                                         <input type="radio" id="gyeonggi" name="location" value="gyeonggi">
                                         <label for="gyeonggi">경기도</label>
                                     </td>
-                                    
-                                </tr>
-
-                                <tr>
                                     <td>
                                         <input type="radio" id="incheon" name="location" value="incheon">
                                         <label for="incheon">인천</label>
                                     </td>
+                                </tr>
 
+                                <tr>
                                     <td>
                                         <input type="radio" id="daejeon" name="location" value="daejeon">
                                         <label for="daejeon">대전</label>
                                     </td>
-                                </tr>
-
-                                <tr>
                                     <td>
                                         <input type="radio" id="daegu" name="location" value="daegu">
                                         <label for="daegu">대구</label>
@@ -692,6 +687,8 @@
                                     </td>
                                 </tr>
 
+                                
+
                                 <tr>
                                     <td>
                                         <input type="radio" id="ulsan" name="location" value="ulsan">
@@ -701,57 +698,50 @@
                                         <input type="radio" id="sejong" name="location" value="sejong">
                                         <label for="sejong">세종</label>
                                     </td>
-                                </tr>
-
-                                <tr>
                                     <td>
                                         <input type="radio" id="gwangju" name="location" value="gwangju">
                                         <label for="gwangju">광주</label>
                                     </td>
+                                </tr>
 
+                                <tr>
                                     <td>
                                         <input type="radio" id="gangwon" name="location" value="gangwon">
                                         <label for="gangwon">강원도</label>
                                     </td>
-                                </tr>
-
-                                <tr>
                                     <td>
                                         <input type="radio" id="N-chungcheong" name="location" value="N-chungcheong">
-                                        <label for="N-chungcheong">충청북도</label>
+                                        <label for="N-chungcheong">충북</label>
                                     </td>
                                     <td>
                                         <input type="radio" id="S-chungcheong" name="location" value="S-chungcheong">
-                                        <label for="S-chungcheong">충청남도</label>
+                                        <label for="S-chungcheong">충남</label>
                                     </td>
-                                    
                                 </tr>
 
+                                
                                 <tr>
                                     <td>
                                         <input type="radio" id="N-gyeongsang" name="location" value="N-gyeongsang">
-                                        <label for="N-gyeongsang">경상북도</label>
+                                        <label for="N-gyeongsang">경북</label>
                                     </td>
 
                                     <td>
                                         <input type="radio" id="S-gyeongsang" name="location" value="S-gyeongsang">
-                                        <label for="S-gyeongsang">경상남도</label>
+                                        <label for="S-gyeongsang">경남</label>
                                     </td>
-                                </tr>
-
-                                <tr>
                                     <td>
                                         <input type="radio" id="N-jeolla" name="location" value="N-jeolla">
-                                        <label for="N-jeolla">전라북도</label>
+                                        <label for="N-jeolla">전북</label>
                                     </td>
 
-                                    <td>
-                                        <input type="radio" id="S-jeolla" name="location" value="S-jeolla">
-                                        <label for="S-jeolla">전라남도</label>
-                                    </td>
                                 </tr>
 
                                 <tr>
+                                    <td>
+                                        <input type="radio" id="S-jeolla" name="location" value="S-jeolla">
+                                        <label for="S-jeolla">전남</label>
+                                    </td>
                                     <td>
                                         <input type="radio" id="jeju" name="location" value="jeju">
                                         <label for="jeju">제주도</label>
@@ -772,8 +762,7 @@
             
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                <button id="secessionBtn">탈퇴하기</button>
             </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -781,108 +770,7 @@
     </div>
     
     
-    <!-- 멤버 찾기 모달 -->
-	<div id="static-modalfindMember" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-          </div>
-          <div class="modal-body">
-            
-            <section class="title">
-		<br>
-		<br>
-				<p id="tt">Find your band companion</p>
-			   
-				<section class="mainContent">
-				
-					<!--성별-->
-					<div class="gender">
-						 <p class="cate">Gender</p>
-						 <input type="radio" id="male" name="gender"><label for="male">남자</label>
-						 <input type="radio" id="female" name="gender"><label for="female">여자</label>
-					</div>
-		
-					<br>
-					<hr class="hr">
-				  
-	
-					<!--장르-->
-					<div class="genre">
-						 <p class="cate">Genre</p>
-						 <input type="radio" id="electronic" name="genre"><label for="electronic">ELECTRONIC</label>
-						 <input type="radio" id="rock" name="genre"><label for="rock">ROCK</label>
-						 <input type="radio" id="folk" name="genre"><label for="folk">FOLK</label>
-						 <input type="radio" id="pop" name="genre"><label for="pop">POP</label>
-						 <input type="radio" id="jazz" name="genre"><label for="jazz">JAZZ</label>
-						 <input type="radio" id="metal" name="genre"><label for="metal">METAL</label>
-						 <input type="radio" id="R&B" name="genre"><label for="R&B">R&B</label>
-					</div>
-	
-					<br>
-					<hr class="hr">
-	
-					<!--포지션-->
-					<div class="position">
-						<p class="cate">Position</p>
-						<input type="checkbox" id="guitar" name="position"><label for="guitar">Guitar</label>
-						<input type="checkbox" id="bass" name="position"><label for="bass">Bass</label>
-						<input type="checkbox" id="drum" name="position"><label for="drum">Drum</label>
-						<input type="checkbox" id="vocal" name="position"><label for="vocal">Vocal</label>
-						<input type="checkbox" id="keyboard" name="position"><label for="keyboard">Keyboard</label>
-						<input type="checkbox" id="brass/horn" name="position"><label for="brass/horn">Brass/Horn</label>
-					</div>
-					<br>
-					<hr class="hr">
-					<!--지역-->
-					<div class="locationjw">
-						<p class="cate">Location</p>
-						<input type="radio" id="seoul2" name="locationjw"><label for="seoul">서울</label>
-						<input type="radio" id="gyeonggi2" name="locationjw"><label for="gyeonggi">경기도</label>
-						<input type="radio" id="incheon2" name="locationjw"><label for="incheon">인천</label>
-						<input type="radio" id="daejeon2" name="locationjw"><label for="daejeon">대전</label>
-						<input type="radio" id="daegu2" name="locationjw"><label for="daegu">대구</label>
-						<input type="radio" id="busan2" name="locationjw"><label for="busan">부산</label>
-						<input type="radio" id="ulsan2" name="locationjw"><label for="ulsan">울산</label>
-						<input type="radio" id="sejong2" name="locationjw"><label for="sejong">세종</label>
-						<input type="radio" id="gwangju2" name="location"><label for="gwangju">광주</label>
-						<input type="radio" id="N-chungcheong2" name="locationjw"><label for="N-chungcheong">충청북도</label>
-						<input type="radio" id="S-chungcheong2" name="locationjw"><label for="S-chungcheong">충청남도</label>
-						<input type="radio" id="N-gyeongsang2" name="locationjw"><label for="N-gyeongsang">경상북도</label>
-						<input type="radio" id="S-gyeongsang2" name="locationjw"><label for="S-gyeongsang">경상남도</label>
-						<input type="radio" id="gangwon2" name="locationjw"><label for="gangwon">강원도</label>
-						<input type="radio" id="N-jeolla2" name="locationjw"><label for="N-jeolla">전라북도</label>
-						<input type="radio" id="S-jeolla2" name="locationjw"><label for="S-jeolla">전라남도</label>
-						<input type="radio" id="jeju2" name="locationjw"><label for="jeju">제주도</label>
-					<br>
-					</div>
-	
-					<hr class="hr">
-					<br>
-					<br>                     
-				   
-	
-					<button id="find"><a href="memberList">숨은 나의 멤버 찾기</a></button>
-					<br>
-					<br>
-					<br>
-					<br>
-		
-				</section>
-			</section>
-	
-            
-            
-          </div><!-- modal body -->
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
- 	</div><!-- static modal -->
-
-
-
-
-
+    
     
     
 
