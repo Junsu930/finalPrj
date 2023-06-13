@@ -10,7 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
 	 <link rel="stylesheet"href="${contextPath}/resources/css/usedDetail.css"></script>
- 
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
     <title>중고거래상세페이지</title>
    </head>
@@ -19,23 +21,22 @@
     <div class="main" >
     
     	<div class="topBox">
-    		<div class="left">
-    			<button class="leftButton">
-    				<i class="fa-sharp fa-solid fa-chevron-left"></i>
-    			</button>
-    		</div>
-   			<div class="pictureBox">
-    			<div class="picture">
-    				<img src="${contextPath}/resources/images/guitar.jpg" class="guitarImg">
-    							</div>
-    						</div>
-    		<div class="right">
-    			<button class="rightButton">
-    		<i class="fa-sharp fa-solid fa-chevron-right"></i>
-    		</div>
-    			</button>
-    
+    	
+    	<!-- Slider main container -->
+  <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="${contextPath}/resources/images/guitar.jpg" class="guitarImg"></div>
+        <div class="swiper-slide"><img src="${contextPath}/resources/images/guitar.jpg" class="guitarImg"></div>
+        <div class="swiper-slide"><img src="${contextPath}/resources/images/guitar.jpg" class="guitarImg"></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
     	</div>
+    
     	<div class="bottomBox">
     	<div class="bottomBoxDetail">
     		<div class="nickName">이갈치</div>
@@ -81,8 +82,28 @@
     	구매 문의 채팅</button>
     	</div>
     	</div>
-    </div>
+    	
+    	<div >
+    	<!--  
+    	<div class="moreBox">
+    		<div class="moreProductBox">
+    		  <div class="moreProductPicture">
+    		  <img src="${contextPath}/resources/images/guitar.jpg" class="
+"></div>
+    		  </div>
+    			<div class="moreProductTitle">10년된 피아노</div>
+    				<div class="moreProductPrice">20000원</div>
+    					<div class="moreProducArea">경기도</div>
+    			
+    		</div>
+    	
+    	
+    	</div>
+    	
+    	</div>
+    -->
 <!-- 세션 분류 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<script type="text/javascript" src="${contextPath}/resources/js/usedDetail.js"></script>
 </body>
 </html>
