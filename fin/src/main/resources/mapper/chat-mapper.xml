@@ -31,7 +31,7 @@
 	
 	<insert id="saveMsg" parameterType="map">
 		INSERT INTO CHAT_MESSAGE 
-		VALUES(CHAT_MSG_NO_SEQ, #{chatRoomNo}, #{msg}, SYSDATE, ${sessionUserNo})
+		VALUES(CHAT_MSG_NO_SEQ.NEXTVAL, #{chatRoomNo}, #{msg}, SYSDATE, ${sessionUserNo})
 	</insert>
 	
 </mapper>

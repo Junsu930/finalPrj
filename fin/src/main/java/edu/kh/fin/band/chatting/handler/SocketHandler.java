@@ -57,7 +57,7 @@ public class SocketHandler extends TextWebSocketHandler{
 		 */
 			
 		JSONObject obj = JsonToObjectParser(msg);
-		/*
+		
 		// 메세지가 잘 도착했으면 
 		if(obj != null) {
 			Map<String, Object> msgMap = null;
@@ -81,7 +81,7 @@ public class SocketHandler extends TextWebSocketHandler{
 				e.printStackTrace();
 			}
 		}
-		*/
+		
 		
 		try {
 			
