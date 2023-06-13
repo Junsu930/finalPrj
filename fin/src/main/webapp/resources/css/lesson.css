@@ -318,14 +318,12 @@ body.darkmode .imgCotentWrap{
 }
 
 /* 아이폰 12, se, 갤럭시 울트라 */
-@media screen and (max-width:25rem) and (max-width:26rem), (max-width:26rem){
-
+@media screen and (max-width:22rem) and (max-width:26rem), (max-width:26rem){
     .filterSec > a:first-child{
         display: block;
         position: absolute;
-        top:36%;
-        bottom: 38%;
-        left:5%;
+        left: 7%;
+        top: 60%;
     }
 
     .filterSec{

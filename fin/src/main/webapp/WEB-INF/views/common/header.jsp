@@ -24,7 +24,7 @@
               <li><a href="room" class="navA">Reservations</a></li>
               <li><a href="used" class="navA">Used</a></li>
               <li><a href="lesson" class="navA">Lessons</a></li>
-              <li><a href="findingMember" class="navA">Search</a></li>
+              <li><a href="findingMember" class="navA">Searching</a></li>
 
           </ul>
           <div class="navSecondDiv">
@@ -40,7 +40,7 @@
               </c:choose>
 			  <button id="alertBell" class="alertBell navA"><i class="bi bi-bell"></i></button> <!-- 로그인 시 알림 아이콘-->
             
-              <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a>
+              <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a> <!-- myPageIMG 임 signUPUMG가 아님 signUP 페이지가 사라지고 로그인 페이지에서 다돼기 때문에-->
               <a href="" class="loginIMG navA"><i class="bi bi-door-open" id="loginIMGI"></i></a>
               <a href="" class="logoutIMG navA"><i class="bi bi-door-closed" id="logoutIMGI"></i></a> <!-- logout IMG-->
               <button class="light"><i class="bi bi-moon navA" id="sun"></i></button>

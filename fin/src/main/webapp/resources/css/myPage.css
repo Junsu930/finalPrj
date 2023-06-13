@@ -177,7 +177,7 @@
 }
 
 .myPageFirstBox > ul > li{
-    padding: 1.7em 1em;
+    padding: 2em 1em;
     cursor: pointer;
 }
 
@@ -185,17 +185,27 @@
     font-size: 1.5em;
 }
 
-.myPageSecBox > p{
+.myPageSecBox > ul > li{
     padding: 2em 1em;
     margin-top: 0em;
     margin-bottom: 0.3em;
     cursor: pointer;
 }
 
-
-.myPageSecBox > p:last-child{
-    margin-bottom: 0.8em;
+.myPageSecBox > ul > li > p:last-child{
+    margin-top:0.3em
 }
+
+.bi-eye-slash{
+    padding-bottom: 0.3em;
+}
+
+
+
+
+/* .myPageSecBox > p:last-child{
+    margin-bottom: 0.8em;
+} */
 
 .findMember {
 	text-decoration: none;
@@ -342,6 +352,10 @@
     width: 100%;
 }
 
+.modalBoardTable td{
+    padding: 1.5em 1.5em;
+}
+
 
 
 /* 諛대뱶 紐⑤떖 */
@@ -382,10 +396,40 @@
     .modalBandTableBox >table{
         margin-left: 3em;
     }
+    .titleBox{
+        margin-top: 5em;
+    }
 }
+
+
+@media screen and (min-width: 22.5rem) and (max-width:23.75rem) {
+    .positionBox, .genreBox, .locationBox{
+        padding: 1em 0 !important;
+    }
+}
+
+
+
+@media screen and (max-width: 48rem) {
+    .titleBox{
+        margin-top: 5em;
+    }
+}
+
+@media screen and (min-width:47.8rem) and (max-width:53rem) {
+    .myPageInfo > div:last-child{
+        margin-left: 1.3em;
+    }
+}
+
+
 
 .tdTitle{
     font-size: 1.3em;
+}
+
+.upTitle{
+    padding: 1em 0;
 }
 
 #tdMember{
@@ -427,6 +471,10 @@
     background-color: transparent;
 }
 
+.modalBandContentBox td{
+    padding: 1em 0;
+}
+
 @media screen and (min-width:22.5rem) and (max-width:26rem) {
     .modalBandContentBox >table{
         margin-left: 3em;
@@ -434,7 +482,7 @@
 }
 
 .modalContentP{
-    margin-right: 2em;
+    margin-right: 1em;
 }
 
 .bandDestroyBtnBox >button{
@@ -472,6 +520,14 @@
     font-size: 1.5em;
 }
 
+.modalInfoWrapper form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
 .modalImgBox{
     position: relative;
     display: flex;
@@ -482,6 +538,7 @@
     border-radius: 50%;
     border: 1px solid var(--stroke-color);
     margin-bottom: 5em;
+    margin-top: 5em;
 }
 
 .arrowBox{
@@ -614,7 +671,18 @@
 }
 
 .locationTable td{
-    padding: 1em 1em;
+    padding: 2em 2em;
+}
+
+@media screen and (min-width:22.5rem) and (max-width:26rem) {
+    .positionTable td,
+    .genreTable td{
+        padding: 1em 1em;
+    }
+
+    .locationTable td{
+        padding: 1em 1em;
+    }
 }
 
 .disPlayNone{
@@ -638,7 +706,19 @@
     outline: none;
 }
 
-  
+/* 탈퇴하기 버튼 */
+#secessionBtn{
+    border-radius: 0.7em;
+    text-align: center;
+    width: 90px;
+    height: 30px;
+    border: 1px solid var(--stroke-color);
+    cursor: pointer;
+    background-color: var(--grey-color);
+    outline: none;
+}
+
+
 
 
 

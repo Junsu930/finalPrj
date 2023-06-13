@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
 </head>
 <body>
@@ -101,33 +103,30 @@
     </div>
     
     <div class="mainQuestion">
+
 	    <div>
 	      <h1>Any problems?</h1>
 	      <h2>Tell me!</h2>
 	    </div>
 	    
-	    <div>
+      <div>
         <ul class="questionInput">
-          <form action="" class="mainForm">
+            <label for="" class="label">SUBJECT*</label>
+            <input type="text" class="mainInput inputSubject" name="subject">
 
             <label for="" class="label">NAME*</label>
-            <input type="text" class="mainInput inputName">
-            
+            <input type="text" class="mainInput inputName" name="fromName">
+
             <label for="" class="label">EMAIL*</label>
-            <input type="email" class="mainInput inputEmail">
-            
-            <label for="" class="label">PHONE*</label>
-            <input type="number" class="mainInput inputPhone">
-            
+            <input type="email" class="mainInput inputFromEmail" name="fromAddress">
             
             <label for="" class="label">TELL US*</label>
-            <textarea name="" class="mainInput mainTextArea"></textarea>
+            <textarea class="mainInput mainTextArea" name="mailContent"></textarea>
             
-
-            <button class="mainInput" id="mainBtn">SEND</button>
-          </form>
+            <button id="sendEmailBtn" type="button">SEND</button>
         </ul>
       </div>
+
   </div>
   
   

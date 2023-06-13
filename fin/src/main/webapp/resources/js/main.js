@@ -271,3 +271,38 @@ window.addEventListener('scroll', () => {
 // 폰 일때 mainText mediaQuery
 
 
+
+
+
+
+// 메일 보내기 ajax
+
+document.getElementById('sendEmailBtn').addEventListener("click", () =>{
+
+  
+
+  const subject = document.querySelector('.inputSubject').value;
+  const fromName = document.querySelector('.inputName').value;
+  const fromAddress = document.querySelector('.inputFromEmail').value;
+  const mailContent = document.querySelector('.mainTextArea').value;
+
+
+  $.ajax({
+  url:"sendEmail",
+  data: {"subject" : subject , "fromName" : fromName, "fromAddress" : fromAddress, "mailContent" : mailContent },
+  type : "POST",
+  dataType: "JSON",  // dataType : 응답데이터 형식을 지정
+  // -> "JSON"으로 지정 시 자동으로 JS 객체로 변환
+  success : function(result){ 
+    alert(result);
+    document.querySelector('.inputSubject').value = "";
+    document.querySelector('.inputName').value = "";
+    document.querySelector('.inputFromEmail').value = "";
+    document.querySelector('.mainTextArea').value = "";
+  },
+  error : function(request, status, error){
+    console.log("AJAX 에러 발생");
+    console.log("상태코드 : " + request.status); // 404, 500
+  }
+  });
+});

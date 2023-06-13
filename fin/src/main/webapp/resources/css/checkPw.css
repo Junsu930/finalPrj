@@ -188,3 +188,30 @@ body.darkmode .wrapperCheck > p{
 }
 
 /* pw check */
+
+
+/* media query */
+
+
+@media screen and (min-width:47.8rem) and (max-width:53rem) {
+    .myPageSvgBox{
+        top: 690px;
+    }
+}
+
+@media screen and (min-width:21rem) and (max-width:26rem) {
+    .myPageSvgBox{
+        top: 750px;
+    }
+    .wrapperCheck{
+        width: 300px;
+        height: 300px;
+    }
+}
+
+
+@media screen and (min-width:31rem) and (max-width:47rem){
+    .myPageSvgBox{
+        top: 600px;
+    }
+}

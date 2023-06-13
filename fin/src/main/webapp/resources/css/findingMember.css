@@ -1,7 +1,197 @@
- /*Checkboxes styles*/
- input[type="checkbox"] { display: none; }
+/* svg section */
+.svgSec{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	width:100%;
+    height: 650px;
+    overflow: hidden;
+}
 
- input[type="checkbox"] + label {
+.groupSvgBox{
+    width:60%;
+}
+
+
+.groupPath{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+    stroke-dasharray: 10767.263671875;
+    animation: drawPath 1.7s linear, floating 3s linear infinite;
+}
+
+body.darkmode .groupPath{
+    stroke: var(--stroke-dark-color);
+}
+
+
+
+
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 10767.263671875;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+/* svg section */
+
+
+/* checkBoxSection */
+
+
+
+.checkBoxSection{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    margin-bottom: 20em;
+    overflow: hidden;
+}
+
+.checkWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 5em;
+}
+
+.checkWrapper label{
+    color: var(--label-color);
+}
+
+body.darkmode .checkWrapper label{
+    color: var(--border-color);
+}
+
+#tt{
+    font-size: 2em;
+    font-weight: 600;
+}
+
+body.darkmode #tt{
+    color: var(--border-color);
+}
+
+.genderTable td,
+.positionTable td,
+.genreTable td,
+.locationTable td{
+    padding: 2em 2em;
+}
+
+
+.checkWrapper > div:nth-of-type(1){
+    margin-bottom: 5em;
+}
+
+.checkWrapper > div:nth-of-type(1),
+.checkWrapper > div:nth-of-type(2),
+.checkWrapper > div:nth-of-type(3),
+.checkWrapper > div:nth-of-type(4){
+    margin-top: 5em;
+}
+
+.checkWrapper > p{
+    font-size: 1.3em;
+}
+
+body.darkmode .checkWrapper > p{
+    color: var(--border-color);
+}
+
+#genreP,
+#locationP{
+    margin-top: 5em;
+}
+
+
+
+.searchBtnBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 7em;
+}
+
+
+.searchBtnBox > button{
+    width: 150px;
+    height: 40px;
+    border: 1px solid var(--label-color);
+    background: transparent;
+    border-radius: 0.5em;
+    letter-spacing: 0.3em;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+}
+
+.searchBtnBox > button:hover{
+    animation: in .5s ease-out;
+}
+
+@keyframes in{
+    0%{
+      letter-spacing: 0.3em;
+    }
+    50%{
+      letter-spacing: 0.6em
+    }
+    100%{
+      letter-spacing: 0.3em
+    }
+  }
+
+body.darkmode .searchBtnBox > button{
+    color: var(--text-dark-color);
+    border: 1px solid var(--border-color);
+}
+
+
+
+
+
+
+@media screen and (min-width:21rem) and (max-width:26rem) {
+    .positionTable td,
+    .genreTable td{
+        padding: 1em 1em;
+    }
+    .locationTable td{
+        padding: 0;
+    }
+}
+
+
+
+
+
+
+
+/* checkBoxSection */
+
+ /*Checkboxes styles*/
+
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label {
    display: block;
    position: relative;
    padding-left: 35px;
@@ -11,9 +201,9 @@
    cursor: pointer;
  }
  
- input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+input[type="checkbox"] + label:last-child { margin-bottom: 0; }
  
- input[type="checkbox"] + label:before {
+input[type="checkbox"] + label:before {
    content: '';
    display: block;
    width: 20px;
@@ -27,7 +217,7 @@
    transition: all .12s, border-color .08s;
  }
  
- input[type="checkbox"]:checked + label:before {
+input[type="checkbox"]:checked + label:before {
    width: 10px;
    top: -5px;
    left: 5px;
@@ -40,243 +230,44 @@
  }
  
  /*radioboxes styles*/
- input[type="radio"] { display: none; }
+input[type="radio"] { display: none; }
  
-   input[type="radio"] + label {
-     display: block;
-     position: relative;
-     padding-left: 35px;
-     margin-bottom: 20px;
-     font: 14px/20px 'Open Sans', Arial, sans-serif;
-     color: var(--stroke-color);
-     cursor: pointer;
+input[type="radio"] + label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    font: 14px/20px 'Open Sans', Arial, sans-serif;
+    color: var(--stroke-color);
+    cursor: pointer;
 
-   }
-   
-   input[type="radio"] + label:before {
+}
+
+input[type="radio"] + label:before {
     content: '';
-     display: block;
-     width: 20px;
-     height: 20px;
-     border: 1px solid #ED820A;
-     position: absolute;
-     left: 0;
-     top: 0;
-     opacity: .6;
-     -webkit-transition: all .12s, border-color .08s;
-     transition: all .12s, border-color .08s;
-   }
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ED820A;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: .6;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+}
    
-   input[type="radio"]:checked + label:before {
-     width: 10px;
-     top: -5px;
-     left: 5px;
-     border-radius: 0;
-     opacity: 1;
-     border-top-color: transparent;
-     border-left-color: transparent;
-     -webkit-transform: rotate(45deg);
-     transform: rotate(45deg);
-   } 
-
-
- .genre input[type=radio]+label{
-    display: inline-block;
-   cursor: pointer;
-   height: 40px;
-   width: 120px;
-   text-align: center;
-   font-weight:bold;
-   font-size:16px;
-   border-radius: 5px;
-   margin: 15px;
-}
-
-.position input[type=checkbox]+label{
-   display: inline-block;
-   cursor: pointer;
-   height: 40px;
-   width: 120px;
-   text-align: center;
-   font-weight:bold;
-   font-size:16px;
-   border-radius: 5px;
-   margin: 15px;
-}
-
-
-.gender input[type=radio]+label{
-   display: inline-block;
-   cursor: pointer;
-   height: 40px;
-   width: 120px;
-   text-align: center;
-   font-weight:bold;
-   font-size:16px;
-   border-radius: 5px;
-   margin: 15px;
-}
-
-.locationjw input[type=radio]+label{
-   display: inline-block;
-   cursor: pointer;
-   height: 40px;
-   width: 120px;
-   text-align: center;
-   font-weight:bold;
-   font-size:16px;
-   border-radius: 5px;
-   margin: 15px;
-}
-
-.darkmode .title {
-	border: 1px solid #ffffff;
-	background-color: #ffffff;
-	color: black;
-	
-	
-}
-
-
-
-
-
-
-
-
-@media (max-width: 800px) {
-   .title {
-       width: 500px;
-       text-align: center;
-       justify-content: center;
-       margin: auto;
-       border: 1px solid black;
-       border-radius: 10px;  
-   }
-
-   .mainContent {
-       width: 20rem;
-       text-align: center;
-       margin: auto;
-       
-   }
-
-   .gender {
-       padding: 30px 20px;
-       width: 18em;
-       margin: auto;
-   }
-
-   .genre {
-       padding: 15px 10px;
-       width: 18em;
-       margin: auto;
-   }
-
-   .position {
-       padding: 15px 10px;
-       width: 18em;
-       margin: auto;
-   }
-
-   .locationjw {
-       padding: 15px 10px;
-       width: 18em;
-       margin: auto;
-   }
-
-   .tb {
-       padding: 15px 10px;
-       width: 10%;
-       margin: auto;
-   }
-
-
-   
-
-}
-
-   
-.title {
-   width: 55%;
-   text-align: center;
-   justify-content: center;
-   margin: auto;
-   border: 1px solid black;
-   border-radius: 10px;  
-   padding:10px;
- 
-}
-
-.hr {
-   width: 70%;
-   text-align: center;
-   justify-content: center;
-   margin: auto;
-}
-
-
-.mainContent {
-   width: 100%;
-   text-align: center;
-   margin: auto;
-   
-}   
-
-.tb {
-    justify-content: center;
-    text-align: center;
-    margin: auto;
-    padding: 10px;
-    width: 70%;
-
-}
-
-.cate {
-    padding: 30px;
-}
-
-.locationjw {
-    width: 55%;
-    justify-content: center;
-    margin: auto;
-}
-
-.gender {
-    width: 55%;
-    justify-content: center;
-    margin: auto;
-}
-
-.genre {
-    width: 55%;
-    justify-content: center;
-    margin: auto;
-}
-
-.position {
-    width: 55%;
-    justify-content: center;
-    margin: auto;
-}
-
-#tt {
-    font-size: 25px;
-}
-
-
-.cate {
-	font-size: 20px;
-}
-
-
-
-
-
-
-
-
-
+input[type="radio"]:checked + label:before {
+    width: 10px;
+    top: -5px;
+    left: 5px;
+    border-radius: 0;
+    opacity: 1;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+} 
 
 
 

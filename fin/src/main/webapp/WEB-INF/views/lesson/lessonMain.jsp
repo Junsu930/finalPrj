@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 </head>
 <body>
@@ -70,7 +71,7 @@
 	
 	<section class="secondSec">
 
-	    <div class="imgCotentWrap" onclick="location.href='${contextPath}/lessonDetail'">
+	    <div class="imgCotentWrap" id="firstBox" onclick="location.href='${contextPath}/lessonDetail'">
 	        <div class="imgBox"></div>
 	        <div class="contentBox">
 	            <p id="scrollOver">안녕하세요. 기타 고수 이현경입니다. 파이널이 잘 마무리 되면 좋겠습니다.</p>
@@ -197,7 +198,6 @@
     
 
     
-
   
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -158,7 +158,8 @@ body.darkmode .alertBell > i{
 
     .navDiv{
         width: 100%;
-        padding: var(--tinyFont-size) 0 0 var(--mediumFont-size); /*�긽 �슦 �븯 醫�*/
+        padding-left: 0.8em;
+        padding-top: 0.5em;
     }
 
     .navUl{
