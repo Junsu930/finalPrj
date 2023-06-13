@@ -5,6 +5,7 @@
     color: var(--text-dark-color);
     background-color : var(--background-dark-color);
     stroke: var(--stroke-dark-color);
+    transition: 0.3s;
  }
  
  /* ===============================�떎�겕紐⑤뱶 �쟻�슜 css=============================== */
@@ -43,14 +44,18 @@ body{
 
 
 .navBar{
+    position: fixed;
+    top:0;
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 60px;
     justify-content: space-between;
     align-items: center;
     background-color: var(--background-nav-color);
     padding:var(--tinyFont-size) var(--smallFont-size);  
     font-family: var(--navFont-style-);
+    transition: 0.5s;
+    z-index: 1;
 }
 
 

@@ -1,101 +1,115 @@
-.container{
-	width: 80%;
-	display: flex;
-	justify-content : space-around;
-	flex-wrap: wrap;
-	margin: auto;
-	
-}
-
-.item{
-	width: 350px;
-	height: 200px;
-	margin: 2em;
-	border-radius: 10px;
-	border: 1px solid black;
-	display: flex;
-	flex-direction: column;
-	
-}
-
-.item > div:nth-child(2) {
-	flex-basis: 30%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
 
 
 
-.item > div:nth-child(3) {
-	flex-basis: 40%;
-}
-
-.namebox {
-    justify-content: center;
-    text-align: center;
-    margin: auto;
-    flex-basis: 10%;
-}
-
-.info{
-	display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-.info > div:nth-child(1) {
-	flex-basis: 30%;
-	display: flex;
-	flex-direction: column;
-}
-
-
-.info > div:nth-child(2) {
-	flex-basis: 30%;
-}
-
-.info > div:nth-child(3) {
-	flex-basis: 30%;
-}
-
-.chat {
+.memberListSection{
     display: flex;
-    text-align: center;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 5em 4em;
 }
 
-
-.chat > div:nth-child(1) {
-    flex-basis: 50%;
+.wrapper{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1.5px solid var(--stroke-color);
+    border-radius: 0.5em;
+    width: 400px;
+    height: 520px;
+    transition: transform ease-out 0.25s, box-shadow 0.1s ease-in 0s;
+    overflow: hidden;
 }
 
-.chat > div:nth-child(2) {
-    flex-basis: 50%;
+body.darkmode .wrapper{
+	border: 1.5px solid var(--border-color);
 }
 
-.darkmode .item {
-	border: 1px solid #fff;
+.wrapper:hover{
+    transform: translateY(-15px);
+    box-shadow:4px 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 
-.fa-solid fa-guitar {
-	width:16px;
+
+.userNameBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2em 0;
 }
 
-.sendchat {
-	cursor: pointer;
-	
+.userNameBox img{
+    border: 1px solid var(--stroke-color);
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin: 1em 0 0 0;
 }
 
-.userinfo {
-	cursor: pointer;
+body.darkmode .userNameBox img{
+	border: 1px solid var(--border-color);
 }
 
-.fa-regular fa-comment-dots {
-	width:20px;
+.userNameBox p {
+    font-size: 1.5em;
 }
+
+.userStyleBox > ul, .userChatProfieBox > ul{
+    list-style: none;
+    padding: 1em 1em;
+    text-align: center;
+}
+
+.userStyleBox, .userChatProfieBox{
+    width: 100%;
+}
+
+.userStylUl{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 2em 2em;
+}
+
+.userStylUl i{
+    font-size: 1.6em;
+}
+
+.userStylUl p {
+    margin-top: 2em;
+    font-size: 1.1em;
+}
+
+
+.userChatProfieUl{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.userChatProfieUl i{
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+.userChatProfieUl p {
+    margin-top: 2em;
+    font-size: 1.1em;
+}
+
+
+.notFoundBox >p{
+	font-size: 2em;
+}
+
+
+
 

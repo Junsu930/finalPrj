@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="searchingMapper">
 
 
-<mapper namespace="searching-mapper">
 
 	<resultMap type="searching" id="searching_rm">
 		<id property="matchingNo" column="MATCHING_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="career" column="YEARS_OF_EXP" />
+		<result property="inst" column="INST" />
+		<result property="genre" column="GENRE" />
+		<result property="gender" column="GENDER" />
+		<result property="region" column="REGION" />
+		<result property="userName" column="USER_NICK" />
 	</resultMap>
-
-
-
-
-
-
-
-
+	
+	<select id="memberList" parameterType="searching" resultMap="searching_rm">
+		SELECT USER_NICK, INST, GENRE, REGION, GENDER
+		FROM MATCHING_INFO
+		JOIN "USER" USING(USER_NO)
+		WHERE
+		(((INST = #{inst}) AND (GENRE = #{genre})) OR
+		((GENRE = #{genre}) AND (REGION = #{region})) OR
+		((REGION = #{region}) AND (INST = #{inst}))) AND
+		GENDER = #{gender}
+		ORDER BY USER_NO
+	</select>
 </mapper>

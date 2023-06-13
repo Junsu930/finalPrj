@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/memberList.css">
     
     <script src="https://kit.fontawesome.com/cbcad42a26.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/marshallku/infinite-scroll/dist/infiniteScroll.js"></script>
     <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
@@ -20,156 +21,48 @@
 <body>
 
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div class="container">
-
-		<div class="item">
 	
-			<div class="namebox">
-                <p><i class="fa-solid fa-user"></i>이름</p>
-            </div>
-	
-            <!--악기 장르 거주지-->
-			<div class="info">
-                <div><i class="fa-solid fa-drum"></i></div>
+	<section class="memberListSection">
+		<c:choose>
+			<c:when test="${!empty memberList}">
+				<c:forEach items="${memberList}" var="member">
+					<div class="wrapper">
+			            <div class="userNameBox">
+			                <img src="" alt="#">
+			                <p>${member.userName}</p>
+			            </div>
+			            
+			            <div class="userStyleBox">
+			                <ul class="userStylUl">
+			                    <li><i class="bi bi-house"></i><p>${member.region}</p></li>
+			                    <li><i class="bi bi-music-note-beamed"></i><p>${member.genre}</p></li>
+			                    <li><i class="fa-solid fa-guitar"></i><p>${member.inst}</p></li>
+			                </ul>
+			            </div>
+			    
+			            <div class="userChatProfieBox">
+			                <ul class="userChatProfieUl"> 
+			                    <li><i class="bi bi-chat-dots"></i><p>채팅하기</p></li>
+			                    <li><i class="bi bi-person-circle"></i><p>프로필 보기</p></li>
+			                </ul>
+			            </div>
+        			</div>
+				</c:forEach>
+			</c:when>
 
-				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
+			<c:otherwise>
 
-				<div><i class="fa-solid fa-building"></i>거주지</div>
-			</div>
-	
-			<div class="chat">
-				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
+				<div class=notFoundBox>
+					<p>Not Found!</p>
+				</div>
+			</c:otherwise>
+		</c:choose>
 
-				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
-			</div>
-	    </div>
 		
+		
+	</section>
 	
-		<div class="item">
-	
-			<div class="namebox">
-                <p><i class="fa-solid fa-user"></i>이름</p>
-            </div>
-	
-            <!--악기 장르 거주지-->
-			<div class="info">
-                <div><i class="fa-solid fa-drum"></i></div>
 
-				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
-
-				<div><i class="fa-solid fa-building"></i>거주지</div>
-			</div>
-	
-			<div class="chat">
-	
-				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
-
-				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
-			</div>
-	    </div>
-
-        <div class="item">
-	
-			<div class="namebox">
-                <p><i class="fa-solid fa-user"></i>이름</p>
-            </div>
-	
-            <!--악기 장르 거주지-->
-			<div class="info">
-                <div><i class="fa-solid fa-drum"></i></div>
-
-				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
-
-				<div><i class="fa-solid fa-building"></i>거주지</div>
-			</div>
-	
-			<div class="chat">
-	
-				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
-
-				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
-			</div>
-	    </div>
-
-        <div class="item">
-	
-			<div class="namebox">
-                <p><i class="fa-solid fa-user"></i>이름</p>
-            </div>
-	
-            <!--악기 장르 거주지-->
-			<div class="info">
-                <div><i class="fa-solid fa-drum"></i></div>
-
-				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
-
-				<div><i class="fa-solid fa-building"></i>거주지</div>
-			</div>
-	
-			<div class="chat">
-	
-				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
-
-				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
-			</div>
-	    </div>
-
-        <div class="item">
-	
-			<div class="namebox">
-                <p><i class="fa-solid fa-user"></i>임정우</p>
-            </div>
-	
-            <!--악기 장르 거주지-->
-			<div class="info">
-                <div><i class="fa-solid fa-drum"></i>드럼</div>
-
-				<div><i class="fa-solid fa-compact-disc"></i>JPOP</div>
-
-				<div><i class="fa-solid fa-building"></i>서울시</div>
-			</div>
-	
-			<div class="chat">
-	
-				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
-
-				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
-			</div>
-	    </div>
-        
-        <div class="item">
-	
-			<div class="namebox">
-                <p><i class="fa-solid fa-user"></i>이름</p>
-            </div>
-	
-            <!--악기 장르 거주지-->
-			<div class="info">
-                <div><i class="fa-solid fa-drum"></i></div>
-
-				<div><i class="fa-solid fa-compact-disc"></i>장르</div>
-
-				<div><i class="fa-solid fa-building"></i>거주지</div>
-			</div>
-	
-			<div class="chat">
-	
-				<div class="sendchat"><i class="fa-regular fa-comment-dots"></i></div>
-
-				<div class="userinfo"><i class="fa-solid fa-circle-user"></i></div>
-			</div>	
-				
-	    </div>
-	    
-	</div>
-	<br>
-	<br>
-	<br>
-	<br>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 

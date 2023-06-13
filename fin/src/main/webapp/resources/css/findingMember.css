@@ -140,11 +140,14 @@ body.darkmode .checkWrapper > p{
     letter-spacing: 0.3em;
     text-align: center;
     cursor: pointer;
-    outline: none;
 }
 
 .searchBtnBox > button:hover{
     animation: in .5s ease-out;
+}
+
+.searchBtnBox > button:focus{
+    outline:none;
 }
 
 @keyframes in{

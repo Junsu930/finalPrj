@@ -86,7 +86,7 @@ body.darkmode .checkPwSection > h2{
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transition: height .4s ease-out;
+    transition: height .4s ease-out, 0.5s;
 }
 
 body.darkmode .wrapperCheck{

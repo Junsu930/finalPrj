@@ -14,15 +14,19 @@ public class Searching {
 	
 	private int userNo;
 	private int matchingNo;
-	private String guitar;
-	private String bass;
-	private String drum;
-	private String vocal;
-	private String keyboard;
-	private String horn;
+	private int career;
+	private String userName;
+	private String inst;
 	private String genre;
 	private String gender;
-	private String location;
+	private String region;
+	
+	
+	@Override
+	public String toString() {
+		return "Searching [userNo=" + userNo + ", matchingNo=" + matchingNo + ", career=" + career + ", userName="
+				+ userName + ", inst=" + inst + ", genre=" + genre + ", gender=" + gender + ", region=" + region + "]";
+	}
 	
 	
 }
