@@ -1,5 +1,6 @@
 package edu.kh.fin.band.searching.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,8 +16,7 @@ public class SearchingDAO {
 	private SqlSessionTemplate sqlSession;
 
 	public List<Searching> checkSelect(Searching searching) {
-		
-		return sqlSession.selectList("searching-mapper.memberList", searching);
+		return sqlSession.selectList("searchingMapper.memberList", searching);
 	}
 
 }

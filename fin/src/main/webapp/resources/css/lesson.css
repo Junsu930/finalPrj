@@ -241,6 +241,12 @@ body.darkmode .filterSec > div:last-child{
     border-radius: 0.5em;
     border: 1.5px solid var(--stroke-color);
     cursor: pointer;
+    transition: transform ease-out 0.25s, box-shadow 0.1s ease-in 0s;
+}
+
+.imgCotentWrap:hover{
+    transform: translateY(-15px);
+    box-shadow:4px 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 body.darkmode .imgCotentWrap{

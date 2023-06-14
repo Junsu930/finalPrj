@@ -1,5 +1,6 @@
 package edu.kh.fin.band.searching.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,40 +39,38 @@ public class SearchingController {
 	
 	
 	
+	
+	
 	@PostMapping("/checkSelect")
-	public String showMemberList(@RequestParam("gender")String gender,
-			@RequestParam("location") String location,
-			@RequestParam("GUITAR") String guitar,
-			@RequestParam("BASS") String bass,
-			@RequestParam("DRUM") String drum,
-			@RequestParam("VOCAL") String vocal,
-			@RequestParam("KEYBOARD") String keyboard,
-			@RequestParam("HORN") String horn, Model model) {
+	public String showMemberList(
+			@RequestParam("gender")String gender,
+			@RequestParam("region") String region,
+			@RequestParam("inst") String inst,
+			@RequestParam("genre") String genre, Model model) {
 		
 		
 		Searching searching = new Searching();
 		
 		searching.setGender(gender);
-		searching.setLocation(location);
-		searching.setGuitar(guitar);
-		searching.setBass(bass);
-		searching.setDrum(drum);
-		searching.setVocal(vocal);
-		searching.setKeyboard(keyboard);
-		searching.setHorn(horn);
-		
-		
-		
-		List<Searching> resultList = service.checkSelect(searching);
+		searching.setGenre(genre);
+		searching.setRegion(region);
+		searching.setInst(inst);
 		
 		
 		
 		
+		System.out.println(searching.toString() + "Controller");
+		
+		
+		
+		
+		List<Searching> memberList = service.checkSelect(searching);
+		
+	
+		System.out.println(memberList + "test Controller");
+		
+		model.addAttribute("memberList", memberList);
 		
 		return "finding/memberList";
 	}
-	
-
-	
-
 }

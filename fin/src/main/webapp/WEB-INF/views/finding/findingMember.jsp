@@ -53,10 +53,10 @@
     
     <section class="checkBoxSection">
 		<p id="tt">CHECK!</p>
-		<form action="checkSelect" mehtod="post">
+		<form action="checkSelect" method="post">
 			<div class="checkWrapper">
 
-				<p id="genderP">GENDER</p>
+				<p id="genderP">*GENDER*</p>
 				<div class="genderBox">
 					<table class="genderTable">
 						<tr>
@@ -77,32 +77,32 @@
 					<table class="positionTable">
 						<tr>
 							<td>
-								<input type="checkbox" id="GUITAR" name="GUITAR" value="GUITAR">
+								<input type="radio" id="GUITAR" name="inst" value="기타">
 								<label for="GUITAR">GUITAR</label>
 							</td>
 							<td>
-								<input type="checkbox" id="BASS" name="BASS" value="BASS">
+								<input type="radio" id="BASS" name="inst" value="배스">
 								<label for="BASS">BASS</label>
 							</td>
 							<td>
-								<input type="checkbox" id="DRUM" name="DRUM" value="DRUM">
+								<input type="radio" id="DRUM" name="inst" value="드럼">
 								<label for="DRUM">DRUM</label>
 							</td>
 						</tr>
 
 						<tr>
 							<td>
-								<input type="checkbox" id="VOCAL" name="VOCAL" value="VOCAL">
+								<input type="radio" id="VOCAL" name="inst" value="보컬">
 								<label for="VOCAL">VOCAL</label>
 							</td>
 
 							<td>
-								<input type="checkbox" id="KEYBOARD" name="KEYBOARD" value="KEYBOARD">
+								<input type="radio" id="KEYBOARD" name="inst" value="키보드">
 								<label for="KEYBOARD">KEYBOARD</label>
 							</td>
 
 							<td>
-								<input type="checkbox" id="HORN" name="HORN" value="HORN">
+								<input type="radio" id="HORN" name="inst" value="혼">
 								<label for="HORN">HORN</label>
 							</td>
 						</tr>
@@ -115,41 +115,41 @@
 					<table class="genreTable">
 						<tr>
 							<td>
-								<input type="radio" id="ELECTRONIC" name="genre" value="ELECTRONIC">
+								<input type="radio" id="ELECTRONIC" name="genre" value="일렉트로닉">
 								<label for="ELECTRONIC">ELECTRONIC</label>
 							</td>
 
 							<td>
-								<input type="radio" id="ROCK" name="genre" value="ROCK">
+								<input type="radio" id="ROCK" name="genre" value="락">
 								<label for="ROCK">ROCK</label>
 							</td>
 
 							<td>
-								<input type="radio" id="FOLK" name="genre" value="FOLK">
+								<input type="radio" id="FOLK" name="genre" value="포크">
 								<label for="FOLK">FOLK</label>
 							</td>
 						</tr>
 
 						<tr>
 							<td>
-								<input type="radio" id="POP" name="genre" value="POP">
+								<input type="radio" id="POP" name="genre" value="팝">
 								<label for="POP">POP</label>
 							</td>
 
 							<td>
-								<input type="radio" id="R&B" name="genre" value="R&B">
+								<input type="radio" id="R&B" name="genre" value="알앤비">
 								<label for="R&B">R&B</label>
 							</td>
 
 							<td>
-								<input type="radio" id="JAZZ" name="genre" value="JAZZ">
+								<input type="radio" id="JAZZ" name="genre" value="재즈">
 								<label for="JAZZ">JAZZ</label>
 							</td>
 						</tr>
 
 						<tr>
 							<td>
-								<input type="radio" id="METAL" name="genre" value="METAL">
+								<input type="radio" id="METAL" name="genre" value="메탈">
 								<label for="METAL">METAL</label>
 							</td>
 						</tr>
@@ -157,91 +157,91 @@
 					
 				</div>
 
-				<p id="locationP">LOCATION</p>
+				<p id="locationP">REGION</p>
 				<div class="checkLoc">
 					<table class="locationTable">
 						<tr>
 							<td>
-								<input type="radio" id="seoul" name="location" value="seoul">
+								<input type="radio" id="seoul" name="region" value="서울">
 								<label for="seoul">서울</label>
 							</td>
 							<td>
-								<input type="radio" id="gyeonggi" name="location" value="gyeonggi">
+								<input type="radio" id="gyeonggi" name="region" value="경기도">
 								<label for="gyeonggi">경기도</label>
 							</td>
 							<td>
-								<input type="radio" id="incheon" name="location" value="incheon">
+								<input type="radio" id="incheon" name="region" value="인천">
 								<label for="incheon">인천</label>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="daejeon" name="location" value="daejeon">
+								<input type="radio" id="daejeon" name="region" value="대전">
 								<label for="daejeon">대전</label>
 							</td>
 
 							<td>
-								<input type="radio" id="daegu" name="location" value="daegu">
+								<input type="radio" id="daegu" name="region" value="대구">
 								<label for="daegu">대구</label>
 							</td>
 							<td>
-								<input type="radio" id="busan" name="location" value="busan">
+								<input type="radio" id="busan" name="region" value="부산">
 								<label for="busan">부산</label>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="ulsan" name="location" value="ulsan">
+								<input type="radio" id="ulsan" name="region" value="울산">
 								<label for="ulsan">울산</label>
 							</td>
 							<td>
-								<input type="radio" id="sejong" name="location" value="sejong">
+								<input type="radio" id="sejong" name="region" value="세종">
 								<label for="sejong">세종</label>
 							</td>
 							<td>
-								<input type="radio" id="gwangju" name="location" value="gwangju">
+								<input type="radio" id="gwangju" name="region" value="광주">
 								<label for="gwangju">광주</label>
 							</td>
 						</tr>
 
 						<tr>
 							<td>
-								<input type="radio" id="gangwon" name="location" value="gangwon">
+								<input type="radio" id="gangwon" name="region" value="강원도">
 								<label for="gangwon">강원도</label>
 							</td>
 							<td>
-								<input type="radio" id="N-chungcheong" name="location" value="N-chungcheong">
+								<input type="radio" id="N-chungcheong" name="region" value="충북">
 								<label for="N-chungcheong">충북</label>
 							</td>
 							<td>
-								<input type="radio" id="S-chungcheong" name="location" value="S-chungcheong">
+								<input type="radio" id="S-chungcheong" name="region" value="충남">
 								<label for="S-chungcheong">충남</label>
 							</td>
 						</tr>
 
 						<tr>
 							<td>
-								<input type="radio" id="N-gyeongsang" name="location" value="N-gyeongsang">
+								<input type="radio" id="N-gyeongsang" name="region" value="경북">
 								<label for="N-gyeongsang">경북</label>
 							</td>
 
 							<td>
-								<input type="radio" id="S-gyeongsang" name="location" value="S-gyeongsang">
+								<input type="radio" id="S-gyeongsang" name="region" value="경남">
 								<label for="S-gyeongsang">경남</label>
 							</td>
 							<td>
-								<input type="radio" id="N-jeolla" name="location" value="N-jeolla">
+								<input type="radio" id="N-jeolla" name="region" value="전북">
 								<label for="N-jeolla">전북</label>
 							</td>
 						</tr>
 
 						<tr>
 							<td>
-								<input type="radio" id="S-jeolla" name="location" value="S-jeolla">
+								<input type="radio" id="S-jeolla" name="region" value="전남">
 								<label for="S-jeolla">전남</label>
 							</td>
 							<td>
-								<input type="radio" id="jeju" name="location" value="jeju">
+								<input type="radio" id="jeju" name="region" value="제주도">
 								<label for="jeju">제주도</label>
 							</td>
 						</tr>
@@ -249,7 +249,7 @@
 				</div>
 
 				<div class="searchBtnBox">
-					<button><a href="findingLoder">SUBMIT!</a></button>
+					<button type="submit">SUBMIT</button>
 				</div>
 			</div>
 		</form>

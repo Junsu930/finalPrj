@@ -87,6 +87,7 @@ for(let i = 0; i< path.length; i ++){
 const lightModeFunc = () => {
   // 바디태그에 다크모드 클래스 지우기
   document.body.classList.remove('darkmode');
+  document.body.style.transition = "0.5s";
 
   for(let i = 0; i < navA.length; i++){
     navA[i].style.color="#000";
@@ -139,7 +140,21 @@ sun.addEventListener('click', () => {
 // =========================================모드==========================================
 
 
+// header scroll시 사라지게 함
 
+let lastScrollTop = 0;
+let nav = document.querySelector('.navBar');
+
+window.addEventListener('scroll', () =>{
+
+  let scrollTop = window.scrollY;
+  if(scrollTop > lastScrollTop){
+    nav.style.top = "-60px";
+  }else{
+    nav.style.top = "0";
+  }
+  lastScrollTop = scrollTop;
+});
 
 
   

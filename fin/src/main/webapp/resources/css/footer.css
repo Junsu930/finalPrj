@@ -51,6 +51,7 @@ footer ul{
     text-decoration: none;
     color: var(--text-color); /*black*/
     cursor: pointer;
+    transition: 0.5s;
 }
 
 body.darkmode .footerDarkAtag{
