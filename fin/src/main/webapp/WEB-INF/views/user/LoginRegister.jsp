@@ -41,9 +41,9 @@
         <div class="wrapper"> <!--wrapper-->
 
             <div class="formBox login"> <!--for-box login-->
-                <h2>LOGIN</h2>
-
-                <form action="fin/login" method="POST" name="login-form">
+                <h2>LOGIN</h2><div>${message}</div>
+		
+                <form action="fin/login" method="POST" name="login-form" onsubmit="return loginValidate()">
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">
                             <ion-icon name="mail"></ion-icon>
@@ -79,60 +79,63 @@
             <div class="formBox register"> 
                 <h2>REGISTRATION</h2>
 
-                <form id ="form" action="fin/login" method="POST" name="regi-form">
+                <form id ="form" action="fin/signUp" method="POST" name="regi-form" onsubmit="return signUpValidate()">
 
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">
                             <ion-icon name="mail" id="sendEmail"></ion-icon>
                         </span>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" name="userEmail">
                         <label>EMAIL</label>
-                        <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
+                        <span class="signUp-message" id="emailMessage"></span>
                     </div>
 
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">
                             <ion-icon name="key-outline"></ion-icon>
                         </span>
-                        <input type="text" required id="checkEmail">
+                        <input type="text" id="checkEmail">
                         <label>CERTIFICATION NUMBER</label>
+                        <span class="signUp-message" id="cMessage" ></span>
                     </div>
 
                     <div class="inputBox">  <!--input-box-->
                         <span class="icon">
                             <ion-icon name="lock-closed"></ion-icon>
                         </span>
-                        <input type="password" id="password" required>
+                        <input type="password" id="rpassword" name="userPw">
                         <label>PASSWORD</label>
-                        <span class="signUp-message" id="pwMessage">영어, 숫자 10글자 이하로 작성.</span>
+                        <span class="signUp-message" id="pwMessage"></span>
                     </div>
 
                     <div class="inputBox">  <!--input-box-->
                         <span class="icon">
                             <ion-icon name="checkmark-outline"></ion-icon>
                         </span>
-                        <input type="password" id="password2" required>
+                        <input type="password" id="password2">
                         <label>CHECK PW</label>
+                        <span class="signUp-message" id="pwMessage2"></span>
                     </div>
 
                     <div class="inputBox">  <!--input-box-->
                         <span class="icon">
                             <ion-icon name="person-outline"></ion-icon>
                         </span>
-                        <input type="text" id="nickname" required>
+                        <input type="text" id="nickname" name="userNick">
                         <label>USER</label>
+                         <span class="signUp-message" id="nicknameMessage"></span>
                     </div>
 
                     <div class="inputBox busniessBox">  <!--busniess-box-->
                         <span class="icon">
                             <ion-icon name="business-outline"></ion-icon>
                         </span>
-                        <input type="text" required>
+                        <input type="text">
                         <label>BUSINESS NUMBER</label>
                     </div>
 
                     <div class="rememberForgot">  <!--remember-forgot-->
-                        <label><input type="checkbox"> Agree to the terms & conditions</label>
+                        <label><input type="checkbox" id="agree"> Agree to the terms & conditions</label>
                         <a href="#" id="showBusiness">Business</a>
                         <a href="#" class="js-static-modal-toggle">Show terms & conditions</a>
               		</div>

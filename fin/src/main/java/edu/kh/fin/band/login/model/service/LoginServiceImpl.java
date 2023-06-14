@@ -15,7 +15,6 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired 
 	private LoginDAO dao;
 	
-	
 	private Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 	
 	@Override
@@ -25,7 +24,7 @@ public class LoginServiceImpl implements LoginService{
 		
 		User loginUser = dao.login(inputUser);
 		
-		
+	
 		return loginUser;
 		
 	}
@@ -35,5 +34,20 @@ public class LoginServiceImpl implements LoginService{
 		public int emailDupCheck(String userEmail) {
 			return dao.emailDupCheck(userEmail);
 		}
+		
+	// 닉네임 중복 검사 서비스 구현
+	@Override
+	public int nicknameDupCheck(String userNickname) {
+		return dao.nicknameDupCheck(userNickname);
+	}
+	
+	//회원가입 서비스
+	@Override
+	public int signUp(User inputUser) {
+		
+		int result = dao.signUp(inputUser);
+		
+		return result;
+	}
 
 }

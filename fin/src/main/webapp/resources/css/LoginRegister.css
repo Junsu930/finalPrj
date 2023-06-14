@@ -98,14 +98,14 @@ body.darkmode .wrapper{
 
 
 
-/* register 버튼 눌렀을 때, 로그인 화면 왼쪽으로 옮기기 */
+/* register 踰꾪듉 �닃���쓣 �븣, 濡쒓렇�씤 �솕硫� �쇊履쎌쑝濡� �삷湲곌린 */
 
 .wrapper.active .formBox.login{
     transition: none;
     transform: translateX(-500px);
 }
 
-/* 로그인 화면 나오기 */
+/* 濡쒓렇�씤 �솕硫� �굹�삤湲� */
 .wrapper .formBox.login{
     transition: transfrom .18s ease;
     transform: translateX(0);
@@ -113,14 +113,14 @@ body.darkmode .wrapper{
 
 
 
-/* Login 버튼 눌럿을 떄, 회원가입 화면 오른쪽으로 옮기기 */
+/* Login 踰꾪듉 �닃�읉�쓣 �뻹, �쉶�썝媛��엯 �솕硫� �삤瑜몄そ�쑝濡� �삷湲곌린 */
 .wrapper .formBox.register{
     position: absolute;
     transition: none;
     transform: translateX(500px);
 }
 
-/* 회원 가입 화면에 나오기 */
+/* �쉶�썝 媛��엯 �솕硫댁뿉 �굹�삤湲� */
 .wrapper.active .formBox.register{
     transition: transfrom .18s ease;
     transform: translateX(0);
@@ -312,7 +312,9 @@ dark.mode .formBox h2{
     display: block;
 }
 
-
+.error{  
+	color : red;  
+}
 
 
 

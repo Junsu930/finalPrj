@@ -42,4 +42,26 @@ public class LoginDAO {
 		return sqlSession.selectOne("loginMapper.emailDupCheck", userEmail);
 	}
 
+
+
+	/** 닉네임 중복 검사 DAO
+	 * @param userNickname
+	 * @return result
+	 */
+	public int nicknameDupCheck(String userNickname) {
+		
+		return sqlSession.selectOne("loginMapper.nicknameDupCheck", userNickname);
+	}
+
+
+
+	/** 회원가입 DAO
+	 * @param inputUser
+	 * @return result
+	 */
+	public int signUp(User inputUser) {
+		
+		return sqlSession.insert("loginMapper.signUp", inputUser);
+	}
+
 }
