@@ -41,13 +41,15 @@ public class LessonDAO {
 		return -1; //데이터베이스 오류 
 	}
 	
-	public int write(String LessonTitle, String userID, String LessonContent) {
+	public int write(String LessonNo, String userNo, String introment,
+				String joindate, String lessonImg, String genre, String ints, 
+				String Region, String detailment, String socialSite) {
 		String SQL = "INSERT INTO Lesson VALUE(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
-			pstmt.setString(2, LessonTitle);
-			pstmt.setString(3, userID);
+			pstmt.setString(2, LessonNo);
+			pstmt.setString(3, userNo);
 			pstmt.setString(4, getDate());
 			pstmt.setString(5, LessonContent);
 			pstmt.setInt(6, 1);
@@ -57,7 +59,8 @@ public class LessonDAO {
 		}
 		return -1; //데이터베이스 오류 
 	}
-	
+}
+	/*
 	public ArrayList<Lesson> getList(int pageNumber) {
 		String SQL = "SELECT * FROM Lesson WHERE lesson < ? AND bbsAvailable = 1 ORDER BY bbsID DESC LIMIT 10";
 		ArrayList<Lesson> list = new ArrayList<Lesson>();
@@ -67,11 +70,11 @@ public class LessonDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Lesson Lesson = new Lesson();
-				Lesson.setLessonID(rs.getInt(1));
-				Lesson.setLessonTitle(rs.getString(2));
-				Lesson.setUserID(rs.getString(3));
-				Lesson.setLessonDate(rs.getString(4));
-				Lesson.setLessonContent(rs.getString(5));
+				Lesson.setLessonNo(rs.getInt(1));
+				Lesson.setUserNo(rs.getInt(2));
+				Lesson.setIntroment(rs.getString(3));
+				Lesson.setJoindate(rs.getString(4));
+				Lesson.setLessonImg(rs.getString(5));
 				Lesson.setLessonAvailable(rs.getInt(6));
 				list.add(Lesson);
 			}
@@ -97,5 +100,4 @@ public class LessonDAO {
 		return false; //데이터베이스 오류 
 	}
 }
-
 */
