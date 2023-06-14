@@ -17,31 +17,38 @@
 	<result property="banFl" 		column="BANNED_FL"/>
   </resultMap>
   
+  
+  
+  
+  
+  
   <!-- 로그인 -->
   <select id="login" parameterType="user" resultMap="user_rm">
   		SELECT USER_NO, USER_EMAIL, USER_PWD, USER_NICK ,USER_TYPE, 
 		MATCHING_FL, INTRO_MENT, TO_CHAR( JOIN_DATE , 'YYYY-MM-DD HH24:MI:SS') AS JOIN_DATE 
 		FROM "USER"
-		WHERE USER_EMAIL = #{userEmail}
+		WHERE USER_EMAIL = #{userEmail} AND USER_PWD = #{userPw}
 		AND SECESSION_FL = 'N'
   </select>
   
   <!-- 이메일 중복 검사 -->
   <select id="emailDupCheck" parameterType="string" resultType="_int">
-  		SELECT COUNT(*) FROM USER
+  		SELECT COUNT(*) FROM "USER"
   		WHERE USER_EMAIL = #{userEmail}
   		AND SECESSION_FL = 'N'
   </select>
   
   <!-- 닉네임 중복 검사 -->
-  	<select id="nicknameDupCheck" parameterType="string" resultType="_int">
-  		SELECT COUNT(*) FROM USER
-		WHERE USER_NICK = #{userNick}
-		AND SECESSION_FL = 'N'
-  	</select>
-  	
+  <select id="nicknameDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM "USER"
+  		WHERE USER_NICK = #{userNick}
+  		AND SECESSION_FL = 'N'
+  </select>
+  
+ 
   	<!-- 회원 가입 -->
   	<insert id="signUp" parameterType="user">
+  		INSERT INTO "USER" VALUES(	
   			USER_NO_SEQ.NEXTVAL,
   			#{userEmail},
   			#{userPw},

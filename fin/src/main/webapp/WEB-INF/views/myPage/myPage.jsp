@@ -571,32 +571,32 @@
                             <table class="positionTable">
                                 <tr>
                                     <td>
-                                        <input type="checkbox" id="GUITAR" name="GUITAR" value="GUITAR">
+                                        <input type="radio" id="GUITAR" name="GUITAR" value="GUITAR">
                                         <label for="GUITAR">GUITAR</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="BASS" name="BASS" value="BASS">
+                                        <input type="radio" id="BASS" name="BASS" value="BASS">
                                         <label for="BASS">BASS</label>
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="DRUM" name="DRUM" value="DRUM">
+                                        <input type="radio" id="DRUM" name="DRUM" value="DRUM">
                                         <label for="DRUM">DRUM</label>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <input type="checkbox" id="VOCAL" name="VOCAL" value="VOCAL">
+                                        <input type="radio" id="VOCAL" name="VOCAL" value="VOCAL">
                                         <label for="VOCAL">VOCAL</label>
                                     </td>
 
                                     <td>
-                                        <input type="checkbox" id="KEYBOARD" name="KEYBOARD" value="KEYBOARD">
+                                        <input type="radio" id="KEYBOARD" name="KEYBOARD" value="KEYBOARD">
                                         <label for="KEYBOARD">KEYBOARD</label>
                                     </td>
 
                                     <td>
-                                        <input type="checkbox" id="HORN" name="HORN" value="HORN">
+                                        <input type="radio" id="HORN" name="HORN" value="HORN">
                                         <label for="HORN">HORN</label>
                                     </td>
                                 </tr>

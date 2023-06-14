@@ -17,6 +17,22 @@ public interface LoginService {
 	 * @return result
 	 */ 
 	public abstract int emailDupCheck(String userEmail);
+
+
+
+	/** 닉네임 중복 검사 서비스
+	 * @param memberNickname
+	 * @return result
+	 */
+	public abstract int nicknameDupCheck(String userNickname);
+
+
+
+	/** 회원가입 서비스
+	 * @param inputUser
+	 * @return result
+	 */
+	public abstract int signUp(User inputUser);
 	
 		
 	

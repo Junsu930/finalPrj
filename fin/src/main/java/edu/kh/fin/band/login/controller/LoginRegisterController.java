@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -49,13 +50,12 @@ public class LoginRegisterController {
 						, HttpServletRequest req
 						, @RequestParam(value="saveId", required = false) String saveId ) {
 		
-		System.out.println("컨트롤" +inputUser);
-		
 		logger.info("로그인 수행");
 		
 		User loginUser = service.login(inputUser);
 		
-		System.out.println("컨트롤2"+ loginUser);
+		String message = null;
+		String path = null;
 		
 		if(loginUser !=null) { // 로그인 성공시
 			model.addAttribute("loginUser", loginUser);
@@ -77,14 +77,16 @@ public class LoginRegisterController {
 			// 쿠키를 응답 시 클라이언트에게 전달
 			resp.addCookie(cookie);
 			
+			path = "/main";
 			
 		} else { //로그인 실패 
 			
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 틀림");
+			path = "/login";
 			
 		}
 		
-		return"redirect:/";
+		return"redirect:" + path;
 		
 	}
 	
@@ -103,19 +105,78 @@ public class LoginRegisterController {
 			
 			status.setComplete(); // 세센이 할 일이 완료됨 -> 없앰
 			
-			return "redirect:/"; // 메인페이지 리다이렉트
+			return "redirect:/main"; // 메인페이지 리다이렉트
 			
 		}
 		
 		
 	//이메일 중복 검사
+	@ResponseBody
 	@GetMapping("/emailDupCheck")
 	public int emailDupCheck(String userEmail) {
+		
+		logger.info("이메일 중복검사 수행됨");
 		
 		int result = service.emailDupCheck(userEmail);
 		
 		return result;
 	}
+	
+	// 닉네임 중복 검사
+	@ResponseBody  
+	@GetMapping("/nicknameDupCheck")
+	public int nicknameDupCheck(String userNickname) {
+		
+		logger.info("닉네임중복검사 수행됨");
+		
+		int result = service.nicknameDupCheck(userNickname);
+		System.out.println(result);
+			
+		return result;
+		
+			
+		}
+	
+	//회원가입
+	@PostMapping("fin/signUp")
+	public String signUp( User inputUser
+						, Model model
+						, RedirectAttributes ra
+						, HttpServletResponse resp 
+						, HttpServletRequest req) {
+		
+		logger.info("회원가입 수행됨");
+		
+		System.out.println(inputUser);
+		
+		int result = service.signUp(inputUser);
+		
+		System.out.println(inputUser);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) { // 회원 가입 성공
+			message = "회원 가입 성공 로그인 해주세요";
+			path = "redirect:/login"; // 메인페이지
+			
+		}else { // 실패
+			message = "회원 가입 실패";
+			path = "redirect:/login"; // 회원 가입 페이지
+		}
+		
+		ra.addFlashAttribute("message", message);
+		return path;
+	
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 		
 	
 
