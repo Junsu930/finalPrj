@@ -78,7 +78,7 @@ const submitBtn = $('#timeSubmit');
 for(let time of times){
     time.addEventListener("click", function(){
         
-        
+        let pricePerHour = document.getElementById("hiddenPricePerHour").value;
         
         if(!this.classList.contains("onTime")){
             this.classList.add("onTime");
@@ -104,7 +104,7 @@ for(let time of times){
         
         $('#hoursOfUse').html(timeList.length + " 시간");
 
-        $('#totalPrice').html("총 "+ timeList.length * 3000 + '원');
+        $('#totalPrice').html("총 "+ timeList.length * pricePerHour + '원');
     })
 
 }
@@ -121,7 +121,11 @@ document.getElementById("timeSubmit").addEventListener("click", function(){
 
     console.log("날짜 : " + schedule.innerHTML + ", 예약할 시간 : " + timetable);
 
-})
+});
+
+$("#timeSubmit").click(()=>{
+    swal.fire("예약 신청이 전송되었습니다.");
+});
 /*
 let webSoc; //웹소켓 변수 선언
 let socUrl; // 현재 열린 소켓이 있다면 주소

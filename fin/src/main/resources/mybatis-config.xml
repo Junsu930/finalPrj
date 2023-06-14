@@ -17,9 +17,10 @@
 		<typeAlias type="edu.kh.fin.band.dbTest.DBTestVO" alias="dbTest"/>
 		<typeAlias type="edu.kh.fin.band.chatting.model.vo.TempUserVo" alias="tempUser"/>
 		<typeAlias type="edu.kh.fin.band.chatting.model.vo.ChatVo" alias="chat"/>
+		<typeAlias type="edu.kh.fin.band.chatting.model.vo.ChatMessageVo" alias="chatMessage"/>
 		<typeAlias type="edu.kh.fin.band.searching.model.vo.Searching" alias="searching"/>
 		<typeAlias type="edu.kh.fin.band.login.model.vo.User" alias="user"/>
-
+		<typeAlias type="edu.kh.fin.band.room.model.vo.Room" alias="pracRoom"/>
 	</typeAliases>
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
@@ -27,5 +28,6 @@
 		<mapper resource="/mapper/chat-mapper.xml"/>
 		<mapper resource="/mapper/searching-mapper.xml"/>
 		<mapper resource="/mapper/login-mapper.xml"/>
+		<mapper resource="/mapper/pracRoom-mapper.xml"/>
 	</mappers>
 </configuration>

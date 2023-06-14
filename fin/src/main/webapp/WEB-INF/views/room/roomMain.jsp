@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,8 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/roomMain.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/44f3dd3f25.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <title>예약페이지</title>
 </head>
 <body>
@@ -20,9 +23,6 @@
 	<span>프로필보기 넘어가기</span>
 </div>
 <div class="content" id="content">
-
-
-
 	<div class="resrSvgBox">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1361 768">
             <g id="reservationBack">
@@ -40,274 +40,85 @@
 		<button>세션에 넣기</button>
 	</form>
 	<div>현재 세션에 넣은 user : "${sessionScope.tempUser}"</div>
-
 	<!-- 분류 창 -->
-	<div class="sorting-bar">
-		<!-- 각각의 메뉴 -->
-		<div>
-			<button class="regionBtn" id="regionBtn">
-				<span id="regionTextSpan">REGION</span>
-				<i class="bi bi-caret-down" id="bi"></i>
-			</button>
-			<ul class="regionListUl disappearList" id="regionListUl">
-				<li>서울</li>
-				<li>경기</li>
-				<li>부산</li>
-				<li>대구</li>
-				<li>대전</li>
-				<li>강원도</li>
-				<li>경상북도</li>
-				<li>경상남도</li>
-				<li>전라북도</li>
-				<li>전라남도</li>
-				<li>충청북도</li>
-				<li>충청남도</li>
-				<li>충청남도</li>
-				<li>제주도</li>
-			</ul>
-			<!--
-			<select>
-				<li>지역</li>
-				<li>서울</li>
-				<li>경기</li>
-				<li>부산</li>
-				<li>대구</li>
-				<li>대전</li>
-				<li>강원도</li>
-				<li>경상북도</li>
-				<li>경상남도</li>
-				<li>전라북도</li>
-				<li>전라남도</li>
-				<li>충청북도</li>
-				<li>충청남도</li>
-				<li>충청남도</li>
-				<li>제주도</li>
-			</select>
-			-->
+	<form method="get" action="${contextPath}/searchingPracRoom" onsubmit="return spaceCheck();">
+		<div class="sorting-bar">
+			<!-- 각각의 메뉴 -->
+			<div>
+				<button type="button" class="regionBtn" id="regionBtn">
+					<span id="regionTextSpan">REGION</span>
+					<i class="bi bi-caret-down" id="bi"></i>
+				</button>
+				<input type="hidden" name="regionSelector" value="REGION" id="regionSelector"> 
+				<input type="hidden" value="${searchingFlag}" id="searchingFlag"> 
+				<ul class="regionListUl disappearList" id="regionListUl">
+					<li>서울</li>
+					<li>경기</li>
+					<li>부산</li>
+					<li>대구</li>
+					<li>대전</li>
+					<li>강원도</li>
+					<li>경상북도</li>
+					<li>경상남도</li>
+					<li>전라북도</li>
+					<li>전라남도</li>
+					<li>충청북도</li>
+					<li>충청남도</li>
+					<li>충청남도</li>
+					<li>제주도</li>
+				</ul>
+				<!--
+				<select>
+					<li>지역</li>
+					<li>서울</li>
+					<li>경기</li>
+					<li>부산</li>
+					<li>대구</li>
+					<li>대전</li>
+					<li>강원도</li>
+					<li>경상북도</li>
+					<li>경상남도</li>
+					<li>전라북도</li>
+					<li>전라남도</li>
+					<li>충청북도</li>
+					<li>충청남도</li>
+					<li>충청남도</li>
+					<li>제주도</li>
+				</select>
+				-->
+			</div>
+			
+			<div>
+					<input type="search" name="searchingText" id="room-search">
+					<button id="s-btn">
+						<i class="fa-solid fa-magnifying-glass" id="glass"></i>			
+					</button>
+			</div>
 		</div>
-		<div>
-			<input type="search" id="room-search">
-			<button id="s-btn">
-				<i class="fa-solid fa-magnifying-glass" id="glass"></i>			
-			</button>
-		</div>
-	</div>
+	</form>
+	<c:if test="${!empty roomList}">
 	<!-- 메인 카드 -->
 	<div class="main-card-sec">
-
-		<div class="box-card" onclick="location.href='${contextPath}/roomDetail'">
-	
-			<div></div>
-	
-			<div class="space-name">
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div> <i class="fa-solid fa-location-dot"></i>&nbsp;경기도 의정부시</div>
-
-					<div><i class="fa-solid fa-tags" style="margin-top: 2px;"></i> &nbsp; #pearl 드럼 구비 <br> &nbsp;#5인 이상 연습 가능</div>
-				</div>
-
-				<div><i class="fa-solid fa-money-check"></i> 3000원 / 시간</div>
-			</div>
-	    </div>
-	
-		<div class="box-card">
-	
-			<div></div>
-	
-			<div>
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div></div>
-
-					<div></div>
-				</div>
-
+		<c:forEach var="eachRoom" items="${roomList}" begin="0" end="4">
+			<div class="box-card" onclick="location.href='${contextPath}/roomDetail?pracRoomNo=${eachRoom.pracRoomNo}'">
 				<div></div>
-			</div>
-	    </div>
-	
-		<div class="box-card">
-	
-			<div></div>
-	
-			<div>
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div></div>
-
-					<div></div>
+				<div class="space-name">
+					<p>${eachRoom.pracRoomName}</p>
 				</div>
-
-				<div></div>
-			</div>
-	    </div>
-	
-		<div class="box-card">
-	
-			<div></div>
-	
-			<div>
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div></div>
-
-					<div></div>
+				<div class="detail-part">
+					<div>
+						<div> <i class="fa-solid fa-location-dot"></i>&nbsp; ${eachRoom.region }</div>
+						<div><i class="fa-solid fa-tags" style="margin-top: 2px;"></i> &nbsp; ${eachRoom.tag}</div>
+					</div>
+					<div><i class="fa-solid fa-money-check"></i> ${eachRoom.pricePerHour}원 / 시간</div>
 				</div>
-
-				<div></div>
-			</div>
-	    </div>
-	
-		<div class="box-card">
-	
-			<div></div>
-	
-			<div>
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div></div>
-
-					<div></div>
-				</div>
-
-				<div></div>
-			</div>
-	    </div>
-	
-		<div class="box-card">
-	
-			<div></div>
-	
-			<div>
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div></div>
-
-					<div></div>
-				</div>
-
-				<div></div>
-			</div>
-	    </div>
-	
-		<div class="box-card">
-	
-			<div></div>
-	
-			<div>
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div></div>
-
-					<div></div>
-				</div>
-
-				<div></div>
-			</div>
-	    </div>
-	
-		<div class="box-card">
-	
-			<div></div>
-	
-			<div>
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div></div>
-
-					<div></div>
-				</div>
-
-				<div></div>
-			</div>
-	    </div>
-	
-		<div class="box-card">
-	
-			<div></div>
-	
-			<div>
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div></div>
-
-					<div></div>
-				</div>
-
-				<div></div>
-			</div>
-	    </div>
-	
-		<div class="box-card">
-	
-			<div></div>
-	
-			<div>
-				<p>응왕 연습실</p>
-			</div>
-	
-			<div id="detail-part">
-	
-				<div>
-
-					<div></div>
-
-					<div></div>
-				</div>
-
-				<div></div>
-			</div>
-	    </div>
-	
-	
-	 </div>
-
+		    </div>
+		</c:forEach>
+	</div>
+	</c:if>
+	<c:if test="${empty roomList }">
+		<div class="searchingNothing">검색 결과가 없습니다.</div>
+	</c:if>
 </div>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -7,14 +7,17 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/roomDetail.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 <script src="https://kit.fontawesome.com/44f3dd3f25.js" crossorigin="anonymous"></script>
 <title>예약실 상세</title>
 </head>
 <body>
-
+<input type="hidden" value="${roomDetail.pricePerHour }" id="hiddenPricePerHour">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<button type="button" onclick="chatStart(3)">3번 회원과 채팅해보기~</button>
 	<div class="content">
 		<!-- left -->
 		<div class="leftSide">
@@ -24,8 +27,8 @@
 			</div>
 			<!-- 제목 영역 -->
 			<div class="titleArea">
-				<p>잉잉 연습실</p><br>
-				<p>경기도 의정부시</p>
+				<p>${roomDetail.pracRoomName }</p><br>
+				<p>${roomDetail.region }</p>
 			</div>
 			<!-- 소개 영역 -->
 			<div class="introduction">
@@ -41,70 +44,19 @@
 					<div id="space">
 						<h1>공간 소개</h1>
 						<div class="lineDiv"></div>
-						<p>
-						
-						
-	서초역 도보 5분거리 24시간 음악연습실입니다<br>
-	각방 에어컨, 제습기, 공기청정기, 환풍기, 전기히터, 도어락 등이 설치되어 있어 굉장히 쾌적하며 <br>
-	고급방음소재 사용으로 만족도가 매우 높은 연습실입니다<br><br>
-	
-	작은방부터 대형방까지 크기 다양하며, 가성비 매우 좋습니다<br><br>
-	
-	- 위치 : 서초역 도보 5분거리 <br>
-	- 방음 : 고급 방음 재료 사용 <br>
-	- 파트 : 드럼, 관악기를 제외한 전파트<br>
-	- 인터넷 : 기가 인터넷<br>
-	- 습기 및 환기 : 각방 에어컨 설치, 각방 환풍기, 각방 전기히터, 중앙 복도 환풍시설, <br>
-	중앙 실링팬 설치 공기정화에 좋은 식물 관리<br>
-	- 보안 : CCTV 24시간 녹화 및 서버 저장. 각 방 도어락 설치<br>
-	- 연습실 건물이 상가건물이라 24시간 사용 가능하며, 주변 맥도날드, 롯데슈퍼, 커피전문점 등 환경 좋습니다.<br>
-						</p>
+						${roomDetail.introMent }
 					</div>
 					<!-- 시설 안내 -->
 					<div id="facility">
 						<h1>시설 안내</h1>
 						<div class="lineDiv"></div>
-						<p>
-						
-						
-	서초역 도보 5분거리 24시간 음악연습실입니다<br>
-	각방 에어컨, 제습기, 공기청정기, 환풍기, 전기히터, 도어락 등이 설치되어 있어 굉장히 쾌적하며 <br>
-	고급방음소재 사용으로 만족도가 매우 높은 연습실입니다<br><br>
-	
-	작은방부터 대형방까지 크기 다양하며, 가성비 매우 좋습니다<br><br>
-	
-	- 위치 : 서초역 도보 5분거리 <br>
-	- 방음 : 고급 방음 재료 사용 <br>
-	- 파트 : 드럼, 관악기를 제외한 전파트<br>
-	- 인터넷 : 기가 인터넷<br>
-	- 습기 및 환기 : 각방 에어컨 설치, 각방 환풍기, 각방 전기히터, 중앙 복도 환풍시설, <br>
-	중앙 실링팬 설치 공기정화에 좋은 식물 관리<br>
-	- 보안 : CCTV 24시간 녹화 및 서버 저장. 각 방 도어락 설치<br>
-	- 연습실 건물이 상가건물이라 24시간 사용 가능하며, 주변 맥도날드, 롯데슈퍼, 커피전문점 등 환경 좋습니다.<br>
-						</p>
+						${roomDetail.facilMent }
 					</div>
 					<!-- 유의 사항 -->
 					<div id="warn">
 						<h1>유의 사항</h1>
 						<div class="lineDiv"></div>
-						<p>
-						
-						
-	서초역 도보 5분거리 24시간 음악연습실입니다<br>
-	각방 에어컨, 제습기, 공기청정기, 환풍기, 전기히터, 도어락 등이 설치되어 있어 굉장히 쾌적하며 <br>
-	고급방음소재 사용으로 만족도가 매우 높은 연습실입니다<br><br>
-	
-	작은방부터 대형방까지 크기 다양하며, 가성비 매우 좋습니다<br><br>
-	
-	- 위치 : 서초역 도보 5분거리 <br>
-	- 방음 : 고급 방음 재료 사용 <br>
-	- 파트 : 드럼, 관악기를 제외한 전파트<br>
-	- 인터넷 : 기가 인터넷<br>
-	- 습기 및 환기 : 각방 에어컨 설치, 각방 환풍기, 각방 전기히터, 중앙 복도 환풍시설, <br>
-	중앙 실링팬 설치 공기정화에 좋은 식물 관리<br>
-	- 보안 : CCTV 24시간 녹화 및 서버 저장. 각 방 도어락 설치<br>
-	- 연습실 건물이 상가건물이라 24시간 사용 가능하며, 주변 맥도날드, 롯데슈퍼, 커피전문점 등 환경 좋습니다.<br>
-						</p>
+						${roomDetail.warnningMent }
 					</div>
 				</div>
 			</div>
@@ -166,7 +118,7 @@
 				<p style="font-size: 1.4em; margin:1em 0"> 이용 시간 </p>
 				<p id="hoursOfUse"></p><br>
 				<p style="font-size: 1.4em; margin: 1em 0;"> 가격 </p>
-				<p id="totalPrice" style="font-size: 1.2em">총 6000 원</p>
+				<p id="totalPrice" style="font-size: 1.2em">원</p>
 				
 			</div>
 			<div class="submitDiv">
