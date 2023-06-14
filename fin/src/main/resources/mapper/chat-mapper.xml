@@ -20,18 +20,54 @@
 		<result property="chatGuestNo" column="GUEST_NO"/>
 	</resultMap>
 	
+	<resultMap type="chatMessage" id="chatMessage_rm">
+		<result property="chatRoomNo" column="CHAT_ROOM_NO"/>
+		<result property="message" column="MESSAGE"/>
+		<result property="userNo" column="USER_NO"/>
+	</resultMap>
+	
+	
 	<select id="tempUser" resultMap="tempUser_rm" parameterType="_int">
 		SELECT * FROM "USER" WHERE USER_NO = ${nowUser}
 	</select>
 	<select id="roomList" resultMap="chat_rm" parameterType="_int">
 		SELECT CHAT_ROOM_NO, GUEST_NO, USER_NO, TITLE  
 		FROM CHAT_ROOM 
-		WHERE USER_NO = #{nowUser} OR GUEST_NO = #{nowUser}
+		WHERE (USER_NO = #{nowUser} OR GUEST_NO = #{nowUser})
+		AND STATUS = 'Y'
 	</select>
 	
 	<insert id="saveMsg" parameterType="map">
 		INSERT INTO CHAT_MESSAGE 
 		VALUES(CHAT_MSG_NO_SEQ.NEXTVAL, #{chatRoomNo}, #{msg}, SYSDATE, ${sessionUserNo})
 	</insert>
+	
+	<select id="loadMessage" parameterType="string" resultMap="chatMessage_rm">
+		SELECT CHAT_ROOM_NO, MESSAGE, USER_NO 
+		FROM CHAT_MESSAGE 
+		WHERE CHAT_ROOM_NO = #{chatRoomNo} ORDER BY CHAT_DATE
+	</select>
+	
+	<update id="deleteChatRoom" parameterType="string">
+		UPDATE CHAT_ROOM SET STATUS = 'N' WHERE CHAT_ROOM_NO = #{chatRoomNo}
+	</update>
+	
+	<select id="dupCheck" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM CHAT_ROOM WHERE (CHAT_ROOM_NO = #{roomNo} OR CHAT_ROOM_NO = #{roomNoSub}) AND STATUS = 'Y'
+	</select>
+	
+
+	
+	<insert id="chatStart" parameterType="hashmap">
+		INSERT INTO CHAT_ROOM VALUES(#{roomNo}, #{roomTitle}, 'Y', ${userNo}, ${withUser})
+	</insert>
+	
+	<select id="withUserName" parameterType="_int" resultType="string">
+		SELECT USER_NICK FROM "USER" WHERE USER_NO = ${withUser}
+	</select>
+	
+	<delete id="deleteToStart" parameterType="hashmap">
+		DELETE FROM CHAT_ROOM WHERE CHAT_ROOM_NO = #{roomNo} AND STATUS = 'N'
+	</delete>
 	
 </mapper>

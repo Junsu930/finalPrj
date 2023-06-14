@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pracRoom-mapper">
+	<resultMap type="pracRoom" id="pracRoom_rm">
+		<id property="pracRoomNo" column="ROOM_NO"/>
+		<result property="pricePerHour" column="PRICE_PER_HOUR"/>
+		<result property="roomImg" column="ROOM_IMG"/>
+		<result property="ownerNo" column="OWNER_NO"/>
+		<result property="region" column="REGION"/>
+		<result property="tag" column="TAG"/>
+		<result property="pracRoomName" column="ROOM_NAME"/>
+		<result property="introMent" column="INTRO_ROOM_MENT"/>
+		<result property="facilMent" column="FACILITY_MENT"/>
+		<result property="warnningMent" column="WARNNING_MENT"/>
+	</resultMap>
+	
+	<select id="roomList" resultMap="pracRoom_rm">
+		SELECT * FROM PRACTICE_ROOM
+	</select>
+	
+	<select id="roomDetail" resultMap="pracRoom_rm">
+		SELECT * FROM PRACTICE_ROOM WHERE ROOM_NO = ${pracRoomNo}
+	</select>
+	
+	<select id="searchingRoom" resultMap="pracRoom_rm">
+		SELECT * FROM PRACTICE_ROOM
+		WHERE (TAG LIKE #{searchingText} OR ROOM_NAME LIKE #{searchingText} 
+		OR INTRO_ROOM_MENT LIKE #{searchingText} 
+		OR WARNNING_MENT LIKE #{searchingText} 
+		OR FACILITY_MENT LIKE #{searchingText}
+		OR REGION LIKE #{searchingText})
+		<if test="region != '%REGION%'">
+		AND REGION LIKE #{region}
+		</if>
+	</select>
+	
+</mapper>

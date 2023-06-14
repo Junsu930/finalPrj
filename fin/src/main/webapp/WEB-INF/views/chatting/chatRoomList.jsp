@@ -282,7 +282,10 @@ body.darkmode .messageBox::-webkit-scrollbar-thumb {
 			<div class="eachRoomList" style="cursor: pointer;">
 				
 			</div>
-		 -->	
+		 -->
+		 	<div class="noRoom">
+		 		채팅방이 없습니다.
+		 	</div>	
 		</div>
 		<input type="hidden" id="hiddenUserNo" value="${sessionScope.tempUser.userNo}">
 		<input type="hidden" id="hiddenUserName" value="${sessionScope.tempUser.userName}">

@@ -133,7 +133,7 @@
   
   
   </section>
-
+  <jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
   <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
   
 <script src="${contextPath}/resources/js/main.js"></script>

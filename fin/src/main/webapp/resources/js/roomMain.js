@@ -1,52 +1,111 @@
 let count = 5;
 let $lastBox = document.querySelector(".box-card:last-child");
+let boxCardList;
+let searchingFlag = $('#searchingFlag').val();
+let boxCardListLength;
+
+
+if(searchingFlag != "" && searchingFlag != null ){
+
+  $.ajax({
+    url : "/fin/searchingRoomScroll",
+    type : "get",
+    dataType : "json",
+    success : function(data){
+      boxCardList = data;
+      boxCardListLength = boxCardList.length;
+      }
+  });
+
+}else{
+
+  $.ajax({
+    url : "/fin/roomScroll",
+    type : "get",
+    dataType : "json",
+    success : function(data){
+      boxCardList = data;
+      boxCardListLength = boxCardList.length;
+      }
+  });
+
+}
+
+
+
+
 
 const obsever = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting && count < 100) {
-        for (let i = 0; i < 10; i++) {
+      if (entry.isIntersecting && count < boxCardListLength) {
+        
+        let toCount;
+
+        if(count + 5 <= boxCardList.length){
+          toCount = count + 5;
+        }else{
+          toCount = boxCardList.length
+        }
+
+        for (let i = count; i < toCount; i++) {
+
           const $newBox = document.createElement("div");
           $newBox.className = "box-card";
-		  let div1 = document.createElement("div");
-		  let div2 = document.createElement("div");
-		  let div3 = document.createElement("div");
-		  let div4 = document.createElement("div");
-		  let div5 = document.createElement("div");
-		  let div6 = document.createElement("div");
-		  let div7 = document.createElement("div");
-		  
-		  let p1 = document.createElement("p");
-		
-		  div3.id="detail-part"
 
-		  p1.innerHTML = "으아아";
-		  div2.append(p1);
+          $newBox.onclick = function(){location.href='/fin/roomDetail?pracRoomNo=' + boxCardList[i].pracRoomNo};
+          
+          // 빈 div
+          let div1 = document.createElement("div");
+          // space-name
+          let div2 = document.createElement("div");
+          // detail-part
+          let div3 = document.createElement("div");
+          // detail-part의 첫번째 div
+          let div4 = document.createElement("div");
+          // detail-part의 두번째 div
+          let div5 = document.createElement("div");
+          // detail-part의 첫번째 div의 내부 div들
+          let div6 = document.createElement("div");
+          let div7 = document.createElement("div");
+          
+        div6.innerHTML = '<i class="fa-solid fa-location-dot"></i>&nbsp;' + boxCardList[i].region;
+        div7.innerHTML = '<i class="fa-solid fa-tags" style="margin-top: 2px;"></i>&nbsp;' + boxCardList[i].tag;
+        div5.innerHTML = '<i class="fa-solid fa-money-check"></i>'+ boxCardList[i].pricePerHour +'원 / 시간';
+        let p1 = document.createElement("p");
+        
+          div2.className="space-name"
+          div3.className="detail-part"
 
-		  div4.append(div6);
-		  div4.append(div7);
-			
+          p1.innerHTML = boxCardList[i].pracRoomName;
+          div2.append(p1);
 
-		  div3.append(div4);
-		  div3.append(div5);
+          div4.append(div6);
+          div4.append(div7);
+          
+          
+
+          div3.append(div4);
+          div3.append(div5);
 
 
-		  $newBox.append(div1);
-		  $newBox.append(div2);
-		  $newBox.append(div3);
-	  
+          $newBox.append(div1);
+          $newBox.append(div2);
+          $newBox.append(div3);
+      
           document.querySelector(".main-card-sec").appendChild($newBox);
-		  count ++;
+          count ++;
+          }
+
+          obsever.unobserve($lastBox);
+          $lastBox = document.querySelector(".box-card:last-child");
+          obsever.observe($lastBox);
         }
-        obsever.unobserve($lastBox);
-        $lastBox = document.querySelector(".box-card:last-child");
-        obsever.observe($lastBox);
-      }
-    });
-  },
-  {
-    threshold: 0,
-  }
+      });
+    },
+    {
+      threshold: 0,
+    }
 );
 
 obsever.observe($lastBox);
@@ -91,6 +150,7 @@ let liArr = $('#regionListUl > li');
 for(let eachLi of liArr){
 	$(eachLi).click(()=>{
 		$('#regionTextSpan').html($(eachLi).html());
+    $("#regionSelector").val($(eachLi).html());
 	})
 }
 
@@ -132,6 +192,19 @@ $('#toModalDiv').click(()=>{
   })
 
 });
+
+
+// 공백 검증
+function spaceCheck(){
+
+  if($("#room-search").val() == "" || $("#room-search").val() == null){
+    swal.fire("검색어를 입력해주세요");
+    return false;
+  }else{
+    return true;
+  }
+
+}
 
 
 // 회원 임시 설정하기

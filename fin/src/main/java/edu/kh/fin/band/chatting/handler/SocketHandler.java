@@ -66,8 +66,8 @@ public class SocketHandler extends TextWebSocketHandler{
 				
 				System.out.println(msgMap);
 				
-				int result = service.savaMsg(msgMap);
-				
+				// 메세지 저장
+				service.savaMsg(msgMap);	
 				
 				
 			} catch (JsonParseException e) {
