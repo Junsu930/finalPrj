@@ -46,7 +46,7 @@
       <thead>
         <tr>
           <th class="boardNumber">번호</th>
-             <th class="tags"></th>
+           
           <th class="title">제목</th>
           <th class="ninkName"><i class="fa-solid fa-user"></i></th>
           <th class="views"><i class="fa-solid fa-eye"></i></th>
@@ -56,104 +56,105 @@
       <tbody>
         <tr>
           <td class="boardNumber">공지</td>
-          <td><span class="tagNotice">공지사항</span></td>
-          <td class="title"><a href="boardDetail">안녕하세요 이갈치입니다 </a></td>
-          <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
+         
+          <td class="title"><div class="tagtotal"><span class="tagNotice">공지사항</span></div><a href="boardDetail">안녕하세요 이갈치입니다 </a></div></td>
+          <td class="ninkName"><a class="blockBoxOpen">이갈치</a></td>
           <td class="views">10</td>
           <td class="heart">5</td>
         </tr>
         <tr>
           <td class="boardNumber">공지</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
-          <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
+          
+          <td class="title"><div class="tagtotal"><span class="tagNotice">공지사항</span></div><a href="#">밴드아카이브 이용안내</a></td>
+          <td class="ninkName"><a class="blockBoxOpen">이현경</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
         <tr>
           <td class="boardNumber">13</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+       
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
           <tr>
           <td class="boardNumber">14</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+        
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">	
+            이건 일반게시글이야아아아</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
        <tr>
           <td class="boardNumber">15</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+         
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">이건 일반게시글 제목야아아아</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
         <tr>
           <td class="boardNumber">16</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+         
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
         <tr>
           <td class="boardNumber">17</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+        
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
         <tr>
           <td class="boardNumber">18</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+        
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
       <tr>
           <td class="boardNumber">19</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+        
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
         <tr>
           <td class="boardNumber">20</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+      
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
         <tr>
           <td class="boardNumber">21</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+          
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
            <tr>
           <td class="boardNumber">22</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+        
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
         </tr>
         <tr>
           <td class="boardNumber">23</td>
-          <td><span class="tagBasic">일반게시판</span></td>
-          <td class="title"><a href="#">게시물 제목 2</a></td>
+          
+          <td class="title"><div class="tagtotal"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -182,13 +183,41 @@
     </div>
   </div>
   
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-<script type="text/javascript" src="${contextPath}/resources/js/boardMain.js"></script>
-<div id="blockModal" class="modal">
-  <div class="modal-content">
-    <p>차단하기</p>
+
+
+<div id="blockModal" class="modal" >
+  <div class="modal-content" onclick="blockModalOpen()">
+    <p>신고하기</p>
+    </div>
+  </div>
+
+  <div class="blockChooseModal" >
+    <div class="blockChooseContent" >
+      <div class="blockTitle" >신고하시겠습니까?</div>
+      <div class="BlockQContent" >
+       <form >
+       <div>
+        <input type="checkbox" id="pornography" name="pornography" value="pornography">
+        <label for="pornography">음란물입니다.</label>
+      </div> 
+      <div>
+        <input type="checkbox" id="advertisement" name="advertisement" value="advertisement">
+        <label for="advertisement">스팸홍보/도배글입니다.</label>
+      </div> 
+      <div>
+        <input type="checkbox" id="abuse" name="abuse" value="abuse">
+        <label for="abuse"> 욕설/생명경시/혐오/차별적 표현글입니다.</label>  
+      
+      <div>
+        <button>신고하기</button>
+      </div>  
+      </form>
+
+      </div>
     </div>
   </div>
 </div>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<script type="text/javascript" src="${contextPath}/resources/js/boardMain.js"></script>
 </body>
 </html>

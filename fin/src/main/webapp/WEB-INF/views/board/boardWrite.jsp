@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
 	 <link rel="stylesheet"href="${contextPath}/resources/css/boardWrite.css"></script>
  
-    <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
+    <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>
     <title>중고거래상세페이지</title>
    </head>
    <body>
