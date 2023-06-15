@@ -16,10 +16,9 @@ public class DBTest {
 	
 	@Autowired
 	DBTestService service;
-	/*
+
 	@Autowired
-	private BCryptPasswordEncoder bcrypt;
-	*/
+	BCryptPasswordEncoder bcrypt;
 
 	@PostMapping(value="/dbTest", produces = "application/text; charset=utf8")
 	@ResponseBody
@@ -32,8 +31,6 @@ public class DBTest {
 		
 	}
 	
-	/*
-//	bcrypt 테스트
 	@GetMapping("/testBc")
 	public String testBc(@RequestParam("bc") String bc) {
 		System.out.println(bc);
@@ -41,7 +38,7 @@ public class DBTest {
 		String encBc = bcrypt.encode(bc);
 		System.out.println(encBc);
 		
-		System.out.println(bcrypt.matches(encBc, bc));
+		System.out.println(bcrypt.matches(bc, encBc));
 		
 		
 		return "room/roomMain";
@@ -49,6 +46,6 @@ public class DBTest {
 		
 	}
 	
-	*/
+
 	
 }
