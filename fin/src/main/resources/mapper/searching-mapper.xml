@@ -16,7 +16,7 @@
 	</resultMap>
 	
 	<select id="memberList" parameterType="searching" resultMap="searching_rm">
-		SELECT USER_NICK, INST, GENRE, REGION, GENDER
+	  	SELECT USER_NICK, INST, GENRE, REGION, GENDER
 		FROM MATCHING_INFO
 		JOIN "USER" USING(USER_NO)
 		WHERE

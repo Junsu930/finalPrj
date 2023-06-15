@@ -18,6 +18,10 @@ public class SearchingServiceImpl implements SearchingService{
 
 
 
+	/**
+	 * 조건에 맞는 멤버조회 서비스
+	 * @author lee
+	 */
 	@Override
 	public List<Searching> checkSelect(Searching searching) {
 		
