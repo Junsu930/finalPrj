@@ -18,7 +18,7 @@ public class Searching {
 	private String userName;
 	private String inst;
 	private String genre;
-	private String gender;
+	private char gender;
 	private String region;
 	
 	

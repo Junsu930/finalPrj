@@ -15,6 +15,12 @@ public class SearchingDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
+	/** 
+	 * 조건에 맞는 멤버 조회DAO
+	 * @author lee
+	 * @param searching
+	 * @return
+	 */
 	public List<Searching> checkSelect(Searching searching) {
 		return sqlSession.selectList("searchingMapper.memberList", searching);
 	}

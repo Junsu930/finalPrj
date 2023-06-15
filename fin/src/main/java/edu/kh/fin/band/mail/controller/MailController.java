@@ -23,6 +23,16 @@ public class MailController {
 	private MailService mailService;
 	
 	
+	/** 
+	 * 문의 메일 보내기 Controller
+	 * @author lee
+	 * @param map
+	 * @param subject
+	 * @param fromName
+	 * @param fromAddress
+	 * @param mailContent
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("/sendEmail")
 	public String sendEmail(@RequestParam HashMap<String, String> map,

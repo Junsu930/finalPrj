@@ -61,11 +61,11 @@
 					<table class="genderTable">
 						<tr>
 							<td>
-								<input type="radio" id="MAN" name="gender" value="MAN">
+								<input type="radio" id="MAN" name="gender" value="M">
 								<label for="MAN">MAN</label>
 							</td>
 							<td>
-								<input type="radio" id="WOMAN" name="gender" value="WOMAN">
+								<input type="radio" id="WOMAN" name="gender" value="W">
 								<label for="WOMAN">WOMAN</label>
 							</td>
 						</tr>
@@ -255,8 +255,9 @@
 		</form>
 
 	</section>
-			
-
+	
+	<jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
+	<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 <script src="${contextPath}/resources/js/findingMember.js"></script>    
