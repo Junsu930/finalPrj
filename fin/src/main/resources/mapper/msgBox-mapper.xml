@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="msgBoxMapper">
+	
+
+	<resultMap type="msgBox" id="msgBox_rm">
+		<id property="msgNo" column="MSG_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="sendUserNo" column="SEND_USER_NO" />
+		<result property="msgContent" column="MSG_CONTENT" />
+		<result property="openDate" column="OPEN_DATE" />
+		<result property="sendDate" column="SEND_DATE" />
+	</resultMap>
+	
+	
+	<select id="msgBoxList" resultMap="msgBox_rm">
+		SELECT USER_NICK, USER_NO, MSG_CONTENT, TO_CHAR(MSG_DATE, 'MM"/"DD HH"시"MI"분"')
+		FROM MESSAGE_BOX
+		JOIN "USER" USING(USER_NO)
+		WHERE USER_NO = #{userNo}
+	</select> 
+
+
+
+
+</mapper>

@@ -141,7 +141,7 @@ select::-ms-expand {
 
 #room-search{
 	width: 100%; 
-	padding: .8em .5em; 
+	padding: .8em 1.5em; 
 	height : 40px;
 	border: 1px solid #999;
 	border-radius: 10px;
@@ -176,11 +176,14 @@ select::-ms-expand {
 	margin: 2em;
 	border-radius: 10px;
 	border: 2px solid var(--silver-color);
-	box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
 	display: flex;
 	flex-direction: column;
 	cursor: pointer;
-	
+	transition :transform ease-out 0.25s, box-shadow 0.1s ease-in 0s;
+}
+.box-card:hover{
+    transform: translateY(-15px);
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .darkmode .box-card{

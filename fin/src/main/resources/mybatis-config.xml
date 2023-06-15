@@ -21,6 +21,7 @@
 		<typeAlias type="edu.kh.fin.band.searching.model.vo.Searching" alias="searching"/>
 		<typeAlias type="edu.kh.fin.band.login.model.vo.User" alias="user"/>
 		<typeAlias type="edu.kh.fin.band.room.model.vo.Room" alias="pracRoom"/>
+		<typeAlias type="edu.kh.fin.band.message.model.vo.MessageBox" alias="msgBox"/>
 	</typeAliases>
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
@@ -29,5 +30,6 @@
 		<mapper resource="/mapper/searching-mapper.xml"/>
 		<mapper resource="/mapper/login-mapper.xml"/>
 		<mapper resource="/mapper/pracRoom-mapper.xml"/>
+		<mapper resource="/mapper/msgBox-mapper.xml"/>
 	</mappers>
 </configuration>

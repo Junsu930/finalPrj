@@ -41,9 +41,19 @@ public class SearchingController {
 	
 	
 	
+	/** 
+	 * 조건에 맞는 멤버 찾기 Controller
+	 * @author lee
+	 * @param gender
+	 * @param region
+	 * @param inst
+	 * @param genre
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/checkSelect")
 	public String showMemberList(
-			@RequestParam("gender")String gender,
+			@RequestParam("gender") char gender,
 			@RequestParam("region") String region,
 			@RequestParam("inst") String inst,
 			@RequestParam("genre") String genre, Model model) {

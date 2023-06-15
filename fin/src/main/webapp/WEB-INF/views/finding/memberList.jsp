@@ -42,8 +42,8 @@
 			    
 			            <div class="userChatProfieBox">
 			                <ul class="userChatProfieUl"> 
-			                    <li><i class="bi bi-chat-dots"></i><p>채팅하기</p></li>
-			                    <li><i class="bi bi-person-circle"></i><p>프로필 보기</p></li>
+			                    <li><i class="bi bi-chat-dots"></i></li>
+			                    <li><i class="bi bi-person-circle"></i></li>
 			                </ul>
 			            </div>
         			</div>
@@ -62,7 +62,8 @@
 		
 	</section>
 	
-
+	<jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
+	<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 

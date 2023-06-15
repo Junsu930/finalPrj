@@ -41,26 +41,12 @@ body.darkmode .loginPath{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .loginSection{
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin: 5em 0 15em 0;
+    margin: 8em 0 18em 0;
 }
 
 .wrapper{

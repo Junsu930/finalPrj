@@ -22,6 +22,10 @@ public class MailServiceImpl implements MailService{
 	private String toEmail = "gosrod05@gmail.com"; // 받는 사람 이메일
 	 
 
+	/**
+	 * 문의 메일 보내기 서비스
+	 * @author lee
+	 */
 	@Override
 	public int sendEmail(HashMap<String, String> map) {
 		

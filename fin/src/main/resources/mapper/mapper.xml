@@ -12,7 +12,7 @@
 		<result property="userType" column="USER_TYPE" />
 		<result property="introMent" column="INTRO_MENT" />
 		<result property="inst" column="INST" />
-		<result property="genreFavor" column="GENRE_FAVOR" />
+		<result property="genreFavor" column="GENRE" />
 		<result property="region" column="REGION" />
 		<result property="gender" column="GENDER" />
 		<result property="yoe" column="YEARS_OF_EXP" />
@@ -22,7 +22,7 @@
 	
 	
 	<select id="testSelect" resultMap="dbTest_rm" parameterType="_int">
-		SELECT * FROM "USER" JOIN MATCHING_INFO USING(USER_NO) WHERE USER_NO = ${userNo}
+		SELECT * FROM "USER"u  LEFT JOIN MATCHING_INFO m ON (u.USER_NO = m.USER_NO) WHERE u.USER_NO = #{userNo}
 	</select>
 	
 </mapper>

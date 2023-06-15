@@ -136,6 +136,7 @@
 	width: 95%;
 	height: 100%;
 	border-radius: 10px;
+	overflow: auto;
 }
 
 
@@ -177,3 +178,29 @@
     .display-none{ /*감추기*/
         display:none;
     }
+
+	.mentBox::-webkit-scrollbar {
+		width: 3px;  /* 스크롤바의 너비 */
+	}
+	
+	.mentBox::-webkit-scrollbar-thumb {
+		height: 15%; /* 스크롤바의 길이 */
+		background: var(--grey-color); /* 스크롤바의 색상 */
+		border-radius: 10px;
+	}
+	
+	.mentBox::-webkit-scrollbar-track {
+		background: var(--scroll-background-color);  /*스크롤바 뒷 배경 색상*/
+	}
+	
+	
+	.darkmode .mentBox::-webkit-scrollbar-track{
+		background-color: transparent; /*다크모드 스크롤바 배경 투명색 == 검은색 */
+	}
+	
+	.darkmode .mentBox::-webkit-scrollbar-thumb {
+		background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
+	}
+	
+	
+	

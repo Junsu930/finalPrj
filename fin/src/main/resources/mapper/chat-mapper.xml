@@ -20,6 +20,14 @@
 		<result property="chatGuestNo" column="GUEST_NO"/>
 	</resultMap>
 	
+		<resultMap type="chat" id="chat_rm2">
+		<id property="chatRoomNo" column="CHAT_ROOM_NO"/>
+		<result property="chatTitle" column="TITLE"/>
+		<result property="chatMasterNo" column="USER_NO"/>
+		<result property="chatGuestNo" column="GUEST_NO"/>
+		<result property="chatOthersNick" column="OTHER_NICKNAME"/>
+	</resultMap>
+	
 	<resultMap type="chatMessage" id="chatMessage_rm">
 		<result property="chatRoomNo" column="CHAT_ROOM_NO"/>
 		<result property="message" column="MESSAGE"/>
@@ -30,10 +38,17 @@
 	<select id="tempUser" resultMap="tempUser_rm" parameterType="_int">
 		SELECT * FROM "USER" WHERE USER_NO = ${nowUser}
 	</select>
-	<select id="roomList" resultMap="chat_rm" parameterType="_int">
-		SELECT CHAT_ROOM_NO, GUEST_NO, USER_NO, TITLE  
-		FROM CHAT_ROOM 
-		WHERE (USER_NO = #{nowUser} OR GUEST_NO = #{nowUser})
+	<select id="roomList" resultMap="chat_rm2" parameterType="_int">
+		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME 
+		FROM CHAT_ROOM c 
+		JOIN "USER" u ON (c.GUEST_NO = u.USER_NO) 
+		WHERE c.USER_NO = #{nowUser} 
+		AND STATUS = 'Y'
+	    UNION
+		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME
+		FROM CHAT_ROOM c
+		JOIN "USER" u ON (c.USER_NO = u.USER_NO)
+		WHERE c.GUEST_NO = #{nowUser}
 		AND STATUS = 'Y'
 	</select>
 	
@@ -69,5 +84,9 @@
 	<delete id="deleteToStart" parameterType="hashmap">
 		DELETE FROM CHAT_ROOM WHERE CHAT_ROOM_NO = #{roomNo} AND STATUS = 'N'
 	</delete>
+	
+	<select id="withUserUsingRoomNo" parameterType="string" resultType="string">
+		SELECT USER_NICK FROM "USER" WHERE USER_NO = (SELECT GUEST_NO FROM CHAT_ROOM WHERE CHAT_ROOM_NO = #{chatRoomNo})
+	</select>
 	
 </mapper>

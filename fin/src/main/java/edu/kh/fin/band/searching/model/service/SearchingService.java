@@ -11,6 +11,12 @@ public interface SearchingService{
 
 	
 
+	/** 
+	 * 조건에 맞는 멤버 조회 서비스
+	 * @author lee
+	 * @param searching
+	 * @return
+	 */
 	List<Searching> checkSelect(Searching searching);
 	
 	

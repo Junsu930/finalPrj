@@ -15,10 +15,9 @@
 	
 	<link rel="stylesheet" href="${contextPath}/resources/css/loginbootStrap.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/loginModal.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
 	<script src = "${contextPath}/resources/js/myPageModal.js"></script>
 
-
+	</head>
       <!--바디 부분 시작-->
       <body>
  	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -32,7 +31,6 @@
             </g>
         </svg>
     </div>
- 	
  	
  	
  	
@@ -213,10 +211,8 @@
       </div>
     </div>
               </div>
-
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
-        </div>
 
 
 

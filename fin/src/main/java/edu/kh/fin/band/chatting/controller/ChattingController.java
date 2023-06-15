@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,6 +49,7 @@ public class ChattingController {
 		mv.setViewName("chatting/chatRoomList");
 		return mv;
 	}
+	
 	
 	
 	/** 채팅방 생성 로직
@@ -105,7 +107,6 @@ public class ChattingController {
 		
 		chatList = service.loadMessage(chatRoomNo);
 		
-		System.out.println("chatList다 : " + chatList );
 	
 		
 		return new Gson().toJson(chatList);
@@ -125,11 +126,9 @@ public class ChattingController {
 	@PostMapping("/tempUserSession")
 	public String tempUser(@RequestParam int nowUser, Model model) {
 		
-		System.out.println(nowUser);
 		
 		TempUserVo tempUser = tempService.tempUser(nowUser);
 		
-		System.out.println(tempUser);
 		
 		List<ChatVo> onChatRoom = new ArrayList<ChatVo>();
 		
@@ -184,6 +183,30 @@ public class ChattingController {
 		}
 		
 	}
+	
+	/** 방번호로 상대 닉 알아내기
+	 * @param chatRoomNo
+	 * @return
+	 */
+	@RequestMapping(value="/withUserName", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String withUserName(@RequestParam("chatRoomNo") String chatRoomNo) {
+
+		return service.withUserName(chatRoomNo);
+	}
+	
+	// 임시 코드 새로운 채팅방 가기
+	@GetMapping("/newChat")
+	public String newChat() {
+		
+		
+		return "chatting/newChatRoom";
+				
+				
+	}
+	
+	
+	
 	
 	
 }

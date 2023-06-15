@@ -157,4 +157,35 @@ window.addEventListener('scroll', () =>{
 });
 
 
+
+let wrapperUlOpen = false;
+let messageUlBoxOpen = false;
+// alert View 보이기
+
+const wrapperUl = document.querySelector('.wrapperUl');
+
+function showAlertView(){
+  wrapperUl.classList.toggle('alertViewShow');
+  return wrapperUlOpen = true;
+}
+
+// message View 보이기
+const messageUlBox = document.querySelector('.messageUlBox');
+
+function showMessageView(){
+  messageUlBox.classList.toggle('alertViewShow');
+  return messageUlBoxOpen = true;
+}
+
+// window.addEventListener('click', function(e){
+//   if(messageUlBoxOpen == true){
+//     console.log('true123123');
+//     if(e.target != messageUlBox){
+//       console.log("abc");
+//       messageUlBox.style.display = "none";
+//     }
+//   }
+// });
+
+
   
