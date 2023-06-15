@@ -65,6 +65,14 @@ public class ChatDAO {
 		return sqlSession.selectOne("chat-mapper.withUserName", withUser);
 	}
 
+	/** 상대방 닉네임 확인(채팅방 번호로)
+	 * @param chatRoomNo
+	 * @return
+	 */
+	public String withUserName(String chatRoomNo) {
+		return sqlSession.selectOne("chat-mapper.withUserUsingRoomNo", chatRoomNo);
+	}
+
 
 
 }

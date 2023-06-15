@@ -16,8 +16,10 @@
 </head>
 <body>
 <input type="hidden" value="${roomDetail.pricePerHour }" id="hiddenPricePerHour">
+<input type="hidden" value="${roomDetail.pracRoomNo }" id="hiddenRoomNo">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<button type="button" onclick="chatStart(3)">3번 회원과 채팅해보기~</button>
+	<input type="hidden" id="sessionNoForBookRoom" value="${sessionScope.loginUser.userNo}">
 	<div class="content">
 		<!-- left -->
 		<div class="leftSide">

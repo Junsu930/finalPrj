@@ -153,10 +153,10 @@ public class SocketHandler extends TextWebSocketHandler{
 	
 		super.afterConnectionEstablished(session);
 		
-		System.out.println("소켓 열렸으");
+		
 		rls.add(session);
 		
-		System.out.println("열릴 떄 보는 세션 " + session);
+		
 		
 //		boolean flag = false;
 //		

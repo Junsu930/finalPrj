@@ -17,12 +17,14 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <jsp:include page="/WEB-INF/views/profile/lookProfile.jsp"/>
 
+
+<div class="content" id="content">
 <a href="${contextPath}/usedWriting">중고글 작성</a>
 <div  data-bs-toggle="modal" data-bs-target="#exampleModal" id="toModalDiv" style="cursor: pointer;">
-	<input type="hidden" value="1" id="hiddenUserNo">
+	<input type="hidden" id="hiddenUserNo" value="${sessionScope.loginUser.userNo}">
 	<span>프로필보기 넘어가기</span>
 </div>
-<div class="content" id="content">
+<a href="${contextPath}/testBc/bc?ww1234">값 보내보기</a>
 	<div class="resrSvgBox">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1361 768">
             <g id="reservationBack">
@@ -30,95 +32,42 @@
             </g>
         </svg>
     </div>
-	
-	<!-- 임시 회원 기능 설정 -->
-	<form action="${contextPath}/tempUserSession" method="post">
-		<div id="first-user" style="cursor: pointer;">1번회원되기</div>
-		<div id="second-user"  style="cursor: pointer;">2번회원되기</div>
-		<div id="third-user"  style="cursor: pointer;">3번회원되기</div>
-		<input type="text" name="nowUser" readonly="readonly" id="beingUserInput">
-		<button>세션에 넣기</button>
-	</form>
-	<div>현재 세션에 넣은 user : "${sessionScope.tempUser}"</div>
 	<!-- 분류 창 -->
-	<form method="get" action="${contextPath}/searchingPracRoom" onsubmit="return spaceCheck();">
-		<div class="sorting-bar">
-			<!-- 각각의 메뉴 -->
-			<div>
-				<button type="button" class="regionBtn" id="regionBtn">
-					<span id="regionTextSpan">REGION</span>
-					<i class="bi bi-caret-down" id="bi"></i>
-				</button>
-				<input type="hidden" name="regionSelector" value="REGION" id="regionSelector"> 
-				<input type="hidden" value="${searchingFlag}" id="searchingFlag"> 
-				<ul class="regionListUl disappearList" id="regionListUl">
-					<li>서울</li>
-					<li>경기</li>
-					<li>부산</li>
-					<li>대구</li>
-					<li>대전</li>
-					<li>강원도</li>
-					<li>경상북도</li>
-					<li>경상남도</li>
-					<li>전라북도</li>
-					<li>전라남도</li>
-					<li>충청북도</li>
-					<li>충청남도</li>
-					<li>충청남도</li>
-					<li>제주도</li>
-				</ul>
-				<!--
-				<select>
-					<li>지역</li>
-					<li>서울</li>
-					<li>경기</li>
-					<li>부산</li>
-					<li>대구</li>
-					<li>대전</li>
-					<li>강원도</li>
-					<li>경상북도</li>
-					<li>경상남도</li>
-					<li>전라북도</li>
-					<li>전라남도</li>
-					<li>충청북도</li>
-					<li>충청남도</li>
-					<li>충청남도</li>
-					<li>제주도</li>
-				</select>
-				-->
-			</div>
-			
-			<div>
-					<input type="search" name="searchingText" id="room-search">
-					<button id="s-btn">
-						<i class="fa-solid fa-magnifying-glass" id="glass"></i>			
-					</button>
-			</div>
+	<div class="sorting-bar">
+		<!-- 각각의 메뉴 -->
+		<div>
+			<button type="button" class="regionBtn" id="regionBtn">
+				<span id="regionTextSpan">REGION</span>
+				<i class="bi bi-caret-down" id="bi"></i>
+			</button>
+			<input type="hidden" name="regionSelector" value="REGION" id="regionSelector"> 
+			<ul class="regionListUl disappearList" id="regionListUl">
+				<li>서울</li>
+				<li>경기</li>
+				<li>부산</li>
+				<li>대구</li>
+				<li>대전</li>
+				<li>강원도</li>
+				<li>경상북도</li>
+				<li>경상남도</li>
+				<li>전라북도</li>
+				<li>전라남도</li>
+				<li>충청북도</li>
+				<li>충청남도</li>
+				<li>충청남도</li>
+				<li>제주도</li>
+			</ul>
 		</div>
-	</form>
-	<c:if test="${!empty roomList}">
+		<div>
+			<input type="search" name="searchingText" id="room-search">
+			<button id="s-btn">
+				<i class="fa-solid fa-magnifying-glass" id="glass"></i>			
+			</button>
+		</div>
+	</div>
 	<!-- 메인 카드 -->
 	<div class="main-card-sec">
-		<c:forEach var="eachRoom" items="${roomList}" begin="0" end="4">
-			<div class="box-card" onclick="location.href='${contextPath}/roomDetail?pracRoomNo=${eachRoom.pracRoomNo}'">
-				<div></div>
-				<div class="space-name">
-					<p>${eachRoom.pracRoomName}</p>
-				</div>
-				<div class="detail-part">
-					<div>
-						<div> <i class="fa-solid fa-location-dot"></i>&nbsp; ${eachRoom.region }</div>
-						<div><i class="fa-solid fa-tags" style="margin-top: 2px;"></i> &nbsp; ${eachRoom.tag}</div>
-					</div>
-					<div><i class="fa-solid fa-money-check"></i> ${eachRoom.pricePerHour}원 / 시간</div>
-				</div>
-		    </div>
-		</c:forEach>
 	</div>
-	</c:if>
-	<c:if test="${empty roomList }">
-		<div class="searchingNothing">검색 결과가 없습니다.</div>
-	</c:if>
 </div>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
