@@ -128,7 +128,7 @@ const checkObj = {
     "nickname"  : false,
     "agree" : false,
     //"sendEmail" : false
-    "checkEmail" : false
+    //"checkEmail" : false
 };
 
 
@@ -489,7 +489,7 @@ function signUpValidate(){
             case "password2":        str="비밀번호 확인이"; break;
             case "nickname":         str="닉네임이"; break;
             case "agree":            str="가입동의가"; break;
-            case "checkEmail":       str="인증번호가"; break;
+            //case "checkEmail":       str="인증번호가"; break;
             }
 
             str += " 유효하지 않음.";
