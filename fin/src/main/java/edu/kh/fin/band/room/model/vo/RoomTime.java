@@ -1,4 +1,4 @@
-package edu.kh.fin.band.chatting.model.vo;
+package edu.kh.fin.band.room.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,12 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatVo {
-	
-	String chatRoomNo;
-	String chatTitle;
-	int chatMasterNo;
-	int chatGuestNo;
-	String chatOthersNick;
-	
+public class RoomTime {
+
+	private int roomTimeNo;
+	private int roomNo;
+	private int rezUserNo;
+	private int rezTime;
 }
