@@ -4,7 +4,7 @@ import edu.kh.fin.band.login.model.vo.User;
 
 public interface LoginService {
 
-	/** ·Î±×ÀÎ ¼­ºñ½º
+	/** ë¡œê·¸ì¸ ì„œë¹„ìŠ¤
 	 * @param inputUser
 	 * @return loginUser
 	 */
@@ -12,7 +12,7 @@ public interface LoginService {
 
 	
 	
-	/** ÀÌ¸ŞÀÏ Áßº¹ °Ë»ç ¼­ºñ½º
+	/** ì´ë©”ì¼ ì¤‘ë³µê²€ì‚¬ ì„œë¹„ìŠ¤
 	 * @param userEmail
 	 * @return result
 	 */ 
@@ -20,7 +20,7 @@ public interface LoginService {
 
 
 
-	/** ´Ğ³×ÀÓ Áßº¹ °Ë»ç ¼­ºñ½º
+	/** ë‹‰ë„¤ì„ ì¤‘ë³µê²€ì‚¬ ì„œë¹„ìŠ¤
 	 * @param memberNickname
 	 * @return result
 	 */
@@ -28,11 +28,19 @@ public interface LoginService {
 
 
 
-	/** È¸¿ø°¡ÀÔ ¼­ºñ½º
+	/** íšŒì›ê°€ì… ì„œë¹„ìŠ¤
 	 * @param inputUser
 	 * @return result
 	 */
 	public abstract int signUp(User inputUser);
+
+
+
+	/** ì´ë©”ì¼ ì¸ì¦ ì„œë¹„ìŠ¤
+	 * @param inputEmail
+	 * @return result
+	 */
+	public abstract int checkEmail(String inputEmail);
 	
 		
 	
