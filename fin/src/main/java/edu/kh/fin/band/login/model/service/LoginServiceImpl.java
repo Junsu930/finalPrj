@@ -28,6 +28,7 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired
     private JavaMailSender mailSender;
 	
+	
 	private Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 	
 	private String fromEmail = "gosrod05@gmail.com";
@@ -39,7 +40,7 @@ public class LoginServiceImpl implements LoginService{
 		
 		User loginUser = dao.login(inputUser);
 		
-	
+		
 		return loginUser;
 		
 	}
@@ -59,7 +60,7 @@ public class LoginServiceImpl implements LoginService{
 	//회원가입
 	@Override
 	public int signUp(User inputUser) {
-		
+			
 		int result = dao.signUp(inputUser);
 		
 		return result;
