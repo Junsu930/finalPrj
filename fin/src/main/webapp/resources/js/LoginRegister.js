@@ -125,8 +125,10 @@ const checkObj = {
     "email"     : false,
     "rpassword"  : false,
     "password2" : false,
-    "nickname"  : false
-    //"checkEmail" : false
+    "nickname"  : false,
+    "agree" : false,
+    //"sendEmail" : false
+    "checkEmail" : false
 };
 
 
@@ -148,7 +150,7 @@ email.addEventListener("input", function(){
     }
 
     // 입력된 경우
-    const regExp = /^[\w\-\_]{4,}@[\w\-\_]+(\.\w+){1,3}$/;
+    const regExp = /^[\w\-\_]{4,}@[\w\-\_]+(\.\w+){1,3}$/;//숫자,문자@포함
 
     if( regExp.test(email.value) ){ // 유효한 경우
         
@@ -178,13 +180,13 @@ email.addEventListener("input", function(){
                 // console.log(result);
 
                 if(result == 1){ // 중복 O
-                    emailMessage.innerText = "이미 사용중인 이메일 입니다.";
+                    emailMessage.innerText = "Duplicated Email";
                     emailMessage.classList.add("error");
                     emailMessage.classList.remove("confirm");
                     checkObj.email = false; // 유효 X 기록
 
                 } else { // 중복 X
-                    emailMessage.innerText = "사용 가능한 이메일 입니다.";
+                    emailMessage.innerText = "";
                     emailMessage.classList.add("confirm");
                     emailMessage.classList.remove("error");
                     checkObj.email = true; // 유효 O 기록
@@ -201,7 +203,7 @@ email.addEventListener("input", function(){
 
 
     }else{
-        emailMessage.innerText = "이메일 형식이 유효하지 않습니다.";
+        emailMessage.innerText = "invalid Email";
         emailMessage.classList.add("error");
         emailMessage.classList.remove("confirm");
 
@@ -214,7 +216,7 @@ email.addEventListener("input", function(){
 /*인증번호 보내기 js*/
 
 // 인증번호 보내기
-const sendEmail = document.getElementById("sendEmail");
+const sendEmail = document.getElementById("sendEm");
 const cMessage = document.getElementById("cMessage");
 
 // 타이머에 사용될 변수
@@ -227,7 +229,7 @@ sendEmail.addEventListener("click", function(){
     if( checkObj.email ){ // 유효한 이메일이 작성되어 있을 경우에만 메일 보내기
 
         $.ajax({
-            url : "sendEmail"  ,
+            url : "checkEmail"  ,
             data : { "inputEmail" : email.value },
             type : "GET",
             success : function(result){
@@ -236,12 +238,13 @@ sendEmail.addEventListener("click", function(){
                 // 인증 버튼이 클릭되어 정상적으로 메일이 보내졌음을 checkObj에 기록
                 checkObj.sendEmail = true;
 
+                
+
             },
             error : function(){
                 console.log("이메일 발송 실패")
             }
         });
-
 
         // Mail 발송 Ajax 코드는 동작이 느림....
         // -> 메일은 메일대로 보내고, 타이머는 버튼이 클릭 되자 마자 바로 실행
@@ -285,6 +288,39 @@ sendEmail.addEventListener("click", function(){
 });
 
 
+//이메일인증 유효성 검사
+const checkmail = document.getElementById("checkEmail");
+const emailCheckMessage = document.getElementById("emailCheckMessage");
+
+checkmail.addEventListener("input", function() {
+
+    if(checkmail.value.length == 0){
+        emailCheckMessage.innerText = "input code";
+        emailCheckMessage.classList.remove("confirm", "error");
+
+        checkObj.checkEmail = false; // 유효 X 기록
+        return;
+    }
+
+    if(checkmail.value == result) { // 이메일 인증번호 동일
+
+        emailCheckMessage.innerText = "";
+        emailCheckMessage.classList.add("confirm");
+        emailCheckMessage.classList.remove("error");
+
+        checkObj.checkEmail = true;
+
+    } else {
+
+        emailCheckMessage.innerText = "invaild code";
+        emailCheckMessage.classList.add("error");
+        emailCheckMessage.classList.remove("confirm");
+
+        checkObj.checkEmail = false;
+
+    }
+
+})
 
 
 
@@ -298,7 +334,7 @@ const pwMessage2 = document.getElementById("pwMessage2");
 rpassword.addEventListener("input", function(){
 
     if(rpassword.value.length == 0){
-        pwMessage.innerText = "영어, 숫자 4글자 이상 작성.";
+        pwMessage.innerText = "";
         pwMessage.classList.remove("confirm", "error");
 
         checkObj.rpassword = false; // 유효 X 기록
@@ -309,7 +345,7 @@ rpassword.addEventListener("input", function(){
 
     if( regExp.test(rpassword.value) ){ // 비밀번호 유효
 
-            pwMessage.innerText = "유효한 비밀번호 형식입니다.";
+            pwMessage.innerText = "";
             pwMessage.classList.add("confirm");
             pwMessage.classList.remove("error");
 
@@ -317,7 +353,7 @@ rpassword.addEventListener("input", function(){
         
 
     }else{
-        pwMessage.innerText = "비밀번호 형식이 유효하지 않습니다.";
+        pwMessage.innerText = "Invalid PW";
         pwMessage.classList.add("error");
         pwMessage.classList.remove("confirm");
 
@@ -348,18 +384,19 @@ password2.addEventListener("input", function(){ // 비밀번호 일치 검사
 
     // 비밀번호 / 비밀번호 확인이 같을 경우
     if(rpassword.value == password2.value){
-        pwMessage2.innerText = "비밀번호가 일치합니다.";
+        pwMessage2.innerText = "";
         pwMessage2.classList.add("confirm");
         pwMessage2.classList.remove("error");
 
         checkObj.password2 = true; // 유효 O 기록
 
     } else{
-        pwMessage2.innerText = "비밀번호가 일치하지 않습니다.";
+        pwMessage2.innerText = "incorrrect PW";
         pwMessage2.classList.add("error");
         pwMessage2.classList.remove("confirm");
 
         checkObj.password2 = false; // 유효 X 기록
+
     }
 });
 
@@ -370,13 +407,12 @@ const nickname = document.getElementById("nickname");
 const nicknameMessage = document.getElementById("nicknameMessage");
 
 nickname.addEventListener("input", function(){
-
     // 입력되지 않은 경우
     if(nickname.value.length == 0){
-        nicknameMessage.innerText = "영어/숫자/한글 2~10글자 사이로 작성해주세요.";
+        nicknameMessage.innerText = "";
         nicknameMessage.classList.remove("confirm", "error");
 
-        checkObj:nickname = false; // 유효 X 기록
+        checkObj.nickname = false; // 유효 X 기록
         return;
     }
 
@@ -398,13 +434,13 @@ nickname.addEventListener("input", function(){
                 // 매개변수 res : Servlet에서 응답으로 출력된 데이터가 저장
 
                 if(res == 0){ // 닉네임 중복 X
-                    nicknameMessage.innerText = "사용 가능한 닉네임 입니다.";
+                    nicknameMessage.innerText = "";
                     nicknameMessage.classList.add("confirm");
                     nicknameMessage.classList.remove("error");
                     checkObj.nickname = true; // 유효 O 기록
 
                 } else { // 닉네임 중복 O
-                    nicknameMessage.innerText = "이미 사용중인 닉네임 입니다.";
+                    nicknameMessage.innerText = "Duplicated name";
                     nicknameMessage.classList.add("error");
                     nicknameMessage.classList.remove("confirm");
                     checkObj.nickname = false; // 유효 O 기록
@@ -419,7 +455,7 @@ nickname.addEventListener("input", function(){
 
 
     }else{
-        nicknameMessage.innerText = "닉네임 형식이 유효하지 않습니다.";
+        nicknameMessage.innerText = "Invailid name";
         nicknameMessage.classList.add("error");
         nicknameMessage.classList.remove("confirm");
 
@@ -432,12 +468,17 @@ nickname.addEventListener("input", function(){
 // 회원가입 버튼 클릭 시 유효성 검사가 완료 되었는지 확인하는 함수
 function signUpValidate(){
 
+
+    console.log("이벤트")
+
     // checkObj에 있는 모든 속성을 반복 접근하여
     // false가 하나라도 있는 경우에는 form태그 기본 이벤트 제거
 
     let str;
 
     for( let key  in checkObj ){ // 객체용 향상된 for문
+
+        console.log(checkObj)
 
         // 현재 접근 중인 key의 value가 false인 경우
         if( !checkObj[key] ){ 
@@ -447,10 +488,11 @@ function signUpValidate(){
             case "rpassword":        str="비밀번호가"; break;    
             case "password2":        str="비밀번호 확인이"; break;
             case "nickname":         str="닉네임이"; break;
-           // case "checkEmail":       str="인증번호가"; break;
+            case "agree":            str="가입동의가"; break;
+            case "checkEmail":       str="인증번호가"; break;
             }
 
-            str += " 유효하지 않습니다.";
+            str += " 유효하지 않음.";
 
             alert(str);
 
@@ -463,6 +505,65 @@ function signUpValidate(){
     return true; // form태그 기본 이벤트 수행
 
 }
+
+//아이디 저장 여부 확인
+document.getElementById("saveId").addEventListener("change", function(){
+
+    // 체크 여부 확인
+    console.log(this.checked)
+    // this : change 이벤트가 발생한 요소(체크박스)
+    // 체크박스요소.checked   :  체크 여부 반환(true/false)
+
+    // 체크박스요소.checked = true;  : 체크박스 체크
+    // 체크박스요소.checked = false; : 체크박스 체크 해제
+
+
+    if( this.checked ){ // 체크박스가 체크된 경우
+
+        const str = "개인 정보 보호를 위해 개인 PC에서의 사용을 권장합니다.";
+
+        //confirm(str) // 확인(true) / 취소(false) 대화상자
+
+        if( !confirm(str)  ){ // 취소를 눌렀을 때
+            this.checked = false; // 체크 해제
+        }
+    }
+
+
+});
+
+//가입동의 유효성 검사
+const agreebtn = document.getElementById("agreebtn");
+const agreeEasy = document.getElementById("agree");
+
+agreebtn.addEventListener("click", function() {
+
+    if($("input:checkbox[name=agreement]:checked").length == 3) {
+
+        $('input:checkbox[name="agreeList"]').prop('checked',true);
+
+        checkObj.agree = true;
+
+    } else {
+
+        $('input:checkbox[name="agreeList"]').prop('checked',false);
+
+        checkObj.agree = false;
+
+    }
+
+});
+
+agreeEasy.addEventListener("change", function() {
+
+    if(this.checked) {
+        checkObj.agree = true;
+    }else {
+        checkObj.agree = false;
+    }
+
+});
+
 
 
 

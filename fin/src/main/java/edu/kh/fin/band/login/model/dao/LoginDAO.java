@@ -17,7 +17,7 @@ public class LoginDAO {
 	
 	
 
-	/** ·Î±×ÀÎ DAO
+	/**ë¡œê·¸ì¸DAO
 	 * @param inputUser
 	 * @return loginUser
 	 */
@@ -34,7 +34,7 @@ public class LoginDAO {
 
 
 
-	/** ÀÌ¸ŞÀÏ Áßº¹°Ë»ç DAO
+	/** ì´ë©”ì¼ ì¤‘ë³µê²€ì‚¬DAO
 	 * @param userEmail
 	 * @return result
 	 */
@@ -44,7 +44,7 @@ public class LoginDAO {
 
 
 
-	/** ´Ğ³×ÀÓ Áßº¹ °Ë»ç DAO
+	/** ë‹‰ë„¤ì„ ì¤‘ë³µê²€ì‚¬ DAO
 	 * @param userNickname
 	 * @return result
 	 */
@@ -55,7 +55,7 @@ public class LoginDAO {
 
 
 
-	/** È¸¿ø°¡ÀÔ DAO
+	/** íšŒì›ê°€ì… DAO
 	 * @param inputUser
 	 * @return result
 	 */

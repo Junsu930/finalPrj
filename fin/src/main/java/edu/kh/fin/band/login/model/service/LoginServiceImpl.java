@@ -1,10 +1,20 @@
 package edu.kh.fin.band.login.model.service;
 
+import java.util.Random;
+
+import javax.mail.Message;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.kh.fin.band.login.model.dao.LoginDAO;
 import edu.kh.fin.band.login.model.vo.User;
@@ -15,12 +25,17 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired 
 	private LoginDAO dao;
 	
+	@Autowired
+    private JavaMailSender mailSender;
+	
 	private Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
+	
+	private String fromEmail = "gosrod05@gmail.com";
 	
 	@Override
 	public User login(User inputUser) {
 		
-		System.out.println("¼­ºñ½º"+ inputUser);
+		System.out.println("ì»¨íŠ¸ë¡¤"+ inputUser);
 		
 		User loginUser = dao.login(inputUser);
 		
@@ -29,19 +44,19 @@ public class LoginServiceImpl implements LoginService{
 		
 	}
 	
-	// ÀÌ¸ŞÀÏ Áßº¹ °Ë»ç ¼­ºñ½º ±¸Çö
+	// ì´ë©”ì¼ ì¤‘ë³µ ê²€ì‚¬
 		@Override
 		public int emailDupCheck(String userEmail) {
 			return dao.emailDupCheck(userEmail);
 		}
 		
-	// ´Ğ³×ÀÓ Áßº¹ °Ë»ç ¼­ºñ½º ±¸Çö
+	// ë‹‰ë„¤ì„ ì¤‘ë³µ ê²€ì‚¬
 	@Override
 	public int nicknameDupCheck(String userNickname) {
 		return dao.nicknameDupCheck(userNickname);
 	}
 	
-	//È¸¿ø°¡ÀÔ ¼­ºñ½º
+	//íšŒì›ê°€ì…
 	@Override
 	public int signUp(User inputUser) {
 		
@@ -49,5 +64,54 @@ public class LoginServiceImpl implements LoginService{
 		
 		return result;
 	}
-
+	
+	
+	@Override
+	public int checkEmail(String inputEmail) {
+		
+		Random random = new Random();
+		int ranNum = random.nextInt(888888) + 111111;
+		
+		int result = 0;
+		
+		MimeMessage mmsg = mailSender.createMimeMessage();
+		
+		String toEmail = inputEmail;
+		
+		
+		
+		// ë¬¸ì ì¸ì½”ë”©
+        String charset = "UTF-8";
+		
+		String subject = "ê¸°íƒ€ì¹˜ëŠ” ì˜¤ë¦¬ íšŒì›ê°€ì… ì¸ì¦ ì´ë©”ì¼";
+		String mailContent = "ì¸ì¦ë²ˆí˜¸ : " + ranNum;
+		
+		try {
+			
+			
+			// ì†¡ì‹ ì (ë³´ë‚´ëŠ” ì‚¬ëŒ)
+            mmsg.setFrom(new InternetAddress(fromEmail));
+            
+            // ìˆ˜ì‹ ì (ë°›ëŠ” ì‚¬ëŒ)
+            mmsg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            
+            // ë©”ì¼ ì œëª© 
+            mmsg.setSubject(subject, charset);
+            // ë©”ì¼ ë‚´ìš©
+            mmsg.setText(mailContent,charset, "html" ); // html ì¶”ê°€ì‹œ html í•´ì„ ë¨
+            
+            
+            mailSender.send(mmsg);
+            result = 1;
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		
+		
+		return result;
+	}
+	
 }
