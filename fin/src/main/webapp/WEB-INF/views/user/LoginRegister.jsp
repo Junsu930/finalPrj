@@ -159,7 +159,7 @@
           <div class="terms__check__all">
             <input type="checkbox" name="checkAll" id="checkAll" />
             <label for="checkAll"
-              >BandArchive 이용약관, 개인정보 수신(선택)에 모두 동의합니다.</label
+              >BandArchive 이용약관, 매치정보 수신(선택)에 모두 동의합니다.</label
             >
           </div>
           <ul class="terms__list">
@@ -194,7 +194,7 @@
             <li class="terms__box">
               <div class="input__check">
                 <input type="checkbox" name="agreement" id="allowPromotions" value="allowPromotions" />
-                <label for="allowPromotions"  class="required">정보 수신 동의</label>
+                <label for="allowPromotions"  class="required">매치 정보 동의</label>
               </div>
               <div class="terms__content">
                 BandArchive에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(BandArchive앱 알림 또는 문자), 이메일로 받아보실 수
