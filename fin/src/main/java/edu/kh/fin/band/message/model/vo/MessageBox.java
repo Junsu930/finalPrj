@@ -11,8 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MessageBox {
 	private int msgNo;
-	private int userNo;
-	private int sendUserNo;
+	private String sendUserNickName;
+	private String receiverNickName;
 	private String msgContent;
 	private String openDate;
 	private String sendDate;

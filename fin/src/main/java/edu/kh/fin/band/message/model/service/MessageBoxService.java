@@ -11,10 +11,10 @@ public interface MessageBoxService {
 	/** 
 	 * msgList 조회 서비
 	 * @author lee
-	 * @param userNo 
+	 * @param sendUserNickName 
 	 * @return
 	 */
-	List<MessageBox> selectMsgList(int userNo);
+	List<MessageBox> selectMsgList(String receiverNickName);
 
 	
 	

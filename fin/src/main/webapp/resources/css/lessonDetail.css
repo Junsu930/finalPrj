@@ -103,6 +103,10 @@ body.darkmode .imgBox{
 }
 
 .chatBox{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
     padding: 2em 1em;
 }
 
@@ -111,8 +115,9 @@ body.darkmode .imgBox{
     background-color: transparent;
     border: none;
     cursor: pointer;
-    
 }
+
+
 
 .imgBox > div:nth-child(2) > p{
     padding: 1em 1em;

@@ -5,8 +5,8 @@
 
 	<resultMap type="msgBox" id="msgBox_rm">
 		<id property="msgNo" column="MSG_NO"/>
-		<result property="userNo" column="USER_NO" />
-		<result property="sendUserNo" column="SEND_USER_NO" />
+		<result property="sendUserNickName" column="SEND_USER_NICK" />
+		<result property="receiverNickName" column="RECEIVER_NICK" />
 		<result property="msgContent" column="MSG_CONTENT" />
 		<result property="openDate" column="OPEN_DATE" />
 		<result property="sendDate" column="SEND_DATE" />
@@ -14,11 +14,16 @@
 	
 	
 	<select id="msgBoxList" resultMap="msgBox_rm">
-		SELECT USER_NICK, USER_NO, MSG_CONTENT, TO_CHAR(MSG_DATE, 'MM"/"DD HH"시"MI"분"')
+		SELECT SEND_USER_NICK, RECEIVER_NICK, MSG_CONTENT
 		FROM MESSAGE_BOX
-		JOIN "USER" USING(USER_NO)
-		WHERE USER_NO = #{userNo}
-	</select> 
+		WHERE RECEIVER_NICK = #{receiverNickName}
+	</select>
+	
+	
+	<insert id="sendMsg" parameterType="msgBox">
+		INSERT INTO MESSAGE_BOX(MSG_NO, SEND_USER_NICK, RECEIVER_NICK, MSG_CONTENT, OPEN_DATE, SEND_DATE)
+		VALUES(1, #{sendUserNickName}, #{receiverNickName} #{msgContent}, NULL, DEFAULT)
+	</insert>
 
 
 

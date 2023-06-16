@@ -13,6 +13,7 @@
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
+
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -68,6 +69,7 @@
 	</section>
 
 	<hr>
+	
 	
 	<section class="secondSec">
 

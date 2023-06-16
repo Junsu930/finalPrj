@@ -446,3 +446,57 @@ body.darkmode .messageUlBox .messageDate h3 span{
 
 
 
+
+
+
+
+.messageUlBox::-webkit-scrollbar {
+    width: 5px;  /* 스크롤바의 너비 */
+}
+
+.messageUlBox::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: var(--grey-color); /* 스크롤바의 색상 */
+    border-radius: 13px;
+}
+
+.messageUlBox::-webkit-scrollbar-track {
+    background: var(--scroll-background-color);  /*스크롤바 뒷 배경 색상*/
+    border-radius: 13px;
+
+}
+
+
+body.darkmode .messageUlBox::-webkit-scrollbar-track{
+    background-color: transparent; /*다크모드 스크롤바 배경 투명색 == 검은색 */
+}
+
+body.darkmode .messageUlBox::-webkit-scrollbar-thumb {
+    background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
+}
+
+
+
+.wrapperUl::-webkit-scrollbar {
+    width: 5px;  /* 스크롤바의 너비 */
+}
+
+.wrapperUl::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: var(--grey-color); /* 스크롤바의 색상 */
+    border-radius: 13px;
+}
+
+.wrapperUl::-webkit-scrollbar-track {
+    background: var(--scroll-background-color);  /*스크롤바 뒷 배경 색상*/
+    border-radius: 13px;
+}
+
+
+body.darkmode .wrapperUl::-webkit-scrollbar-track{
+    background-color: transparent; /*다크모드 스크롤바 배경 투명색 == 검은색 */
+}
+
+body.darkmode .wrapperUl::-webkit-scrollbar-thumb {
+    background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
+}
