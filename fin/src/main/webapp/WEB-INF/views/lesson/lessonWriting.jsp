@@ -20,7 +20,7 @@
     
     
     <section class="allSection">
-        <form action="">
+        <form method ="post" action="lessonWrite.jsp" >
 
             <div class="imgBox">
                 이미지
@@ -66,7 +66,7 @@
                         <ion-icon name="person"></ion-icon>
                     </span>
                     <textarea name="" id="" cols="30" rows="10" required></textarea>
-                    <label class="textLabel">TELL YOUR STROY</label>
+                    <lab255el class="textLabel">TELL YOUR STROY</label>
                 </div>
 
             </div>
