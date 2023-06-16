@@ -1,5 +1,7 @@
 package edu.kh.fin.band.room.model.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,14 @@ public class RoomService {
 
 	public List<Room> searchingRoomList(String region, String searchingText) {
 		return dao.searchingRoomList(region, searchingText);
+	}
+
+	public int pracRoomBooking(ArrayList<Integer> timeArr, HashMap<String, Object> map) {
+		return dao.pracRoomBooking(timeArr, map);
+	}
+
+	public List<Integer> checkBookingTime(HashMap<String, Object> dayMap) {
+		return dao.checkBookingTime(dayMap);
 	}
 	
 }

@@ -68,7 +68,8 @@
 	<div class="main-card-sec">
 	</div>
 </div>
-
+<jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
+<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 <script type="text/javascript" src="${contextPath}/resources/js/roomMain.js"></script>

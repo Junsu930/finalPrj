@@ -1,9 +1,8 @@
 package edu.kh.fin.band.room.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,13 +72,24 @@ public class RoomController {
 	
 	@PostMapping("/pracRoomBooking")
 	@ResponseBody
-	public String pracRoomBooking(@RequestParam Map<String, Object> timeMap) {
+	public int pracRoomBooking(@RequestParam("timeArr[]") ArrayList<Integer> timeArr, @RequestParam HashMap<String, Object> map) {
 		
-		System.out.println(timeMap.get("timeArr"));
+		System.out.println(timeArr);
+		System.out.println(map);
 		
-
+		int result = service.pracRoomBooking(timeArr, map);
 		
-		return "";
+		
+		return result;
+	}
+	
+	@PostMapping("checkBookingTime")
+	@ResponseBody
+	public String checkBookingTime(@RequestParam HashMap<String, Object> dayMap) {
+		
+		List<Integer> bookTime = service.checkBookingTime(dayMap); 
+		
+		return new Gson().toJson(bookTime);
 	}
 	
 /*	

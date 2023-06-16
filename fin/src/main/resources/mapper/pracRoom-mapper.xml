@@ -34,4 +34,12 @@
 		</if>
 	</select>
 	
+	<insert id="roomBook" parameterType="hashmap">
+		INSERT INTO ROOM_TIME VALUES(ROOM_TIME_SEQ.NEXTVAL, ${roomNo}, ${loginNo}, ${thisTime}, #{dayData})
+	</insert>
+
+	<select id="checkBookingTime" parameterType="hashmap" resultType="_int">
+		SELECT RESERVE_TIME FROM ROOM_TIME WHERE ROOM_NO = ${roomNo} AND RESERVE_DAY = #{thisDay}
+	</select>
+	
 </mapper>
