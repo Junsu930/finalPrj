@@ -8,10 +8,40 @@
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
-	 <link rel="stylesheet"href="${contextPath}/resources/css/boradMain.css"></script>
+
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
+    <link rel="stylesheet"href="${contextPath}/resources/css/boradMain.css"></script>
+    <script src="${contextPath}/resources/js/modal.min.js"></script>
+    <style>
+
+
+      dl, ol, ul {
+          margin-top: 0;
+          margin-bottom: 0;
+          padding-left: 0;
+      }
+      body{
+        line-height: normal;	
+      }
+      button, input, optgroup, select, textarea {
+          font-family : revert;
+          font-size: revert;
+          line-height: inherit;
+      }
+    
+        p{
+            margin-bottom: 0;
+        }
+      
+      a:hover {
+        color: revert;
+      }
+    </style>
+   
+   
     <title>BOARD</title>
    </head>
    <body>
@@ -36,7 +66,7 @@
         <li><a href="#" class="noticeTogle">공지</a></li>
         <li><a href="#" class="popularTogle">인기게시판</a></li>
         <li><a href="#" class="generalTogle">일반게시판</a></li>
-       <button class="write"><a href="boardWrite">글쓰기</a></button>
+        <button class="write" onclick="location.href='boardWrite';">글쓰기</button></a>
       </ul>
    </div>
    
@@ -58,7 +88,7 @@
         <tr>
           <td class="boardNumber">공지</td>
          
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">공지사항</span></div><a href="boardDetail">안녕하세요 이갈치입니다 </a></div></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">공지사항</span></div><a href="boardDetail" class="titleA">안녕하세요 이갈치입니다 </a></div></td>
           <td class="ninkName"><a class="blockBoxOpen">이갈치</a></td>
           <td class="views">10</td>
           <td class="heart">5</td>
@@ -66,7 +96,7 @@
         <tr>
           <td class="boardNumber">공지</td>
           
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">공지사항</span></div><a href="#">밴드아카이브 이용안내</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">공지사항</span></div><a href="#" class="titleA">밴드아카이브 이용안내</a></td>
           <td class="ninkName"><a class="blockBoxOpen">이현경</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -74,7 +104,7 @@
         <tr>
           <td class="boardNumber">13</td>
        
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="boardDetail" class="titleA">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -82,7 +112,7 @@
           <tr>
           <td class="boardNumber">14</td>
         
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">	
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA">	
             이건 일반게시글이야아아아</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
@@ -91,7 +121,7 @@
        <tr>
           <td class="boardNumber">15</td>
          
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">이건 일반게시글 제목야아아아</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA" >이건 일반게시글 제목야아아아</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -99,7 +129,7 @@
         <tr>
           <td class="boardNumber">16</td>
          
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -107,7 +137,7 @@
         <tr>
           <td class="boardNumber">17</td>
         
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -115,7 +145,7 @@
         <tr>
           <td class="boardNumber">18</td>
         
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -123,7 +153,7 @@
       <tr>
           <td class="boardNumber">19</td>
         
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -131,7 +161,7 @@
         <tr>
           <td class="boardNumber">20</td>
       
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -139,7 +169,7 @@
         <tr>
           <td class="boardNumber">21</td>
           
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -147,7 +177,7 @@
            <tr>
           <td class="boardNumber">22</td>
         
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -155,7 +185,7 @@
         <tr>
           <td class="boardNumber">23</td>
           
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#">게시물 제목 2</a></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="#" class="titleA">게시물 제목 2</a></td>
           <td class="ninkName"><a class="blockBoxOpen">작성자1</a></td>
           <td class="views">5</td>
           <td class="heart">3</td>
@@ -165,34 +195,79 @@
     </table>
  
  
-
-    <div class="pagination-search">
-        <div class="pagination">
-            <a href="#"><span>1</span></a>
-            <a href="#" class="active"><span>2</span></a>
-          </div>
-        <div class="search-box">
-          <select id="nav-select">
-            <option value="all">전체</option>
-            <option value="notice">공지</option>
-            <option value="popular">인기게시판</option>
-            <option value="general">일반게시판</option>
-          </select>
-          <input type="text" placeholder="글 검색">
-          <button type="button" class="searchBtn">검색</button>
-      </div>
-    </div>
-  </div>
   
 
+    <div class="pagination-search">
+      <div class="pagination">
+          <a href="#"><span>1</span></a>
+          <a href="#" class="active"><span>2</span></a>
+        </div>
+      <div class="search-box">
+        <select id="nav-select">
+          <option value="all">전체</option>
+          <option value="notice">공지</option>
+          <option value="popular">인기게시판</option>
+          <option value="general">일반게시판</option>
+        </select>
+        <input type="text" placeholder="글 검색">
+        <button type="button" class="searchBtn">검색</button>
+    </div>
+  </div>
+</div>
 
-<div id="blockModal" class="modal" >
+
+
+
+<!-- <div id="blockModal" class="modal" >
   <div class="modal-content" onclick="blockModalOpen()">
     <p>신고하기</p>
     </div>
+  </div> -->
+ 
+  <button class="js-static-modal-toggle btn btn-primary" type="button" id="blockModal">신고하기</button>
+  <div id="static-modal" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+         
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        </div>
+        <div class="modal-body">
+          <form >
+            <div class="reportTitle">신고하기</div>
+            <div class="reportReason">사유선택</div>
+          <div class="report_item_reason">
+            <div>
+             <input type="checkbox" id="pornography" name="pornography" value="pornography">
+             <label for="pornography">음란물입니다.</label>
+           </div> 
+           <div>
+             <input type="checkbox" id="advertisement" name="advertisement" value="advertisement">
+             <label for="advertisement">스팸홍보/도배글입니다.</label>
+           </div> 
+           <div>
+             <input type="checkbox" id="abuse" name="abuse" value="abuse">
+             <label for="abuse"> 욕설/생명경시/혐오/차별적 표현글입니다.</label>  
+            </div>
+          </div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">신고</button>
+      
+        </div>
+      </form>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
   </div>
 
-  <div class="blockChooseModal" >
+
+
+
+
+
+  <!-- <div class="blockChooseModal" >
     <div class="blockChooseContent" >
       <div class="blockTitle" >신고하시겠습니까?</div>
       <div class="BlockQContent" >
@@ -216,9 +291,75 @@
 
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/js/boardMain.js"></script>
+<script>
+  document.querySelector('.js-static-modal-toggle').addEventListener('click', function() {
+    new Modal({el: document.getElementById('static-modal')}).show();
+  });
+</script>
+<script>
+  Modal.templates = {
+    header: '<div class="modal-header foo"></div>',
+  };
+  document.querySelector('.js-static-modal-toggle-main')
+    .addEventListener('click', function() {
+      new Modal({el: document.getElementById('static-modal')}).show();
+    });
+  document.querySelector('.js-static-modal-toggle')
+    .addEventListener('click', function() {
+      new Modal({el: document.getElementById('static-modal')}).show();
+    });
+
+  document.querySelector('.js-dynamic-modal-toggle')
+    .addEventListener('click', function() {
+
+      // Here we create our dynamic modal
+      new Modal({
+        title: 'Hooray!',
+        content: 'My Very Dynamic Modal Content'
+      }).show();
+
+    });
+
+  document.querySelector('.js-alert-modal-toggle')
+    .addEventListener('click', function() {
+
+      // Here we create our dynamic modal
+      Modal.alert('My Custom Alert').show();
+
+    });
+
+  document.querySelector('.js-confirm-modal-toggle')
+    .addEventListener('click', function() {
+
+      // Here we create our dynamic modal
+      var cfrm = Modal.confirm('Are you sure?');
+      cfrm.on('hide', function() {
+        alert('Triggered hide event.');
+      });
+      cfrm.on('hidden', function() {
+        alert('Modal is hidden.');
+      });
+      cfrm.show();
+
+    });
+
+  document.querySelector('.js-confirm-event-modal-toggle')
+    .addEventListener('click', function() {
+
+      // Here we create our dynamic modal
+      var confirmModal = Modal.confirm('Are You Sure?');
+      confirmModal.show().once('dismiss', function(modal, ev, button) {
+        if (button && button.value) {
+          alert("You've clicked on an OK button.");
+        }
+      });
+
+    });
+
+</script>
 </body>
 </html>
