@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.google.gson.Gson;
+
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.message.model.service.MessageBoxService;
 import edu.kh.fin.band.message.model.vo.MessageBox;
@@ -37,9 +39,11 @@ public class MessageBoxController {
 		
 		List<MessageBox> msgList = new ArrayList<>();
 		
-		int userNo = loginUser.getUserNo();
+		String receiverNickName = loginUser.getUserNick();
 		
-		msgList = service.selectMsgList(userNo);
+		
+		
+		msgList = service.selectMsgList(receiverNickName);
 		
 		model.addAttribute("msgList", msgList);
 		
@@ -55,23 +59,28 @@ public class MessageBoxController {
 	 * @return
 	 */
 	@PostMapping("/sendMsg")
-	public int sendMsg(@RequestParam("msgInput") String msgInput,
+	public String sendMsg(@RequestParam("msgInput") String msgInput,
+			@RequestParam("receiverNickName") String receiverNickName,
 			@ModelAttribute("loginUser") User loginUser,
 			Model model) {
 		
-		//받는사람의 정보를 어떻게 가져와야할까....
 		
+		// 디비수정 해야함
 		MessageBox msg = new MessageBox();
 		
 		// 보내는 사람의 유저 넘버
-		msg.setSendUserNo(loginUser.getUserNo());
+		msg.setSendUserNickName(loginUser.getUserNick()); // 보내는 사람 유저 넘버
 		msg.setMsgContent(msgInput);
+		msg.setReceiverNickName(receiverNickName); // 받는 사람 닉네임 
 		
 		int result = service.sendMsg(msg);
 		
+		if(result > 0) {
+			  return new Gson().toJson("쪽지 전송 성공!");
+		  } else {
+			  return new Gson().toJson("쪽지 전송 실패 ㅠㅠ");
+		  }
 		
-		
-		return result;
 	}
 	
 	

@@ -12,6 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.2.0/kakao.min.js" integrity="sha384-x+WG2i7pOR+oWb6O5GV5f1KN2Ko6N7PTGPS7UlasYWNxZMKQA63Cj/B2lbUmUfuC" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <script>
     $(function() {
@@ -66,24 +67,26 @@
 
 
     <section class="firstSection">
+
+      
             <div class="explainBox">
                 <ul class="explain">
 
                     <li>
                         <i class="fa-solid fa-guitar"></i>
-                        <spam>ROCK, POP</spam>
+                        <span>GUITAR</span>
                     </li>
                     <li>
                         <i class="bi bi-journals"></i>
-                        <spam>보컬, GUITAR</spam>
+                        <span>POP</span>
                     </li>
                     <li>
                         <i class="bi bi-house"></i>
-                        <spam>서울</spam>
+                        <span>서울</span>
                     </li>
                     <li>
                         <i class="bi bi-instagram"></i>
-                        <spam>@guitarDuck</spam>
+                        <span>@guitarDuck</span>
                     </li>
                     <li>
                         <i class="bi bi-pencil"></i>
@@ -114,6 +117,9 @@
                     <div class="chatBox">
                         <button ><i class="bi bi-chat-dots"></i></button>
                         <button id="deleteBtn">DELETE</button>
+                        <button id="kakaotalk-sharing-btn" href="javascript:;">
+                          <i class="bi bi-share"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -177,12 +183,15 @@
     
     
     
-   
-        
+    
+ 
+  
+  
+  
 
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-    
+    <script src="${contextPath}/resources/js/lessonDetail.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 </html>

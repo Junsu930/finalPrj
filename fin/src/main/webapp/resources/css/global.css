@@ -53,6 +53,10 @@ ul{
     list-style: none;
 }
 
+button:focus , a:focus{
+    outline: none;
+}
+
 body{
     font-family: 'IBMPlexSansKR-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
@@ -75,6 +79,7 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-track {
     background: var(--scroll-background-color);  /*스크롤바 뒷 배경 색상*/
+    border-radius: 10px;
 }
 
 
@@ -85,5 +90,11 @@ body.darkmode::-webkit-scrollbar-track{
 body.darkmode::-webkit-scrollbar-thumb {
     background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
 }
+
+
+
+
+
+
 
 

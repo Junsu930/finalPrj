@@ -20,9 +20,9 @@ public class MessageBoxImpl implements MessageBoxService{
 	 * @author lee
 	 */
 	@Override
-	public List<MessageBox> selectMsgList(int userNo) {
+	public List<MessageBox> selectMsgList(String receiverNickName) {
 		
-		return dao.selectMsgList(userNo);
+		return dao.selectMsgList(receiverNickName);
 	}
 
 	

@@ -24,7 +24,9 @@
                 <div class="msgBox">
                     <ul class="msgBoxUl">
                         <c:forEach items="${msgList}" var="msgList">
-                            <li>${msgList.msgContent}</li>
+                            <li>${msgList.sendUserNickName} 보낸 사람</li>
+                            <li>${msgList.receiverNickName} 받는 사람</li>
+                            <li>${msgList.msgContent} 내용</li>
                         </c:forEach>
                     </ul>
                 </div>
@@ -38,7 +40,8 @@
 
 
     <div>
-        <input type="text" id="msgInput"> 
+        <input type="text" id="receiverNickName" placeholder="받는 사람 닉네임">
+        <input type="text" id="msgInput" placeholder="메세지 내용"> 
         <button type="button" onclick="sendMsg()">쪽지 보내기</button>
     </div>
 

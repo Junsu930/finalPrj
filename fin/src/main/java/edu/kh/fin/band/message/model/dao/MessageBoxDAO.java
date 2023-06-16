@@ -19,8 +19,8 @@ public class MessageBoxDAO {
 	 * @author lee
 	 * 메세지 조회 DAO
 	 */
-	public List<MessageBox> selectMsgList(int userNo) {
-		return sqlSession.selectList("msgBoxMapper.msgBoxList", userNo);
+	public List<MessageBox> selectMsgList(String receiverNickName) {
+		return sqlSession.selectList("msgBoxMapper.msgBoxList", receiverNickName);
 	}
 
 	
