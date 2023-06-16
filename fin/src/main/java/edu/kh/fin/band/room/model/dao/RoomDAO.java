@@ -1,5 +1,6 @@
 package edu.kh.fin.band.room.model.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,6 +48,26 @@ public class RoomDAO {
 		
 		
 		return sqlSession.selectList("pracRoom-mapper.searchingRoom",map);
+	}
+
+	public int pracRoomBooking(ArrayList<Integer> timeArr, HashMap<String, Object> map) {
+		
+		int rCount = 0;
+		
+		for(int i=0; i<timeArr.size(); i++) {
+			
+			map.put("thisTime", timeArr.get(i));
+			
+			sqlSession.insert("pracRoom-mapper.roomBook", map);
+			
+			rCount ++;
+		}
+		
+		return rCount;
+	}
+
+	public List<Integer> checkBookingTime(HashMap<String, Object> dayMap) {
+		return sqlSession.selectList("pracRoom-mapper.checkBookingTime", dayMap);
 	}
 
 }

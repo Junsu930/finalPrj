@@ -20,53 +20,91 @@ let greenList = new Array();
         width: '500px',
         dateClick: function(info) {
         
-        greenList = document.getElementsByClassName("greenDay");
+            let thisDay = info.dateStr;
+            let roomNo = $("#hiddenRoomNo").val();
 
 
-        for(let i = 0; i<greenList.length; i++){
-            if(greenList[i].classList.contains('greenDay')){
+            $.ajax({
+            
+                url : "/fin/checkBookingTime",
+                type : "post",
+                data : {"thisDay":thisDay, "roomNo":roomNo},
+                dataType : "json",
+                success : function(data){
+                    
 
-                greenList[i].classList.remove('greenDay');
-            }else{
+                    let times = $(".times");
 
+                    // 예약된 날에는 bookedtime 설정
+                    for(let eachTime of times){
+                        eachTime.classList.remove("bookedTime");
+                        eachTime.disabled = false;
+                        for(let i = 0; i < data.length; i++){
+                        
+                            if(eachTime.value == data[i]){
+                                eachTime.classList.add("bookedTime");
+                            
+                            }
+                        }
+                    }
+
+                    let bookedTime = $(".bookedTime");
+
+                    for(let eachBooked of bookedTime){
+                        eachBooked.disabled = true;
+                    }
+                    
+
+                }
+            });  
+                
+            greenList = document.getElementsByClassName("greenDay");
+
+
+            for(let i = 0; i<greenList.length; i++){
+                if(greenList[i].classList.contains('greenDay')){
+
+                    greenList[i].classList.remove('greenDay');
+                }else{
+
+                }
             }
-        }
-        
+            
 
-        const diffMSec = today.getTime() - info.date.getTime();
-        const diffDate = diffMSec / (24 * 60 * 60 * 1000);
+            const diffMSec = today.getTime() - info.date.getTime();
+            const diffDate = diffMSec / (24 * 60 * 60 * 1000);
 
-        if(diffDate<1 && diffDate >-6){
+            if(diffDate<1 && diffDate >-6){
 
-            $(info.dayEl).addClass('greenDay');
- 
-            schedule.innerHTML=info.dateStr;
-
-
-            timeline.style.display = 'flex';
-            for(let each of timesClass){
-                if(each.classList.contains("onTime")) each.classList.remove("onTime");
-            }
-
-
-        }
-        
-
-        },
-        events: [
-            {
-                start: tt,
-                end: tw,
-                overlap: false,
-                display: 'background'
-            }
-        ]
-
-	});
-
+                $(info.dayEl).addClass('greenDay');
     
-	calendar.render();
-});
+                schedule.innerHTML=info.dateStr;
+
+
+                timeline.style.display = 'flex';
+                for(let each of timesClass){
+                    if(each.classList.contains("onTime")) each.classList.remove("onTime");
+                }
+
+
+            }
+            
+
+            },
+            events: [
+                {
+                    start: tt,
+                    end: tw,
+                    overlap: false,
+                    display: 'background'
+                }
+            ]
+
+        });
+
+        
+        calendar.render();
+    });
 
 
 
@@ -109,19 +147,6 @@ for(let time of times){
 
 }
 
-document.getElementById("timeSubmit").addEventListener("click", function(){
-
-    let timetable = new Array();
-
-    let timeList = document.getElementsByClassName("onTime");
-
-    for(let i= 0; i<timeList.length; i++){
-        timetable.push(timeList[i].value);
-    }
-
-    console.log("날짜 : " + schedule.innerHTML + ", 예약할 시간 : " + timetable);
-
-});
 
 $("#timeSubmit").click(()=>{
 
@@ -137,17 +162,23 @@ $("#timeSubmit").click(()=>{
             timeArr.push(eachTime.value);
         }
 
-        let jsonTime = JSON.stringify(timeArr);
+
 
        $.ajax({
         
         url : "/fin/pracRoomBooking",
         type : "post",
-        data : {"loginNo" : loginNo, "dayData": dayData, "timeArr" : jsonTime, "roomNo" :roomNo},
+        data : {"loginNo" : loginNo, "dayData": dayData, "timeArr" : timeArr, "roomNo" :roomNo},
         success : function(data){
             console.log(data);
+            if(data>0){
 
-            swal.fire("예약 신청이 전송되었습니다.");
+                Swal.fire({icon: 'info',
+                title: '예약이 완료되었습니다.',
+                }).then(function(){
+                    location.reload();
+                })
+            }
         }
        })
      
