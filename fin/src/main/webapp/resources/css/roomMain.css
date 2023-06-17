@@ -138,7 +138,7 @@ select::-ms-expand {
     display: none;
 }
 */
-
+/* 검색창 */
 #room-search{
 	width: 100%; 
 	padding: .8em 1.5em; 
@@ -199,7 +199,7 @@ body.darkmode .box-card{
 /* 사진 영역 */
 .box-card > div:nth-child(1) {
 	flex-basis: 50%;
-	background-image: url('../images/band.jpg');
+	/*background-image: url('../images/band.jpg');*/
 	background-size: cover;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -213,7 +213,13 @@ body.darkmode .box-card{
 	align-items: center;
 }
 
-
+/* 크롬의 경우 input search기본 x 없애기 */
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration{
+    display:none;
+}
 
 .box-card > div:nth-child(3) {
 	flex-basis: 40%;
@@ -298,6 +304,9 @@ body.darkmode .box-card{
 	animation: line-anim 2.1s ease forwards;
 }
 
+.darkmode .reservationPath{
+	stroke: var(--stroke-dark-color);
+}
 
 body.darkmode #titleLogo path{
 	stroke: white;

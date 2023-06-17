@@ -206,7 +206,5 @@ public class SocketHandler extends TextWebSocketHandler{
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		//소켓 종료
-		
-		System.out.println("연결이 끊어져버렷으");
 	}
 }
