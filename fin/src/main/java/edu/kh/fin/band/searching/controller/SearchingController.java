@@ -34,6 +34,8 @@ public class SearchingController {
 	@GetMapping("/findingLoder")
 	public String findingLoderController() {
 		
+		System.out.println("잠깐 거쳐가기");
+		
 		return "finding/findingLoder";
 	}
 	

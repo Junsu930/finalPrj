@@ -41,11 +41,11 @@
               <a href="${contextPath}/main" class="navA">Band Archive</a>
           </div>
           <ul class="navUl">
-              <li><a href="board" class="navA">Board</a></li>
-              <li><a href="room" class="navA">Reservations</a></li>
-              <li><a href="used" class="navA">Used</a></li>
-              <li><a href="lesson" class="navA">Lessons</a></li>
-              <li><a href="findingMember" class="navA">Searching</a></li>
+              <li><a href="${contextPath}/board" class="navA">Board</a></li>
+              <li><a href="${contextPath}/room" class="navA">Reservations</a></li>
+              <li><a href="${contextPath}/used" class="navA">Used</a></li>
+              <li><a href="${contextPath}/lesson" class="navA">Lessons</a></li>
+              <li><a href="${contextPath}/findingMember" class="navA">Searching</a></li>
 
           </ul>
           <div class="navSecondDiv">

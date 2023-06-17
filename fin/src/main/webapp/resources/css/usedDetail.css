@@ -5,17 +5,31 @@ body{
     margin: 0px;
 }
 .main{
-    width: 80%;
-    margin: auto;
-    margin-bottom: 10em;
-    margin-top: 10em;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10em;
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 	
 }
+
+body.swal2-shown{
+	padding-right : 0 !important;
+	overflow: revert !important;
+}
+
 .topBox{
-	margin-top: 100px;
+	margin-top: 200px;
 	display: flex;
 	justify-content: center;
+  width: 80%;
+  height: 80%;
 }
+
+
   .swiper {
         text-align: center;
         width: 70%;
@@ -76,6 +90,7 @@ body{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px;
  
 }
 
@@ -118,6 +133,8 @@ body{
 .nickName{
 	
 	margin-top:50px;
+  margin-bottom: 20px;
+  font-weight: 600;
 	
 }
 
@@ -194,26 +211,29 @@ body{
 
 }
 .productInformationAnswer{
-  margin-top: 20px;
+  margin-top: 80px;
 }
-.bottomBox{
-  margin-left: 200px;
-}
+
 .QuestionChat{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .QuestionChatButton{
-	width: 150px;
-    height: 50px; 
-    background-color: #ccc; 
-	border-radius:10px;
-    text-align: center;
-    border:none;
-    margin-right: 200px;
-    margin-top: 80px;
-    margin-bottom: 200px;
+  width: 150px;
+  height: 50px;
+  background-color: #ccc;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+  /* margin-right: 200px; */
+  margin-top: 80px;
+  /* margin-bottom: 200px;*/
+  cursor: pointer;
+}
+
+.QuestionChatButton > i{
+  margin-right: 5px;
 }
 
 
@@ -226,28 +246,36 @@ body{
 	border: 1px solid;
 	width: 30%;
 }
-.moreProductBox{
-	
-}
+
 .moreProductImg{
 width: 150px;
 }
-.moreProductPicture{
-	
-}
-.moreProductTitle{
-	
-}
-.moreProductPrice{
-	
-}
-.moreProducArea{
-	
+
+.updateAndDeleteBtn{
+  display: flex;
+  margin-top: 30px;
 }
 
 
-body.darkmode .rightButton i, {
-	color:var(--text-dark-color);
+.updateAndDeleteBtn button{
+
+  width: 60px;
+  height: 30px;
+  border: 1px solid #999;
+  border-radius: 0.5em;
+  font-size: 1em;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+  background-color: transparent;
+  cursor: pointer;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-right: 10px;
+}
+
+
+
+body.darkmode .rightButton i {
+	color : var(--text-dark-color);
 }
 
 body.darkmode .leftButton i{
@@ -310,9 +338,11 @@ body.darkmode .leftButton i{
 @media only screen and (min-device-width : 391px) and (max-device-width : 414px) {    
     
 .bottomBox {
-	margin-left: 10px;
- 	width: 80%;
+  display: flex;
+  flex-direction: column;
 }
+
+
 .QuestionChatButton{
 	width: 150px;
     height: 50px;

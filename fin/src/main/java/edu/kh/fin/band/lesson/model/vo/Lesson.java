@@ -13,6 +13,7 @@ public class Lesson {
 	
 	private int LessonNo;
 	private int userNo;
+	private String LessonNick;
 	private String introment;
 	private String joinDate;
 	private String lessonImg;

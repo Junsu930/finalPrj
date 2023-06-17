@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
@@ -39,11 +40,10 @@ public class MessageBoxController {
 		
 		List<MessageBox> msgList = new ArrayList<>();
 		
-		String receiverNickName = loginUser.getUserNick();
+		int receiverUserNo = loginUser.getUserNo();
 		
+		msgList = service.selectMsgList(receiverUserNo);
 		
-		
-		msgList = service.selectMsgList(receiverNickName);
 		
 		model.addAttribute("msgList", msgList);
 		
@@ -52,26 +52,33 @@ public class MessageBoxController {
 	
 	
 	/**
-	 * 쪽지보내기
+	 * 쪽지 답장컨트롤러
 	 * @author lee
 	 * @param msgInput
 	 * @param loginUser
 	 * @return
 	 */
-	@PostMapping("/sendMsg")
-	public String sendMsg(@RequestParam("msgInput") String msgInput,
-			@RequestParam("receiverNickName") String receiverNickName,
-			@ModelAttribute("loginUser") User loginUser,
-			Model model) {
+	@PostMapping("/replyMsg")
+	@ResponseBody
+	public String sendMsg(@RequestParam("replyMsgText") String replyMsgText,
+			@RequestParam("receiverUserNo") int receiverUserNo,
+			@ModelAttribute("loginUser") User loginUser) {
 		
 		
 		// 디비수정 해야함
 		MessageBox msg = new MessageBox();
 		
+		System.out.println("sendMsg controller");
+		
+		
 		// 보내는 사람의 유저 넘버
-		msg.setSendUserNickName(loginUser.getUserNick()); // 보내는 사람 유저 넘버
-		msg.setMsgContent(msgInput);
-		msg.setReceiverNickName(receiverNickName); // 받는 사람 닉네임 
+		msg.setSendUserNo(loginUser.getUserNo()); // 보내는 사람 유저 넘버
+		msg.setReceiverUserNo(receiverUserNo); // 받는 사람 닉네임 
+		msg.setMsgContent(replyMsgText);
+		
+		System.out.println("sendMsg controller 보내는ㄴ사람 " + msg.getSendUserNo()); // 로그인되어있는 사람 
+		System.out.println("sendMsg controller 받는사람" + msg.getReceiverUserNo()); // 받는 사람 즉 2번
+		System.out.println("sendMsg controller내용" + msg.getMsgContent());
 		
 		int result = service.sendMsg(msg);
 		
@@ -83,5 +90,27 @@ public class MessageBoxController {
 		
 	}
 	
+	
+	/**
+	 * 쪽지 삭제 컨트롤러
+	 * @author lee
+	 * @param msgNo
+	 * @return
+	 */
+	@ResponseBody
+	@PostMapping("/deleteMsg")
+	public String deleteMsg(@RequestParam("msgNo") int msgNo) {
+		
+		
+		
+		int result = service.deleteMsg(msgNo);
+		
+		if(result > 0) {
+			  return new Gson().toJson("쪽지 삭제 성공!");
+		  } else {
+			  return new Gson().toJson("쪽지 삭제 실패 ㅠㅠ");
+		  }
+		
+	}
 	
 }

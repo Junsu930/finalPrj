@@ -51,7 +51,7 @@ for(let each of qList){
 		let imgDiv2 = document.createElement("div");
 		imgDiv2.className = "faqDuck";
 		let imgTag = document.createElement("img");
-		imgTag.src= './resources/images/guitarduckelec.png';
+		imgTag.src= './resources/images/chatbot-removebg-preview.png';
 
 		imgDiv2.append(imgTag);
 		imgDiv1.append(imgDiv2);

@@ -9,81 +9,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
-	 <link rel="stylesheet"href="${contextPath}/resources/css/usedDetail.css"></script>
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+	<link rel="stylesheet"href="${contextPath}/resources/css/usedDetail.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
     <title>중고거래상세페이지</title>
    </head>
    <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="main" >
-    
-    	<div class="topBox">
-    	
+    	<input type="hidden" value="${sessionScope.loginUser.userNo}" id="hiddenUserNo">
+    	<input type="hidden" value="${sessionScope.loginUser.userNick}" id="hiddenUserName">
     	<!-- Slider main container -->
-  <!-- Swiper -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="${contextPath}/resources/images/guitar.jpg" class="guitarImg"></div>
-        <div class="swiper-slide"><img src="${contextPath}/resources/images/guitar.jpg" class="guitarImg"></div>
-        <div class="swiper-slide"><img src="${contextPath}/resources/images/guitar.jpg" class="guitarImg"></div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-
+		  	<!-- Swiper -->
+    	<div class="topBox">
+		    <div class="swiper mySwiper">
+		      <div class="swiper-wrapper">
+		        <div class="swiper-slide">
+					<img src="${contextPath}/${usedDetailVo.imgSrc}" class="guitarImg">
+				</div>
+		      </div>
+		      <div class="swiper-button-next"></div>
+		      <div class="swiper-button-prev"></div>
+		      <div class="swiper-pagination"></div>
+		    </div>
     	</div>
-    
     	<div class="bottomBox">
-    	<div class="bottomBoxDetail">
-    		<div class="nickName">이갈치</div>
-			<div class="dealTitileBox">
-			<div class="SaleOrSoldout">판매</div>
-			<div class="thingTitle">피아노 팔게요</div>
-			</div>
-			<div class="price">20,000원</div>    	
-    	</div>
-    	<div class="productDetailBox">
-    		<div class="productConditionDetailBox">
-    			<div class="productCondition">- 상품상태</div>
-    			<div class="ConditionResult">중고</div>
-    		</div>
-    		<div class="deliveryPriceDetailBox">
-				<div class="deliveryPrice">- 배송비</div>
-				<div class="PriceResult">배송비포함</div>
-		
-    		</div>
-    		<div class="tradingAreaDetailBox">
-				<div class="tradingArea">- 거래지역</div>
-				<div class="AreaResult">경기도</div>
-		
-    		</div>
-			</div>
+		    	<div class="bottomBoxDetail">
+		    		<div class="nickName">${usedDetailVo.userNick}</div>
+					<div class="dealTitileBox">
+						<div class="SaleOrSoldout">
+							<c:if test="${usedDetailVo.boardState eq 'Y'}">
+							판매중
+							</c:if>
+							<c:if test="${usedDetailVo.boardState eq 'N'}">
+							판매완료
+							</c:if>
+						</div>
+						<div class="thingTitle">${usedDetailVo.boardTitle}</div>
+					</div>
+					<div class="price">${usedDetailVo.price}원</div>    	
+		    	</div>
+		    	<div class="productDetailBox">
+		    		<div class="productConditionDetailBox">
+		    			<div class="productCondition">- 상품상태</div>
+		    			<div class="ConditionResult">${usedDetailVo.boardTag}</div>
+		    		</div>
+		    		<div class="tradingAreaDetailBox">
+						<div class="tradingArea">- 거래지역</div>
+						<div class="AreaResult">${usedDetailVo.region}</div>
+		    		</div>
+				</div>
+				
+				<c:if test="${sessionScope.loginUser.userNo eq usedDetailVo.userNo}">
+					<div class="updateAndDeleteBtn">
+						<form action="#" method="post">
+							<div>
+								<button type="button" id="updateUsedBoardBtn">수정</button>
+							</div>
+						</form>
+						<div>
+					  		<button type="button" id="deleteUsedBoardBtn">삭제</button>
+					  		<input type="hidden" value="${ usedDetailVo.usedBoardNo}" id="hiddenUsedBoardNo">
+						</div>
+					</div>
+				</c:if>
+	    		<div class="productInformationBox">
+					<div class="productInformationAnswer">
+						${usedDetailVo.boardContent}
+		    		</div>
 			
-    	<div class="productInformationBox">
-    		<div class="productInformationTitle">상품정보</div>
-			<div class="productInformationAnswer">
-			셋팅 죄어 있는 상태입니다 바로 연주가능해요<br>
-    	비커스 케이스 같이 드려요<br>
-    	신품보다 저렴하게 산다고 생각하면 될 듯 해요<br>
-    	노리턴<br>
-    	주말 천안시 직거래,고속버스 (택비별도)로 보내드립니다 <br>
-    	<br>
-    	안전결제 가능해요 <br>
+				</div>
+		    	<div class="QuestionChat">
+					<button class="QuestionChatButton" id="questionChatBtn">
+						<i class="fa-sharp fa-regular fa-comments" style="color: #f5f5f5;"></i>
+						구매 문의 채팅
+					</button>
+					<input type="hidden" value="${usedDetailVo.userNo}" id="hiddenWritersUserNo">
+		    	</div>
     		</div>
-		
-			</div>
-    	<div class="QuestionChat">
-    	<button class="QuestionChatButton">
-    <i class="fa-sharp fa-regular fa-comments" style="color: #f5f5f5;"></i></i>
-    	구매 문의 채팅</button>
-    	</div>
-    	</div>
     	
-    	<div >
+    	</div>
     	<!--  
     	<div class="moreBox">
     		<div class="moreProductBox">
@@ -103,6 +111,8 @@
     	</div>
     -->
 <!-- 세션 분류 -->
+<jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
+<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/js/usedDetail.js"></script>
 </body>

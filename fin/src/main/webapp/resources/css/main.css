@@ -154,6 +154,7 @@ input::-webkit-inner-spin-button {
   resize: none;
   height: 150px;
   font-size: 1.1em;
+  font-family: var(--navFont-style-);
 }
 
 

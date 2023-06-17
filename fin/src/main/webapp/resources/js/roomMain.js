@@ -37,6 +37,9 @@ $(document).ready(()=>{
           // detail-part의 첫번째 div의 내부 div들
           let div6 = document.createElement("div");
           let div7 = document.createElement("div");
+
+          let imgUrl = "url('/fin/resources/images/pracRooms/"+boxCardList[i].roomImg +"')";
+          div1.style.backgroundImage = imgUrl;
           
           div6.innerHTML = '<i class="fa-solid fa-location-dot"></i>&nbsp;' + boxCardList[i].region;
           div7.innerHTML = '<i class="fa-solid fa-tags" style="margin-top: 2px;"></i>&nbsp;' + boxCardList[i].tag;
@@ -110,6 +113,10 @@ $(document).ready(()=>{
                   
                   div2.className="space-name"
                   div3.className="detail-part"
+
+                  
+                  let imgUrl = "url('/fin/resources/images/pracRooms/"+boxCardList[i].roomImg +"')"
+                  div1.style.backgroundImage = imgUrl;
   
                   p1.innerHTML = boxCardList[i].pracRoomName;
                   div2.append(p1);
@@ -202,6 +209,9 @@ function searchingRoomAjax(){
         
         div2.className="space-name"
         div3.className="detail-part"
+        
+        let imgUrl = "url('/fin/resources/images/pracRooms/"+boxCardList[i].roomImg +"')"
+        div1.style.backgroundImage = imgUrl;
 
         p1.innerHTML = boxCardList[i].pracRoomName;
         div2.append(p1);
@@ -269,6 +279,10 @@ function searchingRoomAjax(){
                 div2.className="space-name"
                 div3.className="detail-part"
 
+                      
+                let imgUrl = "url('/fin/resources/images/pracRooms/"+boxCardList[i].roomImg +"')"
+                div1.style.backgroundImage = imgUrl;
+
                 p1.innerHTML = boxCardList[i].pracRoomName;
                 div2.append(p1);
 
@@ -316,6 +330,7 @@ for(let i = 0; i<titleLogo.length; i++){
 	console.log(`Letter ${i} is ${titleLogo[i].getTotalLength()}`);
 }
 
+// 지역 관련 
 $('#regionBtn').on("click",()=>{
 
 	if($('#regionListUl').hasClass("disappearList")){

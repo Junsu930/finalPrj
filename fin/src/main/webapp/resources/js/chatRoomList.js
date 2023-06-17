@@ -136,7 +136,7 @@ function loadMessage(chatRoomNo){
             console.log(data);
 
             let chatMessageArr = data;
-            let loginUser = $("#hiddenUserNo").val()
+            let loginUser = $("#hiddenUserNo").val();
             for(let eachMessage of chatMessageArr){
 
                 if(eachMessage.userNo == loginUser){
@@ -321,5 +321,4 @@ function chatStart(withUserNo){
 
         })
     }
-
-}
+};

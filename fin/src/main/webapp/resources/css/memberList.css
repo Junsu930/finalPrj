@@ -106,8 +106,18 @@ body.darkmode .userNameBox img{
 }
 
 
-.notFoundBox >p{
-	font-size: 2em;
+.notFoundBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 65vh;
+}
+
+.notFoundBox >h1{
+    font-size: 3em;
+	font-weight: 500;
+    font-family: var(--navFont-style-);
 }
 
 
