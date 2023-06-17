@@ -14,9 +14,9 @@ import edu.kh.fin.band.lesson.model.service.LessonService;
 @Controller
 public class LessonController {
 		
-	@Autowired 
-	private LessonService service;
-
+		@Autowired
+		LessonService service;
+		
 		@GetMapping("/list/{LessonCode}")
 		public String LessonList(@PathVariable("LessonCode") int lessonCode
 				,@RequestParam(value = "cp", required = false, defaultValue = "1" )  int cp      
