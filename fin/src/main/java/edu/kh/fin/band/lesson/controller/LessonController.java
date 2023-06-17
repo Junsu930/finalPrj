@@ -22,12 +22,12 @@ public class LessonController {
 				,@RequestParam(value = "cp", required = false, defaultValue = "1" )  int cp      
 				,Model model,
 				@RequestParam Map<String, Object> paramMap) {	
-				// 검색 요청인 경우 : key, query, cp(있거나 없거나)
+//				 검색 요청인 경우 : key, query, cp(있거나 없거나)
 
-			// 게시글 목록 조회 서비스 호출
-			// 1) 게시판 이름 조회 -> 인터셉터로 application에 올려둔 boardTypeList 쓸 수 있을듯?
-			// 2) 페이지네이션 객체 생성(listCount)
-			// 3) 게시글 목록 조회
+//			 게시글 목록 조회 서비스 호출
+//			 1) 게시판 이름 조회 -> 인터셉터로 application에 올려둔 boardTypeList 쓸 수 있을듯?
+//			 2) 페이지네이션 객체 생성(listCount)
+//			 3) 게시글 목록 조회
 			
 			Map<String, Object> map = null;
 			
@@ -37,8 +37,8 @@ public class LessonController {
 			
 			}else { // 검색인 경우
 			
-			// 검색에 필요한 데이터를 paramMap에 모두 담아서 서비스 호출
-			// -> key, query, cp, boardCode
+//			 검색에 필요한 데이터를 paramMap에 모두 담아서 서비스 호출
+//			 -> key, query, cp, boardCode
 			
 			paramMap.put("cp", cp);  // 있으면 같으면 값으로 덮어쓰기, 없으면 추가
 			paramMap.put("lessonCode", lessonCode);
