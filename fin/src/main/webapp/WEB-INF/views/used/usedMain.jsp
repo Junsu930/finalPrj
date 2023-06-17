@@ -9,16 +9,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
-	 <link rel="stylesheet"href="${contextPath}/resources/css/usedMain.css"></script>
- 
+	<link rel="stylesheet"href="${contextPath}/resources/css/usedMain.css"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
     <title>중고거래페이지</title>
    </head>
    <body>
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+   <input type="hidden" id="usedPageHiddenUserNo" value="${sessionScope.loginUser.userNo}">
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="main" >
     
-<!-- 세션 분류 -->
+		<!-- 세션 분류 -->
 
 		<div class="usedSvgBox">
 	        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1205 768">
@@ -28,245 +30,76 @@
 	        </svg>
     	</div>
 
-        <div class="topbox">
-<!-- 중고거래게시판표시와 검색바  -->
-            <div class="mainTitle">중고거래 게시판</div>
-            <div class="searchbox">
-                <input type="text" id="searchboxInput" >
-                    <button type="button" class="searchInputButton">
-                        <i class="fa-solid fa-magnifying-glass" ></i>
-                    </button>
-            </div>
-        </div>
-        
-        <div class="jb-division-line"></div>
-        <!-- 분류선  -->
-
-
-<div class="thingTotalContainer">
-        <div class="thingTotalBox">
-        <!-- 중고거래박스들  -->
-
-
-
-
-            <div class="thingBox" onclick="location.href='${contextPath}/usedDetail'">
-        <!--중고거래게시물박스 -->
-                <div class="thingPicture">
-                
-              	<img src="${contextPath}/resources/images/guitar.jpg" id="guitarImg"></div>
-                <div class="thingsecondbox">
-                    <div class="thingssecondTop">
-                        <div class="SaleOrSoldout">판매중</div>
-                        <div class="thingTitle">피아노 팔게요</div>
-                </div>
-
-                <div class="thingsecondBottomBox">
-                    <div class="thingsecondBottom">
-                        <div class="sellerName">이현경</div>
-                        <div class="dot"> · </div>
-                        <div class="sellerRegion">전라남도</div>
-                    </div>
-                    <div class="price">20000원</div>
-                </div>
-
-                </div>
-        </div>
-   
-
-        <div class="thingBox">
-
-            <div class="thingPicture">first</div>
-            <div class="thingsecondbox">
-                <div class="thingssecondTop">
-                    <div class="SaleOrSoldout">판매중</div>
-                    <div class="thingTitle">피아노 팔게요</div>
-            </div>
-
-            <div class="thingsecondBottomBox">
-                <div class="thingsecondBottom">
-                    <div class="sellerName">이현경</div>
-                    <div class="dot"> · </div>
-                    <div class="sellerRegion">전라남도</div>
-                </div>
-                <div class="price">20000원</div>
-            </div>
-
-            </div>
-    </div>
- 
-
-    
-
-        <div class="thingBox">
-
-            <div class="thingPicture">first</div>
-            <div class="thingsecondbox">
-                <div class="thingssecondTop">
-                    <div class="SaleOrSoldout">판매중</div>
-                    <div class="thingTitle">피아노 팔게요</div>
-            </div>
-
-            <div class="thingsecondBottomBox">
-                <div class="thingsecondBottom">
-                    <div class="sellerName">이현경</div>
-                    <div class="dot"> · </div>
-                    <div class="sellerRegion">전라남도</div>
-                </div>
-                <div class="price">20000원</div>
-            </div>
-
-            </div>
-        </div>
-</div>
-        <div class="thingTotalBox">
-        <!-- 중고거래박스들  -->
-
-
-
-            <div class="thingBox">
-        <!--중고거래게시물박스 -->
-                <div class="thingPicture">first</div>
-                <div class="thingsecondbox">
-                    <div class="thingssecondTop">
-                        <div class="SaleOrSoldout">판매중</div>
-                        <div class="thingTitle">피아노 팔게요</div>
-                </div>
-
-                <div class="thingsecondBottomBox">
-                    <div class="thingsecondBottom">
-                        <div class="sellerName">이현경</div>
-                        <div class="dot"> · </div>
-                        <div class="sellerRegion">전라남도</div>
-                    </div>
-                    <div class="price">20000원</div>
-                </div>
-
-                </div>
-        </div>
-   
-
-        <div class="thingBox">
-
-            <div class="thingPicture">first</div>
-            <div class="thingsecondbox">
-                <div class="thingssecondTop">
-                    <div class="SaleOrSoldout">판매중</div>
-                    <div class="thingTitle">피아노 팔게요</div>
-            </div>
-
-            <div class="thingsecondBottomBox">
-                <div class="thingsecondBottom">
-                    <div class="sellerName">이현경</div>
-                    <div class="dot"> · </div>
-                    <div class="sellerRegion">전라남도</div>
-                </div>
-                <div class="price">20000원</div>
-            </div>
-
-            </div>
-    </div>
- 
-
-    
-
-        <div class="thingBox">
-
-            <div class="thingPicture">first</div>
-            <div class="thingsecondbox">
-                <div class="thingssecondTop">
-                    <div class="SaleOrSoldout">판매중</div>
-                    <div class="thingTitle">피아노 팔게요</div>
-            </div>
-
-            <div class="thingsecondBottomBox">
-                <div class="thingsecondBottom">
-                    <div class="sellerName">이현경</div>
-                    <div class="dot"> · </div>
-                    <div class="sellerRegion">전라남도</div>
-                </div>
-                <div class="price">20000원</div>
-            </div>
-
-            </div>
-        </div>
-</div>
-        <div class="thingTotalBox">
-        <!-- 중고거래박스들  -->
-
-
-
-            <div class="thingBox">
-        <!--중고거래게시물박스 -->
-                <div class="thingPicture">first</div>
-                <div class="thingsecondbox">
-                    <div class="thingssecondTop">
-                        <div class="SaleOrSoldout">판매중</div>
-                        <div class="thingTitle">피아노 팔게요</div>
-                </div>
-
-                <div class="thingsecondBottomBox">
-                    <div class="thingsecondBottom">
-                        <div class="sellerName">이현경</div>
-                        <div class="dot"> · </div>
-                        <div class="sellerRegion">전라남도</div>
-                    </div>
-                    <div class="price">20000원</div>
-                </div>
-
-                </div>
-        </div>
-   
-
-        <div class="thingBox">
-
-            <div class="thingPicture">first</div>
-            <div class="thingsecondbox">
-                <div class="thingssecondTop">
-                    <div class="SaleOrSoldout">판매중</div>
-                    <div class="thingTitle">피아노 팔게요</div>
-            </div>
-
-            <div class="thingsecondBottomBox">
-                <div class="thingsecondBottom">
-                    <div class="sellerName">이현경</div>
-                    <div class="dot"> · </div>
-                    <div class="sellerRegion">전라남도</div>
-                </div>
-                <div class="price">20000원</div>
-            </div>
-
-            </div>
-    </div>
- 
-
-    
-
-        <div class="thingBox">
-
-            <div class="thingPicture">first</div>
-            <div class="thingsecondbox">
-                <div class="thingssecondTop">
-                    <div class="SaleOrSoldout">판매중</div>
-                    <div class="thingTitle">피아노 팔게요</div>
-            </div>
-
-            <div class="thingsecondBottomBox">
-                <div class="thingsecondBottom">
-                    <div class="sellerName">이현경</div>
-                    <div class="dot"> · </div>
-                    <div class="sellerRegion">전라남도</div>
-                </div>
-                <div class="price">20000원</div>
-            </div>
-
-            </div>
-        </div>
-</div>
-</div>
-
-    
-</div>
+		<!-- 중고거래게시판표시와 검색바  -->
+		<!-- 분류 창 -->
+		<div class="sorting-bar">
+			<!-- 각각의 메뉴 -->
+			<div>
+				<button type="button" class="regionBtn" id="regionBtn">
+					<span id="regionTextSpan">REGION</span>
+					<i class="bi bi-caret-down" id="bi"></i>
+				</button>
+				<input type="hidden" name="regionSelector" value="REGION" id="regionSelector"> 
+				<ul class="regionListUl disappearList" id="regionListUl">
+					<li>서울</li>
+					<li>경기</li>
+					<li>부산</li>
+					<li>대구</li>
+					<li>대전</li>
+					<li>강원도</li>
+					<li>경상북도</li>
+					<li>경상남도</li>
+					<li>전라북도</li>
+					<li>전라남도</li>
+					<li>충청북도</li>
+					<li>충청남도</li>
+					<li>충청남도</li>
+					<li>제주도</li>
+				</ul>
+			</div>
+			<div>
+				<input type="search" name="searchingText" id="room-search">
+				<button id="s-btn">
+					<i class="fa-solid fa-magnifying-glass" id="glass"></i>			
+				</button>
+			</div>
+		</div>
+		<form action="${contextPath}/writeUsedThing" method="get">
+			<div class="writeBtnDiv">
+				<button type="submit" id="usedWriteBtn">글쓰기</button>
+			</div>
+		</form>
+		<div class="thingBoxWrap"> 
+			<!--
+			<div class="thingBox" onclick="location.href='${contextPath}/usedDetail'">
+	            <div class="thingPicture">
+	           		<img src="${contextPath}/resources/images/guitar.jpg" id="guitarImg">
+	           	</div>
+		    	<div class="thingsecondbox">
+		             <div class="thingssecondTop">
+	                     <div class="SaleOrSoldout">판매중</div>
+	                     <div class="thingTitle">피아노 팔게요</div>
+		             </div>
+	
+		             <div class="thingsecondBottomBox">
+		                 <div class="thingsecondBottom">
+		                     <div class="sellerName">이현경  ·  전라남도</div>
+		                 </div>
+		                 <div class="price">20000원</div>
+		             </div>
+	        	</div>
+	    	</div>
+	    	 -->
+		</div>
+	</div>
+	<c:if test="${ !empty message }">
+	    <script>
+	        swal.fire("${message}");
+	    </script>
+	</c:if> 
+<jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
+<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<script type="text/javascript" src="${contextPath}/resources/js/usedMain.js"></script>
 </body>
 </html>

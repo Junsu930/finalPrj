@@ -11,7 +11,7 @@
 <body>
 	<div class="faqBox disappear" id="faqBox">
 		<div class="faqQuestion">
-			<div class="faqDuck"><img src="${contextPath}/resources/images/guitarduckelec.png"></div>
+			<div class="faqDuck"><img src="${contextPath}/resources/images/chatbot-removebg-preview.png"></div>
 			<div class="talking">무엇을 도와드릴까요?</div>
 		</div>
 		<div class="questionList" id="reqQ">
@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	<div id="faq-img">
-		<img src="${contextPath}/resources/images/guitarduckelec.png">
+		<img src="${contextPath}/resources/images/chatbot-removebg-preview.png">
 	</div>
 <script type="text/javascript" src="${contextPath}/resources/js/faq.js"></script>
 </body>
