@@ -64,8 +64,12 @@ $("#deleteUsedBoardBtn").click(()=>{
 });
 
 function redirectToUsedMain(){
-  loaction.href="/fin/used";
+  loaction.href="../fin/used";
 }
+
+$("#updateUsedBoardBtn").click(()=>{
+  redirectToUsedMain();
+});
 
 
 
