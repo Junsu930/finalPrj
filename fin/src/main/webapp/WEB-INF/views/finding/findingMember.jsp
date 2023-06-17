@@ -53,7 +53,7 @@
     
     <section class="checkBoxSection">
 		<p id="tt">CHECK!</p>
-		<form action="checkSelect" method="post">
+		<form action="checkSelect" method="post" id="searchingForm">
 			<div class="checkWrapper">
 
 				<p id="genderP">*GENDER*</p>
@@ -249,7 +249,7 @@
 				</div>
 
 				<div class="searchBtnBox">
-					<button type="submit">SUBMIT</button>
+					<button type="submit" id="searchingSubmitBtn">SUBMIT</button>
 				</div>
 			</div>
 		</form>
