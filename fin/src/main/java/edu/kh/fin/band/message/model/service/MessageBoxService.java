@@ -14,17 +14,27 @@ public interface MessageBoxService {
 	 * @param sendUserNickName 
 	 * @return
 	 */
-	List<MessageBox> selectMsgList(String receiverNickName);
+	List<MessageBox> selectMsgList(int receiverUserNo);
 
 	
 	
 	/**
-	 * 메세지 보내기 서비스
+	 * 메세지 답장 서비스
 	 * @author lee
 	 * @param msgInput
 	 * @param userNo
 	 * @return
 	 */
 	int sendMsg(MessageBox msg);
+
+
+
+	/**
+	 * 쪽지 삭제 서비스
+	 * @author lee
+	 * @param msgNo
+	 * @return
+	 */
+	int deleteMsg(int msgNo);
 
 }
