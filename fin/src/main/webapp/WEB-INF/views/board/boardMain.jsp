@@ -45,8 +45,9 @@
     <title>BOARD</title>
    </head>
    <body>
+    
+ <jsp:include page="/WEB-INF/views/common/header.jsp"/> 
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <div class="boardContainer">
     
     <div class="boardSvgBox">
@@ -216,13 +217,6 @@
 </div>
 
 
-
-
-<!-- <div id="blockModal" class="modal" >
-  <div class="modal-content" onclick="blockModalOpen()">
-    <p>신고하기</p>
-    </div>
-  </div> -->
  
   <button class="js-static-modal-toggle btn btn-primary" type="button" id="blockModal">신고하기</button>
   <div id="static-modal" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
@@ -265,33 +259,6 @@
 
 
 
-
-
-  <!-- <div class="blockChooseModal" >
-    <div class="blockChooseContent" >
-      <div class="blockTitle" >신고하시겠습니까?</div>
-      <div class="BlockQContent" >
-       <form >
-       <div>
-        <input type="checkbox" id="pornography" name="pornography" value="pornography">
-        <label for="pornography">음란물입니다.</label>
-      </div> 
-      <div>
-        <input type="checkbox" id="advertisement" name="advertisement" value="advertisement">
-        <label for="advertisement">스팸홍보/도배글입니다.</label>
-      </div> 
-      <div>
-        <input type="checkbox" id="abuse" name="abuse" value="abuse">
-        <label for="abuse"> 욕설/생명경시/혐오/차별적 표현글입니다.</label>  
-      
-      <div>
-        <button>신고하기</button>
-      </div>  
-      </form>
-
-      </div>
-    </div>
-  </div> -->
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/js/boardMain.js"></script>

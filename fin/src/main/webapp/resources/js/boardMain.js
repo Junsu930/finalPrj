@@ -50,13 +50,7 @@ $(document).ready(function(){
 
 
 
-// $(document).ready(function(){
-//   $("tr").hover(function(){
-//     $(this).css("background-color", "rgba(234, 231, 231, 0.2)");
-//   }, function(){
-//     $(this).css("background-color", "transparent");
-//   });
-// });
+
 
 
 function blockModalOpen()  {

@@ -63,13 +63,13 @@
 
 
 
-.container {
-    width: 80%;
+.DetailContainer {
+    width: 75%;
     margin: 0 auto;
     padding: 20px;
     font-size: 19px;
     padding-top: 300px;
-    padding-bottom: 300px;
+
   }
   
   .title-container {
@@ -85,18 +85,21 @@
     margin-right: 10px;
     display: flex;
     align-items: flex-end;
-    margin-top: 70px;
+    
    
   }
+ .DetailViews{
+    font-size: 20px;
+  }
   
-  .title {
+  .BoardDetailTitle {
     font-weight: bold;
+    margin-top: 10px;
   }
   
   .info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+
     margin-top: 10px;
   }
   
@@ -157,7 +160,6 @@ font-size: 20px;
   .report {
     margin-left: auto; 
     font-weight: bold;
-    padding-right: 30px;
   }
   .divider {
     border-bottom: 1px solid #edeeef;
@@ -167,7 +169,7 @@ font-size: 20px;
     display: flex;
     align-items: center;
    
-    padding-left: 30px;
+   
   }
   .commentNickName{
     padding-right: 20px;
@@ -203,8 +205,6 @@ font-size: 20px;
     font-size: 19px;
     color: #868E96;
   
-    padding-left: 30px;
-  
   }
   .inputDetail{
     margin-left: 40px;
@@ -218,6 +218,7 @@ font-size: 20px;
   }
   .comment-input input[type="text"]{
     padding-top: 20px;
+    
   }
 
   
@@ -253,7 +254,7 @@ font-size: 20px;
     margin-right: 10px;
   }
   
-  .views {
+  .DetailViews {
     margin-right: 10px;
   }
   .hearts{
@@ -268,9 +269,8 @@ font-size: 20px;
   
   
 .right {
-    display: flex;
+  
   margin-left: auto;
-  padding-right: 30px;
 }
 
 .author-reply{
@@ -298,7 +298,6 @@ font-size: 20px;
 
   .commentBoxBox{
     display: flex;
-    padding-left: 30px;
   }
   .submit {
     border: 1px solid #474554;
@@ -308,7 +307,19 @@ font-size: 20px;
     border-radius: 3px;
   }
 .inputWi{
-    
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  resize: none;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+  outline: none;
+
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #474554;
 }
 textarea{
         appearance: none;
@@ -341,197 +352,6 @@ textarea{
 
 
 
-
-  .boardContainer {
-	width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    font-size: 15px; /**/
-    padding-bottom: 200px;
-    padding-top: 200px;
-    
-  }
-  
-  .boardNav {
-    text-align: left;
-    margin-bottom: 20px;
-  }
-
-  .boardNav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-  
-  .boardNav li {
-    margin-right: 10px;
-  }
-  
-  .boardNav a {
-    display: block;
-    padding: 5px;
-    text-decoration: none;
-    background-color: #ffffff;
-    font-size: 15px;
-    border-radius: 15px; 
-    padding-left: 15px;
-    padding-right: 15px;
-    color: #474554;
-    border: 1px solid #edeeef;
-  }
-  .total{
-    background-color: #474554;
-    color: #ffffff;
-  }
-  h1 {
-    text-align: left;
-    padding-bottom: 30px;
-    padding-top: 100px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    border-radius: 10px; 
-    overflow: hidden; 
-    color: #474554;
-  }
-  
-  table th,
-  table td {
-    padding: 10px;
-    text-align: center;
-  }
-  thead{
-    background-color: rgba(231, 239, 238, 0.5);
-    color: #868E96;
-  }
-  tbody tr:nth-child(1),
-  tbody tr:nth-child(2) {
-    background-color: rgba(237, 238, 239, 0.3); 
-
-}
-
-table thead,
-tbody tr {
-    border-bottom: 1px solid #edeeef; 
-}
-
-table {
-  border: 1px solid #edeeef;
-}
-
-
-
-
-  
-  .pagination-search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .pagination {
-    display: inline-block;
-  }
-  
-  .pagination a {
-    display: inline-block;
-
-    text-decoration: none;
-  }
-  
-  .pagination a span {
- display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 30px;
-  border-radius: 5px;
-  background-color: #474554;
-  color: #ffffff;
-  text-decoration: none; 
-  }
-  .pagination a.active span {
-    background-color: silver;
-    color: #ffffff;
-  }
-  .search-box {
-    display: flex;
-    align-items: center;
-  }
-  .search-box select{
-    width: 25%;
-  }
-  .search-box select,
-  .search-box input[type="text"] {
-    padding: 5px;
-
-    text-align: center;
-    border: 1px solid silver;
-  }
-  
-  .search-box button {
-    padding: 5px 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border: 0;
-    background-color: transparent;
-    border:1px solid silver;
-    margin: 0;
-    box-sizing: border-box;
-    height: 30px; 
-  }
-
-
-.search-box select,
-.search-box input[type="text"] {
-  height: 30px; 
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-
-}
-  .tagBasic, .tagHot, .tagNotice {
-    display: inline-block;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #474554;
-    color: #fff;
-  }
-  .tagNotice{
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  table th i {
-    margin-right: 10px; 
-    margin-left: 10px;
-  }
-  .title{
-    text-align: left;
-    font-weight: bold;
-  }
-  .boardNumber{
-    margin-right: 10px;
-  }
-
-
-body.darkmode .search-box button{
-	background-color: var(--text-dark-color);
-	
-	
-}
-
-body.darkmode table {
-border: 1px solid var(--border-color);
-}
-
-
-
-
 /*아이폰 SE*/
 
 
@@ -542,9 +362,11 @@ border: 1px solid var(--border-color);
  
   .info {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin-top: 10px;
     
   }
   
@@ -556,86 +378,14 @@ border: 1px solid var(--border-color);
     display: flex;
     justify-content: flex-end;
   }
-/*  .left {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    justify-content: space-between;
- }
- 
- .left, .content {
-    font-size: 18px;
- 
- }
- 
- .right {
-    display: flex;
-    margin-left: auto;
-    padding-right: 30px;
-    align-content: space-between;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    
- }
- .edit, .reply, .and, .delete,  {
-    display: flex;
-    margin-left: auto;
-    padding-right: 30px;
-    align-content: space-between;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center; {
-    font-size: 12px;
-    color: #474554;
-    padding-bottom: 50px;
-        margin-right: 10px;
- 
-  .container {
-    Add your responsive styles for the container here
-    padding-top: 100px;
-    padding-bottom: 100px;
-    font-size: 16px;
-  }
-  
-  .boardContainer {
-    Add your responsive styles for the board container here
-    padding-top: 100px;
-    padding-bottom: 100px;
-    font-size: 14px;
-  }
-   */
-  /* Add other responsive styles for specific elements as needed */
-}
-/*  tagsss {
-    background-color: #474554;
-    color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-right: 10px;
-    display: flex;
-    align-items: flex-end;
-    margin-top: 70px;
-    font-size: 5px;
- }
- 
- .title {
-    text-align: left;
-    font-weight: bold;
-    font-size: 15px;
-}
 
-
- */
  
  .info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    flex-direction: column;
+display: flex;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* flex-wrap: nowrap; */
+    /* flex-direction: column; */
     margin-top: 10px;
 }
 .edit {
@@ -662,14 +412,14 @@ border: 1px solid var(--border-color);
         padding-bottom: 50px;
     margin-right: 10px;
 }
-views {
+DetailViews {
     margin-right: 10px;
     color: black;
 }
- .title {
+ .BoardDetailTitle{
     text-align: left;
     font-weight: bold;
-    font-size: 15px;
+
 }
 .commentBox {
     display: flex;
@@ -1105,6 +855,6 @@ textarea {
     }
 
 }
-body.darkmode .title, .ninkName, .heart, .views, .boardNumber {
+body.darkmode .BoardDetailTitle, .ninkName, .heart, .DetailViews, .boardNumber {
     color: var(--text-dark-color);
 }
