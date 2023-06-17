@@ -28,17 +28,42 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired
     private JavaMailSender mailSender;
 	
+	// 암호화를 위한 bcrypt 객체 의존성 주입(DI)
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
+	
 	
 	private Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 	
 	private String fromEmail = "gosrod05@gmail.com";
 	
+	//로그인
 	@Override
 	public User login(User inputUser) {
 		
 		System.out.println("컨트롤"+ inputUser);
 		
+		logger.debug( inputUser.getUserPw() + " / " +  bcrypt.encode(inputUser.getUserPw()) );
+		
 		User loginUser = dao.login(inputUser);
+		
+		if(loginUser != null) { // 일치하는 이메일을 가진 회원 정보가 있을 경우
+			
+			// 입력된 비밀번호(평문) , 조회된 비밀번호(암호화) 비교 (같으면 true)
+							 		//평문                  ,   암호화
+			if( bcrypt.matches(  inputUser.getUserPw()   ,  loginUser.getUserPw() ) ) {
+				// 비밀번호가 일치할 경우
+				
+				System.out.println("평문" +inputUser.getUserPw());
+				System.out.println("암호문" +loginUser.getUserPw());
+				
+				loginUser.setUserPw(null); // 비교 끝났으면 비밀번호 지우기
+				
+			} else { // 비밀번호가 일치하지 않은 경우
+				loginUser = null; // 로그인을 실패한 형태로 바꿔줌
+				
+			}
+		}
 		
 		
 		return loginUser;
@@ -60,6 +85,12 @@ public class LoginServiceImpl implements LoginService{
 	//회원가입
 	@Override
 	public int signUp(User inputUser) {
+		
+		// 비밀번호 암호화(bcrypt)
+		String encPw = bcrypt.encode( inputUser.getUserPw() );
+				
+		// 암호화된 비밀번호로 다시 세팅
+		inputUser.setUserPw(encPw);
 			
 		int result = dao.signUp(inputUser);
 		
