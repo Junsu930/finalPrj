@@ -64,12 +64,10 @@ $("#deleteUsedBoardBtn").click(()=>{
 });
 
 function redirectToUsedMain(){
-  loaction.href="../fin/used";
+  location.href="/fin/used";
 }
 
-$("#updateUsedBoardBtn").click(()=>{
-  redirectToUsedMain();
-});
+
 
 
 

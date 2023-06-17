@@ -65,6 +65,12 @@ public class LessonController {
 		return "lesson/lessonWriting";
 	}
 	
+	@GetMapping("/lesson")
+	public String lessonPageMoving() {
+		
+		return "lesson/lessonMain";
+	}
+	
 	
 	
 	
