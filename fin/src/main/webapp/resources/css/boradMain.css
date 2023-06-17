@@ -335,8 +335,28 @@ cursor: pointer;
 
 }
 .btn-primary {
-    background-color:   var(--background-color)
+    background-color: var(--background-color);
+    border: 1px solid;
+    color: black;
+    padding: 3px;
+    font-size: 13px;
+    
 }
+.btn:hover{
+    background-color: var(--background-color);
+    border: 1px solid;
+    color: black;
+    padding: 3px;
+}
+
+:not(.btn-check)+.btn:active{
+	background-color: var(--background-color);
+    border: 1px solid;
+    color: black;
+    padding: 3px;
+}
+
+
 
 
   /*Checkboxes styles*/
