@@ -53,7 +53,7 @@
 			<c:otherwise>
 
 				<div class=notFoundBox>
-					<p>Not Found!</p>
+					<h1>Not Found!</h1>
 				</div>
 			</c:otherwise>
 		</c:choose>

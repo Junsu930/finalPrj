@@ -66,7 +66,7 @@
                         <ion-icon name="person"></ion-icon>
                     </span>
                     <textarea name="" id="" cols="30" rows="10" required></textarea>
-                    <lab255el class="textLabel">TELL YOUR STROY</label>
+                    <label class="textLabel">TELL YOUR STROY</label>
                 </div>
 
             </div>

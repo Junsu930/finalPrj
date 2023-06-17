@@ -20,20 +20,30 @@ public class MessageBoxImpl implements MessageBoxService{
 	 * @author lee
 	 */
 	@Override
-	public List<MessageBox> selectMsgList(String receiverNickName) {
+	public List<MessageBox> selectMsgList(int receiverUserNo) {
 		
-		return dao.selectMsgList(receiverNickName);
+		return dao.selectMsgList(receiverUserNo);
 	}
 
 	
 	/**
-	 * 메세지 보내기 서비스
+	 * 메세지 답장 서비스
 	 * @author lee
 	 */
 	@Override
 	public int sendMsg(MessageBox msg) {
 		
 		return dao.sendMsg(msg);
+	}
+
+
+	/**
+	 * 쪽지 삭제 서비스
+	 * @author lee
+	 */
+	@Override
+	public int deleteMsg(int msgNo) {
+		return dao.deleteMsg(msgNo);
 	}
 
 }

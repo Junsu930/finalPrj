@@ -19,14 +19,14 @@ public class MessageBoxDAO {
 	 * @author lee
 	 * 메세지 조회 DAO
 	 */
-	public List<MessageBox> selectMsgList(String receiverNickName) {
-		return sqlSession.selectList("msgBoxMapper.msgBoxList", receiverNickName);
+	public List<MessageBox> selectMsgList(int receiverUserNo) {
+		return sqlSession.selectList("msgBoxMapper.msgBoxList", receiverUserNo);
 	}
 
 	
 	
 	/**
-	 * 메세지 보내기 서비스
+	 * 메세지 답장 DAO
 	 * @author lee
 	 * @param msgInput
 	 * @param userNo
@@ -34,6 +34,18 @@ public class MessageBoxDAO {
 	 */
 	public int sendMsg(MessageBox msg) {
 		return sqlSession.insert("msgBoxMapper.sendMsg", msg);
+	}
+
+
+
+	/**
+	 * 메세지 삭제 DAO
+	 * @author lee
+	 * @param msgNo
+	 * @return
+	 */
+	public int deleteMsg(int msgNo) {
+		return sqlSession.delete("msgBoxMapper.deleteMsg", msgNo);
 	}
 
 }
