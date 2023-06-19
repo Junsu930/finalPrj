@@ -18,7 +18,6 @@ public class LessonDAO {
 	/** lesson 코드, 이름 조회 DAO
 	 * @return boardTypeList
 	 */
-
 	public List<Lesson> selectlesson() {
 		return sqlSession.selectList("lessonMapper.selectLesson");
 	}

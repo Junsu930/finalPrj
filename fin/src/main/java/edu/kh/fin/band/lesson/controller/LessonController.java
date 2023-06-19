@@ -22,8 +22,8 @@ public class LessonController {
 				,@RequestParam(value = "cp", required = false, defaultValue = "1" )  int cp      
 				,Model model,
 				@RequestParam Map<String, Object> paramMap) {	
-//				 검색 요청인 경우 : key, query, cp(있거나 없거나)
-
+//				검색 요청인 경우 : key, query, cp(있거나 없거나)
+			
 //			 게시글 목록 조회 서비스 호출
 //			 1) 게시판 이름 조회 -> 인터셉터로 application에 올려둔 boardTypeList 쓸 수 있을듯?
 //			 2) 페이지네이션 객체 생성(listCount)
