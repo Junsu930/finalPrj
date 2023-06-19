@@ -11,17 +11,16 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Lesson {
 	
-	private int LessonNo;
+	private int lessonNo;
 	private int userNo;
-	private String LessonNick;
+	private String lessonNick;
 	private String introment;
 	private String joinDate;
 	private String lessonImg;
 	private String genre;
 	private String ints;
-	private String Region; 
+	private String region; 
 	private String detailment;
 	private String socialSite;
-
 
 }
