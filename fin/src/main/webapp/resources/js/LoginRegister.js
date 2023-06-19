@@ -218,7 +218,7 @@ email.addEventListener("input", function(){
 // 인증번호 보내기
 const sendEmail = document.getElementById("sendEm");
 const cMessage = document.getElementById("cMessage");
-
+let chem;
 // 타이머에 사용될 변수
 let checkInterval; // setInterval을 저장할 변수
 let min = 4;
@@ -235,9 +235,10 @@ sendEmail.addEventListener("click", function(){
             success : function(result){
                 console.log("이메일 발송 성공");
                 console.log(result);
+
+                chem = result;
                 // 인증 버튼이 클릭되어 정상적으로 메일이 보내졌음을 checkObj에 기록
                 //checkObj.sendEmail = true;
-
                 
 
             },
@@ -303,7 +304,7 @@ checkmail.addEventListener("input", function() {
         return;
     }
 
-    if(checkmail.value == result) { // 이메일 인증번호 동일
+    if(checkmail.value == chem) { // 이메일 인증번호 동일
 
         emailCheckMessage.innerText = "";
         emailCheckMessage.classList.add("confirm");
