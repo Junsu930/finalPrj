@@ -51,12 +51,16 @@
           <div class="navSecondDiv">
 
             <!-- <a href="signUp" class="signUpText navA">SignUp</a> -->
-            <a href="${contextPath}/checkPw" class="myPageText navA">My Page</a>
+
             <c:choose>
-            <c:when test="${ empty sessionScope.loginUser }"> 
-                <a href="${contextPath}/login" class="loginText navA">Login</a>
-            </c:when>
+            	<c:when test="${empty sessionScope.loginUser}"> 
+                	<a href="${contextPath}/login" class="loginText navA">Login</a>
+            	</c:when>
+            	<c:when test="${empty sessionScope.loginOwner}"> 
+                	<a href="${contextPath}/login" class="loginText navA">Login</a>
+            	</c:when>
             <c:otherwise>
+            	<a href="${contextPath}/checkPw" class="myPageText navA">My Page</a>
                 <a href="${contextPath}/logout" class="loginText navA">Logout</a>
             </c:otherwise>
             </c:choose>

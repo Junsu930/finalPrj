@@ -25,6 +25,7 @@
 		<typeAlias type="edu.kh.fin.band.used.model.vo.UsedVo" alias="used"/>
 		<typeAlias type="edu.kh.fin.band.used.model.vo.UsedImage" alias="usedImage"/>
 		<typeAlias type="edu.kh.fin.band.lesson.model.vo.Lesson" alias="lesson"/>
+		<typeAlias type="edu.kh.fin.band.login.model.vo.Business" alias="Business"/>
 
 	</typeAliases>
 	
@@ -38,5 +39,6 @@
 		<mapper resource="/mapper/msgBox-mapper.xml"/>
 		<mapper resource="/mapper/usedBoard-mapper.xml"/>
 		<mapper resource="/mapper/lesson-mapper.xml"/>
+		<mapper resource="/mapper/business-mapper.xml"/>
 	</mappers>
 </configuration>

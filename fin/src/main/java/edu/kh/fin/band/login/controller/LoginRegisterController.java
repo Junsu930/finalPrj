@@ -63,7 +63,7 @@ public class LoginRegisterController {
 		if(loginUser !=null) { // 로그인 성공시
 			model.addAttribute("loginUser", loginUser);
 
-			System.out.println(loginUser.getUserNo());
+			System.out.println("로그인 성공" + loginUser.getUserNo());
 			
 			//쿠키 생성
 			Cookie cookie = new Cookie("saveId", loginUser.getUserEmail());
@@ -82,16 +82,16 @@ public class LoginRegisterController {
 			// 쿠키를 클라이언트에 전달
 			resp.addCookie(cookie);
 			
-			path = "/main";
+			path = "redirect:/main";
 			
 		} else { //실패 
 			
 			ra.addFlashAttribute("message", "이메일또는 비밀번호가 틀립니다");
-			path = "/login";
+			path = "redirect:/login";
 			
 		}
 		
-		return"redirect:" + path;
+		return path;
 		
 	}
 	

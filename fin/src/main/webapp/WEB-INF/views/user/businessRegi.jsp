@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>로그인</title>
+	<title>사업자로그인</title>
 
 	<link rel="stylesheet" href="${contextPath}/resources/css/global.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,6 +22,8 @@
       <body>
  	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
  	
+ 	
+ 	
  	<div class="svgBox">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1117 669">
             <g id="loginBack">
@@ -31,19 +33,20 @@
     </div>
  	
  	
+ 	
     <section class="loginSection"> <!-- body -->
 
         <div class="wrapper"> <!--wrapper-->
 
             <div class="formBox login"> <!--for-box login-->
-                <h2>LOGIN</h2>
+                <h2>BUSINESS LOGIN</h2>
 		
-                <form action="fin/login" method="POST" name="login-form" onsubmit="return loginValidate()">
+                <form action="fin/businessLogin" method="POST" name="login-form" onsubmit="return loginValidate()">
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">
                             <ion-icon name="mail"></ion-icon>
                         </span>
-                        <input type="email" name="userEmail" value="${cookie.saveId.value}"required>
+                        <input type="email" name="ownerEmail" value="${cookie.saveId.value}"required>
                         <label>EMAIL</label>
                     </div>
 
@@ -51,7 +54,7 @@
                         <span class="icon" onclick="showAndHide()">
                             <i id="eye" class="bi bi-eye-fill"></i>
                         </span>
-                        <input type="password" id="password" name="userPw" required>
+                        <input type="password" id="password" name="ownerPw" required>
                         <label>PASSWORD</label>
                     </div>
 
@@ -63,8 +66,8 @@
                     <button type="submit" class="btn">LOGIN</button>
 
                     <div class="loginRegister">   <!--login-register-->
-                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
-                        <p>Are you businessman?<a href="${contextPath}/businessRegi" class="register-link">Business login</a></p>
+                        <p>Don't have an account? <a href="#" class="register-link">Business Register</a></p>
+                        <p><a href="${contextPath}/login" class="register-link">Normal login</a></p>
                     </div>
 
                 </form>
@@ -75,13 +78,13 @@
             <div class="formBox register"> 
                 <h2>REGISTRATION</h2>
 
-                <form id ="form" action="fin/signUp" method="POST" name="regi-form" onsubmit="return signUpValidate()">
+                <form id ="form" action="fin/businessSignUp" method="POST" name="regi-form" onsubmit="return signUpValidate()">
 
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">
                             <ion-icon name="mail" id="sendEmail"></ion-icon>
                         </span>
-                        <input type="email" id="email" name="userEmail">
+                        <input type="email" id="email" name="ownerEmail">
                         <label>EMAIL&nbsp;&nbsp;<span class="signUp-message" id="emailMessage"></span></label>
                     </div>
 
@@ -98,7 +101,7 @@
                             <ion-icon name="lock-closed"></ion-icon>
                         </span>
                         
-                        <input type="password" id="rpassword" name="userPw">
+                        <input type="password" id="rpassword" name="ownerPw">
                         <label>PASSWORD&nbsp;&nbsp;<span class="signUp-message" id="pwMessage"></span></label>                      
                     </div>
 
@@ -114,10 +117,17 @@
                         <span class="icon">
                             <ion-icon name="person-outline"></ion-icon>
                         </span>
-                        <input type="text" id="nickname" name="userNick">
+                        <input type="text" id="nickname" name="ownerNick">
                         <label>Nickname&nbsp;&nbsp;<span class="signUp-message" id="nicknameMessage"></span></label>                       
                     </div>
 
+                    <div class="inputBox busniessBox">  <!--busniess-box-->
+                        <span class="icon">
+                            <ion-icon name="business-outline"></ion-icon>
+                        </span>
+                        <input type="text" id="businessNo" name="regNo">
+                        <label>BUSINESS NUMBER</label>
+                    </div>
 
                     <div class="rememberForgot">  <!--remember-forgot-->
                         <label><input type="checkbox" name="agreeList" id="agree"> Agree to the terms & conditions</label>

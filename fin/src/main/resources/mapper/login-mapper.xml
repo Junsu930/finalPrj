@@ -19,17 +19,18 @@
   
   
   
-  
-  
-  
   <!-- 로그인 -->
   <select id="login" parameterType="user" resultMap="user_rm">
   		SELECT USER_NO, USER_EMAIL, USER_PWD, USER_NICK ,USER_TYPE, 
 		MATCHING_FL, INTRO_MENT, TO_CHAR( JOIN_DATE , 'YYYY-MM-DD HH24:MI:SS') AS JOIN_DATE 
 		FROM "USER"
-		WHERE USER_EMAIL = #{userEmail} AND USER_PWD = #{userPw}
+		WHERE USER_EMAIL = #{userEmail}
 		AND SECESSION_FL = 'N'
   </select>
+  
+  
+  
+  
   
   <!-- 이메일 중복 검사 -->
   <select id="emailDupCheck" parameterType="string" resultType="_int">

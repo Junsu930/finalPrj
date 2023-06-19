@@ -290,13 +290,6 @@ dark.mode .formBox h2{
     text-decoration: underline;
 }
 
- .busniessBox{
-    display: none;
-} 
-
-.busniessBox.visible {
-    display: block;
-}
 
 .error{  
 	color : red;  
