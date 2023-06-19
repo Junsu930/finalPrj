@@ -13,14 +13,13 @@ public class LessonDAO {
 	
 
 	@Autowired
-	private SqlSessionTemplate sqlSession;
+	SqlSessionTemplate sqlSession;
 
-	/** lesson 코드, 이름 조회 DAO
-	 * @return boardTypeList
+	/** lesson 조회
+	 * @return
 	 */
-
-	public List<Lesson> selectlesson() {
-		return sqlSession.selectList("lessonMapper.selectLesson");
+	public List<Lesson> lessonList() {
+		return sqlSession.selectList("lessonMapper.lessonList");
 	}
 	
 }

@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Room {
 	
 	
-
+	
 	private int pracRoomNo;
 	private int pricePerHour;
 	private String roomImg;

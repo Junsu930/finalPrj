@@ -10,6 +10,7 @@ const lessonBtn = document.getElementById('lessonBtn');
 const lessonBtnTitle = document.getElementById('lessonBtnTitle');
 const liArr = document.getElementById('lessonId').children; // lessonId(ul) > li
 
+
 // 필터 클릭 하고 목록 클릭 시, 목록 타이틀로 필터 버튼 타이틀이 바뀜
 for(let eachLi of liArr){
     eachLi.addEventListener("click", ()=>{
