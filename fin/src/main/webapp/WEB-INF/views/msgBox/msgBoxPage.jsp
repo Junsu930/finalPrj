@@ -43,13 +43,10 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
-
-
-
-
+        
         <c:if test="${!empty msgList}">
         	<ul class="messageWrapper">
+            
             <c:forEach items="${msgList}" var="msgList" varStatus="status">
               <li style="--i:${status.count};">
                 <img src="${contextPath}/resources/images/guitarduck.png" alt="">
@@ -59,78 +56,62 @@
                       ${msgList.msgContent}<br> 
                       <span>${msgList.sendDate}</span>
                       <br>
-                      <button id="msgDeleteBtn" type="button" onclick="delteMsg()"><i class="bi bi-trash"></i></button>
-                      <button id="msgSendBtn" type="button" class="js-static-modal-toggleSendMsg${status.count}" onclick="openModal()"><i class="bi bi-envelope"></i></button>
+                      <button class="msgDeleteBtn" type="button" onclick="delteMsg()"><i class="bi bi-trash"></i></button>
+                      <button class="msgSendBtn" type="button" class="js-static-modal-toggleSendMsg${status.count}" ><i class="bi bi-envelope"></i></button>
+                      <input type="hidden" value="${msgList.sendUserNo}">
                     </p>
                 </div>
                 <input type="hidden" value="${msgList.msgNo}" id="msgNo">
-                <input type="hidden" value="${msgList.sendUserNo}" id="receiverUserNo"> <!--보냈던 사람인데 답장시에는 받을 사람의 정보 -->
+                <input type="text" value="${msgList.sendUserNo}" class="receiverUserNo"> <!--표시되는 건 보냈던 사람인데 답장시에는 받을 사람의 정보 -->
+                <c:set var="hiddenUserNo" value="${msgList.sendUserNo}"/>
               </li>
+
+              <!-- block Modal -->
+              <div class="container">
+                <!-- <button class=" js-static-modal-toggle btn btn-primary " type="button">test</button> -->
+                <div id="static-modalBlock${status.count}" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      </div>
+                      <div class="modal-body">
+                        
+                        <div class="sendMsgModalBox">
+                          <h1>REPLY MESSAGE</h1>
+                          <textarea name="" id="replyMsgText" cols="" rows=""></textarea>
+                          <button id="msgSendModalBtn" onclick="replyMsg()" type="button"><i class="bi bi-envelope"></i></button>
+                          
+                        </div>
+
+                        
+                      </div>
+                      <div class="modal-footer">
+                      
+                      </div>
+                    </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+                </div>
+              </div>
+
             </c:forEach>
           </ul>
         </c:if>
+
+          
 
         <c:if test="${empty msgList}">
             <div class="emptyMsgBox">
                 <h1>NO MESSAGE!</h1>
             </div>
         </c:if>
+
+         
+
    
+        <input type="hidden" value="" id="hiddenUserNo">
 
-
-    <!-- block Modal -->
-    <div class="container">
-      <!-- <button class=" js-static-modal-toggle btn btn-primary " type="button">test</button> -->
-      <div id="static-modalBlock" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-            </div>
-            <div class="modal-body">
-              
-              <div class="sendMsgModalBox">
-                <h1>REPLY MESSAGE</h1>
-                <textarea name="" id="replyMsgText" cols="" rows=""></textarea>
-                <button id="msgSendModalBtn" onclick="replyMsg()" type="button"><i class="bi bi-envelope"></i></button>
-              </div>
-
-              
-            </div>
-            <div class="modal-footer">
-            
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div>
-    </div>
-
-    <!-- block Modal -->
-    <div class="container">
-      <!-- <button class=" js-static-modal-toggle btn btn-primary " type="button">test</button> -->
-      <div id="static-modalBlock" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-            </div>
-            <div class="modal-body">
-              
-              <div class="sendMsgModalBox">
-                <h1>REPLY MESSAGE</h1>
-                <textarea name="" id="replyMsgText" cols="" rows=""></textarea>
-                <button id="msgSendModalBtn" onclick="replyMsg()" type="button"><i class="bi bi-envelope"></i></button>
-              </div>
-
-              
-            </div>
-            <div class="modal-footer">
-            
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div>
-    </div>
+    
 
     
 
@@ -139,6 +120,12 @@
 
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <script>
+      function opModal(receiverUserNo){
+          document.getElementById("hiddenUserNo").value = receiverUserNo;
+      }
+    </script>
 
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src = "${contextPath}/resources/js/messageBoxPage.js"></script>

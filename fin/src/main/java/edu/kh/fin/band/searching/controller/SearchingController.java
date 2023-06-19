@@ -1,18 +1,24 @@
 package edu.kh.fin.band.searching.controller;
 
-import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.searching.model.service.SearchingService;
 import edu.kh.fin.band.searching.model.vo.Searching;
 
+@SessionAttributes({"loginUser"})
 @Controller
 public class SearchingController {
 	
@@ -23,10 +29,14 @@ public class SearchingController {
 	
 	
 	@GetMapping("/findingMember")
-	public String findingMemberController() {
+	public String findingMemberController(RedirectAttributes ra, HttpSession session) {
 		
-		return "finding/findingMember";
-		
+		if(session.getAttribute("loginUser") == null) {
+			ra.addFlashAttribute("msg", "로그인을 먼저 해주세요!");
+			return "redirect:/login"; // 로그인 되어있지 않은 경우 
+		}else {
+			return "finding/findingMember"; // 로그인 되어있는 경우 
+		}
 	}
 	
 	
@@ -58,7 +68,7 @@ public class SearchingController {
 			@RequestParam("gender") char gender,
 			@RequestParam("region") String region,
 			@RequestParam("inst") String inst,
-			@RequestParam("genre") String genre, Model model) {
+			@RequestParam("genre") String genre, Model model, @ModelAttribute("loginUser") User loginUser) {
 		
 		
 		Searching searching = new Searching();
@@ -67,6 +77,7 @@ public class SearchingController {
 		searching.setGenre(genre);
 		searching.setRegion(region);
 		searching.setInst(inst);
+		searching.setUserNo(loginUser.getUserNo());
 		
 		
 		

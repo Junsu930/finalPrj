@@ -47,6 +47,17 @@
 		</dependency>
 			
 		<!-- 메일 서비스 라이브러리 -->
+		
+		
+		<!-- 알람 서비스  -->
+		
+		<!-- https://mvnrepository.com/artifact/com.google.firebase/firebase-admin -->
+		<dependency>
+		  <groupId>com.google.firebase</groupId>
+		  <artifactId>firebase-admin</artifactId>
+		  <version>9.1.1</version>
+		</dependency>
+		<!-- 알람 서비스  -->
 	
 	
 		

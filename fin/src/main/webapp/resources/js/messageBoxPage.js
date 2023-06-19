@@ -24,19 +24,27 @@ function delteMsg(){
         });
     }else{
         console.log("삭제 취소");
-        alert("취소!")
     }
-
 }
 
 
 // 쪽지 답장
 
-const replyMsgText = document.getElementById('replyMsgText');
-const receiverUserNo = document.getElementById('receiverUserNo'); // 받는 사람 즉, 답장 시에는 보냈던 사람의 userNo
+let hiddenUserNum;
+
+$("#msgSendBtn").click(function(){
+    alert("dmdkk");
+    hiddenUserNum = $(this).next().val();
+    console.log($(this).next().val());
+});
+
 
 function replyMsg(){
+    let replyMsgText = document.getElementById('replyMsgText');
+    let hiddenUserNo = document.getElementById('hiddenUserNo'); // 받는 사람 즉, 답장 시에는 보냈던 사람의 userNo
     if(replyMsgText.value == ""){
+        console.log(hiddenUserNum);
+        // console.log( "받는 사람 번호 :" + receiverUserNo.value);
         alert("쪽지 내용을 작성해주세요!");
     }else{
         $.ajax({
@@ -51,8 +59,8 @@ function replyMsg(){
                 location.reload();
             },
             error : function(request, status, error){
-              console.log("AJAX 에러 발생");
-              console.log("상태코드 : " + request.status); // 404, 500
+                console.log("AJAX 에러 발생");
+                console.log("상태코드 : " + request.status); // 404, 500
             }
         });
     }
@@ -60,28 +68,29 @@ function replyMsg(){
 
 
 
+
 // 왜 같은 클래스로 다 안 열리지...
-
-
 document.querySelector('.js-static-modal-toggleSendMsg1').addEventListener('click', function() {
+    new Modal({el: document.getElementById('static-modalBlock1')}).show();
     console.log("click!!");
-    new Modal({el: document.getElementById('static-modalBlock')}).show();
+    
 });
 
 document.querySelector('.js-static-modal-toggleSendMsg2').addEventListener('click', function() {
     console.log("click!!");
-    new Modal({el: document.getElementById('static-modalBlock')}).show();
+    new Modal({el: document.getElementById('static-modalBlock2')}).show();
 });
 
 document.querySelector('.js-static-modal-toggleSendMsg3').addEventListener('click', function() {
     console.log("click!!");
-    new Modal({el: document.getElementById('static-modalBlock')}).show();
+    new Modal({el: document.getElementById('static-modalBlock3')}).show();
 });
 
 document.querySelector('.js-static-modal-toggleSendMsg4').addEventListener('click', function() {
     console.log("click!!");
-    new Modal({el: document.getElementById('static-modalBlock')}).show();
+    new Modal({el: document.getElementById('static-modalBlock4')}).show();
 });
+
 
     
 
