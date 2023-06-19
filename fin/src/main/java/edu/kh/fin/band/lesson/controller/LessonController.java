@@ -20,7 +20,6 @@ public class LessonController {
 		
 		@Autowired
 		LessonService service;
-			
 				
 		@GetMapping("/lesson")
 		public String lessonController(Model model) {

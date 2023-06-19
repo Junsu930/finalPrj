@@ -19,7 +19,6 @@
 
 
 <div class="content" id="content">
-<a href="${contextPath}/usedWriting">중고글 작성</a>
 <div  data-bs-toggle="modal" data-bs-target="#exampleModal" id="toModalDiv" style="cursor: pointer;">
 	<input type="hidden" id="hiddenUserNo" value="${sessionScope.loginUser.userNo}">
 	<span>프로필보기 넘어가기</span>

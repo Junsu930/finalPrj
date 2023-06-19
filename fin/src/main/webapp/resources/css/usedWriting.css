@@ -15,6 +15,7 @@
 	width: 100%;
 }
 
+s
 
 /* 기본 정보 */
 .usedContent > div:nth-of-type(1) {
@@ -48,10 +49,16 @@
 }
 /* 사진 칸 */
 .usedContent > div:nth-of-type(2) > div:nth-of-type(2){
-	width: 260px;
-	height: 200px;
-	cursor: pointer;
+	width: 80%;
+    height: 200px;
+    cursor: pointer;
+    display: flex;
 
+}
+
+/* 각 사진 이미지 */
+.usedContent > div:nth-of-type(2) > div:nth-of-type(2) > label {
+	margin-right: 20px;
 }
 
 body.swal2-shown{
@@ -59,14 +66,14 @@ body.swal2-shown{
 	overflow: revert !important;
 }
 
-#imageInsertPic{
+#imageInsertPic1, #imageInsertPic2, #imageInsertPic3{
 	width: 100%;
 	height: 100%;
 	cursor: pointer;
 	border-radius:10px;
 }
 
-#img1{
+#img1, #img2, #img3{
 	display: none;
 }
 /* 제목 */
@@ -281,13 +288,25 @@ body.swal2-shown{
 	background-color: var(--grr-color);
 }
 
+
+#usedBoardUpdateBtn{
+	font-size: 1em;
+	width: 6em;
+	height: 3em;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: var(--grr-color);
+
+}
+
 @media (max-width:46.875rem){
 	
 	.regionCard{
 		width: 5em;
 	}
 	
-	#imageInsertPic {
+	#imageInsertPic1, #imageInsertPic2, #imageInsertPic3 {
 		width: 80%;
 		height: 80%;
 	
@@ -324,7 +343,7 @@ body.swal2-shown{
 	}
 	
 	
-	#imageInsertPic {
+	#imageInsertPic1, #imageInsertPic2, #imageInsertPic3 {
 		width: 80%;
 		height: 80%;
 	

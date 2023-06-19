@@ -18,5 +18,5 @@ public class LessonService {
 	public List<Lesson> lessonList() {
 		return dao.lessonList();
 	}
-		
+
 }

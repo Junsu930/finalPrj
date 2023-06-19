@@ -27,9 +27,11 @@
     	<div class="topBox">
 		    <div class="swiper mySwiper">
 		      <div class="swiper-wrapper">
-		        <div class="swiper-slide">
-					<img src="${contextPath}/${usedDetailVo.imgSrc}" class="guitarImg">
-				</div>
+		      	<c:forEach var="each" items="${imageList}" begin="0" end="${fn:length(imageList)}">
+			        <div class="swiper-slide">
+						<img src="${contextPath}${each.imageRename}" class="guitarImg">
+					</div>  		
+		      	</c:forEach>
 		      </div>
 		      <div class="swiper-button-next"></div>
 		      <div class="swiper-button-prev"></div>
@@ -65,9 +67,10 @@
 				
 				<c:if test="${sessionScope.loginUser.userNo eq usedDetailVo.userNo}">
 					<div class="updateAndDeleteBtn">
-						<form action="#" method="post">
+						<form action="${contextPath}/updateUsedBoard" method="post">
 							<div>
-								<button type="button" id="updateUsedBoardBtn">수정</button>
+								<button type="submit" id="updateUsedBoardBtn">수정</button>
+								<input type="hidden" value="${usedDetailVo.usedBoardNo}" name="usedBoardNoValue">
 							</div>
 						</form>
 						<div>
@@ -111,6 +114,11 @@
     	</div>
     -->
 <!-- 세션 분류 -->
+<c:if test="${ !empty message }">
+    <script>
+        swal.fire("${message}");
+    </script>
+</c:if> 
 <jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
 <jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

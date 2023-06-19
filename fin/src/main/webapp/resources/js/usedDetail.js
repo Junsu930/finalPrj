@@ -49,8 +49,22 @@ $("#deleteUsedBoardBtn").click(()=>{
             success : function(data){
                 
               if(data>0){
-                swal.fire("게시글 삭제 성공했습니다.");
-                redirectToUsedMain();
+
+                Swal.fire({
+                  title: '삭제가 완료되었습니다.',
+                  icon: 'success',
+                  
+                  confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+                  confirmButtonText: '확인', // confirm 버튼 텍스트 지정
+                  
+               }).then(result => {
+                  // 만약 Promise리턴을 받으면,
+                  if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+                    redirectToUsedMain();
+                  }else{
+                    redirectToUsedMain();
+                  }
+               });
               }else{
                 swal.fire("게시글 삭제 실패했습니다.");
               }

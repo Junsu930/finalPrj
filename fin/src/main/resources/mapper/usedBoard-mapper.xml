@@ -3,19 +3,23 @@
 <mapper namespace="usedBoard-mapper">
 
 <resultMap type="used" id="used_rm">
-<id property="usedBoardNo" column="BOARD_NO"/>
-<result property="boardTitle" column="BOARD_TITLE"/>
-<result property="boardContent" column="BOARD_CONTENT"/>
-<result property="boardDate" column="CREATE_DATE"/>
-<result property="boardState" column="BOARD_ST"/>
-<result property="price" column="PRICE"/>
-<result property="productName" column="PRODUCT_NM"/>
-<result property="userNo" column="USER_NO"/>
-<result property="boardTag" column="BOARD_TAG"/>
-<result property="region" column="REGION"/>
-<result property="imgSrc" column="IMG_RENAME"/>
-<result property="userNick" column="USER_NICK"/>
+	<id property="usedBoardNo" column="BOARD_NO"/>
+	<result property="boardTitle" column="BOARD_TITLE"/>
+	<result property="boardContent" column="BOARD_CONTENT"/>
+	<result property="boardDate" column="CREATE_DATE"/>
+	<result property="boardState" column="BOARD_ST"/>
+	<result property="price" column="PRICE"/>
+	<result property="productName" column="PRODUCT_NM"/>
+	<result property="userNo" column="USER_NO"/>
+	<result property="boardTag" column="BOARD_TAG"/>
+	<result property="region" column="REGION"/>
+	<result property="imgSrc" column="IMG_RENAME"/>
+	<result property="userNick" column="USER_NICK"/>
+</resultMap>
 
+<resultMap type="usedImage" id="usedImage_rm">
+	<result property="imageRename" column="IMG_RENAME"/>
+	<result property="imageLevel" column="IMG_LEVEL"/>
 </resultMap>
 
 <select id="usedRoomScroll" resultMap="used_rm">
@@ -23,7 +27,7 @@
 	FROM SECOND_HAND_BOARD sb 
 	JOIN "USER" USING(USER_NO) 
 	LEFT JOIN SECOND_HAND_BOARD_IMG si ON (sb.BOARD_NO = si.BOARD_NO)
-	WHERE BOARD_ST != 'D'
+	WHERE BOARD_ST != 'D' AND IMG_LEVEL = 0
 </select>
 
 <select id="usedSearchingRoomScroll" resultMap="used_rm">
@@ -35,6 +39,7 @@
 	BOARD_CONTENT LIKE #{searchingText} OR 
 	REGION LIKE #{searchingText} OR
 	USER_NICK LIKE #{searchingText})
+	AND BOARD_ST != 'D' AND IMG_LEVEL = 0
 	<if test="region != '%REGION%'">
 	AND REGION LIKE #{region}
 	</if>
@@ -43,7 +48,6 @@
 <select id="useDetail" resultMap="used_rm" parameterType="_int">
 	SELECT * FROM SECOND_HAND_BOARD sb
 	JOIN "USER" USING(USER_NO) 
-	LEFT JOIN SECOND_HAND_BOARD_IMG si ON (sb.BOARD_NO = si.BOARD_NO)
 	WHERE sb.BOARD_NO = ${usedBoard}
 </select>
 
@@ -56,12 +60,29 @@
 </insert>
 
 <insert id="insertImageFile" parameterType="usedImage">
-	INSERT INTO SECOND_HAND_BOARD_IMG VALUES(SECOND_HAND_IMG_SEQ.NEXTVAL,#{imageRename}, #{imageOriginal}, ${boardNo})
+	INSERT INTO SECOND_HAND_BOARD_IMG VALUES(SECOND_HAND_IMG_SEQ.NEXTVAL,#{imageRename}, #{imageOriginal}, ${boardNo}, ${imageLevel})
 </insert>
+
+<update id="updateImageFile" parameterType="usedImage">
+	UPDATE SECOND_HAND_BOARD_IMG SET IMG_RENAME = #{imageRename}, IMG_ORIGINAL = #{imageOriginal} WHERE BOARD_NO = ${boardNo} AND IMG_LEVEL = ${imageLevel}
+</update>
 
 <update id="deleteUsedBoard" parameterType="_int">
 	UPDATE SECOND_HAND_BOARD SET BOARD_ST = 'D' WHERE BOARD_NO = ${hiddenNo}
 </update>
 
+<update id="updateUsedBoard" parameterType="map">
+	UPDATE SECOND_HAND_BOARD SET BOARD_TITLE = #{usedTitleInput}, BOARD_CONTENT = #{usedDetailInput}, PRICE=${usedPriceInput}, REGION=#{region}, 
+	BOARD_TAG = #{status}, PRODUCT_NM = #{usedProductName}
+	WHERE BOARD_NO = ${hiddenUpdateVal}
+</update>
+
+<select id="imageList" parameterType="_int" resultMap="usedImage_rm">
+	SELECT * FROM SECOND_HAND_BOARD_IMG WHERE BOARD_NO = ${boardNo}
+</select>
+
+<select id="flCount" parameterType="map" resultType="_int">
+	SELECT COUNT(*) FROM SECOND_HAND_BOARD_IMG shbi WHERE BOARD_NO =${boardNo} AND IMG_LEVEL = ${imageLevel}
+</select>
 
 </mapper>

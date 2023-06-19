@@ -15,4 +15,5 @@ public class UsedImage {
 	private String imageOriginal;
 	private String imageRename;
 	private int boardNo;
+	private int imageLevel;
 }
