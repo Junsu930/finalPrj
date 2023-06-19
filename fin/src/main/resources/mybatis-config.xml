@@ -25,7 +25,7 @@
 		<typeAlias type="edu.kh.fin.band.used.model.vo.UsedVo" alias="used"/>
 		<typeAlias type="edu.kh.fin.band.used.model.vo.UsedImage" alias="usedImage"/>
 		<typeAlias type="edu.kh.fin.band.lesson.model.vo.Lesson" alias="lesson"/>
-
+		<typeAlias type="edu.kh.fin.band.board.model.vo.Board" alias="board"/>
 	</typeAliases>
 	
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
@@ -38,5 +38,6 @@
 		<mapper resource="/mapper/msgBox-mapper.xml"/>
 		<mapper resource="/mapper/usedBoard-mapper.xml"/>
 		<mapper resource="/mapper/lesson-mapper.xml"/>
+		<mapper resource="/mapper/board-mapper.xml"/>
 	</mappers>
 </configuration>
