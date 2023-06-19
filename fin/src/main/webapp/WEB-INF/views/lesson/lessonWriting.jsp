@@ -22,9 +22,12 @@
     <section class="allSection">
         <form method ="post" action="lessonWrite.jsp" >
 
-            <div class="imgBox">
-                이미지
-            </div>
+            <div class ="imgbox">
+ 			<label for="img1"> 			
+	 			<img id="imageInsertPic" src="${contextPath}/resources/images/imageinsert.png">
+ 			</label>
+ 			<input type="file" class="inputImage" id="img1" name="images" accept="image/*">
+ 			</div>
 
             <!-- input 박스 요소들 -->
             <div class="inputBox">
@@ -82,44 +85,44 @@
                         <table class="genreTable">
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="ELECTRONIC" name="ELECTRONIC" value="ELECTRONIC">
+                                    <input type="radio" id="ELECTRONIC" name="genre" value="ELECTRONIC">
                                     <label for="ELECTRONIC">ELECTRONIC</label>
                                 </td>
                                 <td>
-                                    <input type="checkbox" id="AQUSTIC" name="AQUSTIC" value="AQUSTIC">
+                                    <input type="radio" id="AQUSTIC" name="genre" value="AQUSTIC">
                                     <label for="AQUSTIC">AQUSTIC</label>
                                 </td>
                                 <td>
-                                    <input type="checkbox" id="FOLK" name="FOLK" value="FOLK">
+                                    <input type="radio" id="FOLK" name="genre" value="FOLK">
                                     <label for="FOLK">FOLK</label>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="BLUES" name="BLUES" value="BLUES">
+                                    <input type="radio" id="BLUES" name="genre" value="BLUES">
                                     <label for="BLUES">BLUES</label>
                                 </td>
 
                                 <td>
-                                    <input type="checkbox" id="METAL" name="METAL" value="METAL">
+                                    <input type="radio" id="METAL" name="genre" value="METAL">
                                     <label for="METAL">METAL</label>
                                 </td>
 
                                 <td>
-                                    <input type="checkbox" id="JAZZ" name="JAZZ" value="JAZZ">
+                                    <input type="radio" id="JAZZ" name="genre" value="JAZZ">
                                     <label for="JAZZ">JAZZ</label>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="ROCK" name="ROCK" value="ROCK">
+                                    <input type="radio" id="ROCK" name="genre" value="ROCK">
                                     <label for="ROCK">ROCK</label>
                                 </td>
 
                                 <td>
-                                    <input type="checkbox" id="POP" name="POP" value="POP">
+                                    <input type="radio" id="POP" name="genre" value="POP">
                                     <label for="POP">POP</label>
                                 </td>
                             </tr>
@@ -134,44 +137,44 @@
                         <table class="lessonTable">
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="GUITAR" name="GUITAR" value="GUITAR">
+                                    <input type="radio" id="GUITAR" name="lesson" value="GUITAR">
                                     <label for="GUITAR">GUITAR</label>
                                 </td>
                                 <td>
-                                    <input type="checkbox" id="BASS" name="BASS" value="BASS">
+                                    <input type="radio" id="BASS" name="lesson" value="BASS">
                                     <label for="BASS">BASS</label>
                                 </td>
                                 <td>
-                                    <input type="checkbox" id="KEYBOARD" name="KEYBOARD" value="KEYBOARD">
+                                    <input type="radio" id="KEYBOARD" name="lesson" value="KEYBOARD">
                                     <label for="KEYBOARD">KEYBOARD</label>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="VOCAL" name="VOCAL" value="VOCAL">
+                                    <input type="radio" id="VOCAL" name="lesson" value="VOCAL">
                                     <label for="VOCAL">VOCAL</label>
                                 </td>
 
                                 <td>
-                                    <input type="checkbox" id="SOUND" name="SOUND" value="SOUND">
+                                    <input type="radio" id="SOUND" name="lesson" value="SOUND">
                                     <label for="SOUND">SOUND</label>
                                 </td>
 
                                 <td>
-                                    <input type="checkbox" id="COMPOSITION" name="COMPOSITION" value="COMPOSITION">
+                                    <input type="radio" id="COMPOSITION" name="lesson" value="COMPOSITION">
                                     <label for="COMPOSITION">COMPOSITION</label>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <input type="checkbox" id="DRUM" name="DRUM" value="DRUM">
+                                    <input type="radio" id="DRUM" name="lesson" value="DRUM">
                                     <label for="DRUM">DRUM</label>
                                 </td>
 
                                 <td>
-                                    <input type="checkbox" id="HORN" name="HORN" value="HORN">
+                                    <input type="radio" id="HORN" name="lesson" value="HORN">
                                     <label for="HORN">HORN</label>
                                 </td>
                             </tr>

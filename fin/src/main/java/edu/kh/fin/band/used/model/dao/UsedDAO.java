@@ -1,5 +1,6 @@
 package edu.kh.fin.band.used.model.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,12 +48,52 @@ public class UsedDAO {
 		return result;
 	}
 
+	/** 게시글 이미지 삽입
+	 * @param img
+	 * @return
+	 */
 	public int insertImageFile(UsedImage img) {
 		return sqlSession.insert("usedBoard-mapper.insertImageFile", img);
 	}
 
+	/** 게시글 삭제
+	 * @param hiddenNo
+	 * @return
+	 */
 	public int deleteUsedBoard(int hiddenNo) {
 		return sqlSession.update("usedBoard-mapper.deleteUsedBoard", hiddenNo);
+	}
+
+	/** 게시글 수정
+	 * @param map
+	 * @return
+	 */
+	public int updateUserForm(Map<String, Object> map) {
+		
+		
+		return sqlSession.update("usedBoard-mapper.updateUsedBoard",map);
+	}
+
+	/** 이미지 있는 경우 이미지 수정
+	 * @param img
+	 * @return
+	 */
+	public int updateImageFile(UsedImage img) {
+		
+		int flCount = sqlSession.selectOne("usedBoard-mapper.flCount", img);
+		
+		// 만약에 이미 같은 레벨에 이미지가 있으면
+		if(flCount > 0) {
+			return sqlSession.update("usedBoard-mapper.updateImageFile", img);
+		}else { // 이미지 레벨에 이미지가 없으면
+			
+			return sqlSession.insert("usedBoard-mapper.insertImageFile", img);
+		}
+		
+	}
+
+	public List<UsedImage> imageList(int usedBoard) {
+		return sqlSession.selectList("usedBoard-mapper.imageList",usedBoard);
 	}
 	
 	

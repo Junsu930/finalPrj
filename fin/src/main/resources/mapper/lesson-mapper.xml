@@ -5,20 +5,26 @@
 	<!-- 메인글  게시글 가져오기-->
 	<resultMap type="lesson" id="lesson_rm">
   	
-  	<id property="lessonNo" column="lesson_NO"/>
+  	<id property="lessonNo" column="LESSON_NO"/>
   	
+  	<result property="userNo" column="USER_NO"/>
   	<result property="lessonNick" 		column="USER_NICK"/>
-  	<result property="intro" 		column="INTRO_MENT"/>
+  	<result property="introment" 		column="INTRO_MENT"/>
 	<result property="joinDate" 		column="JOIN_DATE"/>
-	<result property="profileImage" column="PROFILE_IMG" />	
+	<result property="lessonImg" column="LESSON_IMG" />	
+	<result property="genre" column="GENRE" />
+	<result property="ints" column="INTS" />
+	<result property="region" column="REGION" />
+	<result property="detailment" column="DETAIL_MENT" />
+	<result property="socialSite" column="SOCIAL_SITE" />					
 	
-	<collection property="imageList" column="lesson_NO"
-			javaType="java.util.ArrayList" ofType="boardImage" select="selectImageList" />
   </resultMap>
 
 
 
-	<select id="selectlesson" resultMap="lesson_rm">
-		SELECT USER_NICK, li.INTRO_MENT, li.JOIN_DATE , LESSON_IMG FROM LESSON_INFO li JOIN "USER" u USING(USER_NO);
+	<select id="lessonList" resultMap="lesson_rm">
+	SELECT USER_NICK, li.INTRO_MENT, TO_CHAR(li.JOIN_DATE, 'YY"년"MM"월"DD"일"') AS JOIN_DATE , li.LESSON_IMG
+	FROM LESSON_INFO li
+	JOIN "USER" u USING(USER_NO)
 	</select>
 </mapper>

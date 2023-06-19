@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +16,25 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
- <form method="post" action="${contextPath}/writeUsedForm" id="usedWriteForm" enctype="multipart/form-data">
+<form method="post" action="${contextPath}/writeUsedForm" id="usedWriteForm" enctype="multipart/form-data">
  <div class="usedContent">
+ 
+ 			<c:forEach items="${imageList}" var="boardImage">	
+                <c:choose>
+                    <c:when test="${boardImage.imageLevel == 0}">
+                        <%-- c:set 변수는 page scope가 기본값 (조건문이 끝나도 사용 가능)  --%>
+                        <c:set var="img0"  value="${contextPath}${boardImage.imageRename}" />
+                    </c:when>
+
+                    <c:when test="${boardImage.imageLevel == 1}">
+                        <c:set var="img1"  value="${contextPath}${boardImage.imageRename}" />
+                    </c:when>
+
+                    <c:when test="${boardImage.imageLevel == 2}">
+                        <c:set var="img2"  value="${contextPath}${boardImage.imageRename}" />
+                    </c:when>
+                </c:choose>
+            </c:forEach>
  	<!-- 기본 정보 -->
  	<div>
  		<p>기본정보</p>
@@ -26,26 +45,86 @@
  		<div>상품 이미지<p style="color : var(--red-color); display: inline;">*</p></div>
  		<!-- 사진 칸 -->
  		<div>
- 			<label for="img1"> 			
-	 			<img id="imageInsertPic" src="${contextPath}/resources/images/imageinsert.png">
- 			</label>
- 			<input type="file" class="inputImage" id="img1" name="images" accept="image/*">
+ 			<c:if test="${empty flag}"> <!-- 삽입일 경우 -->
+	 			<label for="img1"> 			
+		 			<img id="imageInsertPic1" src="${contextPath}/resources/images/imageinsert.png">
+	 			</label>
+	 			<input type="file" class="inputImage" id="img1" name="images" accept="image/*"  >
+	 			<label for="img2"> 			
+		 			<img id="imageInsertPic2" src="${contextPath}/resources/images/imageinsert.png">
+	 			</label>
+	 			<input type="file" class="inputImage" id="img2" name="images" accept="image/*">
+	 			<label for="img3"> 			
+		 			<img id="imageInsertPic3" src="${contextPath}/resources/images/imageinsert.png">
+	 			</label>
+	 			<input type="file" class="inputImage" id="img3" name="images" accept="image/*">
+ 			</c:if>
+ 			<c:if test="${!empty flag}"> <!-- 수정일 경우 -->
+	 			<label for="img1">
+	 				<c:choose>
+		 				<c:when test="${!empty img0}">
+				 			<img id="imageInsertPic1" src="${img0}">
+		 				</c:when>
+		 				<c:otherwise>
+		 					<img id="imageInsertPic1" src="${contextPath}/resources/images/imageinsert.png">
+		 				</c:otherwise> 		
+	 				</c:choose>
+	 			</label>
+	 			<input type="file" class="inputImage" id="img1" name="images" accept="image/*"  >
+	 			<label for="img2"> 			
+		 			<c:choose>
+		 				<c:when test="${!empty img1}">
+				 			<img id="imageInsertPic2" src="${img1}">
+		 				</c:when>
+		 				<c:otherwise>
+		 					<img id="imageInsertPic2" src="${contextPath}/resources/images/imageinsert.png">
+		 				</c:otherwise> 		
+	 				</c:choose>
+	 			</label>
+	 			<input type="file" class="inputImage" id="img2" name="images" accept="image/*">
+	 			<label for="img3"> 			
+		 			<c:choose>
+		 				<c:when test="${!empty img2}">
+				 			<img id="imageInsertPic3" src="${img2}">
+		 				</c:when>
+		 				<c:otherwise>
+		 					<img id="imageInsertPic3" src="${contextPath}/resources/images/imageinsert.png">
+		 				</c:otherwise> 		
+	 				</c:choose>
+	 			</label>
+	 			<input type="file" class="inputImage" id="img3" name="images" accept="image/*">
+ 			</c:if>
  		</div>
  	</div>
  	<!-- 제목 -->
  	<div>
-		 <div>제목<p style="color : var(--red-color); display: inline;">*</p></div>
- 		<div class="usedTitleDiv">
-			 <input id="usedTitlePlace" name="usedTitleInput" type="text" maxlength="39">
-	 		<p id="usedTitleInputTextLength">0/40</p>
-		</div>
+		<div>제목<p style="color : var(--red-color); display: inline;">*</p></div>
+		<c:if test="${empty flag}">
+	 		<div class="usedTitleDiv">
+				 <input id="usedTitlePlace" name="usedTitleInput" type="text" maxlength="39">
+		 		<p id="usedTitleInputTextLength">0/40</p>
+			</div>
+		</c:if>
+		<c:if test="${! empty flag}">
+	 		<div class="usedTitleDiv">
+				 <input id="usedTitlePlace" name="usedTitleInput" type="text" maxlength="39" value="${updateVo.boardTitle}">
+		 		<p id="usedTitleInputTextLength">0/40</p>
+			</div>
+		</c:if>
 	</div>
 	<!-- 상품명 -->
 	<div>
 		<div>상품명<p style="color : var(--red-color); display: inline;">*</p></div>
-		<div class="usedProductNameDiv">
-			<input id="usedProductName" name="usedProductName" type="text" maxlength="30">
-	   </div>
+		<c:if test="${empty flag}">
+			<div class="usedProductNameDiv">
+				<input id="usedProductName" name="usedProductName" type="text" maxlength="30">
+		    </div>
+		</c:if>
+		<c:if test="${! empty flag}">
+			<div class="usedProductNameDiv">
+				<input id="usedProductName" name="usedProductName" type="text" maxlength="30" value="${updateVo.productName}">
+		    </div>
+		</c:if>
 	</div>
  	<!-- 거래 지역 -->
  	<div>
@@ -128,25 +207,48 @@
  	<div>
  		<div>가격<p style="color : var(--red-color); display: inline;">*</p></div>
  		<div class="usedPriceDiv">
+ 		<c:if test="${empty flag}">
 			<div>
 				<input type="number" id="priceInput" name="usedPriceInput" placeholder="가격을 입력해주세요"> 원
 			</div> 		
+ 		</c:if>
+ 		 <c:if test="${!empty flag}">
+			<div>
+				<input type="number" id="priceInput" name="usedPriceInput" placeholder="가격을 입력해주세요" value="${updateVo.price}"> 원
+			</div> 		
+ 		</c:if>
  		</div>
  	</div>
  	<!-- 설명 -->
  	<div>
  		<div>설명<p style="color : var(--red-color); display: inline;">*</p></div>
- 		<div>
- 			<textarea id="usedDetailExplain" name="usedDetailInput" placeholder="여러 장의 상품 사진과 구입 연도 , 브랜드 , 사용감 , 하자 유무 등 &#13;&#10;구매자에게 필요한 정보를 꼭 포함해 주세요 (10자 이상)
- 			"></textarea>
- 			<div id="detailExplainTextAmount">0 / 4000</div>
- 		</div>
- 	
+ 		<c:if test="${empty flag }">
+	 		<div>
+	 			<textarea id="usedDetailExplain" name="usedDetailInput" placeholder="여러 장의 상품 사진과 구입 연도 , 브랜드 , 사용감 , 하자 유무 등 &#13;&#10;구매자에게 필요한 정보를 꼭 포함해 주세요 (10자 이상)
+	 			"></textarea>
+	 			<div id="detailExplainTextAmount">0 / 4000</div>
+	 		</div>
+ 		</c:if>
+ 		 <c:if test="${! empty flag }">
+	 		<div>
+	 			<textarea id="usedDetailExplain" name="usedDetailInput" placeholder="여러 장의 상품 사진과 구입 연도 , 브랜드 , 사용감 , 하자 유무 등 &#13;&#10;구매자에게 필요한 정보를 꼭 포함해 주세요 (10자 이상)
+	 			" >${updateVo.boardContent}</textarea>
+	 			<div id="detailExplainTextAmount">0 / 4000</div>
+	 		</div>
+ 		</c:if>
  	</div>
  	<!-- 버튼 -->
- 	<div>
- 		<button type="button" id="usedBoardInsertBtn">등록하기</button>
- 	</div>
+ 	<c:if test="${ empty flag }">
+	 	<div>
+	 		<button type="button" id="usedBoardInsertBtn">등록하기</button>
+	 	</div>
+ 	</c:if>
+ 	<c:if test="${! empty flag }">
+	 	<div>
+	 		<input type="hidden" name="hiddenUpdateVal" value="${updateVo.usedBoardNo }">
+	 		<button type="button" id="usedBoardUpdateBtn">수정하기</button>
+	 	</div>
+ 	</c:if>
  </div>
  </form>
  <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

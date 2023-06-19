@@ -21,6 +21,7 @@
       <!--바디 부분 시작-->
       <body>
  	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+   
  	
  	<div class="svgBox">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1117 669">
@@ -206,10 +207,18 @@
           </div><!-- /.modal-dialog -->
 
 
-
+    <script>
+      const msg = "${msg}";
+      if (msg.trim() !== "") {
+        alert(msg);
+      } 
+        // 왜 자꾸 로그인 창을 들어가도 공백 alert가 뜰까 
+        // -> 해결 -> != null로 조건을 주지 말고, 문자열로 체크를 해서 주면 발생하지않음.
+        // 빈 문자열인 경우에는 alert를 발생시키지 않음
+    </script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+    
         	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
    
    			<script src="${contextPath}/resources/js/LoginRegister.js?ver=1"></script>

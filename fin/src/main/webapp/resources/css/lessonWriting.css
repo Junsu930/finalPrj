@@ -5,6 +5,39 @@ body.darkmode .inputBox > input{
     color: var(--text-dark-color);
 }
 
+#imageInsertPic{
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	border-radius:10px;
+}
+
+#imageInsertPic {
+		width: 30%;
+		height: 60%;
+	}
+
+.imgbox{
+	text-align-last : center;
+}
+
+#img1{
+	display: none;
+}
+
+@media (max-width:46.875rem){
+	
+	.regionCard{
+		width: 5em;
+	}
+	
+	#imageInsertPic {
+		width: 40%;
+		height: 60%;
+	
+	}
+	
+}
 
 .allSection{
     display: flex;
@@ -282,9 +315,9 @@ body.darkmode #writingBtn{
 
 
  /*Checkboxes styles*/
- input[type="checkbox"] { display: none; }
+ input[type="radio"] { display: none; }
 
- input[type="checkbox"] + label {
+ input[type="radio"] + label {
    display: block;
    position: relative;
    padding-left: 35px;
@@ -297,13 +330,13 @@ body.darkmode #writingBtn{
    -ms-user-select: none;
  }
 
- body.darkmode input[type="checkbox"] + label{
+ body.darkmode input[type="radio"] + label{
     color: var(--border-color);
  }
  
- input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+ input[type="radio"] + label:last-child { margin-bottom: 0; }
  
- input[type="checkbox"] + label:before {
+ input[type="radio"] + label:before {
    content: '';
    display: block;
    width: 20px;
@@ -319,7 +352,7 @@ body.darkmode #writingBtn{
 
 
  
- input[type="checkbox"]:checked + label:before {
+ input[type="radio"]:checked + label:before {
    width: 10px;
    top: -5px;
    left: 5px;

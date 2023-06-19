@@ -23,6 +23,6 @@ public class UsedVo {
 	private String region;
 	private String imgSrc;
 	private String userNick;
-	
+	private int imgLevel;
 
 }

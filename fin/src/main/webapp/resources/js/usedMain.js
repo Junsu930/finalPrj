@@ -313,7 +313,7 @@ function searchingRoomAjax(){
 	
 		document.querySelector(".thingBoxWrap").appendChild($newBox);
       }
-      $lastBox = document.querySelector(".box-card:last-child");
+      $lastBox = document.querySelector(".thingBox:last-child");
       
       // 현재 카운트넘은 5이다
 
@@ -392,10 +392,10 @@ function searchingRoomAjax(){
 
 				count ++;
               }
-              let $lastBox = document.querySelector(".box-card:last-child");
+              let $lastBox = document.querySelector(".thingBox:last-child");
 
                 obsever.unobserve($lastBox);
-                $lastBox = document.querySelector(".box-card:last-child");
+                $lastBox = document.querySelector(".thingBox:last-child");
                 obsever.observe($lastBox);
               }
             });
