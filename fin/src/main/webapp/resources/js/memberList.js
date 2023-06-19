@@ -1,58 +1,102 @@
-const msnry = new Masonry(document.getElementById("container"), {
-    itemSelector: ".item",
-    columnWidth: ".item",
-    gutter: ".gutterSizer",
-    percentPosition: !0
-});
+// const msnry = new Masonry(document.getElementById("container"), {
+//     itemSelector: ".item",
+//     columnWidth: ".item",
+//     gutter: ".gutterSizer",
+//     percentPosition: !0
+// });
 
-infiniteScroll({
-    container: "#container",
-    item: ".item",
-    next: ".next",
-    prev: ".prev",
-    prevLoader: ".prevLoader",
-    pushHistory: true,
-    nextCallback: (newElement) => {
-        msnry.appended(newElement)
-    },
-    prevCallback: (newElement) => {
-        msnry.prepended(newElement)
-    },
-    onLoadFinish: () => {
-        msnry.layout()
-    }
-}),
+// infiniteScroll({
+//     container: "#container",
+//     item: ".item",
+//     next: ".next",
+//     prev: ".prev",
+//     prevLoader: ".prevLoader",
+//     pushHistory: true,
+//     nextCallback: (newElement) => {
+//         msnry.appended(newElement)
+//     },
+//     prevCallback: (newElement) => {
+//         msnry.prepended(newElement)
+//     },
+//     onLoadFinish: () => {
+//         msnry.layout()
+//     }
+// }),
 
-window.addEventListener("load", () => {
-    msnry.layout()
-})
+// window.addEventListener("load", () => {
+//     msnry.layout()
+// })
 
 
 
-const loader = document.querySelector('.loadingio-spinner-magnify-khdk4exhsp9');
-const html = document.querySelector('html');
+// const loader = document.querySelector('.loadingio-spinner-magnify-khdk4exhsp9');
+// const html = document.querySelector('html');
 
-html.style.overflow = 'hidden'; //로딩 중 스크롤 방지
+// html.style.overflow = 'hidden'; //로딩 중 스크롤 방지
 
-window.addEventListener('load', ()=>{
+// window.addEventListener('load', ()=>{
 
-     setTimeout(() => { //  <-* 로딩속도를 구현하기 위한 코드로 실제 적용시 제거
+//      setTimeout(() => { //  <-* 로딩속도를 구현하기 위한 코드로 실제 적용시 제거
     
-      	loader.style.opacity = '0';
-		html.style.overflow = 'auto'; //스크롤 방지 해제
+//       	loader.style.opacity = '0';
+// 		html.style.overflow = 'auto'; //스크롤 방지 해제
       	
-        setTimeout(() => {
-      		loader.style.display = 'none';
-  		}, 400);
+//         setTimeout(() => {
+//       		loader.style.display = 'none';
+//   		}, 400);
         
-  }, 5000); // <-* 로딩속도 구현
+//   }, 5000); // <-* 로딩속도 구현
 
-})
-
-
-
-$(window).load(function() {
-    $('.loadingio-spinner-magnify-khdk4exhsp9').hide();
-});
+// })
 
 
+
+// $(window).load(function() {
+//     $('.loadingio-spinner-magnify-khdk4exhsp9').hide();
+// });
+
+
+
+
+
+
+
+// document.querySelector('.js-static-modal-toggleSendMsgFromList').addEventListener('click', function() {
+//     console.log("click!!");
+//     new Modal({el: document.getElementById('static-modalBlock')}).show();
+// });
+
+
+// 모달
+function sendMsgClick(){
+    console.log("click!!");
+    new Modal({el: document.getElementById('static-modalBlock')}).show();
+}
+
+
+const receiverUserNo = document.getElementById('receiverUserNo_memberList');
+const replyMsgText = document.getElementById('replyMsgText_memberList');
+
+// 쪽지보내기
+function sendMsg(){
+    if(replyMsgText.value == ""){
+        alert("쪽지 내용을 작성해주세요!");
+    }else{
+        $.ajax({
+            url:"replyMsg",
+            data: {"replyMsgText" : replyMsgText.value , "receiverUserNo": receiverUserNo.value },
+            type : "POST",
+            dataType: "JSON",  // dataType : 응답데이터 형식을 지정
+            // -> "JSON"으로 지정 시 자동으로 JS 객체로 변환
+            success : function(result){ 
+                alert(result);
+                replyMsgText.value = "";
+                location.reload();
+            },
+            error : function(request, status, error){
+              console.log("AJAX 에러 발생");
+              console.log("상태코드 : " + request.status); // 404, 500
+            }
+        });
+    }
+}

@@ -16,14 +16,14 @@
 	</resultMap>
 	
 	<select id="memberList" parameterType="searching" resultMap="searching_rm">
-	  	SELECT USER_NICK, INST, GENRE, REGION, GENDER
+	  	SELECT USER_NO, USER_NICK, INST, GENRE, REGION, GENDER
 		FROM MATCHING_INFO
 		JOIN "USER" USING(USER_NO)
 		WHERE
 		(((INST = #{inst}) AND (GENRE = #{genre})) OR
 		((GENRE = #{genre}) AND (REGION = #{region})) OR
 		((REGION = #{region}) AND (INST = #{inst}))) AND
-		GENDER = #{gender}
+		GENDER = #{gender} AND USER_NO != #{userNo}
 		ORDER BY USER_NO
 	</select>
 </mapper>

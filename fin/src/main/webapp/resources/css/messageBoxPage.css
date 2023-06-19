@@ -37,17 +37,17 @@ body.darkmode .messageWrapper li{
     border: 1px solid var(--border-color);
 }
 
-.messageWrapper li:nth-child(1){
+.messageWrapper li:nth-of-type(2){
     transform:translateZ(-75px) translateY(20px);
     opacity: .6;
 }
 
-.messageWrapper li:nth-child(3){
+.messageWrapper li:nth-of-type(3){
     transform:translateZ(75px) translateY(-30px);
     background-color: #eee;
 }
 
-.messageWrapper li:nth-child(4){
+.messageWrapper li:nth-of-type(4){
     transform:translateZ(150px) translateY(-75px);
     background-color: #fff;
 }
@@ -104,7 +104,7 @@ body.darkmode .messageWrapper li .content p
     font-size: 0.75em;
 }
 
-.messageWrapper li .content p #msgDeleteBtn {
+.messageWrapper li .content p .msgDeleteBtn {
     position: absolute;
     right: 5px;
     top: 18px;
@@ -114,7 +114,7 @@ body.darkmode .messageWrapper li .content p
     font-size: 1.2em;
 }
 
-.messageWrapper li .content p #msgSendBtn{
+.messageWrapper li .content p .msgSendBtn{
     position: absolute;
     right: 35px;
     top: 18px;
@@ -124,8 +124,8 @@ body.darkmode .messageWrapper li .content p
     font-size: 1.2em;
 }
 
-body.darkmode .messageWrapper li .content p #msgDeleteBtn,
-body.darkmode .messageWrapper li .content p #msgSendBtn
+body.darkmode .messageWrapper li .content p .msgDeleteBtn,
+body.darkmode .messageWrapper li .content p .msgSendBtn
 {
     color: var(--text-dark-color);
 }

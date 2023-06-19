@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
+
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -127,15 +129,32 @@
         </ul>
       </div>
 
+
+
+      
+
   </div>
   
   
   
   
   </section>
+
+
+
+
+  
+ 
+  
+  
+
+  
+
+
   <jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
   <jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
   <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script src="${contextPath}/resources/js/main.js"></script>
+<script typ="module" src="${contextPath}/resources/js/firebase.js"></script>
 </body>
 </html>
