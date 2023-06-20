@@ -8,17 +8,18 @@
   	<id property="lessonNo" column="LESSON_NO"/>
   	
   	<result property="userNo" column="USER_NO"/>
-  	<result property="lessonNick" 		column="USER_NICK"/>
-  	<result property="introment" 		column="INTRO_MENT"/>
-	<result property="joinDate" 		column="JOIN_DATE"/>
-	<result property="lessonImg" column="LESSON_IMG" />	
+  	<result property="lessonNick" 	column="USER_NICK"/>
+  	<result property="introment" 	column="INTRO_MENT"/>
+	<result property="joinDate" 	column="JOIN_DATE"/>	
+	  	<result property="lessonImg" column="LESSON_IMG" />
 	<result property="genre" column="GENRE" />
 	<result property="ints" column="INTS" />
 	<result property="region" column="REGION" />
 	<result property="detailment" column="DETAIL_MENT" />
 	<result property="socialSite" column="SOCIAL_SITE" />					
-	
   </resultMap>
+  
+
 
 
 
@@ -27,4 +28,7 @@
 	FROM LESSON_INFO li
 	JOIN "USER" u USING(USER_NO)
 	</select>
+	
+	
+
 </mapper>
