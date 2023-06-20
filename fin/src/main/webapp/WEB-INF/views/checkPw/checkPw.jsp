@@ -30,14 +30,14 @@
 
     <section class="checkPwSection">
         <h2>CHECK FOR YOUR PASSWORD</h2>
-        <form action="#">
+        <form action="fin/checkPw" method="POST" name="checkPw-form">
             <div class="wrapperCheck">
                 <p>Band Archive</p>
                 <div class="inputBoxCheck">  <!--input-box-->
                     <span class="iconCheck">
                         <ion-icon name="lock-closed" id="iconCheck"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="password" required name="userPw">
                     <label id="labelCheck">PASSWORD</label>
                 </div>
         

@@ -56,13 +56,15 @@
             	<c:when test="${empty sessionScope.loginUser}"> 
                 	<a href="${contextPath}/login" class="loginText navA">Login</a>
             	</c:when>
-            <c:otherwise>
-            	<a href="${contextPath}/checkPw" class="myPageText navA">My Page</a>
-                <a href="${contextPath}/logout" class="loginText navA">Logout</a>
-            </c:otherwise>
+                <c:otherwise>
+                    <a href="${contextPath}/checkPw" class="myPageText navA">My Page</a>
+                    <a href="${contextPath}/logout" class="loginText navA">Logout</a>
+                </c:otherwise>
             </c:choose>
+
             <button id="alertBell" class="alertBell navA" onclick="showAlertView()"><i class="bi bi-bell"></i></button> <!-- 로그인 시 알림 아이콘-->
             <button id="msgBoxOpen" class="msgBoxOpen navA" onclick="showMessageView()"><i class="fa-regular fa-paper-plane"></i></button> <!-- 로그인 시 쪽지 아이콘 -->
+            
         
             <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a> <!-- myPageIMG 임 signUPUMG가 아님 signUP 페이지가 사라지고 로그인 페이지에서 다돼기 때문에-->
             <a href="" class="loginIMG navA"><i class="bi bi-door-open" id="loginIMGI"></i></a>

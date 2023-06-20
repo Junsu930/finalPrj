@@ -52,6 +52,7 @@ function setText() {
     document.querySelector('.js-static-modal-toggle').addEventListener('click', function() {
       new Modal({el: document.getElementById('static-modal')}).show();
     });
+    
 
 
 ("use strict");
@@ -128,7 +129,7 @@ const checkObj = {
     "nickname"  : false,
     "agree" : false,
     //"sendEmail" : false
-    //"checkEmail" : false
+    "checkEmail" : false
 };
 
 
@@ -235,6 +236,7 @@ sendEmail.addEventListener("click", function(){
             success : function(result){
                 console.log("이메일 발송 성공");
                 console.log(result);
+                
 
                 chem = result;
                 // 인증 버튼이 클릭되어 정상적으로 메일이 보내졌음을 checkObj에 기록
@@ -286,6 +288,7 @@ sendEmail.addEventListener("click", function(){
 
         
         alert("인증번호가 발송되었습니다. 이메일을 확인해주세요.");
+        
     }
 });
 
@@ -491,7 +494,7 @@ function signUpValidate(){
             case "password2":        str="비밀번호 확인이"; break;
             case "nickname":         str="닉네임이"; break;
             case "agree":            str="가입동의가"; break;
-            //case "checkEmail":       str="인증번호가"; break;
+            case "checkEmail":       str="인증번호가"; break;
             }
 
             str += " 유효하지 않음.";

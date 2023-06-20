@@ -1,33 +1,33 @@
 
 .messageWrapper{
     position: relative;
-    transform-style: preserve-3d;
+    /* transform-style: preserve-3d; */
     perspective: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 13em 0;
-    gap: 0;
-    grid-area: 0;
+    gap: 3em;
+    /* grid-area: 0; */
     transition: 0.5s;
 }
 
 .messageWrapper li{
     position: relative;
     list-style: none;
-    width: 450px;
-    height: 100px;
+    width: 480px;
+    height: 130px;
     padding:15px;
-    background-color: #dbdbdb;
+    background-color: #eee;
     gap: 20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     border-radius: 6px;
-    box-shadow: 0 -15px 25px rgba(0,0,0,0.25);
+    box-shadow: 7px -4px 15px 0px rgba(0,0,0,0.25);
     transition: 0.5s;
-    transition-delay: calc(var(--i) * 0.05s);
+    /* transition-delay: calc(var(--i) * 0.05s); */
 }
 
 
@@ -37,7 +37,7 @@ body.darkmode .messageWrapper li{
     border: 1px solid var(--border-color);
 }
 
-.messageWrapper li:nth-of-type(2){
+/* .messageWrapper li:nth-of-type(2){
     transform:translateZ(-75px) translateY(20px);
     opacity: .6;
 }
@@ -50,17 +50,17 @@ body.darkmode .messageWrapper li{
 .messageWrapper li:nth-of-type(4){
     transform:translateZ(150px) translateY(-75px);
     background-color: #fff;
+} */
+
+.messageWrapper li:hover{
+    transform: translateY(-8px);
 }
 
-.messageWrapper:hover{
-    gap: 30px;
-}
-
-.messageWrapper:hover li{
+/* .messageWrapper:hover li{
     opacity: 1;
     background-color: #fff;
     transform: translateZ(0px) translateY(-30px);
-}
+} */
 
 
 
@@ -79,7 +79,7 @@ body.darkmode .messageWrapper li{
 
 .messageWrapper li .content h4{
     font-weight: 600;
-    color: #333;
+    color: var(--stroke-color);
     margin-bottom: 1em;
 }
 
@@ -91,7 +91,7 @@ body.darkmode .messageWrapper li .content p
 
 .messageWrapper li .content p{
     position: relative;
-    color: #333;
+    color: var(--stroke-color);
     line-height: 1em;
     width: 100%;
 }
@@ -114,7 +114,7 @@ body.darkmode .messageWrapper li .content p
     font-size: 1.2em;
 }
 
-.messageWrapper li .content p .msgSendBtn{
+.messageWrapper li .content p .msgReplyBtn{
     position: absolute;
     right: 35px;
     top: 18px;

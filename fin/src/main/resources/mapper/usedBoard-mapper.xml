@@ -85,4 +85,12 @@
 	SELECT COUNT(*) FROM SECOND_HAND_BOARD_IMG shbi WHERE BOARD_NO =${boardNo} AND IMG_LEVEL = ${imageLevel}
 </select>
 
+<delete id="deleteXImages" parameterType="map">
+	DELETE FROM SECOND_HAND_BOARD_IMG WHERE BOARD_NO = ${boardNo} AND IMG_LEVEL = ${xImage} 
+</delete>
+
+<update id="completeSelling" parameterType="_int">
+	UPDATE SECOND_HAND_BOARD SET BOARD_ST = 'N' WHERE BOARD_NO = ${boardNo}
+</update>
+
 </mapper>

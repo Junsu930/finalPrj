@@ -62,5 +62,11 @@
   			DEFAULT
   		)
   	</insert>
+  	
+  	
+  	<select id="selectEncPw" resultType="string">
+		SELECT USER_PWD FROM "USER"
+		WHERE USER_NO = ${userNo}
+	</select>
   
 </mapper>
