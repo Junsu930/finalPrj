@@ -67,24 +67,34 @@
 // });
 
 
+
+
 // 모달
-function sendMsgClick(){
-    console.log("click!!");
-    new Modal({el: document.getElementById('static-modalBlock')}).show();
+
+let profileMsg = document.querySelectorAll('.profileMsg');
+let modalFromProfile;
+for(let i = 0; i < profileMsg.length; i++){
+    profileMsg[i].addEventListener('click', function(e){
+        let receiverUserNo = e.target.nextElementSibling.value
+        console.log(receiverUserNo);
+        modalFromProfile = new Modal({el: document.getElementById('static-modalBlock'), userNo: receiverUserNo}).show();
+    })
 }
 
 
-const receiverUserNo = document.getElementById('receiverUserNo_memberList');
-const replyMsgText = document.getElementById('replyMsgText_memberList');
 
 // 쪽지보내기
 function sendMsg(){
+    let replyMsgText = document.getElementById('replyMsgText_memberList');
+    let receiverUserNo = modalFromProfile._options.userNo
+    
     if(replyMsgText.value == ""){
+        console.log(receiverUserNo);
         alert("쪽지 내용을 작성해주세요!");
     }else{
         $.ajax({
             url:"replyMsg",
-            data: {"replyMsgText" : replyMsgText.value , "receiverUserNo": receiverUserNo.value },
+            data: {"replyMsgText" : replyMsgText.value , "receiverUserNo": receiverUserNo },
             type : "POST",
             dataType: "JSON",  // dataType : 응답데이터 형식을 지정
             // -> "JSON"으로 지정 시 자동으로 JS 객체로 변환

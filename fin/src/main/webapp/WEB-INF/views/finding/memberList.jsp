@@ -67,43 +67,18 @@
 			                </ul>
 			            </div>
 
-						<input id="receiverUserNo_memberList" type="hidden" value="${member.userNo}">
+						
 
 			            <div class="userChatProfieBox">
 			                <ul class="userChatProfieUl"> 
-			                    <li><i class="bi bi-chat-dots"></i></li>
-								<li onclick="sendMsgClick()"><i class="bi bi-envelope"></i></li>
-			                    <li><i class="bi bi-person-circle"></i></li>
+			                    <li class="bi bi-chat-dots"></li>
+								<li class="profileMsg bi bi-envelope"></li>
+								<input id="receiverUserNo_memberList" type="hidden" value="${member.userNo}">
+			                    <li class="bi bi-person-circle"></li>
 			                </ul>
 			            </div>
         			</div>
 				</c:forEach>
-				<!-- block Modal -->
-				<div class="container">
-					<!-- <button class=" js-static-modal-toggle btn btn-primary " type="button">test</button> -->
-					<div id="static-modalBlock" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
-					<div class="modal-dialog">
-						<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-						</div>
-						<div class="modal-body">
-							
-							<div class="sendMsgModalBox">
-							<h1>SEND MESSAGE</h1>
-							<textarea name="" id="replyMsgText_memberList" cols="" rows=""></textarea>
-							<button id="msgSendModalBtn" onclick="sendMsg()" type="button"><i class="bi bi-envelope"></i></button>
-							</div>
-			
-							
-						</div>
-						<div class="modal-footer">
-						
-						</div>
-						</div><!-- /.modal-content -->
-					</div><!-- /.modal-dialog -->
-					</div>
-				</div>
 			</c:when>
 
 			<c:otherwise>
@@ -114,6 +89,33 @@
 			</c:otherwise>
 		</c:choose>
 		
+
+		<!-- block Modal -->
+		<div class="container">
+			<!-- <button class=" js-static-modal-toggle btn btn-primary " type="button">test</button> -->
+			<div id="static-modalBlock" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				</div>
+				<div class="modal-body">
+					
+					<div class="sendMsgModalBox">
+					<h1>SEND MESSAGE</h1>
+					<textarea name="" id="replyMsgText_memberList" cols="" rows=""></textarea>
+					<button id="msgSendModalBtn" onclick="sendMsg()" type="button"  class="bi bi-envelope"></button>
+					</div>
+	
+					
+				</div>
+				<div class="modal-footer">
+				
+				</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+			</div>
+		</div>
 
 		
 

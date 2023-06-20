@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-
 import com.google.gson.Gson;
 
+import edu.kh.fin.band.alarm.model.vo.Alarm;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.message.model.service.MessageBoxService;
 import edu.kh.fin.band.message.model.vo.MessageBox;
@@ -68,25 +68,35 @@ public class MessageBoxController {
 			@RequestParam("receiverUserNo") int receiverUserNo,
 			@ModelAttribute("loginUser") User loginUser) {
 		
+		int result = 0;
+		int alarmResult = 0;
 		
-		// 디비수정 해야함
+		Alarm alarm = new Alarm();
+		
+		alarm.setUserNo(receiverUserNo);
+		alarm.setAlarmType(1);
+		alarm.setAlarmStatus('Y');
+		
+		alarmResult = service.insertMsgAlarm(alarm);
+		
+		
+		
 		MessageBox msg = new MessageBox();
-		
-		System.out.println("sendMsg controller");
-		
 		
 		// 보내는 사람의 유저 넘버
 		msg.setSendUserNo(loginUser.getUserNo()); // 보내는 사람 유저 넘버
 		msg.setReceiverUserNo(receiverUserNo); // 받는 사람 닉네임 
 		msg.setMsgContent(replyMsgText);
 		
-		System.out.println("sendMsg controller 보내는ㄴ사람 " + msg.getSendUserNo()); // 로그인되어있는 사람 
+		System.out.println("sendMsg controller 보내는 사람 " + msg.getSendUserNo()); // 로그인되어있는 사람 
 		System.out.println("sendMsg controller 받는사람" + msg.getReceiverUserNo()); // 받는 사람 즉 2번
 		System.out.println("sendMsg controller내용" + msg.getMsgContent());
 		
-		int result = service.sendMsg(msg);
+		result = service.sendMsg(msg);
 		
-		if(result > 0) {
+		int totalResult = result + alarmResult;
+		
+		if(totalResult == 2) {
 			  return new Gson().toJson("쪽지 전송 성공!");
 		  } else {
 			  return new Gson().toJson("쪽지 전송 실패 ㅠㅠ");
