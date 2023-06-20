@@ -128,3 +128,44 @@ $("#usedBoardUpdateBtn").click(()=>{
 
 
 });
+
+
+// 이미지 파일 삭제 담기
+let xImages = new Array();
+// 삭제할 이미지 담을 변수
+
+function xUsedImage(xLevel){
+
+    if(!xImages.includes(xLevel)){
+
+        xImages.push(xLevel);
+    }
+
+    document.getElementById("xImages").value = xImages;
+
+    if(xLevel == 1){
+
+        document.getElementById("imageInsertPic2").src = "/fin/resources/images/imageinsert.png";
+        document.getElementById("img2").value = "";
+    }
+
+    if(xLevel == 2){
+
+        document.getElementById("imageInsertPic3").src = "/fin/resources/images/imageinsert.png";
+        document.getElementById("img3").value = "";
+    }
+
+    console.log(document.getElementById("xImages").value);
+
+};
+
+let justX = document.getElementsByClassName("usedJustXBtn");
+
+for(let eachX of justX){
+    eachX.addEventListener("click", function(){
+        
+        this.previousElementSibling.src="/fin/resources/images/imageinsert.png";
+        this.parentNode.nextElementSibling.value = "";
+
+    });
+}

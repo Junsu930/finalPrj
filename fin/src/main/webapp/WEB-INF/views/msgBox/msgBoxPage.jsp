@@ -43,10 +43,8 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-        
         <c:if test="${!empty msgList}">
         	<ul class="messageWrapper">
-            
             <c:forEach items="${msgList}" var="msgList" varStatus="status">
               <li style="--i:${status.count};">
                 <img src="${contextPath}/resources/images/guitarduck.png" alt="">
@@ -65,40 +63,9 @@
                 <input type="text" value="${msgList.sendUserNo}" class="receiverUserNo"> <!--표시되는 건 보냈던 사람인데 답장시에는 받을 사람의 정보 -->
                 <c:set var="hiddenUserNo" value="${msgList.sendUserNo}"/>
               </li>
-
-              <!-- block Modal -->
-              <div class="container">
-                <!-- <button class=" js-static-modal-toggle btn btn-primary " type="button">test</button> -->
-                <div id="static-modalBlock${status.count}" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                      </div>
-                      <div class="modal-body">
-                        
-                        <div class="sendMsgModalBox">
-                          <h1>REPLY MESSAGE</h1>
-                          <textarea name="" id="replyMsgText" cols="" rows=""></textarea>
-                          <button id="msgSendModalBtn" onclick="replyMsg()" type="button"><i class="bi bi-envelope"></i></button>
-                          
-                        </div>
-
-                        
-                      </div>
-                      <div class="modal-footer">
-                      
-                      </div>
-                    </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
-                </div>
-              </div>
-
             </c:forEach>
           </ul>
         </c:if>
-
-          
 
         <c:if test="${empty msgList}">
             <div class="emptyMsgBox">
@@ -106,9 +73,34 @@
             </div>
         </c:if>
 
-         
+        <!-- block Modal -->
+        <div class="container">
+          <!-- <button class=" js-static-modal-toggle btn btn-primary " type="button">test</button> -->
+          <div id="static-modalBlock${status.count}" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  
+                  <div class="sendMsgModalBox">
+                    <h1>REPLY MESSAGE</h1>
+                    <textarea name="" id="replyMsgText" cols="" rows=""></textarea>
+                    <button id="msgSendModalBtn" onclick="replyMsg()" type="button"><i class="bi bi-envelope"></i></button>
+                    
+                  </div>
 
-   
+                  
+                </div>
+                <div class="modal-footer">
+                
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div>
+        </div>
+
         <input type="hidden" value="" id="hiddenUserNo">
 
     

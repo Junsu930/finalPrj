@@ -2,13 +2,13 @@ package edu.kh.fin.band.used.model.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fin.band.common.Util;
@@ -97,7 +97,33 @@ public class UsedService {
 		map.put("usedDetailInput",Util.newLineHandling((String)map.get("usedDetailInput")));
 
 		
-		int boardResult = dao.updateUserForm(map);
+		int deleteResult = 100;
+		// 삭제할 이미지가 있으면
+		int boardResult = 0;
+
+		String[] xImagesArr = ((String)map.get("xImages")).split(",");
+		
+		System.out.println("삭제할 이미지들" + Arrays.toString(xImagesArr));
+		
+		if(xImagesArr.length > 1) {
+			
+			System.out.println("배열길이" + xImagesArr.length);
+			
+			for(int i=0; i<xImagesArr.length; i++) {
+				Map<String, Object> delMap = new HashMap<>();
+				
+				delMap.put("boardNo", map.get("hiddenUpdateVal"));
+				delMap.put("xImage", xImagesArr[i]);
+				deleteResult = dao.deleteXImages(delMap);
+			}
+			
+		}
+		
+		if(deleteResult>0) {
+			
+			boardResult = dao.updateUserForm(map);
+		}
+		
 		int result = 0;
 		
 		if(boardResult > 0) {
@@ -144,12 +170,41 @@ public class UsedService {
 		map.put("usedDetailInput",Util.XSSHandling((String)map.get("usedDetailInput")));
 		map.put("usedDetailInput",Util.newLineHandling((String)map.get("usedDetailInput")));
 		
-		return dao.updateUserForm(map);
+		int deleteResult = 100;
+		// 삭제할 이미지가 있으면
+		String[] xImagesArr = ((String)map.get("xImages")).split(",");
+		
+		System.out.println("삭제할 이미지들" + Arrays.toString(xImagesArr));
+		
+		if(xImagesArr.length > 1) {
+			
+			System.out.println("배열길이" + xImagesArr.length);
+			for(int i=0; i<xImagesArr.length; i++) {
+				Map<String, Object> delMap = new HashMap<>();
+				
+				delMap.put("boardNo", map.get("hiddenUpdateVal"));
+				delMap.put("xImage", xImagesArr[i]);
+				deleteResult = dao.deleteXImages(delMap);
+			}
+			
+		}
+		
+		int result = 0;
+		if(deleteResult > 0) {
+			result = dao.updateUserForm(map);
+		}
+		
+		return result;
 	}
 
 
 	public List<UsedImage> imageList(int usedBoard) {
 		return dao.imageList(usedBoard);
+	}
+
+
+	public int completeSelling(int boardNo) {
+		return dao.completeSelling(boardNo);
 	}
 
 }

@@ -18,7 +18,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <form method="post" action="${contextPath}/writeUsedForm" id="usedWriteForm" enctype="multipart/form-data">
  <div class="usedContent">
- 
  			<c:forEach items="${imageList}" var="boardImage">	
                 <c:choose>
                     <c:when test="${boardImage.imageLevel == 0}">
@@ -52,10 +51,16 @@
 	 			<input type="file" class="inputImage" id="img1" name="images" accept="image/*"  >
 	 			<label for="img2"> 			
 		 			<img id="imageInsertPic2" src="${contextPath}/resources/images/imageinsert.png">
+					<button type="button" class="usedJustXBtn">
+		 				<i class="fa-solid fa-xmark"></i>
+		 			</button>
 	 			</label>
 	 			<input type="file" class="inputImage" id="img2" name="images" accept="image/*">
 	 			<label for="img3"> 			
 		 			<img id="imageInsertPic3" src="${contextPath}/resources/images/imageinsert.png">
+					<button type="button" class="usedJustXBtn">
+		 				<i class="fa-solid fa-xmark"></i>
+		 			</button>
 	 			</label>
 	 			<input type="file" class="inputImage" id="img3" name="images" accept="image/*">
  			</c:if>
@@ -75,9 +80,15 @@
 		 			<c:choose>
 		 				<c:when test="${!empty img1}">
 				 			<img id="imageInsertPic2" src="${img1}">
+		 					<button type="button" class="usedImageXBtn" onclick="xUsedImage(1)">
+				 				<i class="fa-solid fa-xmark"></i>
+				 			</button>
 		 				</c:when>
 		 				<c:otherwise>
 		 					<img id="imageInsertPic2" src="${contextPath}/resources/images/imageinsert.png">
+		 					<button type="button" class="usedJustXBtn">
+				 				<i class="fa-solid fa-xmark"></i>
+				 			</button>
 		 				</c:otherwise> 		
 	 				</c:choose>
 	 			</label>
@@ -86,9 +97,15 @@
 		 			<c:choose>
 		 				<c:when test="${!empty img2}">
 				 			<img id="imageInsertPic3" src="${img2}">
+				 			<button type="button" class="usedImageXBtn" onclick="xUsedImage(2)">
+				 				<i class="fa-solid fa-xmark"></i>
+				 			</button>
 		 				</c:when>
 		 				<c:otherwise>
 		 					<img id="imageInsertPic3" src="${contextPath}/resources/images/imageinsert.png">
+		 					<button type="button" class="usedJustXBtn">
+				 				<i class="fa-solid fa-xmark"></i>
+				 			</button>
 		 				</c:otherwise> 		
 	 				</c:choose>
 	 			</label>
@@ -245,6 +262,7 @@
  	</c:if>
  	<c:if test="${! empty flag }">
 	 	<div>
+	 		<input type="hidden" name="xImages" id="xImages" value="">
 	 		<input type="hidden" name="hiddenUpdateVal" value="${updateVo.usedBoardNo }">
 	 		<button type="button" id="usedBoardUpdateBtn">수정하기</button>
 	 	</div>

@@ -116,6 +116,9 @@ public class UsedController {
 			
 			map.put("userNo", loginUser.getUserNo());
 			
+			System.out.println(map);
+			System.out.println(map.get("xImages"));
+			
 			String status = (String)map.get("status");
 			if(status.equals("used")) {
 				map.put("status", "중고");
@@ -192,6 +195,20 @@ public class UsedController {
 		return "usedWriting/usedWriting";
 	}
 	
+	@PostMapping("/completeSelling")
+	public String completeSelling(@RequestParam("boardNoForCompleteSelling") int boardNo,RedirectAttributes ra) {
+		
+		int result = service.completeSelling(boardNo);
+		
+		
+		if(result>0) {
+			ra.addFlashAttribute("message", "판매완료 처리되었습니다.");
+		}else {
+			ra.addFlashAttribute("message", "판매완료 처리 실패");
+		}
+		
+		return "redirect:/usedDetail?usedBoard=" + boardNo;
+	}
 	
 	
 }

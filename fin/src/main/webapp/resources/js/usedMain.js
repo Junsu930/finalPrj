@@ -122,7 +122,7 @@ $(document).ready(()=>{
 
 		  let priceTag = document.createElement("div");
 		  priceTag.className="price";
-		  priceTag.innerHTML= boxCardList[i].price+"원";
+		  priceTag.innerHTML= boxCardList[i].price.toLocaleString('ko-KR') +"원";
 		  thingSecondBottomBox.append(thingsecondBottom);
 		  thingSecondBottomBox.append(priceTag);
 
@@ -197,7 +197,7 @@ $(document).ready(()=>{
 		
 				  let priceTag = document.createElement("div");
 				  priceTag.className="price";
-				  priceTag.innerHTML= boxCardList[i].price+"원";
+				  priceTag.innerHTML= boxCardList[i].price.toLocaleString('ko-KR')+"원";
 				  thingSecondBottomBox.append(thingsecondBottom);
 				  thingSecondBottomBox.append(priceTag);
 		
@@ -300,7 +300,7 @@ function searchingRoomAjax(){
 
 		let priceTag = document.createElement("div");
 		priceTag.className="price";
-		priceTag.innerHTML= boxCardList[i].price+"원";
+		priceTag.innerHTML= boxCardList[i].price.toLocaleString('ko-KR')+"원";
 		thingSecondBottomBox.append(thingsecondBottom);
 		thingSecondBottomBox.append(priceTag);
 
@@ -377,7 +377,7 @@ function searchingRoomAjax(){
 		
 				let priceTag = document.createElement("div");
 				priceTag.className="price";
-				priceTag.innerHTML= boxCardList[i].price+"원";
+				priceTag.innerHTML= boxCardList[i].price.toLocaleString('ko-KR')+"원";
 				thingSecondBottomBox.append(thingsecondBottom);
 				thingSecondBottomBox.append(priceTag);
 		

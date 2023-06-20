@@ -68,7 +68,6 @@ function replyMsg(){
 
 
 
-
 // 왜 같은 클래스로 다 안 열리지...
 document.querySelector('.js-static-modal-toggleSendMsg1').addEventListener('click', function() {
     new Modal({el: document.getElementById('static-modalBlock1')}).show();
@@ -90,8 +89,3 @@ document.querySelector('.js-static-modal-toggleSendMsg4').addEventListener('clic
     console.log("click!!");
     new Modal({el: document.getElementById('static-modalBlock4')}).show();
 });
-
-
-    
-
-    
