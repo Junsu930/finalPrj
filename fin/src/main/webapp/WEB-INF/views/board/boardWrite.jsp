@@ -18,7 +18,7 @@
    <body>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-       <form>
+       <form action="boardWrite" method="post">
   <div class="container">
     <h1>글쓰기</h1>
     <div class="tagsBox">
@@ -27,15 +27,15 @@
 
 
       <label class="test_obj">
-        <input type="radio" class="tagNotice" name="tag" value="1">
+        <input type="radio" class="tagNotice" name="boardTag" value="1">
         <span>공지사항</span>
     </label>
     <label class="test_obj">
-      <input type="radio" class="tagBasic" name="tag" value="2">
+      <input type="radio" class="tagBasic" name="boardTag" value="2">
       <span>일반게시판</span>
   </label>
   <label class="test_obj">
-    <input type="radio" class="tagHot"  name="tag" value="3">
+    <input type="radio" class="tagHot"  name="boardTag" value="3">
     <span>인기게시판</span>
 </label>
 
@@ -44,11 +44,11 @@
     
     <div class="boardTitle">제목</div>
    <div>
-    <input type="text" class="title-input">
+    <input type="text" name="boardTitle" class="title-input">
     </div>
     <div class="border"></div>
     <div class="boardContent">내용</div>
-    <textarea id="content" class="content-input"></textarea>
+    <textarea id="content" name="boardContent" class="content-input"></textarea>
     
     
       <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
