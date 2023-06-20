@@ -27,7 +27,7 @@ loginLink.addEventListener('click', ()=> {
     wrapper.classList.remove('active');
 });
 
-
+/*
 let showBusiness = document.getElementById('showBusiness');
 let busniessBox = document.querySelector('.busniessBox');
 
@@ -40,7 +40,7 @@ showBusiness.addEventListener('click', () =>{
     } else {
         busniessBox.classList.remove('visible');
     }
-});
+});*/
 
 
 function setText() {
