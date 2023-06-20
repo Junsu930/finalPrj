@@ -95,6 +95,18 @@ public class UsedDAO {
 	public List<UsedImage> imageList(int usedBoard) {
 		return sqlSession.selectList("usedBoard-mapper.imageList",usedBoard);
 	}
+
+	public int deleteXImages(Map<String,Object> delMap) {
+		return sqlSession.delete("usedBoard-mapper.deleteXImages", delMap);
+	}
+
+	/** 판매완료 메서드
+	 * @param boardNo
+	 * @return
+	 */
+	public int completeSelling(int boardNo) {
+		return sqlSession.update("usedBoard-mapper.completeSelling", boardNo);
+	}
 	
 	
 }

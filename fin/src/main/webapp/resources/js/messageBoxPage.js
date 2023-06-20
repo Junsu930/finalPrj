@@ -90,16 +90,12 @@ function replyMsg(){
 
 
 
-
-
-
-
-
 // 왜 같은 클래스로 다 안 열리지...
 // document.querySelector('.js-static-modal-toggleSendMsg1').addEventListener('click', function() {
     
 //     console.log("click!!");
     
+
 // });
 
 // document.querySelector('.js-static-modal-toggleSendMsg').addEventListener('click', function() {
@@ -118,6 +114,3 @@ function replyMsg(){
 // });
 
 
-    
-
-    

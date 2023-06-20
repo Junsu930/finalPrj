@@ -52,7 +52,7 @@
 						</div>
 						<div class="thingTitle">${usedDetailVo.boardTitle}</div>
 					</div>
-					<div class="price">${usedDetailVo.price}원</div>    	
+					<div class="price"><fmt:formatNumber value="${usedDetailVo.price}" />원</div>    	
 		    	</div>
 		    	<div class="productDetailBox">
 		    		<div class="productConditionDetailBox">
@@ -77,6 +77,14 @@
 					  		<button type="button" id="deleteUsedBoardBtn">삭제</button>
 					  		<input type="hidden" value="${ usedDetailVo.usedBoardNo}" id="hiddenUsedBoardNo">
 						</div>
+						<c:if test="${usedDetailVo.boardState eq 'Y'}">
+							<div>
+								<form action="${contextPath}/completeSelling" method="post" id="compSellForm">
+									<input type="hidden" value="${ usedDetailVo.usedBoardNo}" name="boardNoForCompleteSelling">								
+							  		<button type="button" id="completeSelling">판매완료</button>
+								</form>
+							</div>
+						</c:if>
 					</div>
 				</c:if>
 	    		<div class="productInformationBox">
