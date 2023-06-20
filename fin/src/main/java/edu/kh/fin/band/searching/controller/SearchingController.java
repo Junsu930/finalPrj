@@ -2,6 +2,7 @@ package edu.kh.fin.band.searching.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +26,63 @@ public class SearchingController {
 	@Autowired
 	private SearchingService service;
 	
+	@GetMapping("/setPosition")
+	public String setPosition() {
+		return "user/setPosition";
+	}
 	
 	
 	
 	@GetMapping("/findingMember")
-	public String findingMemberController(RedirectAttributes ra, HttpSession session) {
+	public String findingMemberController(RedirectAttributes ra
+											, HttpSession session
+											, HttpServletRequest re
+			
+										) {
 		
-		if(session.getAttribute("loginUser") == null) {
-			ra.addFlashAttribute("msg", "로그인을 먼저 해주세요!");
-			return "redirect:/login"; // 로그인 되어있지 않은 경우 
-		}else {
-			return "finding/findingMember"; // 로그인 되어있는 경우 
+		String message = null;
+		String path = null;
+		
+		User loginUser = (User)session.getAttribute("loginUser");
+		
+		session = re.getSession();
+		System.out.println(session.getAttribute("loginUser"));
+		
+		if(session.getAttribute("loginUser") != null) { // 로그인이 되어있는 경우
+			
+			System.out.println(loginUser.getUserNo());
+			
+			String result = service.checkInfo(loginUser.getUserNo());
+			
+			System.out.println(result);
+			
+			
+			if(result !=null) {// 작성이 되어있는 경우
+				message = "";
+				path = "/findingMember";
+			} else { // 작성이 안되어 있는 경우
+				message = "본인의 정보를 작성해주세요";
+				path = "/setPosition";
+			}
+			
+		} else {// 로그인이 안되어 있는경우
+			
+			message = "로그인을 해주세요";
+			path = "/login";
+			
+			
 		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		
+		return "redirect:" + path;
+		
+		
+		
+			
+				
+		
 	}
 	
 	
@@ -96,4 +142,26 @@ public class SearchingController {
 		
 		return "finding/memberList";
 	}
+	
+	
+	@PostMapping("setPosition")
+	public String setInfo(
+			@RequestParam("gender") char gender,
+			@RequestParam("region") String region,
+			@RequestParam("inst") String inst,
+			@RequestParam("genre") String genre, Model model, @ModelAttribute("loginUser") User loginUser) {
+		
+		Searching setInfo = new Searching();
+		
+		setInfo.setGender(gender);
+		setInfo.setGenre(genre);
+		setInfo.setInst(inst);
+		setInfo.setRegion(region);
+		setInfo.setUserNo(loginUser.getUserNo());
+		
+		return null;
+		
+	}
+	
+	
 }
