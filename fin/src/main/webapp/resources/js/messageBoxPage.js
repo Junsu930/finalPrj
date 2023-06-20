@@ -3,14 +3,24 @@
 
 
 // 쪽지 삭제
-const msgNo = document.getElementById('msgNo');
 
-function delteMsg(){
+// console.log(msgNo + "test");
+// console.log(document.getElementById('msgDeleteBtn').nextElementSibling);
+
+let msgDeleteBtnArr = document.querySelectorAll('.msgDeleteBtn');
+
+for(let i = 0; i< msgDeleteBtnArr.length; i++){
+    msgDeleteBtnArr[i].addEventListener("click", deleteMsg);
+}
+
+function deleteMsg(e) {
+    let msgNo = e.target.nextElementSibling.value;
+    console.log(msgNo);
     console.log("click");
     if(confirm("쪽지를 삭제하시겠습니까?")){
         $.ajax({
             url:"deleteMsg",
-            data: {"msgNo" : msgNo.value},
+            data: {"msgNo" : msgNo},
             type: "POST",
             dataType: "JSON",
             success : function(result){
@@ -23,33 +33,45 @@ function delteMsg(){
             }
         });
     }else{
-        console.log("삭제 취소");
+        console.log("취소");
     }
-}
+};
 
 
 // 쪽지 답장
 
-let hiddenUserNum;
 
-$("#msgSendBtn").click(function(){
-    alert("dmdkk");
-    hiddenUserNum = $(this).next().val();
-    console.log($(this).next().val());
-});
 
+
+
+
+let msgReplyBtn = document.querySelectorAll('.msgReplyBtn');
+let modalFromMsgBox;
+
+for(let i = 0; i < msgReplyBtn.length; i++){
+    msgReplyBtn[i].addEventListener('click', function(e){
+       let receiverUserNo = e.target.nextElementSibling.value
+        console.log(receiverUserNo);
+        modalFromMsgBox = new Modal({el: document.getElementById('static-modalBlock'), event: receiverUserNo}).show();
+        // console.log(modaltest)
+    });
+    
+}
+
+// 부트스트랩이 el: ~~ 라듯이 키와 값으로 이루어져있는데 이걸 활용해서 receiverUserNo을 담아서 전달해줌
+// _options 안에 계단식으로 키와 밸류로 이루어져있는데 여기서 내가 event로 키를 준 애를 갖고 와서
+// replyMsg() 함수를 호출할 때, 값으로 씀
 
 function replyMsg(){
     let replyMsgText = document.getElementById('replyMsgText');
-    let hiddenUserNo = document.getElementById('hiddenUserNo'); // 받는 사람 즉, 답장 시에는 보냈던 사람의 userNo
+    let receiverUserNo = modalFromMsgBox._options.event;
     if(replyMsgText.value == ""){
-        console.log(hiddenUserNum);
-        // console.log( "받는 사람 번호 :" + receiverUserNo.value);
+        console.log("받는 사람 번호 :" + receiverUserNo);
         alert("쪽지 내용을 작성해주세요!");
     }else{
         $.ajax({
             url:"replyMsg",
-            data: {"replyMsgText" : replyMsgText.value , "receiverUserNo": receiverUserNo.value },
+            data: {"replyMsgText" : replyMsgText.value , "receiverUserNo": receiverUserNo },
             type : "POST",
             dataType: "JSON",  // dataType : 응답데이터 형식을 지정
             // -> "JSON"으로 지정 시 자동으로 JS 객체로 변환
@@ -69,23 +91,26 @@ function replyMsg(){
 
 
 // 왜 같은 클래스로 다 안 열리지...
-document.querySelector('.js-static-modal-toggleSendMsg1').addEventListener('click', function() {
-    new Modal({el: document.getElementById('static-modalBlock1')}).show();
-    console.log("click!!");
+// document.querySelector('.js-static-modal-toggleSendMsg1').addEventListener('click', function() {
     
-});
+//     console.log("click!!");
+    
 
-document.querySelector('.js-static-modal-toggleSendMsg2').addEventListener('click', function() {
-    console.log("click!!");
-    new Modal({el: document.getElementById('static-modalBlock2')}).show();
-});
+// });
 
-document.querySelector('.js-static-modal-toggleSendMsg3').addEventListener('click', function() {
-    console.log("click!!");
-    new Modal({el: document.getElementById('static-modalBlock3')}).show();
-});
+// document.querySelector('.js-static-modal-toggleSendMsg').addEventListener('click', function() {
+//     console.log("click!!");
+//     new Modal({el: document.getElementById('static-modalBlock')}).show();
+// });
 
-document.querySelector('.js-static-modal-toggleSendMsg4').addEventListener('click', function() {
-    console.log("click!!");
-    new Modal({el: document.getElementById('static-modalBlock4')}).show();
-});
+// document.querySelector('.js-static-modal-toggleSendMsg3').addEventListener('click', function() {
+//     console.log("click!!");
+//     new Modal({el: document.getElementById('static-modalBlock3')}).show();
+// });
+
+// document.querySelector('.js-static-modal-toggleSendMsg4').addEventListener('click', function() {
+//     console.log("click!!");
+//     new Modal({el: document.getElementById('static-modalBlock4')}).show();
+// });
+
+
