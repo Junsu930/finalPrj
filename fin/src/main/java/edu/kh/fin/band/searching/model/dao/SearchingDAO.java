@@ -25,4 +25,15 @@ public class SearchingDAO {
 		return sqlSession.selectList("searchingMapper.memberList", searching);
 	}
 
+	
+	
+	/** 인포 작성 유무 검사 DAO
+	 * @param userNo
+	 * @return result
+	 */
+	public String checkInfo(int userNo) {
+		
+		return sqlSession.selectOne("searchingMapper.checkInfo", userNo);
+	}
+
 }

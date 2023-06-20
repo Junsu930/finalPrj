@@ -178,10 +178,12 @@ public class LoginRegisterController {
 		logger.info("이메일 인증 수행됨");
 			
 		System.out.println(inputEmail);
-		int result = service.checkEmail(inputEmail);
+		int ranNum = service.checkEmail(inputEmail);
 		
-		if(result > 0) {
-			  return new Gson().toJson("메일 전송 성공");
+		System.out.println(ranNum);
+		
+		if(ranNum > 0) {
+			  return new Gson().toJson(ranNum);
 		  } else {
 			  return new Gson().toJson("메일 전송 실패");
 		  }

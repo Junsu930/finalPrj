@@ -103,7 +103,7 @@ public class LoginServiceImpl implements LoginService{
 		Random random = new Random();
 		int ranNum = random.nextInt(888888) + 111111;
 		
-		int result = 0;
+		
 		
 		MimeMessage mmsg = mailSender.createMimeMessage();
 		
@@ -133,16 +133,16 @@ public class LoginServiceImpl implements LoginService{
             
             
             mailSender.send(mmsg);
-            result = 1;
+            
 			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-			result = 0;
+			ranNum  = 0;
 		}
 		
 		
-		return result;
+		return ranNum;
 	}
 	
 }

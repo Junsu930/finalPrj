@@ -121,9 +121,8 @@
 
 
                     <div class="rememberForgot">  <!--remember-forgot-->
-                        <label><input type="checkbox" name="agreeList" id="agree"> Agree to the terms & conditions</label>
-                        <a href="#" id="showBusiness">Business</a>
-                        <a href="#" class="js-static-modal-toggle">Show terms & conditions</a>
+                        <label><input type="checkbox" name="agreeList" id="agree"> Agree to the terms & conditions</label>            
+                        <a href="#" class="js-static-modal-toggle">Show terms  & conditions</a>
               		</div>
 					           
                     <button type="submit" class="btn">REGISTER</button>
@@ -205,7 +204,7 @@
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
-
+          
 
     <script>
       const msg = "${msg}";

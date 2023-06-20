@@ -26,4 +26,11 @@
 		GENDER = #{gender} AND USER_NO != #{userNo}
 		ORDER BY USER_NO
 	</select>
+	
+	
+	<select id="checkInfo" parameterType="searching" resultMap="searching_rm">
+		SELECT USER_NO FROM MATCHING_INFO
+		WHERE USER_NO = #{userNo}
+	</select>
+	
 </mapper>
