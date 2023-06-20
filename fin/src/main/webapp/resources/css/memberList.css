@@ -96,7 +96,7 @@ body.darkmode .userNameBox img{
     width: 100%;
 }
 
-.userChatProfieUl i{
+.userChatProfieUl li{
     font-size: 1.6em;
     cursor: pointer;
 }
