@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="board-mapper">
+<mapper namespace="boardMapper">
 	<resultMap type="board" id="board_rm">
 		<id property="boardNo" column="BOARD_NO" />
 		<result property="boardTitle" column="BOARD_TITLE" />
@@ -14,5 +14,63 @@
 	</resultMap>
 	
 	
+		<!-- 게시글 상세 조회용 resultMap -->
+	<resultMap type="detail" id="detail_rm">
+		<id property="boardNo" column="BOARD_NO" />
+		<result property="boardTitle" column="BOARD_TITLE" />
+		<result property="boardContent" column="BOARD_CONTENT" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="readCount" column="READ_COUNT" />
+		<result property="userNo" column="USER_NO" />
+		<result property="boardLike" column="BOARD_LIKE" />
+		<result property="boardTag" column="BOARD_TAG" />
+	
+		
+		<collection property="imageList" column="BOARD_NO"
+			javaType="java.util.ArrayList" ofType="boardImage" select="selectImageList" />
+	
+		<!-- 
+			selectImageList의 조회 결과를
+			BoardDetail의 VO의 imageList 필드에 담겠다.
+		
+			-> imageList에 담기위한 ArrayList<BoardImage> 객체를 생성
+			 	( javaType="java.util.ArrayList" ofType="boardImage")
+		
+		
+			-> selectImageList 태그 수행 시 필요한 파라미터는
+				현재 resultMap ("detail_rm")의 BOARD_NO 컬럼에 저장된 값을 전달하겠다.
+		
+		
+			게시글 상세 조회 후 detail_rm resultMap이 호출되었을 때
+			상세 조회 결과 중 BOARD_NO 이용해서 selectImageList를 수행하고
+			결과를 imageList 필드에 세팅한다.
+		
+		 -->
+	</resultMap>
+	
+	
+	<!-- 이미지 정보 조회용 resultMap -->
+	<resultMap type="boardImage" id="boardImage_rm">
+		<id property="imageNo" column="IMG_NO" />
+		<result property="imageReName" column="IMG_RENAME" />
+		<result property="imageOriginal" column="IMG_ORIGINAL" />
+		<result property="boardNo" column="BOARD_NO" />
+	</resultMap>
+	
+	<select id="boardList" resultMap="board_rm">
+        SELECT * 
+        FROM BOARD 
+        ORDER BY BOARD_NO 
+        DESC
+    </select>
+    
+     <insert id="write" parameterType="board" >
+	INSERT INTO BOARD VALUES(
+   SEQ_BOARD_NO.NEXTVAL,
+    #{boardTitle}, #{boardContent},DEFAULT, DEFAULT, DEFAULT, #{userNo}, DEFAULT,#{boardTag} 
+   )
+   
+  
+	</insert>
 	
 </mapper>
