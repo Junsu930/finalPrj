@@ -28,7 +28,7 @@ public class SocialLoginDAO {
 		return result;
 	}
 
-	public SocialInfo getUser(int userNo) {
+	public User getUser(int userNo) {
 		
 		return sqlSession.selectOne("socialMapper.getUser", userNo);
 	}

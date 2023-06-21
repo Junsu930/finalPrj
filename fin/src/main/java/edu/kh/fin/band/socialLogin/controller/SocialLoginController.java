@@ -2,10 +2,6 @@ package edu.kh.fin.band.socialLogin.controller;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +13,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.socialLogin.model.service.SocialLoginService;
-import edu.kh.fin.band.socialLogin.model.vo.SocialInfo;
 
 @Controller
 @SessionAttributes({"loginUser"})
@@ -50,7 +45,7 @@ public class SocialLoginController {
 		
 		System.out.println("만들어진 유저넘 : " + result);
 		
-		SocialInfo user = service.getUser(result);
+		User user = service.getUser(result);
 
 		model.addAttribute("loginUser", user);
 		System.out.println("사인업실행");
@@ -63,7 +58,7 @@ public class SocialLoginController {
 	public int changeToken(@RequestParam Map<String,Object> map, Model model) {
 		
 		int result =service.changeToken(map);
-		SocialInfo user = null;
+		User user = null;
 		if(result>0) {
 			user = service.getUser((Integer)map.get("userNo"));
 		}

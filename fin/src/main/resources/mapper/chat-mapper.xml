@@ -26,6 +26,7 @@
 		<result property="chatMasterNo" column="USER_NO"/>
 		<result property="chatGuestNo" column="GUEST_NO"/>
 		<result property="chatOthersNick" column="OTHER_NICKNAME"/>
+		<result property="chatOthersImage" column="IMAGE"/>
 	</resultMap>
 	
 	<resultMap type="chatMessage" id="chatMessage_rm">
@@ -39,13 +40,13 @@
 		SELECT * FROM "USER" WHERE USER_NO = ${nowUser}
 	</select>
 	<select id="roomList" resultMap="chat_rm2" parameterType="_int">
-		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME 
+		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME, IMAGE 
 		FROM CHAT_ROOM c 
 		JOIN "USER" u ON (c.GUEST_NO = u.USER_NO) 
 		WHERE c.USER_NO = #{nowUser} 
 		AND STATUS = 'Y'
 	    UNION
-		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME
+		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME, IMAGE
 		FROM CHAT_ROOM c
 		JOIN "USER" u ON (c.USER_NO = u.USER_NO)
 		WHERE c.GUEST_NO = #{nowUser}
