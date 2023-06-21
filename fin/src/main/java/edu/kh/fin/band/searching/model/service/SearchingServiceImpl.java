@@ -34,9 +34,20 @@ public class SearchingServiceImpl implements SearchingService{
 	 *
 	 */
 	@Override
-	public String checkInfo(int userNo) {
+	public int checkInfo(int userNo) {
 		
 		return dao.checkInfo(userNo);
+	}
+
+
+
+	/** 내 인포 작성 서비스
+	 *
+	 */
+	@Override
+	public int setInfo(Searching setInfo) {
+		
+		return dao.setInfo(setInfo);
 	}
 
 

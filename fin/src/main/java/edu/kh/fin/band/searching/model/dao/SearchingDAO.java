@@ -31,9 +31,22 @@ public class SearchingDAO {
 	 * @param userNo
 	 * @return result
 	 */
-	public String checkInfo(int userNo) {
+	public int checkInfo(int userNo) {
+		
+		System.out.println("인포유무 DAO" + userNo);
 		
 		return sqlSession.selectOne("searchingMapper.checkInfo", userNo);
+	}
+
+
+
+	/** 내 인포 작성 DAO
+	 * @param setInfo
+	 * @return
+	 */
+	public int setInfo(Searching setInfo) {
+		
+		return sqlSession.insert("searchingMapper.setInfo", setInfo);
 	}
 
 }
