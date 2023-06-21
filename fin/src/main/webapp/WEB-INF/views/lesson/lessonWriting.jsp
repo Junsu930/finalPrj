@@ -36,7 +36,7 @@
 			<!-- 이름 -->
                 <div class="input-box">
                     <span class="icon">
-                        <ion-icon name="mail"></ion-icon>
+                        <ion-icon name="Name"></ion-icon>
                     </span>
                     <input id="lessonNamePlace" name="lessonNameInput" type="text" maxlength="5" required>
                     <label>NAME</label>
