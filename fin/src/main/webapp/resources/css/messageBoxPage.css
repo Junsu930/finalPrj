@@ -124,6 +124,10 @@ body.darkmode .messageWrapper li .content p
     font-size: 1.2em;
 }
 
+body.darkmode .msgReplyBtn{
+    color: var(--text-dark-color);
+}
+
 body.darkmode .messageWrapper li .content p .msgDeleteBtn,
 body.darkmode .messageWrapper li .content p .msgSendBtn
 {

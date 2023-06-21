@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import edu.kh.fin.band.alarm.model.vo.Alarm;
 import edu.kh.fin.band.message.model.vo.MessageBox;
+import edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm;
 
 
 @Repository
@@ -46,14 +46,32 @@ public class MessageBoxDAO {
 	 * @return
 	 */
 	public int deleteMsg(int msgNo) {
-		return sqlSession.delete("msgBoxMapper.deleteMsg", msgNo);
+		return sqlSession.update("msgBoxMapper.deleteMsg", msgNo);
 	}
 
 
 
-	public int insertMsgAlarm(Alarm alarm) {
+	/**
+	 * 메세지 알람 추가 DAO
+	 * @author lee
+	 * @param alarm
+	 * @return
+	 */
+	public int insertMsgAlarm(MsgAlarm alarm) {
 		// TODO Auto-generated method stub
 		return sqlSession.insert("alaramMapper.insertMsgAlarm", alarm);
+	}
+
+
+
+	/**
+	 * 메세지 알람 삭제 DAO
+	 * @author lee
+	 * @param msgNo
+	 * @return
+	 */
+	public int deleteAlarm(int msgNo) {
+		return sqlSession.update("alaramMapper.deleteAlarm", msgNo);
 	}
 
 }

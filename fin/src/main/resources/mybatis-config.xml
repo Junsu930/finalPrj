@@ -29,7 +29,7 @@
 		<typeAlias type="edu.kh.fin.band.board.model.vo.Board" alias="board"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.BoardDetail" alias="detail"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.BoardImage" alias="boardImage"/>
-		<typeAlias type="edu.kh.fin.band.alarm.model.vo.Alarm" alias="alarm"/>
+		<typeAlias type="edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm" alias="msgAlarm"/>
 	</typeAliases>
 	
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
@@ -44,6 +44,6 @@
 		<mapper resource="/mapper/lesson-mapper.xml"/>
 		<mapper resource="/mapper/business-mapper.xml"/>
 		<mapper resource="/mapper/board-mapper.xml"/>
-		<mapper resource="/mapper/alarm-mapper.xml"/>
+		<mapper resource="/mapper/msgAlarm-mapper.xml"/>
 	</mappers>
 </configuration>

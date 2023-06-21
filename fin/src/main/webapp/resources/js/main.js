@@ -1,4 +1,7 @@
-console.log("svg.js loaded")
+let loginUser = window.sessionStorage.getItem("loginUser");
+console.log(loginUser);
+
+
 
 
 // ======================================패스 요소======================================
@@ -306,3 +309,6 @@ document.getElementById('sendEmailBtn').addEventListener("click", () =>{
   }
   });
 });
+
+
+

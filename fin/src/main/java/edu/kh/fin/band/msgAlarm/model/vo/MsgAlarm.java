@@ -1,4 +1,4 @@
-package edu.kh.fin.band.alarm.model.vo;
+package edu.kh.fin.band.msgAlarm.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +9,16 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Alarm {
+public class MsgAlarm {
 	
 	private int alarmNo;
 	private int userNo;
-	private int alarmType;
+	private int msgNo;
+	private char alarmReadStatus;
 	private char alarmStatus;
+	
+	
+	private String userNick;
+	private String sendDay;
+	private String sendMonth;
 }
