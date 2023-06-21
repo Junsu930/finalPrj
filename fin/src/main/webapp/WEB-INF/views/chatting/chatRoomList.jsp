@@ -38,6 +38,7 @@
 		<input type="hidden" id="hiddenUserNo" value="${sessionScope.loginUser.userNo}">
 		<input type="hidden" id="hiddenUserName" value="${sessionScope.loginUser.userNick}">
 		<input type="hidden" id="hiddenGuestNo" value="">
+		<input type="hidden" id="hiddenimage" value="${sessionScope.loginUser.profileImg}">
 		<!-- 채팅창 -->
 		<div class="chatbox">
 		<!-- 채팅창 탑 메뉴 -->
@@ -65,7 +66,7 @@
 		</div>
 		<div class="messages"></div>
 		<div class="profile">
-			<div class="avatar"></div>
+			<div class="avatar"><img src="${sessionScope.loginUser.profileImg}" id="avatarImg"></div>
 			<div class="chatUserNickDiv" id="chatUserNickDiv"></div>
 		</div>
 		<ul class="people" id="chatPeople">

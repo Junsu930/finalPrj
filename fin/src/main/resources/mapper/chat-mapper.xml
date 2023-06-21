@@ -89,4 +89,8 @@
 		SELECT USER_NICK FROM "USER" WHERE USER_NO = (SELECT GUEST_NO FROM CHAT_ROOM WHERE CHAT_ROOM_NO = #{chatRoomNo})
 	</select>
 	
+	<select id="chattingCheckImg" parameterType="_int" resultType="string">
+		SELECT IMAGE FROM "USER"  WHERE USER_NO = ${userNo}
+	</select>
+	
 </mapper>

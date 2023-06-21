@@ -195,6 +195,15 @@ public class ChattingController {
 		return service.withUserName(chatRoomNo);
 	}
 	
+	@PostMapping("/chattingCheckImg")
+	@ResponseBody
+	public String chattingCheckImg(@RequestParam("userNo") int userNo) {
+		
+		return service.chattingCheckImg(userNo);
+		
+		
+	}
+	
 	// 임시 코드 새로운 채팅방 가기
 	@GetMapping("/newChat")
 	public String newChat() {
@@ -204,6 +213,8 @@ public class ChattingController {
 				
 				
 	}
+	
+	
 	
 	
 	

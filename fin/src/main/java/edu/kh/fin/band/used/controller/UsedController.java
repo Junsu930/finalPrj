@@ -152,7 +152,10 @@ public class UsedController {
 					return "redirect:/usedDetail?usedBoard=" + map.get("hiddenUpdateVal");
 				}
 			}else{
+				
+				System.out.println("사지만 삭제한 경우 " + map);
 				int updateResult = service.updateUsedForm(map);
+				
 				
 				if(updateResult > 0) {
 					ra.addFlashAttribute("message", "게시글이 수정되었습니다.");

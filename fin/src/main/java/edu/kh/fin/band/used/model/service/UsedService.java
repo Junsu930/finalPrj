@@ -2,6 +2,7 @@ package edu.kh.fin.band.used.model.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -101,20 +102,23 @@ public class UsedService {
 		// 삭제할 이미지가 있으면
 		int boardResult = 0;
 
-		String[] xImagesArr = ((String)map.get("xImages")).split(",");
-		
-		System.out.println("삭제할 이미지들" + Arrays.toString(xImagesArr));
-		
-		if(xImagesArr.length > 1) {
-			
-			System.out.println("배열길이" + xImagesArr.length);
+		String[] xImagesArr = null;
+				
+		if(((String)map.get("xImages")).equals("") == false) {
+			xImagesArr = ((String)map.get("xImages")).trim().split(",");
+		}
+
+
+		if(xImagesArr != null ) {
 			
 			for(int i=0; i<xImagesArr.length; i++) {
+			
 				Map<String, Object> delMap = new HashMap<>();
 				
 				delMap.put("boardNo", map.get("hiddenUpdateVal"));
 				delMap.put("xImage", xImagesArr[i]);
 				deleteResult = dao.deleteXImages(delMap);
+				
 			}
 			
 		}
@@ -172,19 +176,23 @@ public class UsedService {
 		
 		int deleteResult = 100;
 		// 삭제할 이미지가 있으면
-		String[] xImagesArr = ((String)map.get("xImages")).split(",");
-		
-		System.out.println("삭제할 이미지들" + Arrays.toString(xImagesArr));
-		
-		if(xImagesArr.length > 1) {
+		String[] xImagesArr = null;
+				
+		if(((String)map.get("xImages")).equals("") == false) {
+			xImagesArr = ((String)map.get("xImages")).trim().split(",");
+		}
+
+
+		if(xImagesArr != null ) {
 			
-			System.out.println("배열길이" + xImagesArr.length);
 			for(int i=0; i<xImagesArr.length; i++) {
+			
 				Map<String, Object> delMap = new HashMap<>();
 				
 				delMap.put("boardNo", map.get("hiddenUpdateVal"));
 				delMap.put("xImage", xImagesArr[i]);
 				deleteResult = dao.deleteXImages(delMap);
+				
 			}
 			
 		}
