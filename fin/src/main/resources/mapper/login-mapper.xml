@@ -15,6 +15,7 @@
 	<result property="userType" 		column="USER_TYPE"/>
 	<result property="intro" 		column="INTRO_MENT"/>
 	<result property="banFl" 		column="BANNED_FL"/>
+	<result property="image" 		column="IMAGE"/>
   </resultMap>
   
   
@@ -59,7 +60,8 @@
   			DEFAULT,
   			DEFAULT,
   			NULL,
-  			DEFAULT
+  			DEFAULT,
+  			NULL
   		)
   	</insert>
   	

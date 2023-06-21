@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.fin.band.common.Util;
 import edu.kh.fin.band.lesson.model.dao.LessonDAO;
 import edu.kh.fin.band.lesson.model.vo.Lesson;
-/*import edu.kh.fin.band.lesson.model.vo.LessonImage;*/
+import edu.kh.fin.band.lesson.model.vo.LessonImage;
 
 @Service
 public class LessonService {
@@ -23,7 +23,7 @@ public class LessonService {
 	public List<Lesson> lessonList() {
 		return dao.lessonList();
 	}
-/*	
+
 	public Lesson lessonDetail(int lessonBoard) {
 		return dao.lessonDetail(lessonBoard);
 	}
@@ -73,5 +73,5 @@ public class LessonService {
 	public List<LessonImage> imageList(int lessonBoard) {
 		return dao.imageList(lessonBoard);
 	}
-*/
+
 }

@@ -813,6 +813,17 @@ input[type="checkbox"]:checked + label:before {
   } 
   
   
+  #profile-image {
+  
+  width: 80%;
+  height: 80%;
+  
+  }
+  
+  #input-image {
+  display:none;
+  }
+  
  
 
 

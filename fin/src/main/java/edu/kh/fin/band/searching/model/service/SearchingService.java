@@ -25,7 +25,19 @@ public interface SearchingService{
 	 * @param userNo
 	 * @return result
 	 */
-	public abstract String checkInfo(int userNo);
+	public abstract int checkInfo(int userNo);
+	
+
+
+
+	/** 내 밴드 포지션 정보 넣기 서비스
+	 * @param setInfo
+	 * @return 
+	 */
+	public abstract int setInfo(Searching setInfo);
+
+
+
 	
 	
 	

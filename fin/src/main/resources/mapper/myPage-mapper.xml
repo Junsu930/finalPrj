@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myPageMapper">
+
+	<update id="updateInfo">
+		UPDATE "USER" SET
+		USER_EMAIL = #{userEmail}
+		USER_NICK = #{userNick}
+	</update>
+	
+	<select id="selectEncPw" resultType="string">
+		SELECT USER_PWD FROM "USER"
+		WHERE USER_NO = ${userNo}
+	</select>
+	
+	<update id="changePw">
+		UPDATE "USER" SET
+		USER_PWD = #{newPw}
+		WHERE USER_NO = #{userNo}
+	</update>
+	
+	<update id="updateProfile">
+		UPDATE "USER" SET
+		IMAGE = #{profileImage}
+		WHERE USER_NO = ${userNo}
+	</update>
+
+
+</mapper>

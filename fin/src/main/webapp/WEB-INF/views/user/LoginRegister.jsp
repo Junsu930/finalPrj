@@ -10,9 +10,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 	<script src="https://kit.fontawesome.com/44f3dd3f25.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 	<link rel="stylesheet" href="${contextPath}/resources/css/LoginRegister.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
-	
+	<link rel="stylesheet" href="${contextPath}/resources/css/naverLogin.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/loginbootStrap.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/loginModal.css">
 	<script src = "${contextPath}/resources/js/myPageModal.js"></script>
@@ -38,6 +39,8 @@
 
             <div class="formBox login"> <!--for-box login-->
                 <h2>LOGIN</h2>
+                
+                
 		
                 <form action="fin/login" method="POST" name="login-form" onsubmit="return loginValidate()">
                     <div class="inputBox"> <!--input-box-->
@@ -62,6 +65,7 @@
                     </div>
 
                     <button type="submit" class="btn">LOGIN</button>
+                    <div id="naver_id_login"></div>
 
                     <div class="loginRegister">   <!--login-register-->
                         <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
@@ -221,6 +225,6 @@
         	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
    
    			<script src="${contextPath}/resources/js/LoginRegister.js?ver=1"></script>
-
+			<script src="${contextPath}/resources/js/naverLogin.js"></script>
   </body>
 </html>

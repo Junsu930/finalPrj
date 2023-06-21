@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="socialMapper">
+	<resultMap type="social" id="naver_user_rm">
+		<id property="userNo" column="USER_NO"/>
+		<result property="userEmail" column="USER_EMAIL"/>
+		<result property="userNick" column="USER_NICK"/>
+		<result property="intro" column="INTRO_MENT"/>
+		<result property="profileImg" column="IMAGE"/>
+		<result property="userType" column="USER_TYPE"/>
+	</resultMap>
+	
+	
+	<select id="checkNaverFl" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM "USER" WHERE USER_EMAIL = #{email} AND USER_TYPE = 'NAVER'
+	</select>
+	
+	<insert id="naverSignUp" parameterType="map" useGeneratedKeys="true">
+		<selectKey keyProperty="userNo" resultType="_int" order="BEFORE">
+			SELECT USER_NO_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO "USER" VALUES(${userNo}, #{email}, #{token}, SYSDATE, 'N', #{nick}, 'Y','NAVER', NULL, 'N', #{profileImg} )
+	</insert>
+	
+	<select id="getUser" parameterType="_int" resultMap="naver_user_rm">
+		SELECT USER_NO, USER_EMAIL, USER_NICK, INTRO_MENT, IMAGE, USER_TYPE FROM "USER" WHERE USER_NO = ${userNo}
+	</select>
+	
+	<update id="changeToken" parameterType="map" useGeneratedKeys="true">
+		<selectKey keyProperty="userNo" resultType="_int" order="BEFORE">
+			SELECT USER_NO FROM "USER" WHERE USER_TYPE='NAVER' AND USER_EMAIL = #{email}
+		</selectKey>
+		UPDATE "USER" SET  USER_PWD = #{token} WHERE USER_NO = ${userNo}
+	</update>
+</mapper>

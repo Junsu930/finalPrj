@@ -73,6 +73,10 @@ public class ChatDAO {
 		return sqlSession.selectOne("chat-mapper.withUserUsingRoomNo", chatRoomNo);
 	}
 
+	public String chattingCheckImg(int userNo) {
+		return sqlSession.selectOne("chat-mapper.chattingCheckImg", userNo);
+	}
+
 
 
 }

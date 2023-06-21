@@ -1,16 +1,16 @@
-package edu.kh.fin.band.login.model.vo;
+package edu.kh.fin.band.socialLogin.model.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-
 
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
-public class User {
+@AllArgsConstructor
+public class SocialInfo {
+
 	private int userNo;
 	private String userEmail;
 	private String userPw;
@@ -21,5 +21,6 @@ public class User {
 	private String userType;
 	private String intro;
 	private String banFl;
-	private String image;
+	private String profileImg;
+
 }
