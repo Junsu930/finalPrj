@@ -16,5 +16,6 @@ public class ChatVo {
 	int chatMasterNo;
 	int chatGuestNo;
 	String chatOthersNick;
+	String chatOthersImage;
 	
 }

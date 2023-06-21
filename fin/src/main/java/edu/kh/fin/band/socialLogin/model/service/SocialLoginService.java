@@ -11,7 +11,7 @@ public interface SocialLoginService {
 
 	public int naverSignUp(Map<String, Object> map);
 
-	public SocialInfo getUser(int userNo);
+	public User getUser(int userNo);
 
 	public int changeToken(Map<String, Object> map);
 
