@@ -17,26 +17,28 @@
 
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     
-    
-    
+   
     <section class="allSection">
-        <form method ="post" action="lessonWrite.jsp" >
+  
 
-            <div class ="imgbox">
- 			<label for="img1"> 			
+	<form method ="post" action="${contextPath}/lessonWriteForm" id="lessonWriteForm" enctype="multipart/form-data">
+           <div class ="imgbox">
+     
+ 			<label for="img1">
 	 			<img id="imageInsertPic" src="${contextPath}/resources/images/imageinsert.png">
  			</label>
  			<input type="file" class="inputImage" id="img1" name="images" accept="image/*">
- 			</div>
+ 		</div>
 
             <!-- input 박스 요소들 -->
             <div class="inputBox">
-
+			
+			<!-- 이름 -->
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input id="lessonNamePlace" name="lessonNameInput" type="text" maxlength="5" required>
                     <label>NAME</label>
                 </div>
 
@@ -44,7 +46,7 @@
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input id="lessonLocationPlace" name="lessonLocationInput" type="text" maxlength="5" required>
                     <label>LOCATION</label>
                 </div>
 
@@ -52,7 +54,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="text" required>
+                   <input id="lessonSocialPlace" name="lessonSocialInput" type="text" maxlength="10" required>
                     <label>SOCIAL MEDIA</label>
                 </div>
 
@@ -60,7 +62,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input id="lessonMottoPlace" name="lessonMottoInput" type="text" maxlength="10" required>
                     <label>MOTTO</label>
                 </div>
 
@@ -68,7 +70,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <textarea name="" id="" cols="30" rows="10" required></textarea>
+                    <textarea name="lessonDetailInput" id="lessonDetailExplain" cols="30" rows="10" required></textarea>
                     <label class="textLabel">TELL YOUR STROY</label>
                 </div>
 
@@ -76,11 +78,13 @@
 
 
 
-
+	
             <div class="lessonCheckWrapper">
 
                 <div class="genreWrapper">
                     <p id="genreP" class="">GENRE</p>
+                    
+
                     <div class="genreBox">
                         <table class="genreTable">
                             <tr>
@@ -129,10 +133,12 @@
                         </table>
                     </div>
                 </div>
+ 
 
 
                 <div class="lessonWrapper">
                     <p id="lessonP" class="">LESSON</p>
+ 
                     <div class="lessonBox">
                         <table class="lessonTable">
                             <tr>
@@ -292,12 +298,14 @@
                 </table>
             </div> -->
 
-        </form>
+
 
         <div class="writingBtnBox">
-            <button id="writingBtn">SUBMIT</button>
+            <button type="button" id="writingBtn">SUBMIT</button>
         </div>
+            </form>
     </section>
+
 
 
 

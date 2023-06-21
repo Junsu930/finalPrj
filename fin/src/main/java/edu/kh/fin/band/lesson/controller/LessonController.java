@@ -52,6 +52,27 @@ public class LessonController {
 		return "lesson/lessonWriting";
 	}
 	
+	@PostMapping("/writeLessonForm")
+	public String writeLessonForm(@RequestParam Map<String,Object> map, @RequestParam(value = "images", required = false) List<MultipartFile> images,
+			@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra) {
+	
+		String webPath = "/resources/images/lesson/";
+		
+		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+		// c:\workspace\~~
+		
+		
+		int writeResult = service.writeLessonForm(map, images, webPath,folderPath);
+		
+		if(writeResult > 0) {
+			ra.addFlashAttribute("message", "게시글이 등록되었습니다.");
+			return "redirect:/lesson/";
+		}else {
+			ra.addFlashAttribute("message", "게시글 등록이 실패했습니다.");
+			return "redirect:/lesson/";
+		}
+		
+}
 }
 
 

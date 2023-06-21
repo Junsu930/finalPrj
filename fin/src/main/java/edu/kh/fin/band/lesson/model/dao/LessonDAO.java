@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fin.band.lesson.model.vo.Lesson;
-/*import edu.kh.fin.band.lesson.model.vo.LessonImage;*/
+import edu.kh.fin.band.lesson.model.vo.LessonImage;
 
 @Repository
 public class LessonDAO {
@@ -23,11 +23,11 @@ public class LessonDAO {
 	public List<Lesson> lessonList() {
 		return sqlSession.selectList("lessonMapper.lessonList");
 	}
-/*
+
 	/** lesson 이미지 삽입
 	 * @return
 	 */
-/*	public int insertImageFile(LessonImage img) {
+	public int insertImageFile(LessonImage img) {
 		return sqlSession.insert("lessonMapper.insertImageFile", img);
 	}
 
@@ -52,6 +52,6 @@ public class LessonDAO {
 	
 	
 
-		*/
+
 	
 }
