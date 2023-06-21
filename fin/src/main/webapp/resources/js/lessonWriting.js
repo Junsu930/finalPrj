@@ -15,3 +15,7 @@ document.getElementById("img1").addEventListener("change", function(){
         }
     }
 });
+
+
+
+
