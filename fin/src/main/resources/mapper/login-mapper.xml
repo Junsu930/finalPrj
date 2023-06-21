@@ -16,6 +16,7 @@
 	<result property="intro" 		column="INTRO_MENT"/>
 	<result property="banFl" 		column="BANNED_FL"/>
 	<result property="profileImg" 	column="IMAGE"/>
+
   </resultMap>
   
   
