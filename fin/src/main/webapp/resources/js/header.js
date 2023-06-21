@@ -179,7 +179,7 @@ $.ajax({ // 접속하자마자 userNo 가져오는 ajax
 
     let loginUserNo = result;
 
-    $.ajax({ // userNo를 바탕으로 userNick 가져오는 ajax
+    $.ajax({ // userNo를 바탕으로 userNickslist 가져오는 ajax
       url:"getUserNicks",
       method:"GET",
       data:{"loginUserNo": loginUserNo},
@@ -254,6 +254,7 @@ $.ajax({ // 접속하자마자 userNo 가져오는 ajax
   error : function(request, status, error){
     console.log("getUserNo AJAX 에러 발생");
     console.log("상태코드 : " + request.status); 
+    return
   }
 }); // 상단 ajax끝
 

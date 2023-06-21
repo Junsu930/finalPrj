@@ -74,8 +74,13 @@ function checkRoom(userNo){
 // 채팅방 클릭시 채팅방 이동 
 function enterRoom(chatOthersNick ,chatRoomNo, chatOthersImage){
     inChatRoomNo = chatRoomNo;
-    $("#withChatName").html(chatOthersNick);
     
+    $("#withChatName").html(chatOthersNick);
+    if(chatOthersImage != null && chatOthersImage !=""){
+        document.getElementById("otherProfile").innerHTML = "<img id='otherProfile' src='"+ chatOthersImage + "'>"
+    }else{
+        document.getElementById("otherProfile").innerHTML = "";
+    }
     $("#middleChatRoom").html("");
 
     loadMessage(chatRoomNo);
