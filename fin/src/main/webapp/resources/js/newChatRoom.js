@@ -58,7 +58,7 @@ function checkRoom(userNo){
 
                 let list1 = document.createElement("li");
                 list1.className = "person";
-                list1.onclick = function(){enterRoom(eachD.chatOthersNick ,eachD.chatRoomNo);};
+                list1.onclick = function(){enterRoom(eachD.chatOthersNick ,eachD.chatRoomNo, eachD.chatOthersImage);};
                 let span1 = document.createElement("span");
                 span1.className = "title";
                 span1.innerHTML = eachD.chatOthersNick;
@@ -72,10 +72,10 @@ function checkRoom(userNo){
 }
 
 // 채팅방 클릭시 채팅방 이동 
-function enterRoom(chatOthersNick ,chatRoomNo){
+function enterRoom(chatOthersNick ,chatRoomNo, chatOthersImage){
     inChatRoomNo = chatRoomNo;
     $("#withChatName").html(chatOthersNick);
-
+    
     $("#middleChatRoom").html("");
 
     loadMessage(chatRoomNo);
