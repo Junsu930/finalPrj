@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.ui.Model;
 import edu.kh.fin.band.board.model.vo.Board;
+import edu.kh.fin.band.board.model.vo.BoardDetail;
 import edu.kh.fin.band.login.model.vo.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import edu.kh.fin.band.board.model.service.BoardService;
 
 @Controller
@@ -42,7 +46,11 @@ public class BoardController {
 	
 	
 	@GetMapping("/boardDetail")
-	public String boardDetailController() {
+	public String boardDetail(@RequestParam("boardNo")int boardNo,
+							  	Model model) {
+		service.updateReadCount(boardNo);
+		Board boardDetail = service.boardDetail(boardNo);
+		model.addAttribute("board" , boardDetail);
 		
 		return "board/boardDetail";
 		
@@ -62,24 +70,37 @@ public class BoardController {
 	
 	@PostMapping("/boardWrite")
 	public String Write(@ModelAttribute Board board,
-			@ModelAttribute("loginUser") User loginUser) {
+						@ModelAttribute("loginUser") User loginUser,
+						RedirectAttributes ra) {
+		
 		board.setUserNo( loginUser.getUserNo()  );
+		
 		int writeResult = service.write(board);
+		String message = null;
+		
 		if(writeResult>0) {
-			System.out.println("성공" + board.getBoardTitle());
-			System.out.println("성공" + board.getBoardContent());
-			System.out.println("성공" + board.getUserNo());
+			
+			message = "게시글이 등록되었습니다";
+			ra.addFlashAttribute("message", message);
 			return "redirect:/board/";
 		}else {
-			System.out.println("실패 " + board.getBoardTitle());
-			System.out.println("실패 " + board.getBoardContent());
-			System.out.println("성공" + board.getUserNo());
+			message = "게시글 삽입 실패...";
+			ra.addFlashAttribute("message", message);
 			return "board/boardWrite";
 		}
+			
 		
 		
 		
+	}
+	
+	@GetMapping("/paging")
+	public String paging(Model model,
+						@RequestParam(value = "page",required = false, defaultValue = "1")int page	) {
 		
+	System.out.println("page=" + page);	
+		
+		return "index";
 	}
 
 }

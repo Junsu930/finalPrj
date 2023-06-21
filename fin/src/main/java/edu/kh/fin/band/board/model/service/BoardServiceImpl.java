@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.fin.band.board.model.dao.BoardDAO;
 import edu.kh.fin.band.board.model.service.BoardService;
 import edu.kh.fin.band.board.model.vo.Board;
+import edu.kh.fin.band.board.model.vo.BoardDetail;
 @Service
 public class BoardServiceImpl implements BoardService{
 
@@ -26,6 +27,18 @@ public class BoardServiceImpl implements BoardService{
 	public List<Board> boardList() {
 		// TODO Auto-generated method stub
 		return dao.boardList();
+	}
+
+	@Override
+	public Board boardDetail(int boardNo) {
+		// TODO Auto-generated method stub
+		return dao.boardDetail(boardNo);
+	}
+
+	@Override
+	public void updateReadCount(int boardNo) {
+		dao.updateReadCount(boardNo);
+		
 	}
 
 	

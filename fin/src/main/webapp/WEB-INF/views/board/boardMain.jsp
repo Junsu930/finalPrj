@@ -64,8 +64,8 @@
     <div class="naviBar">
       <ul>
         <li><a href="#" class="total">전체</a></li>
-        <li><a href="#" class="noticeTogle">공지</a></li>
-        <li><a href="#" class="popularTogle">인기게시판</a></li>
+        <li><a href="#" class="noticeTogle">질문</a></li>
+        <li><a href="#" class="popularTogle">잡담</a></li>
         <li><a href="#" class="generalTogle">일반게시판</a></li>
        
        
@@ -111,23 +111,20 @@
             <c:when test="${ board.boardTag==1}">
               
                 
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">공지사항</span></div><a href="boardDetail" class="titleA">${board.boardTitle}</a></div></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">질문</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
           
           
           
           </c:when>
           
-           <c:when test="${ board.boardTag==2}">
+             <c:otherwise>
           
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">일반게시판</span></div><a href="boardDetail" class="titleA">${board.boardTitle}</a></div></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">잡담</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
           
           
           
-          </c:when>
-                <c:otherwise>
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagHot">인기게시판</span></div><a href="boardDetail" class="titleA">${board.boardTitle}</a></div></td>
-         
-          </c:otherwise>
+         </c:otherwise>
+             
                         </c:choose>
           <td class="ninkName"><a class="blockBoxOpen">${board.userNo}</a></td>
           <td class="views">${board.readCount}</td>
@@ -145,7 +142,7 @@
 
     <div class="pagination-search">
       <div class="pagination">
-          <a href="#"><span>1</span></a>
+          <a href="board/paging"><span>1</span></a>
           <a href="#" class="active"><span>2</span></a>
         </div>
       <div class="search-box">
