@@ -23,3 +23,12 @@ public class User {
 	private String banFl;
 	private String profileImg;
 }
+
+
+
+
+
+
+
+
+
