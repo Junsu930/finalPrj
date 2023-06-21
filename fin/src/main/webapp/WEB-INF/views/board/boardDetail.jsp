@@ -28,22 +28,40 @@
 
 <div class="DetailContainer">
     <div class="title-container">
-      <p class="tagsss">공지사항</p>
-      <h1 class="BoardDetailTitle">밴드아카이브 이용 안내 </h1>
+   <c:choose>
+            <c:when test="${board.boardTag==1}">
+              
+      <p class="tagsss">질문</p>
+      
+      
+      		</c:when>
+	  <c:otherwise>
+      		
+      <p class="tagsss">잡담</p>
+      </c:otherwise> 
+    
+ 
+      	
+   </c:choose>
+   
+   
+   
+       
+      <h1 class="BoardDetailTitle">${board.boardTitle}</h1> 
     </div>
     <div class="info">
       <div class="left">
-        <span class="nickname">이갈치</span>
+        <span class="nickname">${board.userNo}</span>
         <div class="viewsBox">
         <i class="fa-solid fa-eye"></i>
-        <span class="DetailViews">111</span>
+        <span class="DetailViews">${board.readCount}</span>
         </div>
         
         <div class="heartBox">
         <i class="fa-solid fa-heart"></i>
-        <span class="hearts">111</span>
+        <span class="hearts">${board.boardLike}</span>
         </div>
-        <span class="date">20.05.05</span>
+        <span class="date">${board.createDate}</span>
       </div>
       <div class="right">
         <button class="edit">수정</button>
@@ -52,20 +70,7 @@
     </div>
     
     <div class="content">
-      <p>공모명: [국방난제해결 아이디어 공모전] 해군 함정 기동 시 소음의 획기적 감소 방안
-        분야: 기획/ 아이디어/ 공학/ 기타
-        주최사: 정부/공공기관
-        <br>
-        
-        주제: 해군 함정 기동 시 획기적인 수중 소음 감소
-        <br>
-        활동내용: 적군 잠수함이 우리 해군 함정을 포착하기 어렵도록 함정 기동 시 적의 탐지를 회피할 수 있는 방안을 마련해주세요.
-        <br>
-        과제 배경 : 북한이 주요 비대칭 전략으로 운영 중인 잠수함은 전시에 아군 함정에 가장 위협이 되는 전력.
-        <br>
-        
-        
-        
+      <p>${board.boardContent}
         </p>
     </div>
     <div class="comments">

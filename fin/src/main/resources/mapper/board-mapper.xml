@@ -26,26 +26,7 @@
 		<result property="boardTag" column="BOARD_TAG" />
 	
 		
-		<collection property="imageList" column="BOARD_NO"
-			javaType="java.util.ArrayList" ofType="boardImage" select="selectImageList" />
-	
-		<!-- 
-			selectImageList의 조회 결과를
-			BoardDetail의 VO의 imageList 필드에 담겠다.
 		
-			-> imageList에 담기위한 ArrayList<BoardImage> 객체를 생성
-			 	( javaType="java.util.ArrayList" ofType="boardImage")
-		
-		
-			-> selectImageList 태그 수행 시 필요한 파라미터는
-				현재 resultMap ("detail_rm")의 BOARD_NO 컬럼에 저장된 값을 전달하겠다.
-		
-		
-			게시글 상세 조회 후 detail_rm resultMap이 호출되었을 때
-			상세 조회 결과 중 BOARD_NO 이용해서 selectImageList를 수행하고
-			결과를 imageList 필드에 세팅한다.
-		
-		 -->
 	</resultMap>
 	
 	
@@ -55,7 +36,7 @@
 		<result property="imageReName" column="IMG_RENAME" />
 		<result property="imageOriginal" column="IMG_ORIGINAL" />
 		<result property="boardNo" column="BOARD_NO" />
-	</resultMap>
+	</resultMap> 
 	
 	<select id="boardList" resultMap="board_rm">
         SELECT * 
@@ -69,8 +50,26 @@
    SEQ_BOARD_NO.NEXTVAL,
     #{boardTitle}, #{boardContent},DEFAULT, DEFAULT, DEFAULT, #{userNo}, DEFAULT,#{boardTag} 
    )
-   
-  
 	</insert>
+		<!-- 게시글 상세 조회 -->
+	<select id="boardDetail" resultMap="board_rm">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT,
+		TO_CHAR(CREATE_DATE, 'YY"." MM"." DD') CREATE_DATE,
+		READ_COUNT, USER_NO, BOARD_LIKE, BOARD_LIKE,
+		BOARD_TAG
+		FROM BOARD
+		WHERE BOARD_NO = ${boardNo}
+		AND BOARD_ST = 'N'
+	</select>
+	
+	
+		<!-- 조회수 증가 -->
+	<update id="updateReadCount">
+		UPDATE BOARD SET
+		READ_COUNT = READ_COUNT + 1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	
 	
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fin.band.board.model.vo.Board;
+import edu.kh.fin.band.board.model.vo.BoardDetail;
 
 @Repository
 public class BoardDAO {
@@ -23,6 +24,16 @@ public class BoardDAO {
 	public List<Board> boardList() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("boardMapper.boardList");
+	}
+
+	public Board boardDetail(int boardNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("boardMapper.boardDetail",boardNo);
+	}
+
+	public void updateReadCount(int boardNo) {
+		// TODO Auto-generated method stub
+		sqlSession.update("boardMapper.updateReadCount",boardNo);
 	}
 
 	
