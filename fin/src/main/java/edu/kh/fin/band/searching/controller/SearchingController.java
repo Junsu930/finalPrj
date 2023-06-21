@@ -50,14 +50,14 @@ public class SearchingController {
 		
 		if(session.getAttribute("loginUser") != null) { // 로그인이 되어있는 경우
 			
-			System.out.println(loginUser.getUserNo());
+			System.out.println("로그인이 되어있음" +loginUser.getUserNo());
 			
-			String result = service.checkInfo(loginUser.getUserNo());
+			int result = service.checkInfo(loginUser.getUserNo());
 			
 			System.out.println(result);
 			
 			
-			if(result !=null) {// 작성이 되어있는 경우
+			if(result > 0) {// 작성이 되어있는 경우
 				message = "";
 				path = "/findingMember";
 			} else { // 작성이 안되어 있는 경우
@@ -73,7 +73,7 @@ public class SearchingController {
 			
 		}
 		
-		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("msg", message);
 		
 		
 		return "redirect:" + path;
@@ -149,7 +149,8 @@ public class SearchingController {
 			@RequestParam("gender") char gender,
 			@RequestParam("region") String region,
 			@RequestParam("inst") String inst,
-			@RequestParam("genre") String genre, Model model, @ModelAttribute("loginUser") User loginUser) {
+			@RequestParam("genre") String genre, Model model, @ModelAttribute("loginUser") User loginUser
+			,RedirectAttributes ra) {
 		
 		Searching setInfo = new Searching();
 		
@@ -159,7 +160,23 @@ public class SearchingController {
 		setInfo.setRegion(region);
 		setInfo.setUserNo(loginUser.getUserNo());
 		
-		return null;
+		int Info = service.setInfo(setInfo);
+		
+		String message = null;
+		String path = null;
+		
+		if(Info >0) {
+			message = "입력 완료 이제 멤버를 찾아보세요";
+			path = "redirect:/findingMember";
+			
+		} else {
+			message = "입력 오류";
+			path = "redirect:/setPosition";
+		}
+		
+		ra.addFlashAttribute("msg", message);
+		
+		return path;
 		
 	}
 	

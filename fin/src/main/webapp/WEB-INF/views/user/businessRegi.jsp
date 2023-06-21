@@ -67,7 +67,7 @@
 
                     <div class="loginRegister">   <!--login-register-->
                         <p>Don't have an account? <a href="#" class="register-link">Business Register</a></p>
-                        <p><a href="${contextPath}/login" class="register-link">Normal login</a></p>
+                        <p>Back to normal login?<a href="${contextPath}/login" class="register-link">Normal login</a></p>
                     </div>
 
                 </form>

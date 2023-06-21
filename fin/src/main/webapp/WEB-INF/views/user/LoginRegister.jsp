@@ -38,6 +38,8 @@
 
             <div class="formBox login"> <!--for-box login-->
                 <h2>LOGIN</h2>
+                
+                
 		
                 <form action="fin/login" method="POST" name="login-form" onsubmit="return loginValidate()">
                     <div class="inputBox"> <!--input-box-->

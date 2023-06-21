@@ -217,7 +217,7 @@ email.addEventListener("input", function(){
 /*인증번호 보내기 js*/
 
 // 인증번호 보내기
-const sendEmail = document.getElementById("sendEm");
+const sendEmail = document.getElementById("sendEmail");
 const cMessage = document.getElementById("cMessage");
 let chem;
 // 타이머에 사용될 변수

@@ -50,7 +50,14 @@
             </div>
 
             <div class="imgBox">
-                <img src="" alt="이미지">
+                <c:if test="${empty loginMember.profileImage}">
+                	<img src="${contextPath}/resources/images/profileImage/user.png" id="profile-image">
+                </c:if>
+
+                <c:if test="${!empty loginMember.profileImage}">
+                     <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
+                </c:if>
+                
                 <form action="">
                     <i class="bi bi-camera-fill"></i>
                 </form>
@@ -528,25 +535,33 @@
                 <div class="modalInfoTitleBox">
                     <p>회원 정보 수정</p>
                 </div>
-                <form action="">
+                <form action="fin/updateInfo">
+                	<span id="delete-image">x</span>
+                
                     <div class="modalImgBox">
-                        <img src="" alt="프사">
-                        <i class="bi bi-camera-fill"></i>
-                    </div>
+                        <c:if test="${empty loginMember.profileImage}">
+                            <img src="${contextPath}/resources/images/profileImage/user.png" id="profile-image">
+                        </c:if>
 
+                        <c:if test="${!empty loginMember.profileImage}">
+                            <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
+                        </c:if>
+                        <i class="bi bi-camera-fill"><input type="file" name="uploadImage" id="input-image" accept="image/*" onchange="image()"></i>              
+                    </div>
+                
                     <div class="modalInputBox">
                         <div class="input-box">
                             <span class="icon">
                                 <ion-icon name="mail"></ion-icon>
                             </span>
-                            <input type="email" required id="userEmail">
+                            <input type="email" required id="userEmail" name="newEmail" onchange="email()">
                             <label>EMAIL</label>
                         </div>
                         <div class="input-box">
                             <span class="icon">
                                 <ion-icon name="lock-closed"></ion-icon>
                             </span>
-                            <input type="password" required id="userPw"> 
+                            <input type="password" required id="userPw" name="newPw" onchange="pw()"> 
                             <label>PASSOWORD</label>
                         </div>
 
@@ -554,7 +569,7 @@
                             <span class="icon">
                                 <ion-icon name="person"></ion-icon>
                             </span>
-                            <input type="text" required id="userNick">
+                            <input type="text" required id="userNick" name="newNick" onchange="nick()">
                             <label>NICKNAME</label>
                         </div>
                         

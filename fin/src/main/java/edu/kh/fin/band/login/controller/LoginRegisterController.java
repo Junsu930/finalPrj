@@ -82,7 +82,7 @@ public class LoginRegisterController {
 			
 		} else { //실패 
 			
-			ra.addFlashAttribute("message", "이메일또는 비밀번호가 틀립니다");
+			ra.addFlashAttribute("msg", "이메일또는 비밀번호가 틀립니다");
 			path = "redirect:/login";
 			
 		}
@@ -155,7 +155,7 @@ public class LoginRegisterController {
 		String path = null;
 		
 		if(result > 0) {
-			message = "회원가입 완료";
+			message = "회원가입 완료 로그인을 해주세요";
 			path = "redirect:/login";
 			
 		}else { 
@@ -163,7 +163,7 @@ public class LoginRegisterController {
 			path = "redirect:/login"; 
 		}
 		
-		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("msg", message);
 		return path;
 	
 		

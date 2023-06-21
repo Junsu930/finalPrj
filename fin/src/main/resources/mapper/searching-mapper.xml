@@ -15,6 +15,22 @@
 		<result property="userName" column="USER_NICK" />
 	</resultMap>
 	
+	
+	<resultMap type="user" id="user_rm">
+  	
+  	<id property="userNo" column="USER_NO"/>
+  	
+  	<result property="userEmail" 		column="USER_EMAIL"/>
+	<result property="userPw" 		column="USER_PWD"/>
+	<result property="userNick" 	column="USER_NICK"/>
+	<result property="joinDate" 		column="JOIN_DATE"/>
+	<result property="secessionFl" 		column="SECESSION_FL"/>
+	<result property="matchFl" 		column="MATCHING_FL"/>
+	<result property="userType" 		column="USER_TYPE"/>
+	<result property="intro" 		column="INTRO_MENT"/>
+	<result property="banFl" 		column="BANNED_FL"/>
+  </resultMap>
+	
 	<select id="memberList" parameterType="searching" resultMap="searching_rm">
 	  	SELECT USER_NO, USER_NICK, INST, GENRE, REGION, GENDER
 		FROM MATCHING_INFO
@@ -28,9 +44,21 @@
 	</select>
 	
 	
-	<select id="checkInfo" parameterType="searching" resultMap="searching_rm">
-		SELECT USER_NO FROM MATCHING_INFO
+	<select id="checkInfo" parameterType="user" resultType="_int">
+		SELECT COUNT(*) FROM MATCHING_INFO
 		WHERE USER_NO = #{userNo}
 	</select>
+	
+	<insert id="setInfo" parameterType="searching">
+		INSERT INTO MATCHING_INFO VALUES(
+  			MATCHING_SEQ.NEXTVAL,
+  			#{userNo},
+  			#{inst},
+  			#{genre},
+  			#{region},
+  			#{gender},
+  			NULL
+  	)
+	</insert>
 	
 </mapper>
