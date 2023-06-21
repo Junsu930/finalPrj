@@ -43,7 +43,7 @@
 		<div class="chatbox">
 		<!-- 채팅창 탑 메뉴 -->
 		<div class="top-bar">
-			<div class="avatar"></div>
+			<div class="avatar" id="otherProfile"></div>
 			<div class="name" id="withChatName"></div>
 		</div>
 		<!-- 채팅상황 -->
@@ -66,7 +66,12 @@
 		</div>
 		<div class="messages"></div>
 		<div class="profile">
-			<div class="avatar"><img src="${sessionScope.loginUser.profileImg}" id="avatarImg"></div>
+			<c:if test="${!empty sessionScope.loginUser.profileImg}">
+				<div class="avatar"><img src="${sessionScope.loginUser.profileImg}" id="avatarImg"></div>
+			</c:if>
+			<c:if test="${empty sessionScope.loginUser.profileImg}">
+				<div class="avatar"></div>
+			</c:if>
 			<div class="chatUserNickDiv" id="chatUserNickDiv"></div>
 		</div>
 		<ul class="people" id="chatPeople">
