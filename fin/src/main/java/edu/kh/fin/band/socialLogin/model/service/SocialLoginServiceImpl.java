@@ -26,7 +26,7 @@ public class SocialLoginServiceImpl implements SocialLoginService {
 	}
 
 	@Override
-	public SocialInfo getUser(int userNo) {
+	public User getUser(int userNo) {
 		return dao.getUser(userNo);
 	}
 

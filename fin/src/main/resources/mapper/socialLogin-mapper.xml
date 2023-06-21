@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="socialMapper">
-	<resultMap type="social" id="naver_user_rm">
+	<resultMap type="user" id="naver_user_rm">
 		<id property="userNo" column="USER_NO"/>
 		<result property="userEmail" column="USER_EMAIL"/>
 		<result property="userNick" column="USER_NICK"/>
