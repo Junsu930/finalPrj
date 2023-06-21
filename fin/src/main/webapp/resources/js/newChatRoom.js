@@ -51,8 +51,8 @@ function checkRoom(userNo){
             document.getElementById("chatPeople").innerHTML = "";
 
             let checkedNick = document.getElementById("hiddenUserName").value;
-
             $("#chatUserNickDiv").html(checkedNick);
+
 
             for(let eachD of checkArr){
 
@@ -292,6 +292,22 @@ function chatStart(withUserNo){
 
         })
     }
+
+}
+
+
+// 이미지 확인 메서드
+function withUserImg(withUserNo){
+    
+    $.ajax({
+        url: "/fin/chattingCheckImg",
+        data : {"userNo" : withUserNo},
+        type : "post",
+        success : function(data){
+            return data;
+        }
+
+    });
 
 }
 

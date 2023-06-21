@@ -68,6 +68,11 @@ public class ChatService {
 	}
 
 
+	public String chattingCheckImg(int userNo) {
+		return dao.chattingCheckImg(userNo);
+	}
+
+
 
 
 }

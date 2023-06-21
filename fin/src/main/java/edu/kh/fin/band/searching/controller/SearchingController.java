@@ -143,7 +143,6 @@ public class SearchingController {
 		return "finding/memberList";
 	}
 	
-	
 	@PostMapping("setPosition")
 	public String setInfo(
 			@RequestParam("gender") char gender,
@@ -162,6 +161,7 @@ public class SearchingController {
 		return null;
 		
 	}
+
 	
 	
 }
