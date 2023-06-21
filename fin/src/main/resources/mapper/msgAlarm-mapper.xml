@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="alaramMapper">
+
+	<resultMap type="msgAlarm" id="msgAlarm_rm">
+		<id property="alarmNo" column="ALARM_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="msgNo" column="MSG_NO" />
+		<result property="alarmStatus" column="ALARM_STATUS" />
+		<result property="alarmReadStatus" column="ALARM_READ_STATUS" />
+	</resultMap>
+	
+	<resultMap type="msgAlarm" id="getUserNick_rm">
+		<id property="alarmNo" column="ALARM_NO"/>
+		<result property="userNick" column="USER_NICK" />
+		<result property="sendDay" column="SEND_DAY" />
+		<result property="sendMonth" column="SEND_MONTH" />
+	</resultMap>
+	
+	
+	
+	
+	
+	
+
+	<insert id="insertMsgAlarm" parameterType="msgAlarm">
+		INSERT INTO MSG_ALARM (ALARM_NO, USER_NO, ALARM_TYPE, ALARM_STATUS)
+		VALUES(1, #{userNo}, #{msgNo}, #{alarmStatus} )
+	</insert>
+	
+	<select id="getAlarmCount" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) AS COUNT FROM MSG_ALARM WHERE USER_NO = #{loginUserNo} AND ALARM_STATUS = 'N' AND ALARM_READ_STATUS = 'N'
+	</select>
+	
+	<update id="deleteAlarm" parameterType="_int">
+		UPDATE MSG_ALARM SET ALARM_STATUS = 'Y' WHERE MSG_NO = #{msgNo}
+	</update>
+	
+	<select id="getUserNicks" parameterType="_int" resultMap="getUserNick_rm">
+		SELECT 
+		u.USER_NICK,
+		TO_CHAR(mb.SEND_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MONTH,
+		TO_CHAR(mb.SEND_DATE, 'YY"일"') AS SEND_DAY
+		FROM
+		MESSAGE_BOX mb
+		JOIN MSG_ALARM ma ON mb.MSG_NO = ma.MSG_NO
+		JOIN "USER" u ON u.USER_NO = mb.SEND_USER_NO
+		WHERE
+		mb.RECEIVER_USER_NO = #{loginUser}
+		AND ma.ALARM_STATUS = 'N'
+		AND ma.ALARM_READ_STATUS = 'N'
+	</select> 
+	
+	
+	<update id="disappearCount" parameterType="_int">
+		UPDATE MSG_ALARM SET ALARM_READ_STATUS = 'Y' WHERE USER_NO = #{loginUserNo}
+	</update>
+	
+
+
+</mapper>

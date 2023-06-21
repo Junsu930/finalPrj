@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
 
-import edu.kh.fin.band.alarm.model.vo.Alarm;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.message.model.service.MessageBoxService;
 import edu.kh.fin.band.message.model.vo.MessageBox;
+import edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm;
 
 @SessionAttributes({"loginUser"})
 @Controller
@@ -66,15 +66,16 @@ public class MessageBoxController {
 	@ResponseBody
 	public String sendMsg(@RequestParam("replyMsgText") String replyMsgText,
 			@RequestParam("receiverUserNo") int receiverUserNo,
+			@RequestParam("msgNoForAlarm") int msgNoForAlarm,
 			@ModelAttribute("loginUser") User loginUser) {
 		
 		int result = 0;
 		int alarmResult = 0;
 		
-		Alarm alarm = new Alarm();
+		MsgAlarm alarm = new MsgAlarm();
 		
 		alarm.setUserNo(receiverUserNo);
-		alarm.setAlarmType(1);
+		alarm.setMsgNo(msgNoForAlarm);
 		alarm.setAlarmStatus('Y');
 		
 		alarmResult = service.insertMsgAlarm(alarm);
@@ -115,11 +116,14 @@ public class MessageBoxController {
 	@PostMapping("/deleteMsg")
 	public String deleteMsg(@RequestParam("msgNo") int msgNo) {
 		
+		int toTalResult = 0;
+		int dleteAlarmResult = service.deleteAlarm(msgNo); // 쪽지 알람 삭제
+		int result = service.deleteMsg(msgNo); // 쪽지 삭제
 		
 		
-		int result = service.deleteMsg(msgNo);
+		toTalResult = dleteAlarmResult + result;
 		
-		if(result > 0) {
+		if(toTalResult == 2) {
 			  return new Gson().toJson("쪽지 삭제 성공!");
 		  } else {
 			  return new Gson().toJson("쪽지 삭제 실패 ㅠㅠ");

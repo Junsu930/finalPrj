@@ -2,8 +2,8 @@ package edu.kh.fin.band.message.model.service;
 
 import java.util.List;
 
-import edu.kh.fin.band.alarm.model.vo.Alarm;
 import edu.kh.fin.band.message.model.vo.MessageBox;
+import edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm;
 
 
 
@@ -40,6 +40,20 @@ public interface MessageBoxService {
 
 
 
-	int insertMsgAlarm(Alarm alarm);
+	/**
+	 * 메시지 알람 추가 서비스
+	 * @param alarm
+	 * @return
+	 */
+	int insertMsgAlarm(MsgAlarm alarm);
+
+
+
+	/**
+	 * 메시지 알람 삭제 서비스
+	 * @param msgNo
+	 * @return
+	 */
+	int deleteAlarm(int msgNo);
 
 }

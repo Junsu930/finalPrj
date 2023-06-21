@@ -169,23 +169,94 @@ function showAlertView(){
   return wrapperUlOpen = true;
 }
 
-// message View 보이기
-const messageUlBox = document.querySelector('.messageUlBox');
 
-function showMessageView(){
-  messageUlBox.classList.toggle('alertViewShow');
-  return messageUlBoxOpen = true;
-}
 
-// window.addEventListener('click', function(e){
-//   if(messageUlBoxOpen == true){
-//     console.log('true123123');
-//     if(e.target != messageUlBox){
-//       console.log("abc");
-//       messageUlBox.style.display = "none";
-//     }
-//   }
-// });
+$.ajax({ // 접속하자마자 userNo 가져오는 ajax
+  url:"getUserNo",
+  method:"GET",
+  dataType:"JSON",
+  success: function(result){
+
+    let loginUserNo = result;
+
+    $.ajax({ // userNo를 바탕으로 userNick 가져오는 ajax
+      url:"getUserNicks",
+      method:"GET",
+      data:{"loginUserNo": loginUserNo},
+      dataType:"JSON",
+      success: function(getUserNicks){
+        console.log(getUserNicks);
+        let stringMsg = "님께서 회원님에게 쪽지를 보냈습니다!"
+
+        if(getUserNicks === "none"){
+          $('.messageUlBox').append('<li class="wrapperLi"><a href="msgBoxPage" id="msgBoxPageA"><p>NO NEW MESSAGE</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
+        }else{
+          for(let i = 0; i < getUserNicks.length; i++){
+            $('.messageUlBox').append(`<li class="wrapperLi"><div class="messageDate"><h3>${getUserNicks[i].sendMonth}<br><span>${getUserNicks[i].sendDay}</span></h3></div>
+            <a href="msgBoxPage"><p>${getUserNicks[i].userNick + stringMsg}<br>지금 확인하세요!</p></a></li>`) // 새로운 쪽지가 있을 때, 코드 수행
+          }
+        } // if끝
+
+      },
+      error : function(request, status, error){
+        console.log("getUserNicks AJAX 에러 발생");
+        console.log("상태코드 : " + request.status); 
+      }
+    });
+
+    $.ajax({ // userNo를 바탕으로 alarmCount 가져오는 ajax
+      url:"getAlarmCount",
+      method:"GET",
+      data:{"loginUserNo": loginUserNo},
+      dataType: "JSON",
+      success: function(count){
+  
+        const alarmCount = count;
+        console.log(alarmCount);
+  
+        if(alarmCount != 0){
+          $('#alarmCount').css('display', 'block');
+          $('#alarmCount').text(alarmCount); // 알람 카운트가 0 초과일 때, 수행
+        }else{
+          console.log(alarmCount);
+        }
+      }, // success 끝나는 부분
+      error : function(request, status, error){
+        console.log("getAlarmCount AJAX 에러 발생");
+        console.log("상태코드 : " + request.status); 
+      }
+    });
+
+
+    // 메세지 아이콘 클릭 시, count 갯수 사라지게 하는 이벤트 리스너
+    document.getElementById('msgBoxOpen').addEventListener('click', function() {
+
+    let messageUlBox = document.querySelector('.messageUlBox');
+    $.ajax({
+      url:"disappearCount",
+      method:"GET",
+      data:{"loginUserNo": loginUserNo},
+      dataType: "JSON",
+      success: function(result){
+        console.log(result);
+        $('#alarmCount').css('display', 'none'); // 알람 카운트 보이는 걸 없애기
+      },
+      error : function(request, status, error){
+        console.log("showMessageView AJAX 에러 발생");
+        console.log("상태코드 : " + request.status); 
+      }
+    });
+    messageUlBox.classList.toggle('alertViewShow');
+    return messageUlBoxOpen = true;
+  }); // 이벤트 리스너 끝
+
+  }, // 상단 success 끝
+  error : function(request, status, error){
+    console.log("getUserNo AJAX 에러 발생");
+    console.log("상태코드 : " + request.status); 
+  }
+}); // 상단 ajax끝
+
 
 
 

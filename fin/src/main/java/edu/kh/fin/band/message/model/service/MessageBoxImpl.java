@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.kh.fin.band.alarm.model.vo.Alarm;
 import edu.kh.fin.band.message.model.dao.MessageBoxDAO;
 import edu.kh.fin.band.message.model.vo.MessageBox;
+import edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm;
 
 
 @Service
@@ -48,10 +48,25 @@ public class MessageBoxImpl implements MessageBoxService{
 	}
 
 
+	/**
+	 * 메세지 알람 추가 서비스
+	 * @author lee
+	 */
 	@Override
-	public int insertMsgAlarm(Alarm alarm) {
+	public int insertMsgAlarm(MsgAlarm alarm) {
 		// TODO Auto-generated method stub
 		return dao.insertMsgAlarm(alarm);
+	}
+
+
+	/**
+	 * 메세지 알람 삭제 서비스
+	 * @author lee
+	 */
+	@Override
+	public int deleteAlarm(int msgNo) {
+		// TODO Auto-generated method stub
+		return dao.deleteAlarm(msgNo);
 	}
 
 }

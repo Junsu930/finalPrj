@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
     <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/header.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap');
@@ -62,8 +63,14 @@
                 </c:otherwise>
             </c:choose>
 
-            <button id="alertBell" class="alertBell navA" onclick="showAlertView()"><i class="bi bi-bell"></i></button> <!-- 로그인 시 알림 아이콘-->
-            <button id="msgBoxOpen" class="msgBoxOpen navA" onclick="showMessageView()"><i class="fa-regular fa-paper-plane"></i></button> <!-- 로그인 시 쪽지 아이콘 -->
+            <button id="alertBell" class="alertBell navA" onclick="showAlertView()">
+                <i class="bi bi-bell"></i>
+            </button> <!-- 로그인 시 알림 아이콘-->
+            
+            <button id="msgBoxOpen" class="msgBoxOpen navA">
+                <i class="fa-regular fa-paper-plane"></i>
+                <p id="alarmCount"></p>
+            </button> <!-- 로그인 시 쪽지 아이콘 -->
             
         
             <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a> <!-- myPageIMG 임 signUPUMG가 아님 signUP 페이지가 사라지고 로그인 페이지에서 다돼기 때문에-->
@@ -113,54 +120,23 @@
           </div>
           
           
+
+
+
           <!-- 쪽지 확인  -->
-          
           <ul class="messageUlBox">
 	        <h1>Message Box</h1>
-	        <li>
-	            <div class="messageDate">
-	                <h3>Mar<br><span>03</span></h3>
+            <!-- <li class="wrapperLi"> -->
+	            <!-- <div class="messageDate">
+	                <h3>
+                        <br>
+                        <span></span>
+                    </h3>
 	            </div>
-	            <a href="msgBoxPage">
-	                <p>깅깅님께서 회원님에게 쪽지를 보냈습니다!<br>지금 확인하세요!</p>
-	            </a>
-	        </li>
-	
-	        <li>
-	            <div class="messageDate">
-	                <h3>Mar<br><span>03</span></h3>
-	            </div>
-	            <a href="#none">
-	                <p>깅깅님께서 회원님에게 쪽지를 보냈습니다!<br>지금 확인하세요!</p>
-	            </a>
-	        </li>
-	
-	        <li>
-	            <div class="messageDate">
-	                <h3>Mar<br><span>03</span></h3>
-	            </div>
-	            <a href="#none">
-	                <p>깅깅님께서 회원님에게 쪽지를 보냈습니다!<br>지금 확인하세요!</p>
-	            </a>
-	        </li>
-	
-	        <li>
-	            <div class="messageDate">
-	                <h3>Mar<br><span>03</span></h3>
-	            </div>
-	            <a href="#none">
-	                <p>깅깅님께서 회원님에게 쪽지를 보냈습니다!<br>지금 확인하세요!</p>
-	            </a>
-	        </li>
-	
-	        <li>
-	            <div class="messageDate">
-	                <h3>Mar<br><span>03</span></h3>
-	            </div>
-	            <a href="#none">
-	                <p>깅깅님께서 회원님에게 쪽지를 보냈습니다!<br>지금 확인하세요!</p>
-	            </a>
-	        </li>
+	            <a href="msgBoxPage" class="messageUserBox">
+	                <p></p>
+	            </a> -->
+	        <!-- </li> -->
    		 </ul>
           
           

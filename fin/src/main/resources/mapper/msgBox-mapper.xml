@@ -18,7 +18,7 @@
 		FROM
 		MESSAGE_BOX m
 		JOIN "USER" u1 ON m.SEND_USER_NO = u1.USER_NO
-		WHERE m.RECEIVER_USER_NO = #{receiverUserNo}
+		WHERE m.RECEIVER_USER_NO = #{receiverUserNo} AND MSG_FL = 'N'
 		ORDER BY MSG_NO
 	</select>
 	
@@ -28,9 +28,9 @@
 		VALUES (5, #{sendUserNo}, #{receiverUserNo}, #{msgContent}, NULL, DEFAULT)
 	</insert>
 	
-	<delete id="deleteMsg" parameterType="_int">
-		DELETE MESSAGE_BOX WHERE MSG_NO = #{msgNo}
-	</delete>
+	<update id="deleteMsg" parameterType="_int">
+		UPDATE MESSAGE_BOX SET MSG_FL = 'Y' WHERE MSG_NO = #{msgNo}
+	</update>
 
 
 
