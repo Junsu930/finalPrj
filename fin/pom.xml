@@ -372,6 +372,13 @@
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.example.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
