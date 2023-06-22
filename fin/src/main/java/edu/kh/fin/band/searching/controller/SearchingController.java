@@ -59,16 +59,16 @@ public class SearchingController {
 			
 			if(result > 0) {// 작성이 되어있는 경우
 				message = "";
-				path = "/findingMember";
+				path = "finding/findingMember";
 			} else { // 작성이 안되어 있는 경우
 				message = "본인의 정보를 작성해주세요";
-				path = "/setPosition";
+				path = "redirect:/setPosition";
 			}
 			
 		} else {// 로그인이 안되어 있는경우
 			
 			message = "로그인을 해주세요";
-			path = "/login";
+			path = "redirect:/login";
 			
 			
 		}
@@ -76,7 +76,7 @@ public class SearchingController {
 		ra.addFlashAttribute("msg", message);
 		
 		
-		return "redirect:" + path;
+		return path;
 		
 		
 		

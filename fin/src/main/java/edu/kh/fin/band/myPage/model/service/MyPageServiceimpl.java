@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fin.band.common.Util;
+import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.dao.MyPageDAO;
 
 @Service
@@ -21,50 +22,73 @@ public class MyPageServiceimpl implements MyPageService{
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 
+	/** 이메일 닉네임 업데이트
+	 *
+	 */
 	@Override
-	public int updateInfo(Map<String, Object> paramMap) throws IOException {
-		
-		int updateInfo = dao.updateInfo(paramMap);
-		
-		String encPw = dao.selectEncPw( (int)paramMap.get("userNo") );
+	public int updateInfo(Map<String, Object> paramMap){
+		return dao.updateInfo(paramMap);
 		
 		
-		if( bcrypt.matches( (String)paramMap.get("userPw") , encPw) ) {
-			
-			paramMap.put("newPw", bcrypt.encode( (String)paramMap.get("newPw")) );
-			
-			
-			int updatePw = dao.changePw(paramMap);
-		}
+	}
+
+	/** 프로필 이미지 업데이트
+	 *
+	 */
+	@Override
+	public int updateImg(Map<String, Object> paramMap, User loginUser) throws IOException {
 		
 		MultipartFile uploadImage = (MultipartFile)paramMap.get("uploadImage");
-		String delete = (String)paramMap.get("delete");
+		
 		
 		String renameImage = null;
 		
-		if( delete.equals("0") ) { // 이미지가 변경된 경우
+			// 이미지가 변경된 경우
 			
 			// 파일명 변경
 			// uploadImage.getOriginalFilename() : 원본 파일명
 			renameImage = Util.fileRename( uploadImage.getOriginalFilename() );
 			
-			paramMap.put("profileImage", paramMap.get("webPath") + renameImage);
-									//  /resources/images/memberProfile/20220624122315.png
+			paramMap.put("profileImg", paramMap.get("webPath") + renameImage);
 			
-		} else {
 			
-			paramMap.put("profileImage", null);
+		
+			
+				   int img = dao.updateImg(paramMap);
+		
+					if( img > 0 && paramMap.get("profileImg") != null) {
+						uploadImage.transferTo( new File( paramMap.get("folderPath") + renameImage) );
+				
+			}
+			
+			return img;
+	}
+
+	/** 포지션 업데이트
+	 *
+	 */
+	@Override
+	public int updatePosition(Map<String, Object> paramMap) {
+		
+		return dao.updatePosition(paramMap);
+	}
+
+	/** 비밀번호 변경 서비스impl
+	 *
+	 */
+	@Override
+	public int changePw(Map<String, Object> paramMap) {
+		
+		String encPw = dao.selectEncPw((int) paramMap.get("userPw") );
+		
+			if( bcrypt.matches( (String)paramMap.get("userPw") , encPw) ) {
+			
+			paramMap.put("newPw", bcrypt.encode( (String)paramMap.get("newPw")) );
+			
+			
+			return dao.changePw(paramMap);
 			
 		}
-		
-		int updateImage =  dao.updateImage(paramMap);
-		
-		if( updateImage > 0 && paramMap.get("profileImage") != null) {
-			uploadImage.transferTo( new File( paramMap.get("folderPath") + renameImage) );
-		}
-		
-		
-		int result = updateInfo;
 		
 		return 0;
 	}

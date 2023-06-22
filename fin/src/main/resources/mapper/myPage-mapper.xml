@@ -2,10 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="myPageMapper">
 
+	<resultMap type="user" id="user_rm">
+  	
+  		<id property="userNo" column="USER_NO"/>
+  	
+  		<result property="userEmail" 		column="USER_EMAIL"/>
+		<result property="userPw" 		column="USER_PWD"/>
+		<result property="userNick" 	column="USER_NICK"/>
+		<result property="joinDate" 		column="JOIN_DATE"/>
+		<result property="secessionFl" 		column="SECESSION_FL"/>
+		<result property="matchFl" 		column="MATCHING_FL"/>
+		<result property="userType" 		column="USER_TYPE"/>
+		<result property="intro" 		column="INTRO_MENT"/>
+		<result property="banFl" 		column="BANNED_FL"/>
+		<result property="profileImg" 	column="IMAGE"/>
+
+  </resultMap>
+
 	<update id="updateInfo">
 		UPDATE "USER" SET
-		USER_EMAIL = #{userEmail}
-		USER_NICK = #{userNick}
+		USER_EMAIL = #{newEmail},
+		USER_NICK = #{newNick}
+		WHERE USER_NO = ${userNo}
 	</update>
 	
 	<select id="selectEncPw" resultType="string">
@@ -16,12 +34,20 @@
 	<update id="changePw">
 		UPDATE "USER" SET
 		USER_PWD = #{newPw}
-		WHERE USER_NO = #{userNo}
+		WHERE USER_NO = ${userNo}
 	</update>
 	
-	<update id="updateProfile">
+	<update id="updateImg">
 		UPDATE "USER" SET
-		IMAGE = #{profileImage}
+		IMAGE = #{profileImg}
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	<update id="updatePosition">
+		UPDATE MATCHING_INFO SET
+		INST = #{inst},
+		REGION = #{region},
+		GENRE = #{genre}
 		WHERE USER_NO = ${userNo}
 	</update>
 

@@ -819,10 +819,10 @@ input[type="checkbox"]:checked + label:before {
   height: 80%;
   
   }
-  
+  /*
   #input-image {
   display:none;
-  }
+  }*/
   
  
 
