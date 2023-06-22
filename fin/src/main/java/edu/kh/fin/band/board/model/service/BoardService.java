@@ -16,6 +16,14 @@ public interface BoardService {
 
 	void updateReadCount(int boardNo);
 
+	void delete(int boardNo);
+
+	void boardUpdate(Board board);
+
+
+
+	
+
 
 
 }

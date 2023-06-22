@@ -69,7 +69,17 @@
 		READ_COUNT = READ_COUNT + 1
 		WHERE BOARD_NO = #{boardNo}
 	</update>
+	<delete id="delete" parameterType="board">
 	
+	DELETE FROM BOARD 
+	WHERE BOARD_NO = #{boardNo}
+	
+	</delete>
+	<update id="boardUpdate" parameterType="board">
+		UPDATE BOARD SET
+		BOARD_TITLE=#{boardTitle}, BOARD_CONTENT=#{boardContent}
+		WHERE BOARD_NO = #{boardNo}
+	</update> 
 	
 	
 </mapper>

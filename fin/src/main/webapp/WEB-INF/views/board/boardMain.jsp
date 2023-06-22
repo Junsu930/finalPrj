@@ -66,7 +66,7 @@
         <li><a href="#" class="total">전체</a></li>
         <li><a href="#" class="noticeTogle">질문</a></li>
         <li><a href="#" class="popularTogle">잡담</a></li>
-        <li><a href="#" class="generalTogle">일반게시판</a></li>
+       
        
        
         <c:if test="${!empty loginUser}">
@@ -148,9 +148,9 @@
       <div class="search-box">
         <select id="nav-select">
           <option value="all">전체</option>
-          <option value="notice">공지</option>
-          <option value="popular">인기게시판</option>
-          <option value="general">일반게시판</option>
+          <option value="notice">질문</option>
+          <option value="popular">잡담</option>
+          
         </select>
         <input type="text" placeholder="글 검색">
         <button type="button" class="searchBtn">검색</button>
