@@ -17,6 +17,9 @@
 	<link rel="stylesheet" href="${contextPath}/resources/css/loginbootStrap.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/loginModal.css">
 	<script src = "${contextPath}/resources/js/myPageModal.js"></script>
+  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.2.0/kakao.min.js"
+  integrity="sha384-x+WG2i7pOR+oWb6O5GV5f1KN2Ko6N7PTGPS7UlasYWNxZMKQA63Cj/B2lbUmUfuC" crossorigin="anonymous"></script>
+
 
 	</head>
       <!--바디 부분 시작-->
@@ -64,8 +67,20 @@
                         <a href="#">Forgot Password?</a>
                     </div>
 
-                    <button type="submit" class="btn">LOGIN</button>
-                    <div id="naver_id_login"></div>
+                    <div class="loginBtnBox">
+                      <button type="submit" class="btn">LOGIN</button>
+
+                      <a id="naver_id_login">
+                        <img src="${contextPath}/resources/images/naverIMG.png" alt="">
+                      </a>
+
+                      <div class="kakaoBtn">
+                        <a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=de31983424f4bd5faadc8493b90e5626&response_type=code&redirect_uri=http://localhost:8091/fin/kakaoLogin">
+                          LOGIN WITH KAKAO
+                        </a>
+                      </div>
+
+                    </div>
 
                     <div class="loginRegister">   <!--login-register-->
                         <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
@@ -224,7 +239,8 @@
     
         	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
    
-   			<script src="${contextPath}/resources/js/LoginRegister.js?ver=1"></script>
+      <script src="${contextPath}/resources/js/LoginRegister.js?ver=1"></script>
 			<script src="${contextPath}/resources/js/naverLogin.js"></script>
+      <script src="${contextPath}/resources/js/kakaoLogin.js"></script>
   </body>
 </html>

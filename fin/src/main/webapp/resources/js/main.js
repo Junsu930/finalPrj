@@ -1,5 +1,3 @@
-let loginUser = window.sessionStorage.getItem("loginUser");
-console.log(loginUser);
 
 
 

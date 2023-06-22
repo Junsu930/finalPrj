@@ -238,6 +238,12 @@ dark.mode .formBox h2{
     text-decoration: underline;
 }
 
+.loginBtnBox{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 
 .btn{
     width: 100%;
@@ -253,7 +259,32 @@ dark.mode .formBox h2{
     letter-spacing: 0.2em;
 }
 
-.btn:hover{
+.kakaoBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 45px;
+    background-color: #F7E600;
+    border-radius: 6px;
+}
+
+#kakao-login-btn{
+    width: 100%;
+    color: #3A1D1D;
+    outline: none;
+    padding: 1em 1em;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+}
+
+
+
+.btn:hover,
+#kakao-login-btn:hover{
     animation: btn .5s ease-out;
 }
 
@@ -261,7 +292,7 @@ dark.mode .formBox h2{
     0%{
         letter-spacing: 0.1em
     }50%{
-        letter-spacing: 0.4em;
+        letter-spacing: 0.3em;
     }100%{
         letter-spacing: 0.2em;
     }

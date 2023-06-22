@@ -1,4 +1,4 @@
-console.log("header");
+
 
 // =========================================반응형=========================================
 
@@ -58,13 +58,6 @@ for(let i = 0; i< path.length; i ++){
 }
 
 
-
-// let mainInput = document.querySelectorAll('.mainInput');
-
-
-// for(let j = 0; j < mainInput.length; j++){
-//     	mainInput[j].style.color = "#fff";
-// }
  
 
   // 각각 요소 색깔 바꾸기
@@ -140,14 +133,15 @@ sun.addEventListener('click', () => {
 // =========================================모드==========================================
 
 
-// header scroll시 사라지게 함
+
 
 let lastScrollTop = 0;
 let nav = document.querySelector('.navBar');
 
-window.addEventListener('scroll', () =>{
+window.addEventListener('scroll', () =>{ // header scroll시 사라지게 함
 
   let scrollTop = window.scrollY;
+
   if(scrollTop > lastScrollTop){
     nav.style.top = "-60px";
   }else{
@@ -169,67 +163,61 @@ function showAlertView(){
   return wrapperUlOpen = true;
 }
 
+function getUserNicks(loginUserNo){ //userNicksList 부르는 함수 
+  $.ajax({ // userNo를 바탕으로 userNickslist 가져오는 ajax
+    url:"getUserNicks",
+    method:"GET",
+    data:{"loginUserNo": loginUserNo},
+    dataType:"JSON",
+    success: function(getUserNicks){
+      let stringMsg = "님께서 회원님에게 쪽지를 보냈습니다!"
 
-
-$.ajax({ // 접속하자마자 userNo 가져오는 ajax
-  url:"getUserNo",
-  method:"GET",
-  dataType:"JSON",
-  success: function(result){
-
-    let loginUserNo = result;
-
-    $.ajax({ // userNo를 바탕으로 userNickslist 가져오는 ajax
-      url:"getUserNicks",
-      method:"GET",
-      data:{"loginUserNo": loginUserNo},
-      dataType:"JSON",
-      success: function(getUserNicks){
-        console.log(getUserNicks);
-        let stringMsg = "님께서 회원님에게 쪽지를 보냈습니다!"
-
-        if(getUserNicks === "none"){
-          $('.messageUlBox').append('<li class="wrapperLi"><a href="msgBoxPage" id="msgBoxPageA"><p>NO NEW MESSAGE</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
-        }else{
-          for(let i = 0; i < getUserNicks.length; i++){
-            $('.messageUlBox').append(`<li class="wrapperLi"><div class="messageDate"><h3>${getUserNicks[i].sendMonth}<br><span>${getUserNicks[i].sendDay}</span></h3></div>
-            <a href="msgBoxPage"><p>${getUserNicks[i].userNick + stringMsg}<br>지금 확인하세요!</p></a></li>`) // 새로운 쪽지가 있을 때, 코드 수행
-          }
-        } // if끝
-
-      },
-      error : function(request, status, error){
-        console.log("getUserNicks AJAX 에러 발생");
-        console.log("상태코드 : " + request.status); 
-      }
-    });
-
-    $.ajax({ // userNo를 바탕으로 alarmCount 가져오는 ajax
-      url:"getAlarmCount",
-      method:"GET",
-      data:{"loginUserNo": loginUserNo},
-      dataType: "JSON",
-      success: function(count){
-  
-        const alarmCount = count;
-        console.log(alarmCount);
-  
-        if(alarmCount != 0){
-          $('#alarmCount').css('display', 'block');
-          $('#alarmCount').text(alarmCount); // 알람 카운트가 0 초과일 때, 수행
-        }else{
-          console.log(alarmCount);
+      if(getUserNicks === "none"){
+        $('.messageUlBox').append('<li class="wrapperLi"><a href="msgBoxPage" id="msgBoxPageA"><p>NO MESSAGE</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
+      }else{
+        for(let i = 0; i < getUserNicks.length; i++){
+          $('.messageUlBox').append(`<li class="wrapperLi"><div class="messageDate"><h3>${getUserNicks[i].sendMonth}<br><span>${getUserNicks[i].sendDay}</span></h3></div>
+          <a href="msgBoxPage"><p>${getUserNicks[i].userNick + stringMsg}<br>지금 확인하세요!</p></a></li>`) // 새로운 쪽지가 있을 때, 코드 수행
         }
-      }, // success 끝나는 부분
-      error : function(request, status, error){
-        console.log("getAlarmCount AJAX 에러 발생");
-        console.log("상태코드 : " + request.status); 
+      } // if끝
+
+    },
+    error : function(request, status, error){
+      console.log("getUserNicks AJAX 에러 발생");
+      console.log("상태코드 : " + request.status); 
+    }
+  });
+
+}
+
+function getAlarmCount(loginUserNo){ // alarmCount 가져오는 함수 
+  $.ajax({ // userNo를 바탕으로 alarmCount 가져오는 ajax
+    url:"getAlarmCount",
+    method:"GET",
+    data:{"loginUserNo": loginUserNo},
+    dataType: "JSON",
+    success: function(count){
+
+      const alarmCount = count;
+   
+
+      if(alarmCount != 0){
+        $('#alarmCount').css('display', 'block');
+        $('#alarmCount').text(alarmCount); // 알람 카운트가 0 초과일 때, 수행
+      }else{
+        
       }
-    });
+    }, // success 끝나는 부분
+    error : function(request, status, error){
+      console.log("getAlarmCount AJAX 에러 발생");
+      console.log("상태코드 : " + request.status); 
+    }
+  });
+}
 
-
-    // 메세지 아이콘 클릭 시, count 갯수 사라지게 하는 이벤트 리스너
-    document.getElementById('msgBoxOpen').addEventListener('click', function() {
+function disappearCount(loginUserNo){ // count 갯수 사라지게 하는 함수
+  // 메세지 아이콘 클릭 시, count 갯수 사라지게 하는 이벤트 리스너
+  document.getElementById('msgBoxOpen').addEventListener('click', function() {
 
     let messageUlBox = document.querySelector('.messageUlBox');
     $.ajax({
@@ -238,7 +226,6 @@ $.ajax({ // 접속하자마자 userNo 가져오는 ajax
       data:{"loginUserNo": loginUserNo},
       dataType: "JSON",
       success: function(result){
-        console.log(result);
         $('#alarmCount').css('display', 'none'); // 알람 카운트 보이는 걸 없애기
       },
       error : function(request, status, error){
@@ -249,14 +236,24 @@ $.ajax({ // 접속하자마자 userNo 가져오는 ajax
     messageUlBox.classList.toggle('alertViewShow');
     return messageUlBoxOpen = true;
   }); // 이벤트 리스너 끝
+}
 
-  }, // 상단 success 끝
+
+$.ajax({ // 접속하자마자 userNo 가져오는 ajax
+  url:"getUserNo",
+  method:"GET",
+  dataType:"JSON",
+  success: function(loginUserNo){
+    getUserNicks(loginUserNo);
+    getAlarmCount(loginUserNo);
+    disappearCount(loginUserNo);
+  }, //  success 끝
   error : function(request, status, error){
     console.log("getUserNo AJAX 에러 발생");
     console.log("상태코드 : " + request.status); 
-    return
+    return false;
   }
-}); // 상단 ajax끝
+}); //  ajax끝
 
 
 
