@@ -24,13 +24,7 @@ public class LessonService {
 		return dao.lessonList();
 	}
 
-	public Lesson lessonDetail(int lessonBoard) {
-		return dao.lessonDetail(lessonBoard);
-	}
-
 	public int writeLessonForm(Map<String, Object> map, List<MultipartFile> images, String webPath, String folderPath) {
-		map.put("lessonDetailInput",Util.XSSHandling((String)map.get("lessonDetailInput")));
-		map.put("lessonDetailInput",Util.newLineHandling((String)map.get("lessonDetailInput")));
 
 		int lessonNo = dao.writeLessonForm(map);
 		// 변경된 파일명 저장
@@ -41,7 +35,7 @@ public class LessonService {
 
 			for(int i=0; i <images.size(); i++) {
 				// 실제 이미지가 있는 경우
-				if(images.get(i).getSize()>0) {
+				if(images.get(i).getSize()>0) { 
 					LessonImage img = new LessonImage();
 					String reName;
 					
@@ -73,5 +67,4 @@ public class LessonService {
 	public List<LessonImage> imageList(int lessonBoard) {
 		return dao.imageList(lessonBoard);
 	}
-
 }
