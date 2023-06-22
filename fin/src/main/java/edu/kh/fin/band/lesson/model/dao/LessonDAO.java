@@ -32,6 +32,7 @@ public class LessonDAO {
 	}
 
 	public int writeLessonForm(Map<String, Object> map) {
+		
 		int result = sqlSession.insert("lessonMapper.writeLessonForm", map);
 		
 		if(result>0) result = (Integer)map.get("lessonNo");
@@ -39,9 +40,6 @@ public class LessonDAO {
 		return result;
 	}
 
-	public Lesson lessonDetail(int lessonBoard) {
-		return sqlSession.selectOne("lessonMapper.lessonDetail", lessonBoard);
-	}
 
 	public List<LessonImage> imageList(int lessonBoard) {
 		return sqlSession.selectList("lessonMapper.imageList",lessonBoard);

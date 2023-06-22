@@ -16,6 +16,32 @@ document.getElementById("img1").addEventListener("change", function(){
     }
 });
 
+$("#writingBtn").click(()=>{
+    if(document.getElementById("img1").files[0] == undefined){
+        swal.fire("사진을 필수로 등록해주세요");
+    }else if($("#lessonNamePlace").val() == null || $("#lessonNamePlace").val() == ""){
+        swal.fire("이름을 입력해주세요");
+    }else if($("#lessonLocationPlace").val()== null || $("#lessonLocationPlace").val()== ""){
+        swal.fire("지역을 입력해주세요");    
+    }else if($("#lessonSocialPlace").val()== null || $("#lessonSocialPlace").val()== ""){
+        swal.fire("소셜미디어을 입력해주세요");
+    }else if($("#lessonMottoPlace").val()== null || $("#lessonMottoPlace").val()== ""){
+        swal.fire("좌우명을 입력해주세요");        
+    }else if($("#lessonDetailExplain").val() == null ||$("#lessonDetailExplain").val() == "" ){
+        swal.fire("상세 내용을 입력해주세요");
+    }else if($('input[name="genre"]:checked').length < 1){
+        swal.fire("장르를 선택해주세요");
+    }else if($('input[name="lesson"]:checked').length< 1){
+        swal.fire("악기를 선택해주세요");
+    }else{
+
+        console.log($("#lessonWriteForm"));
+        $("#lessonWriteForm").submit();
+    }
+
+});
+
+
 
 
 
