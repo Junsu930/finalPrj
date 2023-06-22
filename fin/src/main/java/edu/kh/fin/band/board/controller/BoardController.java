@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.fin.band.board.model.service.BoardService;
 
 @Controller
+//@RequestMapping("/board")
 @SessionAttributes({"loginUser"})
 public class BoardController {
 	
@@ -82,7 +83,7 @@ public class BoardController {
 			
 			message = "게시글이 등록되었습니다";
 			ra.addFlashAttribute("message", message);
-			return "redirect:/board/";
+			return "redirect:/board";
 		}else {
 			message = "게시글 삽입 실패...";
 			ra.addFlashAttribute("message", message);
@@ -102,5 +103,40 @@ public class BoardController {
 		
 		return "index";
 	}
+	
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("boardNo")int boardNo) {
+		
+		service.delete(boardNo);
+		return "redirect:/board";
+	}
+	
+	
+	@GetMapping("/update")
+	public String updateForm(@RequestParam("boardNo")int boardNo, Model model) {
+		
+		Board boardDetail = service.boardDetail(boardNo);
+		model.addAttribute("board" , boardDetail);
+		
+		
+		return "board/boardUpdate";
+	}
+	
+	@PostMapping("/mody")
+	public String boardUpdate(@ModelAttribute Board board,
+								Model model) {
+		
+		service.boardUpdate(board);
+	
+		Board boardDetail = service.boardDetail(board.getBoardNo());
+		
+		model.addAttribute("board",boardDetail);
+		
+		
+		return "board/boardDetail";
+	}
+	
+	
 
 }

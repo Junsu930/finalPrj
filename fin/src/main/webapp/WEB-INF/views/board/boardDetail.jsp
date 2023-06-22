@@ -21,6 +21,8 @@
    </head>
    <body>
 
+
+
      <c:if test="${not empty includeHeader and includeHeader}">
      
  <jsp:include page="/WEB-INF/views/common/header.jsp"/> 
@@ -64,8 +66,10 @@
         <span class="date">${board.createDate}</span>
       </div>
       <div class="right">
-        <button class="edit">수정</button>
-        <button class="delete">삭제</button>
+         <c:if test="${loginUser.userNo == board.userNo}">
+        <button class="edit" onclick="updateBtn()">수정</button>
+        <button class="delete" onclick="deleteBtn()">삭제</button>
+        </c:if>
       </div>
     </div>
     
@@ -100,7 +104,10 @@
         <span class="author-name">작성자</span>
         <span class="author-date">22.05.00</span>
       </div>
+      
+        
       <div class="right">
+    
         <button class="edit">수정</button>
         <button class="reply">답글</button>
       </div>
@@ -158,7 +165,31 @@
 </div>
 <jsp:include page="/WEB-INF/views/board/boardMain.jsp"/> 
 
+<script>
 
+
+const updateBtn= () => {
+	const boardNo = '${board.boardNo}';
+	  
+	location.href = "update?boardNo=" + boardNo ;
+}
+
+	
+	
+
+const deleteBtn= () => {
+	const boardNo = '${board.boardNo}';
+	   if (!confirm("정말 삭제하시겠습니까?")) {
+		   location.href = "/board";
+		   
+	    } else {
+	    	location.href = "delete?boardNo=" + boardNo ;
+	   
+	    }
+	
+	
+	}
+</script>
 <script src = "${contextPath}/resources/js/boardDetail.js"></script>
 </body>
 </html>

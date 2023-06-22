@@ -36,6 +36,18 @@ public class BoardDAO {
 		sqlSession.update("boardMapper.updateReadCount",boardNo);
 	}
 
+	public void delete(int boardNo) {
+		sqlSession.delete("boardMapper.delete",boardNo);
+		
+	}
+
+	public void boardUpdate(Board board) {
+		// TODO Auto-generated method stub
+		sqlSession.update("boardMapper.boardUpdate",board);
+	}
+
+
+
 	
 	
 }

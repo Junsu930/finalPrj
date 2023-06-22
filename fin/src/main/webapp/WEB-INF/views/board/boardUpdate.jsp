@@ -18,7 +18,7 @@
    <body>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-       <form action="boardWrite" method="post">
+       <form action="mody" method="post">
   <div class="container">
     <h1>글쓰기</h1>
     <div class="tagsBox">
@@ -28,19 +28,25 @@
 
       <label class="test_obj">
         <input type="radio" class="tagNotice" name="boardTag" value="1">
-        <span>잡담</span>
+        <span>공지사항</span>
     </label>
     <label class="test_obj">
       <input type="radio" class="tagBasic" name="boardTag" value="2">
-      <span>질문</span>
+      <span>일반게시판</span>
   </label>
+  <label class="test_obj">
+    <input type="radio" class="tagHot"  name="boardTag" value="3">
+    <span>인기게시판</span>
+</label>
 
     </div>
     </div>
     
     <div class="boardTitle">제목</div>
    <div>
-    <input type="text" name="boardTitle" value ="${board.boardTitle}"class="title-input">
+	<input type="hidden" name="userNo" value="${board.userNo}"class="title-input">
+	<input type="hidden" name="boardNo" value="${board.boardNo}"class="title-input">
+    <input type="text" name="boardTitle" value="${board.boardTitle}" class="title-input">
     </div>
     <div class="border"></div>
     <div class="boardContent">내용</div>
@@ -55,7 +61,7 @@
 		
 		
     <div class="submit-button">
-      <button>작성</button>
+      <button >수정</button>
  
     </div>
   </div>

@@ -2,7 +2,7 @@ package edu.kh.fin.band.msgAlarm.model.service;
 
 import java.util.List;
 
-import edu.kh.fin.band.login.model.vo.User;
+
 import edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm;
 
 public interface MsgAlarmService {

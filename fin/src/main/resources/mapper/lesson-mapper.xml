@@ -11,7 +11,7 @@
   	<result property="lessonNick" 	column="USER_NICK"/>
   	<result property="introment" 	column="INTRO_MENT"/>
 	<result property="joinDate" 	column="JOIN_DATE"/>	
-	  	<result property="lessonImg" column="LESSON_IMG" />
+	<result property="lessonImg" column="LESSON_IMG" />
 	<result property="genre" column="GENRE" />
 	<result property="ints" column="INTS" />
 	<result property="region" column="REGION" />
@@ -28,6 +28,14 @@
 	FROM LESSON_INFO li
 	JOIN "USER" u USING(USER_NO)
 	</select>
+	
+	<insert id="writeLessonForm" parameterType="map">
+	INSERT INTO LESSON_INFO li VALUES(${lessonNo},${userNo},#{lessonNameInput}, #{lessonLocationInput},
+	 TO_CHAR(li.JOIN_DATE, 'YY"년"MM"월"DD"일"'), #{lessonMottoInput},
+	 #{lessonDetailExplain} ,#{genre}, #{region})
+	</insert>
+	
+	
 	
 	
 
