@@ -57,20 +57,7 @@
 
 
 
-
-
-
-
-// document.querySelector('.js-static-modal-toggleSendMsgFromList').addEventListener('click', function() {
-//     console.log("click!!");
-//     new Modal({el: document.getElementById('static-modalBlock')}).show();
-// });
-
-
-
-
 // 모달
-
 let profileMsg = document.querySelectorAll('.profileMsg');
 let modalFromProfile;
 for(let i = 0; i < profileMsg.length; i++){
@@ -82,14 +69,12 @@ for(let i = 0; i < profileMsg.length; i++){
 }
 
 
-
 // 쪽지보내기
 function sendMsg(){
     let replyMsgText = document.getElementById('replyMsgText_memberList');
     let receiverUserNo = modalFromProfile._options.userNo
     
     if(replyMsgText.value == ""){
-        console.log(receiverUserNo);
         alert("쪽지 내용을 작성해주세요!");
     }else{
         $.ajax({

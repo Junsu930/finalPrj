@@ -34,11 +34,7 @@ public class MsgAlarmController {
 	@GetMapping("/getUserNo")
 	@ResponseBody
 	public String getUserNo(@ModelAttribute("loginUser") User loginUser) {
-		
 		int userNo = loginUser.getUserNo();
-		
-		System.out.println(userNo);
-		
 		return new Gson().toJson(userNo);
 	}
 	
@@ -67,7 +63,7 @@ public class MsgAlarmController {
 	 * 쪽지를 보낸 유저 닉네임 가져오는 컨트롤러
 	 * @author lee
 	 * @param loginUserNo
-	 * @return
+	 * @return getUserNicks, "none"
 	 */
 	@GetMapping("/getUserNicks")
 	@ResponseBody
@@ -81,7 +77,6 @@ public class MsgAlarmController {
 		}else {
 			return new Gson().toJson("none");
 		}
-		
 	}
 	
 	
@@ -89,7 +84,7 @@ public class MsgAlarmController {
 	 * 클릭 하고 count 갯수 사라지게 하는 컨트롤러
 	 * @author lee
 	 * @param loginUserNo
-	 * @return
+	 * @return success, fail
 	 */
 	@GetMapping("/disappearCount")
 	@ResponseBody
@@ -106,9 +101,4 @@ public class MsgAlarmController {
 			return new Gson().toJson(fail);
 		}
 	}
-	
-	
-	
-	
-
 }

@@ -149,7 +149,13 @@
   
   
 
-  
+  <script>
+    const msgKakao = "${msgKakao}";
+    if(msgKakao.trim() !== ""){
+      alert(msgKakao);
+    }
+
+  </script>
 
 
   <jsp:include page="/WEB-INF/views/faq/faq.jsp"/>

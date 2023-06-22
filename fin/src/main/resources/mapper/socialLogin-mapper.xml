@@ -32,4 +32,28 @@
 		</selectKey>
 		UPDATE "USER" SET  USER_PWD = #{token} WHERE USER_NO = ${userNo}
 	</update>
+	
+	
+	
+	<insert id="kakaoSignUp" parameterType="map" useGeneratedKeys="true">
+		<selectKey keyProperty="userNo" resultType="_int" order="BEFORE">
+			SELECT USER_NO_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO "USER" VALUES(${userNo}, #{email}, #{token}, SYSDATE, 'N', #{nick}, 'Y', 'KAKAO', NULL, 'N', #{profileImg} )
+	</insert>
+	
+	<select id="selectAlreadyUser" parameterType="String" resultType="_int">
+		SELECT USER_NO
+		FROM "USER"
+		WHERE
+		USER_EMAIL = #{alreadyUserEmail}
+		AND
+		USER_TYPE='KAKAO'
+	</select>
+	
+	<update id="changeTokenKakao" parameterType="map">
+		UPDATE "USER" SET USER_PWD = #{token} WHERE USER_NO = ${alreadyUser}
+	</update>
+	
+	
 </mapper>

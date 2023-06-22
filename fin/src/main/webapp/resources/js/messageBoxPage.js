@@ -1,12 +1,4 @@
-
-
-
-
 // 쪽지 삭제
-
-// console.log(msgNo + "test");
-// console.log(document.getElementById('msgDeleteBtn').nextElementSibling);
-
 let msgDeleteBtnArr = document.querySelectorAll('.msgDeleteBtn');
 
 for(let i = 0; i< msgDeleteBtnArr.length; i++){
@@ -54,7 +46,6 @@ for(let i = 0; i < msgReplyBtn.length; i++){
        let msgNoForAlarm = e.target.previousElementSibling.value
         console.log(receiverUserNo);
         modalFromMsgBox = new Modal({el: document.getElementById('static-modalBlock'), event: receiverUserNo, evnet2: msgNoForAlarm}).show();
-        // console.log(modaltest)
     });
     
 }
