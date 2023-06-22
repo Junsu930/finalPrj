@@ -70,6 +70,8 @@ showBtn.addEventListener('click', function(){
   document.querySelector('.js-static-modal-togglefindMemberP').addEventListener('click', function() {
     new Modal({el: document.getElementById('static-modalfindMember')}).show();
   });
+  
+  
 
 
 

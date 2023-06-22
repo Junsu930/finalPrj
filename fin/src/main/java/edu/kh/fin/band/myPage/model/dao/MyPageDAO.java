@@ -39,13 +39,23 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.changePw", paramMap);
 	}
 
-	/** 이미지 변경
+	/** 포지션 변경 DAO
 	 * @param paramMap
 	 * @return
 	 */
-	public int updateImage(Map<String, Object> paramMap) {
+	public int updatePosition(Map<String, Object> paramMap) {
 		
-		return sqlSession.update("myPageMapper.updateProfile", paramMap);
+		return sqlSession.update("myPageMapper.updatePosition", paramMap);
 	}
+
+	/** 이미지 변경 DAO
+	 * @param paramMap
+	 * @return
+	 */
+	public int updateImg(Map<String, Object> paramMap) {
+		
+		return sqlSession.update("myPageMapper.updateImg", paramMap);
+	}
+
 
 }

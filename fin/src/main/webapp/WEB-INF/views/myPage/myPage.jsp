@@ -535,7 +535,7 @@
                 <div class="modalInfoTitleBox">
                     <p>회원 정보 수정</p>
                 </div>
-                <form action="fin/updateInfo">
+                <form action="fin/updateInfo" method="POST" enctype="multipart/form-data">
                 	<span id="delete-image">x</span>
                 
                     <div class="modalImgBox">
@@ -544,9 +544,9 @@
                         </c:if>
 
                         <c:if test="${!empty loginMember.profileImage}">
-                            <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
+                            <img src="${contextPath}${loginUser.profileImg}" id="profile-image">
                         </c:if>
-                        <i class="bi bi-camera-fill"><input type="file" name="uploadImage" id="input-image" accept="image/*" onchange="image()"></i>              
+                        <i class="bi bi-camera-fill"><input type="file" name="uploadImage" id="input-image" accept="image/*"></i>              
                     </div>
                 
                     <div class="modalInputBox">
@@ -554,14 +554,14 @@
                             <span class="icon">
                                 <ion-icon name="mail"></ion-icon>
                             </span>
-                            <input type="email" required id="userEmail" name="newEmail" onchange="email()">
+                            <input type="email" required id="userEmail" name="userEmail">
                             <label>EMAIL</label>
                         </div>
                         <div class="input-box">
                             <span class="icon">
                                 <ion-icon name="lock-closed"></ion-icon>
                             </span>
-                            <input type="password" required id="userPw" name="newPw" onchange="pw()"> 
+                            <input type="password" required id="userPw" name="userPw"> 
                             <label>PASSOWORD</label>
                         </div>
 
@@ -569,7 +569,7 @@
                             <span class="icon">
                                 <ion-icon name="person"></ion-icon>
                             </span>
-                            <input type="text" required id="userNick" name="newNick" onchange="nick()">
+                            <input type="text" required id="userNick" name="newNick">
                             <label>NICKNAME</label>
                         </div>
                         
@@ -584,185 +584,177 @@
                         <p id="positionP" class="disPlayNone">POSITION</p>
                         <div class="positionBox disPlayNone">
                             <table class="positionTable">
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="GUITAR" name="GUITAR" value="GUITAR">
-                                        <label for="GUITAR">GUITAR</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="BASS" name="BASS" value="BASS">
-                                        <label for="BASS">BASS</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="DRUM" name="DRUM" value="DRUM">
-                                        <label for="DRUM">DRUM</label>
-                                    </td>
-                                </tr>
+								<tr>
+									<td>
+										<input type="radio" id="GUITAR" name="inst" value="기타">
+										<label for="GUITAR">GUITAR</label>
+									</td>
+									<td>
+										<input type="radio" id="BASS" name="inst" value="배스">
+										<label for="BASS">BASS</label>
+									</td>
+									<td>
+										<input type="radio" id="DRUM" name="inst" value="드럼">
+										<label for="DRUM">DRUM</label>
+									</td>
+								</tr>
 
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="VOCAL" name="VOCAL" value="VOCAL">
-                                        <label for="VOCAL">VOCAL</label>
-                                    </td>
+								<tr>
+									<td>
+										<input type="radio" id="VOCAL" name="inst" value="보컬">
+										<label for="VOCAL">VOCAL</label>
+									</td>
 
-                                    <td>
-                                        <input type="radio" id="KEYBOARD" name="KEYBOARD" value="KEYBOARD">
-                                        <label for="KEYBOARD">KEYBOARD</label>
-                                    </td>
+									<td>
+										<input type="radio" id="KEYBOARD" name="inst" value="키보드">
+										<label for="KEYBOARD">KEYBOARD</label>
+									</td>
 
-                                    <td>
-                                        <input type="radio" id="HORN" name="HORN" value="HORN">
-                                        <label for="HORN">HORN</label>
-                                    </td>
-                                </tr>
-                            </table>
+									<td>
+										<input type="radio" id="HORN" name="inst" value="혼">
+										<label for="HORN">HORN</label>
+									</td>
+								</tr>
+							</table>
+						</div>
 
-                            
-                        </div>
+				<p id="genreP" class="disPlayNone">GENRE</p>
+                <div class="genreBox disPlayNone">
+					
+					<table class="genreTable">
+						<tr>
+							<td>
+								<input type="radio" id="ELECTRONIC" name="genre" value="일렉트로닉">
+								<label for="ELECTRONIC">ELECTRONIC</label>
+							</td>
 
-                        <p id="genreP" class="disPlayNone">GENRE</p>
-                        <div class="genreBox disPlayNone">
-                            
-                            <table class="genreTable">
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="ELECTRONIC" name="genre" value="ELECTRONIC">
-                                        <label for="ELECTRONIC">ELECTRONIC</label>
-                                    </td>
+							<td>
+								<input type="radio" id="ROCK" name="genre" value="락">
+								<label for="ROCK">ROCK</label>
+							</td>
 
-                                    <td>
-                                        <input type="radio" id="ROCK" name="genre" value="ROCK">
-                                        <label for="ROCK">ROCK</label>
-                                    </td>
+							<td>
+								<input type="radio" id="FOLK" name="genre" value="포크">
+								<label for="FOLK">FOLK</label>
+							</td>
+						</tr>
 
-                                    <td>
-                                        <input type="radio" id="FOLK" name="genre" value="FOLK">
-                                        <label for="FOLK">FOLK</label>
-                                    </td>
-                                </tr>
+						<tr>
+							<td>
+								<input type="radio" id="POP" name="genre" value="팝">
+								<label for="POP">POP</label>
+							</td>
 
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="POP" name="genre" value="POP">
-                                        <label for="POP">POP</label>
-                                    </td>
+							<td>
+								<input type="radio" id="R&B" name="genre" value="알앤비">
+								<label for="R&B">R&B</label>
+							</td>
 
-                                    <td>
-                                        <input type="radio" id="R&B" name="genre" value="R&B">
-                                        <label for="R&B">R&B</label>
-                                    </td>
+							<td>
+								<input type="radio" id="JAZZ" name="genre" value="재즈">
+								<label for="JAZZ">JAZZ</label>
+							</td>
+						</tr>
 
-                                    <td>
-                                        <input type="radio" id="JAZZ" name="genre" value="JAZZ">
-                                        <label for="JAZZ">JAZZ</label>
-                                    </td>
-                                </tr>
+						<tr>
+							<td>
+								<input type="radio" id="METAL" name="genre" value="메탈">
+								<label for="METAL">METAL</label>
+							</td>
+						</tr>
+					</table>
+					
+				</div>
 
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="METAL" name="genre" value="METAL">
-                                        <label for="METAL">METAL</label>
-                                    </td>
-                                </tr>
-                            </table>
-                            
-                        </div>
+				<p id="locationP" class="disPlayNone">LOCATION</p>
+                <div class="locationBox disPlayNone">
+					<table class="locationTable">
+						<tr>
+							<td>
+								<input type="radio" id="seoul" name="region" value="서울">
+								<label for="seoul">서울</label>
+							</td>
+							<td>
+								<input type="radio" id="gyeonggi" name="region" value="경기도">
+								<label for="gyeonggi">경기도</label>
+							</td>
+							<td>
+								<input type="radio" id="incheon" name="region" value="인천">
+								<label for="incheon">인천</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="radio" id="daejeon" name="region" value="대전">
+								<label for="daejeon">대전</label>
+							</td>
 
-                        <p id="locationP" class="disPlayNone">LOCATION</p>
-                        <div class="locationBox disPlayNone">
-                            
-                            <table class="locationTable">
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="seoul" name="location" value="seoul">
-                                        <label for="seoul">서울</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="gyeonggi" name="location" value="gyeonggi">
-                                        <label for="gyeonggi">경기도</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="incheon" name="location" value="incheon">
-                                        <label for="incheon">인천</label>
-                                    </td>
-                                </tr>
+							<td>
+								<input type="radio" id="daegu" name="region" value="대구">
+								<label for="daegu">대구</label>
+							</td>
+							<td>
+								<input type="radio" id="busan" name="region" value="부산">
+								<label for="busan">부산</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="radio" id="ulsan" name="region" value="울산">
+								<label for="ulsan">울산</label>
+							</td>
+							<td>
+								<input type="radio" id="sejong" name="region" value="세종">
+								<label for="sejong">세종</label>
+							</td>
+							<td>
+								<input type="radio" id="gwangju" name="region" value="광주">
+								<label for="gwangju">광주</label>
+							</td>
+						</tr>
 
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="daejeon" name="location" value="daejeon">
-                                        <label for="daejeon">대전</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="daegu" name="location" value="daegu">
-                                        <label for="daegu">대구</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="busan" name="location" value="busan">
-                                        <label for="busan">부산</label>
-                                    </td>
-                                </tr>
+						<tr>
+							<td>
+								<input type="radio" id="gangwon" name="region" value="강원도">
+								<label for="gangwon">강원도</label>
+							</td>
+							<td>
+								<input type="radio" id="N-chungcheong" name="region" value="충북">
+								<label for="N-chungcheong">충북</label>
+							</td>
+							<td>
+								<input type="radio" id="S-chungcheong" name="region" value="충남">
+								<label for="S-chungcheong">충남</label>
+							</td>
+						</tr>
 
-                                
+						<tr>
+							<td>
+								<input type="radio" id="N-gyeongsang" name="region" value="경북">
+								<label for="N-gyeongsang">경북</label>
+							</td>
 
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="ulsan" name="location" value="ulsan">
-                                        <label for="ulsan">울산</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="sejong" name="location" value="sejong">
-                                        <label for="sejong">세종</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="gwangju" name="location" value="gwangju">
-                                        <label for="gwangju">광주</label>
-                                    </td>
-                                </tr>
+							<td>
+								<input type="radio" id="S-gyeongsang" name="region" value="경남">
+								<label for="S-gyeongsang">경남</label>
+							</td>
+							<td>
+								<input type="radio" id="N-jeolla" name="region" value="전북">
+								<label for="N-jeolla">전북</label>
+							</td>
+						</tr>
 
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="gangwon" name="location" value="gangwon">
-                                        <label for="gangwon">강원도</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="N-chungcheong" name="location" value="N-chungcheong">
-                                        <label for="N-chungcheong">충북</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="S-chungcheong" name="location" value="S-chungcheong">
-                                        <label for="S-chungcheong">충남</label>
-                                    </td>
-                                </tr>
-
-                                
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="N-gyeongsang" name="location" value="N-gyeongsang">
-                                        <label for="N-gyeongsang">경북</label>
-                                    </td>
-
-                                    <td>
-                                        <input type="radio" id="S-gyeongsang" name="location" value="S-gyeongsang">
-                                        <label for="S-gyeongsang">경남</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="N-jeolla" name="location" value="N-jeolla">
-                                        <label for="N-jeolla">전북</label>
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <input type="radio" id="S-jeolla" name="location" value="S-jeolla">
-                                        <label for="S-jeolla">전남</label>
-                                    </td>
-                                    <td>
-                                        <input type="radio" id="jeju" name="location" value="jeju">
-                                        <label for="jeju">제주도</label>
-                                    </td>
-                                </tr>
-                            </table>
+						<tr>
+							<td>
+								<input type="radio" id="S-jeolla" name="region" value="전남">
+								<label for="S-jeolla">전남</label>
+							</td>
+							<td>
+								<input type="radio" id="jeju" name="region" value="제주도">
+								<label for="jeju">제주도</label>
+							</td>
+						</tr>
+					</table>
                         
                         </div>
                     </div>
@@ -784,7 +776,15 @@
     </div>
     </div>
     
-    
+    <script>
+      const msg = "${msg}";
+      if (msg.trim() !== "") {
+        alert(msg);
+      } 
+        // 왜 자꾸 로그인 창을 들어가도 공백 alert가 뜰까 
+        // -> 해결 -> != null로 조건을 주지 말고, 문자열로 체크를 해서 주면 발생하지않음.
+        // 빈 문자열인 경우에는 alert를 발생시키지 않음
+    </script>
     
     
     
