@@ -23,7 +23,7 @@
     <section class="allSection">
   
 
-	<form method ="post" action="${contextPath}/lessonWriteForm" id="lessonWriteForm" enctype="multipart/form-data">
+	<form method ="post" action="${contextPath}/writeLessonForm" id="writeLessonForm" enctype="multipart/form-data">
            <div class ="imgbox">
      
  			<label for="img1">

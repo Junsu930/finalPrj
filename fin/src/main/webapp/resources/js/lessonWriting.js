@@ -35,8 +35,8 @@ $("#writingBtn").click(()=>{
         swal.fire("악기를 선택해주세요");
     }else{
 
-        console.log($("#lessonWriteForm"));
-        $("#lessonWriteForm").submit();
+        console.log($("#writeLessonForm"));
+        $("#writeLessonForm").submit();
     }
 
 });
