@@ -19,9 +19,9 @@ public class MsgAlarmServiceImpl implements MsgAlarmService{
 	 * @author lee
 	 */
 	@Override
-	public int getAlarmCount(int loginUserNo) {
+	public int getMsgAlarmCount(int loginUserNo) {
 		
-		return dao.getAlarmCount(loginUserNo);
+		return dao.getMsgAlarmCount(loginUserNo);
 	}
 
 	/**
@@ -40,6 +40,33 @@ public class MsgAlarmServiceImpl implements MsgAlarmService{
 	@Override
 	public int disappearCount(int loginUserNo) {
 		return dao.disappearCount(loginUserNo);
+	}
+
+	/**
+	 * 유저의 알람 갯수를 가져오는 서비스
+	 * @author lee
+	 */
+	@Override
+	public int getAlarmCount(int loginUserNo) {
+		return dao.getAlarmCount(loginUserNo);
+	}
+
+	/**
+	 * 알람 버튼을 클릭하면 알람 카운트를 지워주는 서비스
+	 * @author lee
+	 */
+	@Override
+	public int alarmDisappearCount(int loginUserNo) {
+		return dao.alarmDisappearCount(loginUserNo);
+	}
+
+	/**
+	 * 로그인 멤버가 오너인 경우 자신의 예약실 알람을 보여주는 서비스
+	 * @author lee
+	 */
+	@Override
+	public List<MsgAlarm> getUserNicksFromRoom(int loginUserNo) {
+		return dao.getUserNicksFromRoom(loginUserNo);
 	}
 
 	

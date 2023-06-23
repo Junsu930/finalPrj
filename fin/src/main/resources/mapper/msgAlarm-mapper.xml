@@ -17,6 +17,14 @@
 		<result property="sendMonth" column="SEND_MONTH" />
 	</resultMap>
 	
+	<resultMap type="msgAlarm" id="getUserNick_room_rm">
+		<id property="alarmNo" column="ALARM_NO"/>
+		<result property="userNick" column="USER_NICK" />
+		<result property="sendDay" column="RESERVE_DAY" />
+		<result property="sendMonth" column="RESERVE_MON" />
+		<result property="roomName" column="ROOM_NAME" />
+	</resultMap>
+	
 	
 	
 	
@@ -25,10 +33,10 @@
 
 	<insert id="insertMsgAlarm" parameterType="msgAlarm">
 		INSERT INTO MSG_ALARM (ALARM_NO, USER_NO, ALARM_TYPE, ALARM_STATUS)
-		VALUES(1, #{userNo}, #{msgNo}, #{alarmStatus} )
+		VALUES(MSG_ALARM_NO_SEQ.NEXTVAL , #{userNo}, #{msgNo}, #{alarmStatus} )
 	</insert>
 	
-	<select id="getAlarmCount" parameterType="_int" resultType="_int">
+	<select id="getMsgAlarmCount" parameterType="_int" resultType="_int">
 		SELECT COUNT(*) AS COUNT FROM MSG_ALARM WHERE USER_NO = #{loginUserNo} AND ALARM_STATUS = 'N' AND ALARM_READ_STATUS = 'N'
 	</select>
 	
@@ -40,7 +48,7 @@
 		SELECT 
 		u.USER_NICK,
 		TO_CHAR(mb.SEND_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MONTH,
-		TO_CHAR(mb.SEND_DATE, 'YY"일"') AS SEND_DAY
+		TO_CHAR(mb.SEND_DATE, 'DD"일"') AS SEND_DAY
 		FROM
 		MESSAGE_BOX mb
 		JOIN MSG_ALARM ma ON mb.MSG_NO = ma.MSG_NO
@@ -54,6 +62,43 @@
 	
 	<update id="disappearCount" parameterType="_int">
 		UPDATE MSG_ALARM SET ALARM_READ_STATUS = 'Y' WHERE USER_NO = #{loginUserNo}
+	</update>
+	
+	
+	<select id="getUserNicksFromRoom" parameterType="_int" resultMap="getUserNick_room_rm">
+		SELECT 
+		u.USER_NICK,
+		p.ROOM_NAME, 
+		TO_CHAR(TO_DATE(RESERVE_DAY, 'YY-MM-DD'), 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH')AS RESERVE_MON,
+		TO_CHAR(TO_DATE(RESERVE_DAY, 'YY-MM-DD'), 'DD"일"') AS RESERVE_DAY
+		FROM ROOM_TIME t
+		JOIN "USER" u ON u.USER_NO = t.RESERVE_USER_NO
+		JOIN PRACTICE_ROOM p ON p.ROOM_NO = t.ROOM_NO
+		WHERE OWNER_NO = ${loginUserNo}
+		ORDER BY RESERVE_MON ASC, RESERVE_DAY DESC
+	</select>
+	
+	
+	
+	
+	
+	<select id="getAlarmCount" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) AS COUNT
+		FROM ALARM
+		WHERE 
+		USER_NO = ${loginUserNo}
+		AND ROOM_ALARM_READ_STATUS = 'N'
+		AND BOARD_ALARM_READ_STATUS = 'N'
+		AND REPLY_ALARM_READ_STATUS = 'N'
+	</select>
+	
+	
+	<update id="alarmDisappearCount" parameterType="_int">
+		UPDATE ALARM
+		SET ROOM_ALARM_READ_STATUS = 'Y',
+		BOARD_ALARM_READ_STATUS = 'Y',
+		REPLY_ALARM_READ_STATUS = 'Y'
+		WHERE USER_NO = ${loginUserNo}
 	</update>
 	
 

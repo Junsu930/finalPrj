@@ -47,7 +47,7 @@
     
      <insert id="write" parameterType="board" >
 	INSERT INTO BOARD VALUES(
-   SEQ_BOARD_NO.NEXTVAL,
+   	SEQ_BOARD_NO.NEXTVAL,
     #{boardTitle}, #{boardContent},DEFAULT, DEFAULT, DEFAULT, #{userNo}, DEFAULT,#{boardTag} 
    )
 	</insert>

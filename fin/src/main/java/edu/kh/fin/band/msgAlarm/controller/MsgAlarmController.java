@@ -34,6 +34,9 @@ public class MsgAlarmController {
 	@GetMapping("/getUserNo")
 	@ResponseBody
 	public String getUserNo(@ModelAttribute("loginUser") User loginUser) {
+		if(loginUser == null) {
+			return "no loginUser";
+		}
 		int userNo = loginUser.getUserNo();
 		return new Gson().toJson(userNo);
 	}
@@ -45,11 +48,11 @@ public class MsgAlarmController {
 	 * @author lee
 	 * @return count
 	 */
-	@GetMapping("/getAlarmCount")
+	@GetMapping("/getMsgAlarmCount")
 	@ResponseBody
-	public String getAlarmCount(@RequestParam("loginUserNo") int loginUserNo) {
+	public String getMsgAlarmCount(@RequestParam("loginUserNo") int loginUserNo) {
 		
-		int count = service.getAlarmCount(loginUserNo);
+		int count = service.getMsgAlarmCount(loginUserNo);
 		if(count != 0) {
 			return new Gson().toJson(count);
 		}else {
@@ -101,4 +104,83 @@ public class MsgAlarmController {
 			return new Gson().toJson(fail);
 		}
 	}
+	
+	
+	
+	/**
+	 * 유저의 알람 갯수를 가져오는 컨트롤러
+	 * @author lee
+	 * @param loginUserNo
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/getAlarmCount")
+	public String getAlarmCount(@RequestParam("loginUserNo") int loginUserNo) {
+		
+		int count = service.getAlarmCount(loginUserNo);
+		
+		if(count != 0) {
+			return new Gson().toJson(count);
+		}else {
+			count = 0;
+			return new Gson().toJson(count);
+		}
+	}
+	
+	
+	/**
+	 * 알람 버튼을 클릭하면 알람 카운트를 지워주는 컨트롤
+	 * @author lee
+	 * @param loginUserNo
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/alarmDisappearCount")
+	public String alarmDisappearCount(@RequestParam("loginUserNo") int loginUserNo) {
+		
+		String success = "성공!";
+		String fail = "실패!";
+		
+		int result = service.alarmDisappearCount(loginUserNo);
+		
+		if(result > 0) {
+			return new Gson().toJson(success);
+		}else {
+			return new Gson().toJson(fail);
+		}
+	}
+	
+	
+	
+	/**
+	 * 로그인 멤버가 오너인 경우 자신의 예약실 알람을 보여주는 컨트롤러
+	 * @author lee
+	 * @param loginUserNo
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/getUserNicksFromRoom")
+	public String getUserNicksFromRoom(@RequestParam("loginUserNo") int loginUserNo) {
+		
+		List<MsgAlarm> getUserNicks = new ArrayList<>();
+		
+		getUserNicks = service.getUserNicksFromRoom(loginUserNo);
+		
+		if(!getUserNicks.isEmpty()) {
+			return new Gson().toJson(getUserNicks);
+		}else {
+			return new Gson().toJson("none");
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

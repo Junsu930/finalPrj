@@ -77,10 +77,13 @@ public class RoomController {
 		System.out.println(timeArr);
 		System.out.println(map);
 		
+		int roomAlarmResult = service.roomAlarmResult(map); // 예약을 할 때, 오너에게 알람을 보내는 메서드
+		
+		
 		int result = service.pracRoomBooking(timeArr, map);
 		
 		
-		return result;
+		return result + roomAlarmResult;
 	}
 	
 	@PostMapping("checkBookingTime")

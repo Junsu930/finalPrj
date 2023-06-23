@@ -60,17 +60,19 @@
                 <c:otherwise>
                     <a href="${contextPath}/checkPw" class="myPageText navA">My Page</a>
                     <a href="${contextPath}/logout" class="loginText navA">Logout</a>
+                    <button id="alertBell" class="alertBell navA">
+                        <i class="bi bi-bell"></i>
+                        <p id="alarmCount"></p>
+                    </button> <!-- 로그인 시 알림 아이콘-->
+                    
+                    <button id="msgBoxOpen" class="msgBoxOpen navA">
+                        <i class="fa-regular fa-paper-plane"></i>
+                        <p id="msgAlarmCount"></p>
+                    </button> <!-- 로그인 시 쪽지 아이콘 -->
                 </c:otherwise>
             </c:choose>
 
-            <button id="alertBell" class="alertBell navA" onclick="showAlertView()">
-                <i class="bi bi-bell"></i>
-            </button> <!-- 로그인 시 알림 아이콘-->
             
-            <button id="msgBoxOpen" class="msgBoxOpen navA">
-                <i class="fa-regular fa-paper-plane"></i>
-                <p id="alarmCount"></p>
-            </button> <!-- 로그인 시 쪽지 아이콘 -->
             
         
             <a href="" class="signUpIMG navA"><i class="bi bi-person-badge-fill" id="signUpIMGI"></i></a> <!-- myPageIMG 임 signUPUMG가 아님 signUP 페이지가 사라지고 로그인 페이지에서 다돼기 때문에-->
@@ -81,41 +83,14 @@
             <!-- 알림 창 -->
             <ul class="wrapperUl">
                 <h1>Latest Post</h1>
-                <li>
+                <!-- <li>
                     <div class="date">
                         <h3>Mar<br><span>03</span></h3>
                     </div>
                     <a href="#none">
                         <p>깅깅님께서 회원님의 게시글 좋아요를 눌렀습니다!</p>
                     </a>
-                </li>
-
-                <li>
-                    <div class="date">
-                        <h3>Mar<br><span>03</span></h3>
-                    </div>
-                    <a href="#none">
-                        <p>깅깅님께서 회원님의 게시글 댓글을 달았습니다!</p>
-                    </a>
-                </li>
-
-                <li>
-                    <div class="date">
-                        <h3>Mar<br><span>03</span></h3>
-                    </div>
-                    <a href="#none">
-                        <p>깅깅님께서 회원님에게 수강 신청을 하였습니다!</p>
-                    </a>
-                </li>
-
-                <li>
-                    <div class="date">
-                        <h3>Mar<br><span>03</span></h3>
-                    </div>
-                    <a href="#none">
-                        <p>깅깅님께서 회원님의 연습실 예약 신청을 했습니다!</p>
-                    </a>
-                </li>
+                </li> -->
             </ul>
           </div>
           

@@ -52,7 +52,7 @@ body.darkmode .loginPath{
 .wrapper{
     position: relative;
     width: 500px;
-    height: 550px;
+    height: 600px;
     background-color: transparent;
     border: 2px soild rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -260,14 +260,23 @@ dark.mode .formBox h2{
 }
 
 .kakaoBtn{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     width: 100%;
     height: 45px;
-    background-color: #F7E600;
+    background-color: #FEE500;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.kakaoBtn > img{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 20px;
 }
 
 #kakao-login-btn{
@@ -283,9 +292,61 @@ dark.mode .formBox h2{
 
 
 
+#naver_id_login_anchor{
+    position: absolute;
+    top: 13px;
+    width: 100%;
+    text-decoration: none;
+    color:var(--text-dark-color);
+    letter-spacing: 0.2em;
+}
+
+#naver_id_login_anchor img{
+    visibility: hidden;
+    width: 100%;
+    height: 45px;
+}
+
+#naver_id_login_anchor::before{
+    content: "LOGIN WITH NAVER"
+}
+
+#naver_id_login{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    background-color: #03C75A;
+    cursor: pointer;
+}
+
+.naverImgBox{
+    position: relative;
+}
+
+#naverIMG{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    bottom: 18px;
+    left: 18px;
+    border-radius: 10px;
+}
+
+
+
+
+
+
 .btn:hover,
-#kakao-login-btn:hover{
-    animation: btn .5s ease-out;
+#kakao-login-btn:hover,
+#naver_id_login_anchor:hover{
+    animation: btn .8s ease-out;
 }
 
 @keyframes btn{

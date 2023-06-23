@@ -32,11 +32,6 @@ function deleteMsg(e) {
 
 // 쪽지 답장
 
-
-
-
-
-
 let msgReplyBtn = document.querySelectorAll('.msgReplyBtn');
 let modalFromMsgBox;
 

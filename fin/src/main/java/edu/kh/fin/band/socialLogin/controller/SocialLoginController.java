@@ -85,17 +85,17 @@ public class SocialLoginController {
 	 * @param session
 	 * @param model
 	 * @param ra
-	 * @return
+	 * @return loginUser
 	 */
 	@GetMapping("/kakaoLogin")
 	public String kakaoLogin(@RequestParam("code") String code, HttpSession session, 
 			Model model , 
 			RedirectAttributes ra ) {
 		HashMap<String, Object> getUserInfoMap = new HashMap<>();
-		System.out.println("######## 코드 " + code);
+//		System.out.println("######## 코드 " + code);
 		
 		String accessToken = service.getToken(code);
-		System.out.println("######## 토큰 "+ accessToken);
+//		System.out.println("######## 토큰 "+ accessToken);
 		
 		getUserInfoMap = service.getUserInfo(accessToken);
 		
@@ -112,7 +112,7 @@ public class SocialLoginController {
 	    	
 	    	model.addAttribute("loginUser", user);
 	    	
-	        ra.addFlashAttribute("msgKakao", "환영합니다!");
+	        ra.addFlashAttribute("msgKakao", "WELCOME!");
 	        
 	    }
 		return "redirect:main";
