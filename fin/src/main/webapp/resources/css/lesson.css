@@ -130,7 +130,8 @@ body.darkmode .locationListBtn{
 
 
 /* ====== */
-.filterSec > div:last-child{
+.labelLocation 
+.locationListBtn{
     width: 150px;
     height: 40px;
     font-size: 1.1em;
@@ -143,6 +144,8 @@ body.darkmode .locationListBtn{
     right: 10%;
 }
 
+
+
 body.darkmode .filterSec > div:last-child{
     border: 1px solid var(--border-color);
 }
@@ -151,6 +154,16 @@ body.darkmode .filterSec > div:last-child{
     color: var(--text-color);
     text-decoration: none;
     letter-spacing: 0.2em;
+    width: 150px;
+    height: 40px;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 0.5em 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    position: absolute;
+    right: 10%;
 }
 
 

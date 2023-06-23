@@ -62,10 +62,11 @@
 				<li class="list locationList">제주도</li>
 			</ul>
     	</div>
-
+ 		<c:if test="${!empty loginUser}">
 		<div>
 			<a href="${contextPath}/lessonWriting" id="writingBtn">WRITING</a>
 		</div>
+		</c:if>
 
 	</section>
 
@@ -82,7 +83,7 @@
 						<div class="contentBox">
 							<p id="scrollOver">${lesson.introment}</p>
 							<span>${lesson.joinDate}</span>
-							
+							<p>${lesson.region}</p>
 							<p>by.&nbsp${lesson.lessonNick}</p>
 						</div>
 					</div>

@@ -27,7 +27,7 @@ public class LessonService {
 	public int writeLessonForm(Map<String, Object> map, List<MultipartFile> images, String webPath, String folderPath) {
 
 		int lessonNo = dao.writeLessonForm(map);
-		// 변경된 파일명 저장
+		
 		
 		int imageAllResult = 0;
 		
