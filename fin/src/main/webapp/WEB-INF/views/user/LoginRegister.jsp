@@ -67,17 +67,23 @@
                         <a href="#">Forgot Password?</a>
                     </div>
 
-                    <div class="loginBtnBox">
+                    <div class="loginBtnBox" title="밴드아카이브 로그인">
+                      
                       <button type="submit" class="btn">LOGIN</button>
+                      
+                      <div id="naver_id_login" title="네이버 아이디로 로그인">
+                        LOGIN WITH NAVER
+                      </div>
+                      
+                      <div class="naverImgBox">
+                        <img id="naverIMG" src="${contextPath}/resources/images/naverIMG.png" alt="" title="네이버 아이디로 로그인">
+                      </div>
 
-                      <a id="naver_id_login">
-                        <img src="${contextPath}/resources/images/naverIMG.png" alt="">
-                      </a>
-
-                      <div class="kakaoBtn">
+                      <div class="kakaoBtn" title="카카오 아이디로 로그인">
                         <a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=de31983424f4bd5faadc8493b90e5626&response_type=code&redirect_uri=http://localhost:8091/fin/kakaoLogin">
                           LOGIN WITH KAKAO
                         </a>
+                        <img src="${contextPath}/resources/images/kakaoIcon.png" alt="">
                       </div>
 
                     </div>

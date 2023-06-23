@@ -64,7 +64,6 @@ public class SocialLoginDAO {
 			
 			int changeTokenResult = sqlSession.update("socialMapper.changeTokenKakao", map);
 			
-			
 			if(changeTokenResult > 0);
 			// 토큰 교체가 일어나면 리턴 기존 유저넘버 리턴
 			return alreadyUser;

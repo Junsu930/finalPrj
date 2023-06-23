@@ -70,4 +70,23 @@ public class RoomDAO {
 		return sqlSession.selectList("pracRoom-mapper.checkBookingTime", dayMap);
 	}
 
+	/**
+	 * 예약을 할 때 오너에게 알람을 보내는 DAO
+	 * @author lee
+	 * @param map
+	 * @return
+	 */
+	public int roomAlarmResult(HashMap<String, Object> map) {
+		return sqlSession.insert("pracRoom-mapper.roomSetAlarm", map);
+	}
+
+	/**
+	 * 예약 알람을 오너에게 보내기 위해서 오너 넘버를 가지고 오는 DAO
+	 * @param map
+	 * @return
+	 */
+	public int selectOwnerNo(HashMap<String, Object> map) {
+		return sqlSession.selectOne("pracRoom-mapper.selectOwnerNo", map);
+	}
+
 }
