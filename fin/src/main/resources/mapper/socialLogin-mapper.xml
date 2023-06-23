@@ -55,5 +55,13 @@
 		UPDATE "USER" SET USER_PWD = #{token} WHERE USER_NO = ${alreadyUser}
 	</update>
 	
+	<select id="emailCheckForNaver" parameterType="string" resultType="_int">
+	 	SELECT COUNT(*) FROM "USER" WHERE USER_EMAIL = #{email} AND USER_TYPE != 'NAVER'
+	</select>
+	
+	<select id="nickCheckForNaver" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM "USER" WHERE USER_NICK = #{nick}
+	</select>
+	
 	
 </mapper>

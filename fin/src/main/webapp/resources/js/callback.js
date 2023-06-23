@@ -13,19 +13,28 @@ function naverSignInCallback() {
   let nick = naver_id_login.getProfileData('nickname');
   let profileImg = naver_id_login.getProfileData('profile_image');
 
+  alert("으아아");
+  let dupRs = dupCheck(email, nick);
 
-  $.ajax({
-    url : "/fin/checkNaverFl",
-    type : "post",
-    data: {"email" :email},
-    success : function(data){
-      if(data == 0) { // 만약 가입된 멤버가 없으면
-        naverSignUp(email, nick, profileImg, token);
-      }else { // 가입된 멤버가 있으면 
-        changeToken(email,token);
+  if(dupRs == 1){
+    alert("이메일이 중복되었습니다. 확인해주세요");
+  }else if(dupRs==2){
+    alert("닉네임이 중복되었습니다. 확인해주세요");
+  }else{
+    $.ajax({
+      url : "/fin/checkNaverFl",
+      type : "post",
+      data: {"email" :email},
+      success : function(data){
+        if(data == 0) { // 만약 가입된 멤버가 없으면
+          naverSignUp(email, nick, profileImg, token);
+        }else { // 가입된 멤버가 있으면 
+          changeToken(email,token);
+        }
       }
-    }
-  });
+    });
+  }
+
 }
 
 // 네이버 DB가입처리
@@ -55,4 +64,23 @@ function changeToken(email,token){
     }
   });
   
+};
+
+
+// 중복 여부 체크
+function dupCheck(email, nick){
+  
+  $.ajax({
+    url : "/fin/dupCheckForNaver",
+    type : "post",
+    data : {"email" :email, "nick" : nick},
+    success : function (data){
+      return data;
+      //1 : 이메일 중복 있음
+      //2 : 닉네임 중복 있음
+      //0 : 중복 없음
+    }
+
+
+  })
 }
