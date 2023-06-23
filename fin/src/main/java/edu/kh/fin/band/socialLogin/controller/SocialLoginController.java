@@ -77,6 +77,35 @@ public class SocialLoginController {
 		return "social/callback";
 	}
 	
+	@PostMapping("/dupCheckForNaver")
+	@ResponseBody
+	public int dupCheckForNaver(@RequestParam("email") String email, @RequestParam("nick")String nick) {
+		
+		int result = -1;
+		
+		int emailCheck = service.emailCheckForNaver(email);
+		
+		if(emailCheck > 0) {
+			// 네이버 가입이 아닌 메일 중복이 있으면
+			result = 1;
+		}else {
+			// 메일 중복이 없으면 닉네임 중복 확인
+			
+			int nickCheck = service.nickCheckForNaver(nick);
+			
+			if(nickCheck > 0) {
+				// 닉 중복이 있으면 
+				result = 2;
+			}else {
+				// 이메일과 닉 중복 모두 없으면
+				result = 0;
+			}
+			
+		}
+		
+		
+		return result;
+	}
 	
 	/**
 	 * 카카오 인증코드, 토큰, kakaoSignUp + 액세스 토큰을 바탕으로 카카오 유저 정보를 가져와서 + 정보 디비 저장 + 유저넘버 가져오기 + 기존 회원이면 토큰 교체 Controller

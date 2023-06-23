@@ -70,4 +70,12 @@ public class SocialLoginDAO {
 		}
 	}
 
+	public int emailCheckForNaver(String email) {
+		return sqlSession.selectOne("socialMapper.emailCheckForNaver", email);
+	}
+
+	public int nickCheckForNaver(String nick) {
+		return sqlSession.selectOne("socialMapper.nickCheckForNaver", nick);
+	}
+
 }

@@ -168,4 +168,14 @@ public class SocialLoginServiceImpl implements SocialLoginService {
 	public int kakaoSignUp(HashMap<String, Object> getUserInfoMap) {
 		return dao.kakaoSignUp(getUserInfoMap);
 	}
+
+	@Override
+	public int emailCheckForNaver(String email) {
+		return dao.emailCheckForNaver(email);
+	}
+
+	@Override
+	public int nickCheckForNaver(String nick) {
+		return dao.nickCheckForNaver(nick);
+	}
 }

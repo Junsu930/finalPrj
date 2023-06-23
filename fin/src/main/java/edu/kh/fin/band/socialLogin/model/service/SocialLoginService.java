@@ -40,6 +40,10 @@ public interface SocialLoginService {
 	 */
 	public int kakaoSignUp(HashMap<String, Object> getUserInfoMap);
 
+	public int emailCheckForNaver(String email);
+
+	public int nickCheckForNaver(String nick);
+
 
 
 }
