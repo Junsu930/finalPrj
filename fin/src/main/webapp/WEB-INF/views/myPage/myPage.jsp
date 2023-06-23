@@ -50,12 +50,12 @@
             </div>
 
             <div class="imgBox">
-                <c:if test="${empty loginMember.profileImage}">
+                <c:if test="${empty loginUser.profileImg}">
                 	<img src="${contextPath}/resources/images/profileImage/user.png" id="profile-image">
                 </c:if>
 
-                <c:if test="${!empty loginMember.profileImage}">
-                     <img src="${contextPath}${loginMember.profileImage}" id="profile-image">
+                <c:if test="${!empty loginUser.profileImg}">
+                     <img src="${contextPath}${loginUser.profileImg}" id="profile-image">
                 </c:if>
                 
                 <form action="">
@@ -539,14 +539,14 @@
                 	<span id="delete-image">x</span>
                 
                     <div class="modalImgBox">
-                        <c:if test="${empty loginMember.profileImage}">
+                        <c:if test="${empty loginUser.profileImg}">
                             <img src="${contextPath}/resources/images/profileImage/user.png" id="profile-image">
                         </c:if>
 
-                        <c:if test="${!empty loginMember.profileImage}">
+                        <c:if test="${!empty loginUser.profileImg}">
                             <img src="${contextPath}${loginUser.profileImg}" id="profile-image">
                         </c:if>
-                        <i class="bi bi-camera-fill"><input type="file" name="uploadImage" id="input-image" accept="image/*"></i>              
+                        <i class="bi bi-camera-fill" id="fileImg"><input type="file" required name="uploadImage" id="input-image" accept="image/*"></i>              
                     </div>
                 
                     <div class="modalInputBox">
@@ -554,14 +554,14 @@
                             <span class="icon">
                                 <ion-icon name="mail"></ion-icon>
                             </span>
-                            <input type="email" required id="userEmail" name="userEmail">
+                            <input type="email" required id="userEmail" name="newEmail">
                             <label>EMAIL</label>
                         </div>
                         <div class="input-box">
                             <span class="icon">
                                 <ion-icon name="lock-closed"></ion-icon>
                             </span>
-                            <input type="password" required id="userPw" name="userPw"> 
+                            <input type="password" required id="userPw" name="newPw"> 
                             <label>PASSOWORD</label>
                         </div>
 
@@ -586,7 +586,7 @@
                             <table class="positionTable">
 								<tr>
 									<td>
-										<input type="radio" id="GUITAR" name="inst" value="기타">
+										<input type="radio" required id="GUITAR" name="inst" value="기타">
 										<label for="GUITAR">GUITAR</label>
 									</td>
 									<td>
@@ -624,7 +624,7 @@
 					<table class="genreTable">
 						<tr>
 							<td>
-								<input type="radio" id="ELECTRONIC" name="genre" value="일렉트로닉">
+								<input type="radio" required id="ELECTRONIC" name="genre" value="일렉트로닉">
 								<label for="ELECTRONIC">ELECTRONIC</label>
 							</td>
 
@@ -671,7 +671,7 @@
 					<table class="locationTable">
 						<tr>
 							<td>
-								<input type="radio" id="seoul" name="region" value="서울">
+								<input type="radio" required id="seoul" name="region" value="서울">
 								<label for="seoul">서울</label>
 							</td>
 							<td>
@@ -769,7 +769,9 @@
             
             </div>
             <div class="modal-footer">
+                <form action="fin/secession" method="GET">
                 <button id="secessionBtn">탈퇴하기</button>
+        		</form>
             </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

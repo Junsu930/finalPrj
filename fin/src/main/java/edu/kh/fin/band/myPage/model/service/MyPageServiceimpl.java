@@ -79,7 +79,7 @@ public class MyPageServiceimpl implements MyPageService{
 	@Override
 	public int changePw(Map<String, Object> paramMap) {
 		
-		String encPw = dao.selectEncPw((int) paramMap.get("userPw") );
+		String encPw = dao.selectEncPw((int)paramMap.get("userNo"));
 		
 			if( bcrypt.matches( (String)paramMap.get("userPw") , encPw) ) {
 			
@@ -88,6 +88,31 @@ public class MyPageServiceimpl implements MyPageService{
 			
 			return dao.changePw(paramMap);
 			
+		}
+		
+		return 0;
+	}
+
+	/** 포지션 입력 서비스impl
+	 *
+	 */
+	@Override
+	public int insertPosition(Map<String, Object> paramMap) {
+		
+		return dao.insertPosition(paramMap);
+	}
+
+	/** 회원 탈퇴 서비스 impl
+	 *
+	 */
+	@Override
+	public int secession(User loginUser) {
+		
+		String encPw = dao.selectEncPw(loginUser.getUserNo());
+		
+		if(bcrypt.matches(loginUser.getUserPw(), encPw)) {
+			
+			return dao.secession(loginUser.getUserNo());
 		}
 		
 		return 0;

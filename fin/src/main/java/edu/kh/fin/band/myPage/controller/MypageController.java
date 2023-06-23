@@ -3,7 +3,9 @@ package edu.kh.fin.band.myPage.controller;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -47,7 +51,9 @@ public class MypageController {
 			@RequestParam("genre") String genre, Model model,@RequestParam("uploadImage") MultipartFile uploadImage
 			,HttpServletRequest req, /* 파일 저장 경로 탐색용 */
 			RedirectAttributes ra, HttpSession session
-			, HttpServletRequest re) throws IOException{
+			, HttpServletRequest re, @RequestParam("newNick") String newNick
+			,@RequestParam("newEmail") String newEmail , @RequestParam("newPw") String newPw
+			) throws IOException{
 		
 		
 		Searching updateInfo = new Searching();
@@ -62,11 +68,11 @@ public class MypageController {
 		updateInfo.setInst(inst);
 		updateInfo.setRegion(region);
 		
-		System.out.println("세션검사" + session.getAttribute("loginUser"));
-		System.out.println("세션검사2" +loginUser.getUserNo() );
-		System.out.println("입력검사" + loginUser.getUserEmail());
-		System.out.println("입력검사2" + loginUser.getUserNick());
+		System.out.println(updateInfo.getGenre());
+		System.out.println(updateInfo.getInst());
+		System.out.println(updateInfo.getRegion());
 
+		paramMap.put("newPw", newPw);
 		paramMap.put("userPw", loginUser.getUserPw());
 		paramMap.put("userNo", loginUser.getUserNo());
 		paramMap.put("gender", updateInfo.getGender());
@@ -78,6 +84,7 @@ public class MypageController {
 		paramMap.put("uploadImage", uploadImage);
 		
 		int allResult = 0;
+		
 		
 		int img = service.updateImg(paramMap, loginUser);
 		System.out.println("이미지 변경" + img);
@@ -91,7 +98,24 @@ public class MypageController {
 		int changePw = service.changePw(paramMap);
 		System.out.println("비밀번호 변경" + changePw );
 		
-		allResult = img + info + position + changePw;
+		int insertPosition = 0;
+		
+		if(position != 0) {
+			
+			insertPosition = 0;
+		} else {
+			
+			insertPosition = service.insertPosition(paramMap);
+		}
+		
+		if(img > 0) {
+			loginUser.setProfileImg((String)paramMap.get("profileImg"));
+		}
+		
+		
+		System.out.println("포지션 입력" + insertPosition );
+		
+		allResult = img + info + position + changePw + insertPosition;
 		
 		String message = null;
 		
@@ -101,8 +125,47 @@ public class MypageController {
 			message = "회원 정보 변경 실패";
 		}
 		
+		System.out.println("이미지 검사" + loginUser.getProfileImg());
+		
 		ra.addFlashAttribute("msg", message);
 		return "redirect:/myPage";
+	}
+	
+	
+	//회원 탈퇴 서비스 호출
+	@ResponseBody
+	@GetMapping("fin/secession")
+	public String secession(@ModelAttribute("loginUser") User loginUser,
+			SessionStatus status,
+			HttpServletRequest req,
+			HttpServletResponse resp,
+			RedirectAttributes ra ) {
+		
+		int result = service.secession(loginUser);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) {
+			message = "탈퇴 되었습니다.";
+			path = "/";
+			
+			// 세션 없애기
+			status.setComplete();
+						
+			// 쿠키 없애기
+			Cookie cookie = new Cookie("saveId", "");
+			cookie.setMaxAge(0);
+			cookie.setPath(req.getContextPath());
+			resp.addCookie(cookie);
+		} else {
+			message = "탈퇴 실패";
+			path = "/";
+		}
+			ra.addFlashAttribute("msg", message);
+		
+			return "redirect:" + path;
+		
 	}
 	
 }
