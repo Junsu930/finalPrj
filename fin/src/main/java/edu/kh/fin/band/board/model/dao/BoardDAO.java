@@ -21,12 +21,12 @@ public class BoardDAO {
 		return sqlSession.insert("boardMapper.write",board);
 	}
 
-	public List<Board> boardList() {
+	public List<BoardDetail> boardList() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("boardMapper.boardList");
 	}
 
-	public Board boardDetail(int boardNo) {
+	public BoardDetail boardDetail(int boardNo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("boardMapper.boardDetail",boardNo);
 	}
@@ -36,14 +36,14 @@ public class BoardDAO {
 		sqlSession.update("boardMapper.updateReadCount",boardNo);
 	}
 
-	public void delete(int boardNo) {
-		sqlSession.delete("boardMapper.delete",boardNo);
+	public int delete(int boardNo) {
+		return sqlSession.delete("boardMapper.delete",boardNo);
 		
 	}
 
-	public void boardUpdate(Board board) {
+	public int  boardUpdate(Board board) {
 		// TODO Auto-generated method stub
-		sqlSession.update("boardMapper.boardUpdate",board);
+		return sqlSession.update("boardMapper.boardUpdate",board);
 	}
 
 

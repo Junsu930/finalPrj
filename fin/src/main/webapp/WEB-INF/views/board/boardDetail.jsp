@@ -21,25 +21,33 @@
    </head>
    <body>
 
+<%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
 
 
      <c:if test="${not empty includeHeader and includeHeader}">
      
  <jsp:include page="/WEB-INF/views/common/header.jsp"/> 
   </c:if>
-
+<c:if test="${ !empty message }">
+    <script>
+        alert("${message}");
+        // EL 작성 시 scope를 지정하지 않으면
+        // page -> request -> session -> application 순서로 검색하여
+        // 일치하는 속성이 있으면 출력
+    </script>
+</c:if> 
 <div class="DetailContainer">
     <div class="title-container">
    <c:choose>
-            <c:when test="${board.boardTag==1}">
+            <c:when test="${BoardDetail.boardTag==1}">
               
-      <p class="tagsss">질문</p>
+      <p class="tagsss">잡담</p>
       
       
       		</c:when>
 	  <c:otherwise>
       		
-      <p class="tagsss">잡담</p>
+      <p class="tagsss">질문</p>
       </c:otherwise> 
     
  
@@ -49,24 +57,24 @@
    
    
        
-      <h1 class="BoardDetailTitle">${board.boardTitle}</h1> 
+      <h1 class="BoardDetailTitle">${BoardDetail.boardTitle}</h1> 
     </div>
     <div class="info">
       <div class="left">
-        <span class="nickname">${board.userNo}</span>
+        <span class="nickname">${BoardDetail.userNick}</span>
         <div class="viewsBox">
         <i class="fa-solid fa-eye"></i>
-        <span class="DetailViews">${board.readCount}</span>
+        <span class="DetailViews">${BoardDetail.readCount}</span>
         </div>
         
         <div class="heartBox">
         <i class="fa-solid fa-heart"></i>
-        <span class="hearts">${board.boardLike}</span>
+        <span class="hearts">${BoardDetail.boardLike}</span>
         </div>
-        <span class="date">${board.createDate}</span>
+        <span class="date">${BoardDetail.createDate}</span>
       </div>
       <div class="right">
-         <c:if test="${loginUser.userNo == board.userNo}">
+         <c:if test="${loginUser.userNo == BoardDetail.userNo}">
         <button class="edit" onclick="updateBtn()">수정</button>
         <button class="delete" onclick="deleteBtn()">삭제</button>
         </c:if>
@@ -74,7 +82,7 @@
     </div>
     
     <div class="content">
-      <p>${board.boardContent}
+      <p>${BoardDetail.boardContent}
         </p>
     </div>
     <div class="comments">
@@ -169,7 +177,7 @@
 
 
 const updateBtn= () => {
-	const boardNo = '${board.boardNo}';
+	const boardNo = '${BoardDetail.boardNo}';
 	  
 	location.href = "update?boardNo=" + boardNo ;
 }
@@ -178,7 +186,7 @@ const updateBtn= () => {
 	
 
 const deleteBtn= () => {
-	const boardNo = '${board.boardNo}';
+	const boardNo = '${BoardDetail.boardNo}';
 	   if (!confirm("정말 삭제하시겠습니까?")) {
 		   location.href = "/board";
 		   

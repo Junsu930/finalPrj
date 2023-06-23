@@ -24,13 +24,13 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<Board> boardList() {
+	public List<BoardDetail> boardList() {
 		// TODO Auto-generated method stub
 		return dao.boardList();
 	}
 
 	@Override
-	public Board boardDetail(int boardNo) {
+	public BoardDetail boardDetail(int boardNo) {
 		// TODO Auto-generated method stub
 		return dao.boardDetail(boardNo);
 	}
@@ -42,15 +42,15 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void delete(int boardNo) {
-		dao.delete(boardNo);
+	public int  delete(int boardNo) {
+		return dao.delete(boardNo);
 		
 	}
 
 	@Override
-	public void boardUpdate(Board board) {
+	public int boardUpdate(Board board) {
 		// TODO Auto-generated method stub
-		dao.boardUpdate(board);
+		 return dao.boardUpdate(board);
 	}
 
 

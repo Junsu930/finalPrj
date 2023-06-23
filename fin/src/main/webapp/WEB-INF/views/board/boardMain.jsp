@@ -45,7 +45,15 @@
     <title>BOARD</title>
    </head>
    <body>
-    
+ <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
+<c:if test="${ !empty message }">
+    <script>
+        alert("${message}");
+        // EL 작성 시 scope를 지정하지 않으면
+        // page -> request -> session -> application 순서로 검색하여
+        // 일치하는 속성이 있으면 출력
+    </script>
+</c:if>    
  <jsp:include page="/WEB-INF/views/common/header.jsp"/> 
 
     <div class="boardContainer">
@@ -101,7 +109,7 @@
                   <th colspan="5">게시글이 존재하지 않습니다.</th>
                    </tr>
                  </c:when>
-
+						
                 <c:otherwise>
                       <c:forEach var="board" items="${boardList}">       
                           
@@ -111,7 +119,7 @@
             <c:when test="${ board.boardTag==1}">
               
                 
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">질문</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">잡담</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
           
           
           
@@ -119,14 +127,14 @@
           
              <c:otherwise>
           
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">잡담</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
-          
-          
-          
+          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">질문</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
+          					
+          			
+          					
          </c:otherwise>
-             
+             		
                         </c:choose>
-          <td class="ninkName"><a class="blockBoxOpen">${board.userNo}</a></td>
+          <td class="ninkName"><a class="blockBoxOpen">${board.userNick}</a></td>
           <td class="views">${board.readCount}</td>
           <td class="heart">${board.boardLike}</td>
         </tr>

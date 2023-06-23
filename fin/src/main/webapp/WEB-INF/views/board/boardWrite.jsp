@@ -16,7 +16,15 @@
     <title>WRITE</title>
    </head>
    <body>
-
+<%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
+<c:if test="${ !empty message }">
+    <script>
+        alert("${message}");
+        // EL 작성 시 scope를 지정하지 않으면
+        // page -> request -> session -> application 순서로 검색하여
+        // 일치하는 속성이 있으면 출력
+    </script>
+</c:if> 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
        <form action="boardWrite" method="post">
   <div class="container">
@@ -40,11 +48,11 @@
     
     <div class="boardTitle">제목</div>
    <div>
-    <input type="text" name="boardTitle" value ="${board.boardTitle}"class="title-input">
+    <input type="text" name="boardTitle" class="title-input">
     </div>
     <div class="border"></div>
     <div class="boardContent">내용</div>
-    <textarea id="content" name="boardContent" class="content-input">${board.boardContent}</textarea>
+    <textarea id="content" name="boardContent" class="content-input"></textarea>
     
     
       <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능

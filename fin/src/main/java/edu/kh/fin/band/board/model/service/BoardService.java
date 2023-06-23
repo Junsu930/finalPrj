@@ -10,15 +10,15 @@ public interface BoardService {
 
 	int write(Board board);
 
-	List<Board> boardList();
+	List<BoardDetail> boardList();
 
-	Board boardDetail(int boardNo);
+	BoardDetail boardDetail(int boardNo);
 
 	void updateReadCount(int boardNo);
 
-	void delete(int boardNo);
+	int delete(int boardNo);
 
-	void boardUpdate(Board board);
+	int boardUpdate(Board board);
 
 
 

@@ -13,11 +13,21 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>
    <script type="text/javascript" src="resources/ckeditor/ckeditor.js"></script>
+   <c:if test="${ !empty message }">
+    <script>
+        alert("${message}");
+        // EL 작성 시 scope를 지정하지 않으면
+        // page -> request -> session -> application 순서로 검색하여
+        // 일치하는 속성이 있으면 출력
+    </script>
+</c:if> 
     <title>WRITE</title>
    </head>
    <body>
+<%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
        <form action="mody" method="post">
   <div class="container">
     <h1>글쓰기</h1>
@@ -27,17 +37,16 @@
 
 
       <label class="test_obj">
-        <input type="radio" class="tagNotice" name="boardTag" value="1">
-        <span>공지사항</span>
-    </label>
-    <label class="test_obj">
-      <input type="radio" class="tagBasic" name="boardTag" value="2">
-      <span>일반게시판</span>
-  </label>
-  <label class="test_obj">
-    <input type="radio" class="tagHot"  name="boardTag" value="3">
-    <span>인기게시판</span>
+      <input type="radio" class="tagNotice" name="boardTag" value="1" 
+        ${board.boardTag == 1 ? 'checked' : ''}>
+    <span>잡담</span>
 </label>
+<label class="test_obj">
+    <input type="radio" class="tagBasic" name="boardTag" value="2" 
+        ${board.boardTag == 2 ? 'checked' : ''}>
+    <span>질문</span>
+</label>
+
 
     </div>
     </div>
