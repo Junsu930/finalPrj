@@ -97,12 +97,13 @@
 
                 <form id ="form" action="fin/signUp" method="POST" name="regi-form" onsubmit="return signUpValidate()">
 
-                    <div class="inputBox"> <!--input-box-->
+                    <div class="inputBox" id="embox"> <!--input-box-->
                         <span class="icon">
                             <ion-icon name="mail" id="sendEmail"></ion-icon>
                         </span>
                         <input type="email" id="email" name="userEmail">
                         <label>EMAIL&nbsp;&nbsp;<span class="signUp-message" id="emailMessage"></span></label>
+                        <div class="emshow"><p>이메일 보내기</p></div>
                     </div>
 
                     <div class="inputBox"> <!--input-box-->

@@ -46,8 +46,7 @@ public class LoginServiceImpl implements LoginService{
 		
 		User loginUser = dao.login(inputUser);
 		
-		System.out.println(loginUser.getUserPw());
-		System.out.println(inputUser.getUserPw());
+
 		
 		if(loginUser != null) { // 일치하는 이메일을 가진 회원 정보가 있을 경우
 			

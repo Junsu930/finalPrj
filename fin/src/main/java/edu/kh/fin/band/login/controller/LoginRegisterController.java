@@ -121,7 +121,7 @@ public class LoginRegisterController {
 	}
 	
 	// 닉네임 중복 검사
-	@ResponseBody  
+	@ResponseBody
 	@GetMapping("/nicknameDupCheck")
 	public int nicknameDupCheck(String userNickname) {
 		

@@ -331,7 +331,18 @@ dark.mode .formBox h2{
 	letter-spacing: 0;
 }
 
+.emshow {
+    padding: 15px 20px;
+    background-color: #444444;
+    border-radius: 5px;
+    color: #ffffff;
+    position: absolute;
+    display: none;
+}
 
+#embox:hover + .jb-text {
+    display: block;
+  }
 
 
 

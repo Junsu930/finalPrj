@@ -18,6 +18,17 @@
 		<result property="profileImg" 	column="IMAGE"/>
 
   </resultMap>
+  
+  <resultMap type="searching" id="searching_rm">
+		<id property="matchingNo" column="MATCHING_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="career" column="YEARS_OF_EXP" />
+		<result property="inst" column="INST" />
+		<result property="genre" column="GENRE" />
+		<result property="gender" column="GENDER" />
+		<result property="region" column="REGION" />
+		<result property="userName" column="USER_NICK" />
+	</resultMap>
 
 	<update id="updateInfo">
 		UPDATE "USER" SET
@@ -48,6 +59,24 @@
 		INST = #{inst},
 		REGION = #{region},
 		GENRE = #{genre}
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	<insert id="insertPosition" parameterType="searching">
+		INSERT INTO MATCHING_INFO VALUES(
+  			MATCHING_SEQ.NEXTVAL,
+  			${userNo},
+  			#{inst},
+  			#{genre},
+  			#{region},
+  			NUll,
+  			NULL
+  	)
+	</insert>
+	
+	<update id="secession">
+		UPDATE "USER" SET
+		SECESSION_FL = 'Y'
 		WHERE USER_NO = ${userNo}
 	</update>
 

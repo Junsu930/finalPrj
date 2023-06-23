@@ -34,4 +34,16 @@ public interface MyPageService {
 	 */
 	int changePw(Map<String, Object> paramMap);
 
+	/** 포지션 입력 서비스
+	 * @param paramMap
+	 * @return
+	 */
+	int insertPosition(Map<String, Object> paramMap);
+
+	/** 회원탈퇴 서비스
+	 * @param loginUser
+	 * @return
+	 */
+	int secession(User loginUser);
+
 }

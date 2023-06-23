@@ -18,6 +18,8 @@ public class MyPageDAO {
 	 */
 	public String selectEncPw(int userNo) {
 		
+		System.out.println("비밀번호 조회 DAO 유저NO" + userNo);
+		
 		return sqlSession.selectOne("myPageMapper.selectEncPw", userNo);
 	}
 
@@ -45,6 +47,10 @@ public class MyPageDAO {
 	 */
 	public int updatePosition(Map<String, Object> paramMap) {
 		
+		System.out.println("포지션 변경 DAO 악기" +paramMap.get("inst"));
+		System.out.println(paramMap.get("genre"));
+		System.out.println(paramMap.get("region"));
+		
 		return sqlSession.update("myPageMapper.updatePosition", paramMap);
 	}
 
@@ -55,6 +61,24 @@ public class MyPageDAO {
 	public int updateImg(Map<String, Object> paramMap) {
 		
 		return sqlSession.update("myPageMapper.updateImg", paramMap);
+	}
+
+	/** 포지션 입력 DAO
+	 * @param paramMap
+	 * @return
+	 */
+	public int insertPosition(Map<String, Object> paramMap) {
+		
+		return sqlSession.update("myPageMapper.insertPosition", paramMap);
+	}
+
+	/** 회원 탈퇴 DAO
+	 * @param userNo
+	 * @return
+	 */
+	public int secession(int userNo) {
+		
+		return sqlSession.update("myPageMapper.secession", userNo);
 	}
 
 
