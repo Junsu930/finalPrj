@@ -32,7 +32,7 @@ public class BoardController {
 	
 	@GetMapping("/board")
 		 public String BoardList(Model model) {
-		List<Board> boardList = service.boardList();
+		List<BoardDetail> boardList = service.boardList();
 		model.addAttribute("boardList",boardList);
 		
 		 
@@ -50,8 +50,9 @@ public class BoardController {
 	public String boardDetail(@RequestParam("boardNo")int boardNo,
 							  	Model model) {
 		service.updateReadCount(boardNo);
-		Board boardDetail = service.boardDetail(boardNo);
-		model.addAttribute("board" , boardDetail);
+		BoardDetail boardDetail = service.boardDetail(boardNo);
+		model.addAttribute("BoardDetail" , boardDetail);
+		
 		
 		return "board/boardDetail";
 		
@@ -106,18 +107,40 @@ public class BoardController {
 	
 	
 	@GetMapping("/delete")
-	public String delete(@RequestParam("boardNo")int boardNo) {
+	public String delete(@RequestParam("boardNo")int boardNo
+										, RedirectAttributes ra) {
 		
-		service.delete(boardNo);
-		return "redirect:/board";
+		int deleteResult = service.delete(boardNo);
+		String message = null;
+		if(deleteResult>0) {
+			
+			message = "게시글이 삭제되었습니다";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/board";
+			
+		}else {
+			
+			message = "삭제 실패...";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/board";
+		}
+			
+			
+		
+		
+	
 	}
 	
 	
 	@GetMapping("/update")
-	public String updateForm(@RequestParam("boardNo")int boardNo, Model model) {
+	public String updateForm(@RequestParam("boardNo")int boardNo, 
+											Model model,
+											RedirectAttributes ra) {
 		
-		Board boardDetail = service.boardDetail(boardNo);
+		BoardDetail boardDetail = service.boardDetail(boardNo);
 		model.addAttribute("board" , boardDetail);
+		
+		
 		
 		
 		return "board/boardUpdate";
@@ -125,16 +148,39 @@ public class BoardController {
 	
 	@PostMapping("/mody")
 	public String boardUpdate(@ModelAttribute Board board,
-								Model model) {
+								Model model,
+								RedirectAttributes ra) {
 		
-		service.boardUpdate(board);
+		 int updateResult = service.boardUpdate(board);
 	
-		Board boardDetail = service.boardDetail(board.getBoardNo());
+		BoardDetail boardDetail = service.boardDetail(board.getBoardNo());
 		
-		model.addAttribute("board",boardDetail);
+		model.addAttribute("BoardDetail",boardDetail);
+		String message = null;
+		if(updateResult>0) {
+			message = "게시글이 수정되었습니다 ";
+			ra.addFlashAttribute("message", message);
+			return "board/boardDetail";
+			
+			
+			
+		}else {
+			message = "수정실패... ";
+			ra.addFlashAttribute("message", message);
+			
+			return "redirect:/board";
+			
+		}
 		
+	
 		
-		return "board/boardDetail";
+	
+			
+	
+			
+	
+		
+	
 	}
 	
 	

@@ -11,7 +11,11 @@
 		<result property="userNo" column="USER_NO" />
 		<result property="boardLike" column="BOARD_LIKE" />
 		<result property="boardTag" column="BOARD_TAG" />
+		<result property="userNick" column="USER_NICK" />
 	</resultMap>
+	
+	
+	
 	
 	
 		<!-- 게시글 상세 조회용 resultMap -->
@@ -24,7 +28,7 @@
 		<result property="userNo" column="USER_NO" />
 		<result property="boardLike" column="BOARD_LIKE" />
 		<result property="boardTag" column="BOARD_TAG" />
-	
+		<result property="userNick" column="USER_NICK" />
 		
 		
 	</resultMap>
@@ -38,9 +42,11 @@
 		<result property="boardNo" column="BOARD_NO" />
 	</resultMap> 
 	
-	<select id="boardList" resultMap="board_rm">
-        SELECT * 
+	<select id="boardList" resultMap="detail_rm">
+        SELECT BOARD_NO,BOARD_TITLE,BOARD_CONTENT,CREATE_DATE,READ_COUNT,
+        BOARD_ST,USER_NO,BOARD_LIKE,BOARD_TAG,USER_NICK
         FROM BOARD 
+        JOIN "USER" USING(USER_NO)
         ORDER BY BOARD_NO 
         DESC
     </select>
@@ -51,16 +57,22 @@
     #{boardTitle}, #{boardContent},DEFAULT, DEFAULT, DEFAULT, #{userNo}, DEFAULT,#{boardTag} 
    )
 	</insert>
+	
+	
 		<!-- 게시글 상세 조회 -->
-	<select id="boardDetail" resultMap="board_rm">
+	<select id="boardDetail" resultMap="detail_rm">
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT,
 		TO_CHAR(CREATE_DATE, 'YY"." MM"." DD') CREATE_DATE,
 		READ_COUNT, USER_NO, BOARD_LIKE, BOARD_LIKE,
-		BOARD_TAG
+		BOARD_TAG,USER_NICK
 		FROM BOARD
-		WHERE BOARD_NO = ${boardNo}
-		AND BOARD_ST = 'N'
+		JOIN "USER" USING(USER_NO)
+		WHERE BOARD_NO = #{boardNo}
+		AND BOARD_ST = 'N' 
+
 	</select>
+	
+	
 	
 	
 		<!-- 조회수 증가 -->
@@ -69,13 +81,19 @@
 		READ_COUNT = READ_COUNT + 1
 		WHERE BOARD_NO = #{boardNo}
 	</update>
-	<delete id="delete" parameterType="board">
 	
-	DELETE FROM BOARD 
-	WHERE BOARD_NO = #{boardNo}
+	
+	
+	<delete id="delete" parameterType="detail">
+	
+		DELETE FROM BOARD 
+		WHERE BOARD_NO = #{boardNo}
 	
 	</delete>
-	<update id="boardUpdate" parameterType="board">
+	
+	
+	
+	<update id="boardUpdate" parameterType="detail">
 		UPDATE BOARD SET
 		BOARD_TITLE=#{boardTitle}, BOARD_CONTENT=#{boardContent}
 		WHERE BOARD_NO = #{boardNo}

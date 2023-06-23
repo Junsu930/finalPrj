@@ -20,6 +20,7 @@ public class BoardDetail {
 	private int userNo;
 	private int boardLike;
 	private String boardTag;
+	private String userNick;
 	
 	private List<BoardImage> imageList;
 	

@@ -23,7 +23,7 @@ public class Board {
 	private int userNo;
 	private int boardLike;
 	private String boardTag;
-	
+	private String userNick;	
 	
 
 	
