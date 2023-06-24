@@ -9,7 +9,7 @@
   	
   	<result property="userNo" column="USER_NO"/>
   	<result property="lessonNick" 	column="USER_NICK"/>
-  	<result property="introment" 	column="INTRO_MENT"/>
+  	<result property="motto" 	column="MOTTO"/>
 	<result property="joinDate" 	column="JOIN_DATE"/>	
 	<result property="lessonImg" column="LESSON_IMG" />
 	<result property="genre" column="GENRE" />
@@ -24,7 +24,7 @@
 
 
 	<select id="lessonList" resultMap="lesson_rm">
-	SELECT USER_NICK, li.INTRO_MENT, li.REGION, TO_CHAR(li.JOIN_DATE, 'YY"년"MM"월"DD"일"')AS JOIN_DATE  , li.LESSON_IMG
+	SELECT u.USER_NICK, li.MOTTO, li.REGION, TO_CHAR(li.JOIN_DATE, 'YY"년"MM"월"DD"일"')AS JOIN_DATE  , li.LESSON_IMG
 	FROM LESSON_INFO li
 	JOIN "USER" u USING(USER_NO)
 	</select>
@@ -32,15 +32,16 @@
 	<insert id="writeLessonForm" parameterType="lesson">
 	INSERT INTO LESSON_INFO VALUES(
 	LESSON_NO_SEQ.NEXTVAL,
-	  ${lessonNameInput},
-	  #{lessonMottoInput},
-	  SYSDATE,
-	  NULL,
-	  #{genre}, 
-	  #{lesson},
+	  ${userNo},
+	  #{lessonNameInput},
 	  #{lessonLocationInput},
-	  #{lessonDetailInput},
-	  #{lessonSocialInput}
+	  #{lessonSocialInput},
+	  #{lessonMottoInput},	
+	  #{lessonDetailInput},  
+	  #{genre}, 
+	  #{inputImage},
+	  #{lessonImg},
+	  SYSDATE
 	  )
 	</insert>
 	
