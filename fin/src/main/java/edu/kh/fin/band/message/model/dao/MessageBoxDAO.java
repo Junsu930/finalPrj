@@ -1,5 +1,6 @@
 package edu.kh.fin.band.message.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -25,17 +26,6 @@ public class MessageBoxDAO {
 	}
 
 	
-	
-	/**
-	 * 메세지 답장 DAO
-	 * @author lee
-	 * @param msgInput
-	 * @param userNo
-	 * @return
-	 */
-	public int sendMsg(MessageBox msg) {
-		return sqlSession.insert("msgBoxMapper.sendMsg", msg);
-	}
 
 
 
@@ -73,5 +63,38 @@ public class MessageBoxDAO {
 	public int deleteAlarm(int msgNo) {
 		return sqlSession.update("alaramMapper.deleteAlarm", msgNo);
 	}
+
+
+
+	/**
+	 * 멤버리스트에서 처음으로 메세지 보내는 DAO
+	 * @author lee
+	 * @param map
+	 * @return
+	 */
+	public int firstSendMsg(HashMap<String, Object> map) {
+		int msgNo = 0;
+		int insertResult = sqlSession.insert("msgBoxMapper.firstSendMsg", map);
+		
+		if(insertResult >0) msgNo = (Integer) map.get("msgNo");
+		
+		return msgNo;
+	}
+
+
+
+	/**
+	 * 멤버리스트에서 처음으로 메세지 보내는 작업 이후 발생된 메세지 넘버를 바탕으로 알람등록 DAO
+	 * @author lee
+	 * @param msgA
+	 * @return
+	 */
+	public int insertAlarm(MsgAlarm msgA) {
+		return sqlSession.insert("alaramMapper.insertAlarm", msgA);
+	}
+
+
+
+	
 
 }

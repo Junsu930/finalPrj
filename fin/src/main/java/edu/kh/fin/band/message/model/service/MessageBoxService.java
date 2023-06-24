@@ -1,5 +1,6 @@
 package edu.kh.fin.band.message.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import edu.kh.fin.band.message.model.vo.MessageBox;
@@ -18,17 +19,6 @@ public interface MessageBoxService {
 	List<MessageBox> selectMsgList(int receiverUserNo);
 
 	
-	
-	/**
-	 * 메세지 답장 서비스
-	 * @author lee
-	 * @param msgInput
-	 * @param userNo
-	 * @return
-	 */
-	int sendMsg(MessageBox msg);
-
-
 
 	/**
 	 * 쪽지 삭제 서비스
@@ -55,5 +45,29 @@ public interface MessageBoxService {
 	 * @return
 	 */
 	int deleteAlarm(int msgNo);
+
+
+
+	/**
+	 * 멤버리스트에서 처음으로 메세지 보내는 서비스
+	 * @author lee
+	 * @param map
+	 * @return
+	 */
+	int firstSendMsg(HashMap<String, Object> map);
+
+
+
+	/**
+	 * 멤버리스트에서 처음으로 메세지 보내는 작업 이후 발생된 메세지 넘버를 바탕으로 알람등록 서비스
+	 * @author lee
+	 * @param msgA
+	 * @return
+	 */
+	int insertAlarm(MsgAlarm msgA);
+
+
+
+	
 
 }

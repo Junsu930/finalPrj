@@ -69,16 +69,16 @@ for(let i = 0; i < profileMsg.length; i++){
 }
 
 
-// 쪽지보내기
+// 처음 쪽지보내기
 function sendMsg(){
     let replyMsgText = document.getElementById('replyMsgText_memberList');
     let receiverUserNo = modalFromProfile._options.userNo
     
     if(replyMsgText.value == ""){
-        alert("쪽지 내용을 작성해주세요!");
+        alert("쪽지 내용을 작성해주세요!ㅁㄴㅇㅁㄴㅇ");
     }else{
         $.ajax({
-            url:"replyMsg",
+            url:"sendMsg",
             data: {"replyMsgText" : replyMsgText.value , "receiverUserNo": receiverUserNo },
             type : "POST",
             dataType: "JSON",  // dataType : 응답데이터 형식을 지정

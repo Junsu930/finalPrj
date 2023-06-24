@@ -1,5 +1,6 @@
 package edu.kh.fin.band.message.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +27,6 @@ public class MessageBoxImpl implements MessageBoxService{
 		return dao.selectMsgList(receiverUserNo);
 	}
 
-	
-	/**
-	 * 메세지 답장 서비스
-	 * @author lee
-	 */
-	@Override
-	public int sendMsg(MessageBox msg) {
-		
-		return dao.sendMsg(msg);
-	}
 
 
 	/**
@@ -67,6 +58,30 @@ public class MessageBoxImpl implements MessageBoxService{
 	public int deleteAlarm(int msgNo) {
 		// TODO Auto-generated method stub
 		return dao.deleteAlarm(msgNo);
+	}
+
+
+
+	
+
+	/**
+	 * 멤버리스트에서 처음으로 메세지 보내는 서비스
+	 * @author lee
+	 */
+	@Override
+	public int firstSendMsg(HashMap<String, Object> map) {
+		return dao.firstSendMsg(map);
+	}
+
+
+	/**
+	 * 멤버리스트에서 처음으로 메세지 보내는 작업 이후 발생된 메세지 넘버를 바탕으로 알람등록 서비스
+	 * @author lee
+	 */
+	@Override
+	public int insertAlarm(MsgAlarm msgA) {
+		// TODO Auto-generated method stub
+		return dao.insertAlarm(msgA);
 	}
 
 }

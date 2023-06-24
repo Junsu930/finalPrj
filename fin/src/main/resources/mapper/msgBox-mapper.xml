@@ -13,20 +13,24 @@
 	</resultMap>
 	
 	
+	<insert id="firstSendMsg" parameterType="msgBox">
+		<selectKey keyProperty="msgNo" resultType="_int" order="BEFORE">
+			SELECT MESSAGE_BOX_NO_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO MESSAGE_BOX (MSG_NO, SEND_USER_NO, RECEIVER_USER_NO, MSG_CONTENT, OPEN_DATE, SEND_DATE, MSG_FL)
+		VALUES(${msgNo}, ${sendUserNo}, ${receiverUserNo}, #{msgContent}, NULL, DEFAULT, DEFAULT)
+	</insert>
+	
+	
 	<select id="msgBoxList" resultMap="msgBox_select_list">
 		SELECT MSG_NO, u1.USER_NICK AS SEND_USER_NICKNAME, m.SEND_USER_NO, m.MSG_CONTENT, TO_CHAR(SEND_DATE,'YY"년"MM"월"DD"일"') AS SEND_DATE
 		FROM
 		MESSAGE_BOX m
 		JOIN "USER" u1 ON m.SEND_USER_NO = u1.USER_NO
 		WHERE m.RECEIVER_USER_NO = #{receiverUserNo} AND MSG_FL = 'N'
-		ORDER BY MSG_NO
+		ORDER BY MSG_NO DESC
 	</select>
 	
-	
-	<insert id="sendMsg" parameterType="msgBox">
-		INSERT INTO MESSAGE_BOX (MSG_NO, SEND_USER_NO, RECEIVER_USER_NO, MSG_CONTENT, OPEN_DATE, SEND_DATE)
-		VALUES (5, #{sendUserNo}, #{receiverUserNo}, #{msgContent}, NULL, DEFAULT)
-	</insert>
 	
 	<update id="deleteMsg" parameterType="_int">
 		UPDATE MESSAGE_BOX SET MSG_FL = 'Y' WHERE MSG_NO = #{msgNo}

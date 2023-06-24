@@ -20,6 +20,13 @@ hamburger.addEventListener("click", () => {
 // =========================================반응형=========================================
 
 
+
+
+
+
+
+
+
 // =========================================모드==========================================
 // 라이트, 다크모드 요소모음
 const sun = document.getElementById("sun");
@@ -54,11 +61,11 @@ for(let i = 0; i< path.length; i ++){
   path[i].style.stroke ="#FB4F93";
 }
   // 각각 요소 색깔 바꾸기
-  navBar.style.background = "#000";
+  // navBar.style.background = "#fff";
   sun.style.color="#fff";
   toggle.style.color = "#fff";
-  loginIMGI.style.color = "#fff";
-  signUpIMGI.style.color = "#fff";
+  // loginIMGI.style.color = "#fff";
+  // signUpIMGI.style.color = "#fff";
 //   해로 바꿔주기
   sun.className = "bi-brightness-high"
   
@@ -82,11 +89,11 @@ const lightModeFunc = () => {
 
     path[i].style.stroke ="#000";
   }
-  navBar.style.background = "#fff";
+  // navBar.style.background = "#000";
   sun.style.color="#000";
   toggle.style.color = "#000";
-  loginIMGI.style.color = "#000";
-  signUpIMGI.style.color = "#000";
+  // loginIMGI.style.color = "#000";
+  // signUpIMGI.style.color = "#000";
   
 //  달로 바꿔주기
   if(sun.className != 'bi-moon'){
@@ -144,12 +151,34 @@ let wrapperUlOpen = false;
 let messageUlBoxOpen = false;
 // alert View 보이기
 
-const wrapperUl = document.querySelector('.wrapperUl');
+let wrapperUl = document.querySelector('.wrapperUl');
+let messageUlBox = document.querySelector('.messageUlBox');
+
+// 프사 이미지 클릭 시, 밑에 ul 나오게하는 js
+
+let menu = document.querySelector('.menu');
+function activeMenu(){
+    menu.classList.toggle('activeMenu');
+}
+// 프사 이미지 클릭 시, 밑에 ul 나오게하는 js
+
+// post, messagebox나오게 하는 함수
 
 function showAlertView(){
-  wrapperUl.classList.toggle('alertViewShow');
+  wrapperUl.classList.toggle('show');
   return wrapperUlOpen = true;
 }
+
+function showMsgBoxView(){
+  messageUlBox.classList.toggle('show');
+  return messageUlBoxOpen = true;
+}
+
+// post, messagebox나오게 하는 함수
+
+
+
+
 
 function getUserNicks(loginUserNo){ //userNicksList 부르는 함수 
   $.ajax({ // userNo를 바탕으로 userNickslist 가져오는 ajax
@@ -200,11 +229,14 @@ function getMsgAlarmCount(loginUserNo){ // msgAlarmCount 가져오는 함수
   });
 }
 
+
+
 function disappearCount(loginUserNo){ // msgCount 갯수 사라지게 하는 함수
   // 메세지 아이콘 클릭 시, count 갯수 사라지게 하는 이벤트 리스너
   document.getElementById('msgBoxOpen').addEventListener('click', function() {
+        
+    console.log("msg click");
 
-    let messageUlBox = document.querySelector('.messageUlBox');
     $.ajax({
       url:"disappearCount",
       method:"GET",
@@ -219,9 +251,11 @@ function disappearCount(loginUserNo){ // msgCount 갯수 사라지게 하는 함
         console.log("상태코드 : " + request.status); 
       }
     });
-    messageUlBox.classList.toggle('alertViewShow');
-    return messageUlBoxOpen = true;
-  }); // 이벤트 리스너 끝
+    // messageUlBox.classList.toggle('alertViewShow');
+    // return messageUlBoxOpen = true;
+    showMsgBoxView();
+
+  });
 }
 
 
@@ -267,10 +301,9 @@ function alarmDisappearCount(loginUserNo){ // alarmCount 지우기 함수
       }
     });
     showAlertView();
-  })
-
-  
+  });
 }
+
 
 function getUserNicksFromRoom(loginUserNo){ // 예약 신청알람 함수
   $.ajax({
@@ -300,27 +333,40 @@ function getUserNicksFromRoom(loginUserNo){ // 예약 신청알람 함수
 
 
 
+let loginText = document.querySelector('.loginText').innerText;
+
+if(loginText === "Login"){
+}else{
+  $.ajax({ // 접속하자마자 userNo 가져오는 ajax
+    url:"getUserNo",
+    method:"GET",
+    dataType:"JSON",
+    success: function(loginUserNo){
+      getUserNicks(loginUserNo);
+      getMsgAlarmCount(loginUserNo);
+      disappearCount(loginUserNo);
+  
+      getAlarmCount(loginUserNo);
+      alarmDisappearCount(loginUserNo);
+      getUserNicksFromRoom(loginUserNo);
+    }, //  success 끝
+    error : function(request, status, error){
+      console.log("getUserNo AJAX 에러 발생");
+      console.log("상태코드 : " + request.status); 
+      return false;
+    }
+  }); //  ajax끝
+}
 
 
-$.ajax({ // 접속하자마자 userNo 가져오는 ajax
-  url:"getUserNo",
-  method:"GET",
-  dataType:"JSON",
-  success: function(loginUserNo){
-    getUserNicks(loginUserNo);
-    getMsgAlarmCount(loginUserNo);
-    disappearCount(loginUserNo);
 
-    getAlarmCount(loginUserNo);
-    alarmDisappearCount(loginUserNo);
-    getUserNicksFromRoom(loginUserNo);
-  }, //  success 끝
-  error : function(request, status, error){
-    console.log("getUserNo AJAX 에러 발생");
-    console.log("상태코드 : " + request.status); 
-    return false;
-  }
-}); //  ajax끝
+
+
+
+
+
+
+
 
 
 
