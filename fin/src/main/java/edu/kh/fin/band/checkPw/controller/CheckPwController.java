@@ -53,10 +53,10 @@ public class CheckPwController {
 			path = "/myPage";
 		} else {
 			message = "비밀번호가 일치하지 않습니다.";
-			path = "/changePw";
+			path = "/checkPw";
 		}
 		
-		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("msg", message);
 		
 		return "redirect:" + path;
 		

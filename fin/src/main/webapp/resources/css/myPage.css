@@ -642,7 +642,7 @@
 }
 
 
-
+.genreBox,
 .positionBox,
 .genreBox,
 .locationBox{
@@ -814,14 +814,14 @@ input[type="checkbox"]:checked + label:before {
   
   
   #profile-image {
-  
+  overflow: hidden;
   width: 70%;
   height: 70%;
   
   }
   
   #input-image {
-  display: none;
+  
   }
 
   

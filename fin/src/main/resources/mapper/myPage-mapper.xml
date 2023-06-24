@@ -32,7 +32,6 @@
 
 	<update id="updateInfo">
 		UPDATE "USER" SET
-		USER_EMAIL = #{newEmail},
 		USER_NICK = #{newNick}
 		WHERE USER_NO = ${userNo}
 	</update>
@@ -69,7 +68,7 @@
   			#{inst},
   			#{genre},
   			#{region},
-  			NUll,
+  			#{gender},
   			NULL
   	)
 	</insert>
