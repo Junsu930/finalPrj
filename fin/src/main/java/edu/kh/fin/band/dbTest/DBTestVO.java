@@ -26,6 +26,7 @@ public class DBTestVO {
 	private String region;
 	private String gender;
 	private String yoe;
+	private String profileImg;
 	
 	
 

@@ -201,7 +201,7 @@
   width: 60%;
   border-radius: 10px;
   box-shadow: 5px 5px 15px rgba(119, 119, 119, 0.5);
-  background-color: var(--background-color)
+  background-color: #F9FBFF;
 }
 
 .chatContainer .top-bar {

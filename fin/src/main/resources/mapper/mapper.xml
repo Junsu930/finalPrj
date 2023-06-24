@@ -16,7 +16,7 @@
 		<result property="region" column="REGION" />
 		<result property="gender" column="GENDER" />
 		<result property="yoe" column="YEARS_OF_EXP" />
-		
+		<result property="profileImg" column="IMAGE"/>
 	</resultMap>
 	
 	

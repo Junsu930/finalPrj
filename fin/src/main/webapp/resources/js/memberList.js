@@ -95,3 +95,17 @@ function sendMsg(){
         });
     }
 }
+
+
+
+/******************** 채팅 연결하기 ***********************/
+let chatStartIconLi = $(".bi-chat-dots");
+
+for(let eachLi of chatStartIconLi){
+    $(eachLi).click(e=>{
+        let userNo = $(e.target).next().next().val();
+
+        chatStart(userNo);
+    })
+
+}

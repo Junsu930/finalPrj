@@ -74,7 +74,7 @@
 			                    <li class="bi bi-chat-dots"></li>
 								<li class="profileMsg bi bi-envelope"></li>
 								<input id="receiverUserNo_memberList" type="hidden" value="${member.userNo}">
-			                    <li class="bi bi-person-circle"></li>
+			                    <li class="bi bi-person-circle" data-bs-toggle="modal" data-bs-target="#exampleModal"></li>
 			                </ul>
 			            </div>
         			</div>
@@ -120,11 +120,12 @@
 		
 
 		
-
+		
 		
 		
 	</section>
 	
+	<jsp:include page="/WEB-INF/views/profile/lookProfile.jsp"/>
 	<jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
 	<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>

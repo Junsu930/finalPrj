@@ -60,7 +60,7 @@
 	</select>
 	
 	<select id="nickCheckForNaver" parameterType="string" resultType="_int">
-		SELECT COUNT(*) FROM "USER" WHERE USER_NICK = #{nick}
+		SELECT COUNT(*) FROM "USER" WHERE USER_NICK = #{nick} AND USER_TYPE != 'NAVER'
 	</select>
 	
 	

@@ -38,7 +38,7 @@
  			<!-- 프로필 이미지  -->
  			<div>
  				<div id="imgProfileRoundBox">
- 					<img class="imgProfileImage" src="${contextPath}/resources/images/bill.jpg">
+ 					<img id="imgProfileImage" class="imgProfileImage" src="${contextPath}/resources/images/profileImage/user.png">
  				</div>
  			</div>
  			<!-- 닉네임과 이메일 -->
@@ -77,10 +77,10 @@
 	 				
 	 			</div>
  			</div>
- 			<!-- 경력 -->
+ 			<!-- 성별 -->
  			 <div class="eachIconDiv">
  				<div>
- 					<i class="fa-solid fa-calendar-days"></i>YearsOfExp
+ 					<i class="fa-solid fa-venus-mars"></i>Gender
  				</div>
 	 			<div id="modalInExp">
 	 				
@@ -104,4 +104,56 @@
 </div>   
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script src="${contextPath}/resources/js/lookProfile.js"></script>
+<script>
+// 프로필 보기 모달
+let profileModalOn = $(".bi-person-circle");
+
+console.log(profileModalOn);
+
+for(let eachModal of profileModalOn){
+  $(eachModal).click((e)=>{
+    
+    let userId = $(e.target).prev().val();
+    
+    $.ajax({
+        type: 'post',
+        url: '/fin/dbTest',
+        async: true,
+        data:{'userNo' : userId},
+        dataType: 'JSON',
+        beforeSend:function(){
+          $('.wrap-loading').removeClass('display-none');
+          $('.modal-content').css("display", 'none');
+        },complete:function(){
+          $('.wrap-loading').addClass('display-none');
+          $('.modal-content').css("display", 'flex');
+        },
+        success: function(data){   
+			console.log(data);
+            $("#modalMainTitle").html(data.userName + "님의 프로필");
+            $("#modalInName").html(data.userName);
+            $("#modalInEmail").html(data.userEmail);
+            $("#modalInInst").html(data.inst);
+            $("#modalInGenre").html(data.genreFavor);
+            $("#modalInRegion").html(data.region);
+			if(data.gender == 'M'){
+				$("#modalInExp").html("남자");
+			}else{
+				$("#modalInExp").html("여자");
+			}
+            $("#modalInMent").html(data.introMent);
+
+			if(data.profileImage != null){
+				$("#imgProfileImage").src(data.profileImage);
+			}
+
+    
+        },
+        error: function(err){
+            console.log(err);
+        }
+    })
+  });
+}
+
+</script>
