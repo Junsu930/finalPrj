@@ -5,6 +5,7 @@ var naver_id_login = new naver_id_login("cE2qHHhSMkJYsQGPIKaz", "http://127.0.0.
 naver_id_login.get_naver_userprofile("naverSignInCallback()");
 
 // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+
 function naverSignInCallback() {
   
   // 네이버 사용자 프로필 조회
@@ -12,30 +13,31 @@ function naverSignInCallback() {
   let email = naver_id_login.getProfileData('email');
   let nick = naver_id_login.getProfileData('nickname');
   let profileImg = naver_id_login.getProfileData('profile_image');
+  
+  $.ajax({
+    url : "/fin/dupCheckForNaver",
+    type : "post",
+    data : {"email" :email, "nick" : nick},
+    success : function (data){
 
-  alert("으아아");
-  let dupRs = dupCheck(email, nick);
+      dupCheck(data, email, nick, token, profileImg);
+    }
+  });
+  
 
-  if(dupRs == 1){
-    alert("이메일이 중복되었습니다. 확인해주세요");
-  }else if(dupRs==2){
-    alert("닉네임이 중복되었습니다. 확인해주세요");
+};
+
+// 중복 여부 체크
+function dupCheck(datas, email, nick , token, profileImg){
+
+  if(datas == 1){
+    swal.fire("이메일이 중복되었습니다. 확인해주세요");
+  }else if(datas==2){
+    swal.fire("닉네임이 중복되었습니다. 확인해주세요");
   }else{
-    $.ajax({
-      url : "/fin/checkNaverFl",
-      type : "post",
-      data: {"email" :email},
-      success : function(data){
-        if(data == 0) { // 만약 가입된 멤버가 없으면
-          naverSignUp(email, nick, profileImg, token);
-        }else { // 가입된 멤버가 있으면 
-          changeToken(email,token);
-        }
-      }
-    });
+    naverCheck(email, nick ,token,profileImg);
   }
-
-}
+};
 
 // 네이버 DB가입처리
 function naverSignUp(email, nick, profile_image, token){
@@ -66,21 +68,17 @@ function changeToken(email,token){
   
 };
 
-
-// 중복 여부 체크
-function dupCheck(email, nick){
-  
+function naverCheck(email, nick, token, profileImg){
   $.ajax({
-    url : "/fin/dupCheckForNaver",
+    url : "/fin/checkNaverFl",
     type : "post",
-    data : {"email" :email, "nick" : nick},
-    success : function (data){
-      return data;
-      //1 : 이메일 중복 있음
-      //2 : 닉네임 중복 있음
-      //0 : 중복 없음
+    data: {"email" :email},
+    success : function(data){
+      if(data == 0) { // 만약 가입된 멤버가 없으면
+        naverSignUp(email, nick, profileImg, token);
+      }else { // 가입된 멤버가 있으면 
+        changeToken(email,token);
+      }
     }
-
-
-  })
+  });
 }

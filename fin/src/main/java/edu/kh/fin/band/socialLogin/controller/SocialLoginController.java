@@ -100,9 +100,9 @@ public class SocialLoginController {
 				// 이메일과 닉 중복 모두 없으면
 				result = 0;
 			}
-			
 		}
 		
+		System.out.println(result);
 		
 		return result;
 	}
