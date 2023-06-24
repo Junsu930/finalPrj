@@ -56,7 +56,6 @@ public class LessonController {
 	public String writeLessonForm(@RequestParam Map<String,Object> map, 
 			@RequestParam(value = "images", required = false) List<MultipartFile> images,
 			@ModelAttribute("loginUser") User loginUser,
-			@RequestParam("lessonNameInput") String name,
 			HttpServletRequest req, RedirectAttributes ra) {
 	
 		String webPath = "/resources/images/lesson/";

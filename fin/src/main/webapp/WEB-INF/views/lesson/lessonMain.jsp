@@ -81,7 +81,7 @@
 					<div class="imgCotentWrap" id="firstBox" onclick="location.href='${contextPath}/lessonDetail'">
 						<div class="imgBox">${lesson.lessonImg}</div>
 						<div class="contentBox">
-							<p id="scrollOver">${lesson.introment}</p>
+							<p id="scrollOver">${lesson.motto}</p>
 							<span>${lesson.joinDate}</span>
 							<p>${lesson.region}</p>
 							<p>by.&nbsp${lesson.lessonNick}</p>

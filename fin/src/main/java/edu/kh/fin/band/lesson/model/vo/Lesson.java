@@ -14,7 +14,7 @@ public class Lesson {
 	private int lessonNo;
 	private int userNo;
 	private String lessonNick;
-	private String introment;
+	private String motto;
 	private String joinDate;
 	private String lessonImg;
 	private String genre;
