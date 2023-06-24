@@ -552,13 +552,6 @@
                     <div class="modalInputBox">
                         <div class="input-box">
                             <span class="icon">
-                                <ion-icon name="mail"></ion-icon>
-                            </span>
-                            <input type="email" required id="userEmail" name="newEmail">
-                            <label>EMAIL</label>
-                        </div>
-                        <div class="input-box">
-                            <span class="icon">
                                 <ion-icon name="lock-closed"></ion-icon>
                             </span>
                             <input type="password" required id="userPw" name="newPw"> 
@@ -581,6 +574,23 @@
                     </div>
 
                     <div class="checkWrapper">
+                    
+                    	<p id="genderP" class="disPlayNone">GENDER</p>
+                		<div class="genderBox disPlayNone">
+                			<table class="genderTable">
+								<tr>
+									<td>
+										<input type="radio" id="MAN" name="gender" value="M">
+										<label for="MAN">MAN</label>
+									</td>
+									<td>
+										<input type="radio" id="WOMAN" name="gender" value="W">
+										<label for="WOMAN">WOMAN</label>
+									</td>
+								</tr>
+							</table>
+                		</div>
+                    
                         <p id="positionP" class="disPlayNone">POSITION</p>
                         <div class="positionBox disPlayNone">
                             <table class="positionTable">

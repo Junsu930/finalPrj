@@ -46,13 +46,13 @@ public class MypageController {
 	@PostMapping("fin/updateInfo")
 	public String updateInfo(@RequestParam Map<String, Object> paramMap
 			, @ModelAttribute("loginUser") User loginUser
-			,@RequestParam("region") String region,
+			,@RequestParam("region") String region,@RequestParam("gender") char gender,
 			@RequestParam("inst") String inst,
 			@RequestParam("genre") String genre, Model model,@RequestParam("uploadImage") MultipartFile uploadImage
 			,HttpServletRequest req, /* 파일 저장 경로 탐색용 */
 			RedirectAttributes ra, HttpSession session
 			, HttpServletRequest re, @RequestParam("newNick") String newNick
-			,@RequestParam("newEmail") String newEmail , @RequestParam("newPw") String newPw
+			, @RequestParam("newPw") String newPw
 			) throws IOException{
 		
 		
@@ -67,6 +67,7 @@ public class MypageController {
 		updateInfo.setGenre(genre);
 		updateInfo.setInst(inst);
 		updateInfo.setRegion(region);
+		updateInfo.setGender(gender);
 		
 		System.out.println(updateInfo.getGenre());
 		System.out.println(updateInfo.getInst());
@@ -148,7 +149,7 @@ public class MypageController {
 		
 		if(result > 0) {
 			message = "탈퇴 되었습니다.";
-			path = "/";
+			path = "/main";
 			
 			// 세션 없애기
 			status.setComplete();

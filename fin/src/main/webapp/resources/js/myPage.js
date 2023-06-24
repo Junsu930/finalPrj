@@ -73,13 +73,7 @@ showBtn.addEventListener('click', function(){
   
   const inutImg = document.getElementById("input-image");
   const fileImg = document.getElementById("fileImg");
-
-  fileImg.addEventListener('click', function() {
-
-    this.click.inutImg
-
-  })
-
+  
   const secession = getElementById("secessionBtn");
 
   secession.addEventListener("click", function() {
