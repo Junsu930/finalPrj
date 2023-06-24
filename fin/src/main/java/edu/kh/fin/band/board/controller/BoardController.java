@@ -28,7 +28,7 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	
+	   
 	
 	@GetMapping("/board")
 		 public String BoardList(Model model) {
