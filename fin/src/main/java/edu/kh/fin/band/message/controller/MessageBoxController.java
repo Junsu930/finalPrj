@@ -1,6 +1,7 @@
 package edu.kh.fin.band.message.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,50 +55,42 @@ public class MessageBoxController {
 		
 	}
 	
-	
 	/**
-	 * 쪽지 답장컨트롤러
+	 * 멤버리스트에서 처음으로 메세지 보내는 컨트롤러
 	 * @author lee
-	 * @param msgInput
+	 * @param replyMsgText
+	 * @param receiverUserNo
 	 * @param loginUser
-	 * @return
+	 * @return result
 	 */
-	@PostMapping("/replyMsg")
+	@PostMapping("/sendMsg")
 	@ResponseBody
-	public String sendMsg(@RequestParam("replyMsgText") String replyMsgText,
+	public String firstMsg(
+			@RequestParam("replyMsgText") String replyMsgText,
 			@RequestParam("receiverUserNo") int receiverUserNo,
-			@RequestParam("msgNoForAlarm") int msgNoForAlarm,
 			@ModelAttribute("loginUser") User loginUser) {
 		
+		int msgNo = 0;
+		
+		System.out.println(loginUser.getUserNo());
+		
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("msgContent", replyMsgText);
+		map.put("receiverUserNo", receiverUserNo);
+		map.put("sendUserNo", loginUser.getUserNo());
+		
+		
+		msgNo = service.firstSendMsg(map);
+		
+		// 받은 메세지 넘버 바탕으로 알람 등록
 		int result = 0;
-		int alarmResult = 0;
+		MsgAlarm msgA = new MsgAlarm();
+		msgA.setMsgNo(msgNo);
+		msgA.setUserNo(receiverUserNo);
+		result = service.insertAlarm(msgA); // 멤버리스트에서 처음으로 메세지 보내는 작업 이후 발생된 메세지 넘버를 바탕으로 알람등록 서비스
 		
-		MsgAlarm alarm = new MsgAlarm();
-		
-		alarm.setUserNo(receiverUserNo);
-		alarm.setMsgNo(msgNoForAlarm);
-		alarm.setAlarmStatus('Y');
-		
-		alarmResult = service.insertMsgAlarm(alarm);
-		
-		
-		
-		MessageBox msg = new MessageBox();
-		
-		// 보내는 사람의 유저 넘버
-		msg.setSendUserNo(loginUser.getUserNo()); // 보내는 사람 유저 넘버
-		msg.setReceiverUserNo(receiverUserNo); // 받는 사람 닉네임 
-		msg.setMsgContent(replyMsgText);
-		
-		System.out.println("sendMsg controller 보내는 사람 " + msg.getSendUserNo()); // 로그인되어있는 사람 
-		System.out.println("sendMsg controller 받는사람" + msg.getReceiverUserNo()); // 받는 사람 즉 2번
-		System.out.println("sendMsg controller내용" + msg.getMsgContent());
-		
-		result = service.sendMsg(msg);
-		
-		int totalResult = result + alarmResult;
-		
-		if(totalResult == 2) {
+		if(result > 0) {
 			  return new Gson().toJson("쪽지 전송 성공!");
 		  } else {
 			  return new Gson().toJson("쪽지 전송 실패 ㅠㅠ");
@@ -105,7 +98,7 @@ public class MessageBoxController {
 		
 	}
 	
-	
+
 	/**
 	 * 쪽지 삭제 컨트롤러
 	 * @author lee

@@ -16,8 +16,8 @@
 .messageWrapper li{
     position: relative;
     list-style: none;
-    width: 480px;
-    height: 130px;
+    width: 680px;
+    height: 150px;
     padding:15px;
     background-color: #eee;
     gap: 20px;
@@ -189,4 +189,15 @@ body.darkmode .sendMsgModalBox h1{
     background-color: transparent;
     font-size: 2em;
     cursor: pointer;
+}
+
+
+
+
+@media screen and (min-width:22.4rem) and (max-width:31.3rem) {
+    .messageWrapper li{
+        width: 300px;
+        height: 100px;
+    }
+    
 }

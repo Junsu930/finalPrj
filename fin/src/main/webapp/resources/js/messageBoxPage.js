@@ -58,8 +58,8 @@ function replyMsg(){
         alert("쪽지 내용을 작성해주세요!");
     }else{
         $.ajax({
-            url:"replyMsg",
-            data: {"replyMsgText" : replyMsgText.value , "receiverUserNo": receiverUserNo , "msgNoForAlarm": msgNoForAlarm},
+            url:"sendMsg",
+            data: {"replyMsgText" : replyMsgText.value , "receiverUserNo": receiverUserNo},
             type : "POST",
             dataType: "JSON",  // dataType : 응답데이터 형식을 지정
             // -> "JSON"으로 지정 시 자동으로 JS 객체로 변환

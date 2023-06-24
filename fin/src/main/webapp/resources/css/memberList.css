@@ -164,3 +164,9 @@ body.darkmode .sendMsgModalBox h1{
     cursor: pointer;
 }
 
+
+@media screen and (min-width:22.4rem) and (max-width:25.9em) {
+    .wrapper {
+        width: 300px;
+    }
+}

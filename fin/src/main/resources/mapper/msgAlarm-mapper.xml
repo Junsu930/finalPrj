@@ -27,14 +27,11 @@
 	
 	
 	
-	
-	
-	
-
-	<insert id="insertMsgAlarm" parameterType="msgAlarm">
-		INSERT INTO MSG_ALARM (ALARM_NO, USER_NO, ALARM_TYPE, ALARM_STATUS)
-		VALUES(MSG_ALARM_NO_SEQ.NEXTVAL , #{userNo}, #{msgNo}, #{alarmStatus} )
+	<insert id="insertAlarm" parameterType="msgAlarm">
+		INSERT INTO MSG_ALARM (ALARM_NO, USER_NO , MSG_NO, ALARM_STATUS, ALARM_READ_STATUS)
+		VALUES (MSG_ALARM_NO_SEQ.NEXTVAL, #{userNo}, #{msgNo}, DEFAULT, DEFAULT)
 	</insert>
+	
 	
 	<select id="getMsgAlarmCount" parameterType="_int" resultType="_int">
 		SELECT COUNT(*) AS COUNT FROM MSG_ALARM WHERE USER_NO = #{loginUserNo} AND ALARM_STATUS = 'N' AND ALARM_READ_STATUS = 'N'
@@ -60,6 +57,13 @@
 	</select> 
 	
 	
+	
+	
+	
+	
+	
+	
+	
 	<update id="disappearCount" parameterType="_int">
 		UPDATE MSG_ALARM SET ALARM_READ_STATUS = 'Y' WHERE USER_NO = #{loginUserNo}
 	</update>
@@ -77,8 +81,6 @@
 		WHERE OWNER_NO = ${loginUserNo}
 		ORDER BY RESERVE_MON ASC, RESERVE_DAY DESC
 	</select>
-	
-	
 	
 	
 	
