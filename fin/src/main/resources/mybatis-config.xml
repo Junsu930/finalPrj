@@ -31,6 +31,7 @@
 		<typeAlias type="edu.kh.fin.band.board.model.vo.BoardImage" alias="boardImage"/>
 		<typeAlias type="edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm" alias="msgAlarm"/>
 		<typeAlias type="edu.kh.fin.band.socialLogin.model.vo.SocialInfo" alias="social"/>
+		<typeAlias type="edu.kh.fin.band.myBand.model.vo.MyBand" alias="myBand"/>
 		<typeAlias type="edu.kh.fin.band.myPage.model.vo.Ban" alias="BanList"/>
 	</typeAliases>
 	
@@ -49,5 +50,6 @@
 		<mapper resource="/mapper/msgAlarm-mapper.xml"/>
 		<mapper resource="/mapper/socialLogin-mapper.xml"/>
 		<mapper resource="/mapper/myPage-mapper.xml"/>
+		<mapper resource="/mapper/myBand-mapper.xml"/>
 	</mappers>
 </configuration>
