@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.fin.band.board.model.vo.Board;
 import edu.kh.fin.band.board.model.vo.BoardDetail;
+import edu.kh.fin.band.board.model.vo.Criteria;
 
 @Repository
 public class BoardDAO {
@@ -21,9 +22,9 @@ public class BoardDAO {
 		return sqlSession.insert("boardMapper.write",board);
 	}
 
-	public List<BoardDetail> boardList() {
+	public List<BoardDetail> boardList(Criteria cri) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("boardMapper.boardList");
+		return sqlSession.selectList("boardMapper.boardList",cri);
 	}
 
 	public BoardDetail boardDetail(int boardNo) {
@@ -44,6 +45,11 @@ public class BoardDAO {
 	public int  boardUpdate(Board board) {
 		// TODO Auto-generated method stub
 		return sqlSession.update("boardMapper.boardUpdate",board);
+	}
+
+	public int getTotal() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("boardMapper.getTotal");
 	}
 
 

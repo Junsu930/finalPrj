@@ -13,7 +13,7 @@
 	 <link rel="stylesheet"href="${contextPath}/resources/css/boardDetail.css"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
    <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
-
+ <link rel="stylesheet" href="${contextPath}/resources/css/reply-style.css">
    <script src="${contextPath}/resources/js/modal.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
    
@@ -105,59 +105,29 @@
 
     </div>
     <div class="divider"></div>
-    <div class="author">
-      
-      <div class="author-info">
-        <p class="commentNickName">이갈치</p>
-        <span class="author-name">작성자</span>
-        <span class="author-date">22.05.00</span>
-      </div>
-      
-        
-      <div class="right">
-    
-        <button class="edit">수정</button>
-        <button class="reply">답글</button>
-      </div>
-    </div>
-    <div class="author-comment">
-      <p>안녕하세요 이갈치입니다 잘부탁드립니다 하하</p>
-    </div>
-
-
-    <div class="author">
-      
+ <%--  <ul class="comment-section">
+       <c:forEach var="reply" items="${rList}">
+    <li class="comment author">
         <div class="author-info">
-          <p class="commentNickName">이갈치</p>
-         
-          <span class="author-date">22.05.00</span>
+            <p class="commentNickName">${reply.userNick}</p>
+            <c:if test="${loginUser.userNo == BoardDetail.userNo}">
+                <span class="author-name">작성자</span>
+            </c:if>
+            <span class="author-date">${reply.createDate}</span>
         </div>
         <div class="right">
-          <button class="edit">수정</button>
-          <button class="reply">답글</button>
+            <button class="edit">수정</button>
+            <button class="reply">답글</button>
         </div>
-      </div>
-      <div class="author-comment">
-        <p>안녕하세요 이갈치입니다 잘부탁드립니다 하하</p>
-      </div>
-
-
-      <div class="author-reply">
+    </li>
       
-        <div class="author-info">
-          <p class="commentNickName">이갈치</p>
-          <span class="author-name">작성자</span>
-          <span class="author-date">22.05.00</span>
-        </div>
-        <div class="right-reply">
-          <button class="replyDelete">삭제</button>
-         
-        
-        </div>
-      </div>
-      <div class="author-comment-reply">
-        <p>안녕하세요 이갈치입니다 잘부탁드립니다 하하</p>
-      </div>
+ <li class="comment author-comment">
+        <p>${reply.replyContent}</p>
+    </li>
+     <div class="divider"></div>
+    </c:forEach>
+  
+</ul> --%>
 
     <!-- <div class="comment-input">        
         <div class="inputDetail">
@@ -169,9 +139,35 @@
   
   
 
-
+  <!-- 댓글 -->
+        <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
 </div>
 <jsp:include page="/WEB-INF/views/board/boardMain.jsp"/> 
+
+    <script>
+        // 댓글 관련 JS 코드에 필요한 값을 전역 변수로 선언
+
+        // jsp 파일 : html, css, js, el, jstl 사용 가능
+        // js  파일 : js
+
+        // 코드 해석 순서  :   EL == JSTL > HTML > JS
+
+        // ** JS 코드에서 EL/JSTL을 작성하게 된다면 반드시 ""를 양쪽에 추가 **
+
+        // 최상위 주소
+        const contextPath = "${contextPath}";
+        
+        // 게시글 번호
+        const boardNo = "${BoardDetail.boardNo}"; // "500"
+
+        // 로그인한 회원 번호
+        const loginMemberNo = "${loginUser.userNo}";
+        // -> 로그인 O  : "10";
+        // -> 로그인 X  : "";  (빈문자열)
+
+    </script>
+
+
 
 <script>
 
@@ -199,5 +195,7 @@ const deleteBtn= () => {
 	}
 </script>
 <script src = "${contextPath}/resources/js/boardDetail.js"></script>
+    <script src="${contextPath}/resources/js/reply.js"></script>
+
 </body>
 </html>

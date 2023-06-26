@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.ui.Model;
 import edu.kh.fin.band.board.model.vo.Board;
 import edu.kh.fin.band.board.model.vo.BoardDetail;
+import edu.kh.fin.band.board.model.vo.Criteria;
+import edu.kh.fin.band.board.model.vo.PageVO;
 import edu.kh.fin.band.login.model.vo.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.fin.band.board.model.service.ReplyService;
+import edu.kh.fin.band.board.model.vo.Reply;
 import edu.kh.fin.band.board.model.service.BoardService;
 
 @Controller
@@ -28,17 +32,29 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	   
+	@Autowired
+	private ReplyService rService;   
 	
 	@GetMapping("/board")
-		 public String BoardList(Model model) {
-		List<BoardDetail> boardList = service.boardList();
-		model.addAttribute("boardList",boardList);
-		
-		 
 	
-		
-		return "board/boardMain";
+	public String BoardList(Model model, Criteria cri) {
+	    int total = service.getTotal();
+	    PageVO pageVO = new PageVO(cri, total);
+	    List<BoardDetail> boardList = service.boardList(cri);
+	    model.addAttribute("boardList", boardList);
+	    model.addAttribute("pageVO", pageVO);
+	    return "board/boardMain";
+//		 public String BoardList(Model model) {
+//
+//		Criteria cri = new Criteria();
+//		PageVO pageVO = new PageVO(cri, service.getTotal());
+//		List<BoardDetail> boardList = service.boardList(cri);
+//		model.addAttribute("boardList",service.boardList(cri));
+//		model.addAttribute("pageVO",pageVO);
+//		 
+//	
+//		
+//		return "board/boardMain";
 		
 	}
 	
@@ -52,7 +68,8 @@ public class BoardController {
 		service.updateReadCount(boardNo);
 		BoardDetail boardDetail = service.boardDetail(boardNo);
 		model.addAttribute("BoardDetail" , boardDetail);
-		
+		List<Reply> rList = rService.selectReplyList(boardNo);
+		model.addAttribute("rList", rList);
 		
 		return "board/boardDetail";
 		
