@@ -126,7 +126,7 @@ public class SocialLoginServiceImpl implements SocialLoginService {
 		        //    요청에 필요한 Header에 포함될 내용
 		        conn.setRequestProperty("Authorization", "Bearer " + accessToken);
 		        int responseCode = conn.getResponseCode();
-//		        System.out.println("responseCode : " + responseCode);
+
 		        
 		        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		        
@@ -136,7 +136,7 @@ public class SocialLoginServiceImpl implements SocialLoginService {
 		        while ((line = br.readLine()) != null) {
 		            result += line;
 		        }
-//		        System.out.println("response body : " + result);
+
 		        
 		        JsonElement element = (JsonObject)JsonParser.parseString(result);
 		        
@@ -161,7 +161,7 @@ public class SocialLoginServiceImpl implements SocialLoginService {
 	}
 
 	/**
-	 * kakaoSignUp + 액세스 토큰을 바탕으로 카카오 유저 정보를 가져와서 + 정보 디비 저장 + 유저넘버 가져오기 + 기존 회원이면 토큰 교체
+	 * kakaoSignUp + 액세스 토큰을 바탕으로 카카오 유저 정보를 가져와서 + 일반 회원과 중복 체크 + 정보 디비 저장 + 유저넘버 가져오기 + 기존 회원이면 토큰 교체
 	 * @author lee
 	 */
 	@Override

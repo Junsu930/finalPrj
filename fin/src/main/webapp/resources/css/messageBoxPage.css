@@ -196,7 +196,7 @@ body.darkmode .sendMsgModalBox h1{
 
 @media screen and (min-width:22.4rem) and (max-width:31.3rem) {
     .messageWrapper li{
-        width: 300px;
+        width: 350px;
         height: 100px;
     }
     

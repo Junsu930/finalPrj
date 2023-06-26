@@ -75,7 +75,7 @@ function sendMsg(){
     let receiverUserNo = modalFromProfile._options.userNo
     
     if(replyMsgText.value == ""){
-        alert("쪽지 내용을 작성해주세요!ㅁㄴㅇㅁㄴㅇ");
+        alert("쪽지 내용을 작성해주세요!");
     }else{
         $.ajax({
             url:"sendMsg",
@@ -107,5 +107,40 @@ for(let eachLi of chatStartIconLi){
 
         chatStart(userNo);
     })
-
 }
+
+
+// 무한 스크롤 
+let memberListSection = document.querySelector('.memberListSection');
+let end = document.createElement('p');
+end.style.color = "red";
+memberListSection.appendChild(end);
+
+
+const options = {
+    root: null,// 기본값은 null(뷰포트)
+    rootMargin: '0px 0px 0px 0px',
+    threshold: 1, 
+    // 옵저버가 실행되기 위해 타켓의 가시성이 얼마나 필요한지 백분율로 표시한다.
+};
+
+// IntersectionObserver 생성
+const io = new IntersectionObserver((entries, observer) => {
+    // IntersectionObserverEntry 객체 리스트와 observer 본인(self)를 받음
+    // 동작을 원하는 것 작성
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        console.log(entry);
+        entry.target.innerText = "끄으으읏";
+      }
+    })
+  }, options)
+
+
+io.observe(end); // 관찰할 대상 설정
+// observe.unobserve(element) 특정 대상관찰 종료
+
+
+
+
+

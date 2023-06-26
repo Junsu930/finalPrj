@@ -108,7 +108,8 @@ public class SocialLoginController {
 	}
 	
 	/**
-	 * 카카오 인증코드, 토큰, kakaoSignUp + 액세스 토큰을 바탕으로 카카오 유저 정보를 가져와서 + 정보 디비 저장 + 유저넘버 가져오기 + 기존 회원이면 토큰 교체 Controller
+	 * 카카오 인증코드, 토큰, 
+	 * kakaoSignUp + 액세스 토큰을 바탕으로 카카오 유저 정보를 가져와서 + 일반 회원과 중복 체크 + 정보 디비 저장 + 유저넘버 가져오기 + 기존 회원이면 토큰 교체 Controller
 	 * @author lee
 	 * @param code
 	 * @param session
@@ -121,10 +122,9 @@ public class SocialLoginController {
 			Model model , 
 			RedirectAttributes ra ) {
 		HashMap<String, Object> getUserInfoMap = new HashMap<>();
-//		System.out.println("######## 코드 " + code);
 		
 		String accessToken = service.getToken(code);
-//		System.out.println("######## 토큰 "+ accessToken);
+
 		
 		getUserInfoMap = service.getUserInfo(accessToken);
 		
@@ -133,16 +133,17 @@ public class SocialLoginController {
 	    	
 	    	// 유저넘버를 미리 발생시키서 가져오기
 	    	int resultUserNo = service.kakaoSignUp(getUserInfoMap);
+	    	// 만약 중복이 발생해서 resultUserNo 리턴이 -1이면
 	    	
-	    	
-	    	// 세션에 등록할 카카오 유저 정보를 가져와서 유저 객체에 넣기
-	    	User user = service.getUser(resultUserNo);
-	    	
-	    	
-	    	model.addAttribute("loginUser", user);
-	    	
-	        ra.addFlashAttribute("msgKakao", "WELCOME!");
-	        
+	    	if(resultUserNo != -1) {
+	    		// 기본 회원가입과 중복이 아닌 회원
+	    		// 세션에 등록할 카카오 유저 정보를 가져와서 유저 객체에 넣기
+		    	User user = service.getUser(resultUserNo);
+		    	model.addAttribute("loginUser", user);
+		        ra.addFlashAttribute("msgKakao", "카카오 로그인 환영합니다!");
+	    	}else {
+	    		ra.addFlashAttribute("msgKakao", "아이디 또는 닉네임이 중복된 회원입니다!");
+	    	}
 	    }
 		return "redirect:main";
 	}
