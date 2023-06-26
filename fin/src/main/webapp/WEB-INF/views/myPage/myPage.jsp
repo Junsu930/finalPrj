@@ -108,6 +108,7 @@
                         <li class="js-static-modal-toggleBoard"><i class="bi bi-clipboard"></i></li>
                         <li class="js-static-modal-toggleReply"><i class="bi bi-chat"></i></li>
                         <li class="js-static-modal-toggleBlock"><i class="bi bi-emoji-angry"></i></li>
+                        <li class="js-static-modal-toggleGroup"><i class="bi bi-music-player"></i></li>
                         
                     </ul>
                 </div>
@@ -119,6 +120,7 @@
                         <li class="js-static-modal-toggleBoardP"><p>내가 작성한 게시글</p></li>
                         <li class="js-static-modal-toggleReplyP"><p>내가 작성한 댓글</p></li>
                         <li class="js-static-modal-toggleBlockP"><p>차단 회원 목록</p></li>
+                        <p class="js-static-modal-togglegroupP">밴드 생성</p>
                     </ul>
                 </div>
             </div>
@@ -808,6 +810,50 @@
         </div><!-- /.modal-dialog -->
     </div>
     </div>
+    
+     <!-- group create -->
+    <div class="container">
+        <!-- <button class=" js-static-modal-toggleBoard btn btn-primary " type="button">test</button> -->
+        <div id="static-modalGroup" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <div class="modal-body">
+
+                <section class="groupSection">
+                   <form action="" class="groupForm" method="POST">
+                        <div class="groupTitle">
+                            <h1>그룹 생성</h1>
+                        </div>
+
+                        <div class="grouInfoBox">
+                            <input type="text" required id="groupName">
+                            <label>GROUP NAME</label>
+
+                            <input type="eamil" required id="groupLeaderId">
+                            <label>LEADER ID</label>
+
+                            <textarea name="" id="groupInfoText"></textarea>
+                            <label>EXPLAIN YOUR GROUP</label>
+                        </div>
+
+                        <div class="groupBtnBox">
+                            <button id="groupBtn" type="submit">생성하기</button>
+                        </div>
+                   </form>
+                </section>      
+
+              </div>
+              <div class="modal-footer"></div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+    </div>
+    
+    
+    
     
     <script>
       const msg = "${msg}";

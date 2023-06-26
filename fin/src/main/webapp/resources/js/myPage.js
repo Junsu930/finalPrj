@@ -71,6 +71,19 @@ showBtn.addEventListener('click', function(){
     new Modal({el: document.getElementById('static-modalfindMember')}).show();
   });
   
+  
+  // groupModal
+  
+   document.querySelector('.js-static-modal-toggleGroup').addEventListener('click', function() {
+    new Modal({el: document.getElementById('static-modalGroup')}).show();
+  });
+
+
+  document.querySelector('.js-static-modal-togglegroupP').addEventListener('click', function() {
+    new Modal({el: document.getElementById('static-modalGroup')}).show();
+  });
+  
+  
   const inutImg = document.getElementById("input-image");
   const fileImg = document.getElementById("fileImg");
   
