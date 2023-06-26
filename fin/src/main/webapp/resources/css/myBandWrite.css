@@ -1,0 +1,66 @@
+.myBandWritecontainer{
+	
+	width: 60%;
+	height: 200vh;
+	margin: auto;
+	margin-top: 250px;
+	
+	
+}
+
+
+.ck-editor__editable {
+	height: 400px; 
+}
+
+.ck-content {
+   font-size: 12px;
+}
+
+#sendBtnForBandBoard{
+	width: 150px;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.writeMainP{
+	font-size: 2em;
+}
+
+.titleAreaDivForBandBoard{
+	display: flex;
+	margin: 20px 0;
+}
+
+/* 제목 p 영역 */
+.titleAreaDivForBandBoard > div{
+	
+	display: flex;
+	align-items: center;
+	font-size: 1.2em;
+	width: 10%;
+}
+
+#titleInputForBandBoard{
+	width: 90%;
+	border-radius: 5px;
+	margin-left: 10px;
+	height: 30px;
+	padding-left: 10px;
+	border: 1px solid silver;
+	
+}
+
+.sendBtnForBandBoardP{
+	display: flex;
+    justify-content: end;
+}
