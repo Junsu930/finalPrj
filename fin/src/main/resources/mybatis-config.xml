@@ -32,6 +32,7 @@
 		<typeAlias type="edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm" alias="msgAlarm"/>
 		<typeAlias type="edu.kh.fin.band.socialLogin.model.vo.SocialInfo" alias="social"/>
 		<typeAlias type="edu.kh.fin.band.myBand.model.vo.MyBand" alias="myBand"/>
+		<typeAlias type="edu.kh.fin.band.myPage.model.vo.Ban" alias="BanList"/>
 	</typeAliases>
 	
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->

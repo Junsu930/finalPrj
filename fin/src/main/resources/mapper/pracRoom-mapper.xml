@@ -39,11 +39,11 @@
 	</insert>
 	
 	<insert id="roomSetAlarm" parameterType="hashmap">
-		INSERT INTO ALARM (ALARM_NO, USER_NO, ROOM_NO, BOARD_NO, REPLY_NO, ROOM_ALARM_READ_STATUS, BOARD_ALARM_READ_STATUS, REPLY_ALARM_READ_STATUS)
-		VALUES(ALARM_NO_SEQ.NEXTVAL, ${ownerNo}, ${roomNo}, NULL, NULL, DEFAULT, NULL, NULL)
+		INSERT INTO ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, ROOM_NO, ROOM_ALARM_READ_STATUS, ALARM_DATE)
+		VALUES(ALARM_NO_SEQ.NEXTVAL, ${ownerNo}, ${loginNo}, ${roomNo},  DEFAULT, DEFAULT)
 	</insert>
 	
-	<select id="selectOwnerNo" parameterType="hashmap">
+	<select id="selectOwnerNo" parameterType="hashmap" resultType="_int">
 		SELECT OWNER_NO
 		FROM PRACTICE_ROOM
 		WHERE ROOM_NO = ${roomNo}

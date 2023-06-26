@@ -2,6 +2,7 @@ package edu.kh.fin.band.myPage.model.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.fin.band.common.Util;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.dao.MyPageDAO;
+import edu.kh.fin.band.myPage.model.vo.Ban;
 
 @Service
 public class MyPageServiceimpl implements MyPageService{
@@ -116,6 +118,25 @@ public class MyPageServiceimpl implements MyPageService{
 		}
 		
 		return 0;
+	}
+
+	/** 유저 차단 해제
+	 *
+	 */
+	@Override
+	public int ban(User loginUser) {
+		
+		return dao.ban(loginUser);
+	}
+
+	/** 밴 유저 확인
+	 *
+	 */
+	@Override
+	public List<Ban> chBanList(int userNo) {
+		
+		return dao.chBanList(userNo);
+	
 	}
 
 }
