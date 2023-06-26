@@ -70,31 +70,30 @@
 
       
             <div class="explainBox">
+              
+              
                 <ul class="explain">
 
                     <li>
                         <i class="fa-solid fa-guitar"></i>
-                        <span>GUITAR</span>
+                        <span>${lesson.inst}</span>
                     </li>
                     <li>
                         <i class="bi bi-journals"></i>
-                        <span>POP</span>
+                        <span>${lesson.genre}</span>
                     </li>
                     <li>
                         <i class="bi bi-house"></i>
-                        <span>서울</span>
+                        <span>${lesson.region}</span>
                     </li>
                     <li>
                         <i class="bi bi-instagram"></i>
-                        <span>@guitarDuck</span>
+                        <span>@ ${lesson.socialSite}</span>
                     </li>
                     <li>
                         <i class="bi bi-pencil"></i>
                         <span id="profileExpalin"><br>
-                            동작구 개인 연습실에서 레슨합니다.
-                            1시간 레슨 한달 기준 15만원입니다.
-                            한 분 한 분 케어 레슨 들어갑니다.
-                            기초과정 가능</span>
+                            ${lesson.detailment}</span>
                     </li>
                     
                 </ul>
@@ -103,20 +102,31 @@
 
             <div class="imgWrap">
                 <div class="imgBox">
-                    <div>
-                        이미지
+                    <div class="imgFirstBox">
+                        <img src="${contextPath}${lessonImg.imageRename}" alt="">
                     </div>
-                    <div>
+                    <div class="explainBox">
                         <p>
-                            이현경
+                            ${lesson.userNick}
                         </p>
                         <p>
-                            나한테 배워라
+                            ${lesson.motto}
                         </p>
                     </div>
                     <div class="chatBox">
-                        <button ><i class="bi bi-chat-dots"></i></button>
-                        <button id="deleteBtn">DELETE</button>
+                        <c:if test="${sessionScope.loginUser.userNo ne lesson.userNo}">
+                          <button ><i class="bi bi-chat-dots"></i></button>
+                        </c:if>
+                        
+                        
+                        <c:if test="${sessionScope.loginUser.userNo eq lesson.userNo}">
+                          <button id="deleteBtn" type="button" onclick="deleteLesson()">
+                            <i class="bi bi-trash"></i>
+                          </button>
+                          <input type="hidden" value="${lesson.lessonNo}" id="hiddenLessonNo">
+                          <input type="hidden" value="${lesson.userNo}">
+                        </c:if>
+
                         <button id="kakaotalk-sharing-btn" href="javascript:;">
                           <i class="bi bi-share"></i>
                         </button>

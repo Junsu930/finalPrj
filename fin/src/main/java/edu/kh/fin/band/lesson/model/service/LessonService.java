@@ -25,9 +25,10 @@ public class LessonService {
 	}
 
 	public int writeLessonForm(Map<String, Object> map, List<MultipartFile> images, String webPath, String folderPath) {
-
+		
 		int lessonNo = dao.writeLessonForm(map);
 		
+		// lessonNo 반환
 		
 		int imageAllResult = 0;
 		
@@ -64,7 +65,45 @@ public class LessonService {
 		return imageAllResult;
 	}
 	
-	public List<LessonImage> imageList(int lessonBoard) {
-		return dao.imageList(lessonBoard);
+	/**
+	 * 레슨 이미지 전체 조회 service
+	 * @return
+	 */
+	public List<LessonImage> selectLessonImgList() {
+		return dao.selectLessonImgList();
 	}
+	
+	
+
+	/**
+	 * 레슨 게시글 디테일 가져오기 service
+	 * @author lee
+	 * @param lessonNo
+	 * @return
+	 */
+	public Lesson selectDetail(int lessonNo) {
+		return dao.selectDetail(lessonNo);
+	}
+
+	/**
+	 * 레슨 디테일 이미지 가져오기 service
+	 * @author lee
+	 * @param lessonNo
+	 * @return
+	 */
+	public LessonImage selectLessonImg(int lessonNo) {
+		return dao.selectLessonImg(lessonNo);
+	}
+
+	/**
+	 * 레슨 글 삭제 서비스
+	 * @author lee
+	 * @param lessonNo
+	 * @return
+	 */
+	public int deleteLesson(int lessonNo) {
+		return dao.deleteLesson(lessonNo);
+	}
+
+	
 }

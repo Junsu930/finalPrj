@@ -13,14 +13,15 @@ public class Lesson {
 	
 	private int lessonNo;
 	private int userNo;
-	private String lessonNick;
-	private String motto;
-	private String joinDate;
-	private String lessonImg;
+	private String userNick;
 	private String genre;
-	private String ints;
-	private String region; 
-	private String detailment;
+	private String inst;
+	private String region;
 	private String socialSite;
-
+	private String motto;
+	private String detailment;
+	private String writingDate;
+	
+	private String imgSrc;
+	private int imgLevel;
 }

@@ -163,6 +163,7 @@ function showMsgBoxView(){
 // post, messagebox나오게 하는 함수
 
 
+const hiddenUser = document.getElementById('hiddenUser');
 
 if(hiddenUser.value === ''){ 
   console.log("비로그인 ajax 멈춰!");
