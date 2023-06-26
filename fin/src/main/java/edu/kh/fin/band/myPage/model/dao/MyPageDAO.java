@@ -1,16 +1,21 @@
 package edu.kh.fin.band.myPage.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.fin.band.login.model.vo.User;
+import edu.kh.fin.band.myPage.model.vo.Ban;
+
 @Repository
 public class MyPageDAO {
 	
 	@Autowired 
 	private SqlSessionTemplate sqlSession;
+	
 
 	/** 비밀번호 암호화 조회 DAO
 	 * @param i
@@ -81,5 +86,23 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.secession", userNo);
 	}
 
+	/** 유저 차단 해제
+	 * @param loginUser
+	 * @return
+	 */
+	public int ban(User loginUser) {
+		// TODO Auto-generated method stub
+		return 0;
+	} 
+
+	/** 차단 유저 정보 갖고오기
+	 * @return
+	 */
+	public List<Ban> chBanList(int userNo) {
+	
+		return sqlSession.selectList("myPageMapper.chBanList");
+	}
+
+	
 
 }

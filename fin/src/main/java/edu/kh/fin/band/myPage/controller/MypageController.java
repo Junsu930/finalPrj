@@ -1,6 +1,8 @@
 package edu.kh.fin.band.myPage.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -21,8 +23,11 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.service.MyPageService;
+import edu.kh.fin.band.myPage.model.vo.Ban;
 import edu.kh.fin.band.searching.model.vo.Searching;
 
 @Controller
@@ -38,7 +43,7 @@ public class MypageController {
 	
 	@GetMapping("/myPage")
 	public String myPageController() {
-		
+			
 		return "myPage/myPage";
 	}
 	
@@ -168,5 +173,32 @@ public class MypageController {
 			return "redirect:" + path;
 		
 	}
+	
+	
+	@GetMapping("/banList")
+	@ResponseBody
+	public String getbanList(@ModelAttribute("loginUser") User loginUser) {
+		
+		List<Ban> banList = service.chBanList(loginUser.getUserNo());
+		
+		return new Gson().toJson(banList);
+	}
+	
+	/*
+	@PostMapping("fin/ban")
+	public String ban(@ModelAttribute("loginUser") User loginUser,
+			SessionStatus status,
+			HttpServletRequest req,
+			HttpServletResponse resp,
+			RedirectAttributes ra) {
+		
+		List<Ban> banList = service.banList();
+		
+		int result = service.ban(loginUser);
+		
+		return null;
+		
+	}*/
+	
 	
 }

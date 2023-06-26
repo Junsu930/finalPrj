@@ -137,7 +137,7 @@
               </div>
               <div class="modal-body">
 
-            <form action="">
+            <form action="fin/ban" method="post">
                 <section class="modalBlockWrapper">
                     <div class="modalBlockTitleBox">
                         <p>차단 회원 목록</p>
@@ -147,13 +147,34 @@
 
 
                         <table class="modalBlockTable">
+                            <c:choose>
+                                <c:when test="${empty banList}">
+                                    <p>차단 회원이 없습니다</p>
+                                </c:when>
+                                
+                                <c:otherwise>
+                                <c:forEach var="Ban" item="${banList}">
+                                    <tr>
+                                        <td>${Ban.bannedUserNick}</td>
+                                        <td class="btnBlockTd"><button>차단해제</button></td>
+                                    </tr>
+
+                                
+                                </c:forEach>
+
+
+                            </c:otherwise>
+
+                            </c:choose>
+
+
                             <tr>
-                                <td><img src="" alt="">메탈스레기</td>
+                                <td><img src="" alt="">${banList[0].bannedUserNick}</td>
                                 <td class="btnBlockTd"><button>차단해제</button></td>
                             </tr>
 
                             <tr>
-                                <td><img src="" alt="">이진영</td>
+                                <td><img src="" alt="">${banList[1].bannedUserNick}</td>
                                 <td class="btnBlockTd"><button>차단해제</button></td>
                             </tr>
 
