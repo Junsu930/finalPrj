@@ -1,10 +1,14 @@
 package edu.kh.fin.band.myBand.model.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.kh.fin.band.common.pagination.CommonCriteria;
+import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myBand.model.dao.MyBandDAO;
 import edu.kh.fin.band.myBand.model.vo.MyBand;
 
@@ -14,8 +18,32 @@ public class MyBandService {
 	@Autowired
 	MyBandDAO dao;
 
-	public List<MyBand> bandList(int bandNo) {
-		return dao.bandList(bandNo);
+	public List<MyBand> bandList(int bandNo, int amount, int pageNum) {
+		
+		Map<String,Object> boardMap = new HashMap<>();
+		
+		boardMap.put("bandNo", bandNo);
+		boardMap.put("pageNum", pageNum);
+		boardMap.put("amount", amount);
+		
+		
+		return dao.bandList(boardMap);
+	}
+
+	public String leaderNick(int bandNo) {
+		return dao.leaderNick(bandNo);
+	}
+
+	public List<String> bandMember(int bandNo) {
+		return dao.bandMember(bandNo);
+	}
+
+	public int getTotal(int bandNo) {
+		return dao.getTotal(bandNo);
+	}
+
+	public int bandUserFl(int bandNo, User loginUser) {
+		return dao.bandUserFl(bandNo,loginUser);
 	}
 	
 	
