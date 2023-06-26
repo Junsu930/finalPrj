@@ -42,7 +42,13 @@ public class MypageController {
 	
 	
 	@GetMapping("/myPage")
-	public String myPageController() {
+	public String myPageController(@ModelAttribute("loginUser") User loginUser, Model model) {
+		
+		List<Ban> banList = service.chBanList(loginUser.getUserNo());
+		
+		System.out.println("차단리스트"+banList);
+		
+		model.addAttribute("banList",banList);
 			
 		return "myPage/myPage";
 	}
@@ -174,15 +180,19 @@ public class MypageController {
 		
 	}
 	
-	
+	/*
 	@GetMapping("/banList")
 	@ResponseBody
-	public String getbanList(@ModelAttribute("loginUser") User loginUser) {
+	public String getbanList(@ModelAttribute("loginUser") User loginUser, Model model) {
 		
 		List<Ban> banList = service.chBanList(loginUser.getUserNo());
 		
-		return new Gson().toJson(banList);
-	}
+		System.out.println("차단리스트"+banList);
+		
+		model.addAttribute("banList",banList);
+		
+		return "myPage/myPage";
+	}*/
 	
 	/*
 	@PostMapping("fin/ban")

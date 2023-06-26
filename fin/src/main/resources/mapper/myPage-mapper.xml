@@ -86,9 +86,9 @@
 		WHERE USER_NO = ${userNo}
 	</update>
 	
-	<select id="chBanList">
-		SELECT BANNED_NO , USER_NO , BANNED_USER_NO , BANNED_USER_NICK 
-		FROM BOARD_BANNED
+	<select id="chBanList" resultMap="banList_rm">
+		SELECT BANNED_NO, USER_NO, BANNED_USER_NO, BANNED_USER_NICK 
+		FROM BOARD_BANNED 
 		WHERE USER_NO = ${userNo}
 	</select>
 	

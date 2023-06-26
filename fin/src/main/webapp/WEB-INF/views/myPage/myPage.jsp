@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
+<c:set var="banList" value="${banList}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,7 +120,8 @@
                         <li class="js-static-modal-toggleBandP"><p>나의 밴드</p></li>
                         <li class="js-static-modal-toggleBoardP"><p>내가 작성한 게시글</p></li>
                         <li class="js-static-modal-toggleReplyP"><p>내가 작성한 댓글</p></li>
-                        <li class="js-static-modal-toggleBlockP"><p>차단 회원 목록</p></li>
+                        <li class="js-static-modal-toggleBlockP" name="banList" id="banList"><p>차단 회원 목록</p></li>
+                        <li class="js-static-modal-togglegroupP"><p>밴드 생성</p></li>
                     </ul>
                 </div>
             </div>
@@ -153,62 +156,18 @@
                                 </c:when>
                                 
                                 <c:otherwise>
-                                <c:forEach var="Ban" item="${banList}">
-                                    <tr>
-                                        <td>${Ban.bannedUserNick}</td>
-                                        <td class="btnBlockTd"><button>차단해제</button></td>
-                                    </tr>
-
+                                	<c:forEach var="banList" items="${banList}">
                                 
-                                </c:forEach>
-
-
-                            </c:otherwise>
-
+                                		<tr>
+                                        	<td>${banList.bannedUserNick}</td>
+                                        	<td class="btnBlockTd"><button>차단해제</button></td>
+                                    	</tr>
+                                	</c:forEach>
+                                </c:otherwise>
+                                                            
                             </c:choose>
-
-
-                            <tr>
-                                <td><img src="" alt="">${banList[0].bannedUserNick}</td>
-                                <td class="btnBlockTd"><button>차단해제</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><img src="" alt="">${banList[1].bannedUserNick}</td>
-                                <td class="btnBlockTd"><button>차단해제</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><img src="" alt="">이현경입니다</td>
-                                <td class="btnBlockTd"><button>차단해제</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><img src="" alt="">김준수지구</td>
-                                <td class="btnBlockTd"><button>차단해제</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><img src="" alt="">김준수입니다</td>
-                                <td class="btnBlockTd"><button>차단해제</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><img src="" alt="">임정우입니다</td>
-                                <td class="btnBlockTd"><button>차단해제</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><img src="" alt="">김민성</td>
-                                <td class="btnBlockTd"><button>차단해제</button></td>
-                            </tr>
-
-                            <tr>
-                                <td><img src="" alt="">민성김입니다</td>
-                                <td class="btnBlockTd"><button>차단해제</button></td>
-                            </tr>
-
-
+                         
+                         
                         </table>
 
                     </div>
@@ -825,6 +784,6 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src = "${contextPath}/resources/js/myPage.js"></script>
+    <script src = "${contextPath}/resources/js/myPage.js?version=3"></script>
 </body>
 </html>

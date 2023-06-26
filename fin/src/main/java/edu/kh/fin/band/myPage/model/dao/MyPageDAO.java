@@ -99,8 +99,9 @@ public class MyPageDAO {
 	 * @return
 	 */
 	public List<Ban> chBanList(int userNo) {
+		
 	
-		return sqlSession.selectList("myPageMapper.chBanList");
+		return sqlSession.selectList("myPageMapper.chBanList", userNo);
 	}
 
 	
