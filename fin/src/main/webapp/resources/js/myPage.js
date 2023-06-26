@@ -66,10 +66,10 @@ showBtn.addEventListener('click', function(){
     new Modal({el: document.getElementById('static-modalInfo')}).show();
   });
 
- 
+ /*
   document.querySelector('.js-static-modal-togglefindMemberP').addEventListener('click', function() {
     new Modal({el: document.getElementById('static-modalfindMember')}).show();
-  });
+  });*/
   
   
   // groupModal
@@ -86,8 +86,8 @@ showBtn.addEventListener('click', function(){
   
   const inutImg = document.getElementById("input-image");
   const fileImg = document.getElementById("fileImg");
-  
-  const secession = getElementById("secessionBtn");
+  const secession = document.getElementById("secessionBtn");
+
 
   secession.addEventListener("click", function() {
     if(confirm("정말로 탈퇴하시겠습니까?")) {
@@ -98,6 +98,24 @@ showBtn.addEventListener('click', function(){
     }
 
 
-  })
+  });
+
+ let banList;
+
+  $(document).ready(()=>{
+    $.ajax({
+      url : "banList",
+      type : "get",
+      dataType : "json",
+      success : function(result){
+        console.log(result)
+
+        banList = result;
+
+      }
+
+    })
 
 
+
+  });
