@@ -823,6 +823,17 @@ input[type="checkbox"]:checked + label:before {
   #input-image {
   
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   
  
@@ -831,6 +842,120 @@ input[type="checkbox"]:checked + label:before {
 /* �쉶�썝�젙蹂� �닔�젙 紐⑤떖 */
 
 /* 紐⑤떖 */
+
+
+
+
+
+/* 그룹 만들기 css */
+
+
+.groupForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5em;
+}
+
+.grouInfoBox{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 5em;
+}
+
+.grouInfoBox input{
+    width: 100%;
+    height: 60px;
+    background-color: transparent;
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    outline:  none;
+    font-size: 1em;
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 0 2.3em 0 0.5em;
+}
+
+
+.grouInfoBox label:first-of-type{
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: var(--text-color);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s;
+    padding: 0 2.3em 0 0.5em;
+    letter-spacing: 0.1em;
+}
+
+.grouInfoBox input:first-of-type:focus~label:first-of-type,
+.grouInfoBox input:first-of-type:valid~label:first-of-type{
+    top: -20px;
+}
+
+.grouInfoBox label:nth-of-type(2){
+    position: absolute;
+    top: 170px;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: var(--text-color);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s;
+    padding: 0 2.3em 0 0.5em;
+    letter-spacing: 0.1em;
+}
+
+.grouInfoBox input:last-of-type:focus~label:nth-of-type(2),
+.grouInfoBox input:last-of-type:valid~label:nth-of-type(2){
+    top: 120px;
+}
+
+
+
+
+#groupInfoText{
+    border-radius: 0.5em;
+    outline: none;
+    border: 1px solid var(--stroke-color);
+    height: 150px;
+    resize: none;
+    padding: 1em 1em;
+}
+
+.grouInfoBox label:last-of-type{
+    position: absolute;
+    top: 250px;
+    left: 28%;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: var(--text-color);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s;
+    padding: 0 2.3em 0 0.5em;
+    letter-spacing: 0.1em;
+}
+
+
+#groupBtn{
+    border: 1px solid var(--stroke-color);
+    color: var(--text-color);
+    border-radius: 0.5em;
+    width: 130px;
+    height: 40px;
+}
+
+
+/* 그룹 만들기 css */
 
 
 
