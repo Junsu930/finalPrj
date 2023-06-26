@@ -70,7 +70,7 @@
 
                 <div class="input-box inputBoxText">
                     <span class="icon">
-                        <ion-icon name="person"></ion-icon>
+	                        <ion-icon name="person"></ion-icon>
                     </span>
                     <textarea name="lessonDetailInput" id="lessonDetailExplain" cols="30" rows="10" required></textarea>
                     <label class="textLabel">TELL YOUR STROY</label>

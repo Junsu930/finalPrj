@@ -49,7 +49,7 @@ public class LessonController {
 	@GetMapping("/lessonWriting")
 	public String lessonWritingController() {
 		
-		return "lesson/lessonWriting";
+		return "lesson/less	onWriting";
 	}
 	
 	@PostMapping("/writeLessonForm")
@@ -66,7 +66,7 @@ public class LessonController {
 		System.out.println(map.entrySet());
 		System.out.println(map.get("introment"));
 		
-		map.put("userNo", loginUser.getUserNo() );
+		map.put("userNo", loginUser.getUserNo());
 		
 		int writeResult = service.writeLessonForm(map, images, webPath,folderPath);
 		
