@@ -1,0 +1,117 @@
+/* 댓글 목록(ul) */
+#reply-list{
+    padding : 0;
+    list-style: none;
+}
+
+/* 댓글 한 줄(댓글 하나) */
+.reply-row{
+    padding: 15px 30px;
+    border-top : 1px solid #ccc;
+}
+
+/* 댓글 목록 - 작성자 영역*/
+.reply-writer{
+    display: flex;
+    align-items: center;
+}
+
+/* 댓글 작성자 프로필 이미지 */
+.reply-writer > img{
+    width: 40px;
+    height: 40px;
+}
+
+/* 댓글 작성자 닉네임, 작성일 */
+.reply-writer > span{
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* 댓글 작성일 */
+.reply-date{
+    font-size : 0.8em;
+    color : #aaa;
+}
+
+/* 버튼 영역 */
+.reply-btn-area{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 버튼 */
+.reply-btn-area > button{
+    width: 50px;
+    height: 30px;
+     margin-left: 10px; 
+    font-weight: bold;
+    color: #212529;
+  /*    background-color: #455ba8;  */
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* 버튼 hover */
+.reply-btn-area > button:hover{
+  
+    color: #455ba8;
+}
+
+
+
+/* 댓글 작성 영역 */
+.reply-write-area{
+    display: flex;
+    justify-content: center;
+    min-height: 85px;
+    margin: 30px 0;
+}
+
+/* 댓글 작성 내용 */
+#replyContent{
+   
+    margin-right: 10px;
+    resize: none;
+}
+
+/* 댓글 등록 버튼 */
+#addReply{
+    flex-basis: 8%;
+    font-weight: bold;
+	background-color: #474554;
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+/* 
+#addReply:hover{
+    background-color: white;
+    color: #455ba8;
+    border: 2px solid #455ba8;
+}
+*/
+/* 댓글 수정 textarea */
+.update-textarea{
+    width: 100%;
+    height: 90px;
+    resize: none;
+}
+
+
+/* 답글 스타일 */
+.child-reply{
+    padding-left: 100px;
+  /*  background-color: rgba(241, 50, 156, 0.2);*/
+}
+
+
+/* 답글 작성 textarea */
+.replyInsertContent{
+    width: 100%;
+    height: 90px;
+    resize: none;
+    margin-top: 20px;
+}
+

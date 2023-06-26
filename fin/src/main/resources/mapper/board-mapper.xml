@@ -43,14 +43,22 @@
 	</resultMap> 
 	
 	<select id="boardList" resultMap="detail_rm">
-        SELECT BOARD_NO,BOARD_TITLE,BOARD_CONTENT,CREATE_DATE,READ_COUNT,
+<![CDATA[
+  SELECT * 
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO,BOARD_TITLE,BOARD_CONTENT,CREATE_DATE,READ_COUNT,
         BOARD_ST,USER_NO,BOARD_LIKE,BOARD_TAG,USER_NICK
         FROM BOARD 
         JOIN "USER" USING(USER_NO)
-        ORDER BY BOARD_NO 
-        DESC
+    ) A
+    WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
+]]>
     </select>
     
+    <select id="getTotal" resultType= "int">
+    select count(*) as total from Board
+    </select>
      <insert id="write" parameterType="board" >
 	INSERT INTO BOARD VALUES(
    	SEQ_BOARD_NO.NEXTVAL,

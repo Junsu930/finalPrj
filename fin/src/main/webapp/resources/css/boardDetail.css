@@ -1,3 +1,58 @@
+.comment-section {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.author-info .commentNickName {
+    font-weight: bold;
+}
+
+.author-info .author-name {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.author-info .author-date {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.author-comment {
+    padding-left: 20px;
+    font-size: 1em;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.author-reply .author-info {
+    padding-left: 40px;
+}
+
+.author-comment-reply {
+    padding-left: 60px;
+}
+
+
+
+
+
+
 #heart{
     width: 30px; /*크기에 맞게 쓰세요*/
     fill: var(--grey-color); /* #ccc 색깔코드 */

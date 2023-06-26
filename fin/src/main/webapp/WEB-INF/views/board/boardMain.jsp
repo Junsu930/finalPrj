@@ -149,10 +149,27 @@
   
 
     <div class="pagination-search">
-      <div class="pagination">
-          <a href="board/paging"><span>1</span></a>
-          <a href="#" class="active"><span>2</span></a>
-        </div>
+    
+    <ul class="pagination">
+    <c:if test="${pageVO.prev}">
+
+    <li><a href="board?pageNum=${pageVO.startPage -1}&amount=${pageVO.amount}"><span>이전</span></a></li>
+   
+   </c:if>
+   
+   <c:forEach var="num" begin="${pageVO.startPage}" end= "${pageVO.endPage}">
+   <li class="${pageVO.pageNum eq num ? 'active' : ''} ">
+   <a href="board?pageNum=${num}&amount=${pageVO.amount}">${num}</a>
+   </li>
+   </c:forEach>
+   <c:if test="${pageVO.next}">
+    <li><a href="board?pageNum=${pageVO.endPage  + 1}&amount=${pageVO.amount}" class="active"><span>다음</span></a></li>
+</c:if>
+</ul>
+
+        
+        
+        
       <div class="search-box">
         <select id="nav-select">
           <option value="all">전체</option>
@@ -278,5 +295,34 @@
     });
 
 </script>
+<script type="text/javascript">
+
+
+window.onload = function() {
+  // 서버에서 반환된 현재 페이지 번호입니다.
+  var currentPage = ${pageVO.pageNum};
+  // 페이지 링크들을 가져옵니다.
+  var pageLinks = document.querySelectorAll('.pagination li a');
+  
+  // 모든 페이지 링크들을 순회하면서, 
+  for (var i = 0; i < pageLinks.length; i++) {
+    // 페이지 링크의 번호를 가져옵니다.
+    var pageNum = parseInt(pageLinks[i].textContent);
+    
+    // 현재 페이지 번호와 링크의 페이지 번호가 일치하면,
+    if (pageNum === currentPage) {
+      // 해당 링크에 'active' 클래스를 추가합니다.
+      pageLinks[i].parentElement.classList.add('active');
+    }
+  }
+};
+
+</script>
+
+
+
+
+
+
 </body>
 </html>
