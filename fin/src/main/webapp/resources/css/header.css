@@ -139,11 +139,10 @@ body.darkmode .navBar{
 } */
 
 .navSecondDiv{
-    /* padding-right: 0.938em; */
     margin-bottom: 6px;
     position: relative;
     display: flex;
-    gap: 1em;
+    gap: 0 1em;
 }
 
 
@@ -172,15 +171,16 @@ body.darkmode .navBar{
 
 .navSecondDiv .menu{
     position: absolute;
-    border:1px solid black;
     top: calc(100% + 30px);
     right: 0;
     width: 200px;
     min-height: 100px;
-    background-color: transparent;
+    border:1px solid black;
+    background-color: var(--background-color);
     box-shadow: 0 50px 50px rgba(0,0,0,0.1);
     opacity: 0;
     visibility: hidden;
+    overflow: hidden;
     transition: .3s;
 }
 
@@ -189,18 +189,18 @@ body.darkmode .navSecondDiv .menu{
     background-color: var(--background-dark-color);
 }
 
-.navSecondDiv .menu::before{
+/* .navSecondDiv .menu::before{
     content: "";
     border-left: 1px solid black;
     border-top: 1px solid black;
     position: absolute;
-    top: -0.8em;
-    right: 4em;
-    width: 20px;
-    height: 20px;
+    top: -0.5em;
+    right: 2.8em;
+    width: 15px;
+    height: 15px;
     transform: rotate(45deg);
     background-color: transparent;
-}
+} */
 
 body.darkmode .navSecondDiv .menu::before{
     border-left: 1px solid var(--border-color);
@@ -229,7 +229,6 @@ body.darkmode .navSecondDiv .menu::before{
     list-style: none;
     padding: 1em 1.2em;
     transform: .5s;
-    border-radius: 10px;
 }
 
 .navSecondDiv .menu ul li:last-of-type{
@@ -265,7 +264,9 @@ body.darkmode .navSecondDiv .menu::before{
     padding-top: .5em;
 }
 
-.signUpIMG, .loginIMG, .logoutIMG{
+.myPageIMG,
+.loginIMG,
+.logoutIMG{
     display: none;
 }
 
@@ -326,15 +327,20 @@ body.darkmode .msgBoxOpen >i{
 
     .navUl.active,
     .navSecondDiv.active,
-    .signUpIMG.active,
-    .loginIMG.active,
-    .logoutIMG.active{
+    #loginIMGI.active{
         display: flex;
     }
 
-
-    .myPageText, .loginText, .profileImgBox{
+    /* .loginText{
         display: none;
+    } */
+
+    .wrapperUl, .messageUlBox{
+        left: -7em;
+        top: 5em;
+    }
+    .navSecondDiv .menu{
+        right: -1em
     }
 }
 /* 미디어 쿼리 */
@@ -374,6 +380,7 @@ body.darkmode .msgBoxOpen >i{
     max-height: 300px;
     border: 1px solid var(--stroke-color);
     border-radius: 10px;
+    box-shadow: 0 50px 50px rgba(0,0,0,0.1);
     gap: 1em;
     overflow: hidden;
     overflow-y: scroll;
@@ -436,10 +443,18 @@ body.darkmode .wrapperUl > h1{
 }
 
 .wrapperUl li a{
+    position: relative;
     color: #262626;
     text-decoration: none;
     display: block;
     padding-left: 70px;
+}
+
+#reserveDate{
+    position: absolute;
+    right: 0;
+    top: 1.9em;
+    font-size: .9em;
 }
 
 body.darkmode .wrapperUl li a{
@@ -497,6 +512,7 @@ body.darkmode .wrapperUl .date h3 span{
     max-height: 300px;
     border: 1px solid var(--stroke-color);
     border-radius: 10px;
+    box-shadow: 0 50px 50px rgba(0,0,0,0.1);
     overflow: hidden;
     overflow-y: scroll;
     background-color: var(--text-dark-color);
@@ -659,8 +675,8 @@ body.darkmode .wrapperUl::-webkit-scrollbar-thumb {
 #msgAlarmCount{
     display: none;
     position: absolute;
-    top: 13px;
-    right:3px;
+    top: 12px;
+    left:13px;
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -671,8 +687,8 @@ body.darkmode .wrapperUl::-webkit-scrollbar-thumb {
 #alarmCount{
     display: none;
     position: absolute;
-    top: 13px;
-    right: 9px;
+    top: 12px;
+    left: 9px;
     width: 15px;
     height: 15px;
     border-radius: 50%;

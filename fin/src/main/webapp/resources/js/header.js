@@ -6,25 +6,17 @@ const hamburger = document.getElementById("hamburger");
 const navUl = document.querySelector(".navUl");
 const navDiv = document.querySelector(".navDiv")
 const navSecondDiv = document.querySelector(".navSecondDiv");
-const signUpIMG = document.querySelector(".signUpIMG");
-const loginIMG = document.querySelector(".loginIMG");
+const textLogin = document.querySelector(".loginText");
 
 // 반응형 줄어들었을 때, JS
 hamburger.addEventListener("click", () => {
-    navUl.classList.toggle("active");
-    navSecondDiv.classList.toggle("active");
-    signUpIMG.classList.toggle("active");
-    loginIMG.classList.toggle("active");
-})
+  navUl.classList.toggle("active");
+  navSecondDiv.classList.toggle("active");
+  textLogin.innerText = '';
+  textLogin.innerHTML = '<i class="bi bi-door-open" id="loginIMGI"></i>';
+});
 
 // =========================================반응형=========================================
-
-
-
-
-
-
-
 
 
 // =========================================모드==========================================
@@ -35,10 +27,6 @@ const body = document.querySelector('body');
 const navBar = document.querySelector('.navBar');
 const navA = document.querySelectorAll("a.navA"); // navA 클래스를 가진 모든 a태그 요소 담아주기
 const toggle = document.getElementById("toggle"); // 반응형 햄버거 토글
-const loginIMGI = document.getElementById("loginIMGI");
-const logoutIMGI = document.getElementById("logoutIMGI");
-const signUpIMGI = document.getElementById("signUpIMGI");
-
 
 // 다크모드, 라이트모드
 // check for saved 'darkMode' in localStorage -> 다크모드 로컬스토리지에 있는지 체크하기위해 변수 선언
@@ -57,21 +45,20 @@ const darkModeFunc = () => {
 let path = document.querySelectorAll('path.path'); 
 
 for(let i = 0; i< path.length; i ++){
-  console.log("test");
   path[i].style.stroke ="#FB4F93";
 }
   // 각각 요소 색깔 바꾸기
-  // navBar.style.background = "#fff";
   sun.style.color="#fff";
   toggle.style.color = "#fff";
-  // loginIMGI.style.color = "#fff";
-  // signUpIMGI.style.color = "#fff";
 //   해로 바꿔주기
   sun.className = "bi-brightness-high"
   
   // 로컬 스토리지에 key: darkMode, value: dark
   localStorage.setItem('darkMode', 'dark');
 }
+
+// 다크모드 함수
+
 
 // 라이트모드 함수
 const lightModeFunc = () => {
@@ -89,11 +76,8 @@ const lightModeFunc = () => {
 
     path[i].style.stroke ="#000";
   }
-  // navBar.style.background = "#000";
   sun.style.color="#000";
   toggle.style.color = "#000";
-  // loginIMGI.style.color = "#000";
-  // signUpIMGI.style.color = "#000";
   
 //  달로 바꿔주기
   if(sun.className != 'bi-moon'){
@@ -102,6 +86,8 @@ const lightModeFunc = () => {
   // 로컬 스토리지 다크모드 값을 light로 바꿔주기
   localStorage.setItem('darkMode', 'light');
 }
+
+// 라이트모드 함수
  
 // If the user already visited and enabled darkMode
 // start things off with it on
@@ -178,6 +164,33 @@ function showMsgBoxView(){
 
 
 
+if(hiddenUser.value === ''){ 
+  console.log("비로그인 ajax 멈춰!");
+}else{
+  console.log(hiddenUser);
+  ajaxStart();
+}
+
+function ajaxStart(){// 로그인 시 회원 정보를 바탕으로 알람 가져오는 ajaxStart
+  $.ajax({ // 접속하자마자 userNo 가져오는 ajax
+    url:"getUserNo",
+    method:"GET",
+    dataType:"JSON",
+    success: function(loginUserNo){
+      getUserNicks(loginUserNo);
+      getMsgAlarmCount(loginUserNo);
+      disappearCount(loginUserNo);
+  
+      getAlarmCount(loginUserNo);
+      alarmDisappearCount(loginUserNo);
+      getUserNicksFromRoom(loginUserNo);
+    }, //  success 끝
+    error : function(request, status, error){
+      console.log("getUserNo AJAX 에러 발생");
+      console.log("상태코드 : " + request.status);
+    }
+  }); //  ajax끝
+}
 
 
 function getUserNicks(loginUserNo){ //userNicksList 부르는 함수 
@@ -190,7 +203,7 @@ function getUserNicks(loginUserNo){ //userNicksList 부르는 함수
       let stringMsg = "님께서 회원님에게 쪽지를 보냈습니다!"
 
       if(getUserNicks === "none"){
-        $('.messageUlBox').append('<li class="wrapperLi"><a href="msgBoxPage" id="msgBoxPageA"><p>NO MESSAGE</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
+        $('.messageUlBox').append('<li class="wrapperLi"><a href="msgBoxPage" id="msgBoxPageA"><p>NO NEW MESSAGE</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
       }else{
         for(let i = 0; i < getUserNicks.length; i++){
           $('.messageUlBox').append(`<li class="wrapperLi"><div class="messageDate"><h3>${getUserNicks[i].sendMonth}<br><span>${getUserNicks[i].sendDay}</span></h3></div>
@@ -235,7 +248,6 @@ function disappearCount(loginUserNo){ // msgCount 갯수 사라지게 하는 함
   // 메세지 아이콘 클릭 시, count 갯수 사라지게 하는 이벤트 리스너
   document.getElementById('msgBoxOpen').addEventListener('click', function() {
         
-    console.log("msg click");
 
     $.ajax({
       url:"disappearCount",
@@ -244,7 +256,7 @@ function disappearCount(loginUserNo){ // msgCount 갯수 사라지게 하는 함
       dataType: "JSON",
       success: function(result){
         $('#msgAlarmCount').css('display', 'none'); // 알람 카운트 보이는 걸 없애기
-        console.log("msgCount 지우기 성공 result : " + result);
+        
       },
       error : function(request, status, error){
         console.log("disappearCount AJAX 에러 발생");
@@ -293,7 +305,7 @@ function alarmDisappearCount(loginUserNo){ // alarmCount 지우기 함수
       dataType:"JSON",
       success: function(result){
         $('#alarmCount').css('display', 'none');
-        console.log("알람 카운트 지우기 성공 여부 : " + result);
+        
       },
       error : function(request, status, error){
         console.log("alarmDisappearCount AJAX 에러 발생");
@@ -316,11 +328,12 @@ function getUserNicksFromRoom(loginUserNo){ // 예약 신청알람 함수
       let stringMsg1 = "님께서 회원님의 "
       let stringMsg2 = "을 예약 신청했습니다!"
       if(getUsers === "none"){
-        $('.wrapperUl').append('<li class="wrapperLi"><a href="#" id="noMsgAlarmBox"><p>NO POST</p></a></li>') // 예약신청이 없거나, 읽었을 때, 코드 수행
+        $('.wrapperUl').append('<li class="wrapperLi"><a href="#" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 예약신청이 없거나, 읽었을 때, 코드 수행
       }else{
         for(let i = 0; i < getUsers.length; i++){
-          $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${getUsers[i].sendMonth}<br><span>${getUsers[i].sendDay}</span></h3></div>
-          <a href="#"><p>${getUsers[i].userNick + stringMsg1 + getUsers[i].roomName + stringMsg2 }</p></a></li>`) // 새로운 예약신청 알람 있을 때, 코드 수행
+          $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${getUsers[i].alarmMon}<br><span>${getUsers[i].alarmDay}</span></h3></div>
+          <a href="#"><p>${getUsers[i].userNick + stringMsg1 + getUsers[i].roomName + stringMsg2 }</p>
+          <span id="reserveDate">신청날짜 : ${getUsers[i].sendMonth}&nbsp;${getUsers[i].sendDay}</span></a></li>`) // 새로운 예약신청 알람 있을 때, 코드 수행
         }
       } // if끝
     },
@@ -333,30 +346,6 @@ function getUserNicksFromRoom(loginUserNo){ // 예약 신청알람 함수
 
 
 
-let loginText = document.querySelector('.loginText').innerText;
-
-if(loginText === "Login"){
-}else{
-  $.ajax({ // 접속하자마자 userNo 가져오는 ajax
-    url:"getUserNo",
-    method:"GET",
-    dataType:"JSON",
-    success: function(loginUserNo){
-      getUserNicks(loginUserNo);
-      getMsgAlarmCount(loginUserNo);
-      disappearCount(loginUserNo);
-  
-      getAlarmCount(loginUserNo);
-      alarmDisappearCount(loginUserNo);
-      getUserNicksFromRoom(loginUserNo);
-    }, //  success 끝
-    error : function(request, status, error){
-      console.log("getUserNo AJAX 에러 발생");
-      console.log("상태코드 : " + request.status); 
-      return false;
-    }
-  }); //  ajax끝
-}
 
 
 

@@ -23,4 +23,6 @@ public class MsgAlarm {
 	private String sendMonth;
 	
 	private String roomName;
+	private String alarmMon;
+	private String alarmDay;
 }

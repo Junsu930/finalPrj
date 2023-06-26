@@ -51,6 +51,14 @@
 		USER_TYPE='KAKAO'
 	</select>
 	
+	<select id="checkDupEmailForKakao" parameterType="String" resultType="_int">
+		SELECT COUNT(*) FROM "USER" WHERE USER_EMAIL = #{alreadyUserEmail} AND USER_TYPE != 'KAKAO'
+	</select>
+	
+	<select id="checkDupNickForKakao" parameterType="String" resultType="_int">
+		SELECT COUNT(*) FROM "USER" WHERE USER_NICK = #{alreadyUserNick} AND USER_TYPE != 'KAKAO'
+	</select>
+	
 	<update id="changeTokenKakao" parameterType="map">
 		UPDATE "USER" SET USER_PWD = #{token} WHERE USER_NO = ${alreadyUser}
 	</update>

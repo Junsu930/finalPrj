@@ -59,4 +59,7 @@
   .modal-footer{
     border: none !important;
   }
-    
+  
+  .modal-body.memberModal{
+    height: 400px;
+  }
