@@ -108,7 +108,6 @@
                         <li class="js-static-modal-toggleReply"><i class="bi bi-chat"></i></li>
                         <li class="js-static-modal-toggleBlock"><i class="bi bi-emoji-angry"></i></li>
                         <li class="js-static-modal-toggleGroup"><i class="bi bi-music-player"></i></li>
-                        
                     </ul>
                 </div>
 
@@ -119,7 +118,7 @@
                         <li class="js-static-modal-toggleBoardP"><p>내가 작성한 게시글</p></li>
                         <li class="js-static-modal-toggleReplyP"><p>내가 작성한 댓글</p></li>
                         <li class="js-static-modal-toggleBlockP"><p>차단 회원 목록</p></li>
-                        <p class="js-static-modal-togglegroupP">밴드 생성</p>
+                        <li class="js-static-modal-togglegroupP"><p>밴드 생성</p></li>
                     </ul>
                 </div>
             </div>

@@ -25,6 +25,7 @@
 		<typeAlias type="edu.kh.fin.band.used.model.vo.UsedVo" alias="used"/>
 		<typeAlias type="edu.kh.fin.band.used.model.vo.UsedImage" alias="usedImage"/>
 		<typeAlias type="edu.kh.fin.band.lesson.model.vo.Lesson" alias="lesson"/>
+		<typeAlias type="edu.kh.fin.band.lesson.model.vo.LessonImage" alias="lessonImg"/>
 		<typeAlias type="edu.kh.fin.band.login.model.vo.Business" alias="Business"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.Board" alias="board"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.BoardDetail" alias="detail"/>

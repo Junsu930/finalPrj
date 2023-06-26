@@ -23,9 +23,8 @@
     <section class="allSection">
   
 
-	<form method ="post" action="${contextPath}/writeLessonForm" id="writeLessonForm" enctype="multipart/form-data">
-           <div class ="imgbox">
-     
+	<form method ="post" action="writeLessonForm" id="writeLessonForm" enctype="multipart/form-data">
+        <div class ="imgbox">
  			<label for="img1">
 	 			<img id="imageInsertPic" src="${contextPath}/resources/images/imageinsert.png">
  			</label>
@@ -40,7 +39,7 @@
                     <span class="icon">
                         <ion-icon name="Name"></ion-icon>
                     </span>
-                    <input id="lessonNamePlace" name="lessonNameInput" type="text" maxlength="5" required>
+                    <input id="lessonNamePlace" name="userNick" type="text" maxlength="5" required>
                     <label>NAME</label>
                 </div>
 
@@ -48,7 +47,7 @@
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input id="lessonLocationPlace" name="lessonLocationInput" type="text" maxlength="5" required>
+                    <input id="lessonLocationPlace" name="userRegion" type="text" maxlength="5" required>
                     <label>LOCATION</label>
                 </div>
 
@@ -56,7 +55,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                   <input id="lessonSocialPlace" name="lessonSocialInput" type="text" maxlength="10" required>
+                   <input id="lessonSocialPlace" name="userSocial" type="text" maxlength="10" required>
                     <label>SOCIAL MEDIA</label>
                 </div>
 
@@ -64,7 +63,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input id="lessonMottoPlace" name="lessonMottoInput" type="text" maxlength="10" required>
+                    <input id="lessonMottoPlace" name="userMotto" type="text" maxlength="10" required>
                     <label>MOTTO</label>
                 </div>
 
@@ -72,7 +71,7 @@
                     <span class="icon">
 	                        <ion-icon name="person"></ion-icon>
                     </span>
-                    <textarea name="lessonDetailInput" id="lessonDetailExplain" cols="30" rows="10" required></textarea>
+                    <textarea name="userDetailExplain" id="lessonDetailExplain" cols="30" rows="10" required></textarea>
                     <label class="textLabel">TELL YOUR STROY</label>
                 </div>
 
@@ -145,44 +144,44 @@
                         <table class="lessonTable">
                             <tr>
                                 <td>
-                                    <input type="radio" id="GUITAR" name="lesson" value="GUITAR">
+                                    <input type="radio" id="GUITAR" name="inst" value="GUITAR">
                                     <label for="GUITAR">GUITAR</label>
                                 </td>
                                 <td>
-                                    <input type="radio" id="BASS" name="lesson" value="BASS">
+                                    <input type="radio" id="BASS" name="inst" value="BASS">
                                     <label for="BASS">BASS</label>
                                 </td>
                                 <td>
-                                    <input type="radio" id="KEYBOARD" name="lesson" value="KEYBOARD">
+                                    <input type="radio" id="KEYBOARD" name="inst" value="KEYBOARD">
                                     <label for="KEYBOARD">KEYBOARD</label>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <input type="radio" id="VOCAL" name="lesson" value="VOCAL">
+                                    <input type="radio" id="VOCAL" name="inst" value="VOCAL">
                                     <label for="VOCAL">VOCAL</label>
                                 </td>
 
                                 <td>
-                                    <input type="radio" id="SOUND" name="lesson" value="SOUND">
+                                    <input type="radio" id="SOUND" name="inst" value="SOUND">
                                     <label for="SOUND">SOUND</label>
                                 </td>
 
                                 <td>
-                                    <input type="radio" id="COMPOSITION" name="lesson" value="COMPOSITION">
+                                    <input type="radio" id="COMPOSITION" name="inst" value="COMPOSITION">
                                     <label for="COMPOSITION">COMPOSITION</label>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <input type="radio" id="DRUM" name="lesson" value="DRUM">
+                                    <input type="radio" id="DRUM" name="inst" value="DRUM">
                                     <label for="DRUM">DRUM</label>
                                 </td>
 
                                 <td>
-                                    <input type="radio" id="HORN" name="lesson" value="HORN">
+                                    <input type="radio" id="HORN" name="inst" value="HORN">
                                     <label for="HORN">HORN</label>
                                 </td>
                             </tr>
@@ -191,119 +190,10 @@
                 </div>
             </div>
 
-
-
-
-
-
-
-
-            
-                        
-            <!-- 장르 구역 -->
-            <!-- <div class="genreBox">
-                <span>장르</span>
-                <hr>
-                <table>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="ELECTRONIC" name="genre1" value="ELECTRONIC">
-                            <label for="ELECTRONIC">ELECTRONIC</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="AQUSTIC" name="genre2" value="AQUSTIC">
-                            <label for="AQUSTIC">AQUSTIC</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="FOLK" name="genre3" value="FOLK">
-                            <label for="FOLK">FOLK</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="BLUES" name="genre4" value="BLUES">
-                            <label for="BLUES">BLUES</label>
-                        </td> 
-                        <td>
-                            <input type="checkbox" id="METAL" name="genre5" value="METAL">
-                            <label for="METAL">METAL</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="JAZZ" name="genre6" value="JAZZ">
-                            <label for="JAZZ">JAZZ</label>
-                        </td>
-                       
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="ROCK" name="genre7" value="ROCK">
-                            <label for="ROCK">ROCK</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="POP" name="genre8" value="POP">
-                            <label for="POP">POP</label>
-                        </td>
-                    </tr>
-                </table>
-            </div> -->
-                
-                
-
-
-
-            <!-- 레슨 구역 -->
-            <!-- <div class="lessonBox">
-                <span>레슨</span>
-                <hr>
-                <table>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="GUITAR" name="lesson1" value="GUITAR">
-                            <label for="GUITAR">GUITAR</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="BASS" name="lesson2" value="BASS">
-                            <label for="BASS">BASS</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="KEYBOARD" name="lesson3" value="KEYBOARD">
-                            <label for="KEYBOARD">KEYBOARD</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="VOCAL" name="lesson4" value="VOCAL">
-                            <label for="VOCAL">VOCAL</label>
-                        </td> 
-                        <td>
-                            <input type="checkbox" id="SOUND" name="lesson5" value="SOUND">
-                            <label for="SOUND">SOUND</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="COMPOSITION" name="lesson6" value="COMPOSITION">
-                            <label for="COMPOSITION">COMPOSITION</label>
-                        </td>
-                       
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="DRUM" name="lesson7" value="DRUM">
-                            <label for="DRUM">DRUM</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" id="HORN" name="lesson8" value="HORN">
-                            <label for="HORN">HORN</label>
-                        </td>
-                    </tr>
-                </table>
-            </div> -->
-
-
-
-        <div class="writingBtnBox">
-            <button type="button" id="writingBtn">SUBMIT</button>
-        </div>
-            </form>
+            <div class="writingBtnBox">
+                <button type="button" id="writingBtn">SUBMIT</button>
+            </div>
+        </form>
     </section>
 
 
