@@ -30,7 +30,7 @@
 	
 	<section class="filterSec">
 	
-		<a href="${contextPath}/lessonWriting" class="lessonA"><i class="bi bi-pencil-square"></i></a>
+		<a href="lessonWriting" class="lessonA"><i class="bi bi-pencil-square"></i></a>
 	    <div>
 	        <button class="labelLesson lessonList" onclick="selctLesson()" id="lessonBtn"><span id="lessonBtnTitle">LESSON</span><i class="bi bi-caret-down" id="bi"></i></button>
 	        <ul class="listBox" id="lessonId">
@@ -64,7 +64,7 @@
     	</div>
  		<c:if test="${!empty loginUser}">
 		<div>
-			<a href="${contextPath}/lessonWriting" id="writingBtn">WRITING</a>
+			<a href="lessonWriting" id="writingBtn">WRITING</a>
 		</div>
 		</c:if>
 
@@ -78,13 +78,17 @@
 	    <c:choose>
 			<c:when test="${!empty lessonList}">
 				<c:forEach items="${lessonList}" var="lesson">
-					<div class="imgCotentWrap" id="firstBox" onclick="location.href='${contextPath}/lessonDetail'">
-						<div class="imgBox">${lesson.lessonImg}</div>
+					
+					<input type="hidden" value="${lesson.lessonNo}">
+					<div class="imgCotentWrap" id="firstBox" onclick="location.href='${contextPath}/lessonDetail?lessonNo=${lesson.lessonNo}'">
+						<div class="imgBox">
+							<img src="" alt="">
+						</div>
 						<div class="contentBox">
 							<p id="scrollOver">${lesson.motto}</p>
-							<span>${lesson.joinDate}</span>
+							<span>${lesson.writingDate}</span>
 							<p>${lesson.region}</p>
-							<p>by.&nbsp${lesson.lessonNick}</p>
+							<p>by.&nbsp${lesson.userNick}</p>
 						</div>
 					</div>
 				</c:forEach>
@@ -109,6 +113,19 @@
   	<jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
 	<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	
+	<script>
+		const message = "${message}";
+		if(message.trim() !== ""){
+			alert(message);
+		}
+
+		const msg = "${msg}";
+		if(msg.trim() !== ""){
+			alert(msg);
+		}
+
+	</script>
     
     <script src = "${contextPath}/resources/js/lesson.js"></script>
 </body>

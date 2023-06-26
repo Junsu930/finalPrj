@@ -25,57 +25,80 @@
 				<div class="bandInfoDiv">
 					<div>
 						<i class="fa-solid fa-crown"></i>
-						<span class="memList">김빵빵이</span>
+						<span class="memList">${leaderNick}</span>
 					</div>
-					<div>
-						<i class="fa-solid fa-user"></i>
-						<span class="memList">룽빵뽕이</span>
+					<c:forEach var="eachBandMember" items="${memberList }" >
+						<div>
+							<i class="fa-solid fa-user"></i>
+							<span class="memList">${eachBandMember}</span>
+						</div>			
+					</c:forEach>
+				</div>
+				<c:if test="${memberFl eq 'T' }">
+					<div class="writeBandDiv">
+						<form method="post" action="${contextPath}/bandBoardWrite">
+							<button type="submit" id="bandBoardWriteButton">글쓰기</button>
+						</form>
 					</div>
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-				<div class="writeBandDiv">
-					<button type="button" id="bandBoardWriteButton">글쓰기</button>
-				</div>
+				</c:if>
 			</div>
 			<div class="rightSideBandBoardDiv">
 				<!-- 게시판 영역 -->
 				<div class="realBoardDiv">
 					<!-- 글 영역 -->
 					<div>
-						<!-- 각각의 글 -->
-						<div class="eachBoardDiv">
-							<!-- 제목 영역 -->
-							<div>
-								안녕하세요 공지 올립니다 흐아아아
-							</div>
-							<!-- 조회수, 좋아요 등등 -->
-							<div>
-								<!-- 글쓴이 -->
-								<div>
-									짱짱한짱짱이
+						<c:forEach var="eachBoard" items="${bandList}">
+							<form method="post" action="bandBoardDetail" id="eachBoardFormForBand">
+								<!-- 각각의 글 -->
+								<div class="eachBoardDiv">
+									<!-- 보드넘버, 밴드 넘버 숨기기 -->
+									<input type="hidden" value="${eachBoard.boardNo}">
+									<input type="hidden" value="${bandNo}">
+									<!-- 제목 영역 -->
+									<div>
+										${eachBoard.boardTitle }
+									</div>
+									<!-- 조회수, 좋아요 등등 -->
+									<div>
+										<!-- 글쓴이 -->
+										<div>
+											${eachBoard.userNick }
+										</div>
+										<!-- 시간 -->
+										<div>
+											<i class="fa-regular fa-clock"></i>
+											<span>${eachBoard.boardDate}</span>
+										</div>
+										<!-- 조회수 -->
+										<div>
+											<i class="fa-regular fa-eye"></i>
+											<span>${eachBoard.readCount}</span>
+										</div>
+										<!-- 좋아요 -->
+										<div>
+											<i class="fa-regular fa-heart"></i>
+											<span>${eachBoard.boardLike}</span>
+										</div>
+									</div>
 								</div>
-								<!-- 시간 -->
-								<div>
-									<i class="fa-regular fa-clock"></i>
-									<span>3시간 전</span>
-								</div>
-								<!-- 조회수 -->
-								<div>
-									<i class="fa-regular fa-eye"></i>
-									<span>402</span>
-								</div>
-								<!-- 좋아요 -->
-								<div>
-									<i class="fa-regular fa-heart"></i>
-									<span>32</span>
-								</div>
-							</div>
-						</div>
+							</form>
+						</c:forEach>
 					</div>
 					<!-- 페이지네이션 영역 -->
-					<div></div>
+					<div class="paginations">
+						<c:if test="${pageVo.prev}">
+							<li><a href="myBandBoard?bandNo=${bandNo}&pageNum=${pageVo.startPage =1}&amount=${pageVo.amount}">이전</a></li>
+						</c:if>
+						<c:forEach var="num" begin="${pageVo.startPage}" end="${pageVo.endPage}">
+							<li class="${pageVo.pageNum eq num ? 'active' : ''}">
+								<a href="myBandBoard?bandNo=${bandNo}&pageNum=${num}&amount=${pageVo.amount}">${num}</a>
+							</li>
+						</c:forEach>
+						
+						<c:if test="${pageVo.next}">
+							<li><a href="myBandBoard?bandNo=${bandNo}&pageNum=${pageVo.endPage + 1}&amount=${pageVo.amount}">다음</a></li>
+						</c:if>
+					</div>
 				</div>
 			</div>
 		</div>

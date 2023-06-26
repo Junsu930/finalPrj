@@ -13,8 +13,9 @@
 		<result property="bandName" column="BAND_NAME"/>		
 	</resultMap>
 	
-	<select id="bandBoardList" parameterType="_int" resultMap="bandBoard_rm">
-		SELECT BOARD_NO ,BOARD_TITLE, BOARD_CONTENT , CASE WHEN SYSDATE - CREATE_DATE &lt; 1
+	<select id="bandBoardList" parameterType="hashmap" resultMap="bandBoard_rm">
+		SELECT *
+		FROM (SELECT ROWNUM RN ,A.* FROM (SELECT BOARD_NO ,BOARD_TITLE, BOARD_CONTENT , CASE WHEN SYSDATE - CREATE_DATE &lt; 1
 		THEN TO_CHAR(CREATE_DATE, 'HH:MI')
 		ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
 		END CREATE_DATE, READ_COUNT , USER_NICK, BOARD_LIKE ,BOARD_TAG, BAND_NAME  
@@ -22,6 +23,23 @@
 		JOIN "USER" USING(USER_NO) 
 		JOIN BAND b USING(BAND_NO) 
 		WHERE BAND_NO = ${bandNo} 
-		AND BOARD_ST = 'Y' ORDER BY CREATE_DATE DESC
+		AND BOARD_ST = 'Y' ORDER BY CREATE_DATE DESC) A) 
+		WHERE RN &gt; (#{pageNum}-1) * #{amount} AND RN<![CDATA[<=]]> #{pageNum} * #{amount}
+	</select>
+	
+	<select id="leaderNick" parameterType="_int" resultType="string">
+		SELECT USER_NICK FROM BAND_USER bu JOIN "USER" u USING(USER_NO) WHERE BAND_NO = 1 AND LEADER_FL = 'T'
+	</select>
+	
+	<select id="bandMember" parameterType="_int" resultType="string">
+		SELECT USER_NICK FROM BAND_USER bu JOIN "USER" u USING(USER_NO) WHERE BAND_NO = 1 AND LEADER_FL = 'F'
+	</select>
+	
+	<select id="getTotal" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) FROM BAND_BOARD bb WHERE BAND_NO = ${bandNo}
+	</select>
+	
+	<select id="bandUserFl" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM BAND_USER WHERE BAND_NO  = ${bandNo} AND USER_NO = ${userNo} 
 	</select>
 </mapper>

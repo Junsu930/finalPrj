@@ -6,42 +6,65 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.ui.Model;
-
-
-import edu.kh.fin.band.lesson.model.service.LessonService;
-import edu.kh.fin.band.lesson.model.vo.Lesson;
-import edu.kh.fin.band.login.model.vo.User;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.stereotype.Controller;
+
+import edu.kh.fin.band.lesson.model.service.LessonService;
+import edu.kh.fin.band.lesson.model.vo.Lesson;
+import edu.kh.fin.band.lesson.model.vo.LessonImage;
+import edu.kh.fin.band.login.model.vo.User;
 
 @Controller
+@SessionAttributes({"loginUser"})
 public class LessonController {
-		
-		@Autowired
-		LessonService service;
-				
-		@GetMapping("/lesson")
-		public String lessonController(Model model) {
-			
-			List<Lesson> lessonList = new ArrayList<>();
-			
-			lessonList = service.lessonList();
-			
-			model.addAttribute("lessonList", lessonList);
-			
-			return "lesson/lessonMain";
-		}	
 	
+		
+	@Autowired
+	LessonService service;
+				
+	@GetMapping("/lesson")
+	public String lessonController(Model model) {
+		
+		List<Lesson> lessonList = new ArrayList<>();
+		
+		lessonList = service.lessonList();
+		
+		List<LessonImage> imgList = service.selectLessonImgList();
+		
+		model.addAttribute("lessonList", lessonList);
+		model.addAttribute("imgList", imgList);
+		
+		
+		return "lesson/lessonMain";
+	}	
+	
+	/**
+	 * 레슨 디테일, 이미지 가져오기 컨트롤러
+	 * @author lee
+	 * @param lessonNo
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/lessonDetail")
-	public String lessonDetailController() {
+	public String lessonDetailController( @RequestParam("lessonNo") int lessonNo,
+			Model model) {
+		
+		Lesson lesson = new Lesson();
+		
+		
+		lesson = service.selectDetail(lessonNo);
+		LessonImage lessonImg = service.selectLessonImg(lessonNo);
+		
+		model.addAttribute("lessonImg", lessonImg);
+		model.addAttribute("lesson", lesson);
 		
 		return "lesson/lessonDetail";
 	}
@@ -49,7 +72,7 @@ public class LessonController {
 	@GetMapping("/lessonWriting")
 	public String lessonWritingController() {
 		
-		return "lesson/less	onWriting";
+		return "lesson/lessonWriting";
 	}
 	
 	@PostMapping("/writeLessonForm")
@@ -63,22 +86,38 @@ public class LessonController {
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
 		// c:\workspace\~~
 		
-		System.out.println(map.entrySet());
-		System.out.println(map.get("introment"));
+		
 		
 		map.put("userNo", loginUser.getUserNo());
 		
 		int writeResult = service.writeLessonForm(map, images, webPath,folderPath);
+		// 이미지 까지 삽입되면 여기로 반환 
 		
 		if(writeResult > 0) {
 			ra.addFlashAttribute("message", "게시글이 등록되었습니다");
-			return "redirect:/lesson/";
+			return "redirect:lesson";
 		}else {
 			ra.addFlashAttribute("message", "게시글 등록이 실패했습니다.");
-			return "redirect:/lessonWriting/";
+			return "redirect:lesson";
 		}
 		
-}
+	}
+	
+	/**
+	 * 레슨 글 삭제 컨트롤러
+	 * @author lee
+	 * @param lessonNo
+	 * @param ra
+	 * @return
+	 */
+	@PostMapping("/deleteLesson")
+	public int deleteLesson(@RequestParam("hiddenLessonNo") int lessonNo,
+			RedirectAttributes ra) {
+		
+		int deleteResult = service.deleteLesson(lessonNo);
+		
+		return deleteResult;
+	}
 }
 
 

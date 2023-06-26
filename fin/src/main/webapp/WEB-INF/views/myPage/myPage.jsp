@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
 <c:set var="banList" value="${banList}"/>
@@ -110,7 +109,7 @@
                         <li class="js-static-modal-toggleBoard"><i class="bi bi-clipboard"></i></li>
                         <li class="js-static-modal-toggleReply"><i class="bi bi-chat"></i></li>
                         <li class="js-static-modal-toggleBlock"><i class="bi bi-emoji-angry"></i></li>
-                        
+                        <li class="js-static-modal-toggleGroup"><i class="bi bi-music-player"></i></li>
                     </ul>
                 </div>
 
@@ -154,17 +153,16 @@
                                 <c:when test="${empty banList}">
                                     <p>차단 회원이 없습니다</p>
                                 </c:when>
-                                
                                 <c:otherwise>
                                 	<c:forEach var="banList" items="${banList}">
-                                
+                    
                                 		<tr>
                                         	<td>${banList.bannedUserNick}</td>
                                         	<td class="btnBlockTd"><button>차단해제</button></td>
                                     	</tr>
                                 	</c:forEach>
                                 </c:otherwise>
-                                                            
+
                             </c:choose>
                          
                          
@@ -767,6 +765,50 @@
         </div><!-- /.modal-dialog -->
     </div>
     </div>
+    
+     <!-- group create -->
+    <div class="container">
+        <!-- <button class=" js-static-modal-toggleBoard btn btn-primary " type="button">test</button> -->
+        <div id="static-modalGroup" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <div class="modal-body">
+
+                <section class="groupSection">
+                   <form action="" class="groupForm" method="POST">
+                        <div class="groupTitle">
+                            <h1>그룹 생성</h1>
+                        </div>
+
+                        <div class="grouInfoBox">
+                            <input type="text" required id="groupName">
+                            <label>GROUP NAME</label>
+
+                            <input type="eamil" required id="groupLeaderId">
+                            <label>LEADER ID</label>
+
+                            <textarea name="" id="groupInfoText"></textarea>
+                            <label>EXPLAIN YOUR GROUP</label>
+                        </div>
+
+                        <div class="groupBtnBox">
+                            <button id="groupBtn" type="submit">생성하기</button>
+                        </div>
+                   </form>
+                </section>      
+
+              </div>
+              <div class="modal-footer"></div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+    </div>
+    
+    
+    
     
     <script>
       const msg = "${msg}";

@@ -4,46 +4,75 @@
 
 	<!-- 메인글  게시글 가져오기-->
 	<resultMap type="lesson" id="lesson_rm">
-  	
-  	<id property="lessonNo" column="LESSON_NO"/>
-  	
-  	<result property="userNo" column="USER_NO"/>
-  	<result property="lessonNick" 	column="USER_NICK"/>
-  	<result property="motto" 	column="MOTTO"/>
-	<result property="joinDate" 	column="JOIN_DATE"/>	
-	<result property="lessonImg" column="LESSON_IMG" />
-	<result property="genre" column="GENRE" />
-	<result property="ints" column="INTS" />
-	<result property="region" column="REGION" />
-	<result property="detailment" column="DETAIL_MENT" />
-	<result property="socialSite" column="SOCIAL_SITE" />					
+	  	<id property="lessonNo" column="LESSON_NO"/>
+	  	<result property="userNo" column="USER_NO"/>
+	  	<result property="userNick" 	column="USER_NICK"/>
+	  	<result property="region" column="REGION" />
+	  	<result property="socialSite" column="SOCIAL_SITE" />
+	  	<result property="motto" 	column="MOTTO"/>
+	  	<result property="detailment" column="DETAIL_MENT"/>
+		<result property="genre" column="GENRE" />
+		<result property="ints" column="INTS" />
+		<result property="writingDate" 	column="WRITING_DATE"/>
+  </resultMap>
+  
+  
+  <resultMap type="lessonImg" id="lesson_img_rm">
+	  	<id property="imageNo" column="IMG_NO"/>
+	  	<result property="imageRename" column="IMG_RENAME"/>
+	  	<result property="imageOriginal" 	column="IMG_ORIGINAL"/>
+		<result property="lessonNo" 	column="LESSON_NO"/>
+		<result property="imageLevel" 	column="IMG_LEVEL"/>
   </resultMap>
   
 
 
-
-
 	<select id="lessonList" resultMap="lesson_rm">
-	SELECT u.USER_NICK, li.MOTTO, li.REGION, TO_CHAR(li.JOIN_DATE, 'YY"년"MM"월"DD"일"')AS JOIN_DATE  , li.LESSON_IMG
+	SELECT 
+	u.USER_NICK, li.MOTTO, li.REGION, TO_CHAR(li.WRITING_DATE, 'YY"년"MM"월"DD"일"')AS WRITING_DATE, LESSON_NO
 	FROM LESSON_INFO li
 	JOIN "USER" u USING(USER_NO)
+	WHERE LESSON_FL = 'N'
 	</select>
 	
-	<insert id="writeLessonForm" parameterType="lesson">
-	INSERT INTO LESSON_INFO VALUES(
-	LESSON_NO_SEQ.NEXTVAL,
-	  ${userNo},
-	  #{lessonNameInput},
-	  #{lessonLocationInput},
-	  #{lessonSocialInput},
-	  #{lessonMottoInput},	
-	  #{lessonDetailInput},  
-	  #{genre}, 
-	  #{inputImage},
-	  #{lessonImg},
-	  SYSDATE
-	  )
+	<select id="lessonImageList" resultMap="lesson_img_rm">
+		SELECT * FROM LESSON_IMG
+	</select>
+	
+	<insert id="writeLessonForm" parameterType="map" useGeneratedKeys="true">
+	
+		<selectKey keyProperty="lessonNo" resultType="_int" order="BEFORE">
+			SELECT LESSON_NO_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO LESSON_INFO (LESSON_NO, USER_NO, USER_NICK, REGION, SOCIAL_SITE, MOTTO, DETAIL_MENT, GENRE, INST, WRITING_DATE)
+		VALUES (${lessonNo}, ${userNo}, #{userNick}, #{userRegion}, #{userSocial}, #{userMotto}, #{userDetailExplain}, #{genre}, #{inst}, SYSDATE)
 	</insert>
+	
+	<insert id="insertImageFile" parameterType="lessonImg">
+		INSERT INTO LESSON_IMG (IMG_NO, IMG_RENAME, IMG_ORIGINAL, LESSON_NO, IMG_LEVEL)
+		VALUES(LESSON_IMG_SEQ.NEXTVAL, #{imageRename}, #{imageOriginal}, ${lessonNo}, ${imageLevel})
+	</insert>
+	
+	
+	<select id="selectDetail" parameterType="_int" resultMap="lesson_rm">
+		SELECT USER_NO, LESSON_NO, USER_NICK, MOTTO,INST, GENRE, REGION, SOCIAL_SITE, DETAIL_MENT
+		FROM LESSON_INFO
+		WHERE LESSON_NO = ${lessonNo}
+	</select>
+	
+	<select id="selectLessonImg" parameterType="_int" resultMap="lesson_img_rm">
+		SELECT *
+		FROM LESSON_IMG
+		WHERE LESSON_NO = ${lessonNo}
+	</select>
+	
+	
+	<update id="deleteLesson" parameterType="_int">
+		UPDATE LESSON_INFO SET LESSON_FL = 'Y' WHERE LESSON_NO = ${lessonNo}
+	</update>
+	
+	
 	
 	
 	
