@@ -62,6 +62,36 @@ body.darkmode .footerA{
 	color: var(--background-color);
 }
 
+.footer2-modal-toggle{
+    text-decoration: none;
+    color: var(--text-color); /*black*/
+    cursor: pointer;
+    transition: 0.5s;	
+}
+
+body.darkmode .footer2-modal-toggle{
+	color: var(--background-color);
+}
+
+body.darkmode .footer2-modal-toggle{
+	color: var(--background-color);
+}
+
+.footer3-modal-toggle{
+    text-decoration: none;
+    color: var(--text-color); /*black*/
+    cursor: pointer;
+    transition: 0.5s;	
+}
+
+body.darkmode .footer3-modal-toggle{
+	color: var(--background-color);
+}
+
+body.darkmode .footer3-modal-toggle{
+	color: var(--background-color);
+}
+
 /* 평소 푸터 a태그 css */
 
 .footerDarkAtag{
@@ -159,7 +189,6 @@ body.darkmode .footerA{
     padding: 1em 0;
     }
 }
-
 
 
 

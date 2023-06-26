@@ -26,5 +26,11 @@ window.onload = function(){
 }
 */
 
-
+    document.querySelector('.footer2-modal-toggle').addEventListener('click', function() {
+      new Modal({el: document.getElementById('footer2-modal')}).show();
+    });
+    
+    document.querySelector('.footer3-modal-toggle').addEventListener('click', function() {
+      new Modal({el: document.getElementById('footer3-modal')}).show();
+    });
 
