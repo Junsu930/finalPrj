@@ -33,8 +33,8 @@
 		<typeAlias type="edu.kh.fin.band.socialLogin.model.vo.SocialInfo" alias="social"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.Reply" alias="reply"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.Criteria" alias="criteria"/>
-		
-		
+		<typeAlias type="edu.kh.fin.band.myBand.model.vo.MyBand" alias="myBand"/>
+		<typeAlias type="edu.kh.fin.band.myPage.model.vo.Ban" alias="BanList"/>
 	</typeAliases>
 	
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
@@ -53,5 +53,6 @@
 		<mapper resource="/mapper/socialLogin-mapper.xml"/>
 		<mapper resource="/mapper/myPage-mapper.xml"/>
 		<mapper resource="/mapper/reply-mapper.xml" />
+		<mapper resource="/mapper/myBand-mapper.xml"/>
 	</mappers>
 </configuration>

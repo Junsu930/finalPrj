@@ -38,7 +38,7 @@ public class SocialLoginDAO {
 	}
 
 	/**
-	 * kakaoSignUp + 액세스 토큰을 바탕으로 카카오 유저 정보를 가져와서 + 정보 디비 저장 + 유저넘버 가져오기 + 기존 회원이면 토큰 교체 DAO
+	 * kakaoSignUp + 액세스 토큰을 바탕으로 카카오 유저 정보를 가져와서 + 일반 회원과 중복 체크 + 정보 디비 저장 + 유저넘버 가져오기 + 기존 회원이면 토큰 교체 DAO
 	 * @author lee
 	 * @param getUserInfoMap
 	 * @return
@@ -47,13 +47,28 @@ public class SocialLoginDAO {
 		Integer alreadyUserNo;
 		// 기존 회원이 존재하는지 파악 먼저 해야함
 		String alreadyUserEmail = (String)getUserInfoMap.get("email");
+		String alreadyUserNick = (String)getUserInfoMap.get("nick");
 		
 		alreadyUserNo = sqlSession.selectOne("socialMapper.selectAlreadyUser", alreadyUserEmail); 
 		
 		if(alreadyUserNo == null) { // 기존 회원이 아니라면
-			int result = sqlSession.insert("socialMapper.kakaoSignUp", getUserInfoMap); // 회원 등록
-			if(result > 0) result = (Integer)getUserInfoMap.get("userNo");
-			return result;
+			// 일반 가입자와 중복 체크해야함
+			// 갯수를 가져올 예정
+			int checkEmailDup = sqlSession.selectOne("socialMapper.checkDupEmailForKakao" , alreadyUserEmail); // 이메일 중복
+			int checkNickDup = sqlSession.selectOne("socialMapper.checkDupNickForKakao", alreadyUserNick); // 닉네임 중복
+			
+			int totalDup = checkEmailDup + checkNickDup;
+			
+			if(totalDup == 1) { // 중복 하나 존재 
+				return -1;
+			}else if(totalDup == 2){ // 중복 두개 존재
+				return -1;
+			}else { // 중복 없을 때,
+				int result = sqlSession.insert("socialMapper.kakaoSignUp", getUserInfoMap); // 회원 등록
+				if(result > 0) result = (Integer)getUserInfoMap.get("userNo");
+				return result; // userNo 반환
+			}
+			
 		}else { // 기존회원이면 토큰 교체후 유저넘버 리턴
 			
 			int alreadyUser = alreadyUserNo;

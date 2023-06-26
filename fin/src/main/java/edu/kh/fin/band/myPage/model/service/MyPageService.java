@@ -1,9 +1,11 @@
 package edu.kh.fin.band.myPage.model.service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import edu.kh.fin.band.login.model.vo.User;
+import edu.kh.fin.band.myPage.model.vo.Ban;
 
 public interface MyPageService {
 
@@ -45,5 +47,17 @@ public interface MyPageService {
 	 * @return
 	 */
 	int secession(User loginUser);
+
+	/** 유저 차단 해제
+	 * @param loginUser
+	 * @return
+	 */
+	int ban(User loginUser);
+
+	/** 밴 유저 확인
+	 * @param userNo 
+	 * @return
+	 */
+	List<Ban> chBanList(int userNo);
 
 }

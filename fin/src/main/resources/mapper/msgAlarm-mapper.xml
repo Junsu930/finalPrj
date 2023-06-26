@@ -23,6 +23,8 @@
 		<result property="sendDay" column="RESERVE_DAY" />
 		<result property="sendMonth" column="RESERVE_MON" />
 		<result property="roomName" column="ROOM_NAME" />
+		<result property="alarmMon" column="ALARM_MON" />
+		<result property="alarmDay" column="ALARM_DAY" />
 	</resultMap>
 	
 	
@@ -57,28 +59,40 @@
 	</select> 
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	<update id="disappearCount" parameterType="_int">
 		UPDATE MSG_ALARM SET ALARM_READ_STATUS = 'Y' WHERE USER_NO = #{loginUserNo}
 	</update>
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	<select id="getUserNicksFromRoom" parameterType="_int" resultMap="getUserNick_room_rm">
 		SELECT 
 		u.USER_NICK,
-		p.ROOM_NAME, 
-		TO_CHAR(TO_DATE(RESERVE_DAY, 'YY-MM-DD'), 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH')AS RESERVE_MON,
-		TO_CHAR(TO_DATE(RESERVE_DAY, 'YY-MM-DD'), 'DD"일"') AS RESERVE_DAY
-		FROM ROOM_TIME t
-		JOIN "USER" u ON u.USER_NO = t.RESERVE_USER_NO
-		JOIN PRACTICE_ROOM p ON p.ROOM_NO = t.ROOM_NO
-		WHERE OWNER_NO = ${loginUserNo}
+		p.ROOM_NAME,
+		TO_CHAR(TO_DATE(t.RESERVE_DAY, 'YY-MM-DD'), 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH')AS RESERVE_MON,
+		TO_CHAR(TO_DATE(t.RESERVE_DAY, 'YY-MM-DD'), 'DD"일"') AS RESERVE_DAY,
+		TO_CHAR(a.ALARM_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS ALARM_MON,
+		TO_CHAR(a.ALARM_DATE, 'DD"일"') AS ALARM_DAY
+		FROM ALARM a 
+		JOIN "USER" u ON u.USER_NO = a.FROM_USER_NO
+		JOIN PRACTICE_ROOM p ON p.ROOM_NO = a.ROOM_NO 
+		JOIN ROOM_TIME t ON t.ROOM_NO = a.ROOM_NO 
+		WHERE 
+		t.RESERVE_DAY 
+		BETWEEN TRUNC(SYSDATE , 'MM') 
+		AND 
+		LAST_DAY(SYSDATE)
+		AND 
+		a.ROOM_ALARM_READ_STATUS = 'N' 
+		AND 
+		a.TO_USER_NO = ${loginUserNo}
 		ORDER BY RESERVE_MON ASC, RESERVE_DAY DESC
 	</select>
 	
@@ -88,19 +102,15 @@
 		SELECT COUNT(*) AS COUNT
 		FROM ALARM
 		WHERE 
-		USER_NO = ${loginUserNo}
+		TO_USER_NO = ${loginUserNo}
 		AND ROOM_ALARM_READ_STATUS = 'N'
-		AND BOARD_ALARM_READ_STATUS = 'N'
-		AND REPLY_ALARM_READ_STATUS = 'N'
 	</select>
 	
 	
 	<update id="alarmDisappearCount" parameterType="_int">
 		UPDATE ALARM
-		SET ROOM_ALARM_READ_STATUS = 'Y',
-		BOARD_ALARM_READ_STATUS = 'Y',
-		REPLY_ALARM_READ_STATUS = 'Y'
-		WHERE USER_NO = ${loginUserNo}
+		SET ROOM_ALARM_READ_STATUS = 'Y' 
+		WHERE TO_USER_NO = ${loginUserNo}
 	</update>
 	
 

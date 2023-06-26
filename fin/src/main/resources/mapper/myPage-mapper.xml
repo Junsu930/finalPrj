@@ -29,6 +29,13 @@
 		<result property="region" column="REGION" />
 		<result property="userName" column="USER_NICK" />
 	</resultMap>
+	
+	<resultMap type="banList" id="banList_rm">
+		<id property="bannedNo" column="BANNED_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="bannedUserNo" column="BANNED_USER_NO" />
+		<result property="bannedUserNick" column="BANNED_USER_NICK" />
+	</resultMap>
 
 	<update id="updateInfo">
 		UPDATE "USER" SET
@@ -78,6 +85,13 @@
 		SECESSION_FL = 'Y'
 		WHERE USER_NO = ${userNo}
 	</update>
+	
+	<select id="chBanList">
+		SELECT BANNED_NO , USER_NO , BANNED_USER_NO , BANNED_USER_NICK 
+		FROM BOARD_BANNED
+		WHERE USER_NO = ${userNo}
+	</select>
+	
 
 
 </mapper>

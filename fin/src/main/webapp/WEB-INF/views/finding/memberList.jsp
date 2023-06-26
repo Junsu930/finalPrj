@@ -53,9 +53,12 @@
 		<c:choose>
 			<c:when test="${!empty memberList}">
 				<c:forEach items="${memberList}" var="member">
+
 					<div class="wrapper">
 			            <div class="userNameBox">
-			                <img src="" alt="#">
+			                <div class="userImgBox">
+								<img src="${contextPath}/resources/images/profileImage/user.png" alt="#">
+							</div>
 			                <p>${member.userName}</p>
 			            </div>
 			            
@@ -78,6 +81,7 @@
 			                </ul>
 			            </div>
         			</div>
+
 				</c:forEach>
 			</c:when>
 
@@ -99,7 +103,7 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body memberModal">
 					
 					<div class="sendMsgModalBox">
 					<h1>SEND MESSAGE</h1>
@@ -109,9 +113,7 @@
 	
 					
 				</div>
-				<div class="modal-footer">
-				
-				</div>
+				<div class="modal-footer"></div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 			</div>

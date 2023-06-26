@@ -15,14 +15,9 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-<jsp:include page="/WEB-INF/views/profile/lookProfile.jsp"/>
-
 
 <div class="content" id="content">
-<div  data-bs-toggle="modal" data-bs-target="#exampleModal" id="toModalDiv" style="cursor: pointer;">
-	<input type="hidden" id="hiddenUserNo" value="${sessionScope.loginUser.userNo}">
-	<span>프로필보기 넘어가기</span>
-</div>
+	<a href="${contextPath}/myBandBoard?bandNo=1">내 밴드 보기 넘어가기</a>
 	<div class="resrSvgBox">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1361 768">
             <g id="reservationBack">
