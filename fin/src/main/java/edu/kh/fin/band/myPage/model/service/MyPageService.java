@@ -60,4 +60,10 @@ public interface MyPageService {
 	 */
 	List<Ban> chBanList(int userNo);
 
+	/** 밴 해제
+	 * @param bannedUserNo
+	 * @return
+	 */
+	int updateBan(int bannedUserNo);
+
 }

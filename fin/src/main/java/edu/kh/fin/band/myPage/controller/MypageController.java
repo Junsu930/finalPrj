@@ -194,21 +194,38 @@ public class MypageController {
 		return "myPage/myPage";
 	}*/
 	
-	/*
+	
 	@PostMapping("fin/ban")
 	public String ban(@ModelAttribute("loginUser") User loginUser,
+			@RequestParam("bannedUserNo") int bannedUserNo,
 			SessionStatus status,
 			HttpServletRequest req,
 			HttpServletResponse resp,
 			RedirectAttributes ra) {
 		
-		List<Ban> banList = service.banList();
+		System.out.println(bannedUserNo);
 		
-		int result = service.ban(loginUser);
+		int result = service.updateBan(bannedUserNo);
 		
-		return null;
+		String message = null;
+		String path = null;
 		
-	}*/
+		if(result > 0) {
+			
+			message = "차단 해제 완료";
+			path = "/myPage";
+			
+		} else {
+			
+			message = "차단 해제 실패";
+			path = "/myPage";
+		}
+		
+		ra.addFlashAttribute("msg", message);
+		
+		return "redirect:" + path;
+		
+	}
 	
 	
 }
