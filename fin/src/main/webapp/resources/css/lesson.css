@@ -286,7 +286,7 @@ body.darkmode .imgCotentWrap{
 .imgBox > img{
     width: 100%;
     height: 100%;
-    border-radius: 5px 5px 0;
+    border-radius: 5px 5px 0 0;
 }
 
 .contentBox{
@@ -316,6 +316,9 @@ body.darkmode .imgCotentWrap{
     .imgCotentWrap{
         width: 450px;
         height: 450px;
+    }
+    .imgBox{
+        height: 300px;
     }
 
     .filterSec > div:last-child{

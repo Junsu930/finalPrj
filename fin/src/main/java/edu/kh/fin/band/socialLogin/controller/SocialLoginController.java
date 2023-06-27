@@ -140,7 +140,7 @@ public class SocialLoginController {
 	    		// 세션에 등록할 카카오 유저 정보를 가져와서 유저 객체에 넣기
 		    	User user = service.getUser(resultUserNo);
 		    	model.addAttribute("loginUser", user);
-		        ra.addFlashAttribute("msgKakao", "카카오 로그인 환영합니다!");
+		        ra.addFlashAttribute("msgKakao", "환영합니다!");
 	    	}else {
 	    		ra.addFlashAttribute("msgKakao", "아이디 또는 닉네임이 중복된 회원입니다!");
 	    	}

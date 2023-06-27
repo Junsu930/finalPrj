@@ -139,20 +139,14 @@
 
 
 
-  
-
-
-
-
-  
- 
-  
-  
-
   <script>
     const msgKakao = "${msgKakao}";
     if(msgKakao.trim() !== ""){
-      alert(msgKakao);
+      Swal.fire({
+        icon: "success",
+        text: msgKakao,
+        title: "BandArchive"
+      });
     }
 
   </script>

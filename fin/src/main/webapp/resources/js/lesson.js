@@ -41,7 +41,7 @@ let listLocationBoxOpen = false;
 const returnValue = function(){
     const listbox = false;
     const listloc = false;
-    return{listbox : listbox, listloc : listloc}; // key  : value
+    return{"listbox" : listbox, "listloc" : listloc}; // key  : value
 }
 
 
@@ -82,7 +82,7 @@ window.addEventListener('click', function(e){
             // listBoxOpen == true 이고, 다른 곳 클릭 시, listBoxOpen 을 false로 바꿔줌
         }else{
             // listBoxOpen == true 이지만 다른 곳 클릭 안했을 시, 여기로 넘어옴
-            console.log("listBoxOpen is" , listBoxOpen);
+            
         }
     }
 
@@ -94,7 +94,7 @@ window.addEventListener('click', function(e){
             return listLocationBoxOpen = false;
         }else{
             // listLocationBoxOpen == true 이지만 다른 곳 클릭 안했을 시, 여기로 넘어옴
-            console.log("listLocationBoxOpen is" , listLocationBoxOpen);
+            
         }
     }
 
@@ -117,7 +117,7 @@ window.addEventListener('click', function(e){
 
     }else{
         // 둘다 false == 닫혀있을 때
-        console.log("listBoxOpen is ",listBoxOpen, "listLocationBoxOpen is " ,listLocationBoxOpen);
+        
     }
 }); // window.click 끝 
 
@@ -483,7 +483,8 @@ let spanObserver2 = new MutationObserver(function(mutations) {
     });
 });
 
-// MutationObserver를 설정하여 span 요소의 텍스트 변경을 감지합니다.
+// MutationObserver를 설정하여 span 요소의 텍스트 변경을 감지
+// MutationObserver는 단일요소만 관측 가능
 spanObserver.observe(targetSpan, { subtree: true, characterData: true, childList: true });
 spanObserver2.observe(targetSpan2, { subtree: true, characterData: true, childList: true });
 

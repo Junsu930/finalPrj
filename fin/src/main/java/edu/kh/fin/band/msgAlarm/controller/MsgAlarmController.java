@@ -171,9 +171,21 @@ public class MsgAlarmController {
 		}else {
 			return new Gson().toJson("none");
 		}
+	}
+	
+	
+	
+	
+	
+	/**
+	 * alarmPage 이동
+	 * @param loginUser
+	 * @return
+	 */
+	@GetMapping("/alarmPage")
+	public String showAlarmPage(@ModelAttribute("loginUser") User loginUser) {
 		
-		
-		
+		return "alarm/alarmPage";
 	}
 	
 	
