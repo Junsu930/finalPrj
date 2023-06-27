@@ -92,6 +92,11 @@
 		WHERE USER_NO = ${userNo}
 	</select>
 	
+	<update id="updateBan">
+		DELETE FROM BOARD_BANNED
+		WHERE BANNED_USER_NO = ${bannedUserNo}
+	</update>
+	
 
 
 </mapper>

@@ -139,7 +139,6 @@
               </div>
               <div class="modal-body">
 
-            <form action="fin/ban" method="post">
                 <section class="modalBlockWrapper">
                     <div class="modalBlockTitleBox">
                         <p>차단 회원 목록</p>
@@ -155,11 +154,15 @@
                                 </c:when>
                                 <c:otherwise>
                                 	<c:forEach var="banList" items="${banList}">
+                                        <form action="fin/ban" method="post">
                     
                                 		<tr>
-                                        	<td>${banList.bannedUserNick}</td>
+                                            <input type="hidden" value="${banList.bannedUserNo}" id="bannedUserNo" name="bannedUserNo">
+                                        	<td id>${banList.bannedUserNick}</td>
                                         	<td class="btnBlockTd"><button>차단해제</button></td>
                                     	</tr>
+
+                                        </form>
                                 	</c:forEach>
                                 </c:otherwise>
 
@@ -170,7 +173,7 @@
 
                     </div>
                 </section>
-            </form>
+            
                 
               </div>
               <div class="modal-footer">
@@ -778,7 +781,7 @@
               <div class="modal-body">
 
                 <section class="groupSection">
-                   <form action="" class="groupForm" method="POST">
+                   <form action="fin/makeBand" class="groupForm" method="POST">
                         <div class="groupTitle">
                             <h1>그룹 생성</h1>
                         </div>

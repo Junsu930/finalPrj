@@ -104,6 +104,15 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.chBanList", userNo);
 	}
 
+	/** 밴 해제
+	 * @param bannedUserNo
+	 * @return
+	 */
+	public int updateBan(int bannedUserNo) {
+		
+		return sqlSession.update("myPageMapper.updateBan", bannedUserNo );
+	}
+
 	
 
 }

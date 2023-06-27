@@ -139,4 +139,14 @@ public class MyPageServiceimpl implements MyPageService{
 	
 	}
 
+	/** 밴 해제
+	 *
+	 */
+	@Override
+	public int updateBan(int bannedUserNo) {
+		
+		
+		return dao.updateBan(bannedUserNo);
+	}
+
 }
