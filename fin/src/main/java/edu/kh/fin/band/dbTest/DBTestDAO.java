@@ -13,5 +13,13 @@ public class DBTestDAO {
 	public DBTestVO dbTest(int userNo) {
 		return sqlSession.selectOne("testMapper.testSelect", userNo);
 	}
+
+	public int leaderCheck(int loginUserNo) {
+		return sqlSession.selectOne("testMapper.leaderCheck", loginUserNo);
+	}
+
+	public int inBandCheck(int userNo) {
+		return sqlSession.selectOne("testMapper.inBandCheck", userNo);
+	}
 	
 }

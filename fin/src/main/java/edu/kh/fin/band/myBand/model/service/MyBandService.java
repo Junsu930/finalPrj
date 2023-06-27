@@ -45,6 +45,14 @@ public class MyBandService {
 	public int bandUserFl(int bandNo, User loginUser) {
 		return dao.bandUserFl(bandNo,loginUser);
 	}
+
+	public int writeBandBoard(String title, String text, int bandNo, int userNo) {
+		return dao.writeBandBoard(title, text, bandNo, userNo);
+	}
+
+	public MyBand bandBoardDetail(int boardNo) {
+		return dao.bandBoardDetail(boardNo);
+	}
 	
 	
 	

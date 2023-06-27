@@ -243,6 +243,7 @@ body.darkmode .fc-day-past{
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
+	font-size: 0.6em;
 
 }
 

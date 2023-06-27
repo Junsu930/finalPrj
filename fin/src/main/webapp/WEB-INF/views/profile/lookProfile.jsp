@@ -24,11 +24,30 @@
 	a{
 		color: revert;
 	}
+	
+	.modal.show .modal-dialog{
+		justify-content: center;
+	}
+	
+	.modalBtnForProfile{
+		width: 150px;
+	    height: 40px;
+	    border: 1px solid #999;
+	    border-radius: 0.5em;
+	    font-size: 1em;
+	    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+	    background-color: white;
+	    cursor: pointer;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+
 </style>
 <!-- 모달 파트 -->
 <div class="modal" tabindex="-1" id="exampleModal">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
+    <div class="modal-content" style="width: 450px;">
       <div class="modal-header">
         <h5 class="modal-title" id="modalMainTitle"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -93,7 +112,13 @@
  		</div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" id="testBtn">채팅하기</button>
+      	<input type="hidden" id="hiddenUserNoForModalProfile" value="">
+      	<input type="hidden" id="hiddenUserNickForModalProfile" value="">
+      	<input type="hidden" id="hiddenUserNo" value="${sessionScope.loginUser.userNo }">
+      	<input type="hidden" id="hiddenUserName" value="${sessionScope.loginUser.userNick}">
+      	
+        <button type="button" id="testBtn" class="modalBtnForProfile" >채팅하기</button>
+        <button type="button" id="bandInviteBtn" class="modalBtnForProfile">밴드초대하기</button>
       </div>
     </div>
   </div>
@@ -114,6 +139,27 @@ for(let eachModal of profileModalOn){
   $(eachModal).click((e)=>{
     
     let userId = $(e.target).prev().val();
+    
+    
+    $.ajax({
+    	type: 'post',
+        url: '/fin/inviteCheck',
+        async: true,
+        data:{'userNo' : userId},
+        dataType: 'JSON',
+        success: function(data){
+        	
+        	console.log(data);
+        	if(data == 0){
+        		$("#bandInviteBtn").css("display", "none");
+        	}
+        	if(data == 1){
+        		$("#bandInviteBtn").css("display", "flex");
+        	}
+        }
+    });
+    
+    
     
     $.ajax({
         type: 'post',
@@ -146,6 +192,9 @@ for(let eachModal of profileModalOn){
 			if(data.profileImage != null){
 				$("#imgProfileImage").src(data.profileImage);
 			}
+			
+			$('#hiddenUserNoForModalProfile').val(userId);
+			$('#hiddenUserNickForModalProfile').val(data.userName);
 
     
         },
@@ -156,4 +205,9 @@ for(let eachModal of profileModalOn){
   });
 }
 
+$("#testBtn").click(function(){
+	let withNo = $('#hiddenUserNoForModalProfile').val();
+	
+	chatStart(withNo);
+});
 </script>

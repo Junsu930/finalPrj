@@ -18,10 +18,12 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="myBandContainer">
 		<div class="bandHeader">
-			<p><c:out value="${bandTitle}"/></p><p> Band Board</p>
 		</div>
 		<div class="bandContentsDiv">
 			<div class="leftSideBandMemberDiv">
+				<div class="bandTitleDiv">
+					<p>${bandTitle}</p>
+				</div>
 				<div class="bandInfoDiv">
 					<div>
 						<i class="fa-solid fa-crown"></i>
@@ -37,6 +39,7 @@
 				<c:if test="${memberFl eq 'T' }">
 					<div class="writeBandDiv">
 						<form method="post" action="${contextPath}/bandBoardWrite">
+							<input type="hidden" value="${bandNo}" name="hiddenBandNoForWrite">
 							<button type="submit" id="bandBoardWriteButton">글쓰기</button>
 						</form>
 					</div>
@@ -48,12 +51,12 @@
 					<!-- 글 영역 -->
 					<div>
 						<c:forEach var="eachBoard" items="${bandList}">
-							<form method="post" action="bandBoardDetail" id="eachBoardFormForBand">
+							<form method="post" action="bandBoardDetail" class="eachBoardFormForBand">
 								<!-- 각각의 글 -->
-								<div class="eachBoardDiv">
+								<div class="eachBoardDiv" onclick="$(this).parent().submit();">
 									<!-- 보드넘버, 밴드 넘버 숨기기 -->
-									<input type="hidden" value="${eachBoard.boardNo}">
-									<input type="hidden" value="${bandNo}">
+									<input type="hidden" name="thisBoardNo" value="${eachBoard.boardNo}">
+									<input type="hidden" name="thisBandNo" value="${bandNo}">
 									<!-- 제목 영역 -->
 									<div>
 										${eachBoard.boardTitle }
@@ -107,5 +110,10 @@
 <jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/js/myBand.js"></script>
+<c:if test="${!empty message }">
+	<script>
+		swal.fire("${message}");
+	</script>
+</c:if>
 </body>
 </html>

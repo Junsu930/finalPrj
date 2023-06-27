@@ -14,4 +14,12 @@ public class DBTestService {
 		return dao.dbTest(userNo);
 	}
 
+	public int leaderCheck(int loginUserNo) {
+		return dao.leaderCheck(loginUserNo);
+	}
+
+	public int inBandCheck(int userNo) {
+		return dao.inBandCheck(userNo);
+	}
+
 }

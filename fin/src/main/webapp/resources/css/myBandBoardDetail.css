@@ -1,0 +1,160 @@
+.containerForBandBoardDetail{
+	
+	margin:auto;
+	margin-top : 250px;
+	height: 120vh;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.realContentForBandBoard{
+	
+	width: 90%;
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+	
+}
+
+/* 댓글 영역*/
+.replyForBandBoardDetail{
+	margin:auto;
+	margin-top : 10px;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+}
+
+
+
+
+
+
+/* 제목 영역 */
+.realContentForBandBoard > div:first-of-type {
+	flex-basis: 5%;
+	font-size: 1.5em;
+	margin-left: 10px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	
+}
+
+/* 정보 영역 */
+.realContentForBandBoard > div:nth-of-type(2) {
+	flex-basis: 5%;
+	display: flex;
+	margin-bottom: 10px;
+}
+
+/* 각각의 div */
+.realContentForBandBoard > div:nth-of-type(2) > div{
+	margin-left: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.realContentForBandBoard > div:nth-of-type(2) > div > span{
+	margin-left: 4px;
+}
+
+/* 컨텐츠 */
+.realContentForBandBoard > div:nth-of-type(3){
+	flex-basis : 70%;
+	margin: 40px  0 40px 20px;
+}
+
+.realContentForBandBoard > div:nth-of-type(4) {
+	flex-basis: 10%;
+	margin-left: 10px;
+}
+
+.underBarDiv{
+	display: flex;
+	justify-content: space-between;
+}
+
+.underBarDiv > div:last-of-type{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+}
+
+#backButtonForBandBoard{
+	width: 150px;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#heart{
+    width: 60px; /*크기에 맞게 쓰세요*/
+    fill: var(--grey-color); /* #ccc 색깔코드 */
+    stroke: var(--magenta-heart-color); /* #f06 색깔코드*/
+    stroke-dasharray: 56.6;
+    stroke-dashoffset: 56.6;
+}
+
+#heart.like{
+    animation: 1s ease-in forwards like, 
+    0.8s linear 1s 1 forwards beat;
+}
+
+#heart.unlike{
+    animation: 1s ease-out forwards unlike;
+}
+
+@keyframes like{
+    0%{
+        stroke-dashoffset: 56.6;
+    }
+    70%{
+        stroke-dashoffset: 0;
+        fill:var(--grey-color);
+    }
+    100%{
+        stroke-dashoffset: 0;
+        fill: var(--magenta-heart-color);
+    }
+}
+@keyframes beat {
+    0%{
+        transform: scale(1, 1);
+    }
+    50%{
+        transform: scale(0.9, 0.9);
+    }
+    100%{
+        transform: scale(1, 1);
+    } 
+}
+
+@keyframes unlike{
+    0%{
+        stroke-dashoffset: 0;
+        fill: var(--magenta-heart-color);
+    }
+    70%{
+        stroke-dashoffset: 0;
+        fill:var(--grey-color);
+    }
+    100%{
+        stroke-dashoffset: 56.6;
+    }
+}

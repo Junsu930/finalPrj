@@ -25,4 +25,12 @@
 		SELECT * FROM "USER"u  LEFT JOIN MATCHING_INFO m ON (u.USER_NO = m.USER_NO) WHERE u.USER_NO = #{userNo}
 	</select>
 	
+	<select id="leaderCheck" parameterType="_int" resultType="_int">
+		SELECT count(*) FROM BAND_USER WHERE USER_NO = ${loginUserNo} AND LEADER_FL = 'T'
+	</select>
+	
+	<select id="inBandCheck" parameterType="_int" resultType="_int">
+		SELECT count(*) FROM BAND_USER WHERE USER_NO = ${userNo}
+	</select>
+	
 </mapper>

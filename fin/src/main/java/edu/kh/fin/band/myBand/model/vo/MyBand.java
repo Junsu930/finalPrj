@@ -23,4 +23,13 @@ public class MyBand {
 	private String boardTag;
 	
 	
+	@Override
+	public String toString() {
+		return "MyBand [boardNo=" + boardNo + ", bandNo=" + bandNo + ", bandName=" + bandName + ", boardTitle="
+				+ boardTitle + ", boardContent=" + boardContent + ", boardDate=" + boardDate + ", readCount="
+				+ readCount + ", userNick=" + userNick + ", boardLike=" + boardLike + ", boardTag=" + boardTag + "]";
+	}
+	
+	
+	
 }
