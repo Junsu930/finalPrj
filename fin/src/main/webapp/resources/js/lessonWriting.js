@@ -43,31 +43,8 @@ $("#writingBtn").click(()=>{
 
 
 
-const deleteBtn = document.getElementById('deleteBtn');
-const hiddenLessonNo = document.getElementById('hiddenLessonNo');
 
 
-
-function deleteLesson(){
-    console.log("asdasdasd");
-    if(confirm("정말 삭제하시겠습니까?")){
-        $.ajax({
-            url: "deleteLesson",
-            type:"POST",
-            data:{"hiddenLessonNo" : hiddenLessonNo.value},
-            success(result){
-                if(result > 0 ){
-                    alert("삭제 완료!");
-                    location.href="${contextPath}/lesson";
-                }
-            },
-            error: function(request, status, error){
-                console.log("delte AJAX 에러 발생");
-                console.log("상태코드 : " + request.status); // 404, 500
-            }
-        });
-    }
-}
 
 
 

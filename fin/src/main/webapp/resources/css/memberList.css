@@ -149,12 +149,13 @@ body.darkmode .userNameBox img{
     gap: 3em;
 }
 
-.sendMsgModalBox h1{
+.sendMsgModalBox>h1{
     font-weight: 500;
+    padding-left: 0;
 }
 
 body.darkmode .sendMsgModalBox h1{
-    color:var(--text-dark-color);
+    color:var(--text-color);
 }
 
 

@@ -55,7 +55,7 @@ ul{
 }
 
 button:focus , a:focus{
-    outline: none;
+    outline: none !important;
 }
 
 body{

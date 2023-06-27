@@ -77,12 +77,12 @@
         <div class="container">
           <!-- <button class=" js-static-modal-toggle btn btn-primary " type="button">test</button> -->
           <div id="static-modalBlock${status.count}" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
-            <div class="modal-dialog">
+            <div class="modal-dialog" id="msgBoxDialog">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="msgModalBody">
                   
                   <div class="sendMsgModalBox">
                     <h1>REPLY MESSAGE</h1>
@@ -93,7 +93,7 @@
 
                   
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" id="msgModalFooter">
                 
                 </div>
               </div><!-- /.modal-content -->

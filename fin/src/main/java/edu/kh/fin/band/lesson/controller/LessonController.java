@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import edu.kh.fin.band.lesson.model.service.LessonService;
 import edu.kh.fin.band.lesson.model.vo.Lesson;
@@ -97,7 +100,7 @@ public class LessonController {
 			ra.addFlashAttribute("message", "게시글이 등록되었습니다");
 			return "redirect:lesson";
 		}else {
-			ra.addFlashAttribute("message", "게시글 등록이 실패했습니다.");
+			ra.addFlashAttribute("message", "게시글 등록을 실패했습니다.");
 			return "redirect:lesson";
 		}
 		
@@ -111,12 +114,18 @@ public class LessonController {
 	 * @return
 	 */
 	@PostMapping("/deleteLesson")
-	public int deleteLesson(@RequestParam("hiddenLessonNo") int lessonNo,
+	@ResponseBody
+	public String deleteLesson(@RequestParam("lessonNo") int lessonNo,
 			RedirectAttributes ra) {
 		
 		int deleteResult = service.deleteLesson(lessonNo);
 		
-		return deleteResult;
+		
+		if(deleteResult > 0) {
+			  return new Gson().toJson("게시글 삭제 완료!");
+		  } else {
+			  return new Gson().toJson("게시글 삭제 실패!");
+		  }
 	}
 }
 

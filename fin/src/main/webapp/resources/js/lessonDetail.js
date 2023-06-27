@@ -44,3 +44,27 @@ Kakao.Share.createDefaultButton({
       },
     ],
   });
+
+
+
+function deleteLesson(lessonNo){
+  console.log(lessonNo);
+  if(confirm("정말 삭제하시겠습니까?")){
+      $.ajax({
+          url: "deleteLesson",
+          type:"POST",
+          dataType:"JSON",
+          data:{"lessonNo" : lessonNo.value},
+          success(result){
+              alert(result);
+              location.href="lesson";
+          },
+          error: function(request, status, error){
+              console.log("delte AJAX 에러 발생");
+              console.log("상태코드 : " + request.status); // 404, 500
+          }
+      });
+  }else{
+    alert("취소하셨습니다!");
+  }
+}
