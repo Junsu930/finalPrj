@@ -1,5 +1,6 @@
 package edu.kh.fin.band.lesson.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,21 +18,40 @@ public class LessonDAO {
 	@Autowired
 	SqlSessionTemplate sqlSession;
 
-	/** lesson 조회
+	/** 
+	 * 레슨 무한 스크롤 DAO
+	 * @author lee
 	 * @return
 	 */
 	public List<Lesson> lessonList() {
 		return sqlSession.selectList("lessonMapper.lessonList");
 	}
 	
+	
 	/**
-	 * 레슨 이미지 전체 조회 DAO
+	 * 레슨 필터 조회 DAO
 	 * @author lee
+	 * @param lessonText
+	 * @param locText
 	 * @return
 	 */
-	public List<LessonImage> selectLessonImgList() {
-		return sqlSession.selectList("lessonMapper.lessonImageList");
+	public List<Lesson> lessonFilter(String lessonText, String locText) {
+		
+		HashMap<String, Object> map = new HashMap<>();
+		
+		String lessonTextForSql = "%" + lessonText + "%";
+		String locTextForSql = "%" + locText + "%";
+		
+		
+		map.put("lessonText", lessonTextForSql);
+		map.put("locText", locTextForSql);
+		
+		
+		return sqlSession.selectList("lessonMapper.lessonFilter", map);
 	}
+	
+	
+	
 
 	/** lesson 이미지 삽입
 	 * @return
@@ -47,6 +67,8 @@ public class LessonDAO {
 		if(result>0) result = (Integer)map.get("lessonNo");	
 		return result;
 	}
+	
+	
 	
 	
 
@@ -78,8 +100,17 @@ public class LessonDAO {
 	 */
 	public int deleteLesson(int lessonNo) {
 		
-		return sqlSession.update("lessonMapper.deleteLesson", lessonNo);
+		int imgDelete = sqlSession.update("lessonMapper.deleteLessonImg", lessonNo);
+		if(imgDelete > 0) {
+			return sqlSession.update("lessonMapper.deleteLesson", lessonNo);
+		}else {
+			return 0;
+		}
+		
+		
 	}
+
+	
 
 
 

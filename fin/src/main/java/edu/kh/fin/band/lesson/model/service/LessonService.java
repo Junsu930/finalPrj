@@ -20,6 +20,11 @@ public class LessonService {
 	@Autowired
 	LessonDAO dao;
 
+	/**
+	 * 레슨 무한 스크롤 service
+	 * @author lee
+	 * @return
+	 */
 	public List<Lesson> lessonList() {
 		return dao.lessonList();
 	}
@@ -65,12 +70,17 @@ public class LessonService {
 		return imageAllResult;
 	}
 	
+	
+	
 	/**
-	 * 레슨 이미지 전체 조회 service
+	 * 레슨 필터 리스트 조회 service
+	 * @author lee
+	 * @param lessonText
+	 * @param locText
 	 * @return
 	 */
-	public List<LessonImage> selectLessonImgList() {
-		return dao.selectLessonImgList();
+	public List<Lesson> lessonFilter(String lessonText, String locText) {
+		return dao.lessonFilter(lessonText,locText);
 	}
 	
 	
@@ -105,6 +115,8 @@ public class LessonService {
 		
 		return dao.deleteLesson(lessonNo);
 	}
+
+	
 
 	
 }

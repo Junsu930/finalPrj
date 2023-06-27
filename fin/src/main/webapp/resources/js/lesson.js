@@ -122,33 +122,370 @@ window.addEventListener('click', function(e){
 }); // window.click 끝 
 
 
-// filter 온클릭 이벤트
 
 
 
-// let liLesson = $('#lessonId > li');
-// let liloc = $('#locId > li ');
+// 노 필터 무한스크롤
+$(document).ready(() =>{
+    console.log("ready");
+    $.ajax({
+        url: "lessonScroll",
+        type: "GET",
+        dataType: "JSON",
+        success: function(data){
 
-// for(let lessonEach of liLesson){
-//     $(lessonEach).click( () => {
-//         $('#lessonBtnTitle').html($(lessonEach).html());
-//         $('#lessonId').addClass("displayNoneList");
-//     })
-// }
+            console.log(data);
+            
+            lessonList = data;
 
-// for(let locEach of liloc){
-//     $(locEach).click( () => {
-//         $('#locBtnTitle').html($(locEach).html());
-//         $('#locId').addClass("displayNoneList");
-//     })
-// }
+            console.log(lessonList.length);
 
-// $('$lessonBtn').click ( () =>{
-//     if($('#lessonId').hasClass("displayNoneList")){
-//         $('#lessonId').removeClass("displayNoneList");
-//     }
-// });
+            lessonListLength = lessonList.length;
+            let countNum = lessonListLength < 4 ? lessonListLength: 4; // 조건식 ? 참 : 거짓;
 
+            if(lessonListLength == 0){
+                console.log("if문");
+
+                let emptyDiv = document.createElement("div");
+                secondSec.append(emptyDiv);
+                emptyDiv.className= "emptyDiv";
+                emptyDiv.innerHTML = "<h1>NO DATA!</h1>";
+               
+            }else{
+
+                console.log("else문");
+                for(let i = 0; i < countNum; i++){
+
+                    console.log("for문 " + i);
+
+                    const input = document.createElement("input");
+                    secondSec.append(input);
+
+                    input.type = "hidden";
+                    input.value = lessonList[i].lessonNo;
+                    
+                    const imgWrap = document.createElement("div");
+                    imgWrap.className ="imgCotentWrap";
+                    imgWrap.onclick = function(){location.href='/fin/lessonDetail?lessonNo=' + lessonList[i].lessonNo}
+                    
+                    //imgWrap에 들어갈 div 만들기
+                    let div1 = document.createElement("div");
+                    let div2 = document.createElement("div");
+                    
+                    imgWrap.append(div1);
+                    imgWrap.append(div2);
+                    secondSec.append(imgWrap);
+                    div1.className = "imgBox";
+                    let lessonImg = document.createElement('img');
+                    lessonImg.src = '/fin' + lessonList[i].imgSrc;
+                    div1.append(lessonImg);
+                    // div1.innerHTML = '<img src="" alt="">';
+
+                    // let imgBoxImg = document.querySelector('.imgBox > img');
+                    // imgBoxImg[i].src = 
+
+                    div2.className = "contentBox";
+                    div2.innerHTML 
+                    = "<p id='scrollOver'>"
+                    + lessonList[i].motto 
+                    +" </p> <span>" 
+                    + lessonList[i].writingDate 
+                    + "</span><p>" 
+                    + lessonList[i].region 
+                    + "</p><p>by.&nbsp" 
+                    + lessonList[i].userNick 
+                    + "</p>";
+
+                    secondSec.appendChild(imgWrap);
+                }
+                observerBox = document.querySelector('.imgCotentWrap:last-child');
+
+                let count = 4;
+
+                const observer = new IntersectionObserver(
+                    (entries) =>{
+                        entries.forEach((entry) =>{
+                            if(entry.isIntersecting && count < lessonListLength){
+                                let toCount;
+
+                                if(count + 4 <= lessonListLength){
+                                    toCount = count + 4;
+                                }else{
+                                    toCount = lessonListLength;
+                                }
+                                for (let i = count; i < toCount; i++){
+
+                                    console.log("observer for문 " + i);
+
+                                    const input = document.createElement("input");
+                                    secondSec.append(input);
+
+                                    input.type = "hidden";
+                                    input.value = lessonList[i].lessonNo;
+                                    
+                                    const imgWrap = document.createElement("div");
+                                    imgWrap.className ="imgCotentWrap";
+                                    imgWrap.onclick = function(){location.href='/fin/lessonDetail?lessonNo=' + lessonList[i].lessonNo}
+                                    
+                                    //imgWrap에 들어갈 div 만들기
+                                    let div1 = document.createElement("div");
+                                    let div2 = document.createElement("div");
+                                    
+                                    imgWrap.append(div1);
+                                    imgWrap.append(div2);
+                                    secondSec.append(imgWrap);
+                                    div1.className = "imgBox";
+                                    let lessonImg = document.createElement('img');
+                                    lessonImg.src = '/fin' + lessonList[i].imgSrc;
+                                    div1.append(lessonImg);
+
+                                    // div1.innerHTML = '<img src="" alt="">';
+
+                                    // let imgBoxImg = document.querySelector('.imgBox > img');
+                                    // imgBoxImg[i].src = '/fin' + lessonList[i].imgSrc;
+
+                                    div2.className = "contentBox";
+                                    div2.innerHTML 
+                                    = "<p id='scrollOver'>"
+                                    + lessonList[i].motto 
+                                    +" </p> <span>" 
+                                    + lessonList[i].writingDate 
+                                    + "</span><p>" 
+                                    + lessonList[i].region 
+                                    + "</p><p>by.&nbsp" 
+                                    + lessonList[i].userNick 
+                                    + "</p>";
+                                    
+                                    count ++;
+                                }
+                                let observerBox = document.querySelector('.imgCotentWrap:last-child');
+
+                                observer.unobserve(observerBox);
+                                observerBox = document.querySelector('.imgCotentWrap:last-child');
+                                observer.observe(observerBox);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.5,
+                    }
+                    
+                );
+                if(observerBox!=null){
+                    observer.observe(observerBox);
+                  }
+            } // else 끝
+        },
+        error: function(request, status, error){
+            console.log("lessonScroll AJAX 에러 발생");
+            console.log("상태코드 : " + request.status); // 404, 500
+        }
+    });
+});
+
+
+
+// 필터 함수
+function filterFunc(){
+
+    let lessonBtnTitleText = document.getElementById('lessonBtnTitle').innerText // 레슨 필터 innerText
+    let locBtnTitleText = document.getElementById('locBtnTitle').innerText
+    console.log(lessonBtnTitleText);
+    console.log(locBtnTitleText);
+
+    $.ajax({
+        url : "filterLesson",
+        type: "GET",
+        data: {"lessonBtnTitleText":lessonBtnTitleText, "locBtnTitleText": locBtnTitleText},
+        dataType: "JSON",
+        success: function(data){
+            
+            secondSec.innerHTML = '';
+
+            console.log("filter함수!");
+            
+            lessonList = data;
+    
+            console.log(lessonList.length);
+    
+            lessonListLength = lessonList.length;
+            let countNum = lessonListLength < 4 ? lessonListLength: 4; // 조건식 ? 참 : 거짓;
+    
+            if(lessonListLength == 0){
+                console.log("filter함수 if문!");
+    
+                let emptyDiv = document.createElement("div");
+                secondSec.append(emptyDiv);
+                emptyDiv.className= "emptyDiv";
+                emptyDiv.innerHTML = "<h1>NO DATA!</h1>";
+               
+            }else{
+    
+                console.log("filter함수 else문!");
+                for(let i = 0; i < countNum; i++){
+    
+                    console.log(" filter for문 " + i);
+    
+                    const input = document.createElement("input");
+                    secondSec.append(input);
+    
+                    input.type = "hidden";
+                    input.value = lessonList[i].lessonNo;
+                    
+                    const imgWrap = document.createElement("div");
+                    imgWrap.className ="imgCotentWrap";
+                    imgWrap.onclick = function(){location.href='/fin/lessonDetail?lessonNo=' + lessonList[i].lessonNo}
+                    
+                    //imgWrap에 들어갈 div 만들기
+                    let div1 = document.createElement("div");
+                    let div2 = document.createElement("div");
+                    
+                    imgWrap.append(div1);
+                    imgWrap.append(div2);
+                    secondSec.append(imgWrap);
+                    div1.className = "imgBox";
+
+                    let lessonImg = document.createElement('img');
+                    lessonImg.src = '/fin' + lessonList[i].imgSrc;
+                    div1.append(lessonImg);
+
+                    // div1.innerHTML = '<img src="" alt="">';
+
+                    // let imgBoxImg = document.querySelector('.imgBox > img');
+                    // imgBoxImg[i].src = '/fin' + lessonList[i].imgSrc;
+    
+                    div2.className = "contentBox";
+                    div2.innerHTML 
+                    = "<p id='scrollOver'>"
+                    + lessonList[i].motto 
+                    +" </p> <span>" 
+                    + lessonList[i].writingDate 
+                    + "</span><p>" 
+                    + lessonList[i].region 
+                    + "</p><p>by.&nbsp" 
+                    + lessonList[i].userNick 
+                    + "</p>";
+    
+                    secondSec.appendChild(imgWrap);
+                }
+                observerBox = document.querySelector('.imgCotentWrap:last-child');
+    
+                let count = 4;
+    
+                const observer = new IntersectionObserver(
+                    (entries) =>{
+                        entries.forEach((entry) =>{
+                            if(entry.isIntersecting && count < lessonListLength){
+                                let toCount;
+    
+                                if(count + 4 <= lessonListLength){
+                                    toCount = count + 4;
+                                }else{
+                                    toCount = lessonListLength;
+                                }
+                                for (let i = count; i < toCount; i++){
+    
+                                    
+                                    
+                                    console.log(" filter observer for문 " + i);
+    
+                                    const input = document.createElement("input");
+                                    secondSec.append(input);
+    
+                                    input.type = "hidden";
+                                    input.value = lessonList[i].lessonNo;
+                                    
+                                    const imgWrap = document.createElement("div");
+                                    imgWrap.className ="imgCotentWrap";
+                                    imgWrap.onclick = function(){location.href='/fin/lessonDetail?lessonNo=' + lessonList[i].lessonNo}
+                                    
+                                    //imgWrap에 들어갈 div 만들기
+                                    let div1 = document.createElement("div");
+                                    let div2 = document.createElement("div");
+                                    
+                                    imgWrap.append(div1);
+                                    imgWrap.append(div2);
+                                    secondSec.append(imgWrap);
+                                    div1.className = "imgBox";
+                                    let lessonImg = document.createElement('img');
+                                    lessonImg.src = '/fin' + lessonList[i].imgSrc;
+                                    div1.append(lessonImg);
+
+
+                                    // div1.innerHTML = '<img src="" alt="">';
+
+                                    // let imgBoxImg = document.querySelector('.imgBox > img');
+                                    // imgBoxImg[i].src = '/fin' + lessonList[i].imgSrc;
+    
+                                    div2.className = "contentBox";
+                                    div2.innerHTML 
+                                    = "<p id='scrollOver'>"
+                                    + lessonList[i].motto 
+                                    +" </p> <span>" 
+                                    + lessonList[i].writingDate 
+                                    + "</span><p>" 
+                                    + lessonList[i].region 
+                                    + "</p><p>by.&nbsp" 
+                                    + lessonList[i].userNick 
+                                    + "</p>";
+                                    
+                                    count ++;
+                                }
+                                let observerBox = document.querySelector('.imgCotentWrap:last-child');
+    
+                                observer.unobserve(observerBox);
+                                observerBox = document.querySelector('.imgCotentWrap:last-child');
+                                observer.observe(observerBox);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.5,
+                    }
+                    
+                );
+                if(observerBox!=null){
+                    observer.observe(observerBox);
+                  }
+            } // else 끝
+        },
+        error: function(request, status, error){
+            console.log("filterLesson AJAX 에러 발생");
+            console.log("상태코드 : " + request.status); // 404, 500
+        }
+    
+    });
+}
+
+
+
+
+// 대상 span 요소를 가져오기
+let targetSpan = document.getElementById("lessonBtnTitle");
+let targetSpan2 = document.getElementById('locBtnTitle');
+// MutationObserver 생성자를 사용하여 새로운 변화를 감지
+let spanObserver = new MutationObserver(function(mutations) {
+  // 변화가 감지되면 실행되는 콜백 함수
+  mutations.forEach(function(mutation) {
+    // span 요소의 innerText가 변경
+    console.log("새로운 값:", mutation.target.innerText);
+    // span이 변경됐으니, 해당 함수 실행
+    filterFunc();
+  });
+});
+
+let spanObserver2 = new MutationObserver(function(mutations) {
+   
+    mutations.forEach(function(mutation) {
+      
+      console.log("새로운 값:", mutation.target.innerText);
+      filterFunc();
+    });
+});
+
+// MutationObserver를 설정하여 span 요소의 텍스트 변경을 감지합니다.
+spanObserver.observe(targetSpan, { subtree: true, characterData: true, childList: true });
+spanObserver2.observe(targetSpan2, { subtree: true, characterData: true, childList: true });
 
 
 

@@ -39,7 +39,7 @@
                     <span class="icon">
                         <ion-icon name="Name"></ion-icon>
                     </span>
-                    <input id="lessonNamePlace" name="userNick" type="text" maxlength="5" required>
+                    <input id="lessonNamePlace" name="userNick" type="text" required>
                     <label>NAME</label>
                 </div>
 
@@ -47,7 +47,7 @@
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input id="lessonLocationPlace" name="userRegion" type="text" maxlength="5" required>
+                    <input id="lessonLocationPlace" name="userRegion" type="text" required>
                     <label>LOCATION</label>
                 </div>
 
@@ -55,7 +55,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                   <input id="lessonSocialPlace" name="userSocial" type="text" maxlength="10" required>
+                   <input id="lessonSocialPlace" name="userSocial" type="text" required>
                     <label>SOCIAL MEDIA</label>
                 </div>
 
@@ -63,7 +63,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input id="lessonMottoPlace" name="userMotto" type="text" maxlength="10" required>
+                    <input id="lessonMottoPlace" name="userMotto" type="text" required>
                     <label>MOTTO</label>
                 </div>
 

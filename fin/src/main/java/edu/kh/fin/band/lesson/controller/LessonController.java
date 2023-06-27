@@ -36,18 +36,48 @@ public class LessonController {
 	@GetMapping("/lesson")
 	public String lessonController(Model model) {
 		
+		return "lesson/lessonMain";
+	}
+	
+	
+	/**
+	 * 레슨 무한 스크롤 컨트롤러
+	 * @author lee
+	 * @return lessonList
+	 */
+	@GetMapping("/lessonScroll")
+	@ResponseBody
+	public String lessonScrollController() {
+		
 		List<Lesson> lessonList = new ArrayList<>();
 		
 		lessonList = service.lessonList();
 		
-		List<LessonImage> imgList = service.selectLessonImgList();
+		return new Gson().toJson(lessonList);
+	}
+	
+	
+	/**
+	 * 레슨 필터 리스트 조회 컨트롤러
+	 * @author lee
+	 * @param lessonText
+	 * @param locText
+	 * @return filterList
+	 */ 
+	@GetMapping("/filterLesson")
+	@ResponseBody
+	public String lessonFilterController(
+			@RequestParam("lessonBtnTitleText") String lessonText,
+			@RequestParam("locBtnTitleText") String locText) {
 		
-		model.addAttribute("lessonList", lessonList);
-		model.addAttribute("imgList", imgList);
+		List<Lesson> filterList = new ArrayList<>();
+		
+		filterList = service.lessonFilter(lessonText,locText);
 		
 		
-		return "lesson/lessonMain";
-	}	
+		return new Gson().toJson(filterList);
+		
+	}
 	
 	/**
 	 * 레슨 디테일, 이미지 가져오기 컨트롤러
