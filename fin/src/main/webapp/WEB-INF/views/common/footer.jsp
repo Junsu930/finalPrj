@@ -84,45 +84,45 @@
 		          <div class="terms__check__all">
 		            <label for="checkAll">BandArchive 이용약관, 매치정보</label>
 		          </div>
-		          <ul class="terms__list">
-		            <li class="terms__box">
-		              <div class="input__check">
-		                <label for="termsOfService" class="required">이용약관 및 서비스 </label>
-		              </div>
-		              <div class="terms__content">
-		                BandArchive 여러분을 환영합니다.  서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 JUN
-		                서비스의 이용과 관련하여 서비스를 제공하는  주식회사(이하 ‘서비스’)와 이를 이용하는  서비스
-		                회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의  서비스 이용에 도움이 될 수 있는
-		                유익한 정보를 포함하고 있습니다. 서비스를 이용하시거나 서비스 회원으로 가입하실 경우 여러분은 본
-		                약관 및 관련 운영 정책을 확인하거나 동의하게 되므로, 잠시 시간을 내시어 주의 깊게 살펴봐 주시기
-		                바랍니다.
-		              </div>
-		            </li>
-		            <li class="terms__box">
-		              <div class="input__check">
-		                 <label for="privacyPolicy" class="required">개인정보 수집 및 이용 </label>
-		              </div>
-		              <div class="terms__content">
-		                개인정보보호법에 따라 BandArchive에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및
-		                이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니
-		                자세히 읽은 후 동의하여 주시기 바랍니다.1. 수집하는 개인정보 이용자는 회원가입을 하지 않아도 정보 검색,
-		                뉴스 보기 등 대부분의 네이버 서비스를 회원과 동일하게 이용할 수 있습니다. 이용자가 메일, 캘린더, 카페,
-		                블로그 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우, 네이버는 서비스 이용을
-		                위해 필요한 최소한의 개인정보를 수집합니다.
-		              </div>
-		            </li>
-		            <li class="terms__box">
-		              <div class="input__check">
-		                <label for="allowPromotions"  class="required">매치 정보</label>
-		              </div>
-		              <div class="terms__content">
-		                BandArchive에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(BandArchive앱 알림 또는 문자), 이메일로 받아보실 수
-		                있습니다. 일부 서비스(별도 회원 체계로 운영하거나 BandArchive 가입 이후 추가 가입하여 이용하는 서비스 등)의
-		                경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고
-		                동의를 받습니다.
-		              </div>
-		            </li>
-		          </ul>
+			          <ul class="terms__list">
+			            <li class="terms__box">
+			              <div class="input__check">
+			                <label for="termsOfService" class="required">이용약관 및 서비스 </label>
+			              </div>
+			              <div class="terms__content">
+			                BandArchive 여러분을 환영합니다.  서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 JUN
+			                서비스의 이용과 관련하여 서비스를 제공하는  주식회사(이하 ‘서비스’)와 이를 이용하는  서비스
+			                회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의  서비스 이용에 도움이 될 수 있는
+			                유익한 정보를 포함하고 있습니다. 서비스를 이용하시거나 서비스 회원으로 가입하실 경우 여러분은 본
+			                약관 및 관련 운영 정책을 확인하거나 동의하게 되므로, 잠시 시간을 내시어 주의 깊게 살펴봐 주시기
+			                바랍니다.
+			              </div>
+			            </li>
+			            <li class="terms__box">
+			              <div class="input__check">
+			                 <label for="privacyPolicy" class="required">개인정보 수집 및 이용 </label>
+			              </div>
+			              <div class="terms__content">
+			                개인정보보호법에 따라 BandArchive에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및
+			                이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니
+			                자세히 읽은 후 동의하여 주시기 바랍니다.1. 수집하는 개인정보 이용자는 회원가입을 하지 않아도 정보 검색,
+			                뉴스 보기 등 대부분의 네이버 서비스를 회원과 동일하게 이용할 수 있습니다. 이용자가 메일, 캘린더, 카페,
+			                블로그 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우, 네이버는 서비스 이용을
+			                위해 필요한 최소한의 개인정보를 수집합니다.
+			              </div>
+			            </li>
+			            <li class="terms__box">
+			              <div class="input__check">
+			                <label for="allowPromotions"  class="required">매치 정보</label>
+			              </div>
+			              <div class="terms__content">
+			                BandArchive에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(BandArchive앱 알림 또는 문자), 이메일로 받아보실 수
+			                있습니다. 일부 서비스(별도 회원 체계로 운영하거나 BandArchive 가입 이후 추가 가입하여 이용하는 서비스 등)의
+			                경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고
+			                동의를 받습니다.
+			              </div>
+			            </li>
+			          </ul>
 			         <div class="modal-footer">
 			           <button type="button" class="btn btn-primary" data-dismiss="modal" id="agreebtn">Check</button>
 			         </div>
@@ -148,42 +148,42 @@
 		          <div class="terms__check__all">
 		            <label for="checkAll">BandArchive 개인정보지침</label>
 		          </div>
-		          <ul class="terms__list">
-		            <li class="terms__box">
-		              <div class="input__check">
-		                <label for="termsOfService" class="required">홈페이지 회원 가입 및 관리 </label>
-		              </div>
-		              <div class="terms__content">
-		                회원 가입의사 확인 회원제 서비스 제공에 따른 본인 식별. 인증, 회원자격 유지 관리, 제한적 본인 확인제 시행에 
-		                따른 본인확인, 서비스 부정이용방지, 만 14세 미만 아동의 개인정보처리시 법정대리인의 동의여부 확인, 각종 고지,통지 고충
-		                처리등을 목적으로 개인정보를 처리합니다.
-		              </div>
-		            </li>
-		            <li class="terms__box">
-		              <div class="input__check">
-		                 <label for="privacyPolicy" class="required">개인정보 수집 및 이용 </label>
-		              </div>
-		              <div class="terms__content">
-		                개인정보보호법에 따라 BandArchive에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및
-		                이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니
-		                자세히 읽은 후 동의하여 주시기 바랍니다.1. 수집하는 개인정보 이용자는 회원가입을 하지 않아도 정보 검색,
-		                뉴스 보기 등 대부분의 네이버 서비스를 회원과 동일하게 이용할 수 있습니다. 이용자가 메일, 캘린더, 카페,
-		                블로그 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우, 네이버는 서비스 이용을
-		                위해 필요한 최소한의 개인정보를 수집합니다.
-		              </div>
-		            </li>
-		            <li class="terms__box">
-		              <div class="input__check">
-		                <label for="allowPromotions"  class="required">개인정보의 처리 및 보유기간</label>
-		              </div>
-		              <div class="terms__content">
-		                1. 회사는 법령에 따른 개인정보 보유, 이용기간 또는 정보주체로부터 개인정보를 수집시에 동의받은 개인정보 보유 이용기간 내에서
-		                개인정보를 처리 보유합니다.
-		                2. 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.
-		                3. 재화 또는 서비스 제공하는데 민원인의 신원 확인, 사실조사를 위한 연락 통지, 처리결과를 통보 등의 목적으로 개인정보를 처리합니다.
-		              </div>
-		            </li>
-		          </ul>
+			          <ul class="terms__list">
+			            <li class="terms__box">
+			              <div class="input__check">
+			                <label for="termsOfService" class="required">홈페이지 회원 가입 및 관리 </label>
+			              </div>
+			              <div class="terms__content">
+			                회원 가입의사 확인 회원제 서비스 제공에 따른 본인 식별. 인증, 회원자격 유지 관리, 제한적 본인 확인제 시행에 
+			                따른 본인확인, 서비스 부정이용방지, 만 14세 미만 아동의 개인정보처리시 법정대리인의 동의여부 확인, 각종 고지,통지 고충
+			                처리등을 목적으로 개인정보를 처리합니다.
+			              </div>
+			            </li>
+			            <li class="terms__box">
+			              <div class="input__check">
+			                 <label for="privacyPolicy" class="required">개인정보 수집 및 이용 </label>
+			              </div>
+			              <div class="terms__content">
+			                개인정보보호법에 따라 BandArchive에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및
+			                이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니
+			                자세히 읽은 후 동의하여 주시기 바랍니다.1. 수집하는 개인정보 이용자는 회원가입을 하지 않아도 정보 검색,
+			                뉴스 보기 등 대부분의 네이버 서비스를 회원과 동일하게 이용할 수 있습니다. 이용자가 메일, 캘린더, 카페,
+			                블로그 등과 같이 개인화 혹은 회원제 서비스를 이용하기 위해 회원가입을 할 경우, 네이버는 서비스 이용을
+			                위해 필요한 최소한의 개인정보를 수집합니다.
+			              </div>
+			            </li>
+			            <li class="terms__box">
+			              <div class="input__check">
+			                <label for="allowPromotions"  class="required">개인정보의 처리 및 보유기간</label>
+			              </div>
+			              <div class="terms__content">
+			                1. 회사는 법령에 따른 개인정보 보유, 이용기간 또는 정보주체로부터 개인정보를 수집시에 동의받은 개인정보 보유 이용기간 내에서
+			                개인정보를 처리 보유합니다.
+			                2. 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.
+			                3. 재화 또는 서비스 제공하는데 민원인의 신원 확인, 사실조사를 위한 연락 통지, 처리결과를 통보 등의 목적으로 개인정보를 처리합니다.
+			              </div>
+			            </li>
+			          </ul>
 			         <div class="modal-footer">
 			           <button type="button" class="btn btn-primary" data-dismiss="modal" id="agreebtn">Check</button>
 			         </div>
