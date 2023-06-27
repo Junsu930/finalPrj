@@ -160,4 +160,8 @@ label.required::after {
     background-color: gray;
     border-radius: 70px;
 }
+
+p{
+	margin-bottom: 0;
+}
   

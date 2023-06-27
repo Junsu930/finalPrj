@@ -1,7 +1,6 @@
 
 .messageWrapper{
     position: relative;
-    /* transform-style: preserve-3d; */
     perspective: 500px;
     display: flex;
     justify-content: center;
@@ -9,7 +8,6 @@
     flex-direction: column;
     margin: 13em 0;
     gap: 3em;
-    /* grid-area: 0; */
     transition: 0.5s;
 }
 
@@ -27,7 +25,6 @@
     border-radius: 6px;
     box-shadow: 7px -4px 15px 0px rgba(0,0,0,0.25);
     transition: 0.5s;
-    /* transition-delay: calc(var(--i) * 0.05s); */
 }
 
 
@@ -37,30 +34,12 @@ body.darkmode .messageWrapper li{
     border: 1px solid var(--border-color);
 }
 
-/* .messageWrapper li:nth-of-type(2){
-    transform:translateZ(-75px) translateY(20px);
-    opacity: .6;
-}
 
-.messageWrapper li:nth-of-type(3){
-    transform:translateZ(75px) translateY(-30px);
-    background-color: #eee;
-}
-
-.messageWrapper li:nth-of-type(4){
-    transform:translateZ(150px) translateY(-75px);
-    background-color: #fff;
-} */
 
 .messageWrapper li:hover{
     transform: translateY(-8px);
 }
 
-/* .messageWrapper:hover li{
-    opacity: 1;
-    background-color: #fff;
-    transform: translateZ(0px) translateY(-30px);
-} */
 
 
 
@@ -161,10 +140,12 @@ body.darkmode .messageWrapper li .content p .msgSendBtn
     justify-content: center;
     align-items: center;
     gap: 3em;
+    margin-top: 2em;
 }
 
-.sendMsgModalBox h1{
+.sendMsgModalBox>h1{
     font-weight: 500;
+    padding-left: 0;
 }
 
 body.darkmode .sendMsgModalBox h1{

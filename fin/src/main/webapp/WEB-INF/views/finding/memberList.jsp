@@ -98,7 +98,7 @@
 		<div class="container">
 			<!-- <button class=" js-static-modal-toggle btn btn-primary " type="button">test</button> -->
 			<div id="static-modalBlock" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
-			<div class="modal-dialog">
+			<div class="modal-dialog" id="memberListDialog">
 				<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>

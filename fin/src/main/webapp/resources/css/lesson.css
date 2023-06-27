@@ -164,6 +164,7 @@ body.darkmode .filterSec > div:last-child{
     border-radius: 0.5em;
     position: absolute;
     right: 10%;
+    line-height: 1;
 }
 
 

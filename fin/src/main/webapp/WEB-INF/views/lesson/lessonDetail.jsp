@@ -120,10 +120,10 @@
                         
                         
                         <c:if test="${sessionScope.loginUser.userNo eq lesson.userNo}">
-                          <button id="deleteBtn" type="button" onclick="deleteLesson()">
+                          <button id="deleteBtn" type="button" onclick="deleteLesson(hiddenLessonNo)">
                             <i class="bi bi-trash"></i>
                           </button>
-                          <input type="hidden" value="${lesson.lessonNo}" id="hiddenLessonNo">
+                          <input type="hidden" value="${lesson.lessonNo}" id="hiddenLessonNo" name="hiddenLessonNo">
                           <input type="hidden" value="${lesson.userNo}">
                         </c:if>
 

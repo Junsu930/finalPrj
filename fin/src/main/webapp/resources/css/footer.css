@@ -1,24 +1,3 @@
-/* .custom-shape-divider-bottom-1685198268 {
-    position: absolute;
-    bottom: -7000px;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    transform: rotate(180deg);
-}
-
-.custom-shape-divider-bottom-1685198268 svg {
-    position: relative;
-    display: block;
-    width: calc(134% + 1.3px);
-    height: 255px;
-}
-
-.custom-shape-divider-bottom-1685198268 .shape-fill {
-    fill: transparent;
-    stroke: var(--stroke-color);
-} */
 
 
 .footerSection{
@@ -132,7 +111,9 @@ body.darkmode .footer3-modal-toggle{
 }
 
 
-.firstUl > li , .secondUl > li, .thirdUl > li{
+.firstUl > li ,
+.secondUl > li, 
+.thirdUl > li{
     padding:0.5em;
 }
 

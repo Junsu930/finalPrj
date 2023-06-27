@@ -77,6 +77,7 @@ public class LessonDAO {
 	 * @return
 	 */
 	public int deleteLesson(int lessonNo) {
+		
 		return sqlSession.update("lessonMapper.deleteLesson", lessonNo);
 	}
 

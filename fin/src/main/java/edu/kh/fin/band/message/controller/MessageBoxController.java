@@ -72,7 +72,7 @@ public class MessageBoxController {
 		
 		int msgNo = 0;
 		
-		System.out.println(loginUser.getUserNo());
+		
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
@@ -109,14 +109,14 @@ public class MessageBoxController {
 	@PostMapping("/deleteMsg")
 	public String deleteMsg(@RequestParam("msgNo") int msgNo) {
 		
-		int toTalResult = 0;
+		int totalResult = 0;
 		int dleteAlarmResult = service.deleteAlarm(msgNo); // 쪽지 알람 삭제
 		int result = service.deleteMsg(msgNo); // 쪽지 삭제
 		
 		
-		toTalResult = dleteAlarmResult + result;
+		totalResult = dleteAlarmResult + result;
 		
-		if(toTalResult == 2) {
+		if(totalResult == 2) {
 			  return new Gson().toJson("쪽지 삭제 성공!");
 		  } else {
 			  return new Gson().toJson("쪽지 삭제 실패 ㅠㅠ");

@@ -37,8 +37,16 @@
     animation-name: slideOutUp;
   }
   
-  .modal-dialog{
+  /* .modal-dialog{
+    
+  } */
+
+  #msgBoxDialog{
     max-width: 650px;
+  }
+
+  #msgModalBody{
+    height: 450px;
   }
   
   .infoModal-dialog{
@@ -53,6 +61,10 @@
   
   .btn-default,
   .btn-primary{
+    display: none;
+  }
+
+  #msgModalFooter{
     display: none;
   }
     

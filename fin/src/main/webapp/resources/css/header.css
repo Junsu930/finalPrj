@@ -189,18 +189,7 @@ body.darkmode .navSecondDiv .menu{
     background-color: var(--background-dark-color);
 }
 
-/* .navSecondDiv .menu::before{
-    content: "";
-    border-left: 1px solid black;
-    border-top: 1px solid black;
-    position: absolute;
-    top: -0.5em;
-    right: 2.8em;
-    width: 15px;
-    height: 15px;
-    transform: rotate(45deg);
-    background-color: transparent;
-} */
+
 
 body.darkmode .navSecondDiv .menu::before{
     border-left: 1px solid var(--border-color);
@@ -256,8 +245,8 @@ body.darkmode .navSecondDiv .menu::before{
 }
 
 .light{
-    padding-top: .5em;
-}
+    outline:none
+} 
 /* 로그인 시 프사영역 css */
 
 #logintext{
@@ -274,14 +263,17 @@ body.darkmode .navSecondDiv .menu::before{
 
 .alertBell, .msgBoxOpen{
     position: relative;
-    padding-top: .5em;
+    padding-top: .7em;
+}
+
+#alertBellImg{
+    position: absolute;
+    top: 7px;
+    right: -2px;
 }
 
 
 
-/* .msgBoxOpen{
-    position: relative;
-} */
 
 
 body.darkmode .alertBell > i,
@@ -363,9 +355,6 @@ body.darkmode .msgBoxOpen >i{
 /* 알림창 css */
 
 
-/* .alertViewShow{
-    display: flex !important;
-} */
 
 .wrapperUl{
     position: absolute;
@@ -675,10 +664,11 @@ body.darkmode .wrapperUl::-webkit-scrollbar-thumb {
 #msgAlarmCount{
     display: none;
     position: absolute;
-    top: 12px;
-    left:13px;
-    width: 15px;
-    height: 15px;
+    font-size: 0.7em;
+    top: 11px;
+    left:15px;
+    width: 17px;
+    height: 17px;
     border-radius: 50%;
     background-color: var(--alert-div-color);
     color: var(--text-dark-color);
@@ -687,10 +677,11 @@ body.darkmode .wrapperUl::-webkit-scrollbar-thumb {
 #alarmCount{
     display: none;
     position: absolute;
-    top: 12px;
-    left: 9px;
-    width: 15px;
-    height: 15px;
+    font-size: 0.7em;
+    top: 11px;
+    right: -3.5px;
+    width: 17px;
+    height: 17px;
     border-radius: 50%;
     background-color: var(--alert-div-color);
     color: var(--text-dark-color);

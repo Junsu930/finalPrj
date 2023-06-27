@@ -12,6 +12,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<style>
+	dl, ol, ul {
+	    margin-top: 0;
+	    margin-bottom: 0;
+	    padding-left: 0;
+	}
+	body{
+		line-height: normal;	
+	}
+	button, input, optgroup, select, textarea {
+	    font-family : revert;
+	    font-size: revert;
+	    line-height: inherit;
+	}
+
+    p{
+        margin-bottom: 0;
+    }
+	
+	a:hover {
+    color: revert;
+	}
+</style>
+
 
 
 </head>

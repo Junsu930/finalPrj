@@ -30,9 +30,11 @@
             margin-bottom: 0;
         }
         
-        /* a:hover {
+        
+       /* a:hover {
         color: revert;
-        } */
+        }  */
+        
     </style>
 </head>
 <body>
@@ -63,7 +65,7 @@
                     <a href="${contextPath}/logout" class="loginText navA">Logout</a> -->
 
                     <button type="button" id="alertBell" class="alertBell navA">
-                        <i class="bi bi-bell"></i>
+                        <i class="bi bi-bell" id="alertBellImg"></i>
                         <p id="alarmCount"></p>
                     </button> <!-- 로그인 시 알림 아이콘-->
 
