@@ -23,7 +23,7 @@
 		JOIN "USER" USING(USER_NO) 
 		JOIN BAND b USING(BAND_NO) 
 		WHERE BAND_NO = ${bandNo} 
-		AND BOARD_ST = 'Y' ORDER BY CREATE_DATE DESC) A) 
+		AND BOARD_ST = 'Y' ORDER BY CREATE_DATE ASC) A) 
 		WHERE RN &gt; (#{pageNum}-1) * #{amount} AND RN<![CDATA[<=]]> #{pageNum} * #{amount}
 	</select>
 	
@@ -41,5 +41,18 @@
 	
 	<select id="bandUserFl" parameterType="hashmap" resultType="_int">
 		SELECT COUNT(*) FROM BAND_USER WHERE BAND_NO  = ${bandNo} AND USER_NO = ${userNo} 
+	</select>
+	
+	<insert id="writeBandBoard" parameterType="hashmap">
+		INSERT INTO BAND_BOARD VALUES(BAND_BOARD_SEQ.NEXTVAL, #{title}, #{text}, SYSDATE, 0, 'Y', ${userNo}, 0, 'notag', ${bandNo})
+	</insert>
+	
+	<select id="bandBoardDetail" parameterType="_int" resultMap="bandBoard_rm">
+		SELECT BOARD_NO ,BOARD_TITLE, BOARD_CONTENT , CASE WHEN SYSDATE - CREATE_DATE &lt; 1
+		THEN TO_CHAR(CREATE_DATE, 'HH:MI')
+		ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
+		END CREATE_DATE, READ_COUNT , USER_NICK, BOARD_LIKE ,BOARD_TAG FROM BAND_BOARD bb 
+		JOIN "USER" USING(USER_NO)
+		WHERE BOARD_NO = ${boardNo}
 	</select>
 </mapper>

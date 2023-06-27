@@ -1,18 +1,27 @@
 package edu.kh.fin.band.myBand.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fin.band.common.pagination.CommonCriteria;
 import edu.kh.fin.band.common.pagination.Pagination;
@@ -83,13 +92,41 @@ public class MyBandController {
 	
 	
 	@PostMapping("/bandBoardDetail")
-	public String bandBoardDetail(@RequestParam("boardNo") int boardNo, @RequestParam("bandNo")int bandNo) {
-		return "";
+	public String bandBoardDetail(@RequestParam("thisBoardNo") int boardNo, @RequestParam("thisBandNo")int bandNo, Model model) {
+		
+		MyBand board = service.bandBoardDetail(boardNo);
+
+		model.addAttribute("boardDetail", board);
+		
+		return "myBand/myBandBoardDetail";
 	}
 	
 	@PostMapping("/bandBoardWrite")
-	public String bandBoardWrite() {
+	public String bandBoardWrite(@RequestParam("hiddenBandNoForWrite") int bandNo, Model model) {
+		
+		model.addAttribute("bandNo", bandNo);
+		
 		return "myBand/myBandWrite";
 	}
-
+	
+	@PostMapping("/writeBandBoard")
+	public String writeBandBoard(@RequestParam("titleInputForBandBoard")String title ,@RequestParam("text") String text, @RequestParam("hiddenBandNo") int bandNo, HttpServletRequest req, RedirectAttributes ra) {
+		
+		HttpSession session = req.getSession();
+		
+		int userNo = ((User)session.getAttribute("loginUser")).getUserNo();
+		
+		
+		int result = service.writeBandBoard(title, text, bandNo, userNo);
+		
+		if(result > 0 ) {
+			ra.addAttribute("message", "글이 등록되었습니다.");
+		}else {
+			ra.addAttribute("message", "등록을 실패했습니다.");
+		}
+		
+		return "redirect:./myBandBoard?bandNo=" + bandNo;
+	}
+	
+	
 }

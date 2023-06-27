@@ -15,14 +15,14 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="myBandWritecontainer">
-    <form action="" method="POST">
+    <form action="${contextPath}/writeBandBoard" method="POST">
     	<div class="writeMainP">글쓰기</div>
     	<!-- 제목 기입 영역 -->
     	<div class="titleAreaDivForBandBoard">
     		<div>제목</div>
-    		<input type="text" id="titleInputForBandBoard">
+    		<input type="text" id="titleInputForBandBoard" name="titleInputForBandBoard">
     	</div>
-    
+    	<input type="hidden" value="${bandNo}" name="hiddenBandNo">
       <textarea name="text" id="editor"></textarea>
     <p class="sendBtnForBandBoardP"><button type="submit" id="sendBtnForBandBoard">전송</button></p>
     </form>

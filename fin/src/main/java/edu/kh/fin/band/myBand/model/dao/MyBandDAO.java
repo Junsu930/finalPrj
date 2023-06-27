@@ -43,4 +43,20 @@ public class MyBandDAO {
 		return sqlSession.selectOne("myBandMapper.bandUserFl", bandFlMap);
 	}
 
+	public int writeBandBoard(String title, String text, int bandNo, int userNo) {
+		
+		Map<String, Object>map = new HashMap<String, Object>();
+		
+		map.put("title", title);
+		map.put("text", text);
+		map.put("bandNo", bandNo);
+		map.put("userNo", userNo);
+		
+		return sqlSession.insert("myBandMapper.writeBandBoard", map);
+	}
+
+	public MyBand bandBoardDetail(int boardNo) {
+		return sqlSession.selectOne("myBandMapper.bandBoardDetail",boardNo);
+	}
+
 }
