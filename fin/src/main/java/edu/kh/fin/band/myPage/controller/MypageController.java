@@ -1,5 +1,6 @@
 package edu.kh.fin.band.myPage.controller;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ import com.google.gson.Gson;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.service.MyPageService;
 import edu.kh.fin.band.myPage.model.vo.Ban;
+import edu.kh.fin.band.myPage.model.vo.Band;
 import edu.kh.fin.band.searching.model.vo.Searching;
 
 @Controller
@@ -46,9 +48,13 @@ public class MypageController {
 		
 		List<Ban> banList = service.chBanList(loginUser.getUserNo());
 		
+		List<Band> bandMem = service.bandMem(loginUser.getUserNo());
+		
 		System.out.println("차단리스트"+banList);
+		System.out.println("밴드리스트"+bandMem);
 		
 		model.addAttribute("banList",banList);
+		model.addAttribute("bandMem",bandMem);
 			
 		return "myPage/myPage";
 	}
@@ -180,21 +186,7 @@ public class MypageController {
 		
 	}
 	
-	/*
-	@GetMapping("/banList")
-	@ResponseBody
-	public String getbanList(@ModelAttribute("loginUser") User loginUser, Model model) {
-		
-		List<Ban> banList = service.chBanList(loginUser.getUserNo());
-		
-		System.out.println("차단리스트"+banList);
-		
-		model.addAttribute("banList",banList);
-		
-		return "myPage/myPage";
-	}*/
-	
-	
+
 	@PostMapping("fin/ban")
 	public String ban(@ModelAttribute("loginUser") User loginUser,
 			@RequestParam("bannedUserNo") int bannedUserNo,
@@ -224,6 +216,48 @@ public class MypageController {
 		ra.addFlashAttribute("msg", message);
 		
 		return "redirect:" + path;
+		
+	}
+	
+	@GetMapping("fin/makeBand")
+	public String makeBand(@RequestParam("bandName") String bandName,
+			@RequestParam Map<String, Object> paramMap,
+			@ModelAttribute("loginUser") User loginUser,
+			@RequestParam("ment") String ment,
+			SessionStatus status,
+			HttpServletRequest req,
+			HttpServletResponse resp,
+			RedirectAttributes ra	
+			) {
+		
+		System.out.println(loginUser.getUserNo());
+		
+		paramMap.put("ment", ment);
+		paramMap.put("userNo", loginUser.getUserNo());
+		paramMap.put("userNick", loginUser.getUserNick());
+		paramMap.put("bandName", bandName);
+		
+		
+		int result = service.makeBand(paramMap);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) {
+			
+			message = "생성 완료";
+			path = "/myPage";
+			
+		} else {
+			
+			message = "생성 실패";
+			path = "/myPage";
+		}
+		
+		ra.addFlashAttribute("msg", message);
+		
+		return "redirect:" + path;
+	
 		
 	}
 	

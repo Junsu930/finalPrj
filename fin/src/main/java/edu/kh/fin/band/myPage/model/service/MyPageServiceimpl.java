@@ -14,6 +14,7 @@ import edu.kh.fin.band.common.Util;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.dao.MyPageDAO;
 import edu.kh.fin.band.myPage.model.vo.Ban;
+import edu.kh.fin.band.myPage.model.vo.Band;
 
 @Service
 public class MyPageServiceimpl implements MyPageService{
@@ -147,6 +148,24 @@ public class MyPageServiceimpl implements MyPageService{
 		
 		
 		return dao.updateBan(bannedUserNo);
+	}
+
+	/** 밴드 생성
+	 *
+	 */
+	@Override
+	public int makeBand(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return dao.makeBand(paramMap);
+	}
+
+	/**
+	 * 밴드 멤버 정보 가져오기
+	 */
+	@Override
+	public List<Band> bandMem(int userNo) {
+	
+		return dao.bandMem(userNo);
 	}
 
 }

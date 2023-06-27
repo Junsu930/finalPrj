@@ -80,15 +80,22 @@
                 </div>
 
                 <div class="secondUlBox">
-                    <ul>
-                        <li><i class="fa-solid fa-headphones-simple"></i>러시아워</li>
-                        <li><i class="fa-solid fa-crown"></i>개다리방방</li>
-                        <li><i class="fa-solid fa-user-astronaut"></i>초파초</li>
-                        <li><i class="fa-solid fa-user-astronaut"></i>길에반스</li>
-                        <li><i class="fa-solid fa-user-astronaut"></i>이현경</li>
-                        <li><i class="fa-solid fa-user-astronaut"></i>기타못참</li>
-                        <li><i class="fa-solid fa-user-astronaut"></i>빌스릴</li>
-                    </ul>
+
+                    <c:choose>
+                        <c:when test="${empty bandMem}">
+                            <p>밴드가 없습니다</p>
+                        </c:when>
+                        <c:otherwise>
+                            <ul>
+                                <li><i class="fa-solid fa-headphones-simple"></i></li>
+                                <li><i class="fa-solid fa-crown"></i></li>
+        
+                                <c:forEach var="bandMem" items="${bandMem}">
+                                    <li><i class="fa-solid fa-user-astronaut"></i></li>
+                                </c:forEach>
+                            </ul>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </section>
@@ -781,19 +788,19 @@
               <div class="modal-body">
 
                 <section class="groupSection">
-                   <form action="fin/makeBand" class="groupForm" method="POST">
+                   <form action="fin/makeBand" class="groupForm" method="GET">
                         <div class="groupTitle">
                             <h1>그룹 생성</h1>
                         </div>
 
                         <div class="grouInfoBox">
-                            <input type="text" required id="groupName">
+                            <input type="text" required id="groupName" name="bandName">
                             <label>GROUP NAME</label>
 
-                            <input type="eamil" required id="groupLeaderId">
-                            <label>LEADER ID</label>
+                            <input type="text" required id="groupLeaderId" name="genre">
+                            <label>GENRE</label>
 
-                            <textarea name="" id="groupInfoText"></textarea>
+                            <textarea type="text" id="groupInfoText" name="ment"></textarea>
                             <label>EXPLAIN YOUR GROUP</label>
                         </div>
 

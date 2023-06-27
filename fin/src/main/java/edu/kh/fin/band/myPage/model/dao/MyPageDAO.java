@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.vo.Ban;
+import edu.kh.fin.band.myPage.model.vo.Band;
 
 @Repository
 public class MyPageDAO {
@@ -111,6 +112,26 @@ public class MyPageDAO {
 	public int updateBan(int bannedUserNo) {
 		
 		return sqlSession.update("myPageMapper.updateBan", bannedUserNo );
+	}
+
+	/** 밴드 생성
+	 * @param bandName
+	 * @param userNo
+	 * @param ment
+	 * @return
+	 */
+	public int makeBand(Map<String, Object> paramMap) {
+		
+		return sqlSession.update("myPageMapper.makeBand", paramMap);
+	}
+
+	/**  밴드 멤버 정보 가져오기
+	 * @param userNo
+	 * @return
+	 */
+	public List<Band> bandMem(int userNo) {
+	
+		return sqlSession.selectList("myPageMapper.bandMem", userNo);
 	}
 
 	
