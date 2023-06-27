@@ -36,6 +36,16 @@
 		<result property="bannedUserNo" column="BANNED_USER_NO" />
 		<result property="bannedUserNick" column="BANNED_USER_NICK" />
 	</resultMap>
+	
+	<resultMap type="band" id="band_rm">
+		<id property="bandNo" column="BAND_NO"/>
+		<result property="bandName" column="BAND_NAME" />
+		<result property="ment" column="MENT" />
+		<result property="leaderNo" column="LEADER_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="userNick" column="USER_NICK" />
+		<result property="leaderNick" column="LEADER_NICK" />
+	</resultMap>
 
 	<update id="updateInfo">
 		UPDATE "USER" SET
@@ -96,6 +106,24 @@
 		DELETE FROM BOARD_BANNED
 		WHERE BANNED_USER_NO = ${bannedUserNo}
 	</update>
+	
+	<insert id="makeBand" parameterType="band">
+		INSERT INTO BAND VALUES(
+		MAKEBAND_SEQ.NEXTVAL,
+		#{bandName},
+		NULL,
+		#{ment},
+		${userNo},
+		${userNick}
+	)
+	</insert>
+	
+	<select id="bandMem" resultMap="band_rm">
+		SELECT BAND_NO , BAND_NAME , LEADER_NO , USER_NO , USER_NICK , LEADER_NICK
+		FROM BAND_USER INNER JOIN BAND USING(BAND_NO)
+		JOIN  "USER" USING(USER_NO)
+		WHERE LEADER_NO = ${userNo} OR USER_NO = ${userNo}
+	</select>
 	
 
 

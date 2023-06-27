@@ -6,6 +6,7 @@ import java.util.Map;
 
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.vo.Ban;
+import edu.kh.fin.band.myPage.model.vo.Band;
 
 public interface MyPageService {
 
@@ -65,5 +66,19 @@ public interface MyPageService {
 	 * @return
 	 */
 	int updateBan(int bannedUserNo);
+
+	/** 밴드 생성
+	 * @param bandName
+	 * @param userNo
+	 * @param ment
+	 * @return
+	 */
+	int makeBand(Map<String, Object> paramMap);
+
+	/** 밴드 멤버 정보 가져오기
+	 * @param userNo
+	 * @return
+	 */
+	List<Band> bandMem(int userNo);
 
 }
