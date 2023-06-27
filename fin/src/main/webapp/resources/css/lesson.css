@@ -244,6 +244,14 @@ body.darkmode .filterSec > div:last-child{
     margin-bottom: 10em;
 }
 
+.secondSec h1{
+    padding-left: 0;
+}
+
+.emptyDiv{
+    margin-top: 10em;
+}
+
 .imgCotentWrap{
     display: flex;
     flex-direction: column;
@@ -271,7 +279,14 @@ body.darkmode .imgCotentWrap{
 
 .imgBox{
     width: 100%;
+    height: 200px;
+    overflow:hidden;
+}
+
+.imgBox > img{
+    width: 100%;
     height: 100%;
+    border-radius: 5px 5px 0 0;
 }
 
 .contentBox{
@@ -301,6 +316,9 @@ body.darkmode .imgCotentWrap{
     .imgCotentWrap{
         width: 450px;
         height: 450px;
+    }
+    .imgBox{
+        height: 300px;
     }
 
     .filterSec > div:last-child{

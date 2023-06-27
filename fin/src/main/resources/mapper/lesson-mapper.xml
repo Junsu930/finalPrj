@@ -14,6 +14,7 @@
 		<result property="genre" column="GENRE" />
 		<result property="ints" column="INTS" />
 		<result property="writingDate" 	column="WRITING_DATE"/>
+		<result property="imgSrc" 	column="IMG_RENAME"/>
   </resultMap>
   
   
@@ -29,15 +30,29 @@
 
 	<select id="lessonList" resultMap="lesson_rm">
 	SELECT 
-	u.USER_NICK, li.MOTTO, li.REGION, TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"')AS WRITING_DATE, LESSON_NO
+	u.USER_NICK, li.MOTTO, li.REGION, TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"')AS WRITING_DATE, li.LESSON_NO, IMG_RENAME
 	FROM LESSON_INFO li
 	JOIN "USER" u USING(USER_NO)
-	WHERE LESSON_FL = 'N'
+	LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO = li.LESSON_NO 
+	WHERE LESSON_FL = 'N' AND IMG_LEVEL = 0
+	ORDER BY LESSON_NO DESC
 	</select>
 	
-	<select id="lessonImageList" resultMap="lesson_img_rm">
-		SELECT * FROM LESSON_IMG
+	<select id="lessonFilter" parameterType="map" resultMap="lesson_rm">
+		SELECT 
+		li.LESSON_NO, 
+		u.USER_NICK,
+		li.MOTTO, 
+		li.REGION, 
+		TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"')AS WRITING_DATE,
+		IMG_RENAME
+		FROM LESSON_INFO li
+		JOIN "USER" u USING(USER_NO)
+		LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO  = li.LESSON_NO
+		WHERE REGION LIKE #{locText} OR INST LIKE #{lessonText}
 	</select>
+	
+	
 	
 	<insert id="writeLessonForm" parameterType="map" useGeneratedKeys="true">
 	
@@ -50,8 +65,8 @@
 	</insert>
 	
 	<insert id="insertImageFile" parameterType="lessonImg">
-		INSERT INTO LESSON_IMG (IMG_NO, IMG_RENAME, IMG_ORIGINAL, LESSON_NO, IMG_LEVEL)
-		VALUES(LESSON_IMG_SEQ.NEXTVAL, #{imageRename}, #{imageOriginal}, ${lessonNo}, ${imageLevel})
+		INSERT INTO LESSON_IMG (IMG_NO, IMG_RENAME, IMG_ORIGINAL, LESSON_NO, IMG_LEVEL, IMG_FL)
+		VALUES(LESSON_IMG_SEQ.NEXTVAL, #{imageRename}, #{imageOriginal}, ${lessonNo}, ${imageLevel}, DEFAULT)
 	</insert>
 	
 	
@@ -64,7 +79,7 @@
 	<select id="selectLessonImg" parameterType="_int" resultMap="lesson_img_rm">
 		SELECT *
 		FROM LESSON_IMG
-		WHERE LESSON_NO = ${lessonNo}
+		WHERE LESSON_NO = ${lessonNo} AND IMG_FL ='N'
 	</select>
 	
 	
@@ -72,6 +87,9 @@
 		UPDATE LESSON_INFO SET LESSON_FL = 'Y' WHERE LESSON_NO = ${lessonNo}
 	</update>
 	
+	<update id="deleteLessonImg" parameterType="_int">
+		UPDATE LESSON_IMG SET IMG_FL = 'Y' WHERE LESSON_NO = ${lessonNo}
+	</update>
 	
 	
 	

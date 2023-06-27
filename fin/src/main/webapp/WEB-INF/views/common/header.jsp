@@ -45,9 +45,9 @@
           </div>
           <ul class="navUl">
               <li><a href="${contextPath}/board" class="navA">Board</a></li>
-              <li><a href="${contextPath}/room" class="navA">Reservations</a></li>
+              <li><a href="${contextPath}/room" class="navA">Reservation</a></li>
               <li><a href="${contextPath}/used" class="navA">Used</a></li>
-              <li><a href="${contextPath}/lesson" class="navA">Lessons</a></li>
+              <li><a href="${contextPath}/lesson" class="navA">Lesson</a></li>
               <li><a href="${contextPath}/findingMember" class="navA">Searching</a></li>
 
           </ul>

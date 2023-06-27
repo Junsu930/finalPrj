@@ -53,7 +53,6 @@
 	</section>
 	
 	<section class="filterSec">
-	
 		<a href="lessonWriting" class="lessonA"><i class="bi bi-pencil-square"></i></a>
 	    <div>
 	        <button class="labelLesson lessonList" onclick="selctLesson()" id="lessonBtn"><span id="lessonBtnTitle">LESSON</span><i class="bi bi-caret-down" id="bi"></i></button>
@@ -64,8 +63,8 @@
 	            <li class="list">VOCAL</li>
 	            <li class="list">DRUM</li>
 	            <li class="list">HORN</li>
-	            <li class="list">작곡/편곡</li>
-	            <li class="list">음향/미디어</li>
+	            <li class="list">COMPOSITION</li>
+	            <li class="list">SOUND</li>
 	        </ul>
 	    </div>
 	
@@ -98,8 +97,7 @@
 	
 	
 	<section class="secondSec">
-
-	    <c:choose>
+	    <!-- <c:choose>
 			<c:when test="${!empty lessonList}">
 				<c:forEach items="${lessonList}" var="lesson">
 					
@@ -123,10 +121,7 @@
 					<h1>NO DATA!</h1>
 				</div>
 			</c:otherwise>
-		</c:choose>
-	
-	   
-	    
+		</c:choose> -->
 	</section>
 
     

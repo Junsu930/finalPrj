@@ -329,7 +329,7 @@ function getUserNicksFromRoom(loginUserNo){ // 예약 신청알람 함수
       let stringMsg1 = "님께서 회원님의 "
       let stringMsg2 = "을 예약 신청했습니다!"
       if(getUsers === "none"){
-        $('.wrapperUl').append('<li class="wrapperLi"><a href="#" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 예약신청이 없거나, 읽었을 때, 코드 수행
+        $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 예약신청이 없거나, 읽었을 때, 코드 수행
       }else{
         for(let i = 0; i < getUsers.length; i++){
           $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${getUsers[i].alarmMon}<br><span>${getUsers[i].alarmDay}</span></h3></div>
