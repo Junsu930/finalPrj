@@ -185,7 +185,7 @@
 
 
  
-  <button class="js-static-modal-toggle btn btn-primary" type="button" id="blockModal">신고하기</button>
+  <button class="js-static-modal-toggle btn-primary" type="button" id="blockModal">신고하기</button>
   <div id="static-modal" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
     <div class="modal-dialog">
       <div class="modal-content">
