@@ -10,32 +10,25 @@ const likeUnlikeFunc = () => {
         heart.classList.add('like');
     }
 }
-heart.addEventListener('click', likeUnlikeFunc);
+heart.addEventListener('click', addLike);
 
-function like_func(){
-  var frm_read = $('.content');
-  var boardNo = $('#boardNo', frm_read).val();
-  var userNo = $('#userNo', frm_read).val();
-  console.log("boardNo, userNo : " + boardNo +","+ userNo);
-  
+
+function addLike(){
   $.ajax({
-    url: "../BoardLike/Board.do",
+    url:"addLike",
     type: "GET",
-    cache: false,
-    dataType: "json",
-    data: 'boardNo=' +boardNo+ '&userNo=' +userNo,
-    success: function(data) {
-      var msg = '';
-      var heart = '';
-      msg += data.msg;
-      alert(msg);
-       
-      $('#heart', frm_read).attr('src', heart);
-      $('#like_Cnt').html(data.like_Cnt);
-      $('#like_Check').html(data.like_Check);
+    data:{"userNo" : userNo},
+    dataType:"JSON",
+    success: function(result){
+      if(result > 0){
+        console.log("라이크 1증가");
+      }else{
+        console.log("증가 실패");
+      }
     },
-    error: function(request, status, error){
-      alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    error : function(request, status, error){
+      console.log("addLike AJAX 에러 발생");
+      console.log("상태코드 : " + request.status);
     }
   });
 }
