@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
-<c:set var="banList" value="${banList}"/>
-<c:set var="bandMem" value="${bandMem}"/>
 
 <!DOCTYPE html>
 <html>
@@ -48,13 +46,13 @@
     <section class="myPageWrapper">
         <section class="myPageInfo">
             <div>
-                <span>개다리방방</span>
+                <span>${loginUser.userNick}</span>
                <ion-icon name="person-circle" id="profileIcon"></ion-icon>
             </div>
 
             <div class="imgBox">
                 <c:if test="${empty loginUser.profileImg}">
-                	<img src="${contextPath}/resources/images/profileImage/user.png" id="profile-image">
+                	<img src="${contextPath}/resources/images/guitarduck.png" id="profile-image">
                 </c:if>
 
                 <c:if test="${!empty loginUser.profileImg}">
@@ -72,28 +70,31 @@
                 </div>
             </div>
             
-            <div class="ulBox">
-                <div class="firstUlBox">
-                    <ul>
-                        <li>Band</li>
-                        <li>Leader</li>
-                        <li>Member</li>
-                    </ul>
-                </div>
-
-                <div class="secondUlBox">
 
                     <c:choose>
                         <c:when test="${empty bandMem}">
                             <p>밴드가 없습니다</p>
                         </c:when>
                         <c:otherwise>
+
+                        <div class="ulBox">
+                            <div class="firstUlBox">
+                                <ul>
+                                    <li>Band</li>
+                                    <li>Leader</li>
+                                    <li>Member</li>
+                                </ul>
+                            </div>
+
+                            <div class="secondUlBox">
+
+
                             <ul>
                                 <li><i class="fa-solid fa-headphones-simple"></i>${bandMem[0].bandName}</li>
-                                <li><i class="fa-solid fa-crown"></i></li>
+                                 <li><i class="fa-solid fa-crown"></i>${bandMem[0].leaderNick}</li>
         
                                 <c:forEach var="bandMem" items="${bandMem}">
-                                    <li><i class="fa-solid fa-user-astronaut"></i></li>
+                                    <li><i class="fa-solid fa-user-astronaut"></i>${bandMem.userNick}</li>
                                 </c:forEach>
                             </ul>
                         </c:otherwise>
@@ -392,7 +393,7 @@
               </div>
               <div class="modal-body">
 
-            <form action="">
+            
                 <section class="modalBandWrapper">
                     <div class="modalBandTitleBox">
                         <p>밴드 관리</p>
@@ -408,7 +409,7 @@
                                 </td>
 
                                 <td>
-                                    <p class="tdTitle upTitle">러시아워</p> 
+                                    <p class="tdTitle upTitle">${bandMem[0].bandName}</p> 
                                 </td>
                             </tr>
 
@@ -418,7 +419,7 @@
                                 </td>
 
                                 <td>
-                                    <p class="tdTitle upTitle">이현경</p>
+                                    <p class="tdTitle upTitle">${bandMem[0].leaderNick}</p>
                                 </td>
                             </tr>
 
@@ -435,66 +436,64 @@
                     <div class="modalBandContentBox">
                         
                         <table>
-                            <tr>
-                                <td>
-                                    <p class="modalContentP">초파초</p>
-                                </td>
-
-                                <td>
-                                    <p><button>멤버추방</button></p>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    <p class="modalContentP">기타못침21</p>
-                                </td>
-
-                                <td>
-                                    <p><button>멤버추방</button></p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <p class="modalContentP">길에반스</p>
-                                </td>
-
-                                <td>
-                                    <p><button>멤버추방</button></p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <p class="modalContentP">빌스링</p>
-                                </td>
-
-                                <td>
-                                    <p><button>멤버추방</button></p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <p class="modalContentP">메탈리카촉</p>
-                                </td>
-
-                                <td>
-                                    <p><button>멤버추방</button></p>
-                                </td>
-                            </tr>
+                        
+                        	<c:forEach var="bandMem" items="${bandMem}">
+                        		<form action="fin/exile" method="POST">
+                        		
+                        		<input type="hidden" value="${bandMem.userNo}" id="userNo" name="userNo">
+                        		
+                        		<tr>
+                                	<td>
+                                    	<p class="modalContentP">${bandMem.userNick}</p>
+                                	</td>
+                                	
+                                	<c:choose>
+                                	                              		                              	
+                                		<c:when test="${loginUser.userNo eq bandMem.leaderNo}" >
+                                		                                		
+                                		
+                                			<td>
+                                    			<p><button>멤버추방</button></p>
+                                			</td>
+                                			                               			                                			                               			
+                                		</c:when>
+                                		
+                                		
+                                		<c:otherwise>                               		                                		
+                                		</c:otherwise> 
+                                		                                	                              		                                	
+                                	</c:choose>                               	
+                            	</tr>      
+                            	</form>              	                                    	                                 
+                        	</c:forEach>
+                            
                         </table>
                     </div>
 
                     <hr>
+                    
+                    <c:choose>
+                    	<c:when test="${loginUser.userNo eq bandMem[0].leaderNo}">
+                    		<div class="bandDestroyBtnBox">
+                    			
+                    			
+                    			<form action="fin/dismiss"  method="GET">
+                    			<input type="hidden" value="${bandMem[0].bandNo}" id="bandNo" name="bandNo">
+                        			<button>밴드해체</button>
+                        		</form>
+                    		</div>
+                    	
+                    	</c:when>
+                    	
+                    	<c:otherwise>
+                    
+                    
+                    	</c:otherwise>
+                    </c:choose>
+                    
 
-                    <div class="bandDestroyBtnBox">
-                        <button>밴드해체</button>
-                    </div>
+                   
                 </section>
-            </form>
 
                 
                 
@@ -516,7 +515,7 @@
         <div class="modal-dialog infoModal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
             </div>
 
             <div class="modal-body">
@@ -526,11 +525,11 @@
                     <p>회원 정보 수정</p>
                 </div>
                 <form action="fin/updateInfo" method="POST" enctype="multipart/form-data">
-                	<span id="delete-image">x</span>
+             	
                 
                     <div class="modalImgBox">
                         <c:if test="${empty loginUser.profileImg}">
-                            <img src="${contextPath}/resources/images/profileImage/user.png" id="profile-image">
+                            <img src="${contextPath}/resources/images/guitarduck.png" id="profile-image">
                         </c:if>
 
                         <c:if test="${!empty loginUser.profileImg}">
@@ -554,6 +553,11 @@
                             </span>
                             <input type="text" required id="userNick" name="newNick">
                             <label>NICKNAME</label>
+                        </div>
+                        
+                        <div class="input-box">                          
+                            <input type="text" required id="userIntro" name="newIntro">
+                            <label>INTRO</label>
                         </div>
                         
 
@@ -789,29 +793,41 @@
               </div>
               <div class="modal-body">
 
-                <section class="groupSection">
-                   <form action="fin/makeBand" class="groupForm" method="GET">
-                        <div class="groupTitle">
-                            <h1>그룹 생성</h1>
-                        </div>
+                   
+                   <c:choose>
+                   		<c:when test="${!empty bandMem}">
+                   			<p>밴드가 이미 있습니다</p>
+                   		</c:when>
+                   		
+                   		<c:otherwise>
+                   			<section class="groupSection">
+                   				<form action="fin/makeBand" class="groupForm" method="GET">
+                   				
+                   				
+                   					<div class="groupTitle">
+                            			<h1>그룹 생성</h1>
+                        			</div>
 
-                        <div class="grouInfoBox">
-                            <input type="text" required id="groupName" name="bandName">
-                            <label>GROUP NAME</label>
+                        				<div class="grouInfoBox">
+                            				<input type="text" required id="groupName" name="bandName">
+                            				<label>GROUP NAME</label>
 
-                            <input type="text" required id="groupLeaderId" name="genre">
-                            <label>GENRE</label>
+                            				<input type="text" required id="groupLeaderId" name="genre">
+                            				<label>GENRE</label>
 
-                            <textarea type="text" id="groupInfoText" name="ment"></textarea>
-                            <label>EXPLAIN YOUR GROUP</label>
-                        </div>
+                            				<textarea type="text" id="groupInfoText" name="ment"></textarea>
+                            				<label>EXPLAIN YOUR GROUP</label>
+                        				</div>
 
-                        <div class="groupBtnBox">
-                            <button id="groupBtn" type="submit">생성하기</button>
-                        </div>
-                   </form>
-                </section>      
-
+                        			<div class="groupBtnBox">
+                            			<button id="groupBtn" type="submit">생성하기</button>
+                        			</div>
+                  		 		</form>
+                			</section>                  
+                   		</c:otherwise>
+                   
+                   </c:choose>                                    
+                    
               </div>
               <div class="modal-footer"></div>
             </div><!-- /.modal-content -->

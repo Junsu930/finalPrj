@@ -134,6 +134,44 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.bandMem", userNo);
 	}
 
+	/** 밴드에 유저 넣기
+	 * @param paramMap
+	 * @return
+	 */
+	public int makeBandUser(Map<String, Object> paramMap) {
+		
+		System.out.println("유저넣기 DAO" +paramMap);
+		
+		return sqlSession.update("myPageMapper.makeBandUser", paramMap);
+	}
+
+	/** 밴드 번호 갖고 오기
+	 * @param userNo
+	 * @return
+	 */
+	public int bandNo(int userNo) {
+		
+		return sqlSession.selectOne("myPageMapper.bandNo", userNo);
+	}
+
+	/** 밴드 추방
+	 * @param userNick
+	 * @return
+	 */
+	public int exile(String userNo) {
+	
+		return sqlSession.update("myPageMapper.exile", userNo);
+	}
+
+	/** 밴드 해체
+	 * @param bandNo
+	 * @return
+	 */
+	public int dismiss(int bandNo) {
+		
+		return sqlSession.update("myPageMapper.dismiss", bandNo);
+	}
+
 	
 
 }

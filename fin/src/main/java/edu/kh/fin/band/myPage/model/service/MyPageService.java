@@ -81,4 +81,32 @@ public interface MyPageService {
 	 */
 	List<Band> bandMem(int userNo);
 
+	/** 밴드 정보에 리더 넣기
+	 * @param paramMap
+	 * @return
+	 */
+	int makeBandUser(Map<String, Object> paramMap);
+
+	/** 밴드 번호 갖고 오기
+	 * @param userNo
+	 * @return
+	 */
+	int bandNo(int userNo);
+
+	/** 배늗 추방
+	 * @param userNick
+	 * @return
+	 */
+	int exile(String userNo);
+
+	/** 밴드 해체
+	 * @param bandNo
+	 * @return
+	 */
+	int dismiss(int bandNo);
+
+
+
+
+
 }
