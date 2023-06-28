@@ -40,6 +40,18 @@
 					<i class="fa-regular fa-heart"></i>
 					<span>${boardDetail.boardLike }</span>
 				</div>
+				<c:if test="${sessionScope.loginUser.userNo eq boardDetail.userNo }">
+					<div class="editAndDeleteBtnDiv">
+						<form action="${contextPath}/updateBandBoardDetail" method="post">
+							<input type="hidden" name="boardNoForUpdateBoardDetail" value="${boardDetail.boardNo}">
+							<button>수정</button>
+						</form>
+						<form action="${contextPath}/deleteBandBoardDetail" method="post">
+							<input type="hidden" name="boardNoForUpdateBoardDetail" value="${boardDetail.boardNo}">
+							<button type="button" id="deleteBtnForBandBoard">삭제</button>
+						</form>
+					</div>
+				</c:if>
 			</div>
 			<!-- 내용 -->
 			<div>

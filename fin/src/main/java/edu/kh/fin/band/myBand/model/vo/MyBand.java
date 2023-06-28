@@ -22,6 +22,7 @@ public class MyBand {
 	private int boardLike;
 	private String boardTag;
 	private int replyCount;
+	private int userNo;
 	
 	@Override
 	public String toString() {
