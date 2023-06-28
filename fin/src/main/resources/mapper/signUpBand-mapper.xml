@@ -12,9 +12,9 @@
 		VALUES ( ${bandNo}, ${fromUserNo}, 'F')
 	</insert>
 	
-	<update id="changeInviStatus" parameterType="_int">
-		UPDATE INVITATION SET INVI_ACCEPT_FL = 'Y' WHERE BAND_NO = ${bandNo}
-	</update>
+	<delete id="changeInviStatus" parameterType="_int">
+		DELETE FROM INVITATION WHERE BAND_NO = ${bandNo}
+	</delete>
 	
 	
 

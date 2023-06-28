@@ -23,7 +23,8 @@ public class SignUpBandDAO {
 		if(result > 0) {
 			int bandNo = invi.getBandNo();
 			// inviFl을 변경해야지 alarmPage에서 승락한 초대장이 안 보임
-			result = sqlSession.update("signUpBand.changeInviStatus",bandNo);
+			// 23 06 28 그냥 데이터 삭제하기로함
+			result = sqlSession.delete("signUpBand.changeInviStatus",bandNo);
 		}else {
 			return 0;
 		}
@@ -37,7 +38,7 @@ public class SignUpBandDAO {
 	 * @return
 	 */
 	public int deniedBand(int bandNo) {
-		return sqlSession.update("signUpBand.changeInviStatus",bandNo);
+		return sqlSession.delete("signUpBand.changeInviStatus",bandNo);
 	}
 
 }

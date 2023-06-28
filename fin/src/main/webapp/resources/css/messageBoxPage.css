@@ -122,11 +122,28 @@ body.darkmode .messageWrapper li .content p .msgSendBtn
     margin: 10em 0;
 }
 
-.emptyMsgBox h1{
-    font-size: 3em;
-    font-weight: 500;
-    font-family: var(--navFont-style-);
+.emptyMsgBox > p{
+    letter-spacing: .3em;
+    font-size: 2em;
+    transition: .5s;
+    padding: 1em 1em;
 }
+
+.emptyMsgBox > p:hover{
+    animation: in .5s ease-out;
+}
+
+@keyframes in{
+    0%{
+      letter-spacing: 0.3em;
+    }
+    50%{
+      letter-spacing: 0.6em
+    }
+    100%{
+      letter-spacing: 0.3em
+    }
+  }
 
 
 

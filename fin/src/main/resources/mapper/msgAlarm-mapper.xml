@@ -131,8 +131,11 @@
 	
 	<!-- 알람(게시글, 초대장, 좋아요) 총 갯수 가져오기 -->
 	<select id="totalAlarmGet" parameterType="_int" resultType="_int">
-		SELECT COUNT(*) AS COUNT FROM TOTAL_ALARM WHERE TO_USER_NO = ${userNo} AND 
-		INVI_READ_STATSU ='N' 
+		SELECT COUNT(*) AS COUNT 
+		FROM TOTAL_ALARM 
+		WHERE TO_USER_NO = ${userNo} 
+		AND 
+		INVI_READ_STATUS ='N' 
 		OR
 		REPLY_READ_STATUS = 'N'
 		OR
@@ -150,7 +153,7 @@
 			SELECT INVI_NO_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO 
-		INVITATION (INVI_NO, TO_USER_NO, FROM_USER_NO, BAND_NO, INVI_READ_STATUS)
+		INVITATION (INVI_NO, TO_USER_NO, FROM_USER_NO, BAND_NO, INVI_ACCEPT_FL)
 		VALUES (${inviNo}, ${toUserNo}, ${fromUserNo}, ${bandNo}, DEFAULT)
 	</insert>
 	

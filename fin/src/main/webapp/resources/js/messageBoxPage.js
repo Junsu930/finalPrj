@@ -101,6 +101,12 @@ function replyMsg(){
 }
 
 
+let emptyMsgText = document.getElementById('emptyMsgText');
+emptyMsgText.addEventListener('mouseover', function(){
+    emptyMsgText.innerText = '';
+    emptyMsgText.innerText = '👋 BACK TO MAIN!';
+});
+
 
 
 

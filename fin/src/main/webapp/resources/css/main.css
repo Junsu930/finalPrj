@@ -263,6 +263,21 @@ body.darkmode .bi-chevron-compact-up{
   margin-left: 1em;
 }
 
+.boardText a:hover,
+.usedText a:hover,
+.reservationText a:hover{
+  color: var(--accent-color);
+}
+
+
+
+body.darkmode .boardText a:hover > span,
+body.darkmode .usedText a:hover > span,
+body.darkmode .reservationText a:hover > span{
+  color: var(--stroke-dark-color);
+}
+
+
 
 /* ======================================================== */
 

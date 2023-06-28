@@ -39,7 +39,9 @@
 </head>
 <body>
     <header>
+        
         <nav class="navBar">
+            
           <div class="navDiv">
               <a href="${contextPath}/main" class="navA">Band Archive</a>
           </div>
@@ -59,8 +61,6 @@
                     <!-- <a href="${contextPath}/login" class="loginIMG navA"><i class="bi bi-door-open" id="loginIMGI"></i></a> -->
             	</c:when>
                 <c:otherwise>
-                    
-
                     <!-- <a href="${contextPath}/checkPw" class="myPageText navA">My Page</a>
                     <a href="${contextPath}/logout" class="loginText navA">Logout</a> -->
 
@@ -104,7 +104,7 @@
                         <!-- </li> -->
                     </ul>
 
-                    <div class="profileImgBox" onclick="activeMenu()">
+                    <div class="profileImgBox" onclick="activeMenu()" id="profileImgBox">
                         <img src="${contextPath}/resources/images/guitarduck.png" alt="" id="profileImg">
                     </div>
         
