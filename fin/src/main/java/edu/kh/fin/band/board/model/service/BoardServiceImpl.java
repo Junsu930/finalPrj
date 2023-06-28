@@ -60,6 +60,12 @@ public class BoardServiceImpl implements BoardService{
 		return dao.getTotal();
 	}
 
+	@Override
+	public List<BoardDetail> boardTalk(Criteria cri) {
+		// TODO Auto-generated method stub
+		return dao.boardTalk(cri);
+	}
+
 
 
 	

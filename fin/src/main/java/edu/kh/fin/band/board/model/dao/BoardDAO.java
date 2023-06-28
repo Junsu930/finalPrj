@@ -1,6 +1,7 @@
 package edu.kh.fin.band.board.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -24,6 +25,9 @@ public class BoardDAO {
 
 	public List<BoardDetail> boardList(Criteria cri) {
 		// TODO Auto-generated method stub
+
+		  
+		
 		return sqlSession.selectList("boardMapper.boardList",cri);
 	}
 
@@ -50,6 +54,11 @@ public class BoardDAO {
 	public int getTotal() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("boardMapper.getTotal");
+	}
+
+	public List<BoardDetail> boardTalk(Criteria cri) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardMapper.boardTalk",cri);
 	}
 
 

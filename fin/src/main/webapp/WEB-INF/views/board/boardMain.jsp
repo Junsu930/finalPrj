@@ -71,22 +71,26 @@
     
     <div class="naviBar">
       <ul>
-        
+ 
         <li>
          <label class="test_obj">
-        <input type="radio" class="tagNotice" name="boardTag" value="0">
+        <input type="radio" class="tagAll" name="boardTag" value="0" >
         <span>전체</span>
     </label>
     </li>
+    <form action="boardTalk">
         <li>
-                <label class="test_obj">
-        <input type="radio" class="tagNotice" name="boardTag" value="1">
-        <span>잡담</span>
-    </label>
-    </li>
+         
+          <label class="test_obj">
+            <input type="radio" class="tagTalk" name="boardTag" >
+            <span>잡담</span>
+          </label>
+       
+        </li>
+      </form>
         <li>
     <label class="test_obj">
-      <input type="radio" class="tagBasic" name="boardTag" value="2">
+      <input type="radio" class="tagQus" name="boardTag" value="2">
       <span>질문</span>
   </label>
        </li>
@@ -333,7 +337,24 @@ window.onload = function() {
 
 </script>
 
+<script type="text/javascript">
+const updateBtn= () => {
+	const boardNo = '${BoardDetail.boardNo}';
+	  
+	location.href = "update?boardNo=" + boardNo ;
+}
 
+
+/* 
+const tagAll= () => {
+	
+	  const contextPath = '${contextPath}'
+	
+	location.href= contextPath + '/board';
+	$("input:checkbox[class='tagAll']").prop("checked", true); 
+}
+ */
+</script>
 
 
 
