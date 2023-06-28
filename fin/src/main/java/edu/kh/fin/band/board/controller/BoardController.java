@@ -3,6 +3,9 @@ package edu.kh.fin.band.board.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.ui.Model;
 import edu.kh.fin.band.board.model.vo.Board;
 import edu.kh.fin.band.board.model.vo.BoardDetail;
@@ -106,10 +109,7 @@ public class BoardController {
 			message = "게시글 삽입 실패...";
 			ra.addFlashAttribute("message", message);
 			return "board/boardWrite";
-		}
-			
-		
-		
+		}		
 		
 	}
 	
@@ -188,18 +188,10 @@ public class BoardController {
 			return "redirect:/board";
 			
 		}
-		
-	
-		
-	
-			
-	
-			
-	
-		
 	
 	}
 	
+
 	
 
 }
