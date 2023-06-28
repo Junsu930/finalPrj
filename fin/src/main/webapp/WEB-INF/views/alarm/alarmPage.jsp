@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/messageBoxPage.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/myPagebootStrap.css">
-<link rel="stylesheet" href="${contextPath}/resources/css/msgBoxModal.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/alarmPage.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
@@ -41,6 +41,21 @@
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
+		<section class="alarmSection">
+			<div class="alarmWrapper">
+				<h1>✉밴드 초대장</h1>
+				<p>한 장의 밴드 초대장이 도착했습니다!</p>
+				<div class="alarmBtnBox">
+					<form action="">
+						<button>수락&nbsp;&nbsp;😊</button>
+					</form>
+					<form action="">
+						<button>거절&nbsp;&nbsp;😱</button>
+					</form>
+				</div>
+			</div>
+		</section>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>

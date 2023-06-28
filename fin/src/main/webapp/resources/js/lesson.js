@@ -125,7 +125,7 @@ window.addEventListener('click', function(e){
 
 
 
-// 노 필터 무한스크롤
+// 필터 x 무한스크롤
 $(document).ready(() =>{
     console.log("ready");
     $.ajax({
@@ -144,8 +144,7 @@ $(document).ready(() =>{
             let countNum = lessonListLength < 4 ? lessonListLength: 4; // 조건식 ? 참 : 거짓;
 
             if(lessonListLength == 0){
-                console.log("if문");
-
+                
                 let emptyDiv = document.createElement("div");
                 secondSec.append(emptyDiv);
                 emptyDiv.className= "emptyDiv";
@@ -200,7 +199,7 @@ $(document).ready(() =>{
                 }
                 observerBox = document.querySelector('.imgCotentWrap:last-child');
 
-                let count = 4;
+                let count = 3;
 
                 const observer = new IntersectionObserver(
                     (entries) =>{
@@ -302,7 +301,7 @@ function filterFunc(){
             
             secondSec.innerHTML = '';
 
-            console.log("filter함수!");
+           
             
             lessonList = data;
     
@@ -312,7 +311,7 @@ function filterFunc(){
             let countNum = lessonListLength < 4 ? lessonListLength: 4; // 조건식 ? 참 : 거짓;
     
             if(lessonListLength == 0){
-                console.log("filter함수 if문!");
+                
     
                 let emptyDiv = document.createElement("div");
                 secondSec.append(emptyDiv);
@@ -321,7 +320,7 @@ function filterFunc(){
                
             }else{
     
-                console.log("filter함수 else문!");
+                
                 for(let i = 0; i < countNum; i++){
     
                     console.log(" filter for문 " + i);
@@ -370,7 +369,7 @@ function filterFunc(){
                 }
                 observerBox = document.querySelector('.imgCotentWrap:last-child');
     
-                let count = 4;
+                let count = 3;
     
                 const observer = new IntersectionObserver(
                     (entries) =>{

@@ -79,12 +79,13 @@
   padding: 3em 3em;
 }
 
-h1{
+.mainQuestion > div:first-child h1{
   letter-spacing: 0.2em;
+  padding-left: 0;
 }
 
-h2{
-  padding: 1em 0 0 1.7em;
+.mainQuestion > div:first-child h2{
+  padding: 1em 0 0 3em;
   letter-spacing: 0.2em;
 }
 

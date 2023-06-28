@@ -96,6 +96,12 @@ public class LessonController {
 		lesson = service.selectDetail(lessonNo);
 		LessonImage lessonImg = service.selectLessonImg(lessonNo);
 		
+		// 아래쪽 사진 리스크 보여주기 랜덤으로 보여줄거임
+		List<Lesson> lessonList = new ArrayList<>();
+		lessonList = service.lessonListRandom();
+		
+		
+		model.addAttribute("lessonList",lessonList);
 		model.addAttribute("lessonImg", lessonImg);
 		model.addAttribute("lesson", lesson);
 		

@@ -1,0 +1,64 @@
+.alarmSection{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alarmWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4em;
+    width: 500px;
+    height: 330px;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 2px 2px 20px silver;
+    border-radius: 12px;
+}
+
+body.darkmode .alarmWrapper{
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+}
+
+.alarmWrapper > h1{
+    padding-left: 0;
+}
+
+.alarmWrapper > p{
+    font-size: 1.5em;
+}
+
+.alarmBtnBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.alarmBtnBox form button{
+    width: 130px;
+    height: 50px;
+    border: .5px solid var(--silver-color);
+    border-radius: .5em;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.3em;
+    transition: .5s;
+}
+
+.alarmBtnBox form button:hover{
+    background: var(--accent-color);
+}
+
+body.darkmode .alarmBtnBox form button{
+    color: var(--text-dark-color);
+}
+
+

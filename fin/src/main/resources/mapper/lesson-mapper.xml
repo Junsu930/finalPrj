@@ -12,7 +12,7 @@
 	  	<result property="motto" 	column="MOTTO"/>
 	  	<result property="detailment" column="DETAIL_MENT"/>
 		<result property="genre" column="GENRE" />
-		<result property="ints" column="INTS" />
+		<result property="inst" column="INST" />
 		<result property="writingDate" 	column="WRITING_DATE"/>
 		<result property="imgSrc" 	column="IMG_RENAME"/>
   </resultMap>
@@ -29,13 +29,18 @@
 
 
 	<select id="lessonList" resultMap="lesson_rm">
-	SELECT 
-	u.USER_NICK, li.MOTTO, li.REGION, TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"')AS WRITING_DATE, li.LESSON_NO, IMG_RENAME
-	FROM LESSON_INFO li
-	JOIN "USER" u USING(USER_NO)
-	LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO = li.LESSON_NO 
-	WHERE LESSON_FL = 'N' AND IMG_LEVEL = 0
-	ORDER BY LESSON_NO DESC
+		SELECT 
+		u.USER_NICK,
+		li.MOTTO,
+		li.REGION,
+		TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"')AS WRITING_DATE,
+		li.LESSON_NO,
+		IMG_RENAME
+		FROM LESSON_INFO li
+		JOIN "USER" u USING(USER_NO)
+		LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO = li.LESSON_NO 
+		WHERE LESSON_FL = 'N' AND IMG_LEVEL = 0
+		ORDER BY LESSON_NO DESC
 	</select>
 	
 	<select id="lessonFilter" parameterType="map" resultMap="lesson_rm">
@@ -50,6 +55,7 @@
 		JOIN "USER" u USING(USER_NO)
 		LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO  = li.LESSON_NO
 		WHERE REGION LIKE #{locText} OR INST LIKE #{lessonText}
+		ORDER BY LESSON_NO DESC
 	</select>
 	
 	
@@ -82,6 +88,22 @@
 		WHERE LESSON_NO = ${lessonNo} AND IMG_FL ='N'
 	</select>
 	
+	<select id="lessonListRandom" resultMap="lesson_rm">
+		SELECT * FROM
+		(SELECT 
+		u.USER_NICK, 
+		li.INST,
+		li.GENRE,
+		li.LESSON_NO,
+		li2.IMG_RENAME
+		FROM LESSON_INFO li 
+		JOIN "USER" u USING(USER_NO)
+		LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO = li.LESSON_NO 
+		WHERE LESSON_FL = 'N' AND IMG_LEVEL = 0
+		ORDER BY DBMS_RANDOM.VALUE)
+		WHERE ROWNUM <![CDATA[<=]]> 7
+	</select>
+	
 	
 	<update id="deleteLesson" parameterType="_int">
 		UPDATE LESSON_INFO SET LESSON_FL = 'Y' WHERE LESSON_NO = ${lessonNo}
@@ -93,7 +115,4 @@
 	
 	
 	
-	
-	
-
 </mapper>

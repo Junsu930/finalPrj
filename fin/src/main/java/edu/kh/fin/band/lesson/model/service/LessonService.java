@@ -104,6 +104,15 @@ public class LessonService {
 	public LessonImage selectLessonImg(int lessonNo) {
 		return dao.selectLessonImg(lessonNo);
 	}
+	
+	/**
+	 * 레슨 디테일 조회 시, 하단 추천 강사 뜨기(랜덤 조회) service
+	 * @author lee
+	 * @return
+	 */
+	public List<Lesson> lessonListRandom() {
+		return dao.lessonListRandom();
+	}
 
 	/**
 	 * 레슨 글 삭제 서비스
@@ -115,6 +124,8 @@ public class LessonService {
 		
 		return dao.deleteLesson(lessonNo);
 	}
+
+	
 
 	
 

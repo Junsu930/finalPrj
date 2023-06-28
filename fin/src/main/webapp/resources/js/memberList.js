@@ -1,61 +1,3 @@
-// const msnry = new Masonry(document.getElementById("container"), {
-//     itemSelector: ".item",
-//     columnWidth: ".item",
-//     gutter: ".gutterSizer",
-//     percentPosition: !0
-// });
-
-// infiniteScroll({
-//     container: "#container",
-//     item: ".item",
-//     next: ".next",
-//     prev: ".prev",
-//     prevLoader: ".prevLoader",
-//     pushHistory: true,
-//     nextCallback: (newElement) => {
-//         msnry.appended(newElement)
-//     },
-//     prevCallback: (newElement) => {
-//         msnry.prepended(newElement)
-//     },
-//     onLoadFinish: () => {
-//         msnry.layout()
-//     }
-// }),
-
-// window.addEventListener("load", () => {
-//     msnry.layout()
-// })
-
-
-
-// const loader = document.querySelector('.loadingio-spinner-magnify-khdk4exhsp9');
-// const html = document.querySelector('html');
-
-// html.style.overflow = 'hidden'; //로딩 중 스크롤 방지
-
-// window.addEventListener('load', ()=>{
-
-//      setTimeout(() => { //  <-* 로딩속도를 구현하기 위한 코드로 실제 적용시 제거
-    
-//       	loader.style.opacity = '0';
-// 		html.style.overflow = 'auto'; //스크롤 방지 해제
-      	
-//         setTimeout(() => {
-//       		loader.style.display = 'none';
-//   		}, 400);
-        
-//   }, 5000); // <-* 로딩속도 구현
-
-// })
-
-
-
-// $(window).load(function() {
-//     $('.loadingio-spinner-magnify-khdk4exhsp9').hide();
-// });
-
-
 
 // 모달
 let profileMsg = document.querySelectorAll('.profileMsg');
@@ -110,35 +52,6 @@ for(let eachLi of chatStartIconLi){
 }
 
 
-// 무한 스크롤 
-let memberListSection = document.querySelector('.memberListSection');
-let end = document.createElement('p');
-end.style.color = "red";
-memberListSection.appendChild(end);
-
-
-const options = {
-    root: null,// 기본값은 null(뷰포트)
-    rootMargin: '0px 0px 0px 0px',
-    threshold: 1, 
-    // 옵저버가 실행되기 위해 타켓의 가시성이 얼마나 필요한지 백분율로 표시한다.
-};
-
-// IntersectionObserver 생성
-const io = new IntersectionObserver((entries, observer) => {
-    // IntersectionObserverEntry 객체 리스트와 observer 본인(self)를 받음
-    // 동작을 원하는 것 작성
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        console.log(entry);
-        entry.target.innerText = "끄으으읏";
-      }
-    })
-  }, options)
-
-
-io.observe(end); // 관찰할 대상 설정
-// observe.unobserve(element) 특정 대상관찰 종료
 
 
 
