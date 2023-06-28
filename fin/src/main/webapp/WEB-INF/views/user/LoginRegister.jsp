@@ -46,6 +46,7 @@
                 
 		
                 <form action="fin/login" method="POST" name="login-form" onsubmit="return loginValidate()">
+                	<input type="hidden" value="${ref}" name="ref">
                     <div class="inputBox"> <!--input-box-->
                         <span class="icon">
                             <ion-icon name="mail"></ion-icon>

@@ -23,11 +23,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+
+import edu.kh.fin.band.common.Util;
 import edu.kh.fin.band.common.pagination.CommonCriteria;
 import edu.kh.fin.band.common.pagination.Pagination;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myBand.model.service.MyBandService;
 import edu.kh.fin.band.myBand.model.vo.MyBand;
+import edu.kh.fin.band.myBand.model.vo.MyBandReply;
 
 @Controller
 public class MyBandController {
@@ -59,9 +63,11 @@ public class MyBandController {
 		
 		HttpSession session = req.getSession();
 		
-		User loginUser = (User)session.getAttribute("loginUser");
 		
 		List<String> bandMember = service.bandMember(bandNo);
+		
+		User loginUser = (User)session.getAttribute("loginUser");
+		
 		if(loginUser != null) {
 			int bandUserFl = service.bandUserFl(bandNo, loginUser);
 			
@@ -87,12 +93,31 @@ public class MyBandController {
 		
 		model.addAttribute("bandNo", bandNo);
 		
+		
+		
 		return "myBand/myBand";
 	}
 	
 	
 	@PostMapping("/bandBoardDetail")
-	public String bandBoardDetail(@RequestParam("thisBoardNo") int boardNo, @RequestParam("thisBandNo")int bandNo, Model model) {
+	public String bandBoardDetail(@RequestParam("thisBoardNo") int boardNo, @RequestParam("thisBandNo")int bandNo, Model model, HttpServletRequest req) {
+		
+		HttpSession session = req.getSession();
+		
+		User loginUser = (User)session.getAttribute("loginUser");
+		
+		if(loginUser != null) {
+			int bandUserFl = service.bandUserFl(bandNo, loginUser);
+			
+			if(bandUserFl > 0) { //멤버가 밴드 멤버가 맞으면
+				model.addAttribute("memberFl", "T");
+			}else {
+				model.addAttribute("memberFl", "F");
+			}
+		}else { // 로그인 유저 없으면 
+			model.addAttribute("memberFl", "F");
+			
+		}
 		
 		MyBand board = service.bandBoardDetail(boardNo);
 
@@ -104,13 +129,14 @@ public class MyBandController {
 	@PostMapping("/bandBoardWrite")
 	public String bandBoardWrite(@RequestParam("hiddenBandNoForWrite") int bandNo, Model model) {
 		
+		
 		model.addAttribute("bandNo", bandNo);
 		
 		return "myBand/myBandWrite";
 	}
 	
 	@PostMapping("/writeBandBoard")
-	public String writeBandBoard(@RequestParam("titleInputForBandBoard")String title ,@RequestParam("text") String text, @RequestParam("hiddenBandNo") int bandNo, HttpServletRequest req, RedirectAttributes ra) {
+	public String writeBandBoard(Model model,@RequestParam("titleInputForBandBoard")String title ,@RequestParam("text") String text, @RequestParam("hiddenBandNo") int bandNo, HttpServletRequest req, RedirectAttributes ra) {
 		
 		HttpSession session = req.getSession();
 		
@@ -119,6 +145,7 @@ public class MyBandController {
 		
 		int result = service.writeBandBoard(title, text, bandNo, userNo);
 		
+		
 		if(result > 0 ) {
 			ra.addAttribute("message", "글이 등록되었습니다.");
 		}else {
@@ -126,6 +153,39 @@ public class MyBandController {
 		}
 		
 		return "redirect:./myBandBoard?bandNo=" + bandNo;
+	}
+	
+	@PostMapping("/insertReplyForBandBoard")
+	@ResponseBody
+	public String insertReplyForBandBoard(@RequestParam("boardNo") int boardNo, @RequestParam("replyText") String replyText, HttpServletRequest req) {
+		
+		HttpSession session = req.getSession();
+		
+		replyText = Util.XSSHandling(replyText);
+		replyText = Util.newLineHandling(replyText);
+		
+		int loginUserNo = ((User)session.getAttribute("loginUser")).getUserNo();
+		
+		int result = service.insertReplyForBandBoard(boardNo, loginUserNo ,replyText);
+		
+		return "성공";
+		
+	}
+	
+	@RequestMapping("/loadReplyForBandBoard")
+	@ResponseBody
+	public String loadReplyForBandBoard(@RequestParam("boardNo") int boardNo){
+		
+	
+		List<MyBandReply> rList = service.loadReplyForBandBoard(boardNo);
+		
+		for(MyBandReply eachR : rList) {
+			eachR.setReplyContent(Util.newLineClear(eachR.getReplyContent()));
+			eachR.setReplyContent(Util.XSSClear(eachR.getReplyContent()));
+		}
+		
+		
+		return new Gson().toJson(rList);
 	}
 	
 	
