@@ -31,6 +31,7 @@
 
 
 
+
 /*왼쪽 멤버리스트바*/
 .leftSideBandMemberDiv{
 	flex-basis: 20%;
@@ -90,7 +91,7 @@
     margin-top: 40px;
     display: flex;
     height: 100px;
-    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     border-radius: 12px;
     border: 0px;
     flex-direction: column;
@@ -260,4 +261,35 @@
 
 .darkmode .paginations a:hover{
 	color: var(--accent-color);
+}
+
+
+.loaderPath{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-miterlimit: 10;
+    stroke-width: 1.5px;
+    stroke-dasharray: 8477.296875;
+    animation: drawPath 2s linear, floating 3s linear infinite;
+}
+
+body.darkmode .loaderPath{
+	stroke: var(--stroke-dark-color);
+}
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 8477.296875;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
 }
