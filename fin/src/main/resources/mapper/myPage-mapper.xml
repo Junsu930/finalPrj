@@ -114,12 +114,12 @@
 		NULL,
 		#{ment},
 		${userNo},
-		${userNick}
+		#{userNick}
 	)
 	</insert>
 	
 	<select id="bandMem" resultMap="band_rm">
-		SELECT BAND_NO , BAND_NAME , LEADER_NO , USER_NO , USER_NICK , LEADER_NICK
+		SELECT BAND_NO , BAND_NAME , LEADER_NO , USER_NO , USER_NICK , LEADER_NICK , MENT
 		FROM BAND_USER INNER JOIN BAND USING(BAND_NO)
 		JOIN  "USER" USING(USER_NO)
 		WHERE LEADER_NO = ${userNo} OR USER_NO = ${userNo}

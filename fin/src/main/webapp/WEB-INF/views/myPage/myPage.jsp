@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
 <c:set var="banList" value="${banList}"/>
+<c:set var="bandMem" value="${bandMem}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +89,7 @@
                         </c:when>
                         <c:otherwise>
                             <ul>
-                                <li><i class="fa-solid fa-headphones-simple"></i></li>
+                                <li><i class="fa-solid fa-headphones-simple"></i>${bandMem[0].bandName}</li>
                                 <li><i class="fa-solid fa-crown"></i></li>
         
                                 <c:forEach var="bandMem" items="${bandMem}">
