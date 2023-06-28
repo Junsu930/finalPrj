@@ -214,7 +214,16 @@ body.darkmode #deleteBtn > i{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: .5em;
 }
+.slick-slide img{
+    display: block;
+    width: 60%;
+    border-radius: 50%;
+    margin-bottom: 2em;
+}
+
+
 /* slider */
 
 

@@ -25,7 +25,7 @@
       arrows : true, 		// 옆으로 이동하는 화살표 표시 여부
       dots : true, 		// 스크롤바 아래 점으로 페이지네이션 여부
       autoplay : true,			// 자동 스크롤 사용 여부
-      autoplaySpeed : 10000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+      autoplaySpeed : 2500, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
       pauseOnHover : true,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
       vertical : false,		// 세로 방향 슬라이드 옵션
       prevArrow :	"<button type='button' class='btn'>&#10094</button>",// 이전 화살표 모양 설정
@@ -145,41 +145,16 @@
       </div>
 
       <div class="recommendImgBox" id="recommendImgBox">
-          <div>
-            <img src="${contextPath}/resources/images/guitarduck.png" alt="">
-            <p>박재범</p>
-            <p>보컬, 드럼</p>
-          </div>
-
-          <div>
-            <img src="${contextPath}/resources/images/guitarduck.png" alt="">
-            <p>박재범</p>
-            <p>보컬, 드럼</p>
-          </div>
-
-          <div>
-            <img src="${contextPath}/resources/images/guitarduck.png" alt="">
-            <p>박재범</p>
-            <p>보컬, 드럼</p>
-          </div>
-
-          <div>
-            <img src="${contextPath}/resources/images/guitarduck.png" alt="">
-            <p>박재범</p>
-            <p>보컬, 드럼</p>
-          </div>
-
-          <div>
-            <img src="${contextPath}/resources/images/guitarduck.png" alt="">
-            <p>박재범</p>
-            <p>보컬, 드럼</p>
-          </div>
-
-          <div>
-            <img src="${contextPath}/resources/images/guitarduck.png" alt="">
-            <p>박재범</p>
-            <p>보컬, 드럼</p>
-          </div>
+          <c:if test="${!empty lessonList}">
+            <c:forEach var="lessonList" items="${lessonList}">
+              <div style="cursor: pointer;" onclick="location.href='/fin/lessonDetail?lessonNo=${lessonList.lessonNo}'">
+                <img src="/fin${lessonList.imgSrc}" class="recommendImg">
+                <p>${lessonList.userNick}</p>
+                <p>${lessonList.genre}</p>
+                <p>${lessonList.inst}</p>
+              </div>
+            </c:forEach>
+          </c:if>
       </div>
     </section>
     
