@@ -168,4 +168,40 @@ public class MyPageServiceimpl implements MyPageService{
 		return dao.bandMem(userNo);
 	}
 
+	/** 밴드에 리더 넣기
+	 *
+	 */
+	@Override
+	public int makeBandUser(Map<String, Object> paramMap) {
+		
+		return dao.makeBandUser(paramMap);
+	}
+
+	/**
+	 * 밴드 번호 갖고오기
+	 */
+	@Override
+	public int bandNo(int userNo) {
+		
+		return dao.bandNo(userNo);
+	}
+
+	/** 밴드 추방
+	 *
+	 */
+	@Override
+	public int exile(String userNo) {
+		
+		return dao.exile(userNo);
+	}
+
+	/** 밴드 해체
+	 *
+	 */
+	@Override
+	public int dismiss(int bandNo) {
+		
+		return dao.dismiss(bandNo);
+	}
+
 }

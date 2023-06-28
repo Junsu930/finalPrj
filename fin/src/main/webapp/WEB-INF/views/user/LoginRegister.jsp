@@ -104,7 +104,7 @@
                 <form id ="form" action="fin/signUp" method="POST" name="regi-form" onsubmit="return signUpValidate()">
 
                     <div class="inputBox" id="embox"> <!--input-box-->
-                        <span class="icon">
+                        <span class="icon" id="emion">
                             <ion-icon name="mail" id="sendEmail"></ion-icon>
                         </span>
                         <input type="email" id="email" name="userEmail">

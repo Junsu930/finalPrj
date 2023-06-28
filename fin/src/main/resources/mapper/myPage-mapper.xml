@@ -125,6 +125,30 @@
 		WHERE LEADER_NO = ${userNo} OR USER_NO = ${userNo}
 	</select>
 	
+	<insert id="makeBandUser" parameterType="band">
+		INSERT INTO BAND_USER VALUES(
+		${bandNo},
+		${userNo},
+		'T'	
+		)
+	</insert>
+	
+	<select id="bandNo" resultType="_int">
+		SELECT BAND_NO
+		FROM BAND
+		WHERE LEADER_NO = ${userNo}
+	</select>
+	
+	<update id="exile">
+		DELETE FROM BAND_USER 
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	<update id="dismiss">
+		DELETE FROM BAND
+		WHERE BAND_NO = ${bandNo}
+	</update>
+	
 
 
 </mapper>

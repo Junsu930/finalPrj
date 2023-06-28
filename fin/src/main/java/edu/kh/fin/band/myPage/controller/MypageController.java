@@ -245,6 +245,12 @@ public class MypageController {
 		
 		if(result > 0) {
 			
+			int bandNo = service.bandNo(loginUser.getUserNo());
+		
+			paramMap.put("bandNo", bandNo);
+		
+			int set = service.makeBandUser(paramMap);
+			
 			message = "생성 완료";
 			path = "/myPage";
 			
@@ -258,6 +264,73 @@ public class MypageController {
 		
 		return "redirect:" + path;
 	
+		
+	}
+	
+	@PostMapping("fin/exile")
+	public String exile(@ModelAttribute("loginUser") User loginUser,
+			@RequestParam("userNo") String userNo,Model model,
+			SessionStatus status,
+			HttpServletRequest req,
+			HttpServletResponse resp,
+			RedirectAttributes ra) {
+		
+		System.out.println("유저추방번호" + userNo);
+		
+		int result = service.exile(userNo);
+		
+		String message = null;
+		String path = null;
+			
+			
+		if(result > 0) {
+			
+			message = "추방 완료";
+			path = "/myPage";
+			
+		} else {
+			
+			message = "추방 실패";
+			path = "/myPage";
+		}
+		
+		ra.addFlashAttribute("msg", message);
+			
+		return "redirect:" + path;
+		
+		
+		
+	}
+	
+	@GetMapping("fin/dismiss")
+	public String dismiss(@RequestParam("bandNo") int bandNo,
+			SessionStatus status,
+			HttpServletRequest req,
+			HttpServletResponse resp,
+			RedirectAttributes ra
+			) {
+		System.out.println("밴드해체"+bandNo);
+		
+		int result = service.dismiss(bandNo);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) {
+			
+			message = "해체 완료";
+			path = "/myPage";
+			
+		} else {
+			
+			message = "해체 실패";
+			path = "/myPage";
+		}
+		
+		ra.addFlashAttribute("msg", message);
+
+		
+		return "redirect:" + path;
 		
 	}
 	

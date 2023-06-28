@@ -405,6 +405,21 @@ dark.mode .formBox h2{
     display: block;
   }
 
+.icon {
+    cursor: pointer;
+}
+
+#emion {
+    cursor: pointer;
+}
+
+#sendEmail {
+    cursor: pointer;
+}
+
+
+
+
 
 
 
