@@ -81,7 +81,7 @@ public class BoardController {
 	@GetMapping("/boardWrite")
 	public String boardWriteFom() {
 		
-		
+		    
 		
 		return "board/boardWrite";
 		
