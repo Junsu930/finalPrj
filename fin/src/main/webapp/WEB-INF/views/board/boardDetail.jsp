@@ -17,6 +17,7 @@
    <script src="${contextPath}/resources/js/modal.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
    
+  
     <title>BOARDDETAIL</title>
    </head>
    <body>
@@ -58,7 +59,7 @@
    
    
        
-      <h1 class="BoardDetailTitle">${BoardDetail.boardTitle}</h1> 
+      <div class="BoardDetailTitle">${BoardDetail.boardTitle}</div> 
     </div>
     <div class="info">
       <div class="left">
@@ -117,39 +118,7 @@
         <button class="report">신고</button>
     </div>
     <div class="divider"></div>
- <%--  <ul class="comment-section">
-       <c:forEach var="reply" items="${rList}">
-    <li class="comment author">
-        <div class="author-info">
-            <p class="commentNickName">${reply.userNick}</p>
-            <c:if test="${loginUser.userNo == BoardDetail.userNo}">
-                <span class="author-name">작성자</span>
-            </c:if>
-            <span class="author-date">${reply.createDate}</span>
-        </div>
-        <div class="right">
-            <button class="edit">수정</button>
-            <button class="reply">답글</button>
-        </div>
-    </li>
-      
- <li class="comment author-comment">
-        <p>${reply.replyContent}</p>
-    </li>
-     <div class="divider"></div>
-    </c:forEach>
-  
-</ul> --%>
 
-    <!-- <div class="comment-input">        
-        <div class="inputDetail">
-      <textarea type="text"  placeholder=" 댓글을 남겨보세요" class="inputWi"></textarea>
-    </div>
-      <button class="submit">글쓰기</button>
-    </div>
-  </div> -->
-  
-  
 
   <!-- 댓글 -->
         <jsp:include page="/WEB-INF/views/board/reply.jsp"/>

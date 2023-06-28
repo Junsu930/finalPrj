@@ -1,10 +1,30 @@
 
 
 
+.test_obj input[type="radio"] {
+    display: none;
+  }
+  
+  .test_obj input[type="radio"] + span {
+  display: inline-block;
+      margin: -2px;
+      padding: 4px 9px;
+      background-color: var(--background-color);
+      text-align: center;
+      cursor: pointer;
+      border-radius: 30px;
+  }
+  
+  .test_obj input[type="radio"]:checked + span {
+  background-color: var(--stroke-color);
+    color: var( --background-color);
+  }
+   
+
 .boardPath{
     fill: none;
     stroke: var(--stroke-color);
-    stroke-width: 3px;
+    stroke-width: 1.5px;
     stroke-dasharray: 5055.95068359375;
     animation: drawPath 2s linear, floating 3s linear infinite;
 }
@@ -374,7 +394,13 @@ cursor: pointer;
     padding: 3px;
 }
 
-
+.searchBtn {
+    font-size: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    align-items: center;
+}
 
 
   /*Checkboxes styles*/
@@ -474,7 +500,7 @@ cursor: pointer;
       transform: rotate(45deg);
     } 
     
-    
+   
 
 body.darkmode th.title a
  {
@@ -522,6 +548,7 @@ border: 1px solid var(--border-color);
 
 #blockModal {
     display: none;
+   
 }
 
 .blockChooseModal {
@@ -675,11 +702,11 @@ border: none;
         padding-bottom: 10px;
     }
     .searchBtn{
-        font-size: 5px;
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        align-items: center;
+	font-size: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    align-items: center;
     }
     #tag{
         padding-bottom: 5px;

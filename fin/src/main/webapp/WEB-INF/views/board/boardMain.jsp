@@ -71,11 +71,25 @@
     
     <div class="naviBar">
       <ul>
-        <li><a href="#" class="total">전체</a></li>
-        <li><a href="#" class="noticeTogle">질문</a></li>
-        <li><a href="#" class="popularTogle">잡담</a></li>
-       
-       
+        
+        <li>
+         <label class="test_obj">
+        <input type="radio" class="tagNotice" name="boardTag" value="0">
+        <span>전체</span>
+    </label>
+    </li>
+        <li>
+                <label class="test_obj">
+        <input type="radio" class="tagNotice" name="boardTag" value="1">
+        <span>잡담</span>
+    </label>
+    </li>
+        <li>
+    <label class="test_obj">
+      <input type="radio" class="tagBasic" name="boardTag" value="2">
+      <span>질문</span>
+  </label>
+       </li>
        
         <c:if test="${!empty loginUser}">
                     <!-- /comm/board/write/3?mode=insert&cp=1 -->
