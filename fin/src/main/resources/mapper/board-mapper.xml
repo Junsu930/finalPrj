@@ -81,17 +81,17 @@
 	</select>
 	
 	<!-- Like -->
-<update id="like_Check" parameterType="HashMap">
-    UPDATE boardLike
-    SET like_check = like_check + 1 
-    WHERE userNo=#{userNo} AND boardNo=#{boardNo}
-  </update>
-  
-  <update id="like_Check_cancel" parameterType="HashMap">
-    UPDATE boardLike
-    SET like_check = 0
-    WHERE userNo=#{userNo} AND boardNo=#{boardNo}
-  </update>
+	<update id="like_Check" parameterType="HashMap">
+	    UPDATE boardLike
+	    SET like_check = like_check + 1 
+	    WHERE userNo=#{userNo} AND boardNo=#{boardNo}
+	  </update>
+	  
+	  <update id="like_Check_cancel" parameterType="HashMap">
+	    UPDATE boardLike
+	    SET like_check = 0
+	    WHERE userNo=#{userNo} AND boardNo=#{boardNo}
+	  </update>
 
 	
 	
