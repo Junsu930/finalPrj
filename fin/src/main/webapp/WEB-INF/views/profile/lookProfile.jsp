@@ -112,13 +112,14 @@
  		</div>
       </div>
       <div class="modal-footer">
-      	<input type="hidden" id="hiddenUserNoForModalProfile" value="">
+      	
       	<input type="hidden" id="hiddenUserNickForModalProfile" value="">
-      	<input type="hidden" id="hiddenUserNo" value="${sessionScope.loginUser.userNo }">
       	<input type="hidden" id="hiddenUserName" value="${sessionScope.loginUser.userNick}">
       	
         <button type="button" id="testBtn" class="modalBtnForProfile" >채팅하기</button>
+		<input type="hidden" id="hiddenUserNo" value="${sessionScope.loginUser.userNo }">
         <button type="button" id="bandInviteBtn" class="modalBtnForProfile">밴드초대하기</button>
+		<input type="hidden" id="hiddenUserNoForModalProfile" value="">
       </div>
     </div>
   </div>
@@ -128,6 +129,7 @@
 	<div><img src="${contextPath}/resources/images/loadingimg.gif" /></div>
 </div>   
 
+<script src="${contextPath}/resources/js/alarmPage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script>
 // 프로필 보기 모달

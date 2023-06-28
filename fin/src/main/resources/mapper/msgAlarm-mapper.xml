@@ -27,6 +27,16 @@
 		<result property="alarmDay" column="ALARM_DAY" />
 	</resultMap>
 	
+	<!-- 초대장 목록 가져오기 리절트맵 -->
+	<resultMap type="invi" id="invi_rm">
+		<id property="inviNo" column="INVI_NO"/>
+		<result property="userNick" column="USER_NICK" />
+		<result property="bandName" column="BAND_NAME" />
+		<result property="bandNo" column="BAND_NO" />
+		<result property="sendMon" column="SEND_MON" />
+		<result property="sendDay" column="SEND_DAY" />
+	</resultMap>
+	
 	
 	
 	<insert id="insertAlarm" parameterType="msgAlarm">
@@ -64,8 +74,7 @@
 	</update>
 	
 	
-	
-	
+	<!-- 메세지 알람 -->
 	
 	
 	
@@ -112,6 +121,76 @@
 		SET ROOM_ALARM_READ_STATUS = 'Y' 
 		WHERE TO_USER_NO = ${loginUserNo}
 	</update>
+	
+	
+	
+	<!-- 예약 알람 -->
+	
+	
+	<!-- 초대장 알람 -->
+	
+	<!-- 알람(게시글, 초대장, 좋아요) 총 갯수 가져오기 -->
+	<select id="totalAlarmGet" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) AS COUNT FROM TOTAL_ALARM WHERE TO_USER_NO = ${userNo} AND 
+		INVI_READ_STATSU ='N' 
+		OR
+		REPLY_READ_STATUS = 'N'
+		OR
+		LIKE_READ_STATUS = 'N'
+	</select>
+	
+	
+	<!-- 초대장 테이블에 값 세팅 -->
+	<select id="getBandNo" parameterType="map" resultType="_int">
+		SELECT BAND_NO FROM BAND WHERE LEADER_NO = ${fromUserNo}
+	</select>
+	
+	<insert id="insertInvitation" parameterType="map">
+		<selectKey keyProperty="inviNo" resultType="_int" order="BEFORE">
+			SELECT INVI_NO_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO 
+		INVITATION (INVI_NO, TO_USER_NO, FROM_USER_NO, BAND_NO, INVI_READ_STATUS)
+		VALUES (${inviNo}, ${toUserNo}, ${fromUserNo}, ${bandNo}, DEFAULT)
+	</insert>
+	
+	<!-- 초대장 인서트 끝난 후, TOTAL_ALARM 테이블에 초대장 알람 세팅-->
+	
+	<insert id="insertInviAlarm" parameterType="map">
+		INSERT INTO TOTAL_ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+		VALUES(TOTAL_ALARM_NO_SEQ.NEXTVAL, ${toUserNo}, ${fromUserNo}, ${inviNo}, NULL, NULL, DEFAULT, NULL, NULL)
+	</insert>
+	
+	
+	<!-- 초대장 보낸 사람 리스트 출력 -->
+	<select id="getInviList" parameterType="map" resultMap="invi_rm">
+		SELECT u.USER_NICK, b.BAND_NAME, i.INVI_NO,
+		TO_CHAR(i.INVI_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
+		TO_CHAR(i.INVI_DATE, 'DD"일"') AS SEND_DAY
+		FROM INVITATION i
+		JOIN "USER" u ON u.USER_NO = i.FROM_USER_NO
+		LEFT JOIN BAND b ON b.BAND_NO = i.BAND_NO
+		WHERE TO_USER_NO = ${userNo}
+	</select>
+	
+	<!-- 알람페이지 이동 후,  초대장 목록 출력  -->
+	
+	<select id="selectInviAlarmPage" parameterType="_int" resultMap="invi_rm">
+		SELECT BAND_NO, BAND_NAME
+		FROM INVITATION
+		JOIN BAND USING (BAND_NO)
+		WHERE TO_USER_NO = ${loginUserNo} AND INVI_ACCEPT_FL = 'N'
+	</select>
+	
+	
+	
+	<!-- 알람 버튼 누르면 알람 카운트 삭제  -->
+	<update id="changeAlarmStatus" parameterType="_int">
+		UPDATE TOTAL_ALARM SET INVI_READ_STATUS ='Y', REPLY_READ_STATUS ='Y', LIKE_READ_STATUS ='Y'
+		WHERE TO_USER_NO = ${userNo}
+	</update>
+	
+	
 	
 
 

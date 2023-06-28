@@ -149,6 +149,24 @@
       });
     }
 
+    const msgFromAccept = "${msgFromAccept}";
+    if(msgFromAccept.trim() !== ""){
+      Swal.fire({
+        icon: "success",
+        text: msgFromAccept,
+        title: "BandArchive"
+      });
+    }
+
+    const msgFromDenied = "${msgFromDenied}";
+    if(msgFromDenied.trim() !== ""){
+      Swal.fire({
+        icon: "success",
+        text: msgFromDenied,
+        title: "BandArchive"
+      });
+    }
+
   </script>
 
 

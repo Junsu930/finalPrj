@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="signUpBand">
+
+	
+	
+	
+	
+	<!-- 밴드 가입하기 -->
+	<insert id="acceptBand" parameterType="invi">
+		INSERT INTO BAND_USER (BAND_NO, USER_NO, LEADER_FL)
+		VALUES ( ${bandNo}, ${fromUserNo}, 'F')
+	</insert>
+	
+	<update id="changeInviStatus" parameterType="_int">
+		UPDATE INVITATION SET INVI_ACCEPT_FL = 'Y' WHERE BAND_NO = ${bandNo}
+	</update>
+	
+	
+
+</mapper>
