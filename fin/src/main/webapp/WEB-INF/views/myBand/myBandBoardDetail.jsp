@@ -60,8 +60,16 @@
 		<div>댓글</div>
 		<!-- 각각의 댓글 -->
 		<div>
+			<!-- 닉네임 -->
+			<div>으앙이</div>
+			<!-- 내용 -->
+			<div>ㅋㅋㅋㅋㅋㅋㅋㅋ머래 머래머래 머레이다</div>
 		</div>
 		<!-- 댓글 쓰기 -->
+		<div class="replyForBandBoardDetailBtnDiv">
+			<textarea id="replyForBandBoard"></textarea>
+			<button type="button" id="replyForBandBoardBtn">댓글작성</button>
+		</div>
 	</div>
 
 <jsp:include page="/WEB-INF/views/faq/faq.jsp"/>

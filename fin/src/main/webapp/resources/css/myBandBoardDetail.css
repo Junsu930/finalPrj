@@ -8,6 +8,8 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 2px 2px 20px silver;
 	
 }
 
@@ -31,9 +33,51 @@
 	
 }
 
+/* 댓글 글씨 영역 */
+.replyForBandBoardDetail > div:nth-of-type(1){
+	font-size: 1.2em;
+	font-weight: 500;
+}
 
+/* 각각의 댓글 영역 */
+.replyForBandBoardDetail > div:nth-of-type(2){
+	border-bottom: 1px solid silver;
+	border-top: 1px solid silver;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 
+/* 댓글창과 버튼 영역 */
+.replyForBandBoardDetailBtnDiv{
+	position: relative;
+}
 
+#replyForBandBoard{
+	resize: none;
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-right: 20%;
+}
+
+#replyForBandBoardBtn{
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 /* 제목 영역 */
