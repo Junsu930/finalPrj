@@ -43,20 +43,30 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 		<section class="alarmSection">
-			<div class="alarmWrapper">
-				<h1>✉밴드 초대장</h1>
-				<p>한 장의 밴드 초대장이 도착했습니다!</p>
-				<div class="alarmBtnBox">
-					<form action="">
-						<button>수락&nbsp;&nbsp;😊</button>
-					</form>
-					<form action="">
-						<button>거절&nbsp;&nbsp;😱</button>
-					</form>
-				</div>
-			</div>
+			<c:choose>
+				<c:when test="${!empty inviList}">
+					<c:forEach var="invi" items="${inviList}">
+						<div class="alarmWrapper">
+							<h1>✉밴드 초대장</h1>
+							<p>한 장의 ${invi.bandName}&nbsp;초대장이 도착했습니다!</p>
+							<div class="alarmBtnBox">
+								<form action="acceptBand" method="POST">
+									<input type="hidden" value="${sessionScope.loginUser.userNo}">
+									<button class="acceptBtn">수락&nbsp;&nbsp;😊</button>
+									<input type="hidden" name="bandNo" value="${invi.bandNo}" >
+								</form>
+								<form action="deniedBand" method="POST">
+									<button>거절&nbsp;&nbsp;😱</button>
+									<input type="hidden" value="${invi.bandNo}" name="bandNo">
+								</form>
+							</div>
+						</div>
+					</c:forEach>
+				</c:when>
+			</c:choose>
 		</section>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<script src="${contextPath}/resources/js/alarmPage.js"></script>
 </body>
 </html>
