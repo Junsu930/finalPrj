@@ -17,6 +17,7 @@
    <script src="${contextPath}/resources/js/modal.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
    
+  
     <title>BOARDDETAIL</title>
    </head>
    <body>
@@ -57,7 +58,7 @@
    
    
        
-      <h1 class="BoardDetailTitle">${BoardDetail.boardTitle}</h1> 
+      <div class="BoardDetailTitle">${BoardDetail.boardTitle}</div> 
     </div>
     <div class="info">
       <div class="left">
@@ -92,52 +93,20 @@
         <span class="comment">11<span class="comment_s">개</span></span>
      
     </div>
-
+   
     <div class="commentBox2">
     	<svg id="heart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6">
             <path  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
         </svg>
+        <span class="commentHeartss">like</span>
     </div>
-      <a href = 'javascript:login_need();'></a>
-         <span class="commentHeartss">like</span>
     </div>
         <button class="report">신고</button>
   
+
     </div>
     <div class="divider"></div>
- <%--  <ul class="comment-section">
-       <c:forEach var="reply" items="${rList}">
-    <li class="comment author">
-        <div class="author-info">
-            <p class="commentNickName">${reply.userNick}</p>
-            <c:if test="${loginUser.userNo == BoardDetail.userNo}">
-                <span class="author-name">작성자</span>
-            </c:if>
-            <span class="author-date">${reply.createDate}</span>
-        </div>
-        <div class="right">
-            <button class="edit">수정</button>
-            <button class="reply">답글</button>
-        </div>
-    </li>
-      
- <li class="comment author-comment">
-        <p>${reply.replyContent}</p>
-    </li>
-     <div class="divider"></div>
-    </c:forEach>
-  
-</ul> --%>
 
-    <!-- <div class="comment-input">        
-        <div class="inputDetail">
-      <textarea type="text"  placeholder=" 댓글을 남겨보세요" class="inputWi"></textarea>
-    </div>
-      <button class="submit">글쓰기</button>
-    </div>
-  </div> -->
-  
-  
 
   <!-- 댓글 -->
         <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
