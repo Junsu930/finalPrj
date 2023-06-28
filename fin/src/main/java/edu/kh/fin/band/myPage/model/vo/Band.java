@@ -13,7 +13,6 @@ public class Band {
 	
 	private int bandNo;
 	private String bandName;
-	private String genre;
 	private String ment;
 	private int leaderNo;
 	private int userNo;
