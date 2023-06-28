@@ -37,3 +37,5 @@ for(let eachModal of profileModalOn){
     })
   });
 }
+
+

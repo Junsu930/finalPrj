@@ -71,7 +71,7 @@
 
         <c:if test="${empty msgList}">
             <div class="emptyMsgBox">
-                <h1>NO MESSAGE!</h1>
+                <p style="cursor: pointer;" onclick="location.href='/fin/main'" id="emptyMsgText">NO MESSAGE!</p>
             </div>
         </c:if>
 

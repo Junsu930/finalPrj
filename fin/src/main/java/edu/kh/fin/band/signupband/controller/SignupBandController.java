@@ -62,10 +62,10 @@ public class SignupBandController {
 		
 		if(result > 0) {
 			ra.addFlashAttribute("msgFromDenied", "밴드가입을 거절했습니다!");
-			return "redirect:alarmPage";
+			return "redirect:main";
 		}else {
 			ra.addFlashAttribute("msgFromDenied", "거절을 실패하네 ㅋㅋ!");
-			return "redirect:main";
+			return "redirect:alarmPage";
 		}
 	}
 

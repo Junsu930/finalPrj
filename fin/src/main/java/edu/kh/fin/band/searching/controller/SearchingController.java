@@ -65,7 +65,7 @@ public class SearchingController {
 				path = "redirect:/setPosition";
 			}
 			
-		} else {// 로그인이 안되어 있는경우
+		}else {// 로그인이 안되어 있는경우
 			
 			message = "로그인을 해주세요";
 			path = "redirect:/login";

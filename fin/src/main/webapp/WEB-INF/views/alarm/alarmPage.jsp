@@ -63,6 +63,11 @@
 						</div>
 					</c:forEach>
 				</c:when>
+				<c:otherwise>
+					<div id="emptyInvitation">
+						<p style="cursor: pointer;" onclick="location.href='/fin/main'" id="inviEmpty">EMPTY!</p>
+					</div>
+				</c:otherwise>
 			</c:choose>
 		</section>
 
