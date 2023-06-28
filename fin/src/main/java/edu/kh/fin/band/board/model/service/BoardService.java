@@ -23,6 +23,8 @@ public interface BoardService {
 
 	int getTotal();
 
+	List<BoardDetail> boardTalk(Criteria cri);
+
 
 
 

@@ -40,28 +40,29 @@ public class BoardController {
 	
 	@GetMapping("/board")
 	
-	public String BoardList(Model model, Criteria cri) {
+	public String BoardList(Model model, Criteria cri ) {
 	    int total = service.getTotal();
 	    PageVO pageVO = new PageVO(cri, total);
 	    List<BoardDetail> boardList = service.boardList(cri);
 	    model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
 	    return "board/boardMain";
-//		 public String BoardList(Model model) {
-//
-//		Criteria cri = new Criteria();
-//		PageVO pageVO = new PageVO(cri, service.getTotal());
-//		List<BoardDetail> boardList = service.boardList(cri);
-//		model.addAttribute("boardList",service.boardList(cri));
-//		model.addAttribute("pageVO",pageVO);
-//		 
-//	
-//		
-//		return "board/boardMain";
+
 		
 	}
 	
 	
+	@GetMapping("/boardTalk")
+	public String boardTalk(Model model, Criteria cri ) {
+	    int total = service.getTotal();
+	    PageVO pageVO = new PageVO(cri, total);
+	    List<BoardDetail> boardTalk = service.boardTalk(cri);
+	    model.addAttribute("boardTalk", boardTalk);
+	    model.addAttribute("pageVO", pageVO);
+	    return "board/boardMain";
+
+		
+	}
 	
 	
 	
