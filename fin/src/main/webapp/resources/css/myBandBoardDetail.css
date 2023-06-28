@@ -3,7 +3,7 @@
 	margin:auto;
 	margin-top : 250px;
 	height: 120vh;
-	width: 80%;
+	width: 65%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -26,7 +26,7 @@
 .replyForBandBoardDetail{
 	margin:auto;
 	margin-top : 10px;
-	width: 80%;
+	width: 65%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -37,19 +37,52 @@
 .replyForBandBoardDetail > div:nth-of-type(1){
 	font-size: 1.2em;
 	font-weight: 500;
+	border-bottom: 1px solid silver;
+	padding-bottom: 15px;
 }
 
-/* 각각의 댓글 영역 */
-.replyForBandBoardDetail > div:nth-of-type(2){
-	border-bottom: 1px solid silver;
-	border-top: 1px solid silver;
-	padding-top: 10px;
-	padding-bottom: 10px;
+.replyNickDiv{
+	font-size:0.8em;
+	font-weight: 600;
+	margin-bottom: 4px;
 }
 
 /* 댓글창과 버튼 영역 */
 .replyForBandBoardDetailBtnDiv{
 	position: relative;
+	margin-top: 10px;
+}
+
+/* 멤버가 아닐 경우 막을 div */
+#replyForBandBoardNotMem{
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-right: 20%;
+    background: var(--grr-color);
+	
+}
+
+
+
+#replyForBandBoardBtnNotMem{
+	position: absolute;
+    right: 20px;
+    top: 30px;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: silver;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	
 }
 
 #replyForBandBoard{
@@ -79,7 +112,35 @@
     align-items: center;
 }
 
+.eachReplyDiv{
+	display: flex;
+	border-bottom: 1px solid silver;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	
+}
 
+.eachReplyDiv > div:nth-of-type(1){
+	flex-basis: 80%;
+}
+
+.eachReplyDiv > div:nth-of-type(2){
+	flex-basis: 20%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: baseline;
+}
+
+.eachReplyDiv > div:nth-of-type(2) > button{
+	border : none;
+	margin-left: 5px;
+	background: none;
+	cursor: pointer; 
+	font-size: 0.7em;
+}
+
+/* *********************************************************** */
 /* 제목 영역 */
 .realContentForBandBoard > div:first-of-type {
 	flex-basis: 5%;

@@ -19,11 +19,21 @@ let hiddenWritersUserNo = document.getElementById("hiddenWritersUserNo").value;
 document.getElementById("questionChatBtn").addEventListener("click", function(){
 
   if($("#hiddenUserNo").val() == null || $("#hiddenUserNo").val() ==""){
-    swal.fire("로그인 먼저 진행해주세요");
+    swal.fire({
+	    title : "로그인 먼저 진행해주세요",
+    	icon  : "success",
+    	closeOnClickOutside : false
+    }).then(function(){
+      toLoginPage();
+    });
   }else{
      chatStart(hiddenWritersUserNo);
   }
 });
+
+function toLoginPage(){
+	location.href="/fin/login?ref="+document.location.href;
+}
 
 $("#deleteUsedBoardBtn").click(()=>{
     Swal.fire({

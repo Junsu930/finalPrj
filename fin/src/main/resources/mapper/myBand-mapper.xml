@@ -12,6 +12,17 @@
 		<result property="boardTag" column="BOARD_TAG"/>		
 		<result property="bandName" column="BAND_NAME"/>		
 	</resultMap>
+
+	<resultMap type="myBandReply" id="myBandReply_rm">
+		<id property="replyNo" column="REPLY_NO"/>
+		<result property="replyContent" column="REPLY_CONTENT"/>
+		<result property="replySt" column="REPLY_ST"/>
+		<result property="replyDt" column="CREATE_DT"/>
+		<result property="userNo" column="USER_NO"/>
+		<result property="pReplyNo" column="PARENT_REPLY_NO"/>
+		<result property="boardNo" column="BOARD_NO"/>	
+		<result property="userNick" column="USER_NICK"/>	
+	</resultMap>
 	
 	<select id="bandBoardList" parameterType="hashmap" resultMap="bandBoard_rm">
 		SELECT *
@@ -54,5 +65,27 @@
 		END CREATE_DATE, READ_COUNT , USER_NICK, BOARD_LIKE ,BOARD_TAG FROM BAND_BOARD bb 
 		JOIN "USER" USING(USER_NO)
 		WHERE BOARD_NO = ${boardNo}
+	</select>
+	
+	<insert id="insertReplyForBandBoard" parameterType="hashmap">
+		INSERT INTO BAND_BOARD_REPLY VALUES(REPLY_BAND_BOARD_SEQ.NEXTVAL, #{replyText}, 'Y', SYSDATE, ${loginUserNo}, NULL, ${boardNo})
+	</insert>
+	
+	<select id="loadReplyForBandBoard" parameterType="_int" resultMap="myBandReply_rm">
+		SELECT LEVEL,  R.* FROM
+		    (SELECT REPLY_NO, REPLY_CONTENT,
+	        TO_CHAR(CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') CREATE_DT,
+	        BOARD_NO, USER_NO, USER_NICK, PARENT_REPLY_NO, REPLY_ST
+		    FROM BAND_BOARD_REPLY
+		    JOIN "USER" USING(USER_NO)
+		    WHERE BOARD_NO = ${boardNo}) R
+		WHERE REPLY_ST = 'Y'
+		START WITH PARENT_REPLY_NO IS NULL
+		CONNECT BY PRIOR REPLY_NO = PARENT_REPLY_NO
+		ORDER SIBLINGS BY REPLY_NO
+	</select>
+	
+	<select id="rCount" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) FROM BAND_BOARD_REPLY WHERE BOARD_NO = ${boardNo}
 	</select>
 </mapper>

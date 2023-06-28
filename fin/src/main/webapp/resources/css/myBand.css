@@ -123,6 +123,12 @@
 	padding-top: 20px;
 }
 
+.replyCountForBandBoard{
+	font-size: 0.8em;
+	color: var(--accent-color);
+	font-weight : 600;
+	margin-left: 7px;
+}
 
 .eachBoardFormForBand{
 	width: 100%;

@@ -151,7 +151,13 @@ for(let time of times){
 $("#timeSubmit").click(()=>{
 
     if($("#sessionNoForBookRoom").val() == null || $("#sessionNoForBookRoom").val() == ""){
-        swal.fire("로그인 먼저 진행해주세요.");
+        swal.fire({
+            title : "로그인 먼저 진행해주세요",
+            icon  : "success",
+            closeOnClickOutside : false
+        }).then(function(){
+          toLoginPage();
+        });
     }else{
         let loginNo =  $("#sessionNoForBookRoom").val();
         let dayData = $("#schedule").html();
@@ -185,3 +191,7 @@ $("#timeSubmit").click(()=>{
     }
 
 });
+
+function toLoginPage(){
+	location.href="/fin/login?ref="+document.location.href;
+};

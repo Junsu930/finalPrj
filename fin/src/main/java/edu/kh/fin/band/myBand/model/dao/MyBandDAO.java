@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myBand.model.vo.MyBand;
+import edu.kh.fin.band.myBand.model.vo.MyBandReply;
 
 @Repository
 public class MyBandDAO {
@@ -18,7 +19,20 @@ public class MyBandDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public List<MyBand> bandList(Map<String, Object> boardMap) {
-		return sqlSession.selectList("myBandMapper.bandBoardList", boardMap);
+		
+		List<MyBand> bList = sqlSession.selectList("myBandMapper.bandBoardList", boardMap);
+		
+		for(MyBand eachBand : bList) {
+			int MboardNo = eachBand.getBoardNo();
+			
+			int rCount = sqlSession.selectOne("myBandMapper.rCount", MboardNo);
+			
+			eachBand.setReplyCount(rCount);
+			
+		}
+		
+		
+		return bList;
 	}
 
 	public String leaderNick(int bandNo) {
@@ -57,6 +71,22 @@ public class MyBandDAO {
 
 	public MyBand bandBoardDetail(int boardNo) {
 		return sqlSession.selectOne("myBandMapper.bandBoardDetail",boardNo);
+	}
+
+	public int insertReplyForBandBoard(int boardNo, int loginUserNo, String replyText) {
+		
+		
+		Map<String, Object> replyMap = new HashMap<String, Object>();
+		
+		replyMap.put("boardNo", boardNo);
+		replyMap.put("loginUserNo", loginUserNo);
+		replyMap.put("replyText", replyText);
+		
+		return sqlSession.insert("myBandMapper.insertReplyForBandBoard", replyMap);
+	}
+
+	public List<MyBandReply> loadReplyForBandBoard(int boardNo) {
+		return sqlSession.selectList("myBandMapper.loadReplyForBandBoard", boardNo);
 	}
 
 }

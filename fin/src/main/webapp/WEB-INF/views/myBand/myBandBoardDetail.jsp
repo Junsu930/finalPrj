@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,26 +56,35 @@
 			</div>
 		</div>
 	</div>
-	<div class="replyForBandBoardDetail">
+	<div class="replyForBandBoardDetail" id="replyForBandBoardDetail">
 		<!-- 댓글표식 -->
 		<div>댓글</div>
+		<input type="hidden" value="${boardDetail.boardNo}" id="hiddenReplyBoardNoForBandBoard">
+		<input type="hidden" value="${sessionScope.loginUser.userNo}" id="hiddenSessionNoForReply">
+		<input type="hidden" value="${memberFl}" id="memberFlForAjax">
 		<!-- 각각의 댓글 -->
-		<div>
-			<!-- 닉네임 -->
-			<div>으앙이</div>
-			<!-- 내용 -->
-			<div>ㅋㅋㅋㅋㅋㅋㅋㅋ머래 머래머래 머레이다</div>
+		<div id="replyContDiv">
 		</div>
-		<!-- 댓글 쓰기 -->
-		<div class="replyForBandBoardDetailBtnDiv">
-			<textarea id="replyForBandBoard"></textarea>
-			<button type="button" id="replyForBandBoardBtn">댓글작성</button>
-		</div>
+		<c:if test="${memberFl == 'T'}">
+			<!-- 댓글 쓰기 -->
+			<div class="replyForBandBoardDetailBtnDiv">
+				<textarea id="replyForBandBoard"></textarea>
+				<button type="button" id="replyForBandBoardBtn">댓글작성</button>
+			</div>
+		</c:if>
+		<c:if test="${memberFl == 'F' }">
+			<!-- 댓글 쓰기 -->
+			<div class="replyForBandBoardDetailBtnDiv">
+				<div id="replyForBandBoardNotMem">밴드 멤버의 경우만 댓글을 작성할 수 있습니다.</div>
+				<button type="button" id="replyForBandBoardBtnNotMem">댓글작성</button>
+			</div>
+		</c:if>
 	</div>
 
 <jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
 <jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/js/myBandBoardDetail.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/js/myBandBoardReply.js"></script>
 </body>
 </html>

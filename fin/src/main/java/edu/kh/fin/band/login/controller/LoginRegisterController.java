@@ -35,7 +35,11 @@ public class LoginRegisterController {
 	
 	
 	@GetMapping("/login")
-	public String loginController() {
+	public String loginController(@RequestParam(value="ref", required = false) String ref, Model model) {
+		
+
+		
+		model.addAttribute("ref", ref);
 		
 		return "user/LoginRegister";
 		
@@ -47,7 +51,9 @@ public class LoginRegisterController {
 						, RedirectAttributes ra
 						, HttpServletResponse resp 
 						, HttpServletRequest req
-						, @RequestParam(value="saveId", required = false) String saveId ) {
+						, @RequestParam(value="saveId", required = false) String saveId
+						, @RequestParam(value="ref", required = false) String ref
+						) {
 		
 		logger.info("로그인 수행됨");
 		
@@ -78,15 +84,21 @@ public class LoginRegisterController {
 			// 쿠키를 클라이언트에 전달
 			resp.addCookie(cookie);
 			
-			path = "redirect:/main";
-			
+			System.out.println(ref);
+
+			if(ref!=null && !ref.equals("")) {
+				path = "redirect:" + ref;
+			}else {
+
+				path = "redirect:/main";
+			}
 		} else { //실패 
 			
 			ra.addFlashAttribute("msg", "이메일또는 비밀번호가 틀립니다");
 			path = "redirect:/login";
 			
 		}
-		
+
 		return path;
 		
 	}

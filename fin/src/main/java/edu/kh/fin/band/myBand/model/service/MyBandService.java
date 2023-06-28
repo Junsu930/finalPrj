@@ -11,6 +11,7 @@ import edu.kh.fin.band.common.pagination.CommonCriteria;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myBand.model.dao.MyBandDAO;
 import edu.kh.fin.band.myBand.model.vo.MyBand;
+import edu.kh.fin.band.myBand.model.vo.MyBandReply;
 
 @Service
 public class MyBandService {
@@ -52,6 +53,14 @@ public class MyBandService {
 
 	public MyBand bandBoardDetail(int boardNo) {
 		return dao.bandBoardDetail(boardNo);
+	}
+
+	public int insertReplyForBandBoard(int boardNo, int loginUserNo, String replyText) {
+		return dao.insertReplyForBandBoard(boardNo, loginUserNo, replyText);
+	}
+
+	public List<MyBandReply> loadReplyForBandBoard(int boardNo) {
+		return dao.loadReplyForBandBoard(boardNo);
 	}
 	
 	

@@ -59,7 +59,7 @@
 									<input type="hidden" name="thisBandNo" value="${bandNo}">
 									<!-- 제목 영역 -->
 									<div>
-										${eachBoard.boardTitle }
+										${eachBoard.boardTitle }<span class="replyCountForBandBoard">${eachBoard.replyCount}</span>
 									</div>
 									<!-- 조회수, 좋아요 등등 -->
 									<div>

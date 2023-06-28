@@ -37,6 +37,7 @@
 		<typeAlias type="edu.kh.fin.band.myBand.model.vo.MyBand" alias="myBand"/>
 		<typeAlias type="edu.kh.fin.band.myPage.model.vo.Ban" alias="banList"/>
 		<typeAlias type="edu.kh.fin.band.myPage.model.vo.Band" alias="band"/>
+		<typeAlias type="edu.kh.fin.band.myBand.model.vo.MyBandReply" alias="myBandReply"/>
 	</typeAliases>
 	
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
