@@ -185,6 +185,10 @@ function ajaxStart(){// 로그인 시 회원 정보를 바탕으로 알람 가�
       getAlarmCount(loginUserNo);
       alarmDisappearCount(loginUserNo);
       getUserNicksFromRoom(loginUserNo);
+
+      totalAlarmGet(loginUserNo) // 알람(댓글, 좋아요, 초대장) 갯수 가져오기
+      alarmGetFromInvi(loginUserNo) // 초대장 목록 출력
+      changeAlarmStatus(loginUserNo) // 알람(댓글, 좋아요, 초대장) 갯수 삭제하기
     }, //  success 끝
     error : function(request, status, error){
       console.log("getUserNo AJAX 에러 발생");
@@ -329,6 +333,7 @@ function getUserNicksFromRoom(loginUserNo){ // 예약 신청알람 함수
       let stringMsg1 = "님께서 회원님의 "
       let stringMsg2 = "을 예약 신청했습니다!"
       if(getUsers === "none"){
+        console.log("none");
         $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 예약신청이 없거나, 읽었을 때, 코드 수행
       }else{
         for(let i = 0; i < getUsers.length; i++){
@@ -346,7 +351,77 @@ function getUserNicksFromRoom(loginUserNo){ // 예약 신청알람 함수
 }
 
 
+// 알람(초대장 + 댓글 + 좋아요) 갯수 가져오기
+function totalAlarmGet(loginUserNo){
+  
+  $.ajax({
+    url:"totalAlarmGet",
+    method:"GET",
+    data:{"loginUserNo" : loginUserNo},
+    dataType: "JSON",
+    success: function(count){
+      if(count != 0){
+        $('#alarmCount').css('display', 'block');
+        $('#alarmCount').text(count); // 알람 카운트가 0 초과일 때, 수행
+      }else{
+        console.log("총 알람 없음");
+      }
+    },
+    error : function(request, status, error){
+      console.log("totalAlarmGet AJAX 에러 발생");
+      console.log("상태코드 : " + request.status); 
+    }
+  })
+}
 
+// 초대장 목록 출력 에이잭스
+function alarmGetFromInvi(loginUserNo){
+  $.ajax({
+    url:"alarmGetFromInvi",
+    method: "GET",
+    data: {"loginUserNo": loginUserNo},
+    dataType:"JSON",
+    success: function(inviList){
+      // 정우님게서 주펄밴드 초대장을 보냈습니다! 지금 확인하세요!
+      let msg = "님께서 "
+      let msg2 = " 초대장을 보냈습니다!!"
+      if(inviList === "none"){
+        $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
+      }else{
+        for(let i = 0; i < inviList.length; i++){
+          $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${inviList[i].sendMon}<br><span>${inviList[i].sendDay}</span></h3></div>
+          <a href="alarmPage"><p>${inviList[i].userNick + msg + inviList[i].bandName + msg2}<br>지금 확인하세요!</p></a></li>`) // 새로운 초대장이 있을 때, 코드 수행
+        }
+      } // if끝
+    },
+    error : function(request, status, error){
+      console.log("alarmGetFromInvi AJAX 에러 발생");
+      console.log("상태코드 : " + request.status); 
+    }
+  })
+}
+
+
+// 알람(초대장 + 댓글 + 좋아요) 클릭 시, READ_STATUS 바꿔주기
+function changeAlarmStatus(loginUserNo){
+  $.ajax({
+    url:"changeAlarmStatus",
+    method: "GET",
+    data: {"loginUserNo": loginUserNo},
+    dataType:"JSON",
+    success: function(result){
+      if(result > 0){
+        $('#alarmCount').css('display', 'none');
+      }else{
+        console.log("changeAlarmStatus" + result);
+      }
+    },
+    error : function(request, status, error){
+      console.log("changeAlarmStatus AJAX 에러 발생");
+      console.log("상태코드 : " + request.status); 
+    }
+  })
+}
 
 
 

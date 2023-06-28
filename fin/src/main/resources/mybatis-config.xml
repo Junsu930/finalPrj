@@ -31,6 +31,7 @@
 		<typeAlias type="edu.kh.fin.band.board.model.vo.BoardDetail" alias="detail"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.BoardImage" alias="boardImage"/>
 		<typeAlias type="edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm" alias="msgAlarm"/>
+		<typeAlias type="edu.kh.fin.band.msgAlarm.model.vo.Invitation" alias="invi"/>
 		<typeAlias type="edu.kh.fin.band.socialLogin.model.vo.SocialInfo" alias="social"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.Reply" alias="reply"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.Criteria" alias="criteria"/>
@@ -56,5 +57,6 @@
 		<mapper resource="/mapper/myPage-mapper.xml"/>
 		<mapper resource="/mapper/reply-mapper.xml" />
 		<mapper resource="/mapper/myBand-mapper.xml"/>
+		<mapper resource="/mapper/signUpBand-mapper.xml"/>
 	</mappers>
 </configuration>
