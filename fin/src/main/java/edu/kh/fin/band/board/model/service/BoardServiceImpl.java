@@ -71,6 +71,18 @@ public class BoardServiceImpl implements BoardService{
 		return dao.boardTalk(cri);
 	}
 
+	@Override
+	public List<BoardDetail> boardQus(Criteria cri) {
+		// TODO Auto-generated method stub
+		return dao.boardQus(cri);
+	}
+
+	@Override
+	public List<BoardDetail> boardAll(Criteria cri) {
+		// TODO Auto-generated method stub
+		return dao.boardAll(cri);
+	}
+
 
 
 	

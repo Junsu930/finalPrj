@@ -87,8 +87,3 @@ $(".modal-content").click(function(){
 });
 
 
-
-
-
-
-

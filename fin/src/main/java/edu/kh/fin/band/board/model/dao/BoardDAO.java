@@ -66,6 +66,16 @@ public class BoardDAO {
 		return sqlSession.selectList("boardMapper.boardTalk",cri);
 	}
 
+	public List<BoardDetail> boardQus(Criteria cri) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardMapper.boardQus",cri);
+	}
+
+	public List<BoardDetail> boardAll(Criteria cri) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardMapper.boardAll",cri);
+	}
+
 
 
 

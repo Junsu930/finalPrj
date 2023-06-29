@@ -13,6 +13,17 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>
    <script type="text/javascript" src="resources/ckeditor/ckeditor.js"></script>
+    <style>
+		#hh {
+		  font-size: 20px;
+		  margin-bottom: 20px;
+		  color: #474554;
+		  font-weight: bold;
+		  padding-left:0;
+		
+		  
+		}
+</style>
     <title>WRITE</title>
    </head>
    <body>
@@ -28,7 +39,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
        <form action="boardWrite" method="post">
   <div class="container">
-    <h1>글쓰기</h1>
+    <h1 id="hh">글쓰기</h1>
     <div class="tagsBox">
     <div class="tagsTitle">글머리</div>
     <div class="tagsBoxDetail">

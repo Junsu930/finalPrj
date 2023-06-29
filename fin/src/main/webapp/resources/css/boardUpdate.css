@@ -5,12 +5,7 @@
   padding-top: 300px;
   padding-bottom: 300px;
 }
-h1 {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #474554;
-  font-weight: bold;
-}
+ 
 .tagsBox {
   display: flex;
   margin-bottom: 20px;
