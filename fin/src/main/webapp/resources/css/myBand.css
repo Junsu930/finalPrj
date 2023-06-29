@@ -101,6 +101,7 @@
     box-shadow: 2px 2px 20px silver;
 }
 
+
 .memList{
 	margin-left: 4px;
 }
@@ -173,7 +174,20 @@
 .eachBoardDiv:hover{
 	background-color: #edf2f4;
 	
-	
+}
+
+/* 공지글 */
+.notification{
+	background-color: #FFFAD7;
+}
+
+.notiSpan{
+	border-radius: 7px;
+	font-size: 0.6em;
+	margin-right: 10px;
+	padding: 3px;
+	background-color: var(--grr-color);
+
 }
 /* 제목 영역 */
 .eachBoardDiv > div:first-of-type {

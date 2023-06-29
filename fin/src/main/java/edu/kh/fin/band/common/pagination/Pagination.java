@@ -34,7 +34,6 @@ public class Pagination {
 		
 		// 진짜 마지막 end 만약 게시글 53개면 마지막은 6
 		int realEnd = (int)Math.ceil(this.total / (double)this.amount);
-		
 		if(this.endPage > realEnd) {
 			this.endPage = realEnd;
 		}

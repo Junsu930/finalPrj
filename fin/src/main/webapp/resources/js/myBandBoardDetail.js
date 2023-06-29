@@ -10,7 +10,6 @@ const likeUnlikeFunc = () => {
         heart.classList.add('like');
     }
 }
-heart.addEventListener('click', likeUnlikeFunc);
 
 $("#deleteBtnForBandBoard").click(function(){
     Swal.fire({
@@ -22,12 +21,53 @@ $("#deleteBtnForBandBoard").click(function(){
         cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
         confirmButtonText: '삭제', // confirm 버튼 텍스트 지정
         cancelButtonText: '취소', // cancel 버튼 텍스트 지정
-
         
-     }).then(result => {
+        
+    }).then(result => {
         // 만약 Promise리턴을 받으면,
         if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
-           Swal.fire('승인이 완료되었습니다.', '화끈하시네요~!', 'success');
+            $("#deleteBandBoardDetail").submit();
         }
-     });
+    });
 });
+
+// 좋아요 로직
+$("#heart").click(()=>{
+    let loginUser = $("#hiddenLoginUser").val();
+    let boardNo = $("#hiddenReplyBoardNoForBandBoard").val();
+    // 로그인 유저가 없으면
+    if(loginUser == null || loginUser == ""){
+        swal.fire("로그인 먼저 진행하세요");
+    }else{
+        if($("#likeCheckFor").val() == 'T'){
+            // 이미 체크된 상태면
+            $.ajax({
+                url : "/fin/unlikeLogic",
+                data : {"userNo" : loginUser, "boardNo": boardNo},
+                type: "POST",
+                success : function(){
+
+                    likeUnlikeFunc();
+                    $("#likeCheckFor").val('F');
+                }
+            });
+            
+        }else{
+            // 체크가 안된 상태면
+            $.ajax({
+                url : "/fin/likeLogic",
+                data : {"userNo" : loginUser, "boardNo": boardNo},
+                type: "POST",
+                success : function(){
+
+                    likeUnlikeFunc();
+                    $("#likeCheckFor").val('T');
+                }
+            });
+        }
+        
+        
+
+    }
+
+})
