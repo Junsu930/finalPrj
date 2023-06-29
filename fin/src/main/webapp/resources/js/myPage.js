@@ -84,14 +84,25 @@ showBtn.addEventListener('click', function(){
   });
   
   
-  const inutImg = document.getElementById("input-image");
+  const inputImg = document.getElementById("inputimage");
   const fileImg = document.getElementById("fileImg");
+  fileImg.addEventListener("click", function() {
+    inputImg.click
+
+  })
+
+
+
+
+
+
   const secession = document.getElementById("secessionBtn");
-
-
+  const userNo = document.getElementById("No");
+  const secessionout =document.getElementById("secessionout");
+  
   secession.addEventListener("click", function() {
     if(confirm("정말로 탈퇴하시겠습니까?")) {
-      return true;
+      secessionout.submit();
     } else {
       alert("탈퇴 취소")
       return false;
@@ -100,22 +111,5 @@ showBtn.addEventListener('click', function(){
 
   });
 
- let banList;
+ 
 
-  $(document).ready(()=>{
-    $.ajax({
-      url : "banList",
-      type : "get",
-      dataType : "json",
-      success : function(result){
-        console.log(result)
-
-        banList = result;
-
-      }
-
-    })
-
-
-
-  });

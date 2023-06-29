@@ -87,8 +87,10 @@ WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
     
     
     <select id="getTotal" resultType= "int">
-    select count(*) as total from Board
+    	select count(*) as total from Board
     </select>
+    
+    
      <insert id="write" parameterType="board" >
 	INSERT INTO BOARD VALUES(
    	SEQ_BOARD_NO.NEXTVAL,

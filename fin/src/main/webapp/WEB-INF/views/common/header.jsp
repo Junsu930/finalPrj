@@ -105,7 +105,13 @@
                     </ul>
 
                     <div class="profileImgBox" onclick="activeMenu()" id="profileImgBox">
-                        <img src="${contextPath}/resources/images/guitarduck.png" alt="" id="profileImg">
+                    	<c:if test="${empty loginUser.profileImg}">
+                			<img src="${contextPath}/resources/images/guitarduck.png" id="profile-image">
+                		</c:if>
+
+                		<c:if test="${!empty loginUser.profileImg}">
+                     		<img src="${contextPath}${loginUser.profileImg}" id="profile-image">
+                		</c:if>               
                     </div>
         
                     <div class="menu">
