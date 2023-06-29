@@ -19,8 +19,24 @@
         // EL 작성 시 scope를 지정하지 않으면
         // page -> request -> session -> application 순서로 검색하여
         // 일치하는 속성이 있으면 출력
+
+
+
+
+      
     </script>
 </c:if> 
+<style>
+#hh {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #474554;
+  font-weight: bold;
+  padding-left:0;
+
+  
+}
+</style>
     <title>WRITE</title>
    </head>
    <body>
@@ -30,7 +46,7 @@
 
        <form action="mody" method="post">
   <div class="container">
-    <h1>글쓰기</h1>
+    <h1 id="hh">글쓰기</h1>
     <div class="tagsBox">
     <div class="tagsTitle">글머리</div>
     <div class="tagsBoxDetail">

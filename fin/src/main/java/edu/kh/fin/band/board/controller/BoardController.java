@@ -20,8 +20,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import edu.kh.fin.band.board.model.service.ReplyService;
 import edu.kh.fin.band.board.model.vo.Reply;
@@ -50,35 +53,28 @@ public class BoardController {
 
 		
 	}
-	
-	
-	@GetMapping("/boardTalk")
-	public String boardTalk(Model model, Criteria cri ) {
-	    int total = service.getTotal();
-	    PageVO pageVO = new PageVO(cri, total);
-	    List<BoardDetail> boardTalk = service.boardTalk(cri);
-	    model.addAttribute("boardTalk", boardTalk);
-	    model.addAttribute("pageVO", pageVO);
-	    return "board/boardMain";
 
-		
-	}
 	
-	
-	
+
 	@GetMapping("/boardDetail")
 	public String boardDetail(@RequestParam("boardNo")int boardNo,
-							  	Model model) {
+							  	Model model,Criteria cri ) {
 		service.updateReadCount(boardNo);
 		BoardDetail boardDetail = service.boardDetail(boardNo);
 		model.addAttribute("BoardDetail" , boardDetail);
 		List<Reply> rList = rService.selectReplyList(boardNo);
 		model.addAttribute("rList", rList);
 		
+		
+	    int total = service.getTotal();
+	    PageVO pageVO = new PageVO(cri, total);
+	    List<BoardDetail> boardList = service.boardList(cri);
+	    model.addAttribute("boardList", boardList);
+	    model.addAttribute("pageVO", pageVO);
+		
 		return "board/boardDetail";
 		
 	}
-	
 	   
 	
 	

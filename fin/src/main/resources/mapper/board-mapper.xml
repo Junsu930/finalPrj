@@ -74,6 +74,42 @@ WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
 ]]>
     </select>
     
+    
+    
+    
+	<select id="boardQus" resultMap="detail_rm">
+<![CDATA[
+SELECT *
+FROM (
+    SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+    BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    FROM BOARD 
+    JOIN "USER" USING(USER_NO)
+) A
+WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
+ AND BOARD_TAG = 2
+ 
+]]>
+    </select>
+    
+    
+    	<select id="boardAll" resultMap="detail_rm">
+<![CDATA[
+SELECT *
+FROM (
+    SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+    BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    FROM BOARD 
+    JOIN "USER" USING(USER_NO)
+) A
+WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
+ 
+ 
+]]>
+    </select>
+    
 <!--     
       SELECT * 
     FROM (
