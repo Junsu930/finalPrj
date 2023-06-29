@@ -22,6 +22,9 @@ public class Reply {
 	private int parentReplyNo;
 	private String userNick;
 	
+	// 알람 용
+	private int toUserNo;
+	
 //	`REPLY_NO`	NUMBER	NOT NULL,
 //	`BOARD_NO`	NUMBER	NOT NULL,
 //	`REPLY_CONTENT`	VARCHAR2(2000)	NOT NULL,

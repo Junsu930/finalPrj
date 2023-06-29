@@ -1,6 +1,7 @@
 package edu.kh.fin.band.signupband.model.service;
 
 import edu.kh.fin.band.msgAlarm.model.vo.Invitation;
+import edu.kh.fin.band.myPage.model.vo.Band;
 
 public interface SignUpBandService {
 
@@ -19,5 +20,7 @@ public interface SignUpBandService {
 	 * @return
 	 */
 	int deniedBand(int bandNo);
+
+	Band modalBandInfo(int bandNo);
 
 }

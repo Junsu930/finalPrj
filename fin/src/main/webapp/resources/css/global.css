@@ -1,12 +1,13 @@
 :root{
     --text-color:#000; 
-    --background-color:#ffffff; 
+    --background-color:#ffffff;
+    --newBack-color:#f6f6f6;
     --grey-color:#868E96;
     --accent-color: #f3b013;
     --stroke-color: #474554;
     --label-color:#162938;
     --border-color:#EAE7E7;
-    
+   
     
     --grey-color : #ccc;
 	--grr-color : #edeeef;
@@ -14,6 +15,7 @@
     --scroll-dark-color: #e7c3c3;
     
     --background-dark-color:#000;
+    --newBack-dark-color: #1e1e1e;
     --text-dark-color:#fff;
     --accent-dark-color: #c3c3a4;
     --stroke-dark-color:#FB4F93;

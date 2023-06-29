@@ -55,4 +55,15 @@
 .btn-primary{
   display: none;
 }
-  
+
+
+
+/* 밴드초대장 페이지 모달 */
+#bandInfoDialog{
+  max-width: 550px;
+}
+
+#bandInfoFooter, #bandInfoHeader{
+  display: none;
+}
+

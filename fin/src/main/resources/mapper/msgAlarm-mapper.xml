@@ -38,6 +38,16 @@
 	</resultMap>
 	
 	
+	<resultMap type="msgAlarm" id="getUserNick_reply_rm">
+		<id property="alarmNo" column="ALARM_NO"/>
+		<result property="userNick" column="USER_NICK" />
+		<result property="sendDay" column="SEND_DAY" />
+		<result property="sendMon" column="SEND_MON" />
+		<result property="replyNo" column="REPLY_NO" />
+		<result property="boardNo" column="BOARD_NO" />
+	</resultMap>
+	
+	
 	
 	<insert id="insertAlarm" parameterType="msgAlarm">
 		INSERT INTO MSG_ALARM (ALARM_NO, USER_NO , MSG_NO, ALARM_STATUS, ALARM_READ_STATUS)
@@ -132,14 +142,11 @@
 	<!-- 알람(게시글, 초대장, 좋아요) 총 갯수 가져오기 -->
 	<select id="totalAlarmGet" parameterType="_int" resultType="_int">
 		SELECT COUNT(*) AS COUNT 
-		FROM TOTAL_ALARM 
-		WHERE TO_USER_NO = ${userNo} 
-		AND 
-		INVI_READ_STATUS ='N' 
-		OR
-		REPLY_READ_STATUS = 'N'
-		OR
-		LIKE_READ_STATUS = 'N'
+		FROM TOTAL_ALARM ta
+		WHERE TO_USER_NO = ${userNo} AND
+		(INVI_READ_STATUS ='N' OR
+		REPLY_READ_STATUS = 'N' OR
+		LIKE_READ_STATUS = 'N')
 	</select>
 	
 	
@@ -193,6 +200,19 @@
 		WHERE TO_USER_NO = ${userNo}
 	</update>
 	
+	
+	<!-- 현재 로그인한 유저넘버 바탕으로 댓글을 누가 달았는지 보여주는 리스트 select구문 -->
+	<select id="getUserNicksFromReply" parameterType="_int" resultMap="getUserNick_reply_rm">
+		SELECT USER_NICK, 
+		TO_CHAR(CREATE_DT, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
+		TO_CHAR(CREATE_DT, 'YY"일"') AS SEND_DAY,
+		r.REPLY_NO, b.BOARD_NO
+		FROM REPLY r
+		JOIN "USER" u ON u.USER_NO = r.USER_NO
+		LEFT JOIN BOARD b ON b.BOARD_NO = r.BOARD_NO
+		WHERE b.USER_NO = ${userNo}
+		ORDER BY r.REPLY_NO DESC
+	</select>
 	
 	
 

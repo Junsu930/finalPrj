@@ -152,11 +152,15 @@ function activeMenu(){
 
 let profileImgBox = document.getElementById('profileImgBox');
 document.addEventListener('click', function(e) {
-  // 클릭된 요소가 profileImgBox이 아닌 경우
-  if (!profileImgBox.contains(e.target)) {
-    // 메뉴창 닫기
-    menu.classList.remove('activeMenu');
-    menuOpen = false;
+  if(profileImgBox == null){
+    return false
+  }else{
+    // 클릭된 요소가 profileImgBox이 아닌 경우
+    if (!profileImgBox.contains(e.target)) {
+      // 메뉴창 닫기
+      menu.classList.remove('activeMenu');
+      menuOpen = false;
+    }
   }
 });
 
@@ -172,11 +176,15 @@ function showAlertView(){
 
 let alertBell = document.getElementById('alertBell');
 document.addEventListener('click', function(e) {
-  // 클릭된 요소가 alertBell이 아닌 경우
+  if(alertBell == null){
+    return false
+  }else{
+    // 클릭된 요소가 alertBell이 아닌 경우
   if (!alertBell.contains(e.target)) {
     // 알림창 닫기
     wrapperUl.classList.remove('show');
     wrapperUlOpen = false;
+  }
   }
 });
 
@@ -189,11 +197,15 @@ function showMsgBoxView(){
 
 let msgBoxOpen = document.getElementById('msgBoxOpen');
 document.addEventListener('click', function(e) {
-  // 클릭된 요소가 msgBoxOpen이 아닌 경우
-  if (!msgBoxOpen.contains(e.target)) {
-    // 메세지 창 닫기
-    messageUlBox.classList.remove('show');
-    messageUlBoxOpen = false;
+  if(msgBoxOpen == null){
+    return false
+  }else{
+    // 클릭된 요소가 msgBoxOpen이 아닌 경우
+    if (!msgBoxOpen.contains(e.target)) {
+      // 메세지 창 닫기
+      messageUlBox.classList.remove('show');
+      messageUlBoxOpen = false;
+    }
   }
 });
 
@@ -225,6 +237,8 @@ function ajaxStart(){// 로그인 시 회원 정보를 바탕으로 알람 가�
       totalAlarmGet(loginUserNo) // 알람(댓글, 좋아요, 초대장) 갯수 가져오기
       alarmGetFromInvi(loginUserNo) // 초대장 목록 출력
       changeAlarmStatus(loginUserNo) // 알람(댓글, 좋아요, 초대장) 갯수 삭제하기
+
+      getUserNicksFromReply(loginUserNo) // 댓글 목록 출력
     }, //  success 끝
     error : function(request, status, error){
       console.log("getUserNo AJAX 에러 발생");
@@ -241,6 +255,8 @@ function getUserNicks(loginUserNo){ //userNicksList 부르는 함수
     data:{"loginUserNo": loginUserNo},
     dataType:"JSON",
     success: function(getUserNicks){
+      console.log("userNicksList 부르는 함수 ");
+
       let stringMsg = "님께서 회원님에게 쪽지를 보냈습니다!"
 
       if(getUserNicks === "none"){
@@ -268,8 +284,9 @@ function getMsgAlarmCount(loginUserNo){ // msgAlarmCount 가져오는 함수
     data:{"loginUserNo": loginUserNo},
     dataType: "JSON",
     success: function(count){
+      console.log("msgAlarmCount 가져오는 함수 ");
       const alarmCount = count;
-      if(alarmCount != 0){
+      if(alarmCount > 0){
         $('#msgAlarmCount').css('display', 'block');
         $('#msgAlarmCount').text(alarmCount); // 알람 카운트가 0 초과일 때, 수행
       }else{
@@ -296,6 +313,7 @@ function disappearCount(loginUserNo){ // msgCount 갯수 사라지게 하는 함
       data:{"loginUserNo": loginUserNo},
       dataType: "JSON",
       success: function(result){
+        console.log("msgCount 갯수 사라지게 하는 함수 ");
         $('#msgAlarmCount').css('display', 'none'); // 알람 카운트 보이는 걸 없애기
         
       },
@@ -320,8 +338,8 @@ function getAlarmCount(loginUserNo){ // alarmCount 가져오는 함수
     data:{"loginUserNo": loginUserNo},
     dataType: "JSON",
     success: function(count){
-
-      if(count != 0){
+      console.log("alarmCount 가져오는 함수  ");
+      if(count > 0){
         $('#alarmCount').css('display', 'block');
         $('#alarmCount').text(count); // 알람 카운트가 0 초과일 때, 수행
       }else{
@@ -345,6 +363,7 @@ function alarmDisappearCount(loginUserNo){ // alarmCount 지우기 함수
       data:{"loginUserNo": loginUserNo},
       dataType:"JSON",
       success: function(result){
+        console.log("alarmCount 지우기 함수");
         $('#alarmCount').css('display', 'none');
         
       },
@@ -365,7 +384,8 @@ function getUserNicksFromRoom(loginUserNo){ // 예약 신청알람 함수
     data:{"loginUserNo" : loginUserNo},
     dataType: "JSON",
     success(getUsers){
-      
+      console.log("예약 신청알람 함수");
+
       let stringMsg1 = "님께서 회원님의 "
       let stringMsg2 = "을 예약 신청했습니다!"
       if(getUsers === "none"){
@@ -396,7 +416,9 @@ function totalAlarmGet(loginUserNo){
     data:{"loginUserNo" : loginUserNo},
     dataType: "JSON",
     success: function(count){
-      if(count != 0){
+      console.log("알람(초대장 + 댓글 + 좋아요) 갯수 가져오기");
+
+      if(count > 0){
         $('#alarmCount').css('display', 'block');
         $('#alarmCount').text(count); // 알람 카운트가 0 초과일 때, 수행
       }else{
@@ -418,6 +440,7 @@ function alarmGetFromInvi(loginUserNo){
     data: {"loginUserNo": loginUserNo},
     dataType:"JSON",
     success: function(inviList){
+      console.log("초대장 목록 출력 에이잭스");
       // 정우님게서 주펄밴드 초대장을 보냈습니다! 지금 확인하세요!
       let msg = "님께서 "
       let msg2 = " 초대장을 보냈습니다!!"
@@ -448,6 +471,7 @@ function changeAlarmStatus(loginUserNo){
       data: {"loginUserNo": loginUserNo},
       dataType:"JSON",
       success: function(result){
+        console.log("알람(초대장 + 댓글 + 좋아요) 클릭 시, READ_STATUS 바꿔주기");
         if(result > 0){
           $('#alarmCount').css('display', 'none');
         }else{
@@ -464,6 +488,35 @@ function changeAlarmStatus(loginUserNo){
 
 
 
+function getUserNicksFromReply(loginUserNo){
+  $.ajax({
+    url:"getUserNicksFromReply",
+    method: "GET",
+    data:{"loginUserNo": loginUserNo},
+    dataType:"JSON",
+    success: function(getUserNicksFromReply){
+      // 아아현경님께서 회원님의 게시글에 댓글을 등록했습니다!
+      let msg = '님께서 회원님의 게시글에 댓글을 등록했습니다!';
+
+      if(getUserNicksFromReply === "none"){
+        console.log("댓글 목록 없음");
+        // $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
+      }else{
+        for(let i = 0; i < getUserNicksFromReply.length; i++){
+          $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${getUserNicksFromReply[i].sendMon}<br><span>${getUserNicksFromReply[i].sendDay}</span></h3></div>
+          <a href="boardDetail?boardNo=${getUserNicksFromReply[i].boardNo}"><p>${getUserNicksFromReply[i].userNick + msg}</p></a></li>
+          <input type="hidden" value=${getUserNicksFromReply[i].boardNo} name="boardNo">`) // 새로운 댓글 있을 때, 코드 수행
+        }
+      } // if끝
+
+    },
+    error : function(request, status, error){
+      console.log("alarmGetFromReply AJAX 에러 발생");
+      console.log("상태코드 : " + request.status); 
+    }
+
+  })
+}
 
 
 

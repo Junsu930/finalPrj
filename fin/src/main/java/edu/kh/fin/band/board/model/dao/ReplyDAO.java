@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fin.band.board.model.vo.Reply;
+import edu.kh.fin.band.login.model.vo.User;
 
 @Repository
 public class ReplyDAO {
@@ -26,11 +27,30 @@ public class ReplyDAO {
 
 	/** 댓글 등록 DAO
 	 * @param reply
+	 * @param loginUser 
 	 * @return result
 	 */
-	public int insertReply(Reply reply) {
+	public int insertReply(Reply reply, User loginUser) {
 		
-		return sqlSession.insert("replyMapper.insertReply", reply);
+		int insertReply = sqlSession.insert("replyMapper.insertReply", reply);
+		
+		
+		// 누구에게 댓글을 단지 확인해야함 보드넘버를 바탕으로 글 작성자 유저넘버 가져오기
+		// 왜냐하면 total_alarm 테이블에 to_user_no(글쓴 사람) from_user_no(댓글 단 사람 == LoginUser)
+		// 정보를 가져와야함
+		int toUserNo = sqlSession.selectOne("replyMapper.selectToUserNo", reply);
+		reply.setToUserNo(toUserNo);
+		if(insertReply > 0) {
+			if(toUserNo != 0) {
+				int result = sqlSession.insert("replyMapper.insertReplyAlarm", reply);
+				return result;
+			}else {
+				return -1;
+			}
+			
+		}else {
+			return -1;
+		}
 	}
 	
 

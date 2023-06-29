@@ -146,6 +146,16 @@ public class MsgAlarmDAO {
 		return sqlSession.update("alaramMapper.changeAlarmStatus", userNo);
 	}
 
+	/**
+	 * 현재 로그인된 유저넘버 바탕으로 댓글 단 사람 목록, 날짜 출력 DAO
+	 * @author lee
+	 * @param userNo
+	 * @return
+	 */
+	public List<MsgAlarm> getUserNicksFromReply(int userNo) {
+		return sqlSession.selectList("alaramMapper.getUserNicksFromReply", userNo);
+	}
+
 	
 	
 

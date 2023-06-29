@@ -13,9 +13,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4em;
+    gap: 3em;
     width: 500px;
-    height: 330px;
+    height: 350px;
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     box-shadow: 2px 2px 20px silver;
     border-radius: 12px;
@@ -32,7 +32,7 @@ body.darkmode .alarmWrapper{
     padding-left: 0;
 }
 
-.alarmWrapper > p{
+.alarmWrapper > p:nth-of-type(1){
     font-size: 1.5em;
 }
 
@@ -83,6 +83,11 @@ body.darkmode .alarmBtnBox form button{
     animation: in .5s ease-out;
 }
 
+.js-static-modal-toggleInfoBandP{
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
 @keyframes in{
     0%{
       letter-spacing: 0.3em;
@@ -94,3 +99,39 @@ body.darkmode .alarmBtnBox form button{
       letter-spacing: 0.3em
     }
   }
+
+
+
+
+
+
+
+
+/* 밴드 정보 모달 */
+
+.bandInfoSec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 350px;
+    gap: 3em;
+}
+
+.bandNameInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+.bandNameInfo > h1{
+    padding-left: 0;
+}
+
+.bnadMentInfo > p{
+    font-size: 1.3em;
+}

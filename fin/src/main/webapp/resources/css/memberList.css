@@ -16,8 +16,9 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 1.5px solid var(--stroke-color);
-    border-radius: 0.5em;
+    background-color: var(--newBack-color);
+    box-shadow: 4px -2px 15px 0px rgba(0,0,0,0.25);
+    border-radius: 4px;
     width: 350px;
     height: 450px;
     transition: transform ease-out 0.25s, box-shadow 0.1s ease-in 0s;
@@ -25,7 +26,7 @@
 }
 
 body.darkmode .wrapper{
-	border: 1.5px solid var(--border-color);
+	background-color: var(--newBack-dark-color);
 }
 
 .wrapper:hover{
@@ -48,7 +49,6 @@ body.darkmode .wrapper{
 .userImgBox{
     width: 80px;
     height: 80px;
-    border: 1px solid var(--stroke-color);
     border-radius: 50%;
     overflow:hidden;
     margin-top:1em;
@@ -63,12 +63,6 @@ body.darkmode .wrapper{
 
 
 
-
-
-
-body.darkmode .userNameBox img{
-	border: 1px solid var(--border-color);
-}
 
 .userNameBox p {
     font-size: 1.5em;
