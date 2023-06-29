@@ -71,7 +71,7 @@ body.darkmode path{
 	stroke:var(--stroke-dark-color);
 }
 
-body.darkmode .filterSec > div:last-child > a,
+/* body.darkmode .filterSec > div:last-child > a, */
 body.darkmode .bi-pencil-square{
     color: var(--text-dark-color);
 }
@@ -99,10 +99,16 @@ body.darkmode .bi-pencil-square{
     margin-bottom: 3em;
 }
 
-hr{
+#hr{
     margin: auto;
     width: 87%;
-    color: var(--border-color);
+    border: .5px solid var(--stroke-color);
+}
+
+body.darkmode #hr{
+    margin: auto;
+    width: 87%;
+    border: .5px solid var(--border-color);
 }
 
 .lessonList, 
@@ -145,12 +151,12 @@ body.darkmode .locationListBtn{
 }
 
 
-
+/* 
 body.darkmode .filterSec > div:last-child{
     border: 1px solid var(--border-color);
-}
+} */
 
-.filterSec > div:last-child > a{
+#writingBtn{
     color: var(--text-color);
     text-decoration: none;
     letter-spacing: 0.2em;
@@ -165,6 +171,11 @@ body.darkmode .filterSec > div:last-child{
     position: absolute;
     right: 10%;
     line-height: 1;
+}
+
+body.darkmode #writingBtn{
+    color: var(--text-dark-color);
+    border: 1px solid var(--border-color);
 }
 
 
@@ -258,10 +269,11 @@ body.darkmode .filterSec > div:last-child{
     justify-content: center;
     align-items: center;
     width: 320px;
-    height: 320px;
+    height: 390px;
     margin: 2em;
-    border-radius: 0.5em;
-    border: 1.5px solid var(--stroke-color);
+    border-radius: 4px;
+    background-color: var(--newBack-color);
+    box-shadow: 4px -2px 15px 0px rgba(0,0,0,0.25);
     cursor: pointer;
     transition: transform ease-out 0.25s, box-shadow 0.1s ease-in 0s;
 }
@@ -272,36 +284,52 @@ body.darkmode .filterSec > div:last-child{
 }
 
 body.darkmode .imgCotentWrap{
-    border:1.5px solid var(--border-color);
+    background-color: var(--newBack-dark-color);
 }
 
 
 
 .imgBox{
     width: 100%;
-    height: 200px;
+    height: 250px;
     overflow:hidden;
+    border-radius: 4px;
 }
 
 .imgBox > img{
     width: 100%;
     height: 100%;
-    border-radius: 5px 5px 0 0;
+    border-radius: 4px 4px 0 0;
 }
 
 .contentBox{
-    border-top: 1.5px solid var(--stroke-color);
     width: 100%;
     height: 150px;
 }
 
-.contentBox > p, .contentBox > span{
+.contentBox > p:nth-of-type(2){
     padding: 0.5em 1em;
+}
+.contentBox > span{
+    font-size: 0.8em;
+    padding: .5em 1.1em;
+}
+
+#scrollOver{
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: .5em .8em;
+}
+
+.contentBox > p:last-of-type{
+    font-size: .7em;
+    padding: .5em 1.2em;
 }
 
 
 
-.contentBox > p:nth-child(2){
+
+.contentBox > span{
     color: #868e96; 
     /* 박스안 날짜 컬러 */
 }

@@ -168,15 +168,21 @@ public class MsgAlarmController {
 		
 		List<MsgAlarm> getUserNicks = new ArrayList<>();
 		List<Invitation> inviList = new ArrayList<>();
+		List<MsgAlarm> alarmList = new ArrayList<>();
 		
 		getUserNicks = service.getUserNicksFromRoom(loginUserNo);
 		
 		inviList = service.getInviList(loginUserNo);
 		
+		// 현재 로그인된 유저넘버 바탕으로 댓글 단 사람 목록, 날짜 출력할거임
+		alarmList = service.getUserNicksFromReply(loginUserNo);
+		
 		if(!getUserNicks.isEmpty()) {
 			return new Gson().toJson(getUserNicks);
 		}else {
 			if(!inviList.isEmpty()) { // 이걸 안해놓으면 같은 알람창이니까 "none"이 실행되어 inviList와 "none"일 때, 화면이 동시에 출력됨
+				return "false";
+			}else if(!alarmList.isEmpty()) {
 				return "false";
 			}
 			return new Gson().toJson("none");
@@ -276,6 +282,8 @@ public class MsgAlarmController {
 		
 		inviList = service.getInviList(userNo);
 		
+		
+		
 		if(!inviList.isEmpty()) {
 			return new Gson().toJson(inviList);
 		}else {
@@ -302,6 +310,33 @@ public class MsgAlarmController {
 			return new Gson().toJson(0);
 		}
 	}
+	
+	
+	
+	/**
+	 * 현재 로그인된 유저넘버 바탕으로 댓글 단 사람 목록, 날짜 출력해주는 알람 컨트롤러
+	 * @author lee
+	 * @param userNo
+	 * @return
+	 */
+	@GetMapping("/getUserNicksFromReply")
+	@ResponseBody
+	public String getUserNicksFromReply(@RequestParam("loginUserNo") int userNo) {
+		
+		List<MsgAlarm> alarmList = new ArrayList<>();
+		
+		// 현재 로그인된 유저넘버 바탕으로 댓글 단 사람 목록, 날짜 출력할거임
+		alarmList = service.getUserNicksFromReply(userNo);
+		
+		if(!alarmList.isEmpty()) {
+			return new Gson().toJson(alarmList);
+		}else {
+			return new Gson().toJson("none");
+		}
+	}
+	
+	
+	
 	
 	
 	

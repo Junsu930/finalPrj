@@ -94,6 +94,14 @@ public interface MsgAlarmService {
 	 */
 	int changeAlarmStatus(int userNo);
 
+	/**
+	 * 현재 로그인된 유저넘버 바탕으로 댓글 단 사람 목록, 날짜 출력 서비스
+	 * @author lee
+	 * @param userNo
+	 * @return
+	 */
+	List<MsgAlarm> getUserNicksFromReply(int userNo);
+
 	
 
 }

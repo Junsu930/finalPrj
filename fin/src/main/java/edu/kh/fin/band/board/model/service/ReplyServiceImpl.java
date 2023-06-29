@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.fin.band.board.model.dao.ReplyDAO;
 import edu.kh.fin.band.board.model.vo.Reply;
 import edu.kh.fin.band.common.Util;
+import edu.kh.fin.band.login.model.vo.User;
 
 @Service
 public class ReplyServiceImpl implements ReplyService {
@@ -24,13 +25,13 @@ public class ReplyServiceImpl implements ReplyService {
 
 	// 댓글 등록 서비스 구현
 	@Override
-	public int insertReply(Reply reply) {
+	public int insertReply(Reply reply, User loginUser) {
 		
 		// xss, 개행문자처리
 		reply.setReplyContent( Util.XSSHandling( reply.getReplyContent()) );
 		reply.setReplyContent( Util.newLineHandling( reply.getReplyContent()) );
 		
-		return dao.insertReply(reply);
+		return dao.insertReply(reply , loginUser);
 	}
 	
 
