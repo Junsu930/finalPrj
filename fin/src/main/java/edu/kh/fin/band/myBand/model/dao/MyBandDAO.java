@@ -89,4 +89,49 @@ public class MyBandDAO {
 		return sqlSession.selectList("myBandMapper.loadReplyForBandBoard", boardNo);
 	}
 
+	public int updateBandBoard(String title, String text, int boardNo) {
+		
+		Map<String, Object> boardMap = new HashMap<String, Object>();
+		
+		boardMap.put("boardNo", boardNo);
+		boardMap.put("title", title);
+		boardMap.put("text", text);
+		return sqlSession.update("myBandMapper.updateBandBoard", boardMap);
+	}
+
+	public int deleteBandBoardDetail(int boardNo) {
+		return sqlSession.update("myBandMapper.deleteBandBoardDetail", boardNo);
+	}
+
+	public int updateReplyLogic(int replyNo, String replyText) {
+		
+
+		Map<String, Object> rMap = new HashMap<String, Object>();
+		
+		rMap.put("replyNo", replyNo);
+		rMap.put("replyText", replyText);
+
+		return sqlSession.update("myBandMapper.updateReplyLogic", rMap);
+	}
+
+	public int deleteReplyForBandBoard(int replyNo) {
+		return sqlSession.update("myBandMapper.deleteReplyForBandBoard", replyNo);
+	}
+
+	public void bandBoardCount(int boardNo) {
+
+		sqlSession.update("myBandMapper.bandBoardCount", boardNo);
+	}
+
+	public int likeCheck(int boardNo, int userNo) {
+		
+
+		Map<String, Object> likeMap = new HashMap<String, Object>();
+		
+		likeMap.put("boardNo", boardNo);
+		likeMap.put("userNo", userNo);
+		
+		return sqlSession.selectOne("myBandMapper.likeCheck", likeMap);
+	}
+
 }

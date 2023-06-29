@@ -62,6 +62,43 @@ public class MyBandService {
 	public List<MyBandReply> loadReplyForBandBoard(int boardNo) {
 		return dao.loadReplyForBandBoard(boardNo);
 	}
+
+	/** 글쓰기 수정 로직
+	 * @param title
+	 * @param text
+	 * @param boardNo
+	 * @return
+	 */
+	public int updateBandBoard(String title, String text, int boardNo) {
+		return dao.updateBandBoard(title,text,boardNo);
+	}
+
+	public int deleteBandBoardDetail(int boardNo) {
+		return dao.deleteBandBoardDetail(boardNo);
+	}
+
+	public int updateReplyLogic(int replyNo, String replyText) {
+		return dao.updateReplyLogic(replyNo, replyText);
+	}
+
+	public int deleteReplyForBandBoard(int replyNo) {
+		return dao.deleteReplyForBandBoard(replyNo);
+	}
+
+	public void bandBoardCount(int boardNo) {
+		dao.bandBoardCount(boardNo);
+		
+		
+	}
+
+	/** 좋아요 검증 로직
+	 * @param boardNo
+	 * @param userNo
+	 * @return
+	 */
+	public int likeCheck(int boardNo, int userNo) {
+		return dao.likeCheck(boardNo, userNo);
+	}
 	
 	
 	

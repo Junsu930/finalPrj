@@ -79,6 +79,28 @@
 	
 }
 
+.updateReplyForBandBoardBtn{
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eachFatherDiv{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid silver;
+}
 
 
 #replyForBandBoardBtnNotMem{
@@ -128,7 +150,6 @@
 
 .eachReplyDiv{
 	display: flex;
-	border-bottom: 1px solid silver;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-left: 10px;
@@ -231,6 +252,7 @@
     stroke: var(--magenta-heart-color); /* #f06 색깔코드*/
     stroke-dasharray: 56.6;
     stroke-dashoffset: 56.6;
+    cursor: pointer;
 }
 
 #heart.like{
