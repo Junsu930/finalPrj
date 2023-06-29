@@ -114,7 +114,7 @@
 		   </c:choose>
 
     </div>
-    	 <span id='like_Cnt' style='margin-left: 3px;'>${BoardDetail.boardLike}</span>
+    	 <span id='like_Check' style='margin-left: 3px;'>${BoardDetail.boardLike}</span>
     	 <span style='margin-left: 3px;'>like</span>
     </div>
         <button class="report">신고</button>

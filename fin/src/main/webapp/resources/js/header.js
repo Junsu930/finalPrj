@@ -19,9 +19,6 @@ hamburger.addEventListener("click", () => {
 // =========================================반응형=========================================
 
 
-
-
-
 // =========================================모드==========================================
 // 라이트, 다크모드 요소모음
 const sun = document.getElementById("sun");
@@ -136,67 +133,34 @@ window.addEventListener('scroll', () =>{ // header scroll시 사라지게 함
 
 // =========================================탑 버튼 스크롤 함수==========================================
 
-
+let wrapperUlOpen = false;
+let messageUlBoxOpen = false;
 // alert View 보이기
 
 let wrapperUl = document.querySelector('.wrapperUl');
 let messageUlBox = document.querySelector('.messageUlBox');
-let menu = document.querySelector('.menu');
 
 // 프사 이미지 클릭 시, 밑에 ul 나오게하는 js
-let menuOpen = false;
+
+let menu = document.querySelector('.menu');
 function activeMenu(){
     menu.classList.toggle('activeMenu');
-    return menuOpen = true;
 }
-
-let profileImgBox = document.getElementById('profileImgBox');
-document.addEventListener('click', function(e) {
-  // 클릭된 요소가 profileImgBox이 아닌 경우
-  if (!profileImgBox.contains(e.target)) {
-    // 메뉴창 닫기
-    menu.classList.remove('activeMenu');
-    menuOpen = false;
-  }
-});
+// 프사 이미지 클릭 시, 밑에 ul 나오게하는 js
 
 // post, messagebox나오게 하는 함수
-
-let wrapperUlOpen = false;
-let messageUlBoxOpen = false;
 
 function showAlertView(){
   wrapperUl.classList.toggle('show');
   return wrapperUlOpen = true;
 }
 
-let alertBell = document.getElementById('alertBell');
-document.addEventListener('click', function(e) {
-  // 클릭된 요소가 alertBell이 아닌 경우
-  if (!alertBell.contains(e.target)) {
-    // 알림창 닫기
-    wrapperUl.classList.remove('show');
-    wrapperUlOpen = false;
-  }
-});
-
-
-// post, messagebox나오게 하는 함수
 function showMsgBoxView(){
   messageUlBox.classList.toggle('show');
   return messageUlBoxOpen = true;
 }
 
-let msgBoxOpen = document.getElementById('msgBoxOpen');
-document.addEventListener('click', function(e) {
-  // 클릭된 요소가 msgBoxOpen이 아닌 경우
-  if (!msgBoxOpen.contains(e.target)) {
-    // 메세지 창 닫기
-    messageUlBox.classList.remove('show');
-    messageUlBoxOpen = false;
-  }
-});
-
+// post, messagebox나오게 하는 함수
 
 
 const hiddenUser = document.getElementById('hiddenUser');
@@ -422,8 +386,7 @@ function alarmGetFromInvi(loginUserNo){
       let msg = "님께서 "
       let msg2 = " 초대장을 보냈습니다!!"
       if(inviList === "none"){
-        console.log("초대장 목록 없음");
-        // $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
+        $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
       }else{
         for(let i = 0; i < inviList.length; i++){
           $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${inviList[i].sendMon}<br><span>${inviList[i].sendDay}</span></h3></div>
@@ -441,26 +404,25 @@ function alarmGetFromInvi(loginUserNo){
 
 // 알람(초대장 + 댓글 + 좋아요) 클릭 시, READ_STATUS 바꿔주기
 function changeAlarmStatus(loginUserNo){
-  document.getElementById('alertBell').addEventListener('click', function(){
-    $.ajax({
-      url:"changeAlarmStatus",
-      method: "GET",
-      data: {"loginUserNo": loginUserNo},
-      dataType:"JSON",
-      success: function(result){
-        if(result > 0){
-          $('#alarmCount').css('display', 'none');
-        }else{
-          console.log("changeAlarmStatus" + result);
-        }
-      },
-      error : function(request, status, error){
-        console.log("changeAlarmStatus AJAX 에러 발생");
-        console.log("상태코드 : " + request.status); 
+  $.ajax({
+    url:"changeAlarmStatus",
+    method: "GET",
+    data: {"loginUserNo": loginUserNo},
+    dataType:"JSON",
+    success: function(result){
+      if(result > 0){
+        $('#alarmCount').css('display', 'none');
+      }else{
+        console.log("changeAlarmStatus" + result);
       }
-    })
-  });
+    },
+    error : function(request, status, error){
+      console.log("changeAlarmStatus AJAX 에러 발생");
+      console.log("상태코드 : " + request.status); 
+    }
+  })
 }
+
 
 
 
