@@ -46,10 +46,38 @@
 		<result property="userNick" column="USER_NICK" />
 		<result property="leaderNick" column="LEADER_NICK" />
 	</resultMap>
+	
+	
+	<resultMap type="boardList" id="board_rm">
+		<id property="boardNo" column="BOARD_NO" />
+		<result property="boardTitle" column="BOARD_TITLE" />
+		<result property="boardContent" column="BOARD_CONTENT" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="readCount" column="READ_COUNT" />
+		<result property="boardSt" column="BOARD_ST" />
+		<result property="userNo" column="USER_NO" />
+		<result property="boardLike" column="BOARD_LIKE" />
+		<result property="boardTag" column="BOARD_TAG" />
+		<result property="userNick" column="USER_NICK" />
+	</resultMap>
+	
+	<resultMap type="replyList" id="reply_rm">
+	
+		<id property="replyNo" column="REPLY_NO"/>
+		
+		<result property="replyContent" column="REPLY_CONTENT"/>
+		<result property="createDate" column="CREATE_DT"/>
+		<result property="boardNo" column="BOARD_NO"/>
+		<result property="replySt" column="REPLY_ST"/>
+		<result property="userNo" column="USER_NO"/>
+		<result property="userNick" column="USER_NICK"/>
+		<result property="parentReplyNo" column="PARENT_REPLY_NO"/>	
+	</resultMap>
 
 	<update id="updateInfo">
 		UPDATE "USER" SET
-		USER_NICK = #{newNick}
+		USER_NICK = #{newNick},
+		INTRO_MENT = #{newIntro}
 		WHERE USER_NO = ${userNo}
 	</update>
 	
@@ -102,11 +130,11 @@
 		WHERE USER_NO = ${userNo}
 	</select>
 	
-	<update id="updateBan">
+	<delete id="updateBan">
 		DELETE FROM BOARD_BANNED
 		WHERE BANNED_USER_NO = ${bannedUserNo}
-	</update>
-	
+	</delete>
+		
 	<insert id="makeBand" parameterType="band">
 		INSERT INTO BAND VALUES(
 		MAKEBAND_SEQ.NEXTVAL,
@@ -139,15 +167,46 @@
 		WHERE LEADER_NO = ${userNo}
 	</select>
 	
-	<update id="exile">
+	<delete id="exile">
 		DELETE FROM BAND_USER 
-		WHERE USER_NO = ${userNo}
-	</update>
+		WHERE USER_NO = ${exileNo}
+	</delete>
 	
-	<update id="dismiss">
+	<delete id="dismiss">
 		DELETE FROM BAND
 		WHERE BAND_NO = ${bandNo}
-	</update>
+	</delete>
+	
+	<select id="boardList" resultMap="board_rm">
+	<![CDATA[
+		SELECT *
+		FROM (
+    	SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+    	BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    	BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    	FROM BOARD 
+    	JOIN "USER" USING(USER_NO)) A
+		WHERE USER_NO = ${userNo}
+		]]>
+	</select>
+	
+	<select id="getTotal" resultType="_int">
+    	select count(*) as total from Board
+    </select>
+    
+    <select id="replyList" resultMap="reply_rm">
+		SELECT LEVEL,  R.* FROM
+		    (SELECT REPLY_NO, REPLY_CONTENT,
+		        TO_CHAR(CREATE_DT, 'YY"." MM"." DD')  CREATE_DT,
+		        BOARD_NO, USER_NO, USER_NICK, PARENT_REPLY_NO, REPLY_ST
+		    FROM REPLY
+		    JOIN  "USER" USING(USER_NO)
+		    WHERE USER_NO = ${userNo}) R	
+		WHERE REPLY_ST = 'N'
+		START WITH PARENT_REPLY_NO IS NULL
+		CONNECT BY PRIOR REPLY_NO = PARENT_REPLY_NO
+		ORDER SIBLINGS BY REPLY_NO
+	</select>
 	
 
 

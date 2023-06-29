@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import edu.kh.fin.band.board.model.vo.BoardDetail;
+import edu.kh.fin.band.board.model.vo.Reply;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.vo.Ban;
 import edu.kh.fin.band.myPage.model.vo.Band;
+import edu.kh.fin.band.myPage.model.vo.Crite;
 
 public interface MyPageService {
 
@@ -93,11 +96,11 @@ public interface MyPageService {
 	 */
 	int bandNo(int userNo);
 
-	/** 배늗 추방
+	/** 밴드 추방
 	 * @param userNick
 	 * @return
 	 */
-	int exile(String userNo);
+	int exile(int exileNo);
 
 	/** 밴드 해체
 	 * @param bandNo
@@ -105,8 +108,17 @@ public interface MyPageService {
 	 */
 	int dismiss(int bandNo);
 
+	int getTotal();
 
+	/** 게시글 목록 조회
+	 * @param i 
+	 * @return
+	 */
+	List<BoardDetail> boardList(Map<String, Object> map);
 
-
-
+	/** 댓글 조회
+	 * @param userNo
+	 * @return
+	 */
+	List<Reply> ReplyList(int userNo);
 }

@@ -7,9 +7,12 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.fin.band.board.model.vo.BoardDetail;
+import edu.kh.fin.band.board.model.vo.Reply;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.vo.Ban;
 import edu.kh.fin.band.myPage.model.vo.Band;
+import edu.kh.fin.band.myPage.model.vo.Crite;
 
 @Repository
 public class MyPageDAO {
@@ -158,9 +161,9 @@ public class MyPageDAO {
 	 * @param userNick
 	 * @return
 	 */
-	public int exile(String userNo) {
+	public int exile(int exileNo) {
 	
-		return sqlSession.update("myPageMapper.exile", userNo);
+		return sqlSession.update("myPageMapper.exile", exileNo);
 	}
 
 	/** 밴드 해체
@@ -170,6 +173,32 @@ public class MyPageDAO {
 	public int dismiss(int bandNo) {
 		
 		return sqlSession.update("myPageMapper.dismiss", bandNo);
+	}
+
+	/** 
+	 * @return
+	 */
+	public int getTotal() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("myPageMapper.getTotal");
+	}
+
+	/** 내 게시글 목록 조회
+	 * @param map
+	 * @return
+	 */
+	public List<BoardDetail> boardList(Map<String, Object> map) {
+		
+		return sqlSession.selectList("myPageMapper.boardList", map);
+	}
+
+	/** 내댓글 조회
+	 * @param userNo
+	 * @return
+	 */
+	public List<Reply> ReplyList(int userNo) {
+		
+		return sqlSession.selectList("myPageMapper.replyList", userNo);
 	}
 
 	
