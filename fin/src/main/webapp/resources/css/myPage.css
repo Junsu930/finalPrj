@@ -350,6 +350,7 @@
 
 .modalBoardTable{
     width: 100%;
+    justify-content: center;
 }
 
 .modalBoardTable td{
@@ -820,14 +821,31 @@ input[type="checkbox"]:checked + label:before {
   
   }
   
-  #input-image {
-  
+  #pagi{
+    justify-content: center;
+
   }
   
+  #dismissbtn {
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+  }
   
+  #alreadyBand {
+    text-align: center;
+  }
+
+  #inputimage {
+    visibility: hidden;
+    width: 20px;
+    position: absolute;
+  }
   
-  
-  
+  .bi-camera-fill::before {
+    text-align: right;
+    vertical-align: bottom;
+  }
   
   
   
@@ -837,6 +855,11 @@ input[type="checkbox"]:checked + label:before {
 
   
  
+
+
+
+
+
 
 
 /* �쉶�썝�젙蹂� �닔�젙 紐⑤떖 */

@@ -10,11 +10,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.fin.band.board.model.vo.BoardDetail;
+import edu.kh.fin.band.board.model.vo.Reply;
 import edu.kh.fin.band.common.Util;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myPage.model.dao.MyPageDAO;
 import edu.kh.fin.band.myPage.model.vo.Ban;
 import edu.kh.fin.band.myPage.model.vo.Band;
+import edu.kh.fin.band.myPage.model.vo.Crite;
 
 @Service
 public class MyPageServiceimpl implements MyPageService{
@@ -190,9 +193,9 @@ public class MyPageServiceimpl implements MyPageService{
 	 *
 	 */
 	@Override
-	public int exile(String userNo) {
+	public int exile(int exileNo) {
 		
-		return dao.exile(userNo);
+		return dao.exile(exileNo);
 	}
 
 	/** 밴드 해체
@@ -202,6 +205,24 @@ public class MyPageServiceimpl implements MyPageService{
 	public int dismiss(int bandNo) {
 		
 		return dao.dismiss(bandNo);
+	}
+
+	@Override
+	public int getTotal() {
+		
+		return dao.getTotal();
+	}
+
+	@Override
+	public List<BoardDetail> boardList(Map<String, Object> map) {
+		
+		return dao.boardList(map);
+	}
+
+	@Override
+	public List<Reply> ReplyList(int userNo) {
+		
+		return dao.ReplyList(userNo);
 	}
 
 }

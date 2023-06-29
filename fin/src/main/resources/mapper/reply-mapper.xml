@@ -74,12 +74,17 @@
 
 	<!-- 댓글 등록 -->
 	<insert id="insertReply">
-		INSERT INTO REPLY VALUES(SEQ_RNO.NEXTVAL, #{boardNo}, #{replyContent}, DEFAULT, DEFAULT,#{userNo}, 
+		<selectKey keyProperty="replyNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_RNO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO REPLY VALUES(${replyNo}, #{boardNo}, #{replyContent}, DEFAULT, DEFAULT,#{userNo},
 			
 			<!-- 일반 댓글인 경우-->
 			<if test="parentReplyNo == 0">
 				NULL
 			</if>
+			
+			
 			
 			<!-- 답글인 경우 -->
 			<if test="parentReplyNo != 0">
@@ -87,6 +92,24 @@
 			</if>
 			
 		)
+	</insert>
+	
+	<!-- 보더넘버를 바탕으로 글쓴 사람이 누군지 유저넘버 가져와야함 for 알람 테이블 -->
+	<select id="selectToUserNo" parameterType="_int" resultType="_int">
+		SELECT b.USER_NO
+		FROM BOARD b
+		JOIN REPLY r ON r.BOARD_NO = b.BOARD_NO
+		WHERE REPLY_NO = ${replyNo}
+	</select>
+	
+	<!-- 알람 테이블   -->
+	
+	<insert id="insertReplyAlarm" parameterType="reply">
+		INSERT INTO 
+		TOTAL_ALARM  <!--테이블 -->
+		(ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+		VALUES
+		(TOTAL_ALARM_NO_SEQ.NEXTVAL, ${toUserNo}, ${userNo}, NULL, ${replyNo}, NULL, NULL, DEFAULT, NULL)
 	</insert>
 
 

@@ -187,11 +187,11 @@ $(document).ready(() =>{
                     div2.innerHTML 
                     = "<p id='scrollOver'>"
                     + lessonList[i].motto 
-                    +" </p> <span>" 
-                    + lessonList[i].writingDate 
-                    + "</span><p>" 
+                    +" </p><p>" 
                     + lessonList[i].region 
-                    + "</p><p>by.&nbsp" 
+                    + "</p> <span>" 
+                    + lessonList[i].writingDate 
+                    + "</span><p>by.&nbsp" 
                     + lessonList[i].userNick 
                     + "</p>";
 
@@ -247,11 +247,11 @@ $(document).ready(() =>{
                                     div2.innerHTML 
                                     = "<p id='scrollOver'>"
                                     + lessonList[i].motto 
-                                    +" </p> <span>" 
-                                    + lessonList[i].writingDate 
-                                    + "</span><p>" 
+                                    +" </p><p>" 
                                     + lessonList[i].region 
-                                    + "</p><p>by.&nbsp" 
+                                    + "</p> <span>" 
+                                    + lessonList[i].writingDate 
+                                    + "</span><p>by.&nbsp" 
                                     + lessonList[i].userNick 
                                     + "</p>";
                                     
@@ -357,11 +357,11 @@ function filterFunc(){
                     div2.innerHTML 
                     = "<p id='scrollOver'>"
                     + lessonList[i].motto 
-                    +" </p> <span>" 
-                    + lessonList[i].writingDate 
-                    + "</span><p>" 
+                    +" </p><p>" 
                     + lessonList[i].region 
-                    + "</p><p>by.&nbsp" 
+                    + "</p> <span>" 
+                    + lessonList[i].writingDate 
+                    + "</span><p>by.&nbsp" 
                     + lessonList[i].userNick 
                     + "</p>";
     
@@ -420,11 +420,11 @@ function filterFunc(){
                                     div2.innerHTML 
                                     = "<p id='scrollOver'>"
                                     + lessonList[i].motto 
-                                    +" </p> <span>" 
-                                    + lessonList[i].writingDate 
-                                    + "</span><p>" 
+                                    +" </p><p>" 
                                     + lessonList[i].region 
-                                    + "</p><p>by.&nbsp" 
+                                    + "</p> <span>" 
+                                    + lessonList[i].writingDate 
+                                    + "</span><p>by.&nbsp" 
                                     + lessonList[i].userNick 
                                     + "</p>";
                                     

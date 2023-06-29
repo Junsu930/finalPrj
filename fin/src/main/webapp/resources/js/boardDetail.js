@@ -1,6 +1,6 @@
 const heart = document.getElementById('heart');
 
-const likeUnlikeFunc = () => {
+const commentBox2 = () => {
     if(heart.classList.contains('like')){
         heart.classList.remove('like');
         heart.classList.add('unlike');
@@ -13,18 +13,16 @@ const likeUnlikeFunc = () => {
 heart.addEventListener('click', addLike);
 
 
-function addLike(){
+function addLike(loginUserNo,boardNo){
   $.ajax({
     url:"addLike",
-    type: "GET",
-    data:{"userNo" : userNo},
+    type: "POST",
+    data:{"loginUserNo" : loginUserNo, "boardNo" : boardNo},
     dataType:"JSON",
+    contentType: false,
+    processData: false,
     success: function(result){
-      if(result > 0){
-        console.log("라이크 1증가");
-      }else{
-        console.log("증가 실패");
-      }
+    alert(result);
     },
     error : function(request, status, error){
       console.log("addLike AJAX 에러 발생");

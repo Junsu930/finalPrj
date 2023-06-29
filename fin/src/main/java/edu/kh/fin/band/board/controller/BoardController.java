@@ -43,14 +43,24 @@ public class BoardController {
 	
 	@GetMapping("/board")
 	
-	public String BoardList(Model model, Criteria cri ) {
+	public String BoardList(Model model, Criteria cri) {
 	    int total = service.getTotal();
 	    PageVO pageVO = new PageVO(cri, total);
 	    List<BoardDetail> boardList = service.boardList(cri);
 	    model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
 	    return "board/boardMain";
-
+//		 public String BoardList(Model model) {
+//
+//		Criteria cri = new Criteria();
+//		PageVO pageVO = new PageVO(cri, service.getTotal());
+//		List<BoardDetail> boardList = service.boardList(cri);
+//		model.addAttribute("boardList",service.boardList(cri));
+//		model.addAttribute("pageVO",pageVO);
+//		 
+//	
+//		
+//		return "board/boardMain";
 		
 	}
 
@@ -145,7 +155,6 @@ public class BoardController {
 	
 	}
 	
-	
 	@GetMapping("/update")
 	public String updateForm(@RequestParam("boardNo")int boardNo, 
 											Model model,
@@ -158,6 +167,21 @@ public class BoardController {
 		
 		
 		return "board/boardUpdate";
+	}
+	
+	/* addlike 증가하는 코드 */
+	@PostMapping("/addLike")
+	public String addLike(@RequestParam("boardNo")int boardNo,
+							  @ModelAttribute("loginUser") User loginUser,
+							  RedirectAttributes ra) {
+		
+		int like_check = service.like_Check(boardNo);
+		
+		if(like_check > 0) {
+			  return new Gson().toJson("좋아요 쌓임!");
+		  } else {
+			  return new Gson().toJson("ㄴㄴ");
+		  }
 	}
 	
 	@PostMapping("/mody")

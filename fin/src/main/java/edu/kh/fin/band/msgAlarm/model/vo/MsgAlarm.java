@@ -20,7 +20,9 @@ public class MsgAlarm {
 	
 	private String userNick;
 	private String sendDay;
-	private String sendMonth;
+	private String sendMon;
+	private int replyNo;
+	private int boardNo;
 	
 	private String roomName;
 	private String alarmMon;

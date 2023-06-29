@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import com.google.gson.Gson;
 
 import edu.kh.fin.band.board.model.service.ReplyService;
 import edu.kh.fin.band.board.model.vo.Reply;
+import edu.kh.fin.band.login.model.vo.User;
 
 // REST (REpresentational State Transfer) : 
 // - 자원을 이름으로 구분(REpresentational, 자원의 표현)하여
@@ -41,9 +43,9 @@ public class ReplyController {
 	
 	// 댓글 등록
 	@PostMapping("/insert")
-	public int insertReply(Reply reply) {
+	public int insertReply(Reply reply, @ModelAttribute("loginUser") User loginUser) {
 		
-		return service.insertReply(reply);
+		return service.insertReply(reply,loginUser);
 	}
 	
 	// 댓글 수정

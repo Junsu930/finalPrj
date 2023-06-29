@@ -14,6 +14,7 @@
 <title>게시글 상세</title>
 </head>
 <body>
+<input type="hidden" value="${sessionScope.loginUser.userNo}" id="hiddenLoginUser">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="containerForBandBoardDetail">
 		<div class="realContentForBandBoard">		
@@ -46,8 +47,9 @@
 							<input type="hidden" name="boardNoForUpdateBoardDetail" value="${boardDetail.boardNo}">
 							<button>수정</button>
 						</form>
-						<form action="${contextPath}/deleteBandBoardDetail" method="post">
+						<form action="${contextPath}/deleteBandBoardDetail" method="post" id="deleteBandBoardDetail">
 							<input type="hidden" name="boardNoForUpdateBoardDetail" value="${boardDetail.boardNo}">
+							<input type="hidden" name="bandNoForUpdateBoardDetail" value="${boardDetail.bandNo}">
 							<button type="button" id="deleteBtnForBandBoard">삭제</button>
 						</form>
 					</div>
@@ -57,15 +59,29 @@
 			<div>
 				${boardDetail.boardContent}
 			</div>
-			<!-- 추천 -->
-			<div class="underBarDiv">
-				<svg id="heart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6">
-	            	<path  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-	       		</svg>
-	       		<div>
-	       			<button type="button" id="backButtonForBandBoard" onclick="window.history.back();">뒤로가기</button>
-	       		</div>
-			</div>
+			<input type="hidden" value="${likeCheck}" id="likeCheckFor">
+			<c:if test="${likeCheck eq 'T' }">
+				<!-- 추천 -->
+				<div class="underBarDiv">
+					<svg id="heart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 like">
+		            	<path  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+		       		</svg>
+		       		<div>
+		       			<button type="button" id="backButtonForBandBoard" onclick="window.history.back();">뒤로가기</button>
+		       		</div>
+				</div>
+			</c:if>
+			<c:if test="${likeCheck eq 'F' }">
+				<!-- 추천 -->
+				<div class="underBarDiv">
+					<svg id="heart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6">
+		            	<path  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+		       		</svg>
+		       		<div>
+		       			<button type="button" id="backButtonForBandBoard" onclick="window.history.back();">뒤로가기</button>
+		       		</div>
+				</div>
+			</c:if>
 		</div>
 	</div>
 	<div class="replyForBandBoardDetail" id="replyForBandBoardDetail">
@@ -96,6 +112,11 @@
 <jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
 <jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<c:if test="${!empty message }">
+	<script>
+		swal.fire("${message}");
+	</script>
+</c:if>
 <script type="text/javascript" src="${contextPath}/resources/js/myBandBoardDetail.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/js/myBandBoardReply.js"></script>
 </body>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fin.band.msgAlarm.model.vo.Invitation;
+import edu.kh.fin.band.myPage.model.vo.Band;
 
 @Repository
 public class SignUpBandDAO {
@@ -39,6 +40,11 @@ public class SignUpBandDAO {
 	 */
 	public int deniedBand(int bandNo) {
 		return sqlSession.delete("signUpBand.changeInviStatus",bandNo);
+	}
+
+	public Band modalBandInfo(int bandNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("signUpBand.modalBandInfo", bandNo);
 	}
 
 }

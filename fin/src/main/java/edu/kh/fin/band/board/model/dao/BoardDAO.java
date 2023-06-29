@@ -40,6 +40,11 @@ public class BoardDAO {
 		// TODO Auto-generated method stub
 		sqlSession.update("boardMapper.updateReadCount",boardNo);
 	}
+	
+	public void like_Check(int boardNo) {
+		sqlSession.update("boardMapper.like_Check", boardNo);
+	}
+	
 
 	public int delete(int boardNo) {
 		return sqlSession.delete("boardMapper.delete",boardNo);
@@ -70,6 +75,7 @@ public class BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("boardMapper.boardAll",cri);
 	}
+
 
 
 

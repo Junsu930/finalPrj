@@ -93,7 +93,7 @@
 
 	</section>
 
-	<hr>
+	<hr id="hr">
 	
 	
 	<section class="secondSec">

@@ -15,6 +15,7 @@
 <script src = "${contextPath}/resources/js/myPageModal.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
+<script src = "${contextPath}/resources/js/myPageModal.js"></script>
 <style>
 	dl, ol, ul {
 	    margin-top: 0;
@@ -59,9 +60,6 @@
                      <img src="${contextPath}${loginUser.profileImg}" id="profile-image">
                 </c:if>
                 
-                <form action="">
-                    <i class="bi bi-camera-fill"></i>
-                </form>
             </div>
 
             <div>
@@ -213,60 +211,36 @@
                     <hr>
 
                     <div class="modalReplyContent">
-                        <table>
-                            <tr>
-                                <td>
-                                    <a href="#"><p class="replyContent">얼립시스가 어디까지 적용이 된느지 한 번 볼까</p></a>
-                                </td>
-                                <td>
-                                    <p>10일전</p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <a href="#"><p class="replyContent">이현경 천재</p></a>
-                                </td>
-                                <td>
-                                    <p>2일전</p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <a href="#"><p class="replyContent">이현경 천재23123</p></a>
-                                </td>
-                                <td>
-                                    <p>7일전</p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <a href="#"><p class="replyContent">이현경 천재ㅁ이아어</p></a>
-                                </td>
-                                <td>
-                                    <p>3일전</p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <a href="#"><p class="replyContent">이현경 천재ㅁㄴㅇㅁㄴㅇ</p></a>
-                                </td>
-                                <td>
-                                    <p>1일전</p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <a href="#"><p class="replyContent">이현경 천재asdasdasdasd</p></a>
-                                </td>
-                                <td>
-                                    <p>3일전</p>
-                                </td>
-                            </tr>
+                    	
+                    	<table>
+                    	
+                    	<c:choose>
+                    		<c:when test="${empty rList}">
+                    			<tr>
+                    				<td>
+                    					<p>작성한 댓글이 없습니다</p>
+                    				</td>
+                    			</tr>
+                    		</c:when>
+                    		
+                    		<c:otherwise>
+                    			
+                    			<c:forEach var="rList" items="${rList}" end="20">
+                    				<tr>
+                                		<td>
+                                    		<a href="#"><p class="replyContent">${rList.replyContent}</p></a>
+                                		</td>
+                                		<td>
+                                    		<p>${rList.createDate}</p>
+                                		</td>
+                            		</tr>        
+                            		         			
+                    			</c:forEach>
+                    		
+                    		</c:otherwise>
+                    	</c:choose>
+                                      
+                            
                         </table>
                     </div>
                 </section>
@@ -303,74 +277,43 @@
                     <div class="modalBoardContent">
 
                         <table class="modalBoardTable">
-                            <tr>
-                                <td>
-                                    <p>일반게시판</p>
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <p>이건 일반게시글이야아아아 (2)</p>
-                                    </a>
-                                </td>
-                                <td>
-                                    <p>10일전</p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <p>일반게시판</p>
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <p>이건 일반게시글 제목야아아아 (3)</p>
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <p>10일전</p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <p>일반게시판</p>
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <p>이건 일반게시글 제목야아아아 (7)</p>
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <p>10일전</p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <p>일반게시판</p>
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <p>이건 일반게시글 제목야아아아 (5)</p>
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <p>10일전</p>
-                                </td>
-                            </tr>
-
-
-
+                        	
+                        	<c:choose>
+                        		<c:when test="${empty boardList}">
+                        			<tr>
+                        				<td>
+                        					<p>작성 글이 존재하지 않습니다</p>
+                        				</td>
+                        			</tr>
+                        		</c:when>
+                        		
+                        		<c:otherwise>
+                        			<c:forEach var="board" items="${boardList}" end="20">
+                        				<tr>
+                                			<td>
+                                    			<p>일반게시판</p>
+                                			</td>
+                                			<td>
+                                    			<a href="boardDetail?boardNo=${board.boardNo}" >
+                                        		<p>${board.boardTitle}</p>
+                                    			</a>
+                                			</td>
+                                			<td>
+                                    			<p>${board.createDate}</p>
+                                			</td>
+                            			</tr>
+                        			
+                        			</c:forEach>
+                        		</c:otherwise>
+                        		                                              	
+                        	</c:choose>
+                        	                          
                         </table>
                     </div>
 
 
                 </section>
-
-                
+                                               
                 
               </div>
               <div class="modal-footer">
@@ -440,7 +383,7 @@
                         	<c:forEach var="bandMem" items="${bandMem}">
                         		<form action="fin/exile" method="POST">
                         		
-                        		<input type="hidden" value="${bandMem.userNo}" id="userNo" name="userNo">
+                        		<input type="hidden" value="${bandMem.userNo}" id="exileNo" name="exileNo">
                         		
                         		<tr>
                                 	<td>
@@ -479,7 +422,7 @@
                     			
                     			<form action="fin/dismiss"  method="GET">
                     			<input type="hidden" value="${bandMem[0].bandNo}" id="bandNo" name="bandNo">
-                        			<button>밴드해체</button>
+                        			<button id="dismissbtn">밴드해체</button>
                         		</form>
                     		</div>
                     	
@@ -535,7 +478,7 @@
                         <c:if test="${!empty loginUser.profileImg}">
                             <img src="${contextPath}${loginUser.profileImg}" id="profile-image">
                         </c:if>
-                        <i class="bi bi-camera-fill" id="fileImg"><input type="file" required name="uploadImage" id="input-image" accept="image/*"></i>              
+                        <i class="bi bi-camera-fill" id="fileImg"><input type="file" required name="uploadImage" id="inputimage" accept="image/*"></i>              
                     </div>
                 
                     <div class="modalInputBox">
@@ -773,8 +716,8 @@
             
             </div>
             <div class="modal-footer">
-                <form action="fin/secession" method="GET">
-                <button id="secessionBtn">탈퇴하기</button>
+                <form action="fin/secession" method="POST" id="secessionout">                     
+                <button id="secessionBtn" type="button">탈퇴하기</button>
         		</form>
             </div>
             </div><!-- /.modal-content -->
@@ -796,7 +739,7 @@
                    
                    <c:choose>
                    		<c:when test="${!empty bandMem}">
-                   			<p>밴드가 이미 있습니다</p>
+                   			<p id="alreadyBand">밴드가 이미 있습니다</p>
                    		</c:when>
                    		
                    		<c:otherwise>

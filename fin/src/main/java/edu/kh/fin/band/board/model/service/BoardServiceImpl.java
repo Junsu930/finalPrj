@@ -53,6 +53,11 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		 return dao.boardUpdate(board);
 	}
+	
+	@Override
+	public int like_Check(int board) {
+		 return like_Check(board);
+	}
 
 	@Override
 	public int getTotal() {

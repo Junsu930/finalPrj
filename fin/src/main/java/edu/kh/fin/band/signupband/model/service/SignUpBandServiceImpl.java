@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.fin.band.msgAlarm.model.vo.Invitation;
+import edu.kh.fin.band.myPage.model.vo.Band;
 import edu.kh.fin.band.signupband.model.dao.SignUpBandDAO;
 
 @Service
@@ -28,5 +29,10 @@ public class SignUpBandServiceImpl implements SignUpBandService{
 	@Override
 	public int deniedBand(int bandNo) {
 		return dao.deniedBand(bandNo);
+	}
+
+	@Override
+	public Band modalBandInfo(int bandNo) {
+		return dao.modalBandInfo(bandNo);
 	}
 }
