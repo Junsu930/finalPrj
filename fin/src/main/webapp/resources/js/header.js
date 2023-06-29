@@ -19,9 +19,6 @@ hamburger.addEventListener("click", () => {
 // =========================================반응형=========================================
 
 
-
-
-
 // =========================================모드==========================================
 // 라이트, 다크모드 요소모음
 const sun = document.getElementById("sun");
@@ -136,18 +133,18 @@ window.addEventListener('scroll', () =>{ // header scroll시 사라지게 함
 
 // =========================================탑 버튼 스크롤 함수==========================================
 
-
+let wrapperUlOpen = false;
+let messageUlBoxOpen = false;
 // alert View 보이기
 
 let wrapperUl = document.querySelector('.wrapperUl');
 let messageUlBox = document.querySelector('.messageUlBox');
-let menu = document.querySelector('.menu');
 
 // 프사 이미지 클릭 시, 밑에 ul 나오게하는 js
-let menuOpen = false;
+
+let menu = document.querySelector('.menu');
 function activeMenu(){
     menu.classList.toggle('activeMenu');
-    return menuOpen = true;
 }
 
 let profileImgBox = document.getElementById('profileImgBox');
@@ -164,15 +161,16 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// post, messagebox나오게 하는 함수
+// 프사 이미지 클릭 시, 밑에 ul 나오게하는 js
 
-let wrapperUlOpen = false;
-let messageUlBoxOpen = false;
+
+// post, messagebox나오게 하는 함수
 
 function showAlertView(){
   wrapperUl.classList.toggle('show');
   return wrapperUlOpen = true;
 }
+
 
 let alertBell = document.getElementById('alertBell');
 document.addEventListener('click', function(e) {
@@ -190,6 +188,7 @@ document.addEventListener('click', function(e) {
 
 
 // post, messagebox나오게 하는 함수
+
 function showMsgBoxView(){
   messageUlBox.classList.toggle('show');
   return messageUlBoxOpen = true;
@@ -209,6 +208,8 @@ document.addEventListener('click', function(e) {
   }
 });
 
+
+// post, messagebox나오게 하는 함수
 
 
 const hiddenUser = document.getElementById('hiddenUser');
@@ -445,8 +446,7 @@ function alarmGetFromInvi(loginUserNo){
       let msg = "님께서 "
       let msg2 = " 초대장을 보냈습니다!!"
       if(inviList === "none"){
-        console.log("초대장 목록 없음");
-        // $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
+        $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
       }else{
         for(let i = 0; i < inviList.length; i++){
           $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${inviList[i].sendMon}<br><span>${inviList[i].sendDay}</span></h3></div>
@@ -464,6 +464,7 @@ function alarmGetFromInvi(loginUserNo){
 
 // 알람(초대장 + 댓글 + 좋아요) 클릭 시, READ_STATUS 바꿔주기
 function changeAlarmStatus(loginUserNo){
+
   document.getElementById('alertBell').addEventListener('click', function(){
     $.ajax({
       url:"changeAlarmStatus",
@@ -481,9 +482,9 @@ function changeAlarmStatus(loginUserNo){
       error : function(request, status, error){
         console.log("changeAlarmStatus AJAX 에러 발생");
         console.log("상태코드 : " + request.status); 
+
       }
-    })
-  });
+  })
 }
 
 
@@ -517,6 +518,7 @@ function getUserNicksFromReply(loginUserNo){
 
   })
 }
+
 
 
 

@@ -25,6 +25,8 @@ public interface BoardService {
 
 	List<BoardDetail> boardTalk(Criteria cri);
 
+	int like_Check(int board);
+
 
 
 
