@@ -149,13 +149,13 @@ WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
 	</select>
 	
 	<!-- Like -->
-	<update id="like_Check" parameterType="_int">
+	<update id="likeCheck" parameterType="int">
 	    UPDATE BOARD_LIKE
 	    SET LIKE_CHECK = ${like_check} + 1 
 	    WHERE USER_NO=#{userNo} AND BOARD_NO=${boardNo}
 	  </update>
 	  
-	  <update id="like_Check_cancel" parameterType="_int">
+	  <update id="like_Check_cancel" parameterType="int">
 	    UPDATE BOARD_LIKE
 	    SET LIKE_CHECK = ${like_check} - 1 
 	    WHERE USER_NO=${userNo} AND BOARD_NO=${boardNo}

@@ -29,7 +29,7 @@ public interface BoardService {
 
 	List<BoardDetail> boardAll(Criteria cri);
 
-	int like_Check(int board);
+	int likeCheck(int boardNo);
 
 
 
