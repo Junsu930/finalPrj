@@ -52,7 +52,7 @@
 						<div class="alarmWrapper">
 							<h1>✉밴드 초대장</h1>
 							<p>한 장의 ${invi.bandName}&nbsp;초대장이 도착했습니다!</p>
-							<p class="infoP js-static-modal-toggleInfoBandP">밴드 정보</p>
+							<p class="infoP js-static-modal-toggleInfoBandP">밴드정보</p>
 							<input type="hidden" value="${invi.bandNo}" name="bandNo">
 							<div class="alarmBtnBox">
 								<form action="acceptBand" method="POST">
