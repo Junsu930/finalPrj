@@ -52,6 +52,7 @@ function replyOn(){
                 eachFatherDiv.append(eachReplyDiv);
                 eachReplyDiv.className = "eachReplyDiv";
 
+                
                 let hInput = document.createElement("input");
                 hInput.type="hidden";
                 hInput.value= eachR.userNo;
@@ -62,8 +63,17 @@ function replyOn(){
                 rDiv1.className = "replyNickDiv";
                 rDiv1.innerHTML = eachR.userNick;
                 let rDiv2 = document.createElement("div");
-    
-                rDiv2.innerHTML = eachR.replyContent;
+                
+                if(eachR.pReplyNo != null && eachR.pReplyNo !=""){
+                    eachFatherDiv.classList.add("childReply");
+                    let pNickSpan = document.createElement("span");
+                    pNickSpan.className = "pNickSpan";
+                    pNickSpan.innerHTML = "@" + eachR.pNick;
+                    rDiv2.append(pNickSpan);
+                }
+
+                
+                rDiv2.innerHTML += eachR.replyContent;
 
                 replyDiv.append(rDiv1);
                 replyDiv.append(rDiv2);
@@ -169,6 +179,77 @@ $(document).on("click", '.updateReplyForBandBoardBtn', e=>{
     });
 
 });
+
+
+/** ****************************************************** */
+
+
+$(document).on("click",'.reReplyBtn', e=>{
+    
+    
+    // 수정을 위한 input 생성
+    let upateRDiv = document.createElement("div");
+    let updateRText = document.createElement("textarea");
+    let updateRBtn = document.createElement("button");
+
+    upateRDiv.className = "reReplyForBandBoardDetailBtnDiv";
+    updateRText.id= "reReplyForBandBoard";
+    updateRBtn.className = "reReplyForBandBoardBtn";
+    updateRBtn.type = "button";
+    updateRBtn.innerText="등록";
+    
+    upateRDiv.append(updateRText);
+    upateRDiv.append(updateRBtn);
+
+    // 기존 버튼 말고 취소 버튼 활성화
+    let dBtn = document.createElement("button");
+    dBtn.className = "rollbackreReplyBtn";
+    dBtn.innerHTML = "취소"
+    
+    $(e.target).before(dBtn);
+   
+    $(e.target).css("display", "none");
+
+    $(e.target).parent().parent().parent().append(upateRDiv);
+});
+
+$(document).on("click",'.rollbackreReplyBtn', e=>{
+    $(e.target).next().css("display", "flex");
+    // 생성된 인풋 박스 삭제
+
+    $(e.target).parent().parent().parent().children().last().remove();
+
+    $(e.target).remove();
+});
+
+$(document).on("click", '.reReplyForBandBoardBtn', e=>{
+    // 부모 리플 번호
+    let fatherReplyNo = $(e.target).parent().parent().children("input").val();
+    // 텍스트
+    let replyText = $(e.target).prev().val();
+    // 게시판 번호
+    let boardNo = $("#hiddenReplyBoardNoForBandBoard").val();
+
+    let userNo = $("#hiddenSessionNoForReply").val();
+
+
+
+    $.ajax({
+
+        url : "/fin/reRplyLogic",
+        type : "post",
+        data : {"fatherReplyNo":fatherReplyNo, "replyText": replyText, "boardNo":boardNo, "userNo":userNo},
+        success : function(e){
+
+            replyOn();
+        }
+
+
+    })
+
+});
+
+/***************************************/
 
 //삭제 로직
 $(document).on("click",'.removeReplyBtn', e=>{

@@ -21,5 +21,6 @@ public class MyBandReply {
 	int pReplyNo;
 	int boardNo;
 	String userNick;
+	String pNick;
 
 }

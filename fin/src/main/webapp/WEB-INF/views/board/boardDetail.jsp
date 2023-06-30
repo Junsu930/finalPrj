@@ -148,6 +148,7 @@
         // -> 로그인 O  : "10";
         // -> 로그인 X  : "";  (빈문자열)
 
+        
     </script>
 
 
@@ -176,6 +177,8 @@ const deleteBtn= () => {
 	
 	
 	}
+	
+	
 </script>
 <script src = "${contextPath}/resources/js/boardDetail.js"></script>
     <script src="${contextPath}/resources/js/reply.js"></script>

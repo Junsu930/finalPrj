@@ -164,7 +164,7 @@
  
  
   
-
+  <form action="board" method="get">
     <div class="pagination-search">
     
     <ul class="pagination">
@@ -188,16 +188,17 @@
         
         
       <div class="search-box">
-        <select id="nav-select">
+        <select id="nav-select" name="searchType">
           <option value="all">전체</option>
           <option value="notice">질문</option>
           <option value="popular">잡담</option>
           
         </select>
-        <input type="text" placeholder="글 검색">
-        <button type="button" class="searchBtn">검색</button>
+        <input type="text" placeholder="글 검색" name="keyword">
+        <button type="submit" class="searchBtn">검색</button>
     </div>
   </div>
+</form>
 </div>
 
 

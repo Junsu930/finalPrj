@@ -1,6 +1,10 @@
 package edu.kh.fin.band.myBand.controller;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
@@ -92,6 +98,68 @@ public class MyBandController {
 		
 		
 		return "myBand/myBand";
+	}
+	
+	
+	/** 검색 기능
+	 * @param searchingText
+	 * @return
+	 */
+	@GetMapping("/searcingMyBandBoard")
+	public String searcingMyBandBoard(@RequestParam("searchingText")String searchingText,@RequestParam("bandNoForSearch") int bandNo,@RequestParam(value ="amount", defaultValue = "10") int amount,
+			@RequestParam(value="pageNum", defaultValue = "1")int pageNum, HttpServletRequest req,  Model model, @RequestParam("selectType") String selectType, @RequestParam(value="bandTitle", required = false) String bandTitle) {
+
+		CommonCriteria cri = new CommonCriteria(pageNum, amount);
+		
+		Pagination pageVo = new Pagination(cri, service.getSearchingTotal(bandNo, searchingText, selectType));
+		
+		
+		List<MyBand> bandList = service.searcingBandList(bandNo, amount, pageNum, searchingText, selectType);
+		
+		String leaderNick = service.leaderNick(bandNo);
+		
+		HttpSession session = req.getSession();
+		
+		
+		List<String> bandMember = service.bandMember(bandNo);
+		
+		User loginUser = (User)session.getAttribute("loginUser");
+		
+		if(loginUser != null) {
+			int bandUserFl = service.bandUserFl(bandNo, loginUser);
+			
+			if(bandUserFl > 0) { //멤버가 밴드 멤버가 맞으면
+				model.addAttribute("memberFl", "T");
+			}else {
+				model.addAttribute("memberFl", "F");
+			}
+		}else { // 로그인 유저 없으면 
+			model.addAttribute("memberFl", "F");
+			
+		}
+		
+		// 로그인 유저 검증
+		
+		model.addAttribute("leaderNick",leaderNick);
+		
+		model.addAttribute("bandList", bandList);
+		
+		model.addAttribute("memberList", bandMember);
+		
+		model.addAttribute("pageVo", pageVo);
+		
+		model.addAttribute("bandNo", bandNo);
+		
+		model.addAttribute("searchingFl","T");
+		
+		model.addAttribute("searchingText", searchingText);
+		
+		model.addAttribute("selectType", selectType);
+		
+		model.addAttribute("bandTitleForS", bandTitle);
+		
+		return "myBand/myBand";
+		
 	}
 	
 	
@@ -187,9 +255,20 @@ public class MyBandController {
 		return "myBand/myBandWrite";
 	}
 	
+	/** 글 쓰기
+	 * @param model
+	 * @param title
+	 * @param text
+	 * @param bandNo
+	 * @param req
+	 * @param ra
+	 * @param updateFlag
+	 * @param boardNo
+	 * @return
+	 */
 	@PostMapping("/writeBandBoard")
 	public String writeBandBoard(Model model,@RequestParam("titleInputForBandBoard")String title ,@RequestParam("text") String text, @RequestParam(value="hiddenBandNo", required = false, defaultValue = "0") int bandNo, HttpServletRequest req, RedirectAttributes ra, @RequestParam("updateFlag") String updateFlag,
-			@RequestParam("hiddenBoardNoForUpdateLogic") String boardNo) {
+			@RequestParam("hiddenBoardNoForUpdateLogic") String boardNo ) {
 		
 		if(updateFlag.equals("U")) {
 			
@@ -218,6 +297,7 @@ public class MyBandController {
 			
 			int userNo = ((User)session.getAttribute("loginUser")).getUserNo();
 			
+			System.out.println(text);
 			
 			int result = service.writeBandBoard(title, text, bandNo, userNo);
 			
@@ -263,6 +343,20 @@ public class MyBandController {
 		
 		
 		return new Gson().toJson(rList);
+	}
+	
+	/** 대댓글 로직
+	 * @param boardNo
+	 * @param model
+	 * @return
+	 */
+	@PostMapping("/reRplyLogic")
+	@ResponseBody
+	public int reRplyLogic(@RequestParam Map<String,Object> paramMap) {
+		
+		int result = service.reRplyLogic(paramMap);
+		
+		return result;
 	}
 	
 	
@@ -319,17 +413,51 @@ public class MyBandController {
 	
 	@PostMapping("/likeLogic")
 	@ResponseBody
-	public String likeLogic(@ModelAttribute LikeLogic likeLogic) {
+	public int likeLogic(@ModelAttribute LikeLogic likeLogic) {
 
-		return "";
+		int result = service.likeLogic(likeLogic);
+		return result;
 	}
 	
 	@PostMapping("/unlikeLogic")
 	@ResponseBody
-	public String unlikeLogic(@ModelAttribute LikeLogic likeLogic) {
+	public int unlikeLogic(@ModelAttribute LikeLogic likeLogic) {
 
-		return "";
+		int result = service.unlikeLogic(likeLogic);
+		return result;
 	}
+
 	
+	@PostMapping("/myBandImgUpload")
+	@ResponseBody
+	public String image(MultipartHttpServletRequest request, HttpServletRequest req) throws Exception {
+		
+		Map<String, Object> map = new HashMap<>();
+
+		MultipartFile uploadFile = request.getFile("upload");
+
+		String originalFileName = uploadFile.getOriginalFilename();
+
+		String ext = originalFileName.substring(originalFileName.indexOf("."));
+		
+		// 2) 이미지 저장 경로 얻어오기 (webPath, folderPath)
+		String webPath = "/resources/images/myBandImg/";
+		
+		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+
+		String newFileName = UUID.randomUUID() + ext;
+
+
+		File file = new File(folderPath + newFileName);
+
+
+		uploadFile.transferTo(file);
+		
+		
+		map.put("url", "/fin" + webPath + newFileName);
+		
+
+		return new Gson().toJson(map);
+	}
 	
 }

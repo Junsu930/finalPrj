@@ -39,7 +39,7 @@
 				<!-- 좋아요 -->
 				<div>
 					<i class="fa-regular fa-heart"></i>
-					<span>${boardDetail.boardLike }</span>
+					<span id="likeItSpan">${boardDetail.boardLike }</span>
 				</div>
 				<c:if test="${sessionScope.loginUser.userNo eq boardDetail.userNo }">
 					<div class="editAndDeleteBtnDiv">

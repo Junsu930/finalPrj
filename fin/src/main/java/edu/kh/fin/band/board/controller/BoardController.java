@@ -43,10 +43,15 @@ public class BoardController {
 	
 	@GetMapping("/board")
 	
-	public String BoardList(Model model, Criteria cri) {
-	    int total = service.getTotal();
+	public String BoardList(Model model, Criteria cri,
+			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+			   @RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
+	    int total = service.getTotal(cri);
+	   
+	   
 	    PageVO pageVO = new PageVO(cri, total);
 	    List<BoardDetail> boardList = service.boardList(cri);
+	   
 	    model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
 	    return "board/boardMain";
@@ -68,7 +73,10 @@ public class BoardController {
 
 	@GetMapping("/boardDetail")
 	public String boardDetail(@RequestParam("boardNo")int boardNo,
-							  	Model model,Criteria cri ) {
+							  	Model model,Criteria cri ,
+							  	@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+							    @RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
+							  	) {
 		service.updateReadCount(boardNo);
 		BoardDetail boardDetail = service.boardDetail(boardNo);
 		model.addAttribute("BoardDetail" , boardDetail);
@@ -76,9 +84,9 @@ public class BoardController {
 		model.addAttribute("rList", rList);
 		
 		
-	    int total = service.getTotal();
+	    int total = service.getTotal(cri);
 	    PageVO pageVO = new PageVO(cri, total);
-	    List<BoardDetail> boardList = service.boardList(cri);
+	    List<BoardDetail> boardList = service.boardList(cri,searchType,keyword);
 	    model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
 		
@@ -170,14 +178,16 @@ public class BoardController {
 	}
 	
 	/* addlike 증가하는 코드 */
-	@PostMapping("/addLike")
+	@GetMapping("/addLike")
 	public String addLike(@RequestParam("boardNo")int boardNo,
 							  @ModelAttribute("loginUser") User loginUser,
 							  RedirectAttributes ra) {
+		System.out.println("들어오는지 확인");
+		System.out.println(boardNo);
 		
-		int like_check = service.like_Check(boardNo);
+		int likecheck = service.likeCheck(boardNo);
 		
-		if(like_check > 0) {
+		if(likecheck > 0) {
 			  return new Gson().toJson("좋아요 쌓임!");
 		  } else {
 			  return new Gson().toJson("ㄴㄴ");

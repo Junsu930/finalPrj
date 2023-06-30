@@ -23,7 +23,7 @@ public class DataController {
 
 	@GetMapping("/boardTalk")
 	public String boardTalk(Criteria cri ) {
-	    int total = service.getTotal();
+	    int total = service.getTotal(cri);
 	    PageVO pageVO = new PageVO(cri, total);
 	    List<BoardDetail> boardTalk = service.boardTalk(cri);
 	    return new Gson().toJson(boardTalk);
@@ -33,7 +33,7 @@ public class DataController {
 	
 	@GetMapping("/boardQus")
 	public String boardQus(Criteria cri ) {
-	    int total = service.getTotal();
+	    int total = service.getTotal(cri);
 	    PageVO pageVO = new PageVO(cri, total);
 	    List<BoardDetail> boardQus = service.boardQus(cri);
 	    return new Gson().toJson(boardQus);
@@ -41,7 +41,7 @@ public class DataController {
 	
 	@GetMapping("/boardAll")
 	public String boardAll(Criteria cri ) {
-	    int total = service.getTotal();
+	    int total = service.getTotal(cri);
 	    PageVO pageVO = new PageVO(cri, total);
 	    List<BoardDetail> boardAll = service.boardAll(cri);
 	    return new Gson().toJson(boardAll);

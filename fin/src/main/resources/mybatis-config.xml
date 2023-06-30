@@ -42,6 +42,7 @@
 		<typeAlias type="edu.kh.fin.band.board.model.vo.Board" alias="boardList"/>
 		<typeAlias type="edu.kh.fin.band.board.model.vo.Reply" alias="replyList"/>
 		<typeAlias type="edu.kh.fin.band.login.model.vo.User" alias="findPw"/>
+		<typeAlias type="edu.kh.fin.band.myBand.model.vo.LikeLogic" alias="likeLogic"/>
 	</typeAliases>
 	
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->

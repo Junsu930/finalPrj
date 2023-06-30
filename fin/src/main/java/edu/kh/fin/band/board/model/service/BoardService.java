@@ -11,7 +11,7 @@ public interface BoardService {
 
 	int write(Board board);
 
-	List<BoardDetail> boardList(Criteria cri);
+	List<BoardDetail> boardList(Criteria cri, String searchType, String keyword);
 
 	BoardDetail boardDetail(int boardNo);
 
@@ -21,7 +21,7 @@ public interface BoardService {
 
 	int boardUpdate(Board board);
 
-	int getTotal();
+	int getTotal(Criteria cri);
 
 	List<BoardDetail> boardTalk(Criteria cri);
 
@@ -29,7 +29,9 @@ public interface BoardService {
 
 	List<BoardDetail> boardAll(Criteria cri);
 
-	int like_Check(int board);
+	int likeCheck(int boardNo);
+
+	List<BoardDetail> boardList(Criteria cri);
 
 
 
