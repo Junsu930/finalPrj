@@ -484,7 +484,8 @@ function changeAlarmStatus(loginUserNo){
         console.log("상태코드 : " + request.status); 
 
       }
-  })
+    });
+  });
 }
 
 
@@ -509,14 +510,13 @@ function getUserNicksFromReply(loginUserNo){
           <input type="hidden" value=${getUserNicksFromReply[i].boardNo} name="boardNo">`) // 새로운 댓글 있을 때, 코드 수행
         }
       } // if끝
-
     },
     error : function(request, status, error){
       console.log("alarmGetFromReply AJAX 에러 발생");
       console.log("상태코드 : " + request.status); 
     }
 
-  })
+  });
 }
 
 

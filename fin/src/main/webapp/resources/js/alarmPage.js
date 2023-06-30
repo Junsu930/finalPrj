@@ -2,48 +2,52 @@
 
 
 
-let modalBandInfo = document.querySelector('.infoP');
+let modalBandInfo = document.querySelector('.js-static-modal-toggleInfoBandP');
 let modalFromInviBox;
 
-let alarmWrapper = document.querySelectorAll('alarmWrapper')
-for(let i = 0; i< alarmWrapper.length; i++){
 
-    modalBandInfo.addEventListener('click', function(e){
-        console.log("asdadsasdads");
-        let bandNoVal = e.target.nextElementSibling.value;
-        console.log(bandNoVal);
-        modalFromInviBox = new Modal({el: document.getElementById('static-modalInfoBand'), bnadNoKey : bandNoVal}).show();
+modalBandInfo.addEventListener('click', function(e) {
+   
+    let bandNoVal = e.target.nextElementSibling.value;
+    console.log(bandNoVal + "번 밴드");
+    
+    // 자꾸 이전에 내용이 중첩돼서 모달에 추가됨
+    // 이전에 추가된 내용 삭제
+    let bandInfoSec = document.querySelector('.bandInfoSec');
+    bandInfoSec.innerHTML = '';
 
-        $.ajax({
-            url:"modalBandInfo",
-            method:"GET",
-            data:{"bandNoKey":bandNoVal},
-            dataType:"JSON",
-            success: function(data){
-                let bandInfoSec = document.querySelector('.bandInfoSec');
-                let bandNameInfo = document.createElement('div');
-                let h1 = document.createElement('h1');
+    modalFromInviBox = new Modal({el: document.getElementById('static-modalInfoBand'), bnadNoKey: bandNoVal}).show();
+    $.ajax({
+        url: "modalBandInfo",
+        method: "GET",
+        data: { "bandNoKey": bandNoVal },
+        dataType: "JSON",
+        success: function(data) {
+            let bandNameInfo = document.createElement('div');
+            let h1 = document.createElement('h1');
 
-                let bnadMentInfo = document.createElement('div');
-                let p = document.createElement('p');
+            let bnadMentInfo = document.createElement('div');
+            let p = document.createElement('p');
 
-                bandInfoSec.append(bandNameInfo);
-                bandNameInfo.append(h1);
-                bandNameInfo.className = "bandNameInfo";
-                h1.innerText = data.bandName + "🎵";
+            bandNameInfo.append(h1);
+            bandNameInfo.className = "bandNameInfo";
+            h1.innerText = data.bandName + "🎵";
 
-                bandInfoSec.append(bnadMentInfo)
-                bnadMentInfo.append(p);
-                bnadMentInfo.className = "bnadMentInfo";
-                p.innerText = data.ment + "! by " + data.leaderNick + "🎶";
-            },
-            error : function(request, status, error){
-                console.log("modalBandInfo AJAX 에러 발생");
-                console.log("상태코드 : " + request.status); 
-              }
-        })
+            bnadMentInfo.append(p);
+            bnadMentInfo.className = "bnadMentInfo";
+            p.innerText = data.ment + "! by " + data.leaderNick + "🎶";
+
+            
+            bandInfoSec.append(bandNameInfo);
+            bandInfoSec.append(bnadMentInfo);
+        },
+        error: function(request, status, error) {
+            console.log("modalBandInfo AJAX 에러 발생");
+            console.log("상태코드: " + request.status);
+        }
     });
-}
+});
+
 
 
 function changeText(){

@@ -16,17 +16,16 @@
     gap: 3em;
     width: 500px;
     height: 350px;
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    box-shadow: 2px 2px 20px silver;
+    background-color: var(--newBack-color);
+    box-shadow: 4px -2px 15px 0px rgba(0,0,0,0.25);
     border-radius: 12px;
 }
 
 body.darkmode .alarmWrapper{
-    background-color: transparent;
-    background-image: none;
-    box-shadow: none;
-    border: 1px solid var(--border-color);
+    background-color: var(--newBack-dark-color);
 }
+
+
 
 .alarmWrapper > h1{
     padding-left: 0;
@@ -84,8 +83,19 @@ body.darkmode .alarmBtnBox form button{
 }
 
 .js-static-modal-toggleInfoBandP{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 32px;
+    border-radius: 16px;
     font-size: 1.1em;
     cursor: pointer;
+    color: #12b886;
+}
+
+body.darkmode .js-static-modal-toggleInfoBandP{
+    background-color: var(--newBack-dark-color);
 }
 
 @keyframes in{
@@ -130,8 +140,13 @@ body.darkmode .alarmBtnBox form button{
 
 .bandNameInfo > h1{
     padding-left: 0;
+    color: var(--text-color);
 }
+
+
 
 .bnadMentInfo > p{
     font-size: 1.3em;
+    color: var(--text-color);
 }
+
