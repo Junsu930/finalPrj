@@ -16,7 +16,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div class="myBandWritecontainer">
-    <form action="${contextPath}/writeBandBoard" method="POST">
+    <form action="${contextPath}/writeBandBoard" method="POST" onsubmit="return vacantCheck()">
 	<input type="hidden" value="${updateFlag}" id="updateFlag" name="updateFlag">
 	<input type="hidden" value="${updateDetail.boardTitle}" id="hiddenTitle">
 	<input type="hidden" value="${boardNo}" id="hiddenBoardNoForUpdateLogic" name="hiddenBoardNoForUpdateLogic">

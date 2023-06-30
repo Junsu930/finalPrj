@@ -24,6 +24,7 @@
 		<result property="pReplyNo" column="PARENT_REPLY_NO"/>
 		<result property="boardNo" column="BOARD_NO"/>	
 		<result property="userNick" column="USER_NICK"/>	
+		<result property="pNick" column="PARENT_NICK"/>	
 	</resultMap>
 	
 	<select id="bandBoardList" parameterType="hashmap" resultMap="bandBoard_rm">
@@ -40,6 +41,32 @@
 		WHERE RN &gt; (#{pageNum}-1) * #{amount} AND RN<![CDATA[<=]]> #{pageNum} * #{amount}
 	</select>
 	
+	<select id="searcingBandList" parameterType="hashmap" resultMap="bandBoard_rm">
+		SELECT *
+		FROM (SELECT ROWNUM RN ,A.* FROM (SELECT BOARD_NO ,BOARD_TITLE, BOARD_CONTENT , CASE WHEN SYSDATE - CREATE_DATE &lt; 1
+		THEN TO_CHAR(CREATE_DATE, 'HH:MI')
+		ELSE TO_CHAR(CREATE_DATE, 'YYYY-MM-DD')
+		END T_CREATE_DATE, CREATE_DATE , READ_COUNT , USER_NICK, BOARD_LIKE ,BOARD_TAG, BAND_NAME, USER_NO  
+		FROM BAND_BOARD bb 
+		JOIN "USER" USING(USER_NO) 
+		JOIN BAND b USING(BAND_NO) 
+		WHERE BAND_NO = ${bandNo}
+		
+		<choose>
+			<when test="selectType == '제목'">
+			AND BOARD_TITLE LIKE #{searcingText}
+			</when>
+			<when test="selectType == '내용'">
+			AND BOARD_CONTENT LIKE #{searcingText}
+			</when>
+			<otherwise>
+			AND (BOARD_TITLE LIKE #{searchingText} OR BOARD_CONTENT LIKE #{searchingText})
+			</otherwise>
+		</choose>
+		AND BOARD_ST = 'Y' ORDER BY DECODE(BOARD_TAG,'공지',1), CREATE_DATE DESC) A) 
+		WHERE RN &gt; (${pageNum}-1) * ${amount} AND RN<![CDATA[<=]]> ${pageNum} * ${amount}
+	</select>
+	
 	<select id="leaderNick" parameterType="_int" resultType="string">
 		SELECT USER_NICK FROM BAND_USER bu JOIN "USER" u USING(USER_NO) WHERE BAND_NO = 1 AND LEADER_FL = 'T'
 	</select>
@@ -50,6 +77,20 @@
 	
 	<select id="getTotal" parameterType="_int" resultType="_int">
 		SELECT COUNT(*) FROM BAND_BOARD bb WHERE BAND_NO = ${bandNo} AND BOARD_ST='Y'
+	</select>
+	
+	<select id="getSearchingTotal" parameterType="hashmap" resultType="_int">
+		<choose>
+			<when test="selectType == '제목'">
+			SELECT COUNT(*) FROM BAND_BOARD bb WHERE BAND_NO = ${bandNo} AND BOARD_ST='Y' AND BOARD_TITLE LIKE #{searchingText}
+			</when>
+			<when test="selectType == '내용'">
+			SELECT COUNT(*) FROM BAND_BOARD bb WHERE BAND_NO = ${bandNo} AND BOARD_ST='Y' AND BOARD_CONTENT LIKE #{searchingText}
+			</when>
+			<otherwise>
+			SELECT COUNT(*) FROM BAND_BOARD bb WHERE BAND_NO = ${bandNo} AND BOARD_ST='Y' AND (BOARD_CONTENT LIKE #{searchingText} OR BOARD_TITLE LIKE #{searchingText})
+			</otherwise>
+		</choose>
 	</select>
 	
 	<select id="bandUserFl" parameterType="hashmap" resultType="_int">
@@ -77,8 +118,8 @@
 		SELECT LEVEL,  R.* FROM
 		    (SELECT REPLY_NO, REPLY_CONTENT,
 	        TO_CHAR(CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') CREATE_DT,
-	        BOARD_NO, USER_NO, USER_NICK, PARENT_REPLY_NO, REPLY_ST
-		    FROM BAND_BOARD_REPLY
+	        BOARD_NO, USER_NO, USER_NICK, (SELECT USER_NICK FROM "USER" WHERE USER_NO = (SELECT USER_NO FROM BAND_BOARD_REPLY bbr WHERE bbr.REPLY_NO = br.PARENT_REPLY_NO)) PARENT_NICK, PARENT_REPLY_NO, REPLY_ST
+		    FROM BAND_BOARD_REPLY br
 		    JOIN "USER" USING(USER_NO)
 		    WHERE BOARD_NO = ${boardNo}) R
 		WHERE REPLY_ST = 'Y'
@@ -88,7 +129,7 @@
 	</select>
 	
 	<select id="rCount" parameterType="_int" resultType="_int">
-		SELECT COUNT(*) FROM BAND_BOARD_REPLY WHERE BOARD_NO = ${boardNo}
+		SELECT COUNT(*) FROM BAND_BOARD_REPLY WHERE BOARD_NO = ${boardNo} AND REPLY_ST= 'Y'
 	</select>
 	
 	<update id="updateBandBoard" parameterType="hashmap">
@@ -115,4 +156,24 @@
 		SELECT COUNT(*) FROM BAND_BOARD_LIKE WHERE USER_NO = ${userNo} AND BOARD_NO = ${boardNo}
 	</select>
 	
+	<insert id="likeLogic" parameterType="likeLogic">
+		INSERT INTO BAND_BOARD_LIKE VALUES(BAND_BOARD_LIKE_SEQ.NEXTVAL, ${boardNo}, ${userNo})
+	</insert>
+	
+	<delete id="unlikeLogic" parameterType="likeLogic">
+		DELETE FROM BAND_BOARD_LIKE WHERE BOARD_NO = ${boardNo} AND USER_NO = ${userNo}
+	</delete>
+	
+	<update id="likeUpdate" parameterType="likeLogic">
+		UPDATE BAND_BOARD SET BOARD_LIKE = BOARD_LIKE +1 WHERE BOARD_NO = ${boardNo}
+	</update>
+	
+	
+	<update id="unlikeUpdate" parameterType="likeLogic">
+		UPDATE BAND_BOARD SET BOARD_LIKE = BOARD_LIKE -1 WHERE BOARD_NO = ${boardNo}
+	</update>
+	
+	<insert id="reReplyLogic" parameterType="map">
+		INSERT INTO BAND_BOARD_REPLY bbr VALUES(REPLY_BAND_BOARD_SEQ.NEXTVAL, #{replyText}, 'Y', SYSDATE, ${userNo}, ${fatherReplyNo}, ${boardNo})
+	</insert>
 </mapper>

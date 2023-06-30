@@ -13,6 +13,12 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
 <title>내 밴드 보기</title>
+<style>
+	body.swal2-shown{
+		padding-right : 0 !important;
+		overflow: revert !important;
+	}
+</style>
 </head>
 <body>
 <c:set var="bandTitle" value="${bandList[0].bandName}"/>
@@ -27,8 +33,13 @@
 		</div>
 		<div class="bandContentsDiv">
 			<div class="leftSideBandMemberDiv">
-				<div class="bandTitleDiv">
-					<p>${bandTitle}</p>
+				<div class="bandTitleDiv" onclick="location.href='${contextPath}/myBandBoard?bandNo=${bandNo}'">
+					<c:if test="${empty searchingFl }">
+						<p>${bandTitle}</p>
+					</c:if>
+					<c:if test="${!empty searchingFl }">
+						<p>${bandTitleForS}</p>
+					</c:if>
 				</div>
 				<div class="bandInfoDiv">
 					<div>
@@ -131,20 +142,67 @@
 							</form>
 						</c:forEach>
 					</div>
-					<!-- 페이지네이션 영역 -->
-					<div class="paginations">
-						<c:if test="${pageVo.prev}">
-							<li><a href="myBandBoard?bandNo=${bandNo}&pageNum=${pageVo.startPage =1}&amount=${pageVo.amount}">이전</a></li>
-						</c:if>
-						<c:forEach var="num" begin="${pageVo.startPage}" end="${pageVo.endPage}">
-							<li class="${pageVo.pageNum eq num ? 'active' : ''}">
-								<a href="myBandBoard?bandNo=${bandNo}&pageNum=${num}&amount=${pageVo.amount}">${num}</a>
-							</li>
-						</c:forEach>
-						
-						<c:if test="${pageVo.next}">
-							<li><a href="myBandBoard?bandNo=${bandNo}&pageNum=${pageVo.endPage + 1}&amount=${pageVo.amount}">다음</a></li>
-						</c:if>
+					
+					<c:if test="${empty searchingFl}">
+						<!-- 페이지네이션 영역 -->
+						<div class="paginations">
+							<c:if test="${pageVo.prev}">
+								<li><a href="myBandBoard?bandNo=${bandNo}&pageNum=${pageVo.startPage =1}&amount=${pageVo.amount}">이전</a></li>
+							</c:if>
+							<c:forEach var="num" begin="${pageVo.startPage}" end="${pageVo.endPage}">
+								<li class="${pageVo.pageNum eq num ? 'active' : ''}">
+									<a href="myBandBoard?bandNo=${bandNo}&pageNum=${num}&amount=${pageVo.amount}">${num}</a>
+								</li>
+							</c:forEach>
+							
+							<c:if test="${pageVo.next}">
+								<li><a href="myBandBoard?bandNo=${bandNo}&pageNum=${pageVo.endPage + 1}&amount=${pageVo.amount}">다음</a></li>
+							</c:if>
+						</div>
+					</c:if>
+					<c:if test="${!empty searchingFl}">
+						<!-- 페이지네이션 영역 -->
+						<div class="paginations">
+							<c:if test="${pageVo.prev}">
+								<li><a href="searcingMyBandBoard?bandNoForSearch=${bandNo}&pageNum=${pageVo.startPage =1}&amount=${pageVo.amount}&searchingText=${searchingText}&selectType=${selectType}&bandTitle=${bandTitle}">이전</a></li>
+							</c:if>
+							<c:forEach var="num" begin="${pageVo.startPage}" end="${pageVo.endPage}">
+								<li class="${pageVo.pageNum eq num ? 'active' : ''}">
+									<a href="searcingMyBandBoard?bandNoForSearch=${bandNo}&pageNum=${num}&amount=${pageVo.amount}&searchingText=${searchingText}&selectType=${selectType}&bandTitle=${bandTitle}">${num}</a>
+								</li>
+							</c:forEach>
+							
+							<c:if test="${pageVo.next}">
+								<li><a href="searcingMyBandBoard?bandNoForSearch=${bandNo}&pageNum=${pageVo.endPage + 1}&amount=${pageVo.amount}&searchingText=${searchingText}&selectType=${selectType}&bandTitle=${bandTitle}">다음</a></li>
+							</c:if>
+						</div>
+					
+					</c:if>
+					
+					<!-- 검색 영역 -->
+					<div class="searchingMyBoardDiv">
+						<div>
+							<button type="button" class="selectBtn" id="selectBtn">
+								<span id="selectTextSpan">제목</span>
+								<i class="bi bi-caret-down" id="bi"></i>
+							</button>
+							<ul class="selectTypeListUl disappearList" id="selectTypeListUl">
+								<li>제목</li>
+								<li>내용</li>
+								<li>제목+내용</li>
+							</ul>
+						</div>
+						<form method="get" action="${contextPath}/searcingMyBandBoard" id="searcingMyBoardForm" onSubmit="return enterCheck()">
+							<div class="searchBtnDivForMyBand">
+								<input type="hidden" name="selectType" value="selectType" id="selectType"> 
+								<input type="hidden" name="bandTitle" value="${bandTitle}" id="bandTitle"> 
+								<input type="hidden" name="bandNoForSearch" id="bandNoForSearch" value="${bandNo}">
+								<input type="search" name="searchingText" id="bandBoardSearch">
+								<button id="s-btn" type="button">
+									<i class="fa-solid fa-magnifying-glass" id="glass"></i>			
+								</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

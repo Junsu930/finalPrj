@@ -5,6 +5,7 @@
 	width: 80%;
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 100px;
 }
 
 
@@ -28,9 +29,86 @@
 	display: flex;
 }
 
+.paginations{
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.searchingMyBoardDiv{
+	display: flex;
+}
+
+#bandBoardSearch{
+	width : 90%;
+    border-radius: 19px;
+    border: solid 1px var( --grey-color);
+    box-sizing: border-box;
+    padding:15px;
+    display: flex;
+	margin: auto;
+	height: 10px;
+}
 
 
+/* 검색 버튼 */
+#s-btn{
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+	position: absolute;
+	right: 10%;
+	top : 5px;
+	
+}
 
+.selectBtn{
+	width: 80px;
+    height: 30px;
+    border: 1px solid #999;
+    border-radius: 1.5em;
+    font-size: 1em;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bandTitleDiv > p{
+	color: black;
+}
+
+.selectBtn > span{
+	font-size: 0.5em;
+	margin-right: 10px;
+}
+
+.selectTypeListUl{
+    width: 150px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 1.5em;
+    padding: 0.5em 0.5em;
+    margin-top: 0.3em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: var(--background-color);
+    z-index: 10;
+    position: absolute;
+}
+
+.disappearList{
+	display: none;
+}
+
+.selectTypeListUl li:hover{
+	background-color: var(--accent-color);
+	border-radius: 10px;
+}
+.selectTypeListUl li{
+	padding: 0.5em 0.5em;
+    cursor: pointer;
+    list-style: none;
+}
 
 /*왼쪽 멤버리스트바*/
 .leftSideBandMemberDiv{
@@ -99,6 +177,7 @@
     justify-content: center;
     font-size: 1.5em;
     box-shadow: 2px 2px 20px silver;
+	cursor: pointer;
 }
 
 
@@ -115,7 +194,7 @@
 .realBoardDiv{
 	
 	width: 95%;
-	height: 75%;
+	height: 85%;
 	border-radius: 10px;
 	margin-top :40px;
 	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
@@ -151,7 +230,7 @@
 .realBoardDiv > div:last-of-type {
 	flex-basis: 10%;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	align-items: center;
 }
 
@@ -169,6 +248,10 @@
 	border: 1px solid silver;
 	cursor: pointer;
 	color: black;
+}
+
+.searchBtnDivForMyBand{
+	position: relative;
 }
 
 .eachBoardDiv:hover{
