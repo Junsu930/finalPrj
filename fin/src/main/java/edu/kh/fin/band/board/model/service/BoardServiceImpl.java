@@ -25,9 +25,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardDetail> boardList(Criteria cri) {
+	public List<BoardDetail> boardList(Criteria cri, String searchType, String keyword) {
 		// TODO Auto-generated method stub
-		return dao.boardList(cri);
+		return dao.boardList(cri, searchType,keyword);
 	}
 
 	@Override
@@ -60,9 +60,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int getTotal() {
+	public int getTotal(Criteria cri) {
 		// TODO Auto-generated method stub
-		return dao.getTotal();
+		return dao.getTotal(cri);
 	}
 
 	@Override
@@ -83,9 +83,12 @@ public class BoardServiceImpl implements BoardService{
 		return dao.boardAll(cri);
 	}
 
+	@Override
+	public List<BoardDetail> boardList(Criteria cri) {
+		// TODO Auto-generated method stub
+		return dao.boardList(cri);
+	}
 
-
-	
 	
 	
 }
