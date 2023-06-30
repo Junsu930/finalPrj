@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="findPwMapper">
+
+<resultMap type="findPw" id="findPw_rm">
+  	
+  	<id property="userNo" column="USER_NO"/>
+  	
+  	<result property="userEmail" 		column="USER_EMAIL"/>
+	<result property="userPw" 		column="USER_PWD"/>
+	<result property="userNick" 	column="USER_NICK"/>
+	<result property="joinDate" 		column="JOIN_DATE"/>
+	<result property="secessionFl" 		column="SECESSION_FL"/>
+	<result property="matchFl" 		column="MATCHING_FL"/>
+	<result property="userType" 		column="USER_TYPE"/>
+	<result property="intro" 		column="INTRO_MENT"/>
+	<result property="banFl" 		column="BANNED_FL"/>
+	<result property="profileImg" 	column="IMAGE"/>
+
+  </resultMap>
+  
+  
+   <!-- 이메일 중복 검사 -->
+  <select id="emailCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM "USER"
+  		WHERE USER_EMAIL = #{userEmail}
+  		AND SECESSION_FL = 'N'
+  </select>
+  
+  <update id="updatePw">
+  		UPDATE "USER" SET
+		USER_PWD = #{userPw}
+		WHERE USER_EMAIL = #{userEmail}
+  </update>
+
+</mapper>

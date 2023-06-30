@@ -65,7 +65,7 @@
 
                     <div class="rememberForgot">  <!--remember-forgot-->
                         <label><input type="checkbox" name="saveId"  ${chk}  id="saveId"> Remember me</label>
-                        <a href="#">Forgot Password?</a>
+                        <a href="${contextPath}/findPw">Forgot Password?</a>
                     </div>
 
                     <div class="loginBtnBox" title="밴드아카이브 로그인">
