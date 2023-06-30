@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.fin.band.common.pagination.CommonCriteria;
 import edu.kh.fin.band.login.model.vo.User;
 import edu.kh.fin.band.myBand.model.dao.MyBandDAO;
+import edu.kh.fin.band.myBand.model.vo.LikeLogic;
 import edu.kh.fin.band.myBand.model.vo.MyBand;
 import edu.kh.fin.band.myBand.model.vo.MyBandReply;
 
@@ -98,6 +99,27 @@ public class MyBandService {
 	 */
 	public int likeCheck(int boardNo, int userNo) {
 		return dao.likeCheck(boardNo, userNo);
+	}
+
+	public int likeLogic(LikeLogic likeLogic) {
+		return dao.likeLogic(likeLogic);
+	}
+
+	public int unlikeLogic(LikeLogic likeLogic) {
+		return dao.unlikeLogic(likeLogic);
+	}
+
+	public List<MyBand> searcingBandList(int bandNo, int amount, int pageNum, String searchingText, String selectType) {
+		return dao.searcingBandList(bandNo, amount, pageNum, searchingText, selectType);
+	}
+
+	public int getSearchingTotal(int bandNo, String searchingText, String selectType) {
+		return dao.getSearchingTotal(bandNo, searchingText, selectType);
+	}
+
+	public int reRplyLogic(Map<String, Object> paramMap) {
+		return dao.reRplyLogic(paramMap);
+		
 	}
 	
 	

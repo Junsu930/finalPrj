@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fin.band.login.model.vo.User;
+import edu.kh.fin.band.myBand.model.vo.LikeLogic;
 import edu.kh.fin.band.myBand.model.vo.MyBand;
 import edu.kh.fin.band.myBand.model.vo.MyBandReply;
 
@@ -132,6 +133,64 @@ public class MyBandDAO {
 		likeMap.put("userNo", userNo);
 		
 		return sqlSession.selectOne("myBandMapper.likeCheck", likeMap);
+	}
+
+	public int likeLogic(LikeLogic likeLogic) {
+		
+		sqlSession.update("myBandMapper.likeUpdate", likeLogic);
+		
+		return sqlSession.insert("myBandMapper.likeLogic", likeLogic);
+	}
+
+	public int unlikeLogic(LikeLogic likeLogic) {
+		
+		sqlSession.update("myBandMapper.unlikeUpdate", likeLogic);
+		return sqlSession.delete("myBandMapper.unlikeLogic", likeLogic);
+	}
+
+	public List<MyBand> searcingBandList(int bandNo, int amount, int pageNum, String searchingText, String selectType) {
+		
+		Map<String,Object> boardMap = new HashMap<>();
+		
+		searchingText = "%" +searchingText + "%";
+		
+		boardMap.put("bandNo", bandNo);
+		boardMap.put("amount", amount);
+		boardMap.put("pageNum", pageNum);
+		boardMap.put("searchingText", searchingText);
+		boardMap.put("selectType", selectType);
+		
+	
+		
+		List<MyBand> bList = sqlSession.selectList("myBandMapper.searcingBandList", boardMap);
+		
+		for(MyBand eachBand : bList) {
+			int MboardNo = eachBand.getBoardNo();
+			
+			int rCount = sqlSession.selectOne("myBandMapper.rCount", MboardNo);
+			
+			eachBand.setReplyCount(rCount);
+			
+		}
+		return bList;
+	}
+
+	public int getSearchingTotal(int bandNo, String searchingText, String selectType) {
+		
+
+		Map<String,Object> boardMap = new HashMap<>();
+		
+		searchingText = "%" +searchingText + "%";
+		
+		boardMap.put("bandNo", bandNo);
+		boardMap.put("searchingText", searchingText);
+		boardMap.put("selectType", selectType);
+		
+		return sqlSession.selectOne("myBandMapper.getSearchingTotal", boardMap);
+	}
+
+	public int reRplyLogic(Map<String, Object> paramMap) {
+		return sqlSession.insert("myBandMapper.reReplyLogic", paramMap);
 	}
 
 }

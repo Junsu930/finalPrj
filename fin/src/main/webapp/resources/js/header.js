@@ -485,6 +485,7 @@ function changeAlarmStatus(loginUserNo){
 
       }
   })
+  });
 }
 
 
@@ -516,20 +517,5 @@ function getUserNicksFromReply(loginUserNo){
       console.log("상태코드 : " + request.status); 
     }
 
-  })
+  });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  

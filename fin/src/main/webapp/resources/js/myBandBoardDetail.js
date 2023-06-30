@@ -45,10 +45,17 @@ $("#heart").click(()=>{
                 url : "/fin/unlikeLogic",
                 data : {"userNo" : loginUser, "boardNo": boardNo},
                 type: "POST",
-                success : function(){
+                success : function(result){
 
-                    likeUnlikeFunc();
-                    $("#likeCheckFor").val('F');
+                    if(result==1){
+
+                        likeUnlikeFunc();
+                        $("#likeCheckFor").val('F');
+                        let toLike = Number($('#likeItSpan').html())-1;
+                        $('#likeItSpan').html(toLike);
+                    }else{
+                        alert("실패");
+                    }
                 }
             });
             
@@ -58,10 +65,15 @@ $("#heart").click(()=>{
                 url : "/fin/likeLogic",
                 data : {"userNo" : loginUser, "boardNo": boardNo},
                 type: "POST",
-                success : function(){
-
-                    likeUnlikeFunc();
-                    $("#likeCheckFor").val('T');
+                success : function(result){
+                    if(result==1){
+                        likeUnlikeFunc();
+                        $("#likeCheckFor").val('T');
+                        let toLike = Number($('#likeItSpan').html())+1
+                        $('#likeItSpan').html(toLike);
+                    }else{
+                        alert("실패");
+                    }
                 }
             });
         }
@@ -71,3 +83,4 @@ $("#heart").click(()=>{
     }
 
 })
+

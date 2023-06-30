@@ -1,17 +1,18 @@
 .containerForBandBoardDetail{
-	
+	padding: 20px;
 	margin:auto;
+    min-height: 100vh;
 	margin-top : 250px;
-	height: 120vh;
 	width: 65%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
     box-shadow: 2px 2px 20px silver;
+    position: relative;
 	
 }
+
 
 .realContentForBandBoard{
 	
@@ -19,6 +20,7 @@
 	height: 90%;
 	display: flex;
 	flex-direction: column;
+    color: black;
 	
 }
 
@@ -44,7 +46,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	
+	margin-bottom: 200px;
 }
 
 /* 댓글 글씨 영역 */
@@ -64,6 +66,11 @@
 /* 댓글창과 버튼 영역 */
 .replyForBandBoardDetailBtnDiv{
 	position: relative;
+	margin-top: 10px;
+}
+
+.reReplyForBandBoardDetailBtnDiv{
+    position: relative;
 	margin-top: 10px;
 }
 
@@ -96,12 +103,38 @@
     align-items: center;
 }
 
+.reReplyForBandBoardBtn{
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .eachFatherDiv{
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid silver;
 }
 
+.childReply{
+    padding-left: 10px;
+}
+.pNickSpan{
+    margin-right: 5px;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: var(--accent-color);
+}
 
 #replyForBandBoardBtnNotMem{
 	position: absolute;
@@ -122,6 +155,16 @@
 }
 
 #replyForBandBoard{
+	resize: none;
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-right: 20%;
+}
+
+#reReplyForBandBoard{
 	resize: none;
     padding: 10px;
     width: 100%;
@@ -212,11 +255,21 @@
 .realContentForBandBoard > div:nth-of-type(3){
 	flex-basis : 70%;
 	margin: 40px  0 40px 20px;
+    
+}
+
+.realContentForBandBoard > div:nth-of-type(3) img{
+    width: 80%;
 }
 
 .realContentForBandBoard > div:nth-of-type(4) {
 	flex-basis: 10%;
 	margin-left: 10px;
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
 }
 
 .underBarDiv{
