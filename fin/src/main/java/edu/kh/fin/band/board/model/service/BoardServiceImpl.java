@@ -55,8 +55,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public int like_Check(int board) {
-		 return like_Check(board);
+	public int likeCheck(int boardNo) {
+		 return dao.likeCheck(boardNo);
 	}
 
 	@Override

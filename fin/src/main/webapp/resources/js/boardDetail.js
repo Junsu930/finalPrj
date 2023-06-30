@@ -1,4 +1,3 @@
-const heart = document.getElementById('heart');
 
 const commentBox2 = () => {
     if(heart.classList.contains('like')){
@@ -10,17 +9,21 @@ const commentBox2 = () => {
         heart.classList.add('like');
     }
 }
-heart.addEventListener('click', addLike);
+
+heart.addEventListener('click', function(){
+  addLike(loginMemberNo,boardNo);
+});
 
 
-function addLike(loginUserNo,boardNo){
+
+
+function addLike(loginMemberNo, boardNo){
+
   $.ajax({
     url:"addLike",
-    type: "POST",
-    data:{"loginUserNo" : loginUserNo, "boardNo" : boardNo},
+    type: "GET",
+    data:{"loginMemberNo" : loginMemberNo, "boardNo" : boardNo},
     dataType:"JSON",
-    contentType: false,
-    processData: false,
     success: function(result){
     alert(result);
     },
