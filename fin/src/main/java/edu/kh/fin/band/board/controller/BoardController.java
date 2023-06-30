@@ -43,10 +43,15 @@ public class BoardController {
 	
 	@GetMapping("/board")
 	
-	public String BoardList(Model model, Criteria cri) {
-	    int total = service.getTotal();
+	public String BoardList(Model model, Criteria cri,
+			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+			   @RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
+	    int total = service.getTotal(cri);
+	   
+	   
 	    PageVO pageVO = new PageVO(cri, total);
 	    List<BoardDetail> boardList = service.boardList(cri);
+	   
 	    model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
 	    return "board/boardMain";
@@ -68,7 +73,10 @@ public class BoardController {
 
 	@GetMapping("/boardDetail")
 	public String boardDetail(@RequestParam("boardNo")int boardNo,
-							  	Model model,Criteria cri ) {
+							  	Model model,Criteria cri ,
+							  	@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+							    @RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
+							  	) {
 		service.updateReadCount(boardNo);
 		BoardDetail boardDetail = service.boardDetail(boardNo);
 		model.addAttribute("BoardDetail" , boardDetail);
@@ -76,9 +84,9 @@ public class BoardController {
 		model.addAttribute("rList", rList);
 		
 		
-	    int total = service.getTotal();
+	    int total = service.getTotal(cri);
 	    PageVO pageVO = new PageVO(cri, total);
-	    List<BoardDetail> boardList = service.boardList(cri);
+	    List<BoardDetail> boardList = service.boardList(cri,searchType,keyword);
 	    model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
 		

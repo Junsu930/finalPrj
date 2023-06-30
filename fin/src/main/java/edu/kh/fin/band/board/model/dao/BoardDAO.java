@@ -23,12 +23,18 @@ public class BoardDAO {
 		return sqlSession.insert("boardMapper.write",board);
 	}
 
-	public List<BoardDetail> boardList(Criteria cri) {
+	public List<BoardDetail> boardList(Criteria cri, String searchType, String keyword) {
 		// TODO Auto-generated method stub
-
+		
+		  HashMap<String, Object> data = new HashMap<String, Object>();
+		  
 		  
 		
-		return sqlSession.selectList("boardMapper.boardList",cri);
+		  data.put("cri", cri);
+		  
+		  data.put("searchType", searchType);
+		  data.put("keyword", keyword);
+		return sqlSession.selectList("boardMapper.boardList",data);
 	}
 
 	public BoardDetail boardDetail(int boardNo) {
@@ -56,9 +62,9 @@ public class BoardDAO {
 		return sqlSession.update("boardMapper.boardUpdate",board);
 	}
 
-	public int getTotal() {
+	public int getTotal(Criteria cri) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("boardMapper.getTotal");
+		return sqlSession.selectOne("boardMapper.getTotal",cri);
 	}
 
 	public List<BoardDetail> boardTalk(Criteria cri) {
@@ -74,6 +80,11 @@ public class BoardDAO {
 	public List<BoardDetail> boardAll(Criteria cri) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("boardMapper.boardAll",cri);
+	}
+
+	public List<BoardDetail> boardList(Criteria cri) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardMapper.boardList",cri);
 	}
 
 
