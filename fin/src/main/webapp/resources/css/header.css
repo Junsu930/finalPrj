@@ -450,7 +450,9 @@ body.darkmode .wrapperUl li a{
     color: var(--border-color);
 }
 
-.wrapperUl li:hover a{
+.wrapperUl li:hover a,
+.wrapperUl li:hover h3,
+.wrapperUl li:hover h3 > span{
     color: var(--border-color)
 }
 
@@ -469,6 +471,7 @@ body.darkmode .wrapperUl li a{
     margin-right: 1.2em;
     font-size: 1em;
     line-height: 28px;
+    color: #262626;
 }
 
 body.darkmode .wrapperUl li h3,
@@ -478,6 +481,7 @@ body.darkmode .wrapperUl .date h3 span{
 
 .wrapperUl .date h3 span{
     font-size: 1.2em;
+    color: #262626;
 }
 
 .wrapperUl li a p {
@@ -566,13 +570,15 @@ body.darkmode .messageUlBox li a{
     color: var(--border-color);
 }
 
-.messageUlBox li:hover a{
-    color: var(--border-color)
+.messageUlBox li:hover a,
+.messageUlBox li:hover h3,
+.messageUlBox li:hover h3 > span
+{
+    color: var(--border-color);
 }
 
 .messageUlBox li .messageDate{
     position: absolute;
-    top:13px;
     left:10px;
     width: 60px;
     text-align: center;
@@ -586,6 +592,7 @@ body.darkmode .messageUlBox li a{
     margin-right: 1.2em;
     font-size: 1em;
     line-height: 28px;
+    color: #262626;
 }
 
 body.darkmode .messageUlBox li h3,
@@ -595,6 +602,7 @@ body.darkmode .messageUlBox .messageDate h3 span{
 
 .messageUlBox .messageDate h3 span{
     font-size: 1.2em;
+    color: #262626;
 }
 
 .messageUlBox li a p {

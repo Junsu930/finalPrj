@@ -200,6 +200,8 @@
 
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
+    <jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
     
     <script src = "${contextPath}/resources/js/lessonWriting.js"></script>
 </body>

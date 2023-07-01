@@ -12,6 +12,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 <style>
 	dl, ol, ul {
 	    margin-top: 0;
@@ -77,6 +79,8 @@
 				<li class="list locationList">대구</li>
 				<li class="list locationList">부산</li>
 				<li class="list locationList">광주</li>
+				<li class="list locationList">경기도</li>
+				<li class="list locationList">강원도</li>
 				<li class="list locationList">충청도</li>
 				<li class="list locationList">경상북도</li>
 				<li class="list locationList">경상남도</li>
@@ -136,7 +140,20 @@
 	<script>
 		const message = "${message}";
 		if(message.trim() !== ""){
-			alert(message);
+			Swal.fire({
+				icon: "success",
+				text: message,
+				title: "BandArchive"
+			});
+		}
+
+		const failMsg = "${failMsg}";
+		if(failMsg.trim() !== ""){
+			Swal.fire({
+				icon: "error",
+				text: failMsg,
+				title: "BandArchive"
+			});
 		}
 
 		const msg = "${msg}";

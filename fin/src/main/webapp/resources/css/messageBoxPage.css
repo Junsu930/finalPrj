@@ -30,8 +30,9 @@
 
 
 body.darkmode .messageWrapper li{
-    background-color: var(--background-dark-color);
-    border: 1px solid var(--border-color);
+    background-color: var(--newBack-dark-color);
+    border: none;
+    /* box-shadow: 8px -7px 15px 2px rgb(209 204 204 / 25%); */
 }
 
 

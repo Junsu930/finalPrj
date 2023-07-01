@@ -19,6 +19,9 @@
 	<script src = "${contextPath}/resources/js/myPageModal.js"></script>
   <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.2.0/kakao.min.js"
   integrity="sha384-x+WG2i7pOR+oWb6O5GV5f1KN2Ko6N7PTGPS7UlasYWNxZMKQA63Cj/B2lbUmUfuC" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+  
 
 
 	</head>
@@ -236,8 +239,14 @@
     <script>
       const msg = "${msg}";
       if (msg.trim() !== "") {
-        alert(msg);
+        Swal.fire({
+          icon: "warning",
+          text: msg,
+          title: "BandArchive"
+        });
       } 
+
+      
         // 왜 자꾸 로그인 창을 들어가도 공백 alert가 뜰까 
         // -> 해결 -> != null로 조건을 주지 말고, 문자열로 체크를 해서 주면 발생하지않음.
         // 빈 문자열인 경우에는 alert를 발생시키지 않음
@@ -247,8 +256,8 @@
     
         	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
    
-      <script src="${contextPath}/resources/js/LoginRegister.js?ver=1"></script>
-			<script src="${contextPath}/resources/js/naverLogin.js"></script>
-      <script src="${contextPath}/resources/js/kakaoLogin.js"></script>
+    <script src="${contextPath}/resources/js/LoginRegister.js?ver=1"></script>
+    <script src="${contextPath}/resources/js/naverLogin.js"></script>
+    <script src="${contextPath}/resources/js/kakaoLogin.js"></script>
   </body>
 </html>
