@@ -29,8 +29,6 @@ public interface BoardService {
 
 	List<BoardDetail> boardAll(Criteria cri);
 
-	int likeCheck(int boardNo);
-
 	List<BoardDetail> boardList(Criteria cri);
 
 

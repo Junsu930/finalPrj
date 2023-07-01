@@ -47,9 +47,6 @@ public class BoardDAO {
 		sqlSession.update("boardMapper.updateReadCount",boardNo);
 	}
 	
-	public int likeCheck(int boardNo) {
-		return sqlSession.update("boardMapper.likeCheck", boardNo);
-	}
 	
 
 	public int delete(int boardNo) {

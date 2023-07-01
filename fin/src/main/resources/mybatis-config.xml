@@ -58,7 +58,7 @@
 		<mapper resource="/mapper/business-mapper.xml"/>
 		<mapper resource="/mapper/board-mapper.xml"/>
 		<mapper resource="/mapper/msgAlarm-mapper.xml"/>
-		<mapper resource="/mapper/socialLogin-mapper.xml"/>
+		<mapper resource="/mapper/socialLogin-mapper.xml"/> 
 		<mapper resource="/mapper/myPage-mapper.xml"/>
 		<mapper resource="/mapper/reply-mapper.xml" />
 		<mapper resource="/mapper/myBand-mapper.xml"/>

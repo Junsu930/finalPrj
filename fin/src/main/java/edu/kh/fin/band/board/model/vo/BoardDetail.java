@@ -21,7 +21,6 @@ public class BoardDetail {
 	private int boardLike;
 	private String boardTag;
 	private String userNick;
-	private int likeCheck;
 	
 	
 	private List<BoardImage> imageList;
