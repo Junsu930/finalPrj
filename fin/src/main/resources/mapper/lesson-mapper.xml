@@ -33,6 +33,7 @@
 		u.USER_NICK,
 		li.MOTTO,
 		li.REGION,
+		li.INST,
 		TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"')AS WRITING_DATE,
 		li.LESSON_NO,
 		IMG_RENAME
@@ -44,18 +45,26 @@
 	</select>
 	
 	<select id="lessonFilter" parameterType="map" resultMap="lesson_rm">
+		
 		SELECT 
 		li.LESSON_NO, 
 		u.USER_NICK,
 		li.MOTTO, 
 		li.REGION, 
-		TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"')AS WRITING_DATE,
+		li.INST,
+		TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"') AS WRITING_DATE,
 		IMG_RENAME
 		FROM LESSON_INFO li
 		JOIN "USER" u USING(USER_NO)
-		LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO  = li.LESSON_NO
+		LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO = li.LESSON_NO
 		WHERE REGION LIKE #{locText} OR INST LIKE #{lessonText}
-		ORDER BY LESSON_NO DESC
+		ORDER BY CASE
+		    WHEN INST LIKE #{lessonText} THEN 0 
+		    WHEN REGION LIKE #{locText} THEN 1
+		    ELSE 2 
+		END
+		
+		
 	</select>
 	
 	

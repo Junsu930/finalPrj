@@ -189,7 +189,7 @@ $(document).ready(() =>{
                     + lessonList[i].motto 
                     +" </p><p>" 
                     + lessonList[i].region 
-                    + "</p> <span>" 
+                    + " / " + lessonList[i].inst + "</p> <span>" 
                     + lessonList[i].writingDate 
                     + "</span><p>by.&nbsp" 
                     + lessonList[i].userNick 
@@ -249,7 +249,7 @@ $(document).ready(() =>{
                                     + lessonList[i].motto 
                                     +" </p><p>" 
                                     + lessonList[i].region 
-                                    + "</p> <span>" 
+                                    + " / " + lessonList[i].inst + "</p> <span>" 
                                     + lessonList[i].writingDate 
                                     + "</span><p>by.&nbsp" 
                                     + lessonList[i].userNick 
@@ -359,7 +359,7 @@ function filterFunc(){
                     + lessonList[i].motto 
                     +" </p><p>" 
                     + lessonList[i].region 
-                    + "</p> <span>" 
+                    + " / " + lessonList[i].inst + "</p> <span>" 
                     + lessonList[i].writingDate 
                     + "</span><p>by.&nbsp" 
                     + lessonList[i].userNick 
@@ -422,7 +422,7 @@ function filterFunc(){
                                     + lessonList[i].motto 
                                     +" </p><p>" 
                                     + lessonList[i].region 
-                                    + "</p> <span>" 
+                                    + " / " + lessonList[i].inst + "</p> <span>" 
                                     + lessonList[i].writingDate 
                                     + "</span><p>by.&nbsp" 
                                     + lessonList[i].userNick 

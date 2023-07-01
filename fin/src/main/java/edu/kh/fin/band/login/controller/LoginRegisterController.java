@@ -89,7 +89,7 @@ public class LoginRegisterController {
 			if(ref!=null && !ref.equals("")) {
 				path = "redirect:" + ref;
 			}else {
-
+				ra.addFlashAttribute("loginSuccess", "환영합니다!");
 				path = "redirect:/main";
 			}
 		} else { //실패 

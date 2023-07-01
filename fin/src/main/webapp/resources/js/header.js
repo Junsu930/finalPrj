@@ -258,13 +258,13 @@ function getUserNicks(loginUserNo){ //userNicksList 부르는 함수
     success: function(getUserNicks){
       console.log("userNicksList 부르는 함수 ");
 
-      let stringMsg = "님께서 회원님에게 쪽지를 보냈습니다!"
+      let stringMsg = "님의 쪽지가 도착했습니다!"
 
       if(getUserNicks === "none"){
         $('.messageUlBox').append('<li class="wrapperLi"><a href="msgBoxPage" id="msgBoxPageA"><p>NO NEW MESSAGE</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
       }else{
         for(let i = 0; i < getUserNicks.length; i++){
-          $('.messageUlBox').append(`<li class="wrapperLi"><div class="messageDate"><h3>${getUserNicks[i].sendMonth}<br><span>${getUserNicks[i].sendDay}</span></h3></div>
+          $('.messageUlBox').append(`<li class="wrapperLi"><div class="messageDate"><h3>${getUserNicks[i].sendMon}<br><span>${getUserNicks[i].sendDay}</span></h3></div>
           <a href="msgBoxPage"><p>${getUserNicks[i].userNick + stringMsg}<br>지금 확인하세요!</p></a></li>`) // 새로운 쪽지가 있을 때, 코드 수행
         }
       } // if끝
@@ -444,9 +444,9 @@ function alarmGetFromInvi(loginUserNo){
       console.log("초대장 목록 출력 에이잭스");
       // 정우님게서 주펄밴드 초대장을 보냈습니다! 지금 확인하세요!
       let msg = "님께서 "
-      let msg2 = " 초대장을 보냈습니다!!"
+      let msg2 = " 초대장을 보냈습니다!"
       if(inviList === "none"){
-        $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
+       // $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
       }else{
         for(let i = 0; i < inviList.length; i++){
           $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${inviList[i].sendMon}<br><span>${inviList[i].sendDay}</span></h3></div>

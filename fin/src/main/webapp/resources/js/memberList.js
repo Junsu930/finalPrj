@@ -17,7 +17,7 @@ function sendMsg(){
     let receiverUserNo = modalFromProfile._options.userNo
     
     if(replyMsgText.value == ""){
-        alert("쪽지 내용을 작성해주세요!");
+        Swal.fire("쪽지를 입력해주세요!", 'BandArchive', 'warning');
     }else{
         $.ajax({
             url:"sendMsg",
@@ -25,10 +25,11 @@ function sendMsg(){
             type : "POST",
             dataType: "JSON",  // dataType : 응답데이터 형식을 지정
             // -> "JSON"으로 지정 시 자동으로 JS 객체로 변환
-            success : function(result){ 
-                alert(result);
-                replyMsgText.value = "";
-                location.reload();
+            success : function(result){
+                Swal.fire(result, 'BandArchive', 'success').then(() =>{
+                    replyMsgText.value = "";
+                    location.reload();
+                });
             },
             error : function(request, status, error){
               console.log("AJAX 에러 발생");

@@ -10,18 +10,20 @@
 		<result property="alarmReadStatus" column="ALARM_READ_STATUS" />
 	</resultMap>
 	
+	<!-- 쪽지 알람 목록 가져오기 리절트맵 -->
 	<resultMap type="msgAlarm" id="getUserNick_rm">
 		<id property="alarmNo" column="ALARM_NO"/>
 		<result property="userNick" column="USER_NICK" />
 		<result property="sendDay" column="SEND_DAY" />
-		<result property="sendMonth" column="SEND_MONTH" />
+		<result property="sendMon" column="SEND_MON" />
 	</resultMap>
 	
+	<!-- 예약 알람 목록 가져오기 리절트맵 -->
 	<resultMap type="msgAlarm" id="getUserNick_room_rm">
 		<id property="alarmNo" column="ALARM_NO"/>
 		<result property="userNick" column="USER_NICK" />
 		<result property="sendDay" column="RESERVE_DAY" />
-		<result property="sendMonth" column="RESERVE_MON" />
+		<result property="sendMon" column="RESERVE_MON" />
 		<result property="roomName" column="ROOM_NAME" />
 		<result property="alarmMon" column="ALARM_MON" />
 		<result property="alarmDay" column="ALARM_DAY" />
@@ -66,7 +68,7 @@
 	<select id="getUserNicks" parameterType="_int" resultMap="getUserNick_rm">
 		SELECT 
 		u.USER_NICK,
-		TO_CHAR(mb.SEND_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MONTH,
+		TO_CHAR(mb.SEND_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
 		TO_CHAR(mb.SEND_DATE, 'DD"일"') AS SEND_DAY
 		FROM
 		MESSAGE_BOX mb

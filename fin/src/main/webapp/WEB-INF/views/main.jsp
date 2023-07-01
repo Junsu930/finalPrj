@@ -149,6 +149,15 @@
       });
     }
 
+    const loginSuccess = "${loginSuccess}";
+    if(loginSuccess.trim() !== ""){
+      Swal.fire({
+        icon: "success",
+        text: loginSuccess,
+        title: "BandArchive"
+      });
+    }
+
     const msgFromAccept = "${msgFromAccept}";
     if(msgFromAccept.trim() !== ""){
       Swal.fire({
@@ -167,6 +176,8 @@
       });
     }
 
+    
+    
   </script>
 
 

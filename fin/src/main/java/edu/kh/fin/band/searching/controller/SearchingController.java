@@ -67,7 +67,7 @@ public class SearchingController {
 			
 		}else {// 로그인이 안되어 있는경우
 			
-			message = "로그인을 해주세요";
+			message = "로그인을 먼저 해주세요";
 			path = "redirect:/login";
 			
 			

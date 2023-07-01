@@ -17,6 +17,8 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
 
 <style>
 	dl, ol, ul {
@@ -50,7 +52,7 @@
 				<c:when test="${!empty inviList}">
 					<c:forEach var="invi" items="${inviList}">
 						<div class="alarmWrapper">
-							<h1>✉밴드 초대장</h1>
+							<h1>🎈밴드 초대장</h1>
 							<p>한 장의 ${invi.bandName}&nbsp;초대장이 도착했습니다!</p>
 							<p class="infoP js-static-modal-toggleInfoBandP">밴드정보</p>
 							<input type="hidden" value="${invi.bandNo}" name="bandNo">
@@ -103,7 +105,30 @@
 			</div>
 		</div>
 
+
+
+	<script>
+		const msgFromAccept = "${msgFromAccept}";
+		if(msgFromAccept.trim() !== ""){
+			Swal.fire({
+				icon: "error",
+				text: msgFromAccept,
+				title: "BandArchive"
+			});
+		}
+		const msgFromDenied = "${msgFromDenied}";
+		if(msgFromDenied.trim() !== ""){
+			Swal.fire({
+				icon: "error",
+				text: msgFromDenied,
+				title: "BandArchive"
+			});
+		}
+	</script>
+
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
+    <jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
 	<script src="${contextPath}/resources/js/alarmPage.js"></script>
 </body>
 </html>

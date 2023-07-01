@@ -19,7 +19,7 @@ function deleteMsg(e) {
         showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
         confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
         cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-        confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+        confirmButtonText: '삭제', // confirm 버튼 텍스트 지정
         cancelButtonText: '취소', // cancel 버튼 텍스트 지정
         
         reverseButtons: true, // 버튼 순서 거꾸로
@@ -33,8 +33,9 @@ function deleteMsg(e) {
                 type: "POST",
                 dataType: "JSON",
                 success : function(result){
-                    Swal.fire(result, '삭제완료~', 'success');
-                    location.reload();
+                    Swal.fire(result, 'BandArchive', 'success').then(() =>{
+                        location.reload();
+                    })
                 },
                 error: function(request, status, error){
                     console.log("AJAX 에러 발생");
@@ -87,10 +88,11 @@ function replyMsg(){
                 Swal.fire({
                     icon: "success",
                     text: result,
-                    title: "MessageBox"
+                    title: "BandArchive"
+                  }).then(() => {
+                    replyMsgText.value = "";
+                    location.reload();
                   });
-                replyMsgText.value = "";
-                location.reload();
             },
             error : function(request, status, error){
                 console.log("AJAX 에러 발생");
@@ -101,12 +103,19 @@ function replyMsg(){
 }
 
 
-let emptyMsgText = document.getElementById('emptyMsgText');
-emptyMsgText.addEventListener('mouseover', function(){
+function changeText(){
     emptyMsgText.innerText = '';
-    emptyMsgText.innerText = '👋 BACK TO MAIN!';
-});
+    emptyMsgText.innerText = '👋 BACK TO MAIN!'
+}
 
+$(document).ready(function(){
+    let emptyMsgText = document.getElementById('emptyMsgText');
+    if(emptyMsgText == null){
+        return false
+    }else{
+        emptyMsgText.addEventListener('mouseover', changeText);
+    }
+})
 
 
 

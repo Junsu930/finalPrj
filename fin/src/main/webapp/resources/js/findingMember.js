@@ -20,19 +20,19 @@ searchingForm.onsubmit = function(){
     
 
     if(genderInput == 0){
-        alert("GENDER 항목이 비었습니다!")
+        alert("GENDER 항목이 비었습니다!");
         window.scrollTo({top:genderLocation - fixedHeight, behavior:'smooth'});
         return false;
     }else if(instLength == 0){
-        alert("POSITION 항목이 비었습니다!")
+        alert("POSITION 항목이 비었습니다!");
         window.scrollTo({top:positionLocation - fixedHeight, behavior:'smooth'});
         return false;
     }else if(genreLength == 0){
-        alert("GENRE 항목이 비었습니다!")
+        alert("GENRE 항목이 비었습니다!");
         window.scrollTo({top:genreLocation - fixedHeight, behavior:'smooth'});
         return false;
     }else if( regionLength == 0){
-        alert("REGION 항목이 비었습니다!")
+        alert("REGION 항목이 비었습니다!");
         window.scrollTo({top:regionLocation - fixedHeight, behavior:'smooth'});
         return false;
     }

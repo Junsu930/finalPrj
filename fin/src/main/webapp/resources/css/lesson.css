@@ -356,9 +356,8 @@ body.darkmode .imgCotentWrap{
     .filterSec > a:first-child{
         display: block;
         position: absolute;
-        top: 56%;
-        bottom: 38%;
-        left: 80%;
+        top: 15em;
+        left: 3em;
     }
 }
 
@@ -366,9 +365,8 @@ body.darkmode .imgCotentWrap{
     .filterSec > a:first-child{
         display: block;
         position: absolute;
-        /* top: 43%;
-        bottom: 38%; */
-        left: 14%;
+        top: 15em;
+        left: 3em;
     }
 }
 
@@ -376,20 +374,19 @@ body.darkmode .imgCotentWrap{
     .filterSec > a:first-child{
         display: block;
         position: absolute;
-        top: 43%;
-        bottom: 38%;
-        left: 20%;
+        top: 13em;
+        left: 3em;
     }
     
 }
 
 /* 아이폰 12, se, 갤럭시 울트라 */
-@media screen and (max-width:22rem) and (max-width:26rem), (max-width:26rem){
+@media screen and (min-width:22rem) and (max-width:26rem){
     .filterSec > a:first-child{
         display: block;
         position: absolute;
-        left: 7%;
-        top: 60%;
+        top: 10.5em;
+        left: 1em;
     }
 
     .filterSec{
@@ -408,14 +405,5 @@ body.darkmode .imgCotentWrap{
 
 /* 갤럭시 8 */
 
-@media screen and (max-width:22.500rem) {
-    .filterSec > a:first-child{
-        display: block;
-        position: absolute;
-        top: 43%;
-        bottom:38%;
-        left:5%;
-    }
-    
-}
+
 

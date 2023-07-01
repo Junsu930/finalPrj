@@ -17,6 +17,9 @@
     gap:3em
 }
 
+.explain > li:last-of-type{
+    position: relative;
+}
 
 .explain > li > i{
     color: var(--text-color); 
@@ -51,7 +54,11 @@ body.darkmode .chatBox > button >i{
 }
 
 #profileExpalin{
-    line-height: 200%;
+    position: absolute;
+    width: 100%;
+    left: 2em;
+    top: 1em;
+    font-size: 1.3em;
     white-space: pre-line;
 }
 
