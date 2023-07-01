@@ -54,10 +54,6 @@ public class BoardServiceImpl implements BoardService{
 		 return dao.boardUpdate(board);
 	}
 	
-	@Override
-	public int likeCheck(int boardNo) {
-		 return dao.likeCheck(boardNo);
-	}
 
 	@Override
 	public int getTotal(Criteria cri) {

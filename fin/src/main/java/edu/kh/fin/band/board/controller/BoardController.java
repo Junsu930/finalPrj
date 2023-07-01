@@ -177,22 +177,6 @@ public class BoardController {
 		return "board/boardUpdate";
 	}
 	
-	/* addlike 증가하는 코드 */
-	@GetMapping("/addLike")
-	public String addLike(@RequestParam("boardNo")int boardNo,
-							  @ModelAttribute("loginUser") User loginUser,
-							  RedirectAttributes ra) {
-		System.out.println("들어오는지 확인");
-		System.out.println(boardNo);
-		
-		int likecheck = service.likeCheck(boardNo);
-		
-		if(likecheck > 0) {
-			  return new Gson().toJson("좋아요 쌓임!");
-		  } else {
-			  return new Gson().toJson("ㄴㄴ");
-		  }
-	}
 	
 	@PostMapping("/mody")
 	public String boardUpdate(@ModelAttribute Board board,

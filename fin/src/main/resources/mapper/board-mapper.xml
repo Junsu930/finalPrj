@@ -179,19 +179,6 @@ AND BOARD_TAG = 2</if>
 
 	</select>
 	
-	<!-- Like -->
-	<update id="likeCheck" parameterType="int">
-	    UPDATE BOARD_LIKE
-	    SET LIKE_CHECK = ${like_check} + 1 
-	    WHERE USER_NO=#{userNo} AND BOARD_NO=${boardNo}
-	  </update>
-	  
-	  <update id="like_Check_cancel" parameterType="int">
-	    UPDATE BOARD_LIKE
-	    SET LIKE_CHECK = ${like_check} - 1 
-	    WHERE USER_NO=${userNo} AND BOARD_NO=${boardNo}
-	  </update>
-
 	
 	
 	
