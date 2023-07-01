@@ -101,7 +101,7 @@ sendEmail.addEventListener("click", function(){
     if( checkObj.email ){ // 유효한 이메일이 작성되어 있을 경우에만 메일 보내기
 
         $.ajax({
-            url : "checkEmail"  ,
+            url : "checkEm"  ,
             data : { "inputEmail" : email.value },
             type : "GET",
             success : function(result){

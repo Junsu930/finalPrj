@@ -187,7 +187,7 @@ email.addEventListener("input", function(){
                     checkObj.email = false; // 유효 X 기록
 
                 } else { // 중복 X
-                    emailMessage.innerText = "";
+                    emailMessage.innerText = "Click Email icon";
                     emailMessage.classList.add("confirm");
                     emailMessage.classList.remove("error");
                     checkObj.email = true; // 유효 O 기록

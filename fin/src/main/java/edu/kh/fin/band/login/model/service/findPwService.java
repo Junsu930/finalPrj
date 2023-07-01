@@ -16,4 +16,6 @@ public interface findPwService {
 	 */
 	int findPw(User inputUser);
 
+	int checkEmail(String inputEmail);
+
 }

@@ -104,8 +104,17 @@
                         <!-- </li> -->
                     </ul>
 
-                    <div class="profileImgBox" onclick="activeMenu()" id="profileImgBox">
-                			<img src="${contextPath}/resources/images/guitarduck.png" id="profile-image">  
+                    <div class="profileImgBox" onclick="activeMenu()" id="profileImgBox">                		           			
+                		<c:choose>
+                        	<c:when test ="${empty loginUser.profileImg}">
+                        		<img src="${contextPath}/resources/images/guitarduck.png" id="profile-image">
+                        	</c:when>
+                        	
+                        	<c:otherwise>
+                        		<img src="${contextPath}${loginUser.profileImg}" id="profile-image">
+                        	</c:otherwise>
+                        
+                		</c:choose>
                     </div>
         
                     <div class="menu">
