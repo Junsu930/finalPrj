@@ -48,7 +48,14 @@
         <section class="myPageInfo">
             <div>
                 <span>${loginUser.userNick}</span>
-               <ion-icon name="person-circle" id="profileIcon"></ion-icon>
+                <c:choose>
+                        <c:when test="${empty bandMem}">
+                        </c:when>
+                        <c:otherwise>
+                        	<a href="">My BAND BOARD</a>
+                        </c:otherwise>
+                        
+                </c:choose>
             </div>
 
             <div class="imgBox">
@@ -76,11 +83,11 @@
                         <c:otherwise>
 
                         <div class="ulBox">
-                            <div class="firstUlBox">
+                            <div class="firstUlBox">                       
                                 <ul>
                                     <li>Band</li>
                                     <li>Leader</li>
-                                    <li>Member</li>
+                                    <li>Member</li>                                   
                                 </ul>
                             </div>
 

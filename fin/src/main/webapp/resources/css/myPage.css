@@ -346,6 +346,7 @@
     align-items: center;
     width: 100%;
     padding: 2em 2em;
+    justify-content: center;
 }
 
 .modalBoardTable{
