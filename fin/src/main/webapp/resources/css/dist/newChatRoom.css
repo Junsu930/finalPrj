@@ -19,6 +19,12 @@
   height: 35px;
 }
 
+.x-markDiv{
+	position: absolute;
+	right: 10px;
+	cursor: pointer;
+}
+
 .chatContainer .messages {
   position: absolute;
   background: #F9FBFF;

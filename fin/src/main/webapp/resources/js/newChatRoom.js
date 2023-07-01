@@ -12,7 +12,7 @@ $(document).ready(()=>{
 	
 
     if(ws == null){
-        ws = new WebSocket("ws://" + location.hostname +':8080' + "/fin/chatting" );
+        ws = new WebSocket("ws://" + '192.168.140.235' +':8080' + "/fin/chatting" );
         // 모든 방을 조회해서 넣는다.
         
         let userNo = document.getElementById("hiddenUserNo").value;
@@ -21,7 +21,7 @@ $(document).ready(()=>{
         }
         wsOpen();
     }else{
-        ws = new WebSocket("ws://" + location.hostname +':8080' + "/fin/chatting" );
+        ws = new WebSocket("ws://" + '192.168.140.235' +':8080' + "/fin/chatting" );
         
         // 모든 방을 조회해서 넣는다.
         let userNo = document.getElementById("hiddenUserNo").value;
