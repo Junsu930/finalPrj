@@ -44,8 +44,8 @@ public class BoardController {
 	@GetMapping("/board")
 	
 	public String BoardList(Model model, Criteria cri,
-			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
-			   @RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
+							@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+							@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
 	    int total = service.getTotal(cri);
 	   
 	   
@@ -105,6 +105,7 @@ public class BoardController {
 		
 	}
 	
+	
 	@PostMapping("/boardWrite")
 	public String Write(@ModelAttribute Board board,
 						@ModelAttribute("loginUser") User loginUser,
@@ -128,11 +129,13 @@ public class BoardController {
 		
 	}
 	
+	
+	
 	@GetMapping("/paging")
 	public String paging(Model model,
 						@RequestParam(value = "page",required = false, defaultValue = "1")int page	) {
 		
-	System.out.println("page=" + page);	
+		System.out.println("page=" + page);	
 		
 		return "index";
 	}
@@ -140,7 +143,7 @@ public class BoardController {
 	
 	@GetMapping("/delete")
 	public String delete(@RequestParam("boardNo")int boardNo
-										, RedirectAttributes ra) {
+										,RedirectAttributes ra) {
 		
 		int deleteResult = service.delete(boardNo);
 		String message = null;
@@ -185,7 +188,7 @@ public class BoardController {
 		
 		 int updateResult = service.boardUpdate(board);
 	
-		BoardDetail boardDetail = service.boardDetail(board.getBoardNo());
+		 BoardDetail boardDetail = service.boardDetail(board.getBoardNo());
 		
 		model.addAttribute("BoardDetail",boardDetail);
 		String message = null;

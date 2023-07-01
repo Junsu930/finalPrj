@@ -42,6 +42,43 @@
 		<result property="boardNo" column="BOARD_NO" />
 	</resultMap> 
 
+
+<select id="boardList"  parameterType="hashMap" resultMap="detail_rm">
+	
+<![CDATA[
+
+SELECT *
+FROM (
+    SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+        BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+        FROM BOARD 
+        JOIN "USER" USING(USER_NO)
+        WHERE 1=1
+    ]]>
+    <if test="searchType =='all'">
+        AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
+    <if test="searchType =='notice'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 1</if>
+    <if test="searchType =='popular'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 2</if>
+<![CDATA[
+    ) A
+    WHERE RN <= #{pageNum} * #{amount}
+) B
+WHERE RN > (#{pageNum}-1) * #{amount}
+
+]]>
+
+</select>
+
+
+<!-- 
 	<select id="boardList"  parameterType="hashMap" resultMap="detail_rm">
 	
 <![CDATA[
@@ -76,7 +113,7 @@ WHERE RN > (#{pageNum}-1) * #{amount}
 ]]>
 
     </select> 
-    
+     -->
     	
 	<select id="boardTalk" resultMap="detail_rm">
 <![CDATA[
@@ -130,22 +167,11 @@ WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
 ]]>
     </select>
     
-<!--     
-      SELECT * 
-    FROM (
-        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
-        BOARD_NO,BOARD_TITLE,BOARD_CONTENT,CREATE_DATE,READ_COUNT,
-        BOARD_ST,USER_NO,BOARD_LIKE,BOARD_TAG,USER_NICK
-        FROM BOARD 
-        JOIN "USER" USING(USER_NO)
-    ) A
-    WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount} -->
-    
     
     <select id="getTotal" resultType= "int">
     	select count(*) as total from Board
     	
-    	 <if test="searchType =='all'">
+ <if test="searchType =='all'">
     	where (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
 <if test="searchType =='notice'">
 where (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')

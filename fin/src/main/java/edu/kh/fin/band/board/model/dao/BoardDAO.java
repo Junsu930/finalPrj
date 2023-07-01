@@ -34,7 +34,7 @@ public class BoardDAO {
 		  
 		  data.put("searchType", searchType);
 		  data.put("keyword", keyword);
-		return sqlSession.selectList("boardMapper.boardList",data);
+		 return sqlSession.selectList("boardMapper.boardList",data);
 	}
 
 	public BoardDetail boardDetail(int boardNo) {

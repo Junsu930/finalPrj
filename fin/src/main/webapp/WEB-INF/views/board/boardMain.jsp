@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
@@ -23,18 +23,20 @@
           margin-bottom: 0;
           padding-left: 0;
       }
+      
       body{
         line-height: normal;	
       }
+      
       button, input, optgroup, select, textarea {
           font-family : revert;
           font-size: revert;
           line-height: inherit;
       }
     
-        p{
+      p{
             margin-bottom: 0;
-        }
+      }
       
       a:hover {
         color: revert;
@@ -42,19 +44,19 @@
     </style>
    
    
-    <title>BOARD</title>
+   <title>BOARD</title>
    </head>
    <body>
- <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
-<c:if test="${ !empty message }">
+    <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
+	<c:if test="${ !empty message }">
     <script>
         alert("${message}");
         // EL 작성 시 scope를 지정하지 않으면
         // page -> request -> session -> application 순서로 검색하여
         // 일치하는 속성이 있으면 출력
     </script>
-</c:if>    
- <jsp:include page="/WEB-INF/views/common/header.jsp"/> 
+	</c:if>    
+ 	<jsp:include page="/WEB-INF/views/common/header.jsp"/> 
 
     <div class="boardContainer">
     
@@ -74,39 +76,37 @@
  
         <li>
          <label class="test_obj">
-        <input type="radio" class="tagAll" name="boardTag" value="0" >
-        <span>전체</span>
-    </label>
-    </li>
+        	<input type="radio" class="tagAll" name="boardTag" value="0" >
+        		<span>전체</span>
+    	 </label>
+    	</li>
 
-        <li>
+       	<li>
          
-          <label class="test_obj">
+         <label class="test_obj">
             <input type="radio" class="tagTalk" name="boardTag" value="1">
-            <span>잡담</span>
+            	<span>잡담</span>
           </label>
        
         </li>
-        <li>
-    <label class="test_obj">
-      <input type="radio" class="tagQus" name="boardTag" value="2">
-      <span>질문</span>
-  </label>
+       <li>
+    	<label class="test_obj">
+        <input type="radio" class="tagQus" name="boardTag" value="2">
+      	<span>질문</span>
+  		</label>
        </li>
        
         <c:if test="${!empty loginUser}">
-                    <!-- /comm/board/write/3?mode=insert&cp=1 -->
-                    <!-- /comm/board/list/3 -->
-                       <button class="write" onclick="location.href='boardWrite';">글쓰기</button></a>
-                </c:if>
+       <!-- /comm/board/write/3?mode=insert&cp=1 -->
+       <!-- /comm/board/list/3 -->
+       <button class="write" onclick="location.href='boardWrite';">글쓰기</button></a>
+       </c:if>
        
        
       </ul>
    </div>
    
-<div>
 
-</div>
     <table>
       <thead>
         <tr>
@@ -127,37 +127,35 @@
                    </tr>
                  </c:when>
 						
-                <c:otherwise>
-                      <c:forEach var="board" items="${boardList}">       
+        <c:otherwise>
+        	<c:forEach var="board" items="${boardList}">       
                           
-        <tr>
-          <td class="boardNumber">${board.boardNo}</td>
-          <c:choose>
-            <c:when test="${ board.boardTag==1}">
+        	<tr>
+        	<td class="boardNumber">${board.boardNo}</td>
+        		<c:choose>
+       				 <c:when test="${ board.boardTag==1}">
               
                 
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">잡담</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
+        			 <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">잡담</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
           
+        			</c:when>
           
+         		<c:otherwise>
           
-          </c:when>
-          
-             <c:otherwise>
-          
-          <td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">질문</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
+         			<td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">질문</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
           					
           			
           					
-         </c:otherwise>
+         		</c:otherwise>
              		
-                        </c:choose>
+         		</c:choose>
           <td class="ninkName"><a class="blockBoxOpen">${board.userNick}</a></td>
           <td class="views">${board.readCount}</td>
           <td class="heart">${board.boardLike}</td>
         </tr>
          </c:forEach>
             </c:otherwise>
-                        </c:choose>
+                </c:choose>
         
       </tbody>
     </table>
@@ -168,20 +166,23 @@
     <div class="pagination-search">
     
     <ul class="pagination">
+    
     <c:if test="${pageVO.prev}">
 
-    <li><a href="board?pageNum=${pageVO.startPage -1}&amount=${pageVO.amount}"><span>이전</span></a></li>
+    	<li><a href="board?pageNum=${pageVO.startPage - 1}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}"><span>이전</span></a></li>
    
    </c:if>
    
    <c:forEach var="num" begin="${pageVO.startPage}" end= "${pageVO.endPage}">
-   <li class="${pageVO.pageNum eq num ? 'active' : ''} ">
-   <a href="board?pageNum=${num}&amount=${pageVO.amount}">${num}</a>
-   </li>
+   		<li class="${pageVO.pageNum eq num ? 'active' : ''} ">
+    	<a href="board?pageNum=${num}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}">${num}</a>
+		</li>
    </c:forEach>
+   
    <c:if test="${pageVO.next}">
-    <li><a href="board?pageNum=${pageVO.endPage  + 1}&amount=${pageVO.amount}" class="active"><span>다음</span></a></li>
-</c:if>
+<!-- 페이지네이션 다음 링크 -->
+	<li><a href="board?pageNum=${pageVO.endPage + 1}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}" class="active"><span>다음</span></a></li>
+   </c:if>
 </ul>
 
         
@@ -211,7 +212,7 @@
          
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
         </div>
-        <div class="modal-body">
+        	<div class="modal-body">
           <form >
             <div class="reportTitle">신고하기</div>
             <div class="reportReason">사유선택</div>
@@ -480,8 +481,27 @@ $('.tagQus').click(function(){
 
 
 
-</script>
 
+
+</script>
+<script type="text/javascript">
+    window.onload = function() {
+        var searchType = document.getElementById('nav-select').value;
+        var keyword = document.querySelector('input[name="keyword"]').value;
+        var paginationLinks = document.querySelectorAll('.pagination a');
+
+        paginationLinks.forEach(function(link) {
+            var href = link.href;
+            if (searchType !== '') {
+                href += '&searchType=' + encodeURIComponent(searchType);
+            }
+            if (keyword !== '') {
+                href += '&keyword=' + encodeURIComponent(keyword);
+            }
+            link.href = href;
+        });
+    }
+</script>
 
 
 
