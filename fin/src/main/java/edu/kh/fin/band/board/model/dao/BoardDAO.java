@@ -94,7 +94,7 @@ public class BoardDAO {
 	public List<String> bannedUserIds(BoardBanned boardBanned) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("boardMapper.bannedUserIds",boardBanned);
-
+	}
 	/**
 	 * 좋아요 등록 + 좋아요 알람
 	 * @author lee

@@ -14,6 +14,11 @@
 		<result property="userNo" column="USER_NO"/>		
 		<result property="bandNo" column="BAND_NO"/>		
 	</resultMap>
+	
+	<resultMap type="myBand" id="zeroBand_rm">
+		<id property="bandNo" column="BAND_NO"/>
+		<result property="bandName" column="BAND_NAME"/>
+	</resultMap>
 
 	<resultMap type="myBandReply" id="myBandReply_rm">
 		<id property="replyNo" column="REPLY_NO"/>
@@ -41,6 +46,13 @@
 		WHERE RN &gt; (#{pageNum}-1) * #{amount} AND RN<![CDATA[<=]]> #{pageNum} * #{amount}
 	</select>
 	
+	<select id="boardCheck" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) FROM BAND_BOARD bb WHERE BAND_NO = ${bandNo} AND BOARD_ST = 'Y'
+	</select>
+	
+	<select id="zeroBand" parameterType="_int" resultMap="zeroBand_rm">
+		SELECT BAND_NO, BAND_NAME FROM BAND WHERE BAND_NO = ${bandNo}
+	</select>
 	<select id="searcingBandList" parameterType="hashmap" resultMap="bandBoard_rm">
 		SELECT *
 		FROM (SELECT ROWNUM RN ,A.* FROM (SELECT BOARD_NO ,BOARD_TITLE, BOARD_CONTENT , CASE WHEN SYSDATE - CREATE_DATE &lt; 1
@@ -68,11 +80,11 @@
 	</select>
 	
 	<select id="leaderNick" parameterType="_int" resultType="string">
-		SELECT USER_NICK FROM BAND_USER bu JOIN "USER" u USING(USER_NO) WHERE BAND_NO = 1 AND LEADER_FL = 'T'
+		SELECT USER_NICK FROM BAND_USER bu JOIN "USER" u USING(USER_NO) WHERE BAND_NO = ${bandNo} AND LEADER_FL = 'T'
 	</select>
 	
 	<select id="bandMember" parameterType="_int" resultType="string">
-		SELECT USER_NICK FROM BAND_USER bu JOIN "USER" u USING(USER_NO) WHERE BAND_NO = 1 AND LEADER_FL = 'F'
+		SELECT USER_NICK FROM BAND_USER bu JOIN "USER" u USING(USER_NO) WHERE BAND_NO = ${bandNo} AND LEADER_FL = 'F'
 	</select>
 	
 	<select id="getTotal" parameterType="_int" resultType="_int">

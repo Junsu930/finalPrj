@@ -29,6 +29,11 @@
 	display: flex;
 }
 
+
+.noPost{
+	font-size: 30px;
+}
+
 .paginations{
 	display: flex;
 	justify-content: center;

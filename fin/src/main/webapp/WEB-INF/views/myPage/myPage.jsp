@@ -53,7 +53,7 @@
                         <c:when test="${empty bandMem}">
                         </c:when>
                         <c:otherwise>
-                        	<a href="">My BAND BOARD</a>
+                        	<a href="${contextPath}/myBandBoard?bandNo=${bandMem[0].bandNo}">My BAND BOARD</a>
                         </c:otherwise>
                         
                 </c:choose>

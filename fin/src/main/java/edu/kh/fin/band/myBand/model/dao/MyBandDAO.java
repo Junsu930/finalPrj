@@ -193,4 +193,12 @@ public class MyBandDAO {
 		return sqlSession.insert("myBandMapper.reReplyLogic", paramMap);
 	}
 
+	public int boardCheck(int bandNo) {
+		return sqlSession.selectOne("myBandMapper.boardCheck", bandNo);
+	}
+
+	public List<MyBand> zeroBand(int bandNo) {
+		return sqlSession.selectList("myBandMapper.zeroBand", bandNo);
+	}
+
 }

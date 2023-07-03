@@ -1,6 +1,7 @@
 package edu.kh.fin.band.myBand.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,7 +60,22 @@ public class MyBandController {
 		
 		Pagination pageVo = new Pagination(cri, service.getTotal(bandNo));
 		
-		List<MyBand> bandList = service.bandList(bandNo, amount, pageNum);
+		// 보드가 비어있는지 체크
+		int boardCheck = service.boardCheck(bandNo);
+		
+		List<MyBand> bandList = new ArrayList<MyBand>();
+		
+		if(boardCheck > 0) {
+			bandList = service.bandList(bandNo, amount, pageNum);
+		}else {
+			bandList = service.zeroBand(bandNo);
+			model.addAttribute("zeroBand", "T");
+		}
+		
+		
+		
+		
+		
 		
 		String leaderNick = service.leaderNick(bandNo);
 		
@@ -95,7 +111,7 @@ public class MyBandController {
 		
 		model.addAttribute("bandNo", bandNo);
 		
-		
+		System.out.println(bandList.toString());
 		
 		return "myBand/myBand";
 	}
@@ -115,6 +131,10 @@ public class MyBandController {
 		
 		
 		List<MyBand> bandList = service.searcingBandList(bandNo, amount, pageNum, searchingText, selectType);
+		
+		if(bandList.size() == 0) {
+			model.addAttribute("noSearching", "T");
+		}
 		
 		String leaderNick = service.leaderNick(bandNo);
 		

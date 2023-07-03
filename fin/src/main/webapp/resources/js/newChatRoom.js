@@ -15,7 +15,7 @@ $(document).ready(()=>{
     if(ws == null){
         ws = new WebSocket("ws://" + '192.168.140.235' +':8080' + "/fin/chatting" );
         // 모든 방을 조회해서 넣는다.
-        
+        console.log("ws://" + '192.168.140.235' +':8080' + "/fin/chatting");
         let userNo = document.getElementById("hiddenUserNo").value;
         if(userNo != null && userNo != ""){
             checkRoom(userNo);
@@ -23,7 +23,7 @@ $(document).ready(()=>{
         wsOpen();
     }else{
         ws = new WebSocket("ws://" + '192.168.140.235' +':8080' + "/fin/chatting" );
-        
+        console.log("ws://" + '192.168.140.235' +':8080' + "/fin/chatting");
         // 모든 방을 조회해서 넣는다.
         let userNo = document.getElementById("hiddenUserNo").value;
         if(userNo != null && userNo != ""){
@@ -75,10 +75,20 @@ function checkRoom(userNo){
 // 채팅방 클릭시 채팅방 이동 
 function enterRoom(chatOthersNick ,chatRoomNo, chatOthersImage){
     inChatRoomNo = chatRoomNo;
+    let userNo = document.getElementById("hiddenUserNo").value;
+    checkRoom(userNo);
+    $("#messageTextInput").prop('readonly', false);
     
+
     $("#withChatName").html(chatOthersNick);
     if(chatOthersImage != null && chatOthersImage !=""){
-        document.getElementById("otherProfile").innerHTML = "<img id='otherProfile' src='"+ chatOthersImage + "'>"
+        if(chatOthersImage.includes('resources')){
+
+            document.getElementById("otherProfile").innerHTML = "<img id='otherProfile' src='" +'/fin' + chatOthersImage + "'>"
+        }else{
+            document.getElementById("otherProfile").innerHTML = "<img id='otherProfile' src='" + chatOthersImage + "'>"
+        }
+
     }else{
         document.getElementById("otherProfile").innerHTML = "";
     }
@@ -124,7 +134,7 @@ function loadMessage(chatRoomNo){
         success: function(data){
             console.log("받아진 채팅리스트");
             console.log(data);
-
+            console.log(chatRoomNo);
             let chatMessageArr = data;
             let loginUser = $("#hiddenUserNo").val()
             for(let eachMessage of chatMessageArr){
@@ -164,6 +174,8 @@ function send(chatRoomNo){
 		$('#messageTextInput').val("");
 	}
 
+    let userNo = document.getElementById("hiddenUserNo").value;
+    checkRoom(userNo);
     
 }
 
@@ -207,6 +219,8 @@ document.getElementById("chatting-img").addEventListener("click", function(){
 
 
     let loginUserCheck = $("#hiddenUserNo").val();
+
+    checkRoom(loginUserCheck);
 
     if(loginUserCheck != "" && loginUserCheck != null){
 
@@ -292,13 +306,14 @@ function chatStart(withUserNo){
             success : function(data){
                 
                 if(data == 0){
-                    Swal.fire("이미 채팅 중인 상대입니다.");
+                    checkRoom(chatUserNo);
+                    Swal.fire("채팅방을 확인해주세요!");
                 }else if(data == -1){
                     Swal.fire("알 수 없는 오류입니다.");
                 }else{
                     checkRoom(chatUserNo);
                     $("#chatContainer").css("display", "flex");
-                    Swal.fire("채팅방이 만들어졌습니다.");
+                    Swal.fire("채팅방을 확인해주세요!");
                 }
             }
 
@@ -347,6 +362,13 @@ $("#x-markDiv").click(function(){
                 data : {"chatRoomNo":chatRoomNo, "loginUserNo":loginUserNo},
                 type : "post",
                 success : function(data){
+
+                    checkRoom(loginUserNo);
+                    $("#middleChatRoom").html("");
+                    $("#withChatName").html("");
+                    $("#messageTextInput").prop('readonly', true);
+                    $("#x-markDiv").css("display", "none");
+
                 
                 }
         

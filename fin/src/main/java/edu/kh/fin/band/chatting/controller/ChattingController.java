@@ -161,7 +161,7 @@ public class ChattingController {
 	@PostMapping("/chatStart")
 	@ResponseBody
 	public int chatStart(@RequestParam("withUser") int withUser, @RequestParam("userNo") int userNo, 
-			@RequestParam("userName") String userName) {
+			@RequestParam("userName") String userName, HttpServletRequest req) {
 		
 		String roomNo = userNo + "_" + withUser;
 		String roomNoSub = withUser +  "_" + userNo;
@@ -170,6 +170,9 @@ public class ChattingController {
 		
 		String roomTitle = userName + "&" + withUserName +"의 채팅방";
 		
+		HttpSession session = req.getSession();
+		
+		int loginUserNo = ((User)session.getAttribute("loginUser")).getUserNo();
 		
 		Map<String, Object> roomNoMap = new HashMap<>();
 		
@@ -179,9 +182,13 @@ public class ChattingController {
 		roomNoMap.put("withUser", withUser);
 		roomNoMap.put("userName", userName);
 		roomNoMap.put("roomTitle", roomTitle);
+		roomNoMap.put("loginUserNo", loginUserNo);
 		
 		
 		int check = service.dupCheck(roomNoMap);
+		
+	
+		
 		
 		// 이미 방이 존재
 		if(check > 0) {
