@@ -45,7 +45,7 @@
 		<div class="top-bar">
 			<div class="avatar" id="otherProfile"></div>
 			<div class="name" id="withChatName"></div>
-			<div class="x-markDiv"><i class="fa-solid fa-xmark"></i></div>
+			<div class="x-markDiv" id="x-markDiv"><i class="fa-solid fa-xmark"></i></div>
 		</div>
 		<!-- 채팅상황 -->
 		<div class="middle" id="middleChatRoom">
