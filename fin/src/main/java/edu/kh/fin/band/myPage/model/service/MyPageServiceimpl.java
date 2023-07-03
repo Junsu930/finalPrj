@@ -231,4 +231,21 @@ public class MyPageServiceimpl implements MyPageService{
 		return dao.dismiss2(bandNo);
 	}
 
+	@Override
+	public int checkBand(Map<String, Object> paramMap) {	
+		
+		int checkIn = dao.checkBand(paramMap);
+		
+		if(checkIn > 0) {
+			
+			return dao.bandInfo(paramMap);
+		} else {
+			
+			return 0;
+		}
+	}
+	
+
+	
+
 }

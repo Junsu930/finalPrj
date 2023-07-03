@@ -821,8 +821,9 @@ input[type="checkbox"]:checked + label:before {
   
   #profile-image {
   overflow: hidden;
-  width: 70%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   
   }
   
@@ -859,7 +860,9 @@ input[type="checkbox"]:checked + label:before {
     padding-right: 15rem;
   }
   
-
+.modal-footer {
+    display: none;
+}
   
  
 
