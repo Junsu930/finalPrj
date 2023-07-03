@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/myPagebootStrap.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/myPageModal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src = "${contextPath}/resources/js/myPageModal.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
@@ -350,6 +351,16 @@
                     </div>
 
                     <hr>
+                    
+                    <c:choose>
+                    	<c:when test="${empty bandMem}">
+                   			<p>밴드가 없습니다</p>
+                   		</c:when>
+                   		
+                   		
+                    	<c:otherwise>
+                    	                          	
+                    	                         
 
                     <div class="modalBandTableBox">
                         <table>
@@ -419,6 +430,9 @@
                             
                         </table>
                     </div>
+                    
+                    </c:otherwise>
+                    </c:choose>
 
                     <hr>
                     
@@ -482,7 +496,7 @@
                             <img src="${contextPath}/resources/images/guitarduck.png" id="profile-image">
                         </c:if>
 
-                        <c:if test="${!empty loginUser.profileImg}">
+                        <c:if test="${!empty sessionScope.loginUser.profileImg}">
                             <img src="${contextPath}${loginUser.profileImg}" id="profile-image">
                         </c:if>
                         <i class="bi bi-camera-fill" id="fileImg"><input type="file" required name="uploadImage" id="inputimage" accept="image/*"></i>              
@@ -755,7 +769,7 @@
                    				
                    				
                    					<div class="groupTitle">
-                            			<h1>그룹 생성</h1>
+                            			<h1 id="makeBandTitle">그룹 생성</h1>
                         			</div>
 
                         				<div class="grouInfoBox">
@@ -791,7 +805,12 @@
     <script>
       const msg = "${msg}";
       if (msg.trim() !== "") {
-        alert(msg);
+    	  Swal.fire({  		 
+    		  icon: 'success',
+    		  title: msg,
+    		  showConfirmButton: false,
+    		  timer: 2000
+    		})
       } 
         // 왜 자꾸 로그인 창을 들어가도 공백 alert가 뜰까 
         // -> 해결 -> != null로 조건을 주지 말고, 문자열로 체크를 해서 주면 발생하지않음.

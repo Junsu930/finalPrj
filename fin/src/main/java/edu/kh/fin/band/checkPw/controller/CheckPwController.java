@@ -26,9 +26,19 @@ public class CheckPwController {
 	private CheckPwService service;
 
 	@GetMapping("/checkPw")
-	public String checkPwController() {
+	public String checkPwController(@ModelAttribute("loginUser") User loginUser) {
 		
-		return "checkPw/checkPw";
+		String path = null;
+		
+		if(loginUser.getUserType().equals("NORMAL")) {
+			
+			path = "checkPw/checkPw";
+		} else {
+			
+			path = "redirect:/myPage";
+		}
+		
+		return path;
 	}
 	
 	@PostMapping("fin/checkPw")

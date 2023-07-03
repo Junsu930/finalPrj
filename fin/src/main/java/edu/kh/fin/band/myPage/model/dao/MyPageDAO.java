@@ -201,6 +201,11 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.replyList", userNo);
 	}
 
+	public int dismiss2(int bandNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("myPageMapper.dismiss2", bandNo);
+	}
+
 	
 
 }

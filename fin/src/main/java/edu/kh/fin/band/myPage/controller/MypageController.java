@@ -340,10 +340,16 @@ public class MypageController {
 		
 		int result = service.dismiss(bandNo);
 		
+		int result2 = service.dissmiss2(bandNo);
+		
+		int total = 0;
+		
+		total = result + result2;
+		
 		String message = null;
 		String path = null;
 		
-		if(result > 0) {
+		if(total == 2) {
 			
 			message = "해체 완료";
 			path = "/myPage";
@@ -360,6 +366,8 @@ public class MypageController {
 		return "redirect:" + path;
 		
 	}
+	
+	
 	
 	
 }

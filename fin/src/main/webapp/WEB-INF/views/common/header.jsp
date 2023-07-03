@@ -107,11 +107,11 @@
                     <div class="profileImgBox" onclick="activeMenu()" id="profileImgBox">                		           			
                 		<c:choose>
                         	<c:when test ="${empty loginUser.profileImg}">
-                        		<img src="${contextPath}/resources/images/guitarduck.png" id="profile-image">
+                        		<img src="${contextPath}/resources/images/guitarduck.png" class="propImg">
                         	</c:when>
                         	
                         	<c:otherwise>
-                        		<img src="${contextPath}${loginUser.profileImg}" id="profile-image">
+                        		<img src="${contextPath}${loginUser.profileImg}" id="profile-image" class="propImg">
                         	</c:otherwise>
                         
                 		</c:choose>

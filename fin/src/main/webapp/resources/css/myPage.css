@@ -646,7 +646,7 @@
 
 .genreBox,
 .positionBox,
-.genreBox,
+.genderBox,
 .locationBox{
     display: flex;
     justify-content: center;
@@ -786,7 +786,11 @@ input[type="checkbox"]:checked + label:before {
     -ms-user-select: none;
   }
   
-  input[type="radio"] + label:last-child { margin-bottom: 0; }
+  input[type="radio"] + label:last-child { 
+    margin-bottom: 0; 
+    margin: 10px;
+
+}
   
   input[type="radio"] + label:before {
     content: '';
@@ -851,7 +855,9 @@ input[type="checkbox"]:checked + label:before {
   
   
   
-  
+  #makeBandTitle {
+    padding-right: 15rem;
+  }
   
 
   

@@ -177,6 +177,11 @@
 		WHERE BAND_NO = ${bandNo}
 	</delete>
 	
+	<delete id="dismiss2">
+		DELETE FROM BAND_USER
+		WHERE BAND_NO = ${bandNo}
+	</delete>
+	
 	<select id="boardList" resultMap="board_rm">
 	<![CDATA[
 		SELECT *
