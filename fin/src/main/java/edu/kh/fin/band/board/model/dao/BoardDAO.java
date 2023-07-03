@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fin.band.board.model.vo.Board;
+import edu.kh.fin.band.board.model.vo.BoardBanned;
 import edu.kh.fin.band.board.model.vo.BoardDetail;
 import edu.kh.fin.band.board.model.vo.Criteria;
 
@@ -82,6 +83,16 @@ public class BoardDAO {
 	public List<BoardDetail> boardList(Criteria cri) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("boardMapper.boardList",cri);
+	}
+
+	public Object reportUser(BoardBanned boardBanned) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("boardMapper.reportUser",boardBanned);
+	}
+
+	public List<String> bannedUserIds(BoardBanned boardBanned) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardMapper.bannedUserIds",boardBanned);
 	}
 
 

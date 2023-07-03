@@ -3,12 +3,15 @@ package edu.kh.fin.band.board.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.fin.band.board.model.dao.BoardDAO;
 import edu.kh.fin.band.board.model.service.BoardService;
 import edu.kh.fin.band.board.model.vo.Board;
+import edu.kh.fin.band.board.model.vo.BoardBanned;
 import edu.kh.fin.band.board.model.vo.BoardDetail;
 import edu.kh.fin.band.board.model.vo.Criteria;
 @Service
@@ -83,6 +86,18 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardDetail> boardList(Criteria cri) {
 		// TODO Auto-generated method stub
 		return dao.boardList(cri);
+	}
+
+	@Override
+	public void reportUser(BoardBanned boardBanned) {
+		// TODO Auto-generated method stub
+		dao.reportUser(boardBanned);
+	}
+
+	@Override
+	public List<String> bannedUserIds(BoardBanned boardBanned) {
+		// TODO Auto-generated method stub
+		return dao.bannedUserIds(boardBanned);
 	}
 
 	

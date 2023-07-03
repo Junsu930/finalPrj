@@ -8,17 +8,20 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import edu.kh.fin.band.board.model.vo.Board;
+import edu.kh.fin.band.board.model.vo.BoardBanned;
 import edu.kh.fin.band.board.model.vo.BoardDetail;
 import edu.kh.fin.band.board.model.vo.Criteria;
 import edu.kh.fin.band.board.model.vo.PageVO;
 import edu.kh.fin.band.login.model.vo.User;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -45,31 +48,65 @@ public class BoardController {
 	
 	public String BoardList(Model model, Criteria cri,
 							@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
-							@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
+							@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
+							,HttpSession session,
+							BoardBanned boardBanned) {
 	    int total = service.getTotal(cri);
-	   
+	
 	   
 	    PageVO pageVO = new PageVO(cri, total);
 	    List<BoardDetail> boardList = service.boardList(cri);
-	   
+	    
+	    
+		User user =(User)session.getAttribute("loginUser");
+
 	    model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
+	    if(user==null) {
+	    	
+	    	
+	    }else {
+	    	 boardBanned.setUserNo(user.getUserNo());
+	    List<String> bannedUserIds = service.bannedUserIds(boardBanned);
+	  	
+	  
+	   
+	    model.addAttribute("bannedUserIds", bannedUserIds);
+	    System.out.println(user.getUserNo());
+	    }
+	    
 	    return "board/boardMain";
-//		 public String BoardList(Model model) {
-//
-//		Criteria cri = new Criteria();
-//		PageVO pageVO = new PageVO(cri, service.getTotal());
-//		List<BoardDetail> boardList = service.boardList(cri);
-//		model.addAttribute("boardList",service.boardList(cri));
-//		model.addAttribute("pageVO",pageVO);
-//		 
-//	
-//		
-//		return "board/boardMain";
+
 		
 	}
 
-	
+
+    @RequestMapping(value="/report", method=RequestMethod.POST)
+    public String reportUser(BoardBanned boardBanned, 
+			@RequestParam(value = "bannedUserNo") int bannedUserNo,
+			
+			@RequestParam(value = "bannedUserNick")String bannedUserNick,
+    		HttpSession session
+    						) {
+    	User user =(User)session.getAttribute("loginUser");
+    if(user==null) {
+    	
+    	
+    }else {
+    	
+   	 boardBanned.setUserNo(user.getUserNo());
+       service.reportUser(boardBanned);
+       System.out.println( user.getUserNo());
+ 
+       System.out.println("boardBanned.getBannedUserNick()" +bannedUserNick);
+       System.out.println("boardBanned.getBannedUserNo()" + bannedUserNo);
+       
+    	
+    }
+    	 
+    
+        return "board/boardMain";
+    }
 
 	@GetMapping("/boardDetail")
 	public String boardDetail(@RequestParam("boardNo")int boardNo,

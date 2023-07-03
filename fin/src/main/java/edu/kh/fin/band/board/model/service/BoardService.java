@@ -3,7 +3,10 @@ package edu.kh.fin.band.board.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import edu.kh.fin.band.board.model.vo.Board;
+import edu.kh.fin.band.board.model.vo.BoardBanned;
 import edu.kh.fin.band.board.model.vo.BoardDetail;
 import edu.kh.fin.band.board.model.vo.Criteria;
 
@@ -30,6 +33,10 @@ public interface BoardService {
 	List<BoardDetail> boardAll(Criteria cri);
 
 	List<BoardDetail> boardList(Criteria cri);
+
+	void reportUser(BoardBanned boardBanned);
+
+	List<String> bannedUserIds(BoardBanned boardBanned);
 
 
 
