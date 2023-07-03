@@ -214,8 +214,35 @@ public class MsgAlarmController {
 		
 		return "alarm/alarmPage";
 	}
-
 	
+	
+	/**
+	 * 초대장 중복으로보내는지 체크 컨트롤러
+	 * @author lee
+	 * @param loginUser
+	 * @param toUserNo
+	 * @return
+	 */
+	@GetMapping("/dupCheckInvi")
+	@ResponseBody
+	public String dupCheckInvi(
+			@ModelAttribute("loginUser") User loginUser, 
+			@RequestParam("toUserNo") int toUserNo) {
+		
+		HashMap<String, Object> map = new HashMap<>();
+		
+		map.put("fromUserNo", loginUser.getUserNo());
+		map.put("toUserNo", toUserNo);
+		
+		
+		int result = service.dupCheckInvi(map);
+		
+		if(result == 999) {
+			return new Gson().toJson("초대장을 이미 보냈습니다!");
+		}else {
+			return new Gson().toJson(result);
+		}
+	}
 	
 	
 	/**
@@ -241,7 +268,8 @@ public class MsgAlarmController {
 		
 		if(result >0) {
 			return new Gson().toJson("초대장을 보냈습니다!");
-		}else {
+		}
+		else {
 			return new Gson().toJson("초대장을 발송 실패 ㅠㅠ");
 		}
 	}
@@ -335,6 +363,32 @@ public class MsgAlarmController {
 		}
 	}
 	
+	
+	
+	/**
+	 * 현재 로그인된 유저넘버 바탕으로 좋아요 한 사람 목록, 날짜 출력해주는 알람 컨트롤러
+	 * @author lee
+	 * @param userNo
+	 * @return
+	 */
+	@GetMapping("/getUserNicksFromLike")
+	@ResponseBody
+	public String getUserNicksFromLike(@RequestParam("loginUserNo") int userNo) {
+		List<MsgAlarm> alarmList = new ArrayList<>();
+		
+		// 현재 로그인된 유저넘버 바탕으로 댓글 단 사람 목록, 날짜 출력할거임
+		alarmList = service.getUserNicksFromLike(userNo);
+		
+		
+		
+		
+		if(!alarmList.isEmpty()) {
+			return new Gson().toJson(alarmList);
+		}else {
+			return new Gson().toJson("none");
+		}
+		
+	}
 	
 	
 	

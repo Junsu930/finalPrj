@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +27,7 @@ import edu.kh.fin.band.chatting.model.service.TempUserService;
 import edu.kh.fin.band.chatting.model.vo.ChatMessageVo;
 import edu.kh.fin.band.chatting.model.vo.ChatVo;
 import edu.kh.fin.band.chatting.model.vo.TempUserVo;
+import edu.kh.fin.band.login.model.vo.User;
 
 @Controller
 @SessionAttributes({"tempUser", "chatRoomList"})
@@ -101,11 +105,22 @@ public class ChattingController {
 	
 	@PostMapping("/loadMessage")
 	@ResponseBody
-	public String loadMessage(@RequestParam(value="chatRoomNo", required=false) String chatRoomNo) {
+	public String loadMessage(@RequestParam(value="chatRoomNo", required=false) String chatRoomNo, HttpServletRequest req) {
 		
 		List<ChatMessageVo> chatList = new ArrayList<>();
 		
-		chatList = service.loadMessage(chatRoomNo);
+		
+		HttpSession session = req.getSession();
+		
+		int loginUserNo = ((User)session.getAttribute("loginUser")).getUserNo();
+		
+		Map<String, Object> cMap = new HashMap<>();
+		
+		cMap.put("chatRoomNo", chatRoomNo);
+		
+		cMap.put("loginUserNo", loginUserNo);
+		
+		chatList = service.loadMessage(cMap);
 		
 	
 		
@@ -214,6 +229,14 @@ public class ChattingController {
 				
 	}
 	
+	@PostMapping("/chatExit")
+	@ResponseBody
+	public int chatExit(@RequestParam Map<String, Object> chatMap) {
+		
+		int result = service.chatExit(chatMap);
+		
+		return result;
+	}
 	
 	
 	

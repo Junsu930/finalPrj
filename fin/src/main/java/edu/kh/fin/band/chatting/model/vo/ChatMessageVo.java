@@ -14,5 +14,6 @@ public class ChatMessageVo {
 	private String chatRoomNo;
 	private String message;
 	private int userNo;
+	private String chatStaus;
 
 }

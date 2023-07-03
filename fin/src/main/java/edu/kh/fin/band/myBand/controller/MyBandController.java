@@ -428,6 +428,12 @@ public class MyBandController {
 	}
 
 	
+	/** 이미지 삽입 코드
+	 * @param request
+	 * @param req
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/myBandImgUpload")
 	@ResponseBody
 	public String image(MultipartHttpServletRequest request, HttpServletRequest req) throws Exception {

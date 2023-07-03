@@ -30,8 +30,8 @@
       autoplaySpeed : 2500, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
       pauseOnHover : true,		// 슬라이드 이동	시 마우스 호버하면 슬라이더 멈추게 설정
       vertical : false,		// 세로 방향 슬라이드 옵션
-      prevArrow :	"<button type='button' class='btn'>&#10094</button>",// 이전 화살표 모양 설정
-      nextArrow :	"<button type='button' class='btn'>&#10095</button>", // 다음 화살표 모양 설정
+      prevArrow :	"<button type='button' class='btn' id='preBtn' style='outline:none'>&#10094</button>",// 이전 화살표 모양 설정
+      nextArrow :	"<button type='button' class='btn' id='nextBtn' style='outline:none'>&#10095</button>", // 다음 화살표 모양 설정
       dotsClass : "slick-dots", 	//아래 나오는 페이지네이션(점) css class 지정
       draggable : true, 	//드래그 가능 여부 
       
@@ -70,7 +70,7 @@
 
     <section class="firstSection">
 
-      
+      <input type="hidden" value="${sessionScope.loginUser.userNo}" name="loginUserCheck" id="loginUserCheck">
             <div class="explainBox">
               
               
@@ -115,6 +115,7 @@
                             ${lesson.motto}
                         </p>
                     </div>
+                    
                     <div class="chatBox">
                         <c:if test="${sessionScope.loginUser.userNo ne lesson.userNo}">
                           <button id="chatBtn"><i class="bi bi-chat-dots"></i></button>

@@ -102,6 +102,22 @@ public interface MsgAlarmService {
 	 */
 	List<MsgAlarm> getUserNicksFromReply(int userNo);
 
+	/**
+	 * 현재 로그인된 유저넘버 바탕으로 좋아요 한 사람, 날짜 출력 서비스
+	 * @author lee
+	 * @param userNo
+	 * @return
+	 */
+	List<MsgAlarm> getUserNicksFromLike(int userNo);
+
+	/**
+	 * 초대장 중복 체크 서비스
+	 * @author lee
+	 * @param map
+	 * @return
+	 */
+	int dupCheckInvi(HashMap<String, Object> map);
+
 	
 
 }

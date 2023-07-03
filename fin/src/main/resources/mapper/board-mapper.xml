@@ -205,7 +205,7 @@ AND BOARD_TAG = 2</if>
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT,
 		TO_CHAR(CREATE_DATE, 'YY"." MM"." DD') CREATE_DATE,
 		READ_COUNT, USER_NO, BOARD_LIKE, BOARD_LIKE,
-		BOARD_TAG,USER_NICK
+		BOARD_TAG,USER_NICK,USER_NO
 		FROM BOARD
 		JOIN "USER" USING(USER_NO)
 		WHERE BOARD_NO = #{boardNo}
@@ -242,6 +242,7 @@ AND BOARD_TAG = 2</if>
 	
 	
 	
+
 	   <insert id="reportUser" parameterType="boardBanned">
         INSERT INTO BOARD_BANNED 
         VALUES (
@@ -253,4 +254,29 @@ AND BOARD_TAG = 2</if>
     FROM BOARD_BANNED
     WHERE USER_NO = #{userNo}
 </select>
+
+	<!-- 좋아요 등록 -->
+	<update id="boardDetailLike" parameterType="hashmap">
+		UPDATE BOARD SET BOARD_LIKE = BOARD_LIKE +1 WHERE BOARD_NO = ${boardNo}
+	</update>
+	
+	<!-- 좋아요 취소 -->
+	<update id="removeLike" parameterType="hashmap">
+		UPDATE BOARD SET BOARD_LIKE = BOARD_LIKE -1 WHERE BOARD_NO = ${boardNo}
+	</update>
+	
+	<!-- 좋아요 테이블 좋아요 등록 -->
+	<insert id="addLike" parameterType="hashmap">
+		INSERT INTO BOARD_LIKE VALUES(BOARD_LIKE_SEQ.NEXTVAL, ${boardNo}, ${loginUserNo}, DEFAULT)
+	</insert>
+	
+	<!-- 좋아요 테이블 좋아요 삭제 -->
+	<delete id="removeLikeFromLikeTable" parameterType="hashmap">
+		DELETE FROM BOARD_LIKE WHERE BOARD_NO = ${boardNo} AND USER_NO = ${loginUserNo}
+	</delete>
+	
+	<select id="countLike" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM BOARD_LIKE WHERE BOARD_NO = ${boardNo}
+	</select>
+	
 </mapper>

@@ -121,4 +121,6 @@ public interface MyPageService {
 	 * @return
 	 */
 	List<Reply> ReplyList(int userNo);
+
+	int dissmiss2(int bandNo);
 }

@@ -225,4 +225,10 @@ public class MyPageServiceimpl implements MyPageService{
 		return dao.ReplyList(userNo);
 	}
 
+	@Override
+	public int dissmiss2(int bandNo) {
+		
+		return dao.dismiss2(bandNo);
+	}
+
 }

@@ -156,6 +156,38 @@ public class MsgAlarmDAO {
 		return sqlSession.selectList("alaramMapper.getUserNicksFromReply", userNo);
 	}
 
+	/**
+	 * 현재 로그인된 유저넘버 바탕으로 좋아요 한 사람, 날짜 출력 DAO
+	 * @author lee
+	 * @param userNo
+	 * @return
+	 */
+	public List<MsgAlarm> getUserNicksFromLike(int userNo) {
+		return sqlSession.selectList("alaramMapper.getUserNicksFromLike", userNo);
+	}
+
+	/**
+	 * 초대장 중복으로 보내는지 체크 DAO
+	 * @author lee
+	 * @param map
+	 * @return
+	 */
+	public int dupCheckInvi(HashMap<String, Object> map) {
+		
+		// fromUserNo 즉 leaderUserNo을 바탕으로 밴드 넘버 가져오기
+		int bandNo = sqlSession.selectOne("alaramMapper.getBandNo", map);
+		
+		if(bandNo != 0) {
+			map.put("bandNo", bandNo);
+			int checkResult = sqlSession.selectOne("alaramMapper.dupCheckInvi", map);
+			
+			if(checkResult > 0) {
+				return 999;
+			}
+		}
+		return 0;
+	}
+
 	
 	
 

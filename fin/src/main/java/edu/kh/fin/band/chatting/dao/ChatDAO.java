@@ -19,7 +19,10 @@ public class ChatDAO {
 
 	public List<ChatVo> onChatRoom(int nowUser) {
 		
+		
 		Map<String, Object> map = new HashMap<>();
+		
+		
 		
 		map.put("nowUser", nowUser);
 		
@@ -31,12 +34,20 @@ public class ChatDAO {
 
 	public int saveMsg(Map<String, Object> msgMap) {
 		
+		// 최신 메세지 상태 변경 로직
+		sqlSession.update("chat-mapper.lastChat", msgMap);
+		
+		sqlSession.update("chat-mapper.settingY", msgMap);
+		
 		return sqlSession.insert("chat-mapper.saveMsg", msgMap);
 				
 	}
 
-	public List<ChatMessageVo> loadMessage(String chatRoomNo) {
-		return sqlSession.selectList("chat-mapper.loadMessage", chatRoomNo);
+	public List<ChatMessageVo> loadMessage(Map<String,Object> cMap) {
+		
+		
+		
+		return sqlSession.selectList("chat-mapper.loadMessage", cMap);
 	}
 
 	public int deleteChatRoom(String chatRoomNo) {
@@ -75,6 +86,28 @@ public class ChatDAO {
 
 	public String chattingCheckImg(int userNo) {
 		return sqlSession.selectOne("chat-mapper.chattingCheckImg", userNo);
+	}
+
+	public int chatExit(Map<String, Object> chatMap) {
+		
+		String checkSt = sqlSession.selectOne("chat-mapper.checkSt", chatMap);
+		int result = 0;
+		if(checkSt.equals("Y")) {
+			int fresult = sqlSession.update("chat-mapper.chatExitU", chatMap);
+			if (fresult > 0) {
+				
+				result = sqlSession.update("chat-mapper.massageExitU", chatMap);
+			}
+		}else {
+			int fresult = sqlSession.delete("chat-mapper.chatExitD", chatMap);
+			if (fresult > 0) {
+				
+				result = sqlSession.delete("chat-mapper.massageExitD", chatMap);
+			}
+		}
+		
+		
+		return result;
 	}
 
 
