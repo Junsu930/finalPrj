@@ -83,25 +83,25 @@ window.addEventListener("scroll", ()=>{
   if(mediaQuery.matches){
       // guitar Text
     if(scrollValue > 28){
-      boardText.style.animation = "slideGuitar 1.2s ease-out forwards"
+      boardText.style.animation = "slideGuitar 0.7s ease-out forwards"
       if(scrollValue > 38){
-        boardText.style.animation = "disappearSlideGuitar 1.2s ease-out forwards"
+        boardText.style.animation = "disappearSlideGuitar 0.7s ease-out forwards"
       }
     }
 
   // drum Text
     if(scrollValue > 40){
-      usedText.style.animation = "slideDrum 1.2s ease-out forwards"
+      usedText.style.animation = "slideDrum 0.7s ease-out forwards"
       if(scrollValue > 47.7){
-        usedText.style.animation = "disappearSlideDrum 1.2s ease-out forwards"
+        usedText.style.animation = "disappearSlideDrum 0.7s ease-out forwards"
       }
     }
 
   // headphone Text
     if(scrollValue > 52){
-      reservationText.style.animation = "slideHeadPhone 1.2s ease-out forwards"
+      reservationText.style.animation = "slideHeadPhone 0.7s ease-out forwards"
       if(scrollValue > 58.8){
-        reservationText.style.animation = "disappearSlideHeadPhone 1.2s ease-out forwards"
+        reservationText.style.animation = "disappearSlideHeadPhone 0.7s ease-out forwards"
       }
     }
   }
@@ -214,26 +214,26 @@ window.addEventListener('scroll', () => {
   if (topPadMedia.matches) {
     let mediaTopValue2 = getCurrentScrollPercentage();
     if (mediaTopValue2 > 26) {
-      boardText.style.animation = "slideGuitarMedia 1.2s ease-out forwards";
+      boardText.style.animation = "slideGuitarMedia 0.7s ease-out forwards";
       // boardText 나오는 거
       if (mediaTopValue2 > 37){
-        usedText.style.animation = "slideDrumMedia 1.2s ease-out forwards"
+        usedText.style.animation = "slideDrumMedia 0.7s ease-out forwards"
         // usedText 나오는 거
       }
       if (mediaTopValue2 > 46) {
-        boardText.style.animation = "disappearSlideGuitarMedia 1.2s ease-out forwards";
+        boardText.style.animation = "disappearSlideGuitarMedia 0.7s ease-out forwards";
         // boardText 들어가는 거
       }
       if(mediaTopValue2 > 47){
-        reservationText.style.animation = "slideHeadPhoneMedia 1.2s ease-out forwards"
+        reservationText.style.animation = "slideHeadPhoneMedia 0.7s ease-out forwards"
         // reservationText 나오는 거
       }
       if(mediaTopValue2 > 53){
-        usedText.style.animation = "disappearSlideDrumMedia 1.2s ease-out forwards"
+        usedText.style.animation = "disappearSlideDrumMedia 0.7s ease-out forwards"
         // usedText 들어가는 거
       }
       if(mediaTopValue2 > 65){
-        reservationText.style.animation = "disappearSlideHeadPhoneMedia 1.2s ease-out forwards"
+        reservationText.style.animation = "disappearSlideHeadPhoneMedia 0.7s ease-out forwards"
         // reservationText 들어가는 거
       }
     }
@@ -249,21 +249,21 @@ window.addEventListener('scroll', () => {
     console.log("phoneMedia!");
     let mediaTopValue3 = getCurrentScrollPercentage();
     if(mediaTopValue3 > 22){
-      boardText.style.animation = "slideGuitarMediaPhone 1.2s ease-out forwards"
+      boardText.style.animation = "slideGuitarMediaPhone 0.7s ease-out forwards"
       if(mediaTopValue3 > 27){
-        usedText.style.animation = "slideDrumMediaPhone 1.2s ease-out forwards";
+        usedText.style.animation = "slideDrumMediaPhone 0.7s ease-out forwards";
       }
       if(mediaTopValue3 > 34){
-        reservationText.style.animation = "slideHeadPhoneMediaPhone 1.2s ease-out forwards";
+        reservationText.style.animation = "slideHeadPhoneMediaPhone 0.7s ease-out forwards";
       }
       if(mediaTopValue3 > 35.6){
-        boardText.style.animation = "disappearSlideGuitarMediaPhone 1.2s ease-out forwards";
+        boardText.style.animation = "disappearSlideGuitarMediaPhone 0.7s ease-out forwards";
       }
       if(mediaTopValue3 > 42){
-        usedText.style.animation = "disappearSlideDrumMediaPhone 1.2s ease-out forwards";
+        usedText.style.animation = "disappearSlideDrumMediaPhone 0.7s ease-out forwards";
       }
       if(mediaTopValue3 > 47.8){
-        reservationText.style.animation = "disappearSlideHeadPhoneMediaPhone 1.2s ease-out forwards";
+        reservationText.style.animation = "disappearSlideHeadPhoneMediaPhone 0.7s ease-out forwards";
       }
     }
   }
@@ -295,7 +295,12 @@ document.getElementById('sendEmailBtn').addEventListener("click", () =>{
   dataType: "JSON",  // dataType : 응답데이터 형식을 지정
   // -> "JSON"으로 지정 시 자동으로 JS 객체로 변환
   success : function(result){ 
-    alert(result);
+
+    Swal.fire({
+      title: 'BandArchive',
+      text: result,
+      icon: 'success',
+    })
     document.querySelector('.inputSubject').value = "";
     document.querySelector('.inputName').value = "";
     document.querySelector('.inputFromEmail').value = "";

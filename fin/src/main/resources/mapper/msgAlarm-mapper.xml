@@ -47,6 +47,7 @@
 		<result property="sendMon" column="SEND_MON" />
 		<result property="replyNo" column="REPLY_NO" />
 		<result property="boardNo" column="BOARD_NO" />
+		<result property="likeNo" column="LIKE_NO" />
 	</resultMap>
 	
 	
@@ -153,11 +154,18 @@
 	
 	
 	<!-- 초대장 테이블에 값 세팅 -->
-	<select id="getBandNo" parameterType="map" resultType="_int">
+	<select id="getBandNo" parameterType="hashmap" resultType="_int">
 		SELECT BAND_NO FROM BAND WHERE LEADER_NO = ${fromUserNo}
 	</select>
 	
-	<insert id="insertInvitation" parameterType="map">
+	
+	
+	<!-- 초대장 중복 체크 -->
+	<select id="dupCheckInvi" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM INVITATION WHERE BAND_NO = ${bandNo} AND TO_USER_NO = ${toUserNo}
+	</select>
+	
+	<insert id="insertInvitation" parameterType="hashmap">
 		<selectKey keyProperty="inviNo" resultType="_int" order="BEFORE">
 			SELECT INVI_NO_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
@@ -168,14 +176,14 @@
 	
 	<!-- 초대장 인서트 끝난 후, TOTAL_ALARM 테이블에 초대장 알람 세팅-->
 	
-	<insert id="insertInviAlarm" parameterType="map">
+	<insert id="insertInviAlarm" parameterType="hashmap">
 		INSERT INTO TOTAL_ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
 		VALUES(TOTAL_ALARM_NO_SEQ.NEXTVAL, ${toUserNo}, ${fromUserNo}, ${inviNo}, NULL, NULL, DEFAULT, NULL, NULL)
 	</insert>
 	
 	
 	<!-- 초대장 보낸 사람 리스트 출력 -->
-	<select id="getInviList" parameterType="map" resultMap="invi_rm">
+	<select id="getInviList" parameterType="hashmap" resultMap="invi_rm">
 		SELECT u.USER_NICK, b.BAND_NAME, i.INVI_NO,
 		TO_CHAR(i.INVI_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
 		TO_CHAR(i.INVI_DATE, 'DD"일"') AS SEND_DAY
@@ -206,8 +214,8 @@
 	<!-- 현재 로그인한 유저넘버 바탕으로 댓글을 누가 달았는지 보여주는 리스트 select구문 -->
 	<select id="getUserNicksFromReply" parameterType="_int" resultMap="getUserNick_reply_rm">
 		SELECT USER_NICK, 
-		TO_CHAR(CREATE_DT, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
-		TO_CHAR(CREATE_DT, 'YY"일"') AS SEND_DAY,
+		TO_CHAR(r.CREATE_DT, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
+		TO_CHAR(r.CREATE_DT, 'YY"일"') AS SEND_DAY,
 		r.REPLY_NO, b.BOARD_NO
 		FROM REPLY r
 		JOIN "USER" u ON u.USER_NO = r.USER_NO
@@ -215,6 +223,32 @@
 		WHERE b.USER_NO = ${userNo}
 		ORDER BY r.REPLY_NO DESC
 	</select>
+	
+	
+	<!-- 좋아요 알람 등록  -->
+	<insert id="addLike" parameterType="hashmap">
+		INSERT INTO TOTAL_ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+		VALUES(TOTAL_ALARM_NO_SEQ.NEXTVAL, ${userNo}, ${loginUserNo}, NULL, NULL, ${boardNo}, NULL, NULL, DEFAULT)
+	</insert>
+	
+	<!-- 좋아요 알람 삭제 -->
+	<delete id="removeLikeFromLikeAlarm" parameterType="hashmap">
+		DELETE FROM TOTAL_ALARM WHERE BOARD_NO = ${boardNo} AND FROM_USER_NO = ${loginUserNo}
+	</delete>
+	
+	<select id="getUserNicksFromLike" parameterType="_int" resultMap="getUserNick_reply_rm">
+		SELECT USER_NICK, 
+		TO_CHAR(BOARD_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
+		TO_CHAR(BOARD_DATE, 'YY"일"') AS SEND_DAY,
+		bl.LIKE_NO, b.BOARD_NO
+		FROM BOARD_LIKE bl
+		JOIN "USER" u ON u.USER_NO = bl.USER_NO
+		LEFT JOIN BOARD b ON b.BOARD_NO = bl.BOARD_NO
+		WHERE b.USER_NO = ${userNo}
+		ORDER BY bl.LIKE_NO DESC
+	</select>
+	
+	
 	
 	
 

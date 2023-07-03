@@ -93,12 +93,27 @@ function deleteLesson(lessonNo){
 // 채팅 연결
 
 let chatBtn = document.querySelector('#chatBtn');
-
+let loginUserCheck = document.getElementById('loginUserCheck').value;
 
 chatBtn.addEventListener('click', function(){
-  let userNo = chatBtn.nextElementSibling.value;
-  console.log(userNo);
-  chatStart(userNo);
+  console.log(loginUserCheck + "userNo check");
+  if(loginUserCheck == ""){
+    Swal.fire({
+      title: "BandArchive",
+      text: '로그인을 먼저 진행해주세요!',
+      icon: 'warning',
+    }).then(() =>{
+      toLoginPage();
+    });
+  }else{
+    let userNo = chatBtn.nextElementSibling.value;
+    console.log(userNo);
+    chatStart(userNo);
+  }
+  
 });
 
 
+function toLoginPage(){
+	location.href="/fin/login?ref="+document.location.href;
+};

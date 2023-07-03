@@ -216,9 +216,27 @@ body.darkmode #deleteBtn > i{
 }
 
 
-.btn{
+/* .btn{
   display: none !important;
+} */
+
+#nextBtn, #preBtn{
+    /* width: 100px;
+    background: transparent;
+    font-size: 1.5em; */
+    display: none !important;
 }
+
+/* #nextBtn:focus, #preBtn:focus{
+    outline: none !important;
+} */
+
+/* .slick-slider{
+    display: flex !important;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+} */
 
 
 .slick-initialized .slick-slide{

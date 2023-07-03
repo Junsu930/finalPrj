@@ -199,7 +199,7 @@ $(document).ready(() =>{
                 }
                 observerBox = document.querySelector('.imgCotentWrap:last-child');
 
-                let count = 3;
+                let count = 4;
 
                 const observer = new IntersectionObserver(
                     (entries) =>{
@@ -369,7 +369,7 @@ function filterFunc(){
                 }
                 observerBox = document.querySelector('.imgCotentWrap:last-child');
     
-                let count = 3;
+                let count = 4;
     
                 const observer = new IntersectionObserver(
                     (entries) =>{

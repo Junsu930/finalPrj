@@ -63,7 +63,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input id="lessonMottoPlace" name="userMotto" type="text" required>
+                    <input id="lessonMottoPlace" name="userMotto" type="text" required maxlength="20">
                     <label>MOTTO</label>
                 </div>
 

@@ -222,21 +222,52 @@ function invitate(e){
     
     let toUserNo = e.target.nextElementSibling.value;
     console.log(toUserNo);
-    
-    $.ajax({
-        url:"sendInvitate",
-        type:"POST",
+
+	// 중복 초대장이 있는지 확인해야함
+	$.ajax({
+        url:"dupCheckInvi",
+        type:"GET",
         data:{"toUserNo" : toUserNo},
         dataType:"JSON",
         success: function(result){
-            alert(result);
-            location.reload();
+            if(result == 0){ // 중복된 초대장 없을 때, 초대장 보내기
+				$.ajax({
+					url:"sendInvitate",
+					type:"POST",
+					data:{"toUserNo" : toUserNo},
+					dataType:"JSON",
+					success: function(result){
+						Swal.fire({
+							title: "BandArchive",
+							text: result,
+							icon: 'success',
+						}).then(() => {
+							location.reload();
+						});
+					},
+					error : function(request, status, error){
+						console.log("invitate() AJAX 에러 발생");
+						console.log("상태코드 : " + request.status); // 404, 500
+					}
+				});
+			}else{ // 중복된 초대장 있을 때, 알리기
+				Swal.fire({
+					title: "BandArchive",
+					text: result,
+					icon: 'warning',
+				});
+			}
         },
         error : function(request, status, error){
             console.log("invitate() AJAX 에러 발생");
             console.log("상태코드 : " + request.status); // 404, 500
         }
     });
+
+
+	
+    
+    
 }
 
 </script>

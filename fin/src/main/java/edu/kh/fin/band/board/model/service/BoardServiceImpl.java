@@ -1,6 +1,7 @@
 package edu.kh.fin.band.board.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,33 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardDetail> boardList(Criteria cri) {
 		// TODO Auto-generated method stub
 		return dao.boardList(cri);
+	}
+
+	
+	
+
+	/**
+	 * 좋아요 등록 + 좋아요 알람
+	 * @author lee
+	 * @param boardNo
+	 * @param loginUser
+	 * @return
+	 */
+	@Override
+	public int boardDetailLike(HashMap<String, Object> map) {
+		return dao.boardDetailLike(map);
+	}
+
+	/**
+	 * 좋아요 취소 + 좋아요 알람 취소
+	 * @author lee
+	 * @param boardNo
+	 * @param loginUser
+	 * @return
+	 */
+	@Override
+	public int removeLike(HashMap<String, Object> map) {
+		return dao.removeLike(map);
 	}
 
 	
