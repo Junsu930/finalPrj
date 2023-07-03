@@ -61,6 +61,7 @@
 		<result property="userNick" column="USER_NICK" />
 	</resultMap>
 	
+	
 	<resultMap type="replyList" id="reply_rm">
 	
 		<id property="replyNo" column="REPLY_NO"/>
@@ -80,6 +81,13 @@
 		INTRO_MENT = #{newIntro}
 		WHERE USER_NO = ${userNo}
 	</update>
+	
+	<select id="checkBand" resultType="_int">
+		SELECT COUNT(*)
+		FROM BAND
+		WHERE LEADER_NO = ${userNo}
+	</select>
+	
 	
 	<select id="selectEncPw" resultType="string">
 		SELECT USER_PWD FROM "USER"
@@ -181,6 +189,12 @@
 		DELETE FROM BAND_USER
 		WHERE BAND_NO = ${bandNo}
 	</delete>
+	
+	<update id="bandInfo">
+		UPDATE BAND SET
+		LEADER_NICK = #{newNick}
+		WHERE LEADER_NO =${userNo}
+	</update>
 	
 	<select id="boardList" resultMap="board_rm">
 	<![CDATA[

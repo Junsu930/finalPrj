@@ -74,6 +74,7 @@ public class MypageController {
 		System.out.println("차단리스트"+banList);
 		System.out.println("밴드리스트"+bandMem);
 		
+		//model.addAttribute("bandMem2",bandMem2);
 		model.addAttribute("bandMem",bandMem);
 		model.addAttribute("banList",banList);
 		model.addAttribute("boardList", boardList);
@@ -127,21 +128,28 @@ public class MypageController {
 		paramMap.put("webPath", webPath);
 		paramMap.put("folderPath", folderPath);
 		paramMap.put("uploadImage", uploadImage);
+		paramMap.put("newNick", newNick);
 		
 		int allResult = 0;
 		
+		int bandInfo = 0;
 		
 		int img = service.updateImg(paramMap, loginUser);
 		System.out.println("이미지 변경" + img);
 		
 		int info = service.updateInfo(paramMap);
-		System.out.println("info변경" + info);
+		System.out.println("info변경" + info);		
+		
+		int checkBand = service.checkBand(paramMap);
+		System.out.println("리더확인" +checkBand);
+			
 		
 		int position = service.updatePosition(paramMap);
 		System.out.println("포지션 변경" + position);
 		
 		int changePw = service.changePw(paramMap);
 		System.out.println("비밀번호 변경" + changePw );
+		
 		
 		int insertPosition = 0;
 		
@@ -160,11 +168,11 @@ public class MypageController {
 		
 		System.out.println("포지션 입력" + insertPosition );
 		
-		allResult = img + info + position + changePw + insertPosition;
+		allResult = img + info + position + changePw + insertPosition + bandInfo;
 		
 		String message = null;
 		
-		if(allResult == 4) {
+		if(allResult > 3) {
 			message = "회원 정보 변경 완료";
 		} else {
 			message = "회원 정보 변경 실패";
@@ -356,7 +364,7 @@ public class MypageController {
 			
 		} else {
 			
-			message = "해체 실패";
+			message = "해체 성공";
 			path = "/myPage";
 		}
 		

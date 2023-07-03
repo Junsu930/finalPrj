@@ -123,4 +123,9 @@ public interface MyPageService {
 	List<Reply> ReplyList(int userNo);
 
 	int dissmiss2(int bandNo);
+
+
+	int checkBand(Map<String, Object> paramMap);
+
+
 }

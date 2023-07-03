@@ -95,7 +95,7 @@ public class MyPageDAO {
 	 * @return
 	 */
 	public int ban(User loginUser) {
-		// TODO Auto-generated method stub
+
 		return 0;
 	} 
 
@@ -202,10 +202,19 @@ public class MyPageDAO {
 	}
 
 	public int dismiss2(int bandNo) {
-		// TODO Auto-generated method stub
+		
 		return sqlSession.update("myPageMapper.dismiss2", bandNo);
 	}
 
 	
-
+	public int checkBand(Map<String, Object> paramMap) {
+		
+		return sqlSession.selectOne("myPageMapper.checkBand", paramMap);
+	}
+	
+	public int bandInfo(Map<String, Object> paramMap) {
+	
+		return sqlSession.update("myPageMapper.bandInfo", paramMap);
+	}
+	
 }
