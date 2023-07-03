@@ -8,6 +8,7 @@ let inChatRoomNo; // 들어온 채팅방
 // 채팅방에 들어오면 자동으로 소켓 접속 
 
 
+
 $(document).ready(()=>{
 	
 
@@ -86,6 +87,15 @@ function enterRoom(chatOthersNick ,chatRoomNo, chatOthersImage){
     loadMessage(chatRoomNo);
 
     
+    $("#xHiddenchatRoomNoinput").remove();
+
+	$("#x-markDiv").css("display","flex");
+    let chatRoomNoinput = document.createElement("input");
+    chatRoomNoinput.type = "hidden";
+    chatRoomNoinput.value = chatRoomNo;
+    chatRoomNoinput.id="xHiddenchatRoomNoinput";
+    $("#x-markDiv").append(chatRoomNoinput);
+
 }
 
 // 상대방의 닉네임 확인
@@ -136,9 +146,6 @@ function loadMessage(chatRoomNo){
 
 
 
-function createRoom(roomNo, hostNo, guestNo, roomTitle){
- 
-}
 
 
 function send(chatRoomNo){
@@ -317,3 +324,33 @@ function withUserImg(withUserNo){
 }
 
 
+// 채팅창 삭제 메서드
+$("#x-markDiv").click(function(){
+    
+    let chatRoomNo = $("#xHiddenchatRoomNoinput").val();
+    let loginUserNo = $("#hiddenUserNo").val();
+
+    Swal.fire({
+        title: '채팅방을 나가시겠습니까??',
+        text: "채팅 내역은 되돌릴 수 없습니다. 신중하세요.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: '나가기',
+        cancelButtonText: '남아있기',
+        
+      }).then(result => {
+        if (result.isConfirmed){
+            $.ajax({
+                url : "/fin/chatExit",
+                data : {"chatRoomNo":chatRoomNo, "loginUserNo":loginUserNo},
+                type : "post",
+                success : function(data){
+                
+                }
+        
+            });
+        }
+      });
+});

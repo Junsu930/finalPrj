@@ -34,8 +34,8 @@ public class ChatService {
 	 * @param chatRoomNo
 	 * @return
 	 */
-	public List<ChatMessageVo> loadMessage(String chatRoomNo) {
-		return dao.loadMessage(chatRoomNo);
+	public List<ChatMessageVo> loadMessage(Map<String,Object> cMap) {
+		return dao.loadMessage(cMap);
 	}
 
 
@@ -70,6 +70,11 @@ public class ChatService {
 
 	public String chattingCheckImg(int userNo) {
 		return dao.chattingCheckImg(userNo);
+	}
+
+
+	public int chatExit(Map<String, Object> chatMap) {
+		return dao.chatExit(chatMap);
 	}
 
 
