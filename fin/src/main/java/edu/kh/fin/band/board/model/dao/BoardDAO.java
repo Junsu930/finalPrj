@@ -98,7 +98,7 @@ public class BoardDAO {
 	/**
 	 * 좋아요 등록 + 좋아요 알람
 	 * @author lee
-	 * @param boardNo
+	 * @param boardNoz
 	 * @param loginUser
 	 * @return
 	 */
