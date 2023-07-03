@@ -69,10 +69,10 @@ FROM (
     ]]>
     <if test="searchType =='all'">
         AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
-    <if test="searchType =='notice'">
+    <if test="searchType =='popular'">
         AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
         AND BOARD_TAG = 1</if>
-    <if test="searchType =='popular'">
+    <if test="searchType =='notice'">
         AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
         AND BOARD_TAG = 2</if>
 <![CDATA[
@@ -181,10 +181,10 @@ WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
     	
  <if test="searchType =='all'">
     	where (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
-<if test="searchType =='notice'">
+ <if test="searchType =='popular'">
 where (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
 AND BOARD_TAG = 1</if>
-<if test="searchType =='popular'">
+   <if test="searchType =='notice'">
 where (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
 AND BOARD_TAG = 2</if>
 

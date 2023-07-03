@@ -57,7 +57,7 @@
     </script>
 	</c:if>    
  	<jsp:include page="/WEB-INF/views/common/header.jsp"/> 
-
+ <input type="hidden" value="${sessionScope.loginUser.userNo}" name="loginUserCheck" id="loginUserCheck">
     <div class="boardContainer">
     
     <div class="boardSvgBox">
@@ -274,6 +274,8 @@
 
 
 </div>
+<jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
+<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/js/boardMain.js"></script>
 
@@ -581,6 +583,48 @@ $('.blockBoxOpen').click(function(e)
 
 });
 
+
+
+$('.btn-primary[data-dismiss="modal"]').click(function(e) {
+    let loginUserCheck = document.getElementById('loginUserCheck').value;
+
+    if(loginUserCheck == "") { // 로그인하지 않은 경우
+        e.preventDefault(); // 폼의 기본 동작(페이지 이동 등)을 막습니다.
+        Swal.fire({
+            title: "BandArchive",
+            text: '로그인을 먼저 진행해주세요!',
+            icon: 'warning',
+        }).then(() => {
+            toLoginPage();
+        });
+    } else { // 로그인한 경우
+        // AJAX를 사용하여 데이터를 컨트롤러로 전송합니다.
+        $.ajax({
+            type: 'POST', // 전송 방식 설정 (POST 또는 GET)
+            url: 'report', // 데이터를 전송할 컨트롤러 URL
+            data: {
+                bannedUserNo: bannedUserNo,
+                bannedUserNick: bannedUserNick,
+            },
+            success: function(response) {
+                alert("신고가 완료되었습니다");
+                console.log('Data successfully sent to the controller.');
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                // 데이터 전송 중 에러가 발생했을 때 실행할 동작을 작성합니다.
+                console.log('Error occurred while sending data to the controller.');
+                console.log('Status:', status);
+                console.log('Error:', error);
+            }
+        });
+    }
+});
+
+function toLoginPage(){
+    location.href="/fin/login?ref="+document.location.href;
+};
+/* 
 $('.btn-primary[data-dismiss="modal"]').click(function(e) {
   <c:if test="${empty loginUser}">
     // 로그인하지 않은 경우
@@ -604,8 +648,11 @@ $('.btn-primary[data-dismiss="modal"]').click(function(e) {
         bannedUserNick: bannedUserNick,
       },
       success: function(response) {
-        // 성공적으로 데이터를 전송하고 응답을 받았을 때 실행할 동작을 작성합니다.
+        
+        alert("신고가 완료되었습니다");
         console.log('Data successfully sent to the controller.');
+        
+        location.reload();
         // 추가적인 동작 수행 가능
       },
       error: function(xhr, status, error) {
@@ -618,7 +665,7 @@ $('.btn-primary[data-dismiss="modal"]').click(function(e) {
     });
  
   </c:if>
-});
+}); */
 
 /* 
 

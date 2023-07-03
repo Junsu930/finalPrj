@@ -76,7 +76,7 @@ public class BoardController {
 	    	
 	    	
 	    }else {
-	    	 boardBanned.setUserNo(user.getUserNo());
+	    boardBanned.setUserNo(user.getUserNo());
 	    List<String> bannedUserIds = service.bannedUserIds(boardBanned);
 	  	
 	  

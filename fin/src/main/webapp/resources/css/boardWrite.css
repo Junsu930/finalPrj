@@ -151,7 +151,9 @@ h2 {
   color: #474554;
   font-weight: bold;
 }
-
+.boardTitle{
+  margin-bottom: 10px;
+}
 .boardContent{
   padding-bottom: 20px;
   padding-top: 10px;
@@ -172,6 +174,40 @@ textarea {
   border-radius: 5px;
   border: 1px solid #474554;
 }
+
+
+
+
+body.darkmode .test_obj input[type="radio"]:checked + span {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+
+body.darkmode .test_obj input[type="radio"] + span{
+  background-color: transparent;
+}
+
+
+body.darkmode .boardContent  {
+  color: var(--text-dark-color);
+}
+
+
+body.darkmode .boardTitle  {
+  color: var(--text-dark-color);
+}
+body.darkmode .tagsTitle {
+  color: var(--text-dark-color);
+}
+
+body.darkmode #hh{
+  color: var(--text-dark-color);
+}
+
+body.darkmode .tagBasic button{
+  color: var(--text-dark-color);
+}
+
 
 body.darkmode .tagBasic button{
     color: var(--text-dark-color);
