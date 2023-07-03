@@ -129,8 +129,16 @@
 						
         <c:otherwise>
         	<c:forEach var="board" items="${boardList}">       
+        <c:set var="isBanned" value="false"/>
+        <c:forEach var="bannedId" items="${bannedUserIds}">
+            <c:if test="${bannedId eq board.userNo}">
+                <c:set var="isBanned" value="true"/>
+            </c:if>
+        </c:forEach>
+        <c:if test="${!isBanned}">
                           
-        	<tr>
+        	<tr class="tr-userNo-${board.userNo}">
+        	
         	<td class="boardNumber">${board.boardNo}</td>
         		<c:choose>
        				 <c:when test="${ board.boardTag==1}">
@@ -149,10 +157,27 @@
          		</c:otherwise>
              		
          		</c:choose>
-          <td class="ninkName"><a class="blockBoxOpen">${board.userNick}</a></td>
+		<td class="ninkName">
+		  <a class="blockBoxOpen">${board.userNick}</a>
+		  
+		<button class="js-static-modal-toggle btn-primary btn-report" type="button" id="blocksModal"  data-toggle="modal"  data-boardNo="${board.boardNo}" data-target="#static-modal"  onclick="handleReportButtonClick(event)"  >신고하기</button>
+		    
+       
+		
+		 <input type="hidden" name="bannedUserNo" value="${board.userNo}">
+		    <input type="hidden" name="bannedUserNick" value="${board.userNick}">
+		    <input type="hidden" name="userNo" value="${loginUser.userNo}">
+		
+		</td>      	
+
+
+    
           <td class="views">${board.readCount}</td>
           <td class="heart">${board.boardLike}</td>
+          
         </tr>
+        
+    </c:if>
          </c:forEach>
             </c:otherwise>
                 </c:choose>
@@ -161,6 +186,47 @@
     </table>
  
  
+ 
+<!-- <button class="js-static-modal-toggle btn-primary" type="button" id="blockModal" data-toggle="modal" data-target="#static-modal">신고하기</button> -->
+        
+         
+   <div id="static-modal" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+   
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        </div>
+        <div class="modal-body">
+      
+            <div class="reportTitle">신고하기</div>
+            <div class="reportReason">사유선택</div>
+            <div class="report_item_reason">
+              <div>
+                <input type="checkbox" id="pornography" name="pornography" value="pornography">
+                <label for="pornography">음란물입니다.</label>
+              </div> 
+              <div>
+                <input type="checkbox" id="advertisement" name="advertisement" value="advertisement">
+                <label for="advertisement">스팸홍보/도배글입니다.</label>
+              </div> 
+              <div>
+                <input type="checkbox" id="abuse" name="abuse" value="abuse">
+                <label for="abuse">욕설/생명경시/혐오/차별적 표현글입니다.</label>  
+              </div>
+            </div>
+       
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+          <button type="button" class="btn btn-primary" id="reportSubmit"  data-dismiss="modal">신고</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+  
+  
   
   <form action="board" method="get">
     <div class="pagination-search">
@@ -204,54 +270,25 @@
 
 
  
-  <button class="js-static-modal-toggle btn-primary" type="button" id="blockModal">신고하기</button>
-  <div id="static-modal" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-         
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-        </div>
-        	<div class="modal-body">
-          <form >
-            <div class="reportTitle">신고하기</div>
-            <div class="reportReason">사유선택</div>
-          <div class="report_item_reason">
-            <div>
-             <input type="checkbox" id="pornography" name="pornography" value="pornography">
-             <label for="pornography">음란물입니다.</label>
-           </div> 
-           <div>
-             <input type="checkbox" id="advertisement" name="advertisement" value="advertisement">
-             <label for="advertisement">스팸홍보/도배글입니다.</label>
-           </div> 
-           <div>
-             <input type="checkbox" id="abuse" name="abuse" value="abuse">
-             <label for="abuse"> 욕설/생명경시/혐오/차별적 표현글입니다.</label>  
-            </div>
-          </div>
-         
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal">신고</button>
-      
-        </div>
-      </form>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div>
-
-
+ 
 
 
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/js/boardMain.js"></script>
-<script>
-  document.querySelector('.js-static-modal-toggle').addEventListener('click', function() {
-    new Modal({el: document.getElementById('static-modal')}).show();
-  });
+
+ <script>
+
+ document.querySelector('.js-static-modal-toggle').addEventListener('click', function() {
+	    new Modal({el: document.getElementById('static-modal')}).show();
+	  });
+	
+
+ 
+
+
+
+
 </script>
 <script>
   Modal.templates = {
@@ -263,6 +300,7 @@
     });
   document.querySelector('.js-static-modal-toggle')
     .addEventListener('click', function() {
+
       new Modal({el: document.getElementById('static-modal')}).show();
     });
 
@@ -502,6 +540,107 @@ $('.tagQus').click(function(){
         });
     }
 </script>
+<script type="text/javascript">
+
+var boardNo, bannedUserNo, bannedUserNick, userNo;
+$('.blockBoxOpen').click(function(e)
+{ 
+    var sWidth = window.innerWidth;
+    var sHeight = window.innerHeight;
+
+    var oWidth = $('#blocksModal').width();
+    var oHeight = $('#blocksModal').height();
+    
+	boardNo = $(this).data('boardno');
+  bannedUserNo = $(this).closest('td').find('input[name="bannedUserNo"]').val();
+  bannedUserNick = $(this).closest('td').find('input[name="bannedUserNick"]').val();
+  userNo = $(this).closest('td').find('input[name="userNo"]').val();
+    console.log("bannedUserNo"+ bannedUserNo); 
+  console.log("bannedUserNick"+ bannedUserNick); 
+    console.log("userNo"+ userNo); 
+  
+    // 레이어가 나타날 위치를 셋팅한다.
+    var divLeft = e.pageX+10; // e.pageX는 문서를 기준으로 한 마우스 위치입니다.
+    var divTop = e.pageY+20; // e.pageY는 문서를 기준으로 한 마우스 위치입니다.
+
+    // 레이어가 화면 크기를 벗어나면 위치를 바꾸어 배치한다.
+    if( divLeft + oWidth > sWidth ) divLeft -= (oWidth + 20); // 마우스와 레이어 사이의 간격을 고려합니다.
+    if( divTop + oHeight > sHeight ) divTop -= (oHeight + 20); // 마우스와 레이어 사이의 간격을 고려합니다.
+
+    // 레이어 위치를 바꾸었더니 상단기준점(0,0) 밖으로 벗어난다면 상단기준점(0,0)에 배치하자.
+    if( divLeft < 0 ) divLeft = 0;
+    if( divTop < 0 ) divTop = 0;
+
+    $('#blocksModal').css({
+        "top": divTop,
+        "left": divLeft,
+        "position": "absolute",
+        "display" :"block"
+    }).show();
+
+
+});
+
+$('.btn-primary[data-dismiss="modal"]').click(function(e) {
+  <c:if test="${empty loginUser}">
+    // 로그인하지 않은 경우
+    e.preventDefault(); // 폼의 기본 동작(페이지 이동 등)을 막습니다.
+    alert("로그인해주세요");
+    window.location.href = "login";
+    </c:if>
+    <c:if test="${!empty loginUser}">
+    // 로그인한 경우
+    console.log('boardNo:', boardNo);
+    console.log('bannedUserNo:', bannedUserNo);
+    console.log('bannedUserNick:', bannedUserNick);
+    console.log('userNo:', userNo);
+  
+    // AJAX를 사용하여 데이터를 컨트롤러로 전송합니다.
+    $.ajax({
+      type: 'POST', // 전송 방식 설정 (POST 또는 GET)
+      url: 'report', // 데이터를 전송할 컨트롤러 URL
+      data: {
+        bannedUserNo: bannedUserNo,
+        bannedUserNick: bannedUserNick,
+      },
+      success: function(response) {
+        // 성공적으로 데이터를 전송하고 응답을 받았을 때 실행할 동작을 작성합니다.
+        console.log('Data successfully sent to the controller.');
+        // 추가적인 동작 수행 가능
+      },
+      error: function(xhr, status, error) {
+        // 데이터 전송 중 에러가 발생했을 때 실행할 동작을 작성합니다.
+        console.log('Error occurred while sending data to the controller.');
+        console.log('Status:', status);
+        console.log('Error:', error);
+        // 에러 처리 및 추가 동작 수행 가능
+      }
+    });
+ 
+  </c:if>
+});
+
+/* 
+
+    $(document).ready(function() {
+        $('#reportSubmit').on('click', function(e) {
+            <c:if test="${empty loginUser}">
+                // 로그인하지 않은 경우
+                e.preventDefault(); // submit event를 막음
+                alert("로그인해주세요");
+                window.location.href = "login";
+            </c:if>
+        });
+    }); */
+</script> 
+
+
+
+
+
+
+
+
 
 
 

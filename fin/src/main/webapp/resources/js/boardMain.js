@@ -1,13 +1,21 @@
 
-
+var boardNo, bannedUserNo, bannedUserNick, userNo;
 $('.blockBoxOpen').click(function(e)
 { 
     var sWidth = window.innerWidth;
     var sHeight = window.innerHeight;
 
-    var oWidth = $('#blockModal').width();
-    var oHeight = $('#blockModal').height();
-
+    var oWidth = $('#blocksModal').width();
+    var oHeight = $('#blocksModal').height();
+    
+	boardNo = $(this).data('boardno');
+  bannedUserNo = $(this).closest('td').find('input[name="bannedUserNo"]').val();
+  bannedUserNick = $(this).closest('td').find('input[name="bannedUserNick"]').val();
+  userNo = $(this).closest('td').find('input[name="userNo"]').val();
+    console.log("bannedUserNo"+ bannedUserNo); 
+  console.log("bannedUserNick"+ bannedUserNick); 
+    console.log("userNo"+ userNo); 
+  
     // 레이어가 나타날 위치를 셋팅한다.
     var divLeft = e.pageX+10; // e.pageX는 문서를 기준으로 한 마우스 위치입니다.
     var divTop = e.pageY+20; // e.pageY는 문서를 기준으로 한 마우스 위치입니다.
@@ -20,7 +28,7 @@ $('.blockBoxOpen').click(function(e)
     if( divLeft < 0 ) divLeft = 0;
     if( divTop < 0 ) divTop = 0;
 
-    $('#blockModal').css({
+    $('#blocksModal').css({
         "top": divTop,
         "left": divLeft,
         "position": "absolute",
@@ -31,9 +39,11 @@ $('.blockBoxOpen').click(function(e)
 });
 
 
+
+
 // 외부영역 클릭 시 팝업 닫기
 $(document).mouseup(function (e){
-  var movewrap = $("#blockModal");
+  var movewrap = $("#blocksModal");
   if (movewrap.has(e.target).length === 0) {
     movewrap.hide();
   }

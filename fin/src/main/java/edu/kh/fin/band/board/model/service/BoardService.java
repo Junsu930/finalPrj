@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import edu.kh.fin.band.board.model.vo.Board;
+import edu.kh.fin.band.board.model.vo.BoardBanned;
 import edu.kh.fin.band.board.model.vo.BoardDetail;
 import edu.kh.fin.band.board.model.vo.Criteria;
 
@@ -32,6 +35,10 @@ public interface BoardService {
 
 	List<BoardDetail> boardList(Criteria cri);
 
+	void reportUser(BoardBanned boardBanned);
+
+	List<String> bannedUserIds(BoardBanned boardBanned);
+
 	/**
 	 * 좋아요 등록 + 좋아요 알람
 	 * @author lee
@@ -55,7 +62,6 @@ public interface BoardService {
 
 
 
-	
 
 
 

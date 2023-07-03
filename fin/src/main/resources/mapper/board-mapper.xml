@@ -41,6 +41,14 @@
 		<result property="imageOriginal" column="IMG_ORIGINAL" />
 		<result property="boardNo" column="BOARD_NO" />
 	</resultMap> 
+	
+	
+		<resultMap type="boardBanned" id="boardBanned_rm">
+		<id property="bannedNo" column="BANNED_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="bannedUserNo" column="BANNED_USER_NO" />
+		<result property="bannedUserNick" column="BANNED_USER_NICK" />
+	</resultMap> 
 
 
 <select id="boardList"  parameterType="hashMap" resultMap="detail_rm">
@@ -234,6 +242,19 @@ AND BOARD_TAG = 2</if>
 	
 	
 	
+
+	   <insert id="reportUser" parameterType="boardBanned">
+        INSERT INTO BOARD_BANNED 
+        VALUES (
+        SEQ_BANNED_NO.NEXTVAL,#{userNo}, #{bannedUserNo}, #{bannedUserNick})
+    </insert>
+	
+	<select id="bannedUserIds" parameterType="boardBanned" resultType="String">
+    SELECT BANNED_USER_NO
+    FROM BOARD_BANNED
+    WHERE USER_NO = #{userNo}
+</select>
+
 	<!-- 좋아요 등록 -->
 	<update id="boardDetailLike" parameterType="hashmap">
 		UPDATE BOARD SET BOARD_LIKE = BOARD_LIKE +1 WHERE BOARD_NO = ${boardNo}
@@ -257,6 +278,5 @@ AND BOARD_TAG = 2</if>
 	<select id="countLike" parameterType="hashmap" resultType="_int">
 		SELECT COUNT(*) FROM BOARD_LIKE WHERE BOARD_NO = ${boardNo}
 	</select>
-	
 	
 </mapper>
