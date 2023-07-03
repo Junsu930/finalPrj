@@ -126,6 +126,29 @@ public class MsgAlarmServiceImpl implements MsgAlarmService{
 		return dao.getUserNicksFromReply(userNo);
 	}
 
+	/**
+	 * 현재 로그인된 유저넘버 바탕으로 좋아요 한 사람, 날짜 출력 서비스
+	 * @author lee
+	 * @param userNo
+	 * @return
+	 */
+	@Override
+	public List<MsgAlarm> getUserNicksFromLike(int userNo) {
+		return dao.getUserNicksFromLike(userNo);
+	}
+
+	
+	/**
+	 * 초대장 중복 체크 서비스
+	 * @author lee
+	 * @param map
+	 * @return
+	 */
+	@Override
+	public int dupCheckInvi(HashMap<String, Object> map) {
+		return dao.dupCheckInvi(map);
+	}
+
 	
 
 	

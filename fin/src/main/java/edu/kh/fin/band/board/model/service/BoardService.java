@@ -1,6 +1,7 @@
 package edu.kh.fin.band.board.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import edu.kh.fin.band.board.model.vo.Board;
@@ -30,6 +31,24 @@ public interface BoardService {
 	List<BoardDetail> boardAll(Criteria cri);
 
 	List<BoardDetail> boardList(Criteria cri);
+
+	/**
+	 * 좋아요 등록 + 좋아요 알람
+	 * @author lee
+	 * @param boardNo
+	 * @param loginUser
+	 * @return
+	 */
+	int boardDetailLike(HashMap<String, Object> map);
+
+	/**
+	 * 좋아요 취소 + 좋아요 알람 취소
+	 * @author lee
+	 * @param boardNo
+	 * @param loginUser
+	 * @return
+	 */
+	int removeLike(HashMap<String, Object> map);
 
 
 

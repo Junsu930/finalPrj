@@ -55,7 +55,7 @@ public class LessonService {
 					
 					imageAllResult = dao.insertImageFile(img);
 					
-					System.out.println("이미지 저장"+ folderPath +  reName);
+					
 					
 					try {
 						images.get(i).transferTo(new File(folderPath + reName));

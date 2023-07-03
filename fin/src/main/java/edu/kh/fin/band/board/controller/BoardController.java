@@ -1,34 +1,29 @@
 package edu.kh.fin.band.board.controller;
    
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.ui.Model;
-import edu.kh.fin.band.board.model.vo.Board;
-import edu.kh.fin.band.board.model.vo.BoardDetail;
-import edu.kh.fin.band.board.model.vo.Criteria;
-import edu.kh.fin.band.board.model.vo.PageVO;
-import edu.kh.fin.band.login.model.vo.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
-import edu.kh.fin.band.board.model.service.ReplyService;
-import edu.kh.fin.band.board.model.vo.Reply;
 import edu.kh.fin.band.board.model.service.BoardService;
+import edu.kh.fin.band.board.model.service.ReplyService;
+import edu.kh.fin.band.board.model.vo.Board;
+import edu.kh.fin.band.board.model.vo.BoardDetail;
+import edu.kh.fin.band.board.model.vo.Criteria;
+import edu.kh.fin.band.board.model.vo.PageVO;
+import edu.kh.fin.band.board.model.vo.Reply;
+import edu.kh.fin.band.login.model.vo.User;
 
 @Controller
 //@RequestMapping("/board")
@@ -207,6 +202,77 @@ public class BoardController {
 			
 		}
 	
+	}
+	
+	
+	/**
+	 * 좋아요 등록 + 좋아요 알람
+	 * @author lee
+	 * @param boardNo
+	 * @param loginUser
+	 * @return
+	 */
+	@PostMapping("/addLike")
+	@ResponseBody
+	public String boardDetailLike(
+			@RequestParam("boardNo") int boardNo,
+			@RequestParam("userNo") int userNo,
+			@RequestParam("loginUserNo") int loginUserNo) {
+		
+		
+		HashMap<String,Object> map = new HashMap<>();
+		
+		System.out.println("addLike!!!");
+		map.put("boardNo", boardNo);
+		map.put("userNo", userNo);
+		map.put("loginUserNo", loginUserNo);
+		
+		System.out.println("lognUserNo" + map.get("loginUserNo"));
+		
+		int result = service.boardDetailLike(map);
+		
+		System.out.println(result + "result!!!!!!");
+		if(result > 0) {
+			  return new Gson().toJson(result);
+		} 
+		else {
+			  return new Gson().toJson("좋아요 실패 ㅠㅠ");
+		}
+	}
+	
+	
+	/**
+	 * 좋아요 취소 + 좋아요 알람 취소
+	 * @author lee
+	 * @param boardNo
+	 * @param loginUser
+	 * @return
+	 */
+	@PostMapping("/removeLike")
+	@ResponseBody
+	public String removeLike(
+			@RequestParam("boardNo") int boardNo,
+			@RequestParam("userNo") int userNo,
+			@RequestParam("loginUserNo") int loginUserNo) {
+		
+		HashMap<String,Object> map = new HashMap<>();
+		System.out.println("removeLike!!!");
+		
+		map.put("boardNo", boardNo);
+		map.put("userNo", userNo);
+		map.put("loginUserNo", loginUserNo);
+		
+		System.out.println("lognUserNo removeLike" + map.get("loginUserNo"));
+		
+		int result = service.removeLike(map);
+		
+		
+		if(result > 0) {
+			  return new Gson().toJson(result);
+		} 
+		else {
+			  return new Gson().toJson("좋아요 없애기 실패 ㅠㅠ");
+		}
 	}
 	
 

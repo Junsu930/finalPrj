@@ -23,6 +23,7 @@ public class MsgAlarm {
 	private String sendMon;
 	private int replyNo;
 	private int boardNo;
+	private int likeNo;
 	
 	private String roomName;
 	private String alarmMon;

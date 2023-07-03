@@ -240,6 +240,7 @@ function ajaxStart(){// 로그인 시 회원 정보를 바탕으로 알람 가�
       changeAlarmStatus(loginUserNo) // 알람(댓글, 좋아요, 초대장) 갯수 삭제하기
 
       getUserNicksFromReply(loginUserNo) // 댓글 목록 출력
+      getUserNicksFromLike(loginUserNo) // 좋아요 목록 출력
     }, //  success 끝
     error : function(request, status, error){
       console.log("getUserNo AJAX 에러 발생");
@@ -491,7 +492,7 @@ function changeAlarmStatus(loginUserNo){
 }
 
 
-
+// 댓글단 사람 목록
 function getUserNicksFromReply(loginUserNo){
   $.ajax({
     url:"getUserNicksFromReply",
@@ -521,8 +522,36 @@ function getUserNicksFromReply(loginUserNo){
   });
 
 }
+// 좋아요 목록 출력
+function getUserNicksFromLike(loginUserNo){ 
+  $.ajax({
+    url:"getUserNicksFromLike",
+    method: "GET",
+    data:{"loginUserNo": loginUserNo},
+    dataType:"JSON",
+    success: function(getUserNicksFromLike){
+      console.log("getUserNicksFromLike");
+      // 아아현경님께서 회원님의 게시글에 댓글을 등록했습니다!
+      let msg = '님께서 회원님의 글을 좋아합니다!';
+      console.log(getUserNicksFromLike);
+      if(getUserNicksFromLike === "none"){
+        console.log("좋아요 목록 없음");
+        // $('.wrapperUl').append('<li class="wrapperLi"><a href="alarmPage" id="noMsgAlarmBox"><p>NO NEW POST</p></a></li>') // 쪽지가 없거나, 읽었을 때, 코드 수행
+      }else{
+        for(let i = 0; i < getUserNicksFromLike.length; i++){
+          $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${getUserNicksFromLike[i].sendMon}<br><span>${getUserNicksFromLike[i].sendDay}</span></h3></div>
+          <a href="boardDetail?boardNo=${getUserNicksFromLike[i].boardNo}"><p>${getUserNicksFromLike[i].userNick + msg}<br>지금 확인하세요!</p></a></li>
+          <input type="hidden" value=${getUserNicksFromLike[i].boardNo} name="boardNo">`) // 새로운 좋아요 있을 때, 코드 수행
+        }
+      } // if끝
+    },
+    error : function(request, status, error){
+      console.log("getUserNicksFromLike AJAX 에러 발생");
+      console.log("상태코드 : " + request.status); 
+    }
 
-
+  });
+}
 
 
 

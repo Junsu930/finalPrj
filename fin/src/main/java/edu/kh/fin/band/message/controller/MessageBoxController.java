@@ -92,9 +92,10 @@ public class MessageBoxController {
 		
 		if(result > 0) {
 			  return new Gson().toJson("쪽지 전송 성공!");
-		  } else {
+		} 
+		else {
 			  return new Gson().toJson("쪽지 전송 실패 ㅠㅠ");
-		  }
+		}
 		
 	}
 	
