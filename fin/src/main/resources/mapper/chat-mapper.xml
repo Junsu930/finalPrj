@@ -41,24 +41,22 @@
 	<select id="tempUser" resultMap="tempUser_rm" parameterType="_int">
 		SELECT * FROM "USER" WHERE USER_NO = ${nowUser}
 	</select>
-	<select id="roomList" resultMap="chat_rm2" parameterType="_int">
+	<select id="roomList" resultMap="chat_rm2" parameterType="map">
 		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME, IMAGE, LAST_CHAT
 		FROM CHAT_ROOM c 
 		JOIN "USER" u ON (c.GUEST_NO = u.USER_NO) 
 		WHERE c.USER_NO = #{nowUser} 
-		AND STATUS = 'Y'
 	    UNION
 		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME, IMAGE, LAST_CHAT
 		FROM CHAT_ROOM c
 		JOIN "USER" u ON (c.USER_NO = u.USER_NO)
 		WHERE c.GUEST_NO = #{nowUser}
-		AND STATUS = 'Y'
 		MINUS 
 		SELECT CHAT_ROOM_NO, TITLE, cr.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME, IMAGE, LAST_CHAT
 		FROM CHAT_ROOM cr 
 		JOIN "USER" u ON (cr.USER_NO = u.USER_NO)
 		WHERE STATUS = #{nowUser}
-		ORDER BY LAST_CHAT DESC
+		ORDER BY LAST_CHAT DESC NULLS LAST
 	</select>
 	
 	<insert id="saveMsg" parameterType="map">
@@ -69,7 +67,7 @@
 	<select id="loadMessage" parameterType="map" resultMap="chatMessage_rm">
 		SELECT CHAT_ROOM_NO, MESSAGE, USER_NO, CHAT_STATUS 
 		FROM CHAT_MESSAGE 
-		WHERE CHAT_ROOM_NO = #{chatRoomNo} AND CHAT_STATUS != #{loginUserNo} ORDER BY CHAT_DATE
+		WHERE CHAT_ROOM_NO = #{chatRoomNo} AND (CHAT_STATUS IS NULL OR CHAT_STATUS != #{loginUserNo})  ORDER BY CHAT_DATE
 	</select>
 	
 	<update id="deleteChatRoom" parameterType="string">
@@ -81,10 +79,17 @@
 	</select>
 	
 
+	<select id="outCheck" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM CHAT_ROOM WHERE (CHAT_ROOM_NO = #{roomNo} OR CHAT_ROOM_NO = #{roomNoSub}) AND STATUS != 'Y'
+	</select>
 	
 	<insert id="chatStart" parameterType="hashmap">
 		INSERT INTO CHAT_ROOM VALUES(#{roomNo}, #{roomTitle}, 'Y', ${userNo}, ${withUser}, NULL)
 	</insert>
+	
+	<update id="returnY">
+		UPDATE CHAT_ROOM SET STATUS = 'Y' WHERE (CHAT_ROOM_NO = #{roomNo} OR CHAT_ROOM_NO = #{roomNoSub})
+	</update>
 	
 	<select id="withUserName" parameterType="_int" resultType="string">
 		SELECT USER_NICK FROM "USER" WHERE USER_NO = ${withUser}
@@ -115,7 +120,7 @@
 	</delete>
 	
 	<update id="massageExitU" parameterType="map">
-		UPDATE CHAT_MESSAGE SET CHAT_STATUS = #{loginUserNo}
+		UPDATE CHAT_MESSAGE SET CHAT_STATUS = #{loginUserNo} WHERE CHAT_ROOM_NO = #{chatRoomNo}
 	</update>
 	
 	<delete id="massageExitD" parameterType="map">
@@ -130,5 +135,6 @@
 	<update id="settingY" parameterType="map">
 		UPDATE CHAT_ROOM SET STATUS = 'Y' WHERE CHAT_ROOM_NO = #{chatRoomNo}
 	</update>
+	
 	
 </mapper>

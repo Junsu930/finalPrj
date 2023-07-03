@@ -121,6 +121,14 @@ public class MyBandService {
 		return dao.reRplyLogic(paramMap);
 		
 	}
+
+	public int boardCheck(int bandNo) {
+		return dao.boardCheck(bandNo);
+	}
+
+	public List<MyBand> zeroBand(int bandNo) {
+		return dao.zeroBand(bandNo);
+	}
 	
 	
 	

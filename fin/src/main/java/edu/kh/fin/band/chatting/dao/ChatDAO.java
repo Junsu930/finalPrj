@@ -22,12 +22,12 @@ public class ChatDAO {
 		
 		Map<String, Object> map = new HashMap<>();
 		
+		String nowSUser = Integer.toString(nowUser);
 		
-		
-		map.put("nowUser", nowUser);
+		map.put("nowUser", nowSUser);
 		
 
-		return sqlSession.selectList("chat-mapper.roomList" ,nowUser);
+		return sqlSession.selectList("chat-mapper.roomList" ,map);
 		
 		
 	}
@@ -63,8 +63,27 @@ public class ChatDAO {
 
 	public int dupCheck(Map<String, Object> roomNoMap) {
 		
+		int result = sqlSession.selectOne("chat-mapper.dupCheck", roomNoMap);
 		
-		return sqlSession.selectOne("chat-mapper.dupCheck", roomNoMap);
+		
+		// Y인 채팅방 있으면 중복
+		if(result > 0) {
+			return 1;
+		}else {
+			int outCheck = sqlSession.selectOne("chat-mapper.outCheck", roomNoMap);
+			
+			// 중복은 아니지만 내가 나가거나 상대가 나간 방이 있으면
+			// 만약 있으면
+			if(outCheck > 0) {
+				// Y로 수정
+				int updateChatRoom = sqlSession.update("chat-mapper.returnY", roomNoMap);
+				
+				result = 1;
+			}
+		}
+		
+		
+		return result;
 	}
 
 	

@@ -46,7 +46,7 @@
 						<i class="fa-solid fa-crown"></i>
 						<span class="memList">${leaderNick}</span>
 					</div>
-					<c:forEach var="eachBandMember" items="${memberList }" >
+					<c:forEach var="eachBandMember" items="${memberList}" >
 						<div>
 							<i class="fa-solid fa-user"></i>
 							<span class="memList">${eachBandMember}</span>
@@ -67,80 +67,89 @@
 				<div class="realBoardDiv">
 					<!-- 글 영역 -->
 					<div>
-						<c:forEach var="eachBoard" items="${bandList}">
-							<form method="post" action="bandBoardDetail" class="eachBoardFormForBand">
-								<!-- 각각의 글 -->
-								<c:if test="${eachBoard.boardTag eq '공지'}">
-									<div class="eachBoardDiv notification" onclick="$(this).parent().submit();">
-										<!-- 보드넘버, 밴드 넘버 숨기기 -->
-										<input type="hidden" name="thisBoardNo" value="${eachBoard.boardNo}">
-										<input type="hidden" name="thisBandNo" value="${bandNo}">
-										<!-- 제목 영역 -->
-										<div>
-											<span class="notiSpan">공지</span>${eachBoard.boardTitle }<span class="replyCountForBandBoard">${eachBoard.replyCount}</span>
-										</div>
-										<!-- 조회수, 좋아요 등등 -->
-										<div>
-											<!-- 글쓴이 -->
+						<c:if test="${!empty zeroBand }">
+							<p class="noPost">게시글이 없습니다.</p>
+						</c:if>
+						<c:if test="${!empty noSearching }">
+							<p class="noPost">검색 결과가 없습니다.</p>
+						</c:if>						
+						
+						<c:if test="${empty zeroBand }">
+							<c:forEach var="eachBoard" items="${bandList}">
+								<form method="post" action="bandBoardDetail" class="eachBoardFormForBand">
+									<!-- 각각의 글 -->
+									<c:if test="${eachBoard.boardTag eq '공지'}">
+										<div class="eachBoardDiv notification" onclick="$(this).parent().submit();">
+											<!-- 보드넘버, 밴드 넘버 숨기기 -->
+											<input type="hidden" name="thisBoardNo" value="${eachBoard.boardNo}">
+											<input type="hidden" name="thisBandNo" value="${bandNo}">
+											<!-- 제목 영역 -->
 											<div>
-												${eachBoard.userNick }
+												<span class="notiSpan">공지</span>${eachBoard.boardTitle }<span class="replyCountForBandBoard">${eachBoard.replyCount}</span>
 											</div>
-											<!-- 시간 -->
+											<!-- 조회수, 좋아요 등등 -->
 											<div>
-												<i class="fa-regular fa-clock"></i>
-												<span>${eachBoard.boardDate}</span>
-											</div>
-											<!-- 조회수 -->
-											<div>
-												<i class="fa-regular fa-eye"></i>
-												<span>${eachBoard.readCount}</span>
-											</div>
-											<!-- 좋아요 -->
-											<div>
-												<i class="fa-regular fa-heart"></i>
-												<span>${eachBoard.boardLike}</span>
-											</div>
-										</div>
-									</div>
-								</c:if>
-								<c:if test="${eachBoard.boardTag ne '공지'}">
-									<div class="eachBoardDiv" onclick="$(this).parent().submit();">
-										<!-- 보드넘버, 밴드 넘버 숨기기 -->
-										<input type="hidden" name="thisBoardNo" value="${eachBoard.boardNo}">
-										<input type="hidden" name="thisBandNo" value="${bandNo}">
-										<!-- 제목 영역 -->
-										<div>
-											${eachBoard.boardTitle }
-											<c:if test="${eachBoard.replyCount ne '0'}">
-												<span class="replyCountForBandBoard">${eachBoard.replyCount}</span>
-											</c:if>
-										</div>
-										<!-- 조회수, 좋아요 등등 -->
-										<div>
-											<!-- 글쓴이 -->
-											<div>
-												${eachBoard.userNick }
-											</div>
-											<!-- 시간 -->
-											<div>
-												<i class="fa-regular fa-clock"></i>
-												<span>${eachBoard.boardDate}</span>
-											</div>
-											<!-- 조회수 -->
-											<div>
-												<i class="fa-regular fa-eye"></i>
-												<span>${eachBoard.readCount}</span>
-											</div>
-											<!-- 좋아요 -->
-											<div>
-												<i class="fa-regular fa-heart"></i>
-												<span>${eachBoard.boardLike}</span>
+												<!-- 글쓴이 -->
+												<div>
+													${eachBoard.userNick }
+												</div>
+												<!-- 시간 -->
+												<div>
+													<i class="fa-regular fa-clock"></i>
+													<span>${eachBoard.boardDate}</span>
+												</div>
+												<!-- 조회수 -->
+												<div>
+													<i class="fa-regular fa-eye"></i>
+													<span>${eachBoard.readCount}</span>
+												</div>
+												<!-- 좋아요 -->
+												<div>
+													<i class="fa-regular fa-heart"></i>
+													<span>${eachBoard.boardLike}</span>
+												</div>
 											</div>
 										</div>
-									</div>
-								</c:if>
-							</form>
-						</c:forEach>
+									</c:if>
+									<c:if test="${eachBoard.boardTag ne '공지'}">
+										<div class="eachBoardDiv" onclick="$(this).parent().submit();">
+											<!-- 보드넘버, 밴드 넘버 숨기기 -->
+											<input type="hidden" name="thisBoardNo" value="${eachBoard.boardNo}">
+											<input type="hidden" name="thisBandNo" value="${bandNo}">
+											<!-- 제목 영역 -->
+											<div>
+												${eachBoard.boardTitle }
+												<c:if test="${eachBoard.replyCount ne '0'}">
+													<span class="replyCountForBandBoard">${eachBoard.replyCount}</span>
+												</c:if>
+											</div>
+											<!-- 조회수, 좋아요 등등 -->
+											<div>
+												<!-- 글쓴이 -->
+												<div>
+													${eachBoard.userNick }
+												</div>
+												<!-- 시간 -->
+												<div>
+													<i class="fa-regular fa-clock"></i>
+													<span>${eachBoard.boardDate}</span>
+												</div>
+												<!-- 조회수 -->
+												<div>
+													<i class="fa-regular fa-eye"></i>
+													<span>${eachBoard.readCount}</span>
+												</div>
+												<!-- 좋아요 -->
+												<div>
+													<i class="fa-regular fa-heart"></i>
+													<span>${eachBoard.boardLike}</span>
+												</div>
+											</div>
+										</div>
+									</c:if>
+								</form>
+							</c:forEach>
+						</c:if>
 					</div>
 					
 					<c:if test="${empty searchingFl}">
