@@ -21,7 +21,29 @@
     <title>BOARDDETAIL</title>
    </head>
    <body>
+ <script>
+        // 댓글 관련 JS 코드에 필요한 값을 전역 변수로 선언
 
+        // jsp 파일 : html, css, js, el, jstl 사용 가능
+        // js  파일 : js
+
+        // 코드 해석 순서  :   EL == JSTL > HTML > JS
+
+        // ** JS 코드에서 EL/JSTL을 작성하게 된다면 반드시 ""를 양쪽에 추가 **
+
+        // 최상위 주소
+        const contextPath = "${contextPath}";
+        
+        // 게시글 번호
+        const boardNo = "${BoardDetail.boardNo}"; // "500"
+
+        // 로그인한 회원 번호
+        const loginMemberNo = "${loginUser.userNo}";
+        // -> 로그인 O  : "10";
+        // -> 로그인 X  : "";  (빈문자열)
+
+        
+    </script>
 <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
 
 
@@ -80,8 +102,8 @@
       </div>
       <div class="right">
          <c:if test="${loginUser.userNo == BoardDetail.userNo}">
-        <button class="edit" onclick="updateBtn()">수정</button>
-        <button class="delete" onclick="deleteBtn()">삭제</button>
+        <button id="btx"class="edit" onclick="updateBtn()">수정</button>
+        <button id="btx"class="delete" onclick="deleteBtn()">삭제</button>
         </c:if>
       </div>
     </div>
@@ -128,7 +150,7 @@
     	 <span id='like_Check' style='margin-left: 3px;'>${BoardDetail.boardLike}</span>
     	 <span style='margin-left: 3px;'>like</span>
     </div>
-        <button class="report">신고</button>
+        <button  class="report">신고</button>
     </div>
     <div class="divider"></div>
 
@@ -138,37 +160,15 @@
 </div>
 <jsp:include page="/WEB-INF/views/board/boardMain.jsp"/> 
 
-    <script>
-        // 댓글 관련 JS 코드에 필요한 값을 전역 변수로 선언
-
-        // jsp 파일 : html, css, js, el, jstl 사용 가능
-        // js  파일 : js
-
-        // 코드 해석 순서  :   EL == JSTL > HTML > JS
-
-        // ** JS 코드에서 EL/JSTL을 작성하게 된다면 반드시 ""를 양쪽에 추가 **
-
-        // 최상위 주소
-        const contextPath = "${contextPath}";
-        
-        // 게시글 번호
-        const boardNo = "${BoardDetail.boardNo}"; // "500"
-
-        // 로그인한 회원 번호
-        const loginMemberNo = "${loginUser.userNo}";
-        // -> 로그인 O  : "10";
-        // -> 로그인 X  : "";  (빈문자열)
-
-        
-    </script>
+   
 
 
 
 <script>
-
+const boardNo = '${BoardDetail.boardNo}';
 
 const updateBtn= () => {
-	const boardNo = '${BoardDetail.boardNo}';
+	
 	  
 	location.href = "update?boardNo=" + boardNo ;
 }
@@ -177,7 +177,7 @@ const updateBtn= () => {
 	
 
 const deleteBtn= () => {
-	const boardNo = '${BoardDetail.boardNo}';
+	
 	   if (!confirm("정말 삭제하시겠습니까?")) {
 		   location.href = "/board";
 		   
