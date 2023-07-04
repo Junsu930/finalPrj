@@ -67,9 +67,14 @@ public class MypageController {
 		
 		List<Band> bandMem = service.bandMem(loginUser.getUserNo());
 		
+		int bandNo = service.getbandNo(loginUser.getUserNo());
+		
+		List<Band> BandUserList = service.BandUserList(bandNo);
+		
 		List<BoardDetail> boardList = service.boardList(map);
 		
 		List<Reply> rList = service.ReplyList(loginUser.getUserNo());
+				
 		
 		System.out.println("차단리스트"+banList);
 		System.out.println("밴드리스트"+bandMem);
@@ -80,6 +85,7 @@ public class MypageController {
 		model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
 	    model.addAttribute("rList", rList);
+	    model.addAttribute("bandUserList", BandUserList);
 	    
 	    System.out.println("내글"+boardList);
 			
@@ -97,6 +103,7 @@ public class MypageController {
 			RedirectAttributes ra, HttpSession session
 			, HttpServletRequest re, @RequestParam("newNick") String newNick
 			, @RequestParam("newPw") String newPw ,@RequestParam("newIntro") String Intro
+			, SessionStatus status
 			) throws IOException{
 		
 		
@@ -179,6 +186,14 @@ public class MypageController {
 		}
 		
 		System.out.println("이미지 검사" + loginUser.getProfileImg());
+				
+		
+		User NewloginUser = service.NewloginUser(paramMap);
+		
+		System.out.println("변경후 세션" +NewloginUser );
+		
+		model.addAttribute("loginUser", NewloginUser);
+		
 		
 		ra.addFlashAttribute("msg", message);
 		return "redirect:/myPage";

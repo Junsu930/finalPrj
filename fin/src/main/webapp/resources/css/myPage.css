@@ -992,4 +992,14 @@ input[type="checkbox"]:checked + label:before {
 /* 그룹 만들기 css */
 
 
+body.darkmode #toBandBoard{
+    color: var(--text-dark-color);
+}
 
+.modal-footer > button {
+    display: none;
+}
+
+#arrBox {
+    cursor: pointer;
+}

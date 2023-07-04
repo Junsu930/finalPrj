@@ -110,6 +110,14 @@
                         		<img src="${contextPath}/resources/images/guitarduck.png" class="propImg">
                         	</c:when>
                         	
+                        	<c:when test ="${loginUser.userType eq 'NAVER' }">
+                        		<img src=" ${loginUser.profileImg}" id="profile-image" class="propImg">
+                        	</c:when>
+                        	
+                        	<c:when test ="${loginUser.userType eq 'KAKAO' }">
+                        		<img src=" ${loginUser.profileImg}" id="profile-image" class="propImg">
+                        	</c:when>
+                        	
                         	<c:otherwise>
                         		<img src="${contextPath}${loginUser.profileImg}" id="profile-image" class="propImg">
                         	</c:otherwise>
