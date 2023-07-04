@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
+      <script type="text/javascript" src="${contextPath}/resources/js/boardWrite.js"></script>
 	 <link rel="stylesheet"href="${contextPath}/resources/css/boardWrite.css"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>
@@ -56,7 +57,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-       <form action="mody" method="post">
+       <form action="mody" method="post" onsubmit="return check();">
   <div class="container">
     <h1 id="hh">글쓰기</h1>
     <div class="tagsBox">

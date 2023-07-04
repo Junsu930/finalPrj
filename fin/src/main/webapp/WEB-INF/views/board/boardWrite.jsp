@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
   <link rel="stylesheet" href="${contextPath}/resources/css/boardWrite.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/boardWrite.js">
+    <script type="text/javascript" src="${contextPath}/resources/js/boardWrite.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/ckeditor/ckeditor.js"></script>
  <style>
@@ -54,7 +54,7 @@
 </c:if> 
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-       <form action="boardWrite" method="post"  >
+       <form action="boardWrite" method="post"  onsubmit="return check();">
   <div class="container">
     <h1 id="hh">글쓰기</h1>
     <div class="tagsBox">
@@ -92,7 +92,7 @@
 		
 		
     <div class="submit-button">
-      <button>작성</button>
+      <button >작성</button>
  
     </div>
   </div>

@@ -1,3 +1,16 @@
+#btxs{
+	
+	background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    
+}
+
+
+
+
 /* 댓글 목록(ul) */
 #reply-list{
     padding : 0;
@@ -78,12 +91,15 @@
 
 /* 댓글 등록 버튼 */
 #addReply{
-    flex-basis: 8%;
+flex-basis: 8%;
     font-weight: bold;
-	background-color: #474554;
+    background-color: #474554;
     color: white;
     border: 0;
     cursor: pointer;
+    height: 87px;
+    font-size: 15px;
+    border-radius: 5px;
 }
 /* 
 #addReply:hover{

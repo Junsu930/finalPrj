@@ -23,12 +23,12 @@
                     <c:if test="${!empty loginUser}">
                         <div class="reply-btn-area">
 
-                            <button onclick="showInsertReply(${reply.replyNo}, this)">답글</button>
+                            <button id="btxs" onclick="showInsertReply(${reply.replyNo}, this)">답글</button>
 
                             <%-- 로그인한 회원의 댓글인 경우 --%>
                             <c:if test="${loginUser.userNo == reply.userNo}">
-                                <button onclick="showUpdateReply(${reply.replyNo}, this);">수정</button>     
-                                <button onclick="deleteReply(${reply.replyNo})">삭제</button>
+                                <button id="btxs" onclick="showUpdateReply(${reply.replyNo}, this);">수정</button>     
+                                <button id="btxs" onclick="deleteReply(${reply.replyNo})">삭제</button>
                             </c:if>
 
                         </div>
