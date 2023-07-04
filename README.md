@@ -30,6 +30,10 @@
 <h4>김준수</h4>
 <img src="https://github.com/Junsu930/finalPrj/assets/119837015/9efb265e-a415-411f-974c-810f7ab170be" width="100" height="100">
  <pre>
+  Git과 배포 관리. 중고 거래 게시판. 연습실 예약 게시판, 
+  채팅 시스템, 소셜 로그인 파트를 맡았습니다.
+  밴드 아카이브를 이용해 활발한 음악 커뮤니티 활동을 했으면 좋겠습니다.
+  좋은 개발자가 되겠습니다. 감사합니다.
 </pre>
 
 <h4>이진영</h4>
@@ -59,3 +63,15 @@
 ### 🪵 사용 라이브러리
 ![slick](https://img.shields.io/badge/Slick-C71A36.svg?style=for-the-badge&logo=SlickPic&logoColor=white)
 ![fullCalendar](https://img.shields.io/badge/fullcalendar-4285F4.svg?style=for-the-badge&logo=googlecalendar&logoColor=white)
+
+## 🦾 주요 기능
+<pre>
+ 🎺 로그인(네이버 로그인과 카카오 로그인 포함), 회원가입, 마이페이지
+ 🎺 채팅 시스템, 챗봇 FAQ
+ 🎺 자유 게시판 및 밴드 전용 게시판
+ 🎺 연습실 예약 기능
+ 🎺 중고 거래 기능
+ 🎺 매칭 로직을 통한 회원 조회
+ 🎺 알림, 쪽지 기능
+ 🎺 밴드 생성 및 관리 기능
+</pre>
