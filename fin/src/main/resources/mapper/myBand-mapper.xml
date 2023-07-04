@@ -110,7 +110,13 @@
 	</select>
 	
 	<insert id="writeBandBoard" parameterType="hashmap">
-		INSERT INTO BAND_BOARD VALUES(BAND_BOARD_SEQ.NEXTVAL, #{title}, #{text}, SYSDATE, 0, 'Y', ${userNo}, 0, 'notag', ${bandNo})
+		<if test="noticeBoardCheck == true">
+			INSERT INTO BAND_BOARD VALUES(BAND_BOARD_SEQ.NEXTVAL, #{title}, #{text}, SYSDATE, 0, 'Y', ${userNo}, 0, '공지', ${bandNo})
+		</if>
+		<if test="noticeBoardCheck != true">
+			INSERT INTO BAND_BOARD VALUES(BAND_BOARD_SEQ.NEXTVAL, #{title}, #{text}, SYSDATE, 0, 'Y', ${userNo}, 0, '일반', ${bandNo})
+		</if>
+		
 	</insert>
 	
 	<select id="bandBoardDetail" parameterType="_int" resultMap="bandBoard_rm">
@@ -145,7 +151,11 @@
 	</select>
 	
 	<update id="updateBandBoard" parameterType="hashmap">
-		UPDATE BAND_BOARD SET BOARD_TITLE = #{title}, BOARD_CONTENT = #{text} WHERE BOARD_NO = ${boardNo}
+		UPDATE BAND_BOARD SET BOARD_TITLE = #{title}, BOARD_CONTENT = #{text} 
+		<if test="noticeBoardCheck == true">
+			, BOARD_TAG='공지' 
+		</if>
+		WHERE BOARD_NO = ${boardNo}
 	</update>
 	
 	<update id="deleteBandBoardDetail" parameterType="_int">
@@ -188,4 +198,8 @@
 	<insert id="reReplyLogic" parameterType="map">
 		INSERT INTO BAND_BOARD_REPLY bbr VALUES(REPLY_BAND_BOARD_SEQ.NEXTVAL, #{replyText}, 'Y', SYSDATE, ${userNo}, ${fatherReplyNo}, ${boardNo})
 	</insert>
+	
+	<select id="leaderCheck" parameterType="_int" resultType="string">
+		SELECT LEADER_FL FROM BAND_USER WHERE USER_NO = ${userNo}
+	</select>
 </mapper>

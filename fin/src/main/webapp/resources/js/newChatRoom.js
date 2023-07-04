@@ -368,7 +368,7 @@ $("#x-markDiv").click(function(){
                     $("#withChatName").html("");
                     $("#messageTextInput").prop('readonly', true);
                     $("#x-markDiv").css("display", "none");
-
+                    $("#otherProfile").html("");
                 
                 }
         

@@ -221,9 +221,16 @@
 <jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/js/myBand.js"></script>
+
+<script>
+	let isMessage = true;
+</script>
 <c:if test="${!empty message }">
 	<script>
-		swal.fire("${message}");
+		if(isMessage){
+			swal.fire("${message}");
+			isMessage = false;
+		}
 	</script>
 </c:if>
 </body>

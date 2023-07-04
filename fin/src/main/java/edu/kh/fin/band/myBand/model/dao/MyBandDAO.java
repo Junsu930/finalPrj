@@ -58,7 +58,7 @@ public class MyBandDAO {
 		return sqlSession.selectOne("myBandMapper.bandUserFl", bandFlMap);
 	}
 
-	public int writeBandBoard(String title, String text, int bandNo, int userNo) {
+	public int writeBandBoard(String title, String text, int bandNo, int userNo, boolean noticeBoardCheck) {
 		
 		Map<String, Object>map = new HashMap<String, Object>();
 		
@@ -66,6 +66,7 @@ public class MyBandDAO {
 		map.put("text", text);
 		map.put("bandNo", bandNo);
 		map.put("userNo", userNo);
+		map.put("noticeBoardCheck", noticeBoardCheck);
 		
 		return sqlSession.insert("myBandMapper.writeBandBoard", map);
 	}
@@ -90,13 +91,14 @@ public class MyBandDAO {
 		return sqlSession.selectList("myBandMapper.loadReplyForBandBoard", boardNo);
 	}
 
-	public int updateBandBoard(String title, String text, int boardNo) {
+	public int updateBandBoard(String title, String text, int boardNo, boolean noticeBoardCheck) {
 		
 		Map<String, Object> boardMap = new HashMap<String, Object>();
 		
 		boardMap.put("boardNo", boardNo);
 		boardMap.put("title", title);
 		boardMap.put("text", text);
+		boardMap.put("noticeBoardCheck", noticeBoardCheck);
 		return sqlSession.update("myBandMapper.updateBandBoard", boardMap);
 	}
 
@@ -199,6 +201,10 @@ public class MyBandDAO {
 
 	public List<MyBand> zeroBand(int bandNo) {
 		return sqlSession.selectList("myBandMapper.zeroBand", bandNo);
+	}
+
+	public String leaderCheck(int userNo) {
+		return sqlSession.selectOne("myBandMapper.leaderCheck", userNo);
 	}
 
 }
