@@ -48,8 +48,8 @@ public class MyBandService {
 		return dao.bandUserFl(bandNo,loginUser);
 	}
 
-	public int writeBandBoard(String title, String text, int bandNo, int userNo) {
-		return dao.writeBandBoard(title, text, bandNo, userNo);
+	public int writeBandBoard(String title, String text, int bandNo, int userNo,boolean noticeBoardCheck) {
+		return dao.writeBandBoard(title, text, bandNo, userNo, noticeBoardCheck);
 	}
 
 	public MyBand bandBoardDetail(int boardNo) {
@@ -70,8 +70,8 @@ public class MyBandService {
 	 * @param boardNo
 	 * @return
 	 */
-	public int updateBandBoard(String title, String text, int boardNo) {
-		return dao.updateBandBoard(title,text,boardNo);
+	public int updateBandBoard(String title, String text, int boardNo, boolean noticeBoardCheck) {
+		return dao.updateBandBoard(title,text,boardNo, noticeBoardCheck);
 	}
 
 	public int deleteBandBoardDetail(int boardNo) {
@@ -128,6 +128,10 @@ public class MyBandService {
 
 	public List<MyBand> zeroBand(int bandNo) {
 		return dao.zeroBand(bandNo);
+	}
+
+	public String leaderCheck(int userNo) {
+		return dao.leaderCheck(userNo);
 	}
 	
 	

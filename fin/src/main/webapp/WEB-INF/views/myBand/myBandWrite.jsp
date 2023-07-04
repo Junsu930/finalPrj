@@ -21,6 +21,11 @@
 	<input type="hidden" value="${updateDetail.boardTitle}" id="hiddenTitle">
 	<input type="hidden" value="${boardNo}" id="hiddenBoardNoForUpdateLogic" name="hiddenBoardNoForUpdateLogic">
     	<div class="writeMainP">글쓰기</div>
+   		<div class="toggle">
+   			<input type="checkbox" id="noticeBoardCheck" name="noticeBoardCheck" id="toggle1" value="1">
+   			<label for="noticeBoardCheck">공지글 올리기
+   			</label>
+   		</div>
     	<!-- 제목 기입 영역 -->
     	<div class="titleAreaDivForBandBoard">
     		<div>제목</div>

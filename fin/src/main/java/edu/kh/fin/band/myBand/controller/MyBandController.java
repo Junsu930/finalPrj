@@ -267,10 +267,17 @@ public class MyBandController {
 	}
 	
 	@PostMapping("/bandBoardWrite")
-	public String bandBoardWrite(@RequestParam("hiddenBandNoForWrite") int bandNo, Model model) {
+	public String bandBoardWrite(@RequestParam("hiddenBandNoForWrite") int bandNo, HttpServletRequest req ,Model model) {
 		
+		HttpSession session = req.getSession();
+		
+		int userNo = ((User)session.getAttribute("loginUser")).getUserNo();
+		
+		String leaderCheck = service.leaderCheck(userNo);
 		
 		model.addAttribute("bandNo", bandNo);
+		
+		model.addAttribute("leaderCheck", leaderCheck);
 		
 		return "myBand/myBandWrite";
 	}
@@ -288,14 +295,15 @@ public class MyBandController {
 	 */
 	@PostMapping("/writeBandBoard")
 	public String writeBandBoard(Model model,@RequestParam("titleInputForBandBoard")String title ,@RequestParam("text") String text, @RequestParam(value="hiddenBandNo", required = false, defaultValue = "0") int bandNo, HttpServletRequest req, RedirectAttributes ra, @RequestParam("updateFlag") String updateFlag,
-			@RequestParam("hiddenBoardNoForUpdateLogic") String boardNo ) {
+			@RequestParam("hiddenBoardNoForUpdateLogic") String boardNo , @RequestParam(value="noticeBoardCheck", required = false) boolean noticeBoardCheck) {
 		
 		if(updateFlag.equals("U")) {
+			
 			
 			int intBoardNo = Integer.parseInt(boardNo);
 
 			
-			int result = service.updateBandBoard(title, text, intBoardNo);
+			int result = service.updateBandBoard(title, text, intBoardNo, noticeBoardCheck);
 			
 			
 			if(result > 0 ) {
@@ -313,13 +321,14 @@ public class MyBandController {
 			return "myBand/myBandBoardDetail";
 			
 		}else {	
+			
+			System.out.println("체크박스 확인" + noticeBoardCheck);
 			HttpSession session = req.getSession();
 			
 			int userNo = ((User)session.getAttribute("loginUser")).getUserNo();
 			
-			System.out.println(text);
 			
-			int result = service.writeBandBoard(title, text, bandNo, userNo);
+			int result = service.writeBandBoard(title, text, bandNo, userNo, noticeBoardCheck);
 			
 			
 			if(result > 0 ) {
