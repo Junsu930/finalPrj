@@ -121,22 +121,49 @@
                 <div class="myPageFirstBox">
                     <ul>
                         <li class="js-static-modal-toggleInfo"><i class="bi bi-person-bounding-box"></i></li>
-                        <li class="js-static-modal-toggleBand"><i class="bi bi-people"></i></li>
+                        <c:choose>
+                        	<c:when test="${empty bandMem}">                       		
+                        	</c:when>
+                        	<c:otherwise>
+                        		<li class="js-static-modal-toggleBand"><i class="bi bi-people"></i></li> 
+                        	</c:otherwise>
+                        </c:choose> 						                    
                         <li class="js-static-modal-toggleBoard"><i class="bi bi-clipboard"></i></li>
                         <li class="js-static-modal-toggleReply"><i class="bi bi-chat"></i></li>
                         <li class="js-static-modal-toggleBlock"><i class="bi bi-emoji-angry"></i></li>
-                        <li class="js-static-modal-toggleGroup"><i class="bi bi-music-player"></i></li>
+                        <c:choose>
+                        	<c:when test="${empty bandMem}">
+                        		 <li class="js-static-modal-toggleGroup"><i class="bi bi-music-player"></i></li>
+                        	</c:when>
+                        	<c:otherwise>
+                        	</c:otherwise>
+                        </c:choose>
+                        
+                                               
                     </ul>
                 </div>
 
                 <div class="myPageSecBox">
                     <ul>
-                        <li class="js-static-modal-toggleInfoP"><p>회원 정보 수정</p></li>
-                        <li class="js-static-modal-toggleBandP"><p>나의 밴드</p></li>
+                        <li class="js-static-modal-toggleInfoP"><p>회원 정보 수정</p></li>  
+                        <c:choose>
+                        	<c:when test="${empty bandMem}">                       		
+                        	</c:when>
+                        	<c:otherwise>
+                        		<li class="js-static-modal-toggleBandP"><p>나의 밴드</p></li>
+                        	</c:otherwise>
+                        </c:choose>                                                                                  
                         <li class="js-static-modal-toggleBoardP"><p>내가 작성한 게시글</p></li>
                         <li class="js-static-modal-toggleReplyP"><p>내가 작성한 댓글</p></li>
                         <li class="js-static-modal-toggleBlockP" name="banList" id="banList"><p>차단 회원 목록</p></li>
-                        <li class="js-static-modal-togglegroupP"><p>밴드 생성</p></li>
+                        <c:choose>
+                        	<c:when test="${empty bandMem}">
+                        		<li class="js-static-modal-togglegroupP" id="groupToggle"><p>밴드 생성</p></li> 
+                        	</c:when>
+                        	<c:otherwise>
+                        	</c:otherwise>
+                        </c:choose>                       
+                                                            
                     </ul>
                 </div>
             </div>
@@ -192,9 +219,7 @@
             
                 
               </div>
-              <div class="modal-footer">
-               
-              </div>
+  
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div>
@@ -253,9 +278,6 @@
                     </div>
                 </section>
 
-              </div>
-              <div class="modal-footer">
-                
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
@@ -462,9 +484,7 @@
                 
                 
               </div>
-              <div class="modal-footer">
-
-              </div>
+             
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div>
@@ -746,6 +766,8 @@
     </div>
     </div>
     
+    
+        
      <!-- group create -->
     <div class="container">
         <!-- <button class=" js-static-modal-toggleBoard btn btn-primary " type="button">test</button> -->
@@ -757,13 +779,8 @@
               </div>
               <div class="modal-body">
 
-                   
-                   <c:choose>
-                   		<c:when test="${!empty bandMem}">
-                   			<p id="alreadyBand">밴드가 이미 있습니다</p>
-                   		</c:when>
+                                                       		
                    		
-                   		<c:otherwise>
                    			<section class="groupSection">
                    				<form action="fin/makeBand" class="groupForm" method="GET">
                    				
@@ -788,18 +805,14 @@
                         			</div>
                   		 		</form>
                 			</section>                  
-                   		</c:otherwise>
-                   
-                   </c:choose>                                    
+                   		                                 
                     
               </div>
-              <div class="modal-footer"></div>
+             
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div>
-    </div>
-    
-    
+    </div>        
     
     
     <script>

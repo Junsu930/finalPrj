@@ -417,6 +417,10 @@ dark.mode .formBox h2{
     cursor: pointer;
 }
 
+.confirm {
+    color : green;
+}
+
 
 
 

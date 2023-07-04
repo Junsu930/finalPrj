@@ -387,6 +387,10 @@ dark.mode .formBox h2{
 	color : red;  
 }
 
+.confirm {
+    color : green;
+}
+
 
 #pwMessage{
 	letter-spacing: 0;
