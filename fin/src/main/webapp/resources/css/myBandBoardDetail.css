@@ -271,7 +271,7 @@
     bottom: 20px;
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 85%;
 }
 
 .underBarDiv{
@@ -284,6 +284,10 @@
 	justify-content: center;
 	align-items: center;
 	margin-left: 10px;
+}
+
+.darkmode .eachReplyDiv > div:nth-of-type(2) > button{
+    color:white;
 }
 
 #backButtonForBandBoard{
