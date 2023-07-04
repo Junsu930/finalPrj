@@ -128,4 +128,13 @@ public interface MyPageService {
 	int checkBand(Map<String, Object> paramMap);
 
 
+
+	int getbandNo(int userNo);
+	
+
+	List<Band> BandUserList(int bandNo);
+
+	User NewloginUser(Map<String, Object> paramMap);
+
+
 }

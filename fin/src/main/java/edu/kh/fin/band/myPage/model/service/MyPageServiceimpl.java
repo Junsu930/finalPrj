@@ -244,6 +244,39 @@ public class MyPageServiceimpl implements MyPageService{
 			return 0;
 		}
 	}
+
+	@Override
+	public List<Band> BandUserList(int bandNo) {
+		
+		return dao.BandUserList(bandNo);
+	}
+
+	@Override
+	public int getbandNo(int userNo) {
+		
+		String bandNo = dao.getBandNo(userNo);
+			
+		
+		if(bandNo != null) {
+			
+			return Integer.parseInt(bandNo);
+			
+		} else {
+			
+			
+			
+			return 0;
+		}
+		
+			
+		
+	}
+
+	@Override
+	public User NewloginUser(Map<String, Object> paramMap) {
+		
+		return dao.NewloginUser(paramMap);
+	}
 	
 
 	

@@ -216,5 +216,20 @@ public class MyPageDAO {
 	
 		return sqlSession.update("myPageMapper.bandInfo", paramMap);
 	}
+
+	public String getBandNo(int userNo) {
+		
+		return sqlSession.selectOne("myPageMapper.getBandNo", userNo);
+	}
+
+	public List<Band> BandUserList(int bandNo) {
+		
+		return sqlSession.selectList("myPageMapper.BandUserList", bandNo);
+	}
+
+	public User NewloginUser(Map<String, Object> paramMap) {
+		
+		return sqlSession.selectOne("myPageMapper.newloginUser", paramMap);
+	}
 	
 }

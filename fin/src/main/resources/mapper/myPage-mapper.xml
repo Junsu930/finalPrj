@@ -227,6 +227,27 @@
 		ORDER SIBLINGS BY REPLY_NO
 	</select>
 	
+	
+	<select id="getBandNo" resultType="string">
+    	SELECT BAND_NO
+		FROM BAND_USER
+		WHERE USER_NO = ${userNo}
+    </select>
+    
+    <select id="BandUserList" resultMap="band_rm">
+    	SELECT USER_NO, BAND_NO, USER_NICK, LEADER_NO
+		FROM BAND_USER JOIN "USER" USING(USER_NO) JOIN BAND USING(BAND_NO)
+		WHERE BAND_NO = ${bandNo} AND LEADER_FL = 'F'
+    </select>
+    
+    <select id="newloginUser" parameterType="user" resultMap="user_rm">
+  		SELECT USER_NO, USER_EMAIL, USER_PWD, USER_NICK ,USER_TYPE, 
+		MATCHING_FL, INTRO_MENT, TO_CHAR( JOIN_DATE , 'YYYY-MM-DD HH24:MI:SS') AS JOIN_DATE , IMAGE
+		FROM "USER"
+		WHERE USER_NO = #{userNo}
+		AND SECESSION_FL = 'N'
+  </select>
+    
 
 
 </mapper>

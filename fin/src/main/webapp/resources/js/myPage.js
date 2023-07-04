@@ -47,13 +47,18 @@ showBtn.addEventListener('click', function(){
   });
 
   // 모달 밴드
-  document.querySelector('.js-static-modal-toggleBand').addEventListener('click', function() {
-    new Modal({el: document.getElementById('static-modalBand')}).show();
-  });
+  const toggleBa = document.getElementById("toggleBA")
+  const toggleBaP = document.getElementById("toggleBAP")
 
-  document.querySelector('.js-static-modal-toggleBandP').addEventListener('click', function() {
+  if(toggleBa !=null) {
+  toggleBa.addEventListener('click', function() {
     new Modal({el: document.getElementById('static-modalBand')}).show();
-  });
+  })};
+
+  if(toggleBaP !=null) {
+    toggleBaP.addEventListener('click', function() {
+    new Modal({el: document.getElementById('static-modalBand')}).show();
+  })};
 
 
    // 모달 회원정보 수정
@@ -76,15 +81,17 @@ showBtn.addEventListener('click', function(){
 
   //const groupToggle = document.getElementById("groupToggle");
 
-  
-   document.querySelector('.js-static-modal-toggleGroup').addEventListener('click', function() {
+  const toggleGo = document.getElementById("toggleGA")
+  const toggleGop = document.getElementById("ToggleGAP")
+  if(toggleGo != null) {
+    toggleGo.addEventListener('click', function() {
     new Modal({el: document.getElementById('static-modalGroup')}).show();
-  });
+  })};
 
-
-  document.querySelector('.js-static-modal-togglegroupP').addEventListener('click', function() {
+  if(toggleGop !=null) {
+    toggleGop.addEventListener('click', function() {
     new Modal({el: document.getElementById('static-modalGroup')}).show();
-  });
+  })};
   
   
   const inputImg = document.getElementById("inputimage");
