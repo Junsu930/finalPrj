@@ -53,7 +53,7 @@ email.addEventListener("input", function(){
                 // console.log(result);
 
                 if(result == 1){ // 중복 O
-                    emailMessage.innerText = "";
+                    emailMessage.innerText = "Click Email icon";
                     emailMessage.classList.add("confirm");
                     emailMessage.classList.remove("error");
                     checkObj.email = true;

@@ -73,6 +73,9 @@ showBtn.addEventListener('click', function(){
   
   
   // groupModal
+
+  //const groupToggle = document.getElementById("groupToggle");
+
   
    document.querySelector('.js-static-modal-toggleGroup').addEventListener('click', function() {
     new Modal({el: document.getElementById('static-modalGroup')}).show();
