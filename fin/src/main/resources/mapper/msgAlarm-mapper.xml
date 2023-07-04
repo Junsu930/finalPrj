@@ -215,21 +215,35 @@
 	<select id="getUserNicksFromReply" parameterType="_int" resultMap="getUserNick_reply_rm">
 		SELECT USER_NICK, 
 		TO_CHAR(r.CREATE_DT, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
-		TO_CHAR(r.CREATE_DT, 'YY"일"') AS SEND_DAY,
+		TO_CHAR(r.CREATE_DT, 'DD"일"') AS SEND_DAY,
 		r.REPLY_NO, b.BOARD_NO
 		FROM REPLY r
 		JOIN "USER" u ON u.USER_NO = r.USER_NO
 		LEFT JOIN BOARD b ON b.BOARD_NO = r.BOARD_NO
 		WHERE b.USER_NO = ${userNo}
+		AND u.USER_NICK != (SELECT USER_NICK FROM "USER" WHERE USER_NO = ${userNo})
 		ORDER BY r.REPLY_NO DESC
 	</select>
 	
 	
 	<!-- 좋아요 알람 등록  -->
-	<insert id="addLike" parameterType="hashmap">
-		INSERT INTO TOTAL_ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
-		VALUES(TOTAL_ALARM_NO_SEQ.NEXTVAL, ${userNo}, ${loginUserNo}, NULL, NULL, ${boardNo}, NULL, NULL, DEFAULT)
+	
+	<insert id="addLikeFromAlarm" parameterType="hashmap">
+	  <choose>
+	    <when test="userNo != loginUserNo">
+	      INSERT INTO TOTAL_ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+	      VALUES(TOTAL_ALARM_NO_SEQ.NEXTVAL, ${userNo}, ${loginUserNo}, NULL, NULL, ${boardNo}, NULL, NULL, DEFAULT)
+	    </when>
+	    <otherwise>
+	      INSERT INTO TOTAL_ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+	      VALUES(TOTAL_ALARM_NO_SEQ.NEXTVAL, NULL, ${loginUserNo}, NULL, NULL, ${boardNo}, NULL, NULL, NULL)
+	      -- 처음엔 SELECT구문으로 했으나, SELECT구문은 -1을 반환하기에, 
+	      -- 만약 INSERT구문이 실패했을 때와 구분하기가 어렵다 그래서 인서트 구문으로 NULL을 추가해서 int 1을 반환
+	    </otherwise>
+	  </choose>
 	</insert>
+	
+	
 	
 	<!-- 좋아요 알람 삭제 -->
 	<delete id="removeLikeFromLikeAlarm" parameterType="hashmap">
@@ -239,12 +253,13 @@
 	<select id="getUserNicksFromLike" parameterType="_int" resultMap="getUserNick_reply_rm">
 		SELECT USER_NICK, 
 		TO_CHAR(BOARD_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
-		TO_CHAR(BOARD_DATE, 'YY"일"') AS SEND_DAY,
+		TO_CHAR(BOARD_DATE, 'DD"일"') AS SEND_DAY,
 		bl.LIKE_NO, b.BOARD_NO
 		FROM BOARD_LIKE bl
 		JOIN "USER" u ON u.USER_NO = bl.USER_NO
 		LEFT JOIN BOARD b ON b.BOARD_NO = bl.BOARD_NO
 		WHERE b.USER_NO = ${userNo}
+		AND u.USER_NICK != (SELECT USER_NICK FROM "USER" WHERE USER_NO = ${userNo})
 		ORDER BY bl.LIKE_NO DESC
 	</select>
 	

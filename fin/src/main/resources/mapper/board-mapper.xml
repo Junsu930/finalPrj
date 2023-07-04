@@ -9,6 +9,7 @@
 		<result property="readCount" column="READ_COUNT" />
 		<result property="boardSt" column="BOARD_ST" />
 		<result property="userNo" column="USER_NO" />
+		<result property="loginUserNo" column="LOGIN_USER_NO" />
 		<result property="boardLike" column="BOARD_LIKE" />
 		<result property="boardTag" column="BOARD_TAG" />
 		<result property="userNick" column="USER_NICK" />
@@ -205,8 +206,8 @@ AND BOARD_TAG = 2</if>
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT,
 		TO_CHAR(CREATE_DATE, 'YY"." MM"." DD') CREATE_DATE,
 		READ_COUNT, USER_NO, BOARD_LIKE, BOARD_LIKE,
-		BOARD_TAG,USER_NICK,USER_NO
-		FROM BOARD
+		BOARD_TAG,USER_NICK, USER_NO
+		FROM BOARD b
 		JOIN "USER" USING(USER_NO)
 		WHERE BOARD_NO = #{boardNo}
 		AND BOARD_ST = 'N' 
@@ -277,6 +278,11 @@ AND BOARD_TAG = 2</if>
 	
 	<select id="countLike" parameterType="hashmap" resultType="_int">
 		SELECT COUNT(*) FROM BOARD_LIKE WHERE BOARD_NO = ${boardNo}
+	</select>
+	
+	<!-- 좋아요 한지 안한지 체크 -->
+	<select id="checkLike" parameterType="detail" resultType="_int">
+		SELECT COUNT(*) FROM BOARD_LIKE WHERE BOARD_NO = ${boardNo} AND USER_NO = ${loginUserNo}
 	</select>
 	
 </mapper>

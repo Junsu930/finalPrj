@@ -122,8 +122,9 @@ public class BoardController {
 	public String boardDetail(@RequestParam("boardNo")int boardNo,
 							  	Model model,Criteria cri ,
 							  	@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
-							    @RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
-							  	) {
+							    @RequestParam(value = "keyword",required = false, defaultValue = "") String keyword,
+							    @ModelAttribute("loginUser") User loginUser
+							    ) {
 		service.updateReadCount(boardNo);
 		BoardDetail boardDetail = service.boardDetail(boardNo);
 		model.addAttribute("BoardDetail" , boardDetail);
@@ -136,6 +137,22 @@ public class BoardController {
 	    List<BoardDetail> boardList = service.boardList(cri,searchType,keyword);
 	    model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
+	    
+	    // 내가 좋아요 한지 안한지 체크 
+	    boardDetail.setBoardNo(boardNo);
+	    boardDetail.setLoginUserNo(loginUser.getUserNo());
+	    
+	    System.out.println(boardDetail.getLoginUserNo() + " // boardDetail  loginUserNo!!!!!");
+	    
+	    int result = service.checkLike(boardDetail);
+	    
+	    System.out.println(result + " likecheck result");
+		
+	    if(result > 0) {
+	    	model.addAttribute("likeck", "T");
+	    }else {
+	    	model.addAttribute("likeck", "F");
+	    }
 		
 		return "board/boardDetail";
 		
@@ -279,11 +296,12 @@ public class BoardController {
 		map.put("userNo", userNo);
 		map.put("loginUserNo", loginUserNo);
 		
-		System.out.println("lognUserNo" + map.get("loginUserNo"));
+		System.out.println("lognUserNo    //  " + map.get("loginUserNo")+ "  // addlike");
+		System.out.println("userNo   //   " + map.get("userNo")+ "  // addlike");
 		
 		int result = service.boardDetailLike(map);
 		
-		System.out.println(result + "result!!!!!!");
+		System.out.println(result + " // result! addLike");
 		if(result > 0) {
 			  return new Gson().toJson(result);
 		} 
@@ -314,7 +332,7 @@ public class BoardController {
 		map.put("userNo", userNo);
 		map.put("loginUserNo", loginUserNo);
 		
-		System.out.println("lognUserNo removeLike" + map.get("loginUserNo"));
+		System.out.println("lognUserNo removeLike /// " + map.get("loginUserNo"));
 		
 		int result = service.removeLike(map);
 		

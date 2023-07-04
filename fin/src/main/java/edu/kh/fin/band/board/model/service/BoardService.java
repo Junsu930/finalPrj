@@ -60,7 +60,13 @@ public interface BoardService {
 
 
 
-
+	/**
+	 * 좋아요 한지 안한지 체크
+	 * @author lee
+	 * @param boardDetail
+	 * @return
+	 */
+	int checkLike(BoardDetail boardDetail);
 
 
 

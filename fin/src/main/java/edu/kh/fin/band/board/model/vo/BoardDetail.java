@@ -22,6 +22,8 @@ public class BoardDetail {
 	private String boardTag;
 	private String userNick;
 	
+	private int loginUserNo;
+	
 	
 	private List<BoardImage> imageList;
 	

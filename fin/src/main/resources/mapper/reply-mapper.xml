@@ -102,15 +102,31 @@
 		WHERE REPLY_NO = ${replyNo}
 	</select>
 	
+	
+	
 	<!-- 알람 테이블   -->
 	
 	<insert id="insertReplyAlarm" parameterType="reply">
-		INSERT INTO 
-		TOTAL_ALARM  <!--테이블 -->
-		(ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
-		VALUES
-		(TOTAL_ALARM_NO_SEQ.NEXTVAL, ${toUserNo}, ${userNo}, NULL, ${replyNo}, NULL, NULL, DEFAULT, NULL)
+	  <choose>
+	    <when test="toUserNo != userNo">
+	      INSERT INTO TOTAL_ALARM
+	      (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+	      VALUES
+	      (TOTAL_ALARM_NO_SEQ.NEXTVAL, ${toUserNo}, ${userNo}, NULL, ${replyNo}, NULL, NULL, DEFAULT, NULL)
+	    </when>
+	    <otherwise>
+	      INSERT INTO TOTAL_ALARM
+	      (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+	      VALUES
+	      (TOTAL_ALARM_NO_SEQ.NEXTVAL, NULL, ${userNo}, NULL, ${replyNo}, NULL, NULL, NULL, NULL)
+	    </otherwise>
+	  </choose>
 	</insert>
+
+	
+	
+	
+	
 
 
 
