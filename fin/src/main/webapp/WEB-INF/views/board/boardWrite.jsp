@@ -7,13 +7,27 @@
 <head>
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
-	 <link rel="stylesheet"href="${contextPath}/resources/css/boardWrite.css"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>
-   <script type="text/javascript" src="resources/ckeditor/ckeditor.js"></script>
-    <style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
+  <link rel="stylesheet" href="${contextPath}/resources/css/boardWrite.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/boardWrite.js">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/ckeditor/ckeditor.js"></script>
+ <style>
+ 
+ .cke_bottom {
+    padding: 6px 8px 2px;
+    position: relative;
+    border-top: 1px solid #d1d1d1;
+    background: #f8f8f8;
+    display: none  !important ;
+    }
+    
+.cke_button__exportpdf_icon {
+    background: url(icons.png?t=4a1fb11f44) no-repeat 0 -528px !important;
+    display: none !important;
+    }
 		#hh {
 		  font-size: 20px;
 		  margin-bottom: 20px;
@@ -23,10 +37,12 @@
 		
 		  
 		}
+		
 </style>
     <title>WRITE</title>
    </head>
    <body>
+ 
 <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
 <c:if test="${ !empty message }">
     <script>
@@ -36,8 +52,9 @@
         // 일치하는 속성이 있으면 출력
     </script>
 </c:if> 
+
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-       <form action="boardWrite" method="post">
+       <form action="boardWrite" method="post"  >
   <div class="container">
     <h1 id="hh">글쓰기</h1>
     <div class="tagsBox">
@@ -63,13 +80,14 @@
     </div>
     <div class="border"></div>
     <div class="boardContent">내용</div>
-    <textarea id="content" name="boardContent" class="content-input"></textarea>
+
+ <textarea id="content" name="boardContent" class="content-input"></textarea>
     
     
       <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
-			CKEDITOR.replace('content'
-			
-			);
+			CKEDITOR.replace('content',{
+					 height:'350px'
+			  });
 		</script>
 		
 		
