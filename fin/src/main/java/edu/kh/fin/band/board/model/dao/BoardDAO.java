@@ -112,8 +112,11 @@ public class BoardDAO {
 		
 		if(result > 0) { // 좋아요 보드 테이블에 들어갔을 시, 좋아요 테이블 등록 
 			result = sqlSession.insert("boardMapper.addLike", map);
+	
 			if(result > 0) {
-				result = sqlSession.insert("alaramMapper.addLike", map); // 좋아요 알람 등록
+				result = sqlSession.insert("alaramMapper.addLikeFromAlarm", map); // 좋아요 알람 등록
+				
+				
 				if(result > 0) {
 					return result = sqlSession.selectOne("boardMapper.countLike", map); // 좋아요 테이블에서 좋아요갯수 가져오기
 				}else {
@@ -167,7 +170,17 @@ public class BoardDAO {
 		return 0;
 
 	}
-
+	
+	
+	/**
+	 * 좋아요 한지 안한지 체크
+	 * @author lee
+	 * @param boardDetail
+	 * @return
+	 */
+	public int checkLike(BoardDetail boardDetail) {
+		return sqlSession.selectOne("boardMapper.checkLike", boardDetail);
+	}
 
 
 

@@ -128,6 +128,15 @@ public class BoardServiceImpl implements BoardService{
 		return dao.removeLike(map);
 	}
 
-	
+	/**
+	 * 좋아요 한지 안한지 체크
+	 * @author lee
+	 * @param boardDetail
+	 * @return
+	 */
+	@Override
+	public int checkLike(BoardDetail boardDetail) {
+		return dao.checkLike(boardDetail);
+	}
 	
 }
