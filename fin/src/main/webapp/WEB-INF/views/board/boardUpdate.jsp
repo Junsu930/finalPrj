@@ -26,16 +26,28 @@
       
     </script>
 </c:if> 
-<style>
+ <style>
+ 
+ .cke_bottom {
+    padding: 6px 8px 2px;
+    position: relative;
+    border-top: 1px solid #d1d1d1;
+    background: #f8f8f8;
+    display: none  !important ;
+    }
+    
+.cke_button__exportpdf_icon {
+    background: url(icons.png?t=4a1fb11f44) no-repeat 0 -528px !important;
+    display: none !important;
+    }
 #hh {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #474554;
-  font-weight: bold;
-  padding-left:0;
-
-  
+	font-size: 20px;
+	margin-bottom: 20px;
+	color: #474554;
+	font-weight: bold;
+	padding-left:0;
 }
+		
 </style>
     <title>WRITE</title>
    </head>
@@ -75,13 +87,13 @@
     </div>
     <div class="border"></div>
     <div class="boardContent">내용</div>
-    <textarea id="content" name="boardContent" class="content-input">${board.boardContent}</textarea>
+     <textarea id="content" name="boardContent" class="content-input">${board.boardContent}</textarea>
     
     
       <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
-			CKEDITOR.replace('content'
-			
-			);
+			CKEDITOR.replace('content',{
+					 height:'350px'
+			  });
 		</script>
 		
 		
