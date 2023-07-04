@@ -100,11 +100,12 @@
     margin-top: 1em;
     border: 1px solid var(--stroke-color);
     border-radius: 0.7em;
+    padding-right: 10px;
 }
 
 .myPageInfo > div:last-child > div{
     width: 50%;
-    padding-left: 3em;
+    padding-left: 2em;
 }
 
 .myPageInfo > div:last-child > div > ul,

@@ -174,8 +174,6 @@ function send(chatRoomNo){
 		$('#messageTextInput').val("");
 	}
 
-    let userNo = document.getElementById("hiddenUserNo").value;
-    checkRoom(userNo);
     
 }
 
@@ -186,6 +184,9 @@ function wsOpen(){
 
     ws.onmessage = function(data){
         
+        let userNo = document.getElementById("hiddenUserNo").value;
+        checkRoom(userNo);
+
         let chatUser = document.getElementById("hiddenUserNo").value;
 
         let parsedData = JSON.parse(data.data);

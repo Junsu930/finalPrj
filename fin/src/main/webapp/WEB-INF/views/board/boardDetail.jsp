@@ -16,8 +16,33 @@
  <link rel="stylesheet" href="${contextPath}/resources/css/reply-style.css">
    <script src="${contextPath}/resources/js/modal.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
-   
-  
+     <style>
+
+
+      dl, ol, ul {
+          margin-top: 0;
+          margin-bottom: 0;
+          padding-left: 0;
+      }
+      
+      body{
+        line-height: normal;	
+      }
+      
+      button, input, optgroup, select, textarea {
+          font-family : revert;
+          font-size: revert;
+          line-height: inherit;
+      }
+    
+      p{
+            margin-bottom: 0;
+      }
+      
+      a:hover {
+        color: revert;
+      }
+    </style>
     <title>BOARDDETAIL</title>
    </head>
    <body>
