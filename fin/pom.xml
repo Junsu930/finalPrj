@@ -48,14 +48,7 @@
 			
 		<!-- 메일 서비스 라이브러리 -->
 		
-		
-	
-	
-		
-	
-	
-	
-	
+
 			<!-- json simple  -->
 		<dependency>
 		  <groupId>com.googlecode.json-simple</groupId>

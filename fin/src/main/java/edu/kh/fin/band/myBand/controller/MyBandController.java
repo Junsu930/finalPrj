@@ -111,7 +111,6 @@ public class MyBandController {
 		
 		model.addAttribute("bandNo", bandNo);
 		
-		System.out.println(bandList.toString());
 		
 		return "myBand/myBand";
 	}
@@ -321,8 +320,7 @@ public class MyBandController {
 			return "myBand/myBandBoardDetail";
 			
 		}else {	
-			
-			System.out.println("체크박스 확인" + noticeBoardCheck);
+
 			HttpSession session = req.getSession();
 			
 			int userNo = ((User)session.getAttribute("loginUser")).getUserNo();

@@ -74,10 +74,6 @@ public class RoomController {
 	@ResponseBody
 	public int pracRoomBooking(@RequestParam("timeArr[]") ArrayList<Integer> timeArr, @RequestParam HashMap<String, Object> map) {
 		
-		System.out.println(timeArr);
-		System.out.println(map);
-		
-		
 		int result = service.pracRoomBooking(timeArr, map);
 		
 		int roomAlarmResult = service.roomAlarmResult(map); // 예약을 할 때, 오너에게 알람을 보내는 메서드

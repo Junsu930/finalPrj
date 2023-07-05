@@ -15,7 +15,7 @@
 .ck-content {
     font-size: 12px;
 }
-.darkmode .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){
+.darkmode .ck.ck-editor__editable_inline>:last-child{
     color: black;
 }
 

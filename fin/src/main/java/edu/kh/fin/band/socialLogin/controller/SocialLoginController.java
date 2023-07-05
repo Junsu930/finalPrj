@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,8 @@ public class SocialLoginController {
 	
 	@Autowired
 	private SocialLoginService service;
+	
+	private Logger logger = LoggerFactory.getLogger(SocialLoginController.class);
 
 	/** 가입여부 체크
 	 * @param email
@@ -35,8 +39,7 @@ public class SocialLoginController {
 		
 
 		int result = service.checkNaverFl(email);
-		
-		System.out.println("체크 실행");
+		logger.info("체크 실행");
 		return result;
 		
 	}
@@ -47,12 +50,12 @@ public class SocialLoginController {
 		
 		int result = service.naverSignUp(map);
 		
-		System.out.println("만들어진 유저넘 : " + result);
+		logger.info("만들어진 유저넘 : " + result);
 		
 		User user = service.getUser(result);
 
 		model.addAttribute("loginUser", user);
-		System.out.println("사인업실행");
+		logger.info("사인업실행");
 		
 		return result;
 	}
@@ -66,7 +69,7 @@ public class SocialLoginController {
 		if(result>0) {
 			user = service.getUser((Integer)map.get("userNo"));
 		}
-		System.out.println("토큰교체 실행");
+		logger.info("토큰교체 실행");
 		model.addAttribute("loginUser", user);
 		
 		return result;
@@ -102,7 +105,7 @@ public class SocialLoginController {
 			}
 		}
 		
-		System.out.println(result);
+		logger.info("결과값" + result);
 		
 		return result;
 	}

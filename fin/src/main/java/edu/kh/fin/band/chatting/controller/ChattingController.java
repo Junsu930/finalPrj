@@ -63,7 +63,7 @@ public class ChattingController {
 	@RequestMapping("/createRoom")
 	@ResponseBody
 	public List<ChatVo> createRoom(@RequestParam HashMap<Object, Object> params){
-		System.out.println(params);
+
 		String roomName = (String)params.get("roomName"); // 1_2 , 2_3 이런 형태
 		if(roomName != null && !roomName.trim().equals("")){
 			ChatVo chatRoom = new ChatVo();

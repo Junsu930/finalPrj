@@ -78,7 +78,7 @@ public class SocialLoginServiceImpl implements SocialLoginService {
               bw.flush();
 //            결과 코드가 200이라면 성공
               int responseCode = conn.getResponseCode();
-//              System.out.println("responseCode : " + responseCode);
+
 
               //    요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
               BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -88,7 +88,6 @@ public class SocialLoginServiceImpl implements SocialLoginService {
               while ((line = br.readLine()) != null) {
                   result += line;
               }
-//              System.out.println("response body : " + result);
 
               //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
               

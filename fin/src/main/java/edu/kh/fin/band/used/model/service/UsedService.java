@@ -135,9 +135,7 @@ public class UsedService {
 				
 				// 이미지가 업로드된 경우
 				if(images.get(i).getSize()>0) {
-					
-					System.out.println("변경된 이미지"+images.get(i));
-					
+				
 					UsedImage img = new UsedImage();
 					String reName;
 					
