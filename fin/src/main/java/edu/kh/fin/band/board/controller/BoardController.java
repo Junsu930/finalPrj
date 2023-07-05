@@ -122,15 +122,15 @@ public class BoardController {
 	public String boardDetail(@RequestParam("boardNo")int boardNo,
 								Model model, Criteria cri,
 								@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
-								@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
+								@RequestParam(value = "keyword",required = false, defaultValue = "") String keywor
 								,HttpSession session,
-							    @ModelAttribute("loginUser") User loginUser,
+								@RequestParam(value = "loginUserNo", required = false, defaultValue = "0") int loginUserNo,
 							    HttpServletRequest req, HttpServletResponse resp 
 							    ) {
 		
 		// 세션이 있는지 없는지
 					// 세션이 있으면 memberNo 세팅
-					
+					User loginUser = new User(); // @ModelAttribute("loginUser") User loginUser,
 		BoardDetail boardDetail = service.boardDetail(boardNo);
 					int memberNo = 0;
 					if(loginUser != null) {
@@ -199,6 +199,22 @@ public class BoardController {
 					List<Reply> rList = rService.selectReplyList(boardNo);
 					model.addAttribute("rList", rList);
 					
+					 // 내가 좋아요 한지 안한지 체크 
+				    boardDetail.setBoardNo(boardNo);
+				    boardDetail.setLoginUserNo(loginUserNo);
+				    
+				   
+				    
+				    int result = service.checkLike(boardDetail);
+				    
+				    
+				    
+				    if(result > 0) {
+				    	model.addAttribute("likeck", "T");
+				    }else {
+				    	model.addAttribute("likeck", "F");
+				    }
+					
 					
 				  	int total = service.getTotal(cri);
 				  	PageVO pageVO = new PageVO(cri, total);
@@ -209,21 +225,7 @@ public class BoardController {
 				    
 				    
 				    
-				    // 내가 좋아요 한지 안한지 체크 
-				    boardDetail.setBoardNo(boardNo);
-				    boardDetail.setLoginUserNo(loginUser.getUserNo());
-				    
-				    System.out.println(boardDetail.getLoginUserNo() + " // boardDetail  loginUserNo!!!!!");
-				    
-				    int result = service.checkLike(boardDetail);
-				    
-				    System.out.println(result + " likecheck result");
-					
-				    if(result > 0) {
-				    	model.addAttribute("likeck", "T");
-				    }else {
-				    	model.addAttribute("likeck", "F");
-				    }
+				   
 					
 					return "board/boardDetail";
 					
@@ -398,17 +400,15 @@ public class BoardController {
 		
 		HashMap<String,Object> map = new HashMap<>();
 		
-		System.out.println("addLike!!!");
+		
 		map.put("boardNo", boardNo);
 		map.put("userNo", userNo);
 		map.put("loginUserNo", loginUserNo);
 		
-		System.out.println("lognUserNo    //  " + map.get("loginUserNo")+ "  // addlike");
-		System.out.println("userNo   //   " + map.get("userNo")+ "  // addlike");
 		
 		int result = service.boardDetailLike(map);
 		
-		System.out.println(result + " // result! addLike");
+		
 		if(result > 0) {
 			  return new Gson().toJson(result);
 		} 
@@ -433,13 +433,13 @@ public class BoardController {
 			@RequestParam("loginUserNo") int loginUserNo) {
 		
 		HashMap<String,Object> map = new HashMap<>();
-		System.out.println("removeLike!!!");
+		
 		
 		map.put("boardNo", boardNo);
 		map.put("userNo", userNo);
 		map.put("loginUserNo", loginUserNo);
 		
-		System.out.println("lognUserNo removeLike /// " + map.get("loginUserNo"));
+	
 		
 		int result = service.removeLike(map);
 		
@@ -451,6 +451,8 @@ public class BoardController {
 			  return new Gson().toJson("좋아요 없애기 실패 ㅠㅠ");
 		}
 	}
+	
+	
 	
 
 	

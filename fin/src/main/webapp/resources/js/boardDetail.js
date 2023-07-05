@@ -11,6 +11,17 @@ const commentBox2 = () => {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
 function addLike(){
     let boardNo = document.getElementById('boardNo').value;
     let userNo = document.getElementById('userNo').value;
