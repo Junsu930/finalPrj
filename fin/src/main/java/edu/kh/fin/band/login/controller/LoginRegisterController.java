@@ -63,9 +63,9 @@ public class LoginRegisterController {
 		String path = null;
 		
 		if(loginUser !=null) { // 로그인 성공시
-			model.addAttribute("loginUser", loginUser);
-
-			System.out.println("로그인 성공" + loginUser.getUserNo());
+			model.addAttribute("loginUser", loginUser);	
+			
+			logger.info("로그인 성공" + loginUser.getUserNo());
 			
 			//쿠키 생성
 			Cookie cookie = new Cookie("saveId", loginUser.getUserEmail());
@@ -84,7 +84,6 @@ public class LoginRegisterController {
 			// 쿠키를 클라이언트에 전달
 			resp.addCookie(cookie);
 			
-			System.out.println(ref);
 
 			if(ref!=null && !ref.equals("")) {
 				path = "redirect:" + ref;
@@ -140,7 +139,7 @@ public class LoginRegisterController {
 		logger.info("닉네임 중복 검사 수행됨");
 		
 		int result = service.nicknameDupCheck(userNickname);
-		System.out.println(result);
+	
 			
 		return result;
 		
@@ -157,11 +156,11 @@ public class LoginRegisterController {
 		
 		logger.info("회원가입 수행됨");
 		
-		System.out.println(inputUser);
+		
 		
 		int result = service.signUp(inputUser);
 		
-		System.out.println(inputUser);
+	
 		
 		String message = null;
 		String path = null;
@@ -189,10 +188,10 @@ public class LoginRegisterController {
 		
 		logger.info("이메일 인증 수행됨");
 			
-		System.out.println(inputEmail);
+		
 		int ranNum = service.checkEmail(inputEmail);
 		
-		System.out.println(ranNum);
+		
 		
 		if(ranNum > 0) {
 			  return new Gson().toJson(ranNum);

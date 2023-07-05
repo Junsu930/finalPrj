@@ -22,12 +22,10 @@ public class LoginDAO {
 	 * @return loginUser
 	 */
 	public User login(User inputUser) {
-		
-		System.out.println("DAO" + inputUser);
+				
 		
 		User loginUser = sqlSession.selectOne("loginMapper.login", inputUser ); 
-		
-		System.out.println("DAO2" + loginUser);
+			
 		
 		return loginUser;
 	}

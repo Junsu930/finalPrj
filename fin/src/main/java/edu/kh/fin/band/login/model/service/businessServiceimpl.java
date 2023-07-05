@@ -30,13 +30,10 @@ public class businessServiceimpl implements businessService {
 		@Override
 		public Business login(Business inputOwner) {
 			
-			System.out.println("사업자컨트롤"+ inputOwner);
 		
 			
 			Business loginOwner = dao.login(inputOwner);
 			
-			System.out.println(loginOwner.getOwnerPw());
-			System.out.println(inputOwner.getOwnerPw());
 			
 			if(loginOwner != null) { // 일치하는 이메일을 가진 회원 정보가 있을 경우
 				

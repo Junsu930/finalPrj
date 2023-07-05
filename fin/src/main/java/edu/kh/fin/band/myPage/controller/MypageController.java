@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,14 +48,12 @@ public class MypageController {
 	@Autowired 
 	private MyPageService service;
 	
-	
+	private Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
 	
 	@GetMapping("/myPage")
 	public String myPageController(@ModelAttribute("loginUser") User loginUser, Model model,Crite cri) {
-		
-		System.out.println("loginUser::"+loginUser);
-		
+			
 		int total = service.getTotal();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -74,11 +74,7 @@ public class MypageController {
 		List<BoardDetail> boardList = service.boardList(map);
 		
 		List<Reply> rList = service.ReplyList(loginUser.getUserNo());
-				
-		
-		System.out.println("차단리스트"+banList);
-		System.out.println("밴드리스트"+bandMem);
-		
+					
 		//model.addAttribute("bandMem2",bandMem2);
 		model.addAttribute("bandMem",bandMem);
 		model.addAttribute("banList",banList);
@@ -86,8 +82,6 @@ public class MypageController {
 	    model.addAttribute("pageVO", pageVO);
 	    model.addAttribute("rList", rList);
 	    model.addAttribute("bandUserList", BandUserList);
-	    
-	    System.out.println("내글"+boardList);
 			
 		return "myPage/myPage";
 	}
@@ -106,6 +100,7 @@ public class MypageController {
 			, SessionStatus status
 			) throws IOException{
 		
+		logger.info("회원 정보 수정 수행");
 		
 		Searching updateInfo = new Searching();
 		
@@ -142,17 +137,12 @@ public class MypageController {
 		int bandInfo = 0;
 		
 		int img = service.updateImg(paramMap, loginUser);
-		System.out.println("이미지 변경" + img);
 		
-		int info = service.updateInfo(paramMap);
-		System.out.println("info변경" + info);		
+		int info = service.updateInfo(paramMap);	
 		
 		int checkBand = service.checkBand(paramMap);
-		System.out.println("리더확인" +checkBand);
-			
-		
+				
 		int position = service.updatePosition(paramMap);
-		System.out.println("포지션 변경" + position);
 		
 		int changePw = service.changePw(paramMap);
 		System.out.println("비밀번호 변경" + changePw );
@@ -173,7 +163,6 @@ public class MypageController {
 		}
 		
 		
-		System.out.println("포지션 입력" + insertPosition );
 		
 		allResult = img + info + position + changePw + insertPosition + bandInfo;
 		
@@ -185,12 +174,9 @@ public class MypageController {
 			message = "회원 정보 변경 실패";
 		}
 		
-		System.out.println("이미지 검사" + loginUser.getProfileImg());
 				
 		
 		User NewloginUser = service.NewloginUser(paramMap);
-		
-		System.out.println("변경후 세션" +NewloginUser );
 		
 		model.addAttribute("loginUser", NewloginUser);
 		
@@ -208,6 +194,7 @@ public class MypageController {
 			HttpServletResponse resp,
 			RedirectAttributes ra ) {
 		
+		logger.info("회원 탈퇴 수행");
 		
 		int result = service.secession(loginUser);
 		
@@ -245,8 +232,8 @@ public class MypageController {
 			HttpServletResponse resp,
 			RedirectAttributes ra) {
 		
-		System.out.println(bannedUserNo);
-		
+		logger.info("회원 차단해체 수행");
+			
 		int result = service.updateBan(bannedUserNo);
 		
 		String message = null;
@@ -280,7 +267,7 @@ public class MypageController {
 			RedirectAttributes ra	
 			) {
 		
-		System.out.println(loginUser.getUserNo());
+		logger.info("회원 밴드 생성 수행");
 		
 		paramMap.put("ment", ment);
 		paramMap.put("userNo", loginUser.getUserNo());
@@ -325,7 +312,7 @@ public class MypageController {
 			HttpServletResponse resp,
 			RedirectAttributes ra) {
 		
-		System.out.println("유저추방번호" + exileNo);
+		logger.info("밴드멤버 추방 수행");
 		
 		int result = service.exile(exileNo);
 		
@@ -359,7 +346,8 @@ public class MypageController {
 			HttpServletResponse resp,
 			RedirectAttributes ra
 			) {
-		System.out.println("밴드해체"+bandNo);
+		
+		logger.info("밴드 해체 수행");
 		
 		int result = service.dismiss(bandNo);
 		
