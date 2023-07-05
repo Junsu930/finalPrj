@@ -19,7 +19,7 @@ public interface BoardService {
 
 	BoardDetail boardDetail(int boardNo);
 
-	void updateReadCount(int boardNo);
+	int updateReadCount(int boardNo);
 
 	int delete(int boardNo);
 

@@ -1,10 +1,12 @@
 package edu.kh.fin.band.board.controller;
    
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
@@ -33,6 +35,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
+
 
 import edu.kh.fin.band.board.model.service.BoardService;
 import edu.kh.fin.band.board.model.service.ReplyService;
@@ -82,7 +85,7 @@ public class BoardController {
 	  
 	   
 	    model.addAttribute("bannedUserIds", bannedUserIds);
-	    System.out.println(user.getUserNo());
+
 	    }
 	    
 	    return "board/boardMain";
@@ -106,10 +109,7 @@ public class BoardController {
     	
    	 boardBanned.setUserNo(user.getUserNo());
        service.reportUser(boardBanned);
-       System.out.println( user.getUserNo());
- 
-       System.out.println("boardBanned.getBannedUserNick()" +bannedUserNick);
-       System.out.println("boardBanned.getBannedUserNo()" + bannedUserNo);
+
        
     	
     }
@@ -120,43 +120,141 @@ public class BoardController {
 
 	@GetMapping("/boardDetail")
 	public String boardDetail(@RequestParam("boardNo")int boardNo,
-							  	Model model,Criteria cri ,
-							  	@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
-							    @RequestParam(value = "keyword",required = false, defaultValue = "") String keyword,
-							    @ModelAttribute("loginUser") User loginUser
+								Model model, Criteria cri,
+								@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+								@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
+								,HttpSession session,
+							    @ModelAttribute("loginUser") User loginUser,
+							    HttpServletRequest req, HttpServletResponse resp 
 							    ) {
-		service.updateReadCount(boardNo);
+		
+		// 세션이 있는지 없는지
+					// 세션이 있으면 memberNo 세팅
+					
 		BoardDetail boardDetail = service.boardDetail(boardNo);
-		model.addAttribute("BoardDetail" , boardDetail);
-		List<Reply> rList = rService.selectReplyList(boardNo);
-		model.addAttribute("rList", rList);
+					int memberNo = 0;
+					if(loginUser != null) {
+						memberNo = loginUser.getUserNo();
+					}
+			
+					// 글쓴이와 현재 클라이언트가 같은지 아닌지 
+					if( boardDetail.getUserNo() != memberNo ) {
+						// 같지 않으면 -> 조회수 증가
+						
+						// 쿠키가 있는지 없는지
+						//	있다면 쿠키 이름이 "readBoardNo" 있는지 ?
+						//  없다면 만들어라
+						//  있다면 쿠키에 저장된 값 뒤쪽에 현재 조회된 게시글 번호를 추가
+						//	-> 단, 기존 쿠키값에 중복되는 번호 없어야함.
+						
+						Cookie cookie = null; // 기존에 존재하던 쿠키를 저장하는 변수
+						
+						Cookie[] cArr = req.getCookies(); // 쿠키 얻어오기
+						
+						if(cArr != null && cArr.length > 0) { // 얻어온 쿠키가 있을 경우
+							for(Cookie c : cArr) {
+								
+								// 얻어온 쿠키중 이름이 "readBoardNo"가 있으면 얻어오기
+								if(c.getName().equals("readBoardNo")) {
+									cookie = c;
+								}
+							}
+						}
+						
+						int result = 0;
+						
+						if (cookie == null) { // 기존에 "readBoardNo" 이름의 쿠키가 없던 경우
+							
+							cookie = new Cookie("readBoardNo", boardNo+"");
+							result = service.updateReadCount(boardNo);// 조회 수 증가 서비스 호출
+							
+						} else { // 기존에 "readBoardNo" 이름의 쿠키가 있던 경우
+							// "readBoardNo"  :   "1/2/3/5/30/500" + / + boardNo
+							// -> 쿠키에 저장된 값 뒤쪽에 현재 조회된 게시글 번호 추가
+							
+							String[] temp = cookie.getValue().split("/");
+							
+							List<String> list = Arrays.asList(temp); // 배열 -> List 변환
+							
+							if(list.indexOf(boardNo+"") == -1) { // 기존 값에 같은 글번호가 없다면 추가
+								cookie.setValue( cookie.getValue() + "/" + boardNo );
+								result = service.updateReadCount(boardNo);// 조회 수 증가 서비스 호출
+								
+							}
+							
+						}
+						
+						// 이미 조회된 데이터 DB와 동기화
+						if(result > 0) {
+							
+							boardDetail.setReadCount( boardDetail.getReadCount() + 1 );
+							
+							cookie.setPath(req.getContextPath());
+							cookie.setMaxAge(60 * 60 * 1); // + 쿠키 maxAge 1시간
+							resp.addCookie(cookie);
+						}
+						
+					}
+					model.addAttribute("BoardDetail" , boardDetail);
+					List<Reply> rList = rService.selectReplyList(boardNo);
+					model.addAttribute("rList", rList);
+					
+					
+				  	int total = service.getTotal(cri);
+				  	PageVO pageVO = new PageVO(cri, total);
+				    List<BoardDetail> boardList = service.boardList(cri);
+				    model.addAttribute("boardList", boardList);
+				    model.addAttribute("pageVO", pageVO);
+				    
+				    
+				    
+				    
+				    // 내가 좋아요 한지 안한지 체크 
+				    boardDetail.setBoardNo(boardNo);
+				    boardDetail.setLoginUserNo(loginUser.getUserNo());
+				    
+				    System.out.println(boardDetail.getLoginUserNo() + " // boardDetail  loginUserNo!!!!!");
+				    
+				    int result = service.checkLike(boardDetail);
+				    
+				    System.out.println(result + " likecheck result");
+					
+				    if(result > 0) {
+				    	model.addAttribute("likeck", "T");
+				    }else {
+				    	model.addAttribute("likeck", "F");
+				    }
+					
+					return "board/boardDetail";
+					
+					
+				}
+
+
+
+				
 		
 		
-	    int total = service.getTotal(cri);
-	    PageVO pageVO = new PageVO(cri, total);
-	    List<BoardDetail> boardList = service.boardList(cri,searchType,keyword);
-	    model.addAttribute("boardList", boardList);
-	    model.addAttribute("pageVO", pageVO);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
 	    
-	    // 내가 좋아요 한지 안한지 체크 
-	    boardDetail.setBoardNo(boardNo);
-	    boardDetail.setLoginUserNo(loginUser.getUserNo());
 	    
-	    System.out.println(boardDetail.getLoginUserNo() + " // boardDetail  loginUserNo!!!!!");
 	    
-	    int result = service.checkLike(boardDetail);
 	    
-	    System.out.println(result + " likecheck result");
-		
-	    if(result > 0) {
-	    	model.addAttribute("likeck", "T");
-	    }else {
-	    	model.addAttribute("likeck", "F");
-	    }
-		
-		return "board/boardDetail";
-		
-	}
+	    
+	    
+	    
+	  
 	   
 	
 	
@@ -232,14 +330,14 @@ public class BoardController {
 	
 	@GetMapping("/update")
 	public String updateForm(@RequestParam("boardNo")int boardNo, 
-											Model model,
+											Model model,Criteria cri,
 											RedirectAttributes ra) {
 		
 		BoardDetail boardDetail = service.boardDetail(boardNo);
 		model.addAttribute("board" , boardDetail);
 		
 		
-		
+	 	
 		
 		return "board/boardUpdate";
 	}
@@ -247,7 +345,7 @@ public class BoardController {
 	
 	@PostMapping("/mody")
 	public String boardUpdate(@ModelAttribute Board board,
-								Model model,
+								Model model,Criteria cri,
 								RedirectAttributes ra) {
 		
 		 int updateResult = service.boardUpdate(board);
@@ -259,6 +357,15 @@ public class BoardController {
 		if(updateResult>0) {
 			message = "게시글이 수정되었습니다 ";
 			ra.addFlashAttribute("message", message);
+			
+			
+			int total = service.getTotal(cri);
+		  	PageVO pageVO = new PageVO(cri, total);
+		    List<BoardDetail> boardList = service.boardList(cri);
+		    model.addAttribute("boardList", boardList);
+		    model.addAttribute("pageVO", pageVO);
+			
+			
 			return "board/boardDetail";
 			
 			
