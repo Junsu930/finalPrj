@@ -26,7 +26,7 @@ footer ul{
     font-size: 1.5em;
 }
 
-.footerA{
+.footer1-modal-toggle{
     text-decoration: none;
     color: var(--text-color); /*black*/
     cursor: pointer;
@@ -37,9 +37,11 @@ body.darkmode .footerDarkAtag{
 	color: var(--background-color);
 }
 
-body.darkmode .footerA{
+body.darkmode .footer1-modal-toggle{
 	color: var(--background-color);
 }
+
+
 
 .footer2-modal-toggle{
     text-decoration: none;
@@ -52,9 +54,6 @@ body.darkmode .footer2-modal-toggle{
 	color: var(--background-color);
 }
 
-body.darkmode .footer2-modal-toggle{
-	color: var(--background-color);
-}
 
 .footer3-modal-toggle{
     text-decoration: none;
@@ -67,9 +66,6 @@ body.darkmode .footer3-modal-toggle{
 	color: var(--background-color);
 }
 
-body.darkmode .footer3-modal-toggle{
-	color: var(--background-color);
-}
 
 /* 평소 푸터 a태그 css */
 
