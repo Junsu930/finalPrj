@@ -123,13 +123,13 @@
        				 <c:when test="${ board.boardTag==1}">
               
                 
-        			 <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">잡담</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
+        			 <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">잡담</span></div><a href="boardDetail?boardNo=${board.boardNo}&loginUserNo=${sessionScope.loginUser.userNo}" class="titleA">${board.boardTitle}</a></div></td>
           
         			</c:when>
           
          		<c:otherwise>
           
-         			<td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">질문</span></div><a href="boardDetail?boardNo=${board.boardNo}" class="titleA">${board.boardTitle}</a></div></td>
+         			<td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">질문</span></div><a href="boardDetail?boardNo=${board.boardNo}&loginUserNo=${sessionScope.loginUser.userNo}" class="titleA">${board.boardTitle}</a></div></td>
           					
           			
           					
