@@ -259,6 +259,9 @@ table {
     margin: 0;
     box-sizing: border-box;
     height: 30px; 
+    width: 75px;
+    text-align: center;
+    justify-content: center;
 }
 
 
