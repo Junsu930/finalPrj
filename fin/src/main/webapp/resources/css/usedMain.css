@@ -372,8 +372,10 @@ body.swal2-shown{
     align-items: center;
     margin-right: 80px;
     display: none;
+    background : white;
     
 }
+
 
 .writeBtnDiv{
     width: 100%;

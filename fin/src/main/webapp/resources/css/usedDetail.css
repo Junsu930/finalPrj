@@ -21,6 +21,9 @@ body.swal2-shown{
 	overflow: revert !important;
 }
 
+
+
+
 .topBox{
 	margin-top: 200px;
 	display: flex;
@@ -93,6 +96,16 @@ body.swal2-shown{
   object-fit: cover;
   border-radius: 10px;
  
+}
+
+.darkmode .swiper-slide{
+	background: black;
+	transition : 0.5s all;
+}
+
+
+.swiper-slide{
+	transition : 0.5s all;
 }
 
 .left{
