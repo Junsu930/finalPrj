@@ -12,17 +12,22 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Servlet Filter implementation class MainFilter
  */
 
 @WebFilter(filterName = "mainFilter", urlPatterns="/*")
 public class MainFilter extends HttpFilter implements Filter {
+	
+	private Logger logger = LoggerFactory.getLogger(MainFilter.class);
 
-	 @Override
-		public void init() throws ServletException {
-			System.out.println("필터 실행");
-		}
+	@Override
+	public void init() throws ServletException {
+		logger.info("필터 실행");
+	}	
 	 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 

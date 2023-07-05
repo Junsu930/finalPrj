@@ -13,6 +13,10 @@
 	
 }
 
+.darkmode .containerForBandBoardDetail{
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ 	background-blend-mode: multiply,multiply;
+}
 
 .realContentForBandBoard{
 	
@@ -360,4 +364,26 @@
     100%{
         stroke-dashoffset: 56.6;
     }
+}
+
+@media (max-width:46.875rem){
+	
+
+
+	.editAndDeleteBtnDiv{
+		top :35px;
+	}
+	
+	.realContentForBandBoard > div:nth-of-type(4) {
+		margin-left: 0;
+	}
+	
+	#backButtonForBandBoard{
+		width: 100px;
+	}
+	
+	#replyForBandBoardBtn{
+		width: 70px;
+	}
+		
 }

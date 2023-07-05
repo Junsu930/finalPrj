@@ -116,9 +116,7 @@ public class UsedController {
 			
 			map.put("userNo", loginUser.getUserNo());
 			
-			System.out.println(map);
-			System.out.println(map.get("xImages"));
-			
+
 			String status = (String)map.get("status");
 			if(status.equals("used")) {
 				map.put("status", "중고");
@@ -152,8 +150,7 @@ public class UsedController {
 					return "redirect:/usedDetail?usedBoard=" + map.get("hiddenUpdateVal");
 				}
 			}else{
-				
-				System.out.println("사지만 삭제한 경우 " + map);
+
 				int updateResult = service.updateUsedForm(map);
 				
 				

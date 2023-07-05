@@ -161,6 +161,11 @@
 	align-items: center;
 }
 
+.darkmode .bandInfoDiv{
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ 	background-blend-mode: multiply,multiply;
+}
+
 /* 각각의 멤버 리스트*/
 .bandInfoDiv > div{
 	margin-top: 20px;
@@ -185,6 +190,11 @@
 	cursor: pointer;
 }
 
+.darkmode .bandTitleDiv{
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ 	background-blend-mode: multiply,multiply;
+}
+
 
 .memList{
 	margin-left: 4px;
@@ -207,6 +217,11 @@
 	display: flex;
 	flex-direction: column;
 	padding-top: 20px;
+}
+
+.darkmode .realBoardDiv{
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ 	background-blend-mode: multiply,multiply;
 }
 
 .replyCountForBandBoard{
@@ -394,4 +409,27 @@ body.darkmode .loaderPath{
     50% {
         transform: translate3d(0, 5px, 0);
     }
+}
+
+
+@media (max-width:46.875rem){
+	
+	.leftSideBandMemberDiv{
+		display: none;
+	}
+	.rightSideBandBoardDiv{
+	
+		flex-basis: 100%;
+	}
+	
+	.eachBoardDiv > div:last-of-type > div:nth-of-type(2){
+		flex-basis: 45%;
+	}
+		
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:767px) {
+
+	
 }
