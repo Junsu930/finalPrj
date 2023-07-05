@@ -69,32 +69,11 @@
     </div>
     
     
-    <div class="totalTitle">전체 게시판</div>
+   
     
     <div class="naviBar">
       <ul>
  
-        <li>
-         <label class="test_obj">
-        	<input type="radio" class="tagAll" name="boardTag" value="0" >
-        		<span>전체</span>
-    	 </label>
-    	</li>
-
-       	<li>
-         
-         <label class="test_obj">
-            <input type="radio" class="tagTalk" name="boardTag" value="1">
-            	<span>잡담</span>
-          </label>
-       
-        </li>
-       <li>
-    	<label class="test_obj">
-        <input type="radio" class="tagQus" name="boardTag" value="2">
-      	<span>질문</span>
-  		</label>
-       </li>
        
         <c:if test="${!empty loginUser}">
        <!-- /comm/board/write/3?mode=insert&cp=1 -->

@@ -8,7 +8,10 @@
     
 }
 
-
+body.darkmode .reply-btn-area > button {
+    outline: none;
+    color: var(--stroke-color);
+}
 
 
 /* 댓글 목록(ul) */
@@ -64,7 +67,10 @@
     border: 0;
     border-radius: 3px;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
 }
+
 
 /* 버튼 hover */
 .reply-btn-area > button:hover{
@@ -87,6 +93,7 @@
    
     margin-right: 10px;
     resize: none;
+    padding: 10px;
 }
 
 /* 댓글 등록 버튼 */
@@ -100,6 +107,7 @@ flex-basis: 8%;
     height: 87px;
     font-size: 15px;
     border-radius: 5px;
+    min-width: 30px;
 }
 /* 
 #addReply:hover{
@@ -113,6 +121,7 @@ flex-basis: 8%;
     width: 100%;
     height: 90px;
     resize: none;
+    padding: 5px;
 }
 
 
@@ -130,4 +139,3 @@ flex-basis: 8%;
     resize: none;
     margin-top: 20px;
 }
-

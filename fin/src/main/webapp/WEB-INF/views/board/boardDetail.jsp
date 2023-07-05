@@ -47,15 +47,7 @@
    </head>
    <body>
  <script>
-        // 댓글 관련 JS 코드에 필요한 값을 전역 변수로 선언
-
-        // jsp 파일 : html, css, js, el, jstl 사용 가능
-        // js  파일 : js
-
-        // 코드 해석 순서  :   EL == JSTL > HTML > JS
-
-        // ** JS 코드에서 EL/JSTL을 작성하게 된다면 반드시 ""를 양쪽에 추가 **
-
+       
         // 최상위 주소
         const contextPath = "${contextPath}";
         
@@ -67,7 +59,27 @@
         // -> 로그인 O  : "10";
         // -> 로그인 X  : "";  (빈문자열)
 
-        
+ const updateBtn= () => {
+	
+	  
+	location.href = "update?boardNo=" + boardNo ;
+}
+
+	
+	
+
+const deleteBtn= () => {
+	
+	   if (!confirm("정말 삭제하시겠습니까?")) {
+		   location.href = contextPath + "/boardDetail?boardNo=" + boardNo;
+		   
+	    } else {
+	    	location.href = "delete?boardNo=" + boardNo ;
+	   
+	    }
+	
+	
+	}  
     </script>
 <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
 
@@ -145,7 +157,7 @@
         <div class="commentBoxBox">
       <div class="commentBox">
         <i class="fa-regular fa-comments"></i>
-        <span class="comment">11<span class="comment_s">개</span></span>
+        <span class="comment">댓글<span class="comment_s"></span></span>
     </div>
     <div class="commentBox2" onclick="commentBox2()">
     <c:choose>
@@ -191,7 +203,7 @@
     	 <span id='like_Check' style='margin-left: 3px;'>${BoardDetail.boardLike}</span>
     	 <span style='margin-left: 3px;'>like</span>
     </div>
-        <button  class="report">신고</button>
+      
     </div>
     <div class="divider"></div>
 
@@ -202,36 +214,6 @@
 <jsp:include page="/WEB-INF/views/board/boardMain.jsp"/> 
 
    
-
-
-
-<script>
-const boardNo = '${BoardDetail.boardNo}';
-
-const updateBtn= () => {
-	
-	  
-	location.href = "update?boardNo=" + boardNo ;
-}
-
-	
-	
-
-const deleteBtn= () => {
-	
-	   if (!confirm("정말 삭제하시겠습니까?")) {
-		   location.href = "/board";
-		   
-	    } else {
-	    	location.href = "delete?boardNo=" + boardNo ;
-	   
-	    }
-	
-	
-	}
-	
-	
-</script>
 <script src = "${contextPath}/resources/js/boardDetail.js"></script>
     <script src="${contextPath}/resources/js/reply.js"></script>
 

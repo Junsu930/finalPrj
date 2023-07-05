@@ -67,6 +67,7 @@ FROM (
         FROM BOARD 
         JOIN "USER" USING(USER_NO)
         WHERE 1=1
+		AND BOARD_ST = 'N'
     ]]>
     <if test="searchType =='all'">
         AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
@@ -228,8 +229,9 @@ AND BOARD_TAG = 2</if>
 	
 	<delete id="delete" parameterType="detail">
 	
-		DELETE FROM BOARD 
-		WHERE BOARD_NO = #{boardNo}
+		UPDATE BOARD SET
+	BOARD_ST='Y'
+WHERE BOARD_NO = #{boardNo}
 	
 	</delete>
 	

@@ -41,8 +41,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void updateReadCount(int boardNo) {
-		dao.updateReadCount(boardNo);
+	public int updateReadCount(int boardNo) {
+		return dao.updateReadCount(boardNo);
 		
 	}
 

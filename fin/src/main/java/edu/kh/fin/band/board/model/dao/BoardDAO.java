@@ -43,9 +43,9 @@ public class BoardDAO {
 		return sqlSession.selectOne("boardMapper.boardDetail",boardNo);
 	}
 
-	public void updateReadCount(int boardNo) {
+	public int updateReadCount(int boardNo) {
 		// TODO Auto-generated method stub
-		sqlSession.update("boardMapper.updateReadCount",boardNo);
+		return sqlSession.update("boardMapper.updateReadCount",boardNo);
 	}
 	
 	
