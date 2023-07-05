@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/checkPw.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/3e3bbde124.js" crossorigin="anonymous"></script>
 
@@ -50,13 +51,14 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
     <script>
-      const msg = "${msg}";
-      if (msg.trim() !== "") {
-        alert(msg);
-      } 
-        // 왜 자꾸 로그인 창을 들어가도 공백 alert가 뜰까 
-        // -> 해결 -> != null로 조건을 주지 말고, 문자열로 체크를 해서 주면 발생하지않음.
-        // 빈 문자열인 경우에는 alert를 발생시키지 않음
+    const msg = "${msg}";
+    if (msg.trim() !== "") {
+      Swal.fire({
+        icon: "warning",
+        text: msg,
+        title: "BandArchive"
+      });
+    } 
     </script>
 
 

@@ -205,7 +205,7 @@
     	BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
     	FROM BOARD 
     	JOIN "USER" USING(USER_NO)) A
-		WHERE USER_NO = ${userNo}
+		WHERE USER_NO = ${userNo} AND BOARD_ST = 'Y'
 		]]>
 	</select>
 	

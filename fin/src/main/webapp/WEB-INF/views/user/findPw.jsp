@@ -10,6 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 	<script src="https://kit.fontawesome.com/44f3dd3f25.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 	<link rel="stylesheet" href="${contextPath}/resources/css/findPw.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
@@ -94,10 +95,14 @@
         </section>
 
             <script>
-                const msg = "${msg}";
-                if (msg.trim() !== "") {
-                  alert(msg);
-                } 
+            const msg = "${msg}";
+            if (msg.trim() !== "") {
+              Swal.fire({
+                icon: "warning",
+                text: msg,
+                title: "BandArchive"
+              });
+            } 
 
    
 
