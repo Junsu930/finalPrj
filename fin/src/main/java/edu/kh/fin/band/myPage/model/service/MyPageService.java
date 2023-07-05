@@ -122,18 +122,38 @@ public interface MyPageService {
 	 */
 	List<Reply> ReplyList(int userNo);
 
+	/** 밴드 해체
+	 * @param bandNo
+	 * @return
+	 */
 	int dissmiss2(int bandNo);
 
 
+	/** 밴드 유무 체크
+	 * @param paramMap
+	 * @return
+	 */
 	int checkBand(Map<String, Object> paramMap);
 
 
 
+	/** 밴드 번호 가져오기
+	 * @param userNo
+	 * @return
+	 */
 	int getbandNo(int userNo);
 	
 
+	/** 밴드 멤버 정보만 가져오기
+	 * @param bandNo
+	 * @return
+	 */
 	List<Band> BandUserList(int bandNo);
 
+	/** 새 세션 저장
+	 * @param paramMap
+	 * @return
+	 */
 	User NewloginUser(Map<String, Object> paramMap);
 
 

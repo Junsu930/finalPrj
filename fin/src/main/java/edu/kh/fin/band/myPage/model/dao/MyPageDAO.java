@@ -56,9 +56,6 @@ public class MyPageDAO {
 	 */
 	public int updatePosition(Map<String, Object> paramMap) {
 		
-		System.out.println("포지션 변경 DAO 악기" +paramMap.get("inst"));
-		System.out.println(paramMap.get("genre"));
-		System.out.println(paramMap.get("region"));
 		
 		return sqlSession.update("myPageMapper.updatePosition", paramMap);
 	}
@@ -143,7 +140,6 @@ public class MyPageDAO {
 	 */
 	public int makeBandUser(Map<String, Object> paramMap) {
 		
-		System.out.println("유저넣기 DAO" +paramMap);
 		
 		return sqlSession.update("myPageMapper.makeBandUser", paramMap);
 	}
@@ -201,32 +197,57 @@ public class MyPageDAO {
 		return sqlSession.selectList("myPageMapper.replyList", userNo);
 	}
 
+	/**  밴드 해체
+	 * @param bandNo
+	 * @return
+	 */
 	public int dismiss2(int bandNo) {
 		
 		return sqlSession.update("myPageMapper.dismiss2", bandNo);
 	}
 
 	
+	/** 밴드 유무 체크
+	 * @param paramMap
+	 * @return
+	 */
 	public int checkBand(Map<String, Object> paramMap) {
 		
 		return sqlSession.selectOne("myPageMapper.checkBand", paramMap);
 	}
 	
+	/** 밴드 정보
+	 * @param paramMap
+	 * @return
+	 */
 	public int bandInfo(Map<String, Object> paramMap) {
 	
 		return sqlSession.update("myPageMapper.bandInfo", paramMap);
 	}
 
+	/** 밴드 번호 가져오기
+	 * @param userNo
+	 * @return
+	 */
 	public String getBandNo(int userNo) {
 		
 		return sqlSession.selectOne("myPageMapper.getBandNo", userNo);
 	}
 
+	/** 밴드 멤버만 조회
+	 * @param bandNo
+	 * @return
+	 */
 	public List<Band> BandUserList(int bandNo) {
 		
 		return sqlSession.selectList("myPageMapper.BandUserList", bandNo);
 	}
-
+ 
+	
+	/** 세션에 새로 저장
+	 * @param paramMap
+	 * @return
+	 */
 	public User NewloginUser(Map<String, Object> paramMap) {
 		
 		return sqlSession.selectOne("myPageMapper.newloginUser", paramMap);

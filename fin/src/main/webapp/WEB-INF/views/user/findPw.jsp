@@ -55,7 +55,8 @@
                     </div>
 
                     <div class="inputBox">  <!--input-box-->
-                        <span class="icon">                           
+                        <span class="icon">    
+                        	<ion-icon name="key-outline" id="sendEm"></ion-icon>                       
                         </span>
                         <input type="text" id="checkEmail" name="certification" required>
                         <label>CERTIFICATION NUMBER&nbsp;&nbsp;<span class="signUp-message" id="emailCheckMessage"></span></label>
@@ -71,7 +72,7 @@
 
                     <div class="inputBox">  <!--input-box-->
                         <span class="icon">
-            
+            				<ion-icon name="checkmark-outline"></ion-icon>           				
                         </span>
                         <input type="password" id="chpassword" name="userPw2" required>
                         <label>CHECK PASSWORD&nbsp;&nbsp;<span class="signUp-message" id="pwMessage2"></span></label>

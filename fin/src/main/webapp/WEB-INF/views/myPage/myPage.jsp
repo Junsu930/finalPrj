@@ -130,7 +130,14 @@
             <div class="firstSecWrapper">
                 <div class="myPageFirstBox">
                     <ul>
-                        <li class="js-static-modal-toggleInfo"><i class="bi bi-person-bounding-box"></i></li>
+                    	<c:choose>
+                        	<c:when test="${loginUser.userType eq 'NORMAL'}"> 
+                        		<li class="js-static-modal-toggleInfo" id="toggleInfo"><i class="bi bi-person-bounding-box"></i></li>                    		
+                        	</c:when>
+                        	<c:otherwise>                       		
+                        	</c:otherwise>
+                        </c:choose>
+                                          
                         <c:choose>
                         	<c:when test="${empty bandMem}">                       		
                         	</c:when>
@@ -155,7 +162,14 @@
 
                 <div class="myPageSecBox">
                     <ul>
-                        <li class="js-static-modal-toggleInfoP"><p>회원 정보 수정</p></li>  
+                    	<c:choose>
+                        	<c:when test="${loginUser.userType eq 'NORMAL'}"> 
+                        		<li class="js-static-modal-toggleInfoP" id="toggleInfoP"><p>회원 정보 수정</p></li>                      		
+                        	</c:when>
+                        	<c:otherwise>                       		
+                        	</c:otherwise>
+                        </c:choose>  
+                            
                         <c:choose>
                         	<c:when test="${empty bandMem}">                       		
                         	</c:when>
@@ -522,7 +536,7 @@
                     <div class="modalImgBox">
                         <c:choose>
                         	<c:when test ="${empty loginUser.profileImg}">
-                        		<img src="${contextPath}/resources/images/guitarduck.png" class="propImg">
+                        		<img src="${contextPath}/resources/images/guitarduck.png" class="propImg" id="profileimage2">
                         	</c:when>
                         	
                         	<c:when test ="${loginUser.userType eq 'NAVER' }">
@@ -534,7 +548,7 @@
                         	</c:when>
                         	
                         	<c:otherwise>
-                        		<img src="${contextPath}${loginUser.profileImg}" id="profile-image" class="propImg">
+                        		<img src="${contextPath}${loginUser.profileImg}" id="profileimage2" class="propImg">
                         	</c:otherwise>
                         
                 		</c:choose>
