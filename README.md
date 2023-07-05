@@ -25,6 +25,8 @@
 <h4>김민성</h4>
 <img src="https://github.com/Junsu930/finalPrj/assets/119837015/9386a360-2fb3-4eb2-b838-39a4c1744a19" width="100" height="100">
  <pre>
+  ppt 작성 및 footer 모달창 역할을 맡았습니다. 
+  밴드 아카이브 많은 관심 부탁드립니다. 감사합니다. 
 </pre>
 
 <h4>김준수</h4>
