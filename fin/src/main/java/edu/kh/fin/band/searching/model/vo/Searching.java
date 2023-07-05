@@ -13,6 +13,7 @@ public class Searching {
 	
 	
 	private int userNo;
+	private String userImage;
 	private int matchingNo;
 	private int career;
 	private String userName;

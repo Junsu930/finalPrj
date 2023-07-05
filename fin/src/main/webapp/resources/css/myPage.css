@@ -49,7 +49,6 @@
     width: 100px;
     height: 95px;
     border-radius: 50%;
-    border: 1px solid var(--stroke-color);
 
     margin-bottom: 5em;
 }

@@ -50,11 +50,11 @@ public class SearchingController {
 		
 		if(session.getAttribute("loginUser") != null) { // 로그인이 되어있는 경우
 			
-			System.out.println("로그인이 되어있음" +loginUser.getUserNo());
+			
 			
 			int result = service.checkInfo(loginUser.getUserNo());
 			
-			System.out.println(result);
+			
 			
 			
 			if(result > 0) {// 작성이 되어있는 경우
@@ -90,7 +90,7 @@ public class SearchingController {
 	@GetMapping("/findingLoder")
 	public String findingLoderController() {
 		
-		System.out.println("잠깐 거쳐가기");
+	
 		
 		return "finding/findingLoder";
 	}
@@ -128,7 +128,7 @@ public class SearchingController {
 		
 		
 		
-		System.out.println(searching.toString() + "Controller");
+		
 		
 		
 		
@@ -136,7 +136,7 @@ public class SearchingController {
 		List<Searching> memberList = service.checkSelect(searching);
 		
 	
-		System.out.println(memberList + "test Controller");
+//		System.out.println(memberList + "test Controller");
 		
 		model.addAttribute("memberList", memberList);
 		

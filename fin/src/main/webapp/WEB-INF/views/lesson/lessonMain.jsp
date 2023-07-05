@@ -57,7 +57,10 @@
 	<section class="filterSec">
 		<a href="lessonWriting" class="lessonA"><i class="bi bi-pencil-square"></i></a>
 	    <div>
-	        <button class="labelLesson lessonList" onclick="selctLesson()" id="lessonBtn"><span id="lessonBtnTitle">LESSON</span><i class="bi bi-caret-down" id="bi"></i></button>
+	        <button class="labelLesson lessonList" onclick="selctLesson()" id="lessonBtn">
+				<span id="lessonBtnTitle">LESSON</span>
+				<i class="bi bi-caret-down" id="bi"></i>
+			</button>
 	        <ul class="listBox" id="lessonId">
 				<li class="list">GUITAR</li>
 	            <li class="list">BASS</li>
@@ -72,7 +75,10 @@
 	
 		
 	    <div>
-			<button class="labelLocation locationListBtn" onclick="selectLocation()" id="locBtn"><span id="locBtnTitle">LOC</span><i class="bi bi-caret-down" id="bi2"></i></button>
+			<button class="labelLocation locationListBtn" onclick="selectLocation()" id="locBtn">
+				<span id="locBtnTitle">LOC</span>
+				<i class="bi bi-caret-down" id="bi2"></i>
+			</button>
 			<ul class="listBox locationListBox" id="locId">
 				<li class="list locationList">서울</li>
 				<li class="list locationList">대전</li>

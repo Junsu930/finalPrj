@@ -289,8 +289,8 @@ function filterFunc(){
 
     let lessonBtnTitleText = document.getElementById('lessonBtnTitle').innerText // 레슨 필터 innerText
     let locBtnTitleText = document.getElementById('locBtnTitle').innerText
-    console.log(lessonBtnTitleText);
-    console.log(locBtnTitleText);
+    console.log(lessonBtnTitleText + "#### 변경 감지!!!");
+    console.log(locBtnTitleText + "#### 변경 감지@@@");
 
     $.ajax({
         url : "filterLesson",
@@ -462,25 +462,28 @@ function filterFunc(){
 // 대상 span 요소를 가져오기
 let targetSpan = document.getElementById("lessonBtnTitle");
 let targetSpan2 = document.getElementById('locBtnTitle');
-// MutationObserver 생성자를 사용하여 새로운 변화를 감지
-let spanObserver = new MutationObserver(function(mutations) {
-  // 변화가 감지되면 실행되는 콜백 함수
-  mutations.forEach(function(mutation) {
-    // span 요소의 innerText가 변경
-    console.log("새로운 값:", mutation.target.innerText);
-    // span이 변경됐으니, 해당 함수 실행
-    filterFunc();
-  });
-});
 
-let spanObserver2 = new MutationObserver(function(mutations) {
+let spanObserver = new MutationObserver(filterFunc);
+let spanObserver2 = new MutationObserver(filterFunc);
+// MutationObserver 생성자를 사용하여 새로운 변화를 감지
+// let spanObserver = new MutationObserver(function(mutations) {
+//   // 변화가 감지되면 실행되는 콜백 함수
+//   mutations.forEach(function(mutation) {
+//     // span 요소의 innerText가 변경
+//     console.log("새로운 값:", mutation.target.innerText);
+//     // span이 변경됐으니, 해당 함수 실행
+    
+//   });
+// });
+
+// let spanObserver2 = new MutationObserver(function(mutations) {
    
-    mutations.forEach(function(mutation) {
+//     mutations.forEach(function(mutation) {
       
-      console.log("새로운 값:", mutation.target.innerText);
-      filterFunc();
-    });
-});
+//       console.log("새로운 값:", mutation.target.innerText);
+//       filterFunc();
+//     });
+// });
 
 // MutationObserver를 설정하여 span 요소의 텍스트 변경을 감지
 // MutationObserver는 단일요소만 관측 가능
