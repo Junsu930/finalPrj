@@ -572,7 +572,10 @@
                             <label>NICKNAME</label>
                         </div>
                         
-                        <div class="input-box">                          
+                        <div class="input-box"> 
+                        	<span class="icon">
+                        		<ion-icon name="reader-outline"></ion-icon>
+                        	</span>                         
                             <input type="text" required id="userIntro" name="newIntro">
                             <label>INTRO</label>
                         </div>
