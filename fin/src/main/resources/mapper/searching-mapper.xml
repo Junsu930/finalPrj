@@ -7,6 +7,7 @@
 	<resultMap type="searching" id="searching_rm">
 		<id property="matchingNo" column="MATCHING_NO"/>
 		<result property="userNo" column="USER_NO" />
+		<result property="userImage" column="IMAGE" />
 		<result property="career" column="YEARS_OF_EXP" />
 		<result property="inst" column="INST" />
 		<result property="genre" column="GENRE" />
@@ -32,7 +33,7 @@
   </resultMap>
 	
 	<select id="memberList" parameterType="searching" resultMap="searching_rm">
-	  	SELECT USER_NO, USER_NICK, INST, GENRE, REGION, GENDER
+	  	SELECT USER_NO, USER_NICK, INST, GENRE, REGION, GENDER, IMAGE
 		FROM MATCHING_INFO
 		JOIN "USER" USING(USER_NO)
 		WHERE

@@ -58,9 +58,16 @@
 
 					<div class="wrapper">
 			            <div class="userNameBox">
-			                <div class="userImgBox">
-								<img src="${contextPath}/resources/images/profileImage/user.png" alt="#">
-							</div>
+			                <c:if test="${empty member.userImage}">
+								<div class="userImgBox">
+									<img src="${contextPath}/resources/images/guitarduck.png" alt="#">
+								</div>
+							</c:if>
+							<c:if test="${!empty member.userImage}">
+								<div class="userImgBox">
+									<img src="${contextPath}${member.userImage}" alt="#">
+								</div>
+							</c:if>
 			                <p>${member.userName}</p>
 			            </div>
 			            
