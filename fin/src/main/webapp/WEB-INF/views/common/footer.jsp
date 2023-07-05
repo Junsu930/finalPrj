@@ -46,7 +46,7 @@
 
                 <div class="secondDiv">
                     <ul class="secondUl">
-                        <li><a href="" class="footerA">공지사항</a></li>
+                        <li><a href="#" class="footer1-modal-toggle">공지사항</a></li>
                         <li><a href="#" class="footer2-modal-toggle">이용약관</a></li>
                         <li><a href="#" class="footer3-modal-toggle">개인정보처리방침</a></li>
                     </ul>
@@ -70,6 +70,68 @@
 	            </div>
 	        </section>
 	        
+	    <!-- 공지사항 -->
+	       <div id="footer1-modal" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+              <h1>공지 사항</h1>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+             </div>
+              <div class="modal-body">
+               <div class="contents">
+		        <form action="/" method="POST" id="form__wrap">
+			          <ul class="terms__list">
+			            <li class="terms__box">
+			              <div class="input__check">
+			                <p for="termsOfService" class="required">밴드 아카이브 점검 안내(07/10)</p>
+			              </div>
+			              <div class="terms__content">
+			                안녕하세요, 밴드아카이브입니다.
+			                서버 점검으로 인해 아래의 시간 동안 서비스가 일시중지 됩니다.
+			                서버 점검시간 : 2023년07월10일(목)00:00 ~ 06:00
+			                긴급 요청은 @BandArchive.kr로 부탁드립니다.
+			                이용에 불편을 드려 죄송합니다. 더욱 신뢰받는 서비스로 보답하겠습니다.
+			                감사합니다.
+			              </div>
+			            </li>
+			            <li class="terms__box">
+			              <div class="input__check">
+			                 <p for="privacyPolicy" class="required">밴드아카이브의 탄생</p>
+			              </div>
+			              <div class="terms__content">
+							밴드 아키이브 관심을 가져주셔서 감사합니다.
+							더 좋은 서비스와 고객여러분의 폭넓은 니즈를 실현해 드리도록 도와드리겠습니다.
+							밴드를 함께할수있는 예약, 게시판, 대화 등을 관리하고 있습니다.
+							감사합니다.
+			              </div>
+			            </li>
+			            <li class="terms__box">
+			              <div class="input__check">
+			                <p for="allowPromotions"  class="required">밴드 매칭 규정</p>
+			              </div>
+			              <div class="terms__content">
+			                밴드 아카이브를 찾아주신 여러분께 감사 인사드립니다.
+			                다름이 아니라 밴드 아카이브에 지켜야할 예절이 있습니다.<br>
+			                첫 번째 다름 사람에게 욕설 및 질타 금지합니다.<br>
+			                두 번째 악기를 다루지 못하더라도 머라고 하지 않으며, 칭찬을 해주시기 바랍니다.<br>
+			                세 번째 다같이 배우면서 실력을 키우는 입장이므로 불평 불만을 하시면 안됩니다.<br>
+			                네 번째 밴드 예약을 했을시 정해진 시간이 있으므로 불가피한 사정이 아니면 취소가 불가능합니다.<br>
+			                다섯번째 서로서로 정해진 약속 시간에 맞춰서 나오주시길 바랍니다.<br>
+			              </div>
+			            </li>
+			          </ul>
+			         <div class="modal-footer">
+			           <button type="button" class="btn btn-primary" data-dismiss="modal" id="agreebtn">Check</button>
+			         </div>
+			        </form>
+			      </div>
+			   </div>
+              </div>
+           </div><!-- /.modal-content -->
+         </div><!-- /.modal-dialog -->    
+         
+         
 	    <!-- 이용약관 -->
 	    <div id="footer2-modal" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
           <div class="modal-dialog">
