@@ -285,7 +285,7 @@
                     			<c:forEach var="rList" items="${rList}" end="20">
                     				<tr>
                                 		<td>
-                                    		<a href="#"><p class="replyContent">${rList.replyContent}</p></a>
+                                    		<a href="boardDetail?boardNo=${rList.boardNo}"><p class="replyContent">${rList.replyContent}</p></a>
                                 		</td>
                                 		<td>
                                     		<p>${rList.createDate}</p>
