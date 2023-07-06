@@ -41,6 +41,7 @@
 	    <p class="sendBtnForBandBoardP"><button type="submit" id="sendBtnForBandBoard">글쓰기</button></p>
 	</c:if>
 	<c:if test="${updateFlag eq 'U' }">
+		<input type="hidden" value="${likeCheckForU}" name="likeCheckForU">
 	    <p class="sendBtnForBandBoardP"><button type="submit" id="sendBtnForBandBoard">수정</button></p>
 	</c:if>
     </form>

@@ -396,7 +396,7 @@ public class MyBandController {
 	
 	
 	@PostMapping("/updateBandBoardDetail")
-	public String updateBandBoardDetail(@RequestParam("boardNoForUpdateBoardDetail") int boardNo, Model model) {
+	public String updateBandBoardDetail(@RequestParam("boardNoForUpdateBoardDetail") int boardNo, Model model,  @RequestParam(value="likeCheckForU", required = false) String likeCheckForU) {
 		
 		MyBand detail = service.bandBoardDetail(boardNo);
 		
@@ -405,6 +405,7 @@ public class MyBandController {
 		
 		model.addAttribute("updateDetail", detail);
 		model.addAttribute("boardNo", boardNo);
+		model.addAttribute("likeCheckForU", likeCheckForU);
 		
 		return "myBand/myBandWrite";
 		
