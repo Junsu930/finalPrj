@@ -256,7 +256,7 @@ public class MyBandController {
 			model.addAttribute("likeCheck", "F");
 			// 로그인 안했으면 당연히 F다
 		}
-		
+
 		
 		MyBand board = service.bandBoardDetail(boardNo);
 
@@ -294,7 +294,7 @@ public class MyBandController {
 	 */
 	@PostMapping("/writeBandBoard")
 	public String writeBandBoard(Model model,@RequestParam("titleInputForBandBoard")String title ,@RequestParam("text") String text, @RequestParam(value="hiddenBandNo", required = false, defaultValue = "0") int bandNo, HttpServletRequest req, RedirectAttributes ra, @RequestParam("updateFlag") String updateFlag,
-			@RequestParam("hiddenBoardNoForUpdateLogic") String boardNo , @RequestParam(value="noticeBoardCheck", required = false) boolean noticeBoardCheck) {
+			@RequestParam("hiddenBoardNoForUpdateLogic") String boardNo , @RequestParam(value="noticeBoardCheck", required = false) boolean noticeBoardCheck, @RequestParam(value="likeCheckForU", required = false) String likeCheckForU) {
 		
 		if(updateFlag.equals("U")) {
 			
@@ -316,6 +316,7 @@ public class MyBandController {
 
 			model.addAttribute("boardDetail", board);
 			model.addAttribute("memberFl", "T");
+			model.addAttribute("likeCheck", likeCheckForU);
 			
 			return "myBand/myBandBoardDetail";
 			

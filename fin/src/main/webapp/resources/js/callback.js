@@ -1,5 +1,5 @@
 /****************** 네이버 로그인 *******************/
-var naver_id_login = new naver_id_login("cE2qHHhSMkJYsQGPIKaz", "http://127.0.0.1:8080/fin/callback");
+var naver_id_login = new naver_id_login("cE2qHHhSMkJYsQGPIKaz", "http://bandarchive.kro.kr/fin/callback");
 // 접근 토큰 값 출력
 
 naver_id_login.get_naver_userprofile("naverSignInCallback()");
