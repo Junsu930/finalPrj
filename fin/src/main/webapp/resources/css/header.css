@@ -485,7 +485,7 @@ body.darkmode .wrapperUl .date h3 span{
 }
 
 .wrapperUl li a p {
-    font-size: 1em;
+    font-size: .9em;
 }
 
 
@@ -606,7 +606,7 @@ body.darkmode .messageUlBox .messageDate h3 span{
 }
 
 .messageUlBox li a p {
-    font-size: 1em;
+    font-size: .9em;
 }
 
 
