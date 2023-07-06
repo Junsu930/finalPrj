@@ -345,7 +345,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 2em 2em;
+    padding: 1em;
     justify-content: center;
     text-align: center;
 }
@@ -356,7 +356,7 @@
 }
 
 .modalBoardTable td{
-    padding: 1.5em 1.5em;
+    padding: 1em;
 }
 
 
