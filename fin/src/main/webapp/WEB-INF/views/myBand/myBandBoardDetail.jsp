@@ -45,6 +45,7 @@
 					<div class="editAndDeleteBtnDiv">
 						<form action="${contextPath}/updateBandBoardDetail" method="post">
 							<input type="hidden" name="boardNoForUpdateBoardDetail" value="${boardDetail.boardNo}">
+							<input type="hidden" value="${likeCheck}" name="likeCheckForU" id="likeCheckForU">
 							<button>수정</button>
 						</form>
 						<form action="${contextPath}/deleteBandBoardDetail" method="post" id="deleteBandBoardDetail">

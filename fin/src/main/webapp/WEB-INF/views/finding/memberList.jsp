@@ -79,6 +79,7 @@
 			                </ul>
 			            </div>
 
+
 						
 
 			            <div class="userChatProfieBox">
@@ -92,13 +93,15 @@
         			</div>
 
 				</c:forEach>
+				
 			</c:when>
-
+				
 			<c:otherwise>
 
 				<div class=notFoundBox>
 					<h1>Not Found!</h1>
 				</div>
+				
 			</c:otherwise>
 		</c:choose>
 		
@@ -133,7 +136,9 @@
 		
 		
 		
-		
+		<div class="backBox">
+			<button id="backBtn" type="button" onclick="location.href='${contextPath}/findingMember'">재검색</button>
+		</div>
 	</section>
 	
 	<jsp:include page="/WEB-INF/views/profile/lookProfile.jsp"/>

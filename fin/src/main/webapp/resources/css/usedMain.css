@@ -240,7 +240,7 @@ body.darkmode .fa-magnifying-glass{
 	height : 100%;
 	display : flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 
 .darkmode .usedPath{
@@ -258,7 +258,7 @@ body.darkmode .fa-magnifying-glass{
 .thingBox{	
     width: 300px;
     height: 300px;
-    margin: 2em;
+    margin: 1em;
     border-radius: 10px;
     border: 2px solid var(--silver-color);
     display: flex;

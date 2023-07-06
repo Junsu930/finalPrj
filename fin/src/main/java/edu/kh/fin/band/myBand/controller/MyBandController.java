@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +43,8 @@ public class MyBandController {
 	
 	@Autowired
 	MyBandService service;
+	
+	private Logger logger = LoggerFactory.getLogger(MyBandController.class);
 	
 	/** 밴드 보드 준수
 	 * 
@@ -256,7 +260,7 @@ public class MyBandController {
 			model.addAttribute("likeCheck", "F");
 			// 로그인 안했으면 당연히 F다
 		}
-		
+
 		
 		MyBand board = service.bandBoardDetail(boardNo);
 
@@ -294,10 +298,13 @@ public class MyBandController {
 	 */
 	@PostMapping("/writeBandBoard")
 	public String writeBandBoard(Model model,@RequestParam("titleInputForBandBoard")String title ,@RequestParam("text") String text, @RequestParam(value="hiddenBandNo", required = false, defaultValue = "0") int bandNo, HttpServletRequest req, RedirectAttributes ra, @RequestParam("updateFlag") String updateFlag,
-			@RequestParam("hiddenBoardNoForUpdateLogic") String boardNo , @RequestParam(value="noticeBoardCheck", required = false) boolean noticeBoardCheck) {
+			@RequestParam("hiddenBoardNoForUpdateLogic") String boardNo , @RequestParam(value="noticeBoardCheck", required = false) boolean noticeBoardCheck, @RequestParam(value="likeCheckForU", required = false) String likeCheckForU) {
 		
 		if(updateFlag.equals("U")) {
+
+			logger.info("업데이트 로직");
 			
+			logger.info("라이크 들어오니" + likeCheckForU);
 			
 			int intBoardNo = Integer.parseInt(boardNo);
 
@@ -316,6 +323,7 @@ public class MyBandController {
 
 			model.addAttribute("boardDetail", board);
 			model.addAttribute("memberFl", "T");
+			model.addAttribute("likeCheck", likeCheckForU);
 			
 			return "myBand/myBandBoardDetail";
 			
@@ -388,7 +396,7 @@ public class MyBandController {
 	
 	
 	@PostMapping("/updateBandBoardDetail")
-	public String updateBandBoardDetail(@RequestParam("boardNoForUpdateBoardDetail") int boardNo, Model model) {
+	public String updateBandBoardDetail(@RequestParam("boardNoForUpdateBoardDetail") int boardNo, Model model,  @RequestParam(value="likeCheckForU", required = false) String likeCheckForU) {
 		
 		MyBand detail = service.bandBoardDetail(boardNo);
 		
@@ -397,6 +405,7 @@ public class MyBandController {
 		
 		model.addAttribute("updateDetail", detail);
 		model.addAttribute("boardNo", boardNo);
+		model.addAttribute("likeCheckForU", likeCheckForU);
 		
 		return "myBand/myBandWrite";
 		
