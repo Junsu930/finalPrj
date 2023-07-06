@@ -144,14 +144,14 @@ public class BoardDAO {
 		
 		int result = sqlSession.update("boardMapper.removeLike", map); // 보드 디테일 테이블 좋아요 카운트 -1
 		
-		System.out.println("removeLike <!-- 좋아요 취소 --> " + result);
+		
 		
 		if(result > 0) { // 보드 디테일 테이블 좋아요 카운트 -1, 좋아요 테이블 좋아요 삭제
 			result = sqlSession.delete("boardMapper.removeLikeFromLikeTable", map);
-			System.out.println("removeLike <!-- 좋아요 테이블 좋아요 삭제 --> " + result);
+			
 			if(result >0) {
 				result = sqlSession.delete("alaramMapper.removeLikeFromLikeAlarm", map); // 알람테이블 좋아요 삭제
-				System.out.println("removeLike <!-- 좋아요 알람 삭제 --> " + result);
+				
 				if(result > 0) {
 					result = sqlSession.selectOne("boardMapper.countLike", map); // 삭제 후 좋아요 알람 갯수 가져오기
 					if(result ==0) {

@@ -134,11 +134,11 @@ $(document).ready(() =>{
         dataType: "JSON",
         success: function(data){
 
-            console.log(data);
+            
             
             lessonList = data;
 
-            console.log(lessonList.length);
+            
 
             lessonListLength = lessonList.length;
             let countNum = lessonListLength < 4 ? lessonListLength: 4; // 조건식 ? 참 : 거짓;
@@ -152,10 +152,10 @@ $(document).ready(() =>{
                
             }else{
 
-                console.log("else문");
+                
                 for(let i = 0; i < countNum; i++){
 
-                    console.log("for문 " + i);
+                  
 
                     const input = document.createElement("input");
                     secondSec.append(input);
@@ -214,7 +214,7 @@ $(document).ready(() =>{
                                 }
                                 for (let i = count; i < toCount; i++){
 
-                                    console.log("observer for문 " + i);
+                                   
 
                                     const input = document.createElement("input");
                                     secondSec.append(input);
@@ -289,8 +289,7 @@ function filterFunc(){
 
     let lessonBtnTitleText = document.getElementById('lessonBtnTitle').innerText // 레슨 필터 innerText
     let locBtnTitleText = document.getElementById('locBtnTitle').innerText
-    console.log(lessonBtnTitleText + "#### 변경 감지!!!");
-    console.log(locBtnTitleText + "#### 변경 감지@@@");
+    
 
     $.ajax({
         url : "filterLesson",
@@ -323,7 +322,7 @@ function filterFunc(){
                 
                 for(let i = 0; i < countNum; i++){
     
-                    console.log(" filter for문 " + i);
+                    
     
                     const input = document.createElement("input");
                     secondSec.append(input);
@@ -386,7 +385,7 @@ function filterFunc(){
     
                                     
                                     
-                                    console.log(" filter observer for문 " + i);
+                                    
     
                                     const input = document.createElement("input");
                                     secondSec.append(input);

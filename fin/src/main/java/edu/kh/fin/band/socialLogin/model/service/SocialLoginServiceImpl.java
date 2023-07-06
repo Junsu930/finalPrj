@@ -72,7 +72,7 @@ public class SocialLoginServiceImpl implements SocialLoginService {
               StringBuilder sb = new StringBuilder();
               sb.append("grant_type=authorization_code");
               sb.append("&client_id=de31983424f4bd5faadc8493b90e5626");  //본인이 발급받은 key
-              sb.append("&redirect_uri=http://localhost:8091/fin/kakaoLogin");     // 본인이 설정해 놓은 경로
+              sb.append("&redirect_uri=http://bandarchive.kro.kr/fin/kakaoLogin");     // 본인이 설정해 놓은 경로 http://localhost:8091/fin/kakaoLogin
               sb.append("&code=" + code);
               bw.write(sb.toString());
               bw.flush();

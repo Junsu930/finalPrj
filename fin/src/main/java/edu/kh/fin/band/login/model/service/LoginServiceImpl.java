@@ -40,10 +40,7 @@ public class LoginServiceImpl implements LoginService{
 	//로그인
 	@Override
 	public User login(User inputUser) {
-		
-		System.out.println("컨트롤"+ inputUser);
-	
-		
+			
 		User loginUser = dao.login(inputUser);
 		
 
