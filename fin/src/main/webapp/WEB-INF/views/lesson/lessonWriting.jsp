@@ -30,9 +30,17 @@
  			</label>
  			<input type="file" class="inputImage" id="img1" name="images" accept="image/*">
  		</div>
-
+         <input type="hidden" value="${sessionScope.loginUser.userNo}" name="loginUserNo">
             <!-- input 박스 요소들 -->
             <div class="inputBox">
+
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person"></ion-icon>
+                    </span>
+                    <input id="lessonMottoPlace" name="userMotto" type="text" required maxlength="20">
+                    <label>TITLE</label>
+                </div>
 			
 			<!-- 이름 -->
                 <div class="input-box">
@@ -59,14 +67,7 @@
                     <label>SOCIAL MEDIA</label>
                 </div>
 
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="person"></ion-icon>
-                    </span>
-                    <input id="lessonMottoPlace" name="userMotto" type="text" required maxlength="20">
-                    <label>MOTTO</label>
-                </div>
-
+                
                 <div class="input-box inputBoxText">
                     <span class="icon">
 	                        <ion-icon name="person"></ion-icon>
