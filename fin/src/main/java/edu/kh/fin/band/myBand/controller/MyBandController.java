@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +43,8 @@ public class MyBandController {
 	
 	@Autowired
 	MyBandService service;
+	
+	private Logger logger = LoggerFactory.getLogger(MyBandController.class);
 	
 	/** 밴드 보드 준수
 	 * 
@@ -297,7 +301,10 @@ public class MyBandController {
 			@RequestParam("hiddenBoardNoForUpdateLogic") String boardNo , @RequestParam(value="noticeBoardCheck", required = false) boolean noticeBoardCheck, @RequestParam(value="likeCheckForU", required = false) String likeCheckForU) {
 		
 		if(updateFlag.equals("U")) {
+
+			logger.info("업데이트 로직");
 			
+			logger.info("라이크 들어오니" + likeCheckForU);
 			
 			int intBoardNo = Integer.parseInt(boardNo);
 
