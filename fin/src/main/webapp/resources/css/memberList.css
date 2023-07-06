@@ -126,6 +126,7 @@ body.darkmode .wrapper{
     font-size: 3em;
 	font-weight: 500;
     font-family: var(--navFont-style-);
+    padding-left: 0;
 }
 
 
