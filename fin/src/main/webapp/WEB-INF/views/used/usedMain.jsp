@@ -69,7 +69,7 @@
 				<button type="submit" id="usedWriteBtn">글쓰기</button>
 			</div>
 		</form>
-		<div class="thingBoxWrap"> 
+		<div class="thingBoxWrap">
 			<!--
 			<div class="thingBox" onclick="location.href='${contextPath}/usedDetail'">
 	            <div class="thingPicture">
