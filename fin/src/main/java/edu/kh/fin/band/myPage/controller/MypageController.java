@@ -115,10 +115,6 @@ public class MypageController {
 		updateInfo.setRegion(region);
 		updateInfo.setGender(gender);
 		
-		System.out.println(updateInfo.getGenre());
-		System.out.println(updateInfo.getInst());
-		System.out.println(updateInfo.getRegion());
-
 		paramMap.put("newIntro", Intro);
 		paramMap.put("newPw", newPw);
 		paramMap.put("userPw", loginUser.getUserPw());
@@ -144,9 +140,7 @@ public class MypageController {
 				
 		int position = service.updatePosition(paramMap);
 		
-		int changePw = service.changePw(paramMap);
-		System.out.println("비밀번호 변경" + changePw );
-		
+		int changePw = service.changePw(paramMap);		
 		
 		int insertPosition = 0;
 		
