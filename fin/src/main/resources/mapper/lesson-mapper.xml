@@ -30,7 +30,7 @@
 
 	<select id="lessonList" resultMap="lesson_rm">
 		SELECT 
-		u.USER_NICK,
+		li.USER_NICK,
 		li.MOTTO,
 		li.REGION,
 		li.INST,
@@ -48,7 +48,7 @@
 		
 		SELECT 
 		li.LESSON_NO, 
-		u.USER_NICK,
+		li.USER_NICK,
 		li.MOTTO, 
 		li.REGION, 
 		li.INST,
@@ -100,7 +100,7 @@
 	<select id="lessonListRandom" resultMap="lesson_rm">
 		SELECT * FROM
 		(SELECT 
-		u.USER_NICK, 
+		li.USER_NICK, 
 		li.INST,
 		li.GENRE,
 		li.LESSON_NO,
