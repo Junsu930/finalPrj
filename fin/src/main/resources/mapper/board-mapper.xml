@@ -55,7 +55,6 @@
 <select id="boardList"  parameterType="hashMap" resultMap="detail_rm">
 	
 <![CDATA[
-
 SELECT *
 FROM (
     SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
@@ -67,7 +66,9 @@ FROM (
         FROM BOARD 
         JOIN "USER" USING(USER_NO)
         WHERE 1=1
-		AND BOARD_ST = 'N'
+        AND BOARD_ST = 'N'
+        
+        AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED)
     ]]>
     <if test="searchType =='all'">
         AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
@@ -126,55 +127,114 @@ WHERE RN > (#{pageNum}-1) * #{amount}
      -->
     	
 	<select id="boardTalk" resultMap="detail_rm">
+	
 <![CDATA[
 SELECT *
 FROM (
-    SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
-    BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
     BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
-    FROM BOARD 
-    JOIN "USER" USING(USER_NO)
-) A
-WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
- 
-  AND BOARD_TAG = 1
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+        BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+        FROM BOARD 
+        JOIN "USER" USING(USER_NO)
+        WHERE 1=1
+        AND BOARD_ST = 'N'
+        AND BOARD_TAG = 1
+        AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED)
+    ]]>
+    <if test="searchType =='all'">
+        AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
+    <if test="searchType =='popular'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 1</if>
+    <if test="searchType =='notice'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 2</if>
+<![CDATA[
+    ) A
+    WHERE RN <= #{pageNum} * #{amount}
+) B
+WHERE RN > (#{pageNum}-1) * #{amount}
+
 ]]>
+
     </select>
     
     
     
     
 	<select id="boardQus" resultMap="detail_rm">
+
 <![CDATA[
 SELECT *
 FROM (
-    SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
-    BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
     BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
-    FROM BOARD 
-    JOIN "USER" USING(USER_NO)
-) A
-WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
- AND BOARD_TAG = 2
- 
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+        BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+        FROM BOARD 
+        JOIN "USER" USING(USER_NO)
+        WHERE 1=1
+        AND BOARD_ST = 'N'
+        AND BOARD_TAG = 2
+        AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED)
+    ]]>
+    <if test="searchType =='all'">
+        AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
+    <if test="searchType =='popular'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 1</if>
+    <if test="searchType =='notice'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 2</if>
+<![CDATA[
+    ) A
+    WHERE RN <= #{pageNum} * #{amount}
+) B
+WHERE RN > (#{pageNum}-1) * #{amount}
+
 ]]>
+
     </select>
     
     
     	<select id="boardAll" resultMap="detail_rm">
+
 <![CDATA[
 SELECT *
 FROM (
-    SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
-    BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
     BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
-    FROM BOARD 
-    JOIN "USER" USING(USER_NO)
-) A
-WHERE RN > (#{pageNum}-1) * #{amount} AND RN <= #{pageNum} * #{amount}
- 
- 
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+        BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+        FROM BOARD 
+        JOIN "USER" USING(USER_NO)
+        WHERE 1=1
+        AND BOARD_ST = 'N'
+        AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED)
+    ]]>
+    <if test="searchType =='all'">
+        AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
+    <if test="searchType =='popular'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 1</if>
+    <if test="searchType =='notice'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 2</if>
+<![CDATA[
+    ) A
+    WHERE RN <= #{pageNum} * #{amount}
+) B
+WHERE RN > (#{pageNum}-1) * #{amount}
+
 ]]>
+
     </select>
     
     
@@ -250,7 +310,7 @@ WHERE BOARD_NO = #{boardNo}
         INSERT INTO BOARD_BANNED 
         VALUES (
         SEQ_BANNED_NO.NEXTVAL,#{userNo}, #{bannedUserNo}, #{bannedUserNick})
-    </insert>
+    </insert> 
 	
 	<select id="bannedUserIds" parameterType="boardBanned" resultType="String">
     SELECT BANNED_USER_NO

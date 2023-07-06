@@ -93,7 +93,8 @@
     
       <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
 			CKEDITOR.replace('content',{
-					 height:'350px'
+					 height:'350px',
+					 ,filebrowserUploadUrl : '${contextPath}/fileupload.do'
 			  });
 		</script>
 		
