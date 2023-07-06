@@ -509,7 +509,7 @@ function getUserNicksFromReply(loginUserNo){
       }else{
         for(let i = 0; i < getUserNicksFromReply.length; i++){
           $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${getUserNicksFromReply[i].sendMon}<br><span>${getUserNicksFromReply[i].sendDay}</span></h3></div>
-          <a href="boardDetail?boardNo=${getUserNicksFromReply[i].boardNo}"><p>${getUserNicksFromReply[i].userNick + msg}</p></a></li>
+          <a href="boardDetail?boardNo=${getUserNicksFromReply[i].boardNo}&loginUserNo=${loginUserNo}"><p>${getUserNicksFromReply[i].userNick + msg}</p></a></li>
           <input type="hidden" value=${getUserNicksFromReply[i].boardNo} name="boardNo">`) // 새로운 댓글 있을 때, 코드 수행
         }
       } // if끝
@@ -540,7 +540,7 @@ function getUserNicksFromLike(loginUserNo){
       }else{
         for(let i = 0; i < getUserNicksFromLike.length; i++){
           $('.wrapperUl').append(`<li class="wrapperLi"><div class="date"><h3>${getUserNicksFromLike[i].sendMon}<br><span>${getUserNicksFromLike[i].sendDay}</span></h3></div>
-          <a href="boardDetail?boardNo=${getUserNicksFromLike[i].boardNo}"><p>${getUserNicksFromLike[i].userNick + msg}<br>지금 확인하세요!</p></a></li>
+          <a href="boardDetail?boardNo=${getUserNicksFromLike[i].boardNo}&loginUserNo=${loginUserNo}"><p>${getUserNicksFromLike[i].userNick + msg}<br>지금 확인하세요!</p></a></li>
           <input type="hidden" value=${getUserNicksFromLike[i].boardNo} name="boardNo">`) // 새로운 좋아요 있을 때, 코드 수행
         }
       } // if끝

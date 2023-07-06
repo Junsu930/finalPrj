@@ -42,6 +42,7 @@
         
         <nav class="navBar">
             
+            
           <div class="navDiv">
               <a href="${contextPath}/main" class="navA">Band Archive</a>
           </div>
