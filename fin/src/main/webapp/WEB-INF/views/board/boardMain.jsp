@@ -71,9 +71,32 @@
     
    
     
+ <!--    <div class="totalTitle">전체 게시판</div> -->
+    
     <div class="naviBar">
       <ul>
  
+   <!--      <li>
+         <label class="test_obj">
+        	<input type="radio" class="tagAll" name="boardTag" value="0" >
+        		<span>전체</span>
+    	 </label>
+    	</li>
+
+       	<li>
+         
+         <label class="test_obj">
+            <input type="radio" class="tagTalk" name="boardTag" value="1">
+            	<span>잡담</span>
+          </label>
+       
+        </li>
+       <li>
+    	<label class="test_obj">
+        <input type="radio" class="tagQus" name="boardTag" value="2">
+      	<span>질문</span>
+  		</label>
+       </li> -->
        
         <c:if test="${!empty loginUser}">
        <!-- /comm/board/write/3?mode=insert&cp=1 -->
@@ -84,6 +107,7 @@
        
       </ul>
    </div>
+   
    
 
     <table>
@@ -198,6 +222,9 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+        
+        
+        
           <button type="button" class="btn btn-primary" id="reportSubmit"  data-dismiss="modal">신고</button>
         </div>
       </div><!-- /.modal-content -->
@@ -207,43 +234,39 @@
   
   
   
-  <form action="board" method="get">
-    <div class="pagination-search">
+ <form action="board" method="get">
+  <div class="pagination-search">
     
-    <ul class="pagination">
-    
-    <c:if test="${pageVO.prev}">
-
-    	<li><a href="board?pageNum=${pageVO.startPage - 1}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}"><span>이전</span></a></li>
-   
-   </c:if>
-   
-   <c:forEach var="num" begin="${pageVO.startPage}" end= "${pageVO.endPage}">
-   		<li class="${pageVO.pageNum eq num ? 'active' : ''} ">
-    	<a href="board?pageNum=${num}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}">${num}</a>
-		</li>
-   </c:forEach>
-   
-   <c:if test="${pageVO.next}">
-<!-- 페이지네이션 다음 링크 -->
-	<li><a href="board?pageNum=${pageVO.endPage + 1}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}" class="active"><span>다음</span></a></li>
-   </c:if>
+  <ul class="pagination">
+  
+  <c:if test="${pageVO.prev}">
+    <li><a href="board?pageNum=${pageVO.startPage - 1}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}"><span>이전</span></a></li>
+  </c:if>
+  
+  <c:forEach var="num" begin="${pageVO.startPage}" end= "${pageVO.endPage}">
+    <li class="${pageVO.pageNum eq num ? 'active' : ''} ">
+    <a href="board?pageNum=${num}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}">${num}</a>
+    </li>
+  </c:forEach>
+  
+  <c:if test="${pageVO.next}">
+    <li><a href="board?pageNum=${pageVO.endPage + 1}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}" class="active"><span>다음</span></a></li>
+  </c:if>
 </ul>
 
-        
-        
-        
-      <div class="search-box">
-        <select id="nav-select" name="searchType">
-          <option value="all">전체</option>
-          <option value="notice">질문</option>
-          <option value="popular">잡담</option>
-          
-        </select>
-        <input type="text" placeholder="글 검색" name="keyword">
-        <button type="submit" class="searchBtn">검색</button>
-    </div>
-  </div>
+<div class="search-box">
+  <select id="nav-select" name="searchType">
+    <option value="all">전체</option>
+    <option value="notice">질문</option>
+    <option value="popular">잡담</option>
+  </select>
+  
+  <input type="text" placeholder="글 검색" name="keyword">
+  <input type="hidden" name="pageNum" value="${pageVO.cri.pageNum }">
+  <input type="hidden" name="amount" value="${pageVO.cri.amount }">
+  
+  <button type="submit" class="searchBtn">검색</button>
+</div>
 </form>
 </div>
 
@@ -503,7 +526,7 @@ $('.tagQus').click(function(){
 
 
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     window.onload = function() {
         var searchType = document.getElementById('nav-select').value;
         var keyword = document.querySelector('input[name="keyword"]').value;
@@ -520,7 +543,7 @@ $('.tagQus').click(function(){
             link.href = href;
         });
     }
-</script>
+</script> -->
 <script type="text/javascript">
 
 var boardNo, bannedUserNo, bannedUserNick, userNo;
@@ -562,8 +585,6 @@ $('.blockBoxOpen').click(function(e)
 
 });
 
-
-
 $('.btn-primary[data-dismiss="modal"]').click(function(e) {
     let loginUserCheck = document.getElementById('loginUserCheck').value;
 
@@ -575,6 +596,13 @@ $('.btn-primary[data-dismiss="modal"]').click(function(e) {
             icon: 'warning',
         }).then(() => {
             toLoginPage();
+        });
+    } else if(bannedUserNo==userNo) {
+        e.preventDefault(); // 폼의 기본 동작(페이지 이동 등)을 막습니다.
+        Swal.fire({
+            title: "BandArchive",
+            text: '자신은 신고할수없습니다!',
+            icon: 'warning',
         });
     } else { // 로그인한 경우
         // AJAX를 사용하여 데이터를 컨트롤러로 전송합니다.
@@ -603,61 +631,7 @@ $('.btn-primary[data-dismiss="modal"]').click(function(e) {
 function toLoginPage(){
     location.href="/fin/login?ref="+document.location.href;
 };
-/* 
-$('.btn-primary[data-dismiss="modal"]').click(function(e) {
-  <c:if test="${empty loginUser}">
-    // 로그인하지 않은 경우
-    e.preventDefault(); // 폼의 기본 동작(페이지 이동 등)을 막습니다.
-    alert("로그인해주세요");
-    window.location.href = "login";
-    </c:if>
-    <c:if test="${!empty loginUser}">
-    // 로그인한 경우
-    console.log('boardNo:', boardNo);
-    console.log('bannedUserNo:', bannedUserNo);
-    console.log('bannedUserNick:', bannedUserNick);
-    console.log('userNo:', userNo);
-  
-    // AJAX를 사용하여 데이터를 컨트롤러로 전송합니다.
-    $.ajax({
-      type: 'POST', // 전송 방식 설정 (POST 또는 GET)
-      url: 'report', // 데이터를 전송할 컨트롤러 URL
-      data: {
-        bannedUserNo: bannedUserNo,
-        bannedUserNick: bannedUserNick,
-      },
-      success: function(response) {
-        
-        alert("신고가 완료되었습니다");
-        console.log('Data successfully sent to the controller.');
-        
-        location.reload();
-        // 추가적인 동작 수행 가능
-      },
-      error: function(xhr, status, error) {
-        // 데이터 전송 중 에러가 발생했을 때 실행할 동작을 작성합니다.
-        console.log('Error occurred while sending data to the controller.');
-        console.log('Status:', status);
-        console.log('Error:', error);
-        // 에러 처리 및 추가 동작 수행 가능
-      }
-    });
- 
-  </c:if>
-}); */
 
-/* 
-
-    $(document).ready(function() {
-        $('#reportSubmit').on('click', function(e) {
-            <c:if test="${empty loginUser}">
-                // 로그인하지 않은 경우
-                e.preventDefault(); // submit event를 막음
-                alert("로그인해주세요");
-                window.location.href = "login";
-            </c:if>
-        });
-    }); */
 </script> 
 
 

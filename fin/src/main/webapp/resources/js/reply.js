@@ -126,6 +126,10 @@ function selectReplyList(){
 //-------------------------------------------------------------------------------------------------
 
 
+function toLoginPage(){
+    location.href="/fin/login?ref="+document.location.href;
+};
+
 // 댓글 등록
 const addReply = document.getElementById("addReply");
 const replyContent = document.getElementById("replyContent");
@@ -134,10 +138,16 @@ addReply.addEventListener("click", function(){ // 댓글 등록 버튼이 클릭
 
     // 1) 로그인이 되어있나? -> 전역변수 loginMemberNo 이용
     if(loginMemberNo == ""){ // 로그인 X
-        alert("로그인 후 이용해주세요.");
-        return;
-    }
-
+       Swal.fire({
+            title: "BandArchive",
+            text: '로그인을 먼저 진행해주세요!',
+            icon: 'warning',
+        }).then(() => {
+            toLoginPage();
+        });
+         return;
+    
+}
     // 2) 댓글 내용이 작성되어있나?
     if(replyContent.value.trim().length == 0){ // 미작성인 경우
         alert("댓글을 작성한 후 버튼을 클릭해주세요.");
