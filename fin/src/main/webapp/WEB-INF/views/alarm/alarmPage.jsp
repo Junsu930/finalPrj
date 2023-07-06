@@ -48,6 +48,7 @@
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 		<section class="alarmSection">
+			
 			<c:choose>
 				<c:when test="${!empty inviList}">
 					<c:forEach var="invi" items="${inviList}">
