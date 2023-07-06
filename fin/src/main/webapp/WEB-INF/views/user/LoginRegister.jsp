@@ -85,7 +85,7 @@
                       </div>
 
                       <div class="kakaoBtn" title="카카오 아이디로 로그인">
-                        <a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=de31983424f4bd5faadc8493b90e5626&response_type=code&redirect_uri=http://localhost:8091/fin/kakaoLogin">
+                        <a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=de31983424f4bd5faadc8493b90e5626&response_type=code&redirect_uri=http://bandarchive.kro.kr/fin/kakaoLogin">
                           LOGIN WITH KAKAO
                         </a>
                         <img src="${contextPath}/resources/images/kakaoIcon.png" alt="">
