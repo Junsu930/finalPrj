@@ -203,7 +203,7 @@ const deleteBtn= () => {
     	 <span id='like_Check' style='margin-left: 3px;'>${BoardDetail.boardLike}</span>
     	 <span style='margin-left: 3px;'>like</span>
     </div>
-      
+        <button  id="listBtn" onclick="goBack()" class="report">목록으로</button>
     </div>
     <div class="divider"></div>
 
@@ -212,7 +212,11 @@ const deleteBtn= () => {
         <jsp:include page="/WEB-INF/views/board/reply.jsp"/>
 </div>
 <jsp:include page="/WEB-INF/views/board/boardMain.jsp"/> 
-
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
    
 <script src = "${contextPath}/resources/js/boardDetail.js"></script>
     <script src="${contextPath}/resources/js/reply.js"></script>

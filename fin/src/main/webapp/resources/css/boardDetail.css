@@ -216,11 +216,11 @@ font-size: 20px;
     color: #868E96;
  }
   .report {
-      margin-left: auto;
+    margin-left: auto;
     font-weight: bold;
-    height: 85px;
-    background-color: transparent;
-    border: none;
+    /* height: 85px; */
+    /* background-color: transparent; */
+   
     /* padding: 0; */
     /* margin: 0; */
     cursor: pointer;
@@ -414,7 +414,11 @@ body.darkmode textarea{
 	color: var(--text-dark-color);
 }
 
-
+body.darkmode .report{
+	color:var(--chat-color);
+	background-color: transparent;
+	border: none; 
+}
 
 
 
