@@ -1,7 +1,6 @@
 .myBandContainer{
 	margin:auto;
 	margin-top : 150px;
-	height: 200vh;
 	width: 80%;
 	display: flex;
 	flex-direction: column;
@@ -110,6 +109,7 @@
 	border-radius: 10px;
 }
 .selectTypeListUl li{
+	color: black;
 	padding: 0.5em 0.5em;
     cursor: pointer;
     list-style: none;

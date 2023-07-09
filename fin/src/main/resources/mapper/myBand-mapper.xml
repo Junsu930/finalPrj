@@ -66,10 +66,10 @@
 		
 		<choose>
 			<when test="selectType == '제목'">
-			AND BOARD_TITLE LIKE #{searcingText}
+			AND BOARD_TITLE LIKE #{searchingText}
 			</when>
 			<when test="selectType == '내용'">
-			AND BOARD_CONTENT LIKE #{searcingText}
+			AND BOARD_CONTENT LIKE #{searchingText}
 			</when>
 			<otherwise>
 			AND (BOARD_TITLE LIKE #{searchingText} OR BOARD_CONTENT LIKE #{searchingText})
