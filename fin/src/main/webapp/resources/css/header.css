@@ -469,7 +469,7 @@ body.darkmode .wrapperUl li a{
     position: relative;
     margin-top: -6px;
     margin-right: 1.2em;
-    font-size: 1em;
+    font-size: .9em;
     line-height: 28px;
     color: #262626;
 }
@@ -480,7 +480,7 @@ body.darkmode .wrapperUl .date h3 span{
 }
 
 .wrapperUl .date h3 span{
-    font-size: 1.2em;
+    font-size: .9em;
     color: #262626;
 }
 

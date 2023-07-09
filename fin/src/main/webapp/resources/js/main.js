@@ -60,6 +60,21 @@ function scrollHandler(){
 
 window.addEventListener('scroll', scrollHandler);
 
+// stroke-dasharray 라는 속성은 두개의 인자를 갖는데, 홀수번째 인자는 path의 길이를 보여주고
+// 짝수번째 인자는 공백의 길이를 보여준다
+// 그러나 인자가 하나라면 1000의 길이와 1000의 공백을 뜻한다.
+// 두 번째로 strok-dashoffset은 공백이라고 생각하면 쉬운데
+// 예를 들어 path의 길이가 1000이고, stroke-dahsoffset이 1000이라면, 1000px부터 path를 그리는거라서
+// 아무것도 보이지 않는 형태가 된다.
+
+// 해당 속성을 사용해서 스크롤에다라 stroke-dahsoffset의 값을 바꿔주어 그림이 그려지는 효과를 보여줄 수 있다.
+
+// 이를 위해서 그림의 비율 즉 진행도가 필요한데, 
+// 해당 진행도를 구하기위해서는, 화면의 맨 위에서부터 내려온 지점 window.srollY와 뷰포트의 높이 window.innerHeight를 더한값에서 div의 offsetTop을 빼주고, div의 offsetHeight를 나눠주어서
+// 비율을 구할 수 있다.
+
+// 즉 value 는 path의 총 길이, length - (length * ratio)를 구해주어 stroke-dashoffset을 스크롤에 따라서 값을 구할 수 있다.
+
 
 // ============================@keyframes scroll============================
 
