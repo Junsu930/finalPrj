@@ -16,6 +16,7 @@ public class BoardDetail {
 	private String boardTitle;
 	private String boardContent;
 	private String createDate;
+	private int replyCount;
 	private int readCount;
 	private int userNo;
 	private int boardLike;

@@ -182,6 +182,16 @@ public class BoardDAO {
 		return sqlSession.selectOne("boardMapper.checkLike", boardDetail);
 	}
 
+	/**
+	 * 댓글 갯수 가져오기 DAO
+	 * @author lee
+	 * @param boardNo
+	 * @return
+	 */
+	public int getReplyCount(int boardNo) {
+		return sqlSession.selectOne("replyMapper.getReplyCount", boardNo);
+	}
+
 
 
 	

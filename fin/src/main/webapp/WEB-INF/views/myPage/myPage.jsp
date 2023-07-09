@@ -530,7 +530,7 @@
                 <div class="modalInfoTitleBox">
                     <p>회원 정보 수정</p>
                 </div>
-                <form action="fin/updateInfo" method="POST" enctype="multipart/form-data">
+                <form action="fin/updateInfo" method="POST" enctype="multipart/form-data" onsubmit="return UpdateValidate()">
              	
                 
                     <div class="modalImgBox">
@@ -561,7 +561,7 @@
                                 <ion-icon name="lock-closed"></ion-icon>
                             </span>
                             <input type="password" required id="userPw" name="newPw"> 
-                            <label>PASSOWORD</label>
+                            <label>PASSOWORD&nbsp;&nbsp;<span class="signUp-message" id="pMessage"></span></label>
                         </div>
 
                         <div class="input-box">
@@ -569,7 +569,7 @@
                                 <ion-icon name="person"></ion-icon>
                             </span>
                             <input type="text" required id="userNick" name="newNick">
-                            <label>NICKNAME</label>
+                            <label>NICKNAME&nbsp;&nbsp;<span class="signUp-message" id="nickMessage"></span></label>
                         </div>
                         
                         <div class="input-box"> 

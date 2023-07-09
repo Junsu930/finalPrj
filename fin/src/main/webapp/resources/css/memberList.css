@@ -191,19 +191,19 @@ body.darkmode .sendMsgModalBox h1{
 }
 
 #backBtn{
-    width: 150px;
-    height: 40px;
-    background-color: var(--newBack-color);
-    box-shadow: 4px -2px 15px 0px rgba(0,0,0,0.25);
-    border-radius: 4px;
-    border:none;
+    width: 300px;
+    height: 50px;
+    border: 1px solid var(--label-color);
+    background: transparent;
+    border-radius: 0.5em;
     letter-spacing: 0.3em;
     text-align: center;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 body.darkmode #backBtn{
-    background-color: var(--newBack-dark-color);
+    border: 1px solid var(--border-color);
     color: var(--text-dark-color);
 }
 
