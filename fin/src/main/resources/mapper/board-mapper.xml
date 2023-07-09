@@ -30,6 +30,7 @@
 		<result property="boardLike" column="BOARD_LIKE" />
 		<result property="boardTag" column="BOARD_TAG" />
 		<result property="userNick" column="USER_NICK" />
+		<result property="replyCount" column="REPLY_COUNT" />
 		
 		
 	</resultMap>
@@ -69,6 +70,7 @@ FROM (
         AND BOARD_ST = 'N'
         
         AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED)
+
     ]]>
     <if test="searchType =='all'">
         AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>

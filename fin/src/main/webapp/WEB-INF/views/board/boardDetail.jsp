@@ -143,7 +143,7 @@ const deleteBtn= () => {
       <div class="right">
          <c:if test="${loginUser.userNo == BoardDetail.userNo}">
         <button id="btx"class="edit" onclick="updateBtn()">수정</button>
-        <button id="btx"class="delete" onclick="deleteBtn()">삭제</button>
+        <button id="btx2"class="delete" onclick="deleteBtn()">삭제</button>
         </c:if>
       </div>
     </div>
@@ -156,8 +156,9 @@ const deleteBtn= () => {
         
         <div class="commentBoxBox">
       <div class="commentBox">
-        <i class="fa-regular fa-comments"></i>
-        <span class="comment">댓글<span class="comment_s"></span></span>
+        <i class="fa-regular fa-comments" id="replyImg"></i>
+        <c:set var="replyCount" value="${replyCount}"/>
+        <span class="comment">댓글&nbsp;${replyCount}개<span class="comment_s"></span></span>
     </div>
     <div class="commentBox2" onclick="commentBox2()">
     <c:choose>
@@ -203,7 +204,7 @@ const deleteBtn= () => {
     	 <span id='like_Check' style='margin-left: 3px;'>${BoardDetail.boardLike}</span>
     	 <span style='margin-left: 3px;'>like</span>
     </div>
-        <button  id="listBtn" onclick="goBack()" class="report">목록으로</button>
+        <button  id="listBtn" onclick="goBack()" class="report">목록</button>
     </div>
     <div class="divider"></div>
 

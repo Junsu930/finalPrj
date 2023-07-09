@@ -13,6 +13,7 @@ public class MessageBox {
 	private int msgNo;
 	private int sendUserNo;
 	private int receiverUserNo;
+	private String userImage;
 	private String sendUserNick;
 	private String receiverUserNick;
 	private String msgContent;

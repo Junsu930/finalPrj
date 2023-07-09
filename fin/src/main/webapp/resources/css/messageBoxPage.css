@@ -167,7 +167,7 @@ body.darkmode .messageWrapper li .content p .msgSendBtn
 }
 
 body.darkmode .sendMsgModalBox h1{
-    color:var(--text-dark-color);
+    color:var(--text-color);
 }
 
 

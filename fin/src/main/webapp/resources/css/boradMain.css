@@ -27,7 +27,7 @@ body.darkmode input:focus{
 .boardPath{
     fill: none;
     stroke: var(--stroke-color);
-    stroke-width: 1.5px;
+    stroke-width: 3px;
     stroke-dasharray: 5055.95068359375;
     animation: drawPath 2s linear, floating 3s linear infinite;
 }

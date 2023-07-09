@@ -146,4 +146,10 @@
 	</update>
 	
 	
+	<!-- 보드 디테일 댓글 갯수 가져오기 -->
+	<select id="getReplyCount" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) FROM REPLY WHERE BOARD_NO = ${boardNo}
+	</select>
+	
+	
 </mapper>

@@ -132,13 +132,13 @@
 						
         <c:otherwise>
         	<c:forEach var="board" items="${boardList}">       
-        <c:set var="isBanned" value="false"/>
-        <c:forEach var="bannedId" items="${bannedUserIds}">
-            <c:if test="${bannedId eq board.userNo}">
-                <c:set var="isBanned" value="true"/>
-            </c:if>
-        </c:forEach>
-        <c:if test="${!isBanned}">
+            <c:set var="isBanned" value="false"/>
+            <c:forEach var="bannedId" items="${bannedUserIds}">
+                <c:if test="${bannedId eq board.userNo}">
+                    <c:set var="isBanned" value="true"/>
+                </c:if>
+            </c:forEach>
+            <c:if test="${!isBanned}">
                           
         	<tr class="tr-userNo-${board.userNo}">
         	
