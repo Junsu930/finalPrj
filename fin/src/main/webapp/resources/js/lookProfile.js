@@ -20,7 +20,9 @@ for(let eachModal of profileModalOn){
           $('.wrap-loading').addClass('display-none');
           $('.modal-content').css("display", 'flex');
         },
-        success: function(data){   
+        success: function(data){ 
+            console.log("불러옴");
+            $("#modalInMent").html("");
             $("#modalMainTitle").html(data.userName + "님의 프로필");
             $("#modalInName").html(data.userName);
             $("#modalInEmail").html(data.userEmail);

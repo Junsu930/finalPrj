@@ -178,6 +178,7 @@ for(let eachModal of profileModalOn){
         },
         success: function(data){   
 			console.log(data);
+			$("#modalInMent").html("");
             $("#modalMainTitle").html(data.userName + "님의 프로필");
             $("#modalInName").html(data.userName);
             $("#modalInEmail").html(data.userEmail);
@@ -191,8 +192,11 @@ for(let eachModal of profileModalOn){
 			}
             $("#modalInMent").html(data.introMent);
 
-			if(data.profileImage != null){
-				$("#imgProfileImage").src(data.profileImage);
+			if(data.profileImg != null){
+				console.log("이미지 있다");
+				$("#imgProfileImage").attr("src", "/fin"+data.profileImg);
+			}else{
+				$("#imgProfileImage").attr("src", "/fin/resources/images/profileImage/user.png");
 			}
 			
 			$('#hiddenUserNoForModalProfile').val(userId);
