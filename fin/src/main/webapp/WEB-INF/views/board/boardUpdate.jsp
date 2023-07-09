@@ -13,7 +13,7 @@
 	 <link rel="stylesheet"href="${contextPath}/resources/css/boardWrite.css"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>
-   <script type="text/javascript" src="resources/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/ckeditor/ckeditor.js"></script>
    <c:if test="${ !empty message }">
     <script>
         alert("${message}");
@@ -93,7 +93,7 @@
     
       <script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
 			CKEDITOR.replace('content',{
-					 height:'350px',
+					 height:'350px'
 					 ,filebrowserUploadUrl : '${contextPath}/fileupload.do'
 			  });
 		</script>
