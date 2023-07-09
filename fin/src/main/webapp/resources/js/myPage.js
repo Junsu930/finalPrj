@@ -365,26 +365,7 @@ userIntro.addEventListener("input", function(){
 
 
   
-/*
 
-  function UpdateValidate(){
-
-    if(instLength == 0){
-      alert("POSITION 항목이 비었습니다!");
-     
-      return false;
-  }else if(genreLength == 0){
-      alert("GENRE 항목이 비었습니다!");
-     
-      return false;
-  }else if( regionLength == 0){
-      alert("REGION 항목이 비었습니다!");
-      return false;
-  } else {
-
-    return true;
-  }
-}
 
 function UpdateValidate(){
 
@@ -398,9 +379,9 @@ function UpdateValidate(){
           case "userNick" :     str="닉네임이"; break;
           case "userPw" :       str="비밀번호가"; break;
           case "userIntro" :    str="자기 소개가"; break;
-          case "instLength":    str="내 서칭 정보가"; break;
-          case "genreLength":   str="내 서칭 정보가"; break;
-          case "regionLength":  str="내 서칭 정보가"; break;      
+          //case "instLength":    str="내 서칭 정보가"; break;
+          //case "genreLength":   str="내 서칭 정보가"; break;
+          //case "regionLength":  str="내 서칭 정보가"; break;      
         }
         str += " 유효하지 않음.";
 
@@ -415,5 +396,5 @@ function UpdateValidate(){
     return true; // form태그 기본 이벤트 수행
 
   }
- */
+ 
   
