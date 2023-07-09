@@ -73,7 +73,10 @@ body.darkmode input:focus{
     color: #474554;
     padding-left: 10px;
     padding-right: 10px;
+    width: 80px;
+    height: 35px;
 }
+
 .boardContainer {
 	width: 75%;
     margin: 0 auto;
@@ -262,6 +265,7 @@ table {
     width: 75px;
     text-align: center;
     justify-content: center;
+    font-size: 1em;
 }
 
 

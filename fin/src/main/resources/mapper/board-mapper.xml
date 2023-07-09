@@ -297,7 +297,7 @@ WHERE BOARD_NO = #{boardNo}
 	
 	<update id="boardUpdate" parameterType="detail">
 		UPDATE BOARD SET
-		BOARD_TITLE=#{boardTitle}, BOARD_CONTENT=#{boardContent}
+		BOARD_TITLE=#{boardTitle}, BOARD_CONTENT=#{boardContent},BOARD_TAG=#{boardTag} 
 		WHERE BOARD_NO = #{boardNo}
 	</update> 
 	

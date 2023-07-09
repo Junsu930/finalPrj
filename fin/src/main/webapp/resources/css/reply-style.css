@@ -8,6 +8,10 @@
     
 }
 
+body.darkmode #btxs{
+    color: var(--text-dark-color);
+}
+
 body.darkmode .reply-btn-area > button {
     outline: none;
     color: var(--stroke-color);
@@ -92,7 +96,7 @@ body.darkmode .reply-btn-area > button {
     margin-right: 10px;
     resize: none;
     padding: 10px;
-    width: 1000px;
+    width: 100%;
 }
 
 /* 댓글 등록 버튼 */
