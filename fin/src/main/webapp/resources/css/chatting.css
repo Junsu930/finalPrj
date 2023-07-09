@@ -1,0 +1,150 @@
+#chatting-img{
+	width: 70px;
+	height:70px;
+	position: fixed;
+	right: 100px;
+	bottom: 50px;
+	z-index: 10;
+}
+
+#chatting-img > img{
+	width: 100%;
+	cursor: pointer;
+
+}
+
+/* 톡 탭 */
+.tapDiv{
+	display: flex;
+	justify-content: space-between;
+	height: 10%;
+	
+}
+
+.chatTap{
+	height: 90%;
+	border-radius: 10px;
+	width: 16%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+.x-tap{
+	height: 90%;
+	border-radius: 10px;
+	width: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.chatBody{
+	width:300px;
+	height: 500px;
+	position: fixed;
+	right: 100px;
+	bottom: 150px;
+	background-color: var(--grr-color);
+	border-radius: 10px;
+	display: none;
+	justify-content: center;
+	z-index: 100;
+	transition-duration : 1s;
+	box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+#messageText{
+	position: absolute;
+	bottom: 10px;
+	width : 0;
+	height : 0;
+	width: 80%;
+	height: 3em;
+	border: none;
+	border-radius: 10px;
+	padding-left: 10px;
+	padding-right: 70px;
+	transition-duration : 1s;
+}
+
+#sendBtn{
+	width:4em;	
+	height: 2.5em;
+	position: absolute;
+	bottom: 13px;
+	right: 40px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	transition-duration : 1s;
+}
+
+.me-tok{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.other-tok{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.other-tok > div{
+	color: black;
+}
+
+.messageBox{
+	width: 90%;
+	height: 80%;
+	margin-top: 10px;
+	overflow: auto;
+	
+}
+
+.tokMessage{
+	padding : 5px;
+	background-color: white;
+	border-radius: 14px;
+	margin-top: 4px;
+	color: black;
+}
+
+
+
+.messageBox::-webkit-scrollbar {
+    width: 4px;  /* 스크롤바의 너비 */
+}
+
+.messageBox::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: var(--grey-color); /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+.messageBox::-webkit-scrollbar-track {
+    background: var(--scroll-background-color);  /*스크롤바 뒷 배경 색상*/
+}
+
+.darkmode .messageBox::-webkit-scrollbar-track {
+    background: transparent;  /*스크롤바 뒷 배경 색상*/
+}
+
+body.darkmode .messageBox::-webkit-scrollbar-thumb {
+    background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
+}
+
+/* 폰 */
+@media (max-width: 420px) {
+  .chatBody{
+  	width: 260px;
+  }
+}
+

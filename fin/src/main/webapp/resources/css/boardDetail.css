@@ -1,0 +1,964 @@
+.comment-section {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.author-info .commentNickName {
+    font-weight: bold;
+}
+
+.author-info .author-name {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.author-info .author-date {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.author-comment {
+    padding-left: 20px;
+    font-size: 1em;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .2em;
+}
+
+
+.author-reply .author-info {
+    padding-left: 40px;
+}
+
+.author-comment-reply {
+    padding-left: 60px;
+}
+
+
+
+
+
+
+#heart{
+    width: 30px; /*크기에 맞게 쓰세요*/
+    fill: var(--grey-color); /* #ccc 색깔코드 */
+    stroke: var(--magenta-heart-color); /* #f06 색깔코드*/
+    stroke-dasharray: 56.6;
+    stroke-dashoffset: 56.6;
+}
+
+#heart.like{
+    animation: 1s ease-in forwards like, 
+    0.8s linear 1s 1 forwards beat;
+}
+
+#heart.unlike{
+    animation: 1s ease-out forwards unlike;
+}
+
+@keyframes like{
+    0%{
+        stroke-dashoffset: 56.6;
+    }
+    70%{
+        stroke-dashoffset: 0;
+        fill:var(--grey-color);
+    }
+    100%{
+        stroke-dashoffset: 0;
+        fill: var(--magenta-heart-color);
+    }
+}
+@keyframes beat {
+    0%{
+        transform: scale(1, 1);
+    }
+    50%{
+        transform: scale(0.9, 0.9);
+    }
+    100%{
+        transform: scale(1, 1);
+    } 
+}
+
+@keyframes unlike{
+    0%{
+        stroke-dashoffset: 0;
+        fill: var(--magenta-heart-color);
+    }
+    70%{
+        stroke-dashoffset: 0;
+        fill:var(--grey-color);
+    }
+    100%{
+        stroke-dashoffset: 56.6;
+    }
+}
+
+ .commentBox2{
+  	cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+
+
+/* 좋아요 css  */
+
+
+
+.DetailContainer {
+    width: 75%;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 19px;
+    padding-top: 300px;
+
+  }
+  
+  .title-container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .tagsss {
+    background-color: #474554;
+    color: #ffffff;
+    min-width: 60px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ .DetailViews{
+    font-size: 20px;
+  }
+  
+  .BoardDetailTitle {
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 1.1em;
+  }
+  
+  .info {
+	display: flex;
+
+    margin-top: 10px;
+  }
+  
+  .left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nickname {
+    margin-right: 10px;
+    
+  }
+  .left, .content{
+font-size: 20px;
+  }
+  .content {
+    margin-top: 50px;
+    overflow: hidden;
+  }
+  .comment{
+    font-weight: bold;
+  }
+  .comments {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+    margin-top: 50px;
+  }
+  
+  
+ 
+  
+  
+  .commentBox,
+  .commentBox2 {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; 
+    gap: .5em;
+  }
+#replyImg{
+    margin-top: 3px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+  .commentBox2 i {
+    margin-right: 5px;
+  }
+  
+  .edit, .reply, .and, .delete{
+   font-size: 19px;
+    color: #474554;
+  }
+.and, .delete{
+    margin-right: 10px;
+  }
+ .and{
+    color: #868E96;
+ }
+  .report {
+    margin-left: auto;
+    font-weight: bold;
+    /* height: 85px; */
+    /* background-color: transparent; */
+   
+    /* padding: 0; */
+    /* margin: 0; */
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .divider {
+    border-bottom: 1px solid var(--stroke-color);
+  }
+
+  body.darkmode .divider{
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .author {
+    display: flex;
+    align-items: center;
+   
+   
+  }
+  .commentNickName{
+    padding-right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .author-name{
+    border: 1px solid magenta;
+    color: magenta;
+    border-radius: 15px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 30px;
+  
+    padding-top: 1px;
+    padding-bottom: 1px;
+
+  }
+  .author-date{
+    margin-right: 5px;
+    color: #868E96;
+  font-size: 19px;
+ 
+  }
+  
+  .author-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .author-comment {
+    margin-top: -20px;
+    font-size: 19px;
+    color: #868E96;
+  
+  }
+  .inputDetail{
+    margin-left: 40px;
+   
+  }
+  .comment-input {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    
+  }
+  .comment-input input[type="text"]{
+    padding-top: 20px;
+    
+  }
+
+  
+  .comment-input input[type="text"] {
+    flex: 1;
+    margin-right: 10px;
+    padding-right: 400px;
+  }
+
+  #btx {
+    height: 85px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px;
+  }
+
+ 
+
+  #btx2{
+    height: 85px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px;
+  }
+
+body.darkmode #btx,
+body.darkmode #btx2{
+    color: var(--text-dark-color);
+}
+
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .left {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+  }
+  
+
+  
+  
+
+
+.author-reply{
+    display: flex;
+    padding-left: 70px;
+
+}
+
+.right-reply{
+    padding-left: 20px;
+
+}
+.replyDelete{
+    font-size: 19px;
+    padding-bottom: 5px;
+    color: #474554;
+}
+.author-comment-reply{
+    margin-top: -20px;
+    font-size: 19px;
+    color: #868E96;
+    padding-bottom: 15px;
+    padding-left: 70px;
+  }
+
+  .commentBoxBox{
+    display: flex;
+  }
+  .submit {
+    border: 1px solid #474554;
+ background-color: #474554;
+ color: #fff;
+    width: 150px;
+    border-radius: 3px;
+  }
+.inputWi{
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  resize: none;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+  outline: none;
+
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #474554;
+}
+textarea{
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 900px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+
+}
+
+
+body.darkmode input:focus{
+	outline: none; 
+}
+
+body.darkmode textarea{
+	color: var(--text-dark-color);
+    border: 1px solid var(--border-color);
+}
+
+body.darkmode .report{
+	color:var(--chat-color);
+	background-color: transparent;
+	border: none; 
+}
+
+
+
+#listBtn{
+    width: 80px;
+    height: 30px;
+    border: 1px solid var(--label-color);
+    background: transparent;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+body.darkmode #listBtn{
+    border: 1px solid var(--border-color);
+}
+
+
+
+
+
+
+/*아이폰 SE*/
+
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 375px) {
+ 
+ 
+ 
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin-top: 10px;
+    
+  }
+  
+  .left, .right {
+    flex: 1;
+  }
+  
+  .right {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+ 
+ .info {
+display: flex;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* flex-wrap: nowrap; */
+    /* flex-direction: column; */
+    margin-top: 10px;
+}
+.edit {
+    margin-right: 10px;
+    font-size: 10px;
+    color: #474554;
+    padding-bottom: 50px;
+    margin-right: 10px;
+    padding-top: 40px;
+}
+ .delete {
+    font-size: 12px;
+    color: #474554;
+    padding-bottom: 50px;
+        margin-right: 10px;
+ }
+ .left, .content {
+    font-size: 14px;
+}
+.edit{
+	margin-right: 10px;
+	font-size: 12px;
+    color: #474554;
+        padding-bottom: 50px;
+    margin-right: 10px;
+}
+DetailViews {
+    margin-right: 10px;
+    color: black;
+}
+ .BoardDetailTitle{
+    text-align: left;
+    font-weight: bold;
+
+}
+.commentBox {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.author-info {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    align-content: stretch;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.commentNickName {
+    /* padding-right: 20px; */
+    font-size: 18px;
+    font-weight: bold;
+}
+.author-date {
+    margin-right: 5px;
+    color: #868E96;
+    font-size: 11px;
+}
+
+.author-name {
+   border: o;
+    color: magenta;
+    /* border-radius: 15px; */
+    padding-left: 3px;
+    padding-right: 3px;
+    /* margin-right: 30px; */
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 12px;
+}
+.reply {
+    /* padding-bottom: 50px; */
+    font-size: 1px;
+    color: #474554;
+    padding-top: 6px;
+}
+
+.author-info {
+    /* display: flex; */
+    /* align-items: stretch; */
+    justify-content: center;
+    align-content: stretch;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+textarea {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    outline: none;
+     width: 170px;
+    height: 86px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #474554;
+}
+
+
+/*아이폰 12 pro*/
+@media only screen and (min-device-width : 376px) and (max-device-width : 390px) {
+    
+    h1 {
+        padding-bottom: 1px;
+    padding-top: 100px;
+    }
+    .tagsss {
+        background-color: #474554;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+   .content {
+        font-size: 10px;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    .commentNickName {
+        padding-right: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .author-comment {
+        margin-top: -20px;
+        font-size: 12px;
+        color: #868E96;
+        padding-left: 30px;
+    }
+    .author-comment-reply {
+        margin-top: -20px;
+        font-size: 13px;
+        color: #868E96;
+        padding-bottom: 15px;
+        padding-left: 70px;
+    }
+    .commentBoxBox {
+        display: flex;
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    textarea {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 565px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+    }
+    .author-name {
+        border: 1px solid magenta;
+        color: magenta;
+        border-radius: 15px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 30px;
+        font-size: 16px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .edit, .reply, .and, .delete {
+        font-size: 19px;
+        color: #474554;
+    }
+
+    .replyDelete {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: #474554;
+    }
+}
+
+
+/*아이폰 xr*/
+
+@media only screen and (min-device-width : 391px) and (max-device-width : 414px) {    
+    
+    h1 {
+        padding-bottom: 1px;
+    padding-top: 100px;
+    }
+    .tagsss {
+        background-color: #474554;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+   .content {
+        font-size: 10px;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    .commentNickName {
+        padding-right: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .author-comment {
+        margin-top: -20px;
+        font-size: 12px;
+        color: #868E96;
+        padding-left: 30px;
+    }
+    .author-comment-reply {
+        margin-top: -20px;
+        font-size: 13px;
+        color: #868E96;
+        padding-bottom: 15px;
+        padding-left: 70px;
+    }
+    .commentBoxBox {
+        display: flex;
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    textarea {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 565px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+    }
+    .author-name {
+        border: 1px solid magenta;
+        color: magenta;
+        border-radius: 15px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 30px;
+        font-size: 16px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .edit, .reply, .and, .delete {
+        font-size: 19px;
+        color: #474554;
+    }
+
+    .replyDelete {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: #474554;
+    }
+
+
+}
+
+/*아이패드 에어 */
+@media only screen and (min-device-width : 769px)  and (max-device-width : 820px){ 
+	
+
+    h1 {
+        padding-bottom: 1px;
+    padding-top: 100px;
+    }
+    .tagsss {
+        background-color: #474554;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+   .content {
+        font-size: 10px;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    .commentNickName {
+        padding-right: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .author-comment {
+        margin-top: -20px;
+        font-size: 12px;
+        color: #868E96;
+        padding-left: 30px;
+    }
+    .author-comment-reply {
+        margin-top: -20px;
+        font-size: 13px;
+        color: #868E96;
+        padding-bottom: 15px;
+        padding-left: 70px;
+    }
+    .commentBoxBox {
+        display: flex;
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    textarea {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 565px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+    }
+    .author-name {
+        border: 1px solid magenta;
+        color: magenta;
+        border-radius: 15px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 30px;
+        font-size: 16px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .edit, .reply, .and, .delete {
+        font-size: 19px;
+        color: #474554;
+    }
+
+    .replyDelete {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: #474554;
+    }
+
+}
+
+  /*iPad Mini  */
+@media only screen 
+  and (device-width: 768px) 
+  and (-webkit-device-pixel-ratio: 2) {
+
+    h1 {
+        padding-bottom: 1px;
+    padding-top: 100px;
+    }
+    .tagsss {
+        background-color: #474554;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: 10px;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+   .content {
+        font-size: 10px;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
+    .commentNickName {
+        padding-right: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .author-comment {
+        margin-top: -20px;
+        font-size: 12px;
+        color: #868E96;
+        padding-left: 30px;
+    }
+    .author-comment-reply {
+        margin-top: -20px;
+        font-size: 13px;
+        color: #868E96;
+        padding-bottom: 15px;
+        padding-left: 70px;
+    }
+    .commentBoxBox {
+        display: flex;
+        padding-left: 30px;
+        font-size: 18px;
+    }
+    textarea {
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        padding: 0;
+        margin: 0;
+        outline: none;
+        width: 565px;
+        height: 86px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid #474554;
+    }
+    .author-name {
+        border: 1px solid magenta;
+        color: magenta;
+        border-radius: 15px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-right: 30px;
+        font-size: 16px;
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .edit, .reply, .and, .delete {
+        font-size: 19px;
+        color: #474554;
+    }
+
+    .replyDelete {
+        font-size: 18px;
+        padding-bottom: 5px;
+        color: #474554;
+    }
+
+}
+
+
+body.darkmode .BoardDetailTitle,
+body.darkmode .ninkName, 
+body.darkmode .heart,
+body.darkmode .DetailViews,
+body.darkmode .boardNumber {
+    color: var(--text-dark-color);
+}
+}

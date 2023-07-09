@@ -1,0 +1,39 @@
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #fff;
+}
+
+.loaderPath{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-miterlimit: 10;
+    stroke-width: 1.5px;
+    stroke-dasharray: 8477.296875;
+    animation: drawPath 2s linear, floating 3s linear infinite;
+}
+
+body.darkmode .loaderPath{
+	stroke: var(--stroke-dark-color);
+}
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 8477.296875;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}

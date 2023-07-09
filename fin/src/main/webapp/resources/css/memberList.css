@@ -1,0 +1,228 @@
+
+
+
+.memberListSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 5em 4em;
+    margin: 10em 0;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--newBack-color);
+    box-shadow: 4px -2px 15px 0px rgba(0,0,0,0.25);
+    border-radius: 4px;
+    width: 350px;
+    height: 450px;
+    transition: transform ease-out 0.25s, box-shadow 0.1s ease-in 0s;
+    overflow: hidden;
+}
+
+body.darkmode .wrapper{
+	background-color: var(--newBack-dark-color);
+}
+
+.wrapper:hover{
+    transform: translateY(-15px);
+    box-shadow:4px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.userNameBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2em 0;
+}
+
+
+.userImgBox{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow:hidden;
+    margin-top:1em;
+}
+
+.userImgBox > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+
+
+.userNameBox p {
+    font-size: 1.5em;
+}
+
+.userStyleBox > ul, .userChatProfieBox > ul{
+    list-style: none;
+    padding: 1em 1em;
+    text-align: center;
+}
+
+.userStyleBox, .userChatProfieBox{
+    width: 100%;
+}
+
+.userStylUl{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 2em 2em;
+}
+
+.userStylUl i{
+    font-size: 1.6em;
+}
+
+.userStylUl p {
+    margin-top: 2em;
+    font-size: 1.1em;
+}
+
+
+.userChatProfieUl{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.userChatProfieUl li{
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+.userChatProfieUl p {
+    margin-top: 2em;
+    font-size: 1.1em;
+}
+
+
+.notFoundBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 65vh;
+}
+
+.notFoundBox >h1{
+    font-size: 3em;
+	font-weight: 500;
+    font-family: var(--navFont-style-);
+    padding-left: 0;
+}
+
+
+
+/* 모달 */
+
+
+
+.sendMsgModalBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+
+.sendMsgModalBox>h1{
+    font-weight: 500;
+    padding-left: 0;
+}
+
+body.darkmode .sendMsgModalBox h1{
+    color:var(--text-color);
+}
+
+
+.sendMsgModalBox > textarea{
+    resize: none;
+    border-radius: 6px;
+    padding: 1em 1em;
+    width: 80%;
+    height: 150px;
+    outline: none;
+    font-size: 1em;
+    font-family: var(--navFont-style-);
+}
+
+.sendMsgModalBox button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+
+@media screen and (min-width:22.4rem) and (max-width:25.9em) {
+    .wrapper {
+        width: 300px;
+    }
+}
+
+
+
+.backBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+
+#backBtn{
+    width: 300px;
+    height: 50px;
+    border: 1px solid var(--label-color);
+    background: transparent;
+    border-radius: 0.5em;
+    letter-spacing: 0.3em;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+body.darkmode #backBtn{
+    border: 1px solid var(--border-color);
+    color: var(--text-dark-color);
+}
+
+#backBtn:hover{
+    animation: in .5s ease-out;
+}
+
+#backBtn:focus{
+    outline:none;
+}
+
+@keyframes in{
+    0%{
+      letter-spacing: 0.3em;
+    }
+    50%{
+      letter-spacing: 0.6em
+    }
+    100%{
+      letter-spacing: 0.3em
+    }
+  }

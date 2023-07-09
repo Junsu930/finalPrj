@@ -1,0 +1,436 @@
+body{
+    min-height: 100vh;
+    position: relative;
+}
+
+.svgBox{
+    position: absolute;
+    width: 100%;
+    right: 10px;
+}
+
+.loginPath {
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-width: 2px;
+    stroke-dasharray: 2937.191650390625;
+    animation: drawPath 1.7s linear, floating 3s linear infinite;
+}
+
+body.darkmode .loginPath{
+	stroke: var(--stroke-dark-color);
+}
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 2937.191650390625;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+
+
+
+.loginSection{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 8em 0 18em 0;
+}
+
+.wrapper{
+    position: relative;
+    width: 500px;
+    height: 600px;
+    background-color: transparent;
+    border: 2px soild rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: height .4s ease-out, 0.5s;
+}
+
+body.darkmode .wrapper{
+	background-color: var(--border-color);
+}
+
+
+.wrapper.active{
+    height: 760px;
+}
+
+
+
+.wrapper .formBox{
+    width: 100%;
+    padding: 40px;
+}
+
+
+
+
+/* register 踰꾪듉 �닃���쓣 �븣, 濡쒓렇�씤 �솕硫� �쇊履쎌쑝濡� �삷湲곌린 */
+
+.wrapper.active .formBox.login{
+    transition: none;
+    transform: translateX(-500px);
+}
+
+/* 濡쒓렇�씤 �솕硫� �굹�삤湲� */
+.wrapper .formBox.login{
+    transition: transfrom .18s ease;
+    transform: translateX(0);
+}
+
+
+
+/* Login 踰꾪듉 �닃�읉�쓣 �뻹, �쉶�썝媛��엯 �솕硫� �삤瑜몄そ�쑝濡� �삷湲곌린 */
+.wrapper .formBox.register{
+    position: absolute;
+    transition: none;
+    transform: translateX(500px);
+}
+
+/* �쉶�썝 媛��엯 �솕硫댁뿉 �굹�삤湲� */
+.wrapper.active .formBox.register{
+    transition: transfrom .18s ease;
+    transform: translateX(0);
+}
+
+
+
+.wrapper .iconClose{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background-color: #162938;
+    font-size: 2em;
+    color: #eae7e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-bottom-left-radius: 20px;
+    z-index: 1;
+}
+
+
+
+
+.formBox h2{
+    font-size: 2em;
+    color: var(--label-color);
+    text-align: center;
+    margin-bottom: 1.5em;
+    letter-spacing: 0.1em;
+}
+
+dark.mode .formBox h2{
+	color: var(--border-color);
+}
+
+.inputBox{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #152c3d;
+    margin: 30px 0;
+}
+
+.inputBox label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: var(--label-color);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s;
+    padding: 0 2.3em 0 0.5em;
+    letter-spacing: 0.1em;
+}
+
+
+
+.inputBox input:focus~label,
+.inputBox input:valid~label {
+    top: -5px;
+}
+
+.inputBox input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline:  none;
+    font-size: 1em;
+    color: var(--label-color);
+    font-weight: 600;
+    padding: 0 2.3em 0 0.5em;
+}
+
+
+
+
+
+.inputBox .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: var(--label-color);
+    line-height: 57px;
+}
+
+#eye{
+    font-size: 1em;
+}
+
+
+.rememberForgot{
+    position: relative;
+    font-size: 0.9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -1em 0 3em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rememberForgot label input {
+    accent-color: #162938;
+    margin-right: 3px;
+}
+
+.rememberForgot a{
+    color: var(--label-color);
+    text-decoration: none;
+}
+
+
+
+#showBusiness{
+    position: absolute;
+    right: 0;
+    top: 1.3em;
+}
+
+
+
+.rememberForgot a:hover{
+    text-decoration: underline;
+}
+
+.loginBtnBox{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.btn{
+    width: 100%;
+    height: 45px;
+    background-color: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #eae7e7;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+}
+
+.kakaoBtn{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 45px;
+    background-color: #FEE500;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.kakaoBtn > img{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 20px;
+}
+
+#kakao-login-btn{
+    width: 100%;
+    color: #3A1D1D;
+    outline: none;
+    padding: 1em 1em;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+}
+
+
+
+#naver_id_login_anchor{
+    position: absolute;
+    top: 13px;
+    width: 100%;
+    text-decoration: none;
+    color:var(--text-dark-color);
+    letter-spacing: 0.2em;
+}
+
+#naver_id_login_anchor img{
+    visibility: hidden;
+    width: 100%;
+    height: 45px;
+}
+
+#naver_id_login_anchor::before{
+    content: "LOGIN WITH NAVER"
+}
+
+#naver_id_login{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    background-color: #03C75A;
+    cursor: pointer;
+}
+
+.naverImgBox{
+    position: relative;
+}
+
+#naverIMG{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    bottom: 18px;
+    left: 18px;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+.btn:hover,
+#kakao-login-btn:hover,
+#naver_id_login_anchor:hover{
+    animation: btn .8s ease-out;
+}
+
+@keyframes btn{
+    0%{
+        letter-spacing: 0.1em
+    }50%{
+        letter-spacing: 0.3em;
+    }100%{
+        letter-spacing: 0.2em;
+    }
+}
+
+
+
+.loginRegister{
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.loginRegister p a{
+    color: var(--label-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0 10px 0 10px;
+}
+
+
+
+.loginRegister p a:hover{
+    text-decoration: underline;
+}
+
+
+.error{  
+	color : red;  
+}
+
+
+#pwMessage{
+	letter-spacing: 0;
+}
+
+.emshow {
+    padding: 15px 20px;
+    background-color: #444444;
+    border-radius: 5px;
+    color: #ffffff;
+    position: absolute;
+    display: none;
+}
+
+#embox:hover + .jb-text {
+    display: block;
+  }
+
+.icon {
+    cursor: pointer;
+}
+
+#emion {
+    cursor: pointer;
+}
+
+#sendEmail {
+    cursor: pointer;
+}
+
+.confirm {
+    color : green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

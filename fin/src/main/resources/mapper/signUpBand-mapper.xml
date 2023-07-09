@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="signUpBand">
+
+
+	<!-- 밴드 조회용 -->
+	<resultMap type="band" id="band_rm">
+		<id property="bandNo" column="BAND_NO"/>
+		<result property="bandName" column="BAND_NAME" />
+		<result property="ment" column="MENT" />
+		<result property="leaderNo" column="LEADER_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="userNick" column="USER_NICK" />
+		<result property="leaderNick" column="LEADER_NICK" />
+	</resultMap>
+	
+	
+	
+	
+	
+	<!-- 밴드 가입하기 -->
+	<insert id="acceptBand" parameterType="invi">
+		INSERT INTO BAND_USER (BAND_NO, USER_NO, LEADER_FL)
+		VALUES ( ${bandNo}, ${fromUserNo}, 'F')
+	</insert>
+	
+	<delete id="changeInviStatus" parameterType="_int">
+		DELETE FROM INVITATION WHERE BAND_NO = ${bandNo}
+	</delete>
+	
+	<select id="modalBandInfo" parameterType="_int" resultMap="band_rm">
+		SELECT BAND_NAME, MENT, LEADER_NICK
+		FROM BAND
+		WHERE BAND_NO = ${bandNo}
+	</select>
+	
+	
+
+</mapper>

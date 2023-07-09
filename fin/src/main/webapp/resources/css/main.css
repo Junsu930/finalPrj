@@ -1,0 +1,698 @@
+
+/* ===============================paht css=============================== */
+
+
+
+
+.path{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-width: 2px;
+  }
+
+
+.path1 {
+  stroke-dasharray: 17285.3;
+  animation: drawPath 1.7s linear, floating 3s linear infinite;
+}
+
+.content{
+  width: 100%;
+  font-family: var(--navFont-style-);
+  color:var(--text-color);
+}
+
+
+
+.content1, .content3, .content5{
+  padding-top: 110px;
+  overflow: hidden;
+}
+
+.path1, .path3{
+  fill: none;
+  stroke: var(--stroke-color);
+  stroke-width: 2px;
+}
+
+.path5{
+  stroke-width: 1px;
+  stroke: var(--stroke-color);
+}
+
+
+
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 17285.3;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+    }
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 10px, 0);
+    }
+}
+
+/* ===============================path css=============================== */
+
+
+.mainQuestion{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20em;
+  margin-top: 5em;
+  font-family: var(--navFont-style-);
+}
+
+
+.mainQuestion > div:first-child{
+  margin-bottom: 5em;
+  padding: 3em 3em;
+}
+
+.mainQuestion > div:first-child h1{
+  letter-spacing: 0.2em;
+  padding-left: 0;
+}
+
+.mainQuestion > div:first-child h2{
+  padding: 1em 0 0 3em;
+  letter-spacing: 0.2em;
+}
+
+
+.mainQuestion > div:last-child{
+  width: 100%;
+}
+
+
+.questionInput{
+  padding:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+/* .questionInput > form{
+  display: flex;
+  
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+} */
+
+.mainInput, .inputFromEmail{
+  margin: 2em 0;
+  height: 45px;
+  width: 35%;
+  padding: 1em 1em;
+  border: 1px solid var(--label-color);
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+  background-color: transparent !important;
+  min-width: 400px;
+}
+
+body.darkmode .mainInput{
+  border: 1px solid var(--border-color);
+  color: var(--text-dark-color);
+}
+
+
+.label{
+  width: 35%;
+  min-width: 400px;
+  color: var(--label-color);
+  letter-spacing: 0.3em;
+}
+
+
+body.darkmode .label{
+  color: var(--border-color);
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.mainTextArea{
+  resize: none;
+  height: 150px;
+  font-size: 1.1em;
+  font-family: var(--navFont-style-);
+}
+
+
+
+#sendEmailBtn{
+  background-color: transparent;
+  border: 1px solid var(--label-color);
+  border-radius: 5px;
+  width: 35%;
+  height: 50px;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 0.3em;
+  color: var(--text-color);
+  font-size: 1em;
+}
+
+body.darkmode #sendEmailBtn{
+  color: var(--text-dark-color);
+  border: 1px solid var(--border-color);
+}
+
+
+
+
+
+
+#sendEmailBtn:hover{
+  animation: in .5s ease-out;
+}
+
+@keyframes in{
+  0%{
+    letter-spacing: 0.3em;
+  }
+  50%{
+    letter-spacing: 0.6em
+  }
+  100%{
+    letter-spacing: 0.3em
+  }
+}
+
+
+
+
+/* ===============================main Text=============================== */
+
+
+.content2, .content3, .content4{
+  position: relative;
+  overflow: hidden;
+}
+
+/* guitar Text */
+.boardText{
+  color: #000;
+  position: absolute;
+  right: 1em;
+  bottom: 16em;
+  padding: 3em 3em;
+  width: 45%;
+  opacity: 0;
+}
+
+body.darkmode .mainTextP, body.darkmode .mainTextA{
+	color: var(--background-color);
+}
+
+body.darkmode .bi-chevron-compact-up{
+	color: var(--background-color);
+}
+
+/*bi-arrow-up-short*/
+
+.mainTextP{
+	color: var(--text-color);
+}
+
+
+.boardText > div{
+  height: 100%;
+}
+
+.boardText a{
+  padding: 1em 1em;
+  color: #000;
+  text-decoration: none;
+}
+
+.boardText p:first-child{
+  font-size: 1.8em;
+  padding-left: 0.5em;
+}
+
+
+.boardText p:nth-child(2){
+  padding: 1em 1em;
+}
+
+
+.boardText hr{
+  width: 100px;
+  position: relative;
+  margin-left: 1em;
+}
+
+.boardText a:hover,
+.usedText a:hover,
+.reservationText a:hover{
+  color: var(--accent-color);
+}
+
+
+
+body.darkmode .boardText a:hover > span,
+body.darkmode .usedText a:hover > span,
+body.darkmode .reservationText a:hover > span{
+  color: var(--stroke-dark-color);
+}
+
+
+
+/* ======================================================== */
+
+/* drum Text */
+.usedText{
+  color: #000;
+  position: absolute;
+  top: 12em;
+  right: 0;
+  bottom: 0;
+  left: 12em;
+  padding: 3em 3em;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+
+.usedText p:first-child{
+  font-size: 1.8em;
+  padding-left: 0.5em;
+}
+
+.usedText p:nth-child(2){
+  padding: 1em 1em;
+}
+
+.usedText a{
+  padding: 1em 1em;
+  color: #000;
+  text-decoration: none;
+}
+
+.usedText hr{
+  width: 100px;
+  margin-left: 0.825em;
+} 
+
+
+/* ======================================================== */
+
+
+/* headPhone Text */
+.reservationText{
+  color: #000;
+  position: absolute;
+  top: 3em;
+  right: 10em;
+  /* bottom: 0; */
+  /* left: 42em; */
+  padding: 3em 3em;
+  height: 100%;
+  opacity: 0;
+}
+
+.reservationText > div{
+  height: 100%;
+  width: 100%;
+}
+
+.reservationText p:first-child{
+  font-size: 1.8em;
+  padding-left: 0.5em;
+}
+
+.reservationText p:nth-child(2){
+  padding: 1em 1em;
+}
+
+.reservationText a{
+  padding: 1em 1em;
+  color: #000;
+  text-decoration: none;
+}
+
+.reservationText hr{
+  width: 100px;
+  margin-left: 1em;
+}
+
+/* ======================================================== */
+
+
+/* ===================main Text KeyFrames=================== */
+
+/* guitar Text */
+@keyframes slideGuitar{
+  from{
+    right: -38em;
+    opacity: 0;
+
+  }to{
+    right: 1em;
+    opacity: 1;
+  }
+}
+/* 1331 */
+
+@keyframes disappearSlideGuitar{
+  from{
+    right: 1em;
+    opacity: 1;
+  }to{
+    right: -38em;
+    opacity: 0;
+  }
+}
+/* 2050 */
+
+
+/* drum Text */
+@keyframes slideDrum{
+  from{
+    left: -12em;
+    opacity: 0;
+  }to{
+    left:12em;
+    opacity: 1;
+  }
+}
+
+/* 2108 */
+
+@keyframes disappearSlideDrum{
+  from{
+    left:12em;
+    opacity: 1;
+  }to{
+    left: -12em;
+    opacity: 0;
+  }
+}
+/* 2850 */
+
+
+@keyframes slideHeadPhone{
+  from{
+    top: 20em;
+    opacity: 0;
+  }to{
+    top: 6em;
+    opacity: 1;
+  }
+}
+
+/* 2970 */
+
+@keyframes disappearSlideHeadPhone{
+  from{
+    top: 6em;
+    opacity: 1;
+  }to{
+    top: 20em;
+    opacity: 0;
+  }
+}
+
+/* 3730 */
+
+
+/* ===================main Text KeyFrames=================== */
+
+
+
+/* ===============================main Text=============================== */
+
+
+
+/* top button */
+
+
+.show{
+  transition: opacity 1s ease-out;
+  opacity: 1 !important;
+}
+
+
+
+.topBtn{
+  position: fixed;
+  bottom: 1em;
+  right: 3em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 99;
+  transition: opacity 0.7s ease-out;
+  opacity: 0;
+}
+
+.bi-chevron-compact-up{
+  font-size: 3em;
+  color: var(--text-color);
+}
+
+
+.textWrapper{
+  position: relative;
+}
+
+/* 미디어 쿼리 */
+
+/* mian Text media */
+
+
+/* mian Text media */
+
+
+/* 하단 인풋 미디어쿼리 */
+/* 아이폰 xr, 갤럭시 울트라 */
+@media screen and (max-width:26rem) {
+  .label, .mainInput, .questionInput button{
+    width: 80%;
+    min-width: 0;
+  }
+}
+
+
+
+/* 반응형 미디어 쿼리 폰 */
+@media screen and (min-width:21.5rem) and (max-width: 26rem) {
+  .mainTextP{
+    display: none;
+  }
+  .boardText hr,
+  .usedText hr{
+    width: 60px;
+  }
+}
+
+
+
+
+
+
+
+/* 미디어쿼리 */
+
+
+/* 반응형 키프레임 for pad*/
+
+/* guitar Text */
+/* 26 */
+
+@keyframes slideGuitarMedia{
+  from{
+    right: -38em;
+    top: 500px;
+    opacity: 0;
+  }to{
+    opacity: 1;
+    bottom: 50px;
+  }
+}
+
+/* 30 */
+@keyframes disappearSlideGuitarMedia{
+  from{
+    opacity: 1;
+    bottom: 50px;
+  }to{
+    right: -38em;
+    top: 500px;
+    opacity: 0;
+  }
+}
+
+
+
+/* drum Text */
+/* 32 */
+@keyframes slideDrumMedia{
+  from{
+    left: 0;
+    opacity: 0;
+  }to{
+    opacity: 1;
+    left: 1em;
+    top: 7em;
+  }
+}
+
+
+/* 37 */
+@keyframes disappearSlideDrumMedia{
+  from{
+    opacity: 1;
+    left: 1em;
+    top: 7em;
+  }to{
+    left: 0;
+    opacity: 0;
+  }
+}
+
+
+/* 37.5 */
+@keyframes slideHeadPhoneMedia{
+  from{
+    top: 5em;
+    opacity: 0;
+  }to{
+    opacity: 1;
+    right: -1em;
+  }
+}
+
+
+/* 43 */
+@keyframes disappearSlideHeadPhoneMedia{
+  from{
+    opacity: 1;
+    right: -1em;
+  }to{
+    top: 5em;
+    opacity: 0;
+  }
+}
+
+
+
+
+
+/* 반응형 키프레임 for Phone */
+
+/* 22 */
+@keyframes slideGuitarMediaPhone {
+  from{
+    opacity: 0;
+    bottom: 3em;
+    right: -8em;
+  }to{
+    opacity: 1;
+    bottom: 3em;
+    right: 2em;
+  }
+}
+/* 35.6 */
+@keyframes disappearSlideGuitarMediaPhone {
+  from{
+    opacity: 1;
+    bottom: 3em;
+    right: 4em;
+  }to{
+    opacity: 0;
+    bottom: 3em;
+    right: -8em;
+  }
+}
+
+/* 27 */
+@keyframes slideDrumMediaPhone{
+  from{
+    opacity: 0;
+    left: -10em;
+    top: 7em;
+
+  }to{
+    opacity: 1;
+    left: -0.5em;
+    top: 7em;
+  }
+}
+
+
+/* 42 */
+@keyframes disappearSlideDrumMediaPhone{
+  from{
+    opacity: 1;
+    left: -0.5em;
+    top: 7em;
+  }to{
+    opacity: 0;
+    left: -10em;
+    top: 7em;
+  }
+}
+
+
+/* 34 */
+
+@keyframes slideHeadPhoneMediaPhone {
+  from{
+    opacity: 0;
+    top: 9em;
+    left: 8em;
+  }to{
+    opacity: 1;
+    top: 1em;
+    left: 8em;
+  }
+}
+
+/* 47.8 */
+@keyframes disappearSlideHeadPhoneMediaPhone {
+  from{
+    opacity: 1;
+    top: 1em;
+    left: 8em;
+  }to{
+    opacity: 0;
+    top: 9em;
+    left: 8em;
+  }
+}
+
+/* 반응형 키프레임 for Phone */
+
+
+
+
+
+
+
+
+
+

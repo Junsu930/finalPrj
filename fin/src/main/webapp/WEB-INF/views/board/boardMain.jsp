@@ -1,0 +1,648 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/555e979a9d.js" crossorigin="anonymous"></script>   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
+    <link rel="stylesheet"href="${contextPath}/resources/css/boradMain.css"></script>
+    <script src="${contextPath}/resources/js/modal.min.js"></script>
+    <style>
+
+
+      dl, ol, ul {
+          margin-top: 0;
+          margin-bottom: 0;
+          padding-left: 0;
+      }
+      
+      body{
+        line-height: normal;	
+      }
+      
+      button, input, optgroup, select, textarea {
+          font-family : revert;
+          font-size: revert;
+          line-height: inherit;
+      }
+    
+      p{
+            margin-bottom: 0;
+      }
+      
+      a:hover {
+        color: revert;
+      }
+    </style>
+   
+   
+   <title>BOARD</title>
+   </head>
+   <body>
+    <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
+	<c:if test="${ !empty message }">
+    <script>
+        alert("${message}");
+        // EL 작성 시 scope를 지정하지 않으면
+        // page -> request -> session -> application 순서로 검색하여
+        // 일치하는 속성이 있으면 출력
+    </script>
+	</c:if>    
+ 	<jsp:include page="/WEB-INF/views/common/header.jsp"/> 
+ <input type="hidden" value="${sessionScope.loginUser.userNo}" name="loginUserCheck" id="loginUserCheck">
+    <div class="boardContainer">
+    
+    <div class="boardSvgBox">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1366 768">
+            <g id="_레이어_2" data-name="레이어 2">
+              <path class="boardPath" d="m250,469c-3.04,6.94-6.76,16.42-10,28-4.04,14.44-6.06,21.66-5,31,.99,8.74,4.33,15.16,11,28,5.08,9.77,8.59,16.53,15,24,8,9.32,16,14.21,32,24,11.23,6.87,19.62,12,32,17,12.6,5.09,22.06,7.06,41,11,22.13,4.61,39.14,6.42,45,7,18.05,1.79,31.61,1.92,42,2,21.44.16,32.15.24,43-2,19.82-4.09,33.69-12.48,41-17,25.43-15.7,25.55-26.67,52-49,12.35-10.43,27.9-23.55,51-32,20.65-7.55,40.36-8.83,74-11,0,0,18.55-1.2,48-8,12.55-2.9,19.8-5.24,24-12,5.05-8.13,3.69-19.41-1-27-4.35-7.04-10.81-9.65-22-14-8.12-3.15-18.19-5.14-38-9-10.72-2.09-21.26-5.01-32-7-11.42-2.12-18.41-3.01-23-9-2.66-3.47-5-9.29-3-14,2.1-4.95,7.97-6.26,17-9,9.48-2.87,18.44-7.39,28-10,17.9-4.89,35.27-11.53,53-17,29.91-9.22,37.96-12.33,65-21,42.55-13.64,59.6-17.81,165-48,22.01-6.3,44.4-11.41,66-19,12.66-4.45,26.28-5.72,39-10,4.9-1.65,10.88-3.83,18-2,1.25.32,12.85,3.5,16,14,2.78,9.28-3.11,17.4-5,20-3.57,4.92-7.72,7.38-17,12-13.18,6.56-19.77,9.84-31,14-14.12,5.24-25.95,8.76-34,11-21.06,5.87-36.79,8.73-55,12-26.63,4.77-38.02,5.56-50,5-9.02-.42-25.08-1.17-26-6-.83-4.37,11.16-9.88,31-19,12.17-5.59,21.17-8.77,32-10,8.78-1,14.17-.21,19,2,2.27,1.04,8.52,3.89,11,9,6.54,13.48-16.31,36.31-21,41-6.51,6.51-17.7,16.2-45,29-20.38,9.56-40.88,19.17-71,24-12.68,2.03-38.7,5.08-71,0-22.61-3.56-38.81-9.61-53-15-35.73-13.57-38.88-21.34-81-41-48.95-22.85-68.55-23.5-79-23-10.69.51-28.44,1.35-43,13-5,4-6.61,6.87-17,16-3.89,3.42-15.36,13.51-23,18-9.83,5.79-14.66,2.69-56,1-40.79-1.67-35.11,1-46-1,0,0-10.28-1.89-25,0-9.85,1.26-12.13,3.13-13,5-1.16,2.51-.23,6.05,7,16,8.46,11.63,16.29,19.31,17,20,11.81,11.47,17.72,17.21,26,24,8.63,7.08,19.55,16.03,35,25,24.9,14.46,46.36,20.15,54,22,25.15,6.09,38.32,9.28,47,2,8.07-6.76,8.71-22.84,10-55,.75-18.77-.2-28.55,7-36,6.46-6.68,15.56-7.45,23-8,37.04-2.72,69.34,24.71,85,38,4.81,4.08,12.31,6.67,12,11-.51,7.17-20.06,11.34-33,14-28.5,5.87-50,5-50,5-54.52-2.2-88-8-88-8-53.03-9.19-105.65-20.95-159-28-35.46-4.69-68.12-7.48-102-30-25.23-16.77-26.93-28.38-27-33-.1-6.36,2.62-16.5,44-46,9.4-6.7,26.11-18.19,62-39,31.77-18.42,42.52-23.24,64-38,2.22-1.52,24.29-18.93,32-24,2.4-1.57,4.65-3.35,7-5,5.06-3.56,6.14-4.2,6-5-.34-2.02-8-2.74-14-2-3.4.42-8.44,1.1-13,5-2.3,1.96-5.03,4.3-5,7,.05,5.17,10.17,9.07,25,14,18.73,6.22,28.1,9.33,40,12,27.79,6.23,41.68,9.34,55,7,10.05-1.76,23.6-4.14,33-16,7.55-9.52,13.87-26.98,8-37-1.01-1.72-2.84-4.03-2-6,1.44-3.37,9.8-3.62,15-3,4.95.59,7.26,2,8,1,1.36-1.83-4.9-8.7-7-11-6.99-7.67-9.11-6.89-11-11-2.94-6.38,1.72-9.27-1-17-2.29-6.49-7.63-10.31-10-12-1.4-1-4.83-3.27-11-5-7.28-2.04-14.28-2.16-24-1-10.06,1.21-19.55,3.38-31,7-4.01,1.27-11.88,3.86-29,11-14.23,5.93-25.57,10.66-40,18-18.3,9.31-27.45,13.96-38,22-13.51,10.3-25.67,19.57-35,36-7.11,12.53-7.96,21.1-14,22-7.25,1.08-15.57-9.86-19-19-3.92-10.46-1.88-19.73,1-32,2.17-9.24,5.37-22.91,16-37,10.02-13.29,21.32-19.9,32-26,16.24-9.28,30.09-13.05,45-17,6.21-1.64,23.02-5.85,57-14,9.13-2.19,16.89-4.04,17-7,.14-3.8-12.4-7.53-21-9-11.07-1.89-20.55-.9-35,2-19.68,3.94-30.31,6.08-45,12-15.13,6.1-26.42,13.73-49,29-15.2,10.28-24.41,17.69-25,28-.11,1.94-.32,5.59,2,8,6.96,7.25,29.5-4.17,41-10,23.29-11.8,25.52-18.08,43-27,11.79-6.02,23.86-8.68,48-14,37.05-8.16,65.28-9.68,72-10,0,0,25.68-1.22,52,1,21.11,1.78,16.33,3.71,29,4,3.98.09,8.13-.01,9,2,1.3,3-5.48,8.82-11,13"/>
+            </g>
+        </svg>
+    </div>
+    
+    
+   
+    
+ <!--    <div class="totalTitle">전체 게시판</div> -->
+    
+    <div class="naviBar">
+      <ul>
+ 
+   <!--      <li>
+         <label class="test_obj">
+        	<input type="radio" class="tagAll" name="boardTag" value="0" >
+        		<span>전체</span>
+    	 </label>
+    	</li>
+
+       	<li>
+         
+         <label class="test_obj">
+            <input type="radio" class="tagTalk" name="boardTag" value="1">
+            	<span>잡담</span>
+          </label>
+       
+        </li>
+       <li>
+    	<label class="test_obj">
+        <input type="radio" class="tagQus" name="boardTag" value="2">
+      	<span>질문</span>
+  		</label>
+       </li> -->
+       
+        <c:if test="${!empty loginUser}">
+       <!-- /comm/board/write/3?mode=insert&cp=1 -->
+       <!-- /comm/board/list/3 -->
+       <button class="write" onclick="location.href='boardWrite';">글쓰기</button></a>
+       </c:if>
+       
+       
+      </ul>
+   </div>
+   
+   
+
+    <table>
+      <thead>
+        <tr>
+          <th class="boardNumber">번호</th>
+           
+          <th class="title">제목</th>
+          <th class="ninkName"><i class="fa-solid fa-user"></i></th>
+          <th class="views"><i class="fa-solid fa-eye"></i></th>
+          <th class="heart"><i class="fa-solid fa-heart"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <c:choose>
+                 <c:when test="${empty boardList}">
+                <!-- 게시글 목록 조회 결과가 비어있다면 -->
+                 <tr>
+                  <th colspan="5">게시글이 존재하지 않습니다.</th>
+                   </tr>
+                 </c:when>
+						
+        <c:otherwise>
+        	<c:forEach var="board" items="${boardList}">       
+            <c:set var="isBanned" value="false"/>
+            <c:forEach var="bannedId" items="${bannedUserIds}">
+                <c:if test="${bannedId eq board.userNo}">
+                    <c:set var="isBanned" value="true"/>
+                </c:if>
+            </c:forEach>
+            <c:if test="${!isBanned}">
+                          
+        	<tr class="tr-userNo-${board.userNo}">
+        	
+        	<td class="boardNumber">${board.boardNo}</td>
+        		<c:choose>
+       				 <c:when test="${ board.boardTag==1}">
+              
+                
+        			 <td class="title"><div class="tagtotal" id="tag"><span class="tagNotice">잡담</span></div><a href="boardDetail?boardNo=${board.boardNo}&loginUserNo=${sessionScope.loginUser.userNo}" class="titleA">${board.boardTitle}</a></div></td>
+          
+        			</c:when>
+          
+         		<c:otherwise>
+          
+         			<td class="title"><div class="tagtotal" id="tag"><span class="tagBasic">질문</span></div><a href="boardDetail?boardNo=${board.boardNo}&loginUserNo=${sessionScope.loginUser.userNo}" class="titleA">${board.boardTitle}</a></div></td>
+          					
+          			
+          					
+         		</c:otherwise>
+             		
+         		</c:choose>
+		<td class="ninkName">
+		  <a class="blockBoxOpen">${board.userNick}</a>
+		  
+		<button class="js-static-modal-toggle btn-primary btn-report" type="button" id="blocksModal"  data-toggle="modal"  data-boardNo="${board.boardNo}" data-target="#static-modal"  onclick="handleReportButtonClick(event)"  >신고하기</button>
+		    
+       
+		
+		 <input type="hidden" name="bannedUserNo" value="${board.userNo}">
+		    <input type="hidden" name="bannedUserNick" value="${board.userNick}">
+		    <input type="hidden" name="userNo" value="${loginUser.userNo}">
+		
+		</td>      	
+
+
+    
+          <td class="views">${board.readCount}</td>
+          <td class="heart">${board.boardLike}</td>
+          
+        </tr>
+        
+    </c:if>
+         </c:forEach>
+            </c:otherwise>
+                </c:choose>
+        
+      </tbody>
+    </table>
+ 
+ 
+ 
+<!-- <button class="js-static-modal-toggle btn-primary" type="button" id="blockModal" data-toggle="modal" data-target="#static-modal">신고하기</button> -->
+        
+         
+   <div id="static-modal" class="modal fade" tabindex="-1" role="dialog" style="display: none; padding-right: 17px;">
+   
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        </div>
+        <div class="modal-body">
+      
+            <div class="reportTitle">신고하기</div>
+            <div class="reportReason">사유선택</div>
+            <div class="report_item_reason">
+              <div>
+                <input type="checkbox" id="pornography" name="pornography" value="pornography">
+                <label for="pornography">음란물입니다.</label>
+              </div> 
+              <div>
+                <input type="checkbox" id="advertisement" name="advertisement" value="advertisement">
+                <label for="advertisement">스팸홍보/도배글입니다.</label>
+              </div> 
+              <div>
+                <input type="checkbox" id="abuse" name="abuse" value="abuse">
+                <label for="abuse">욕설/생명경시/혐오/차별적 표현글입니다.</label>  
+              </div>
+            </div>
+       
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+        
+        
+        
+          <button type="button" class="btn btn-primary" id="reportSubmit"  data-dismiss="modal">신고</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+  
+  
+  
+ <form action="board" method="get">
+  <div class="pagination-search">
+    
+  <ul class="pagination">
+  
+  <c:if test="${pageVO.prev}">
+    <li><a href="board?pageNum=${pageVO.startPage - 1}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}"><span>이전</span></a></li>
+  </c:if>
+  
+  <c:forEach var="num" begin="${pageVO.startPage}" end= "${pageVO.endPage}">
+    <li class="${pageVO.pageNum eq num ? 'active' : ''} ">
+    <a href="board?pageNum=${num}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}">${num}</a>
+    </li>
+  </c:forEach>
+  
+  <c:if test="${pageVO.next}">
+    <li><a href="board?pageNum=${pageVO.endPage + 1}&amount=${pageVO.amount}&searchType=${param.searchType}&keyword=${param.keyword}" class="active"><span>다음</span></a></li>
+  </c:if>
+</ul>
+
+<div class="search-box">
+  <select id="nav-select" name="searchType">
+    <option value="all">전체</option>
+    <option value="notice">질문</option>
+    <option value="popular">잡담</option>
+  </select>
+  
+  <input type="text" placeholder="글 검색" name="keyword">
+  <input type="hidden" name="pageNum" value="${pageVO.cri.pageNum }">
+  <input type="hidden" name="amount" value="${pageVO.cri.amount }">
+  
+  <button type="submit" class="searchBtn">검색</button>
+</div>
+</form>
+</div>
+
+
+ 
+ 
+
+
+</div>
+<jsp:include page="/WEB-INF/views/faq/faq.jsp"/>
+<jsp:include page="/WEB-INF/views/chatting/chatRoomList.jsp"/>
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<script type="text/javascript" src="${contextPath}/resources/js/boardMain.js"></script>
+
+ <script>
+
+ document.querySelector('.js-static-modal-toggle').addEventListener('click', function() {
+	    new Modal({el: document.getElementById('static-modal')}).show();
+	  });
+	
+
+ 
+
+
+
+
+</script>
+<script>
+  Modal.templates = {
+    header: '<div class="modal-header foo"></div>',
+  };
+  document.querySelector('.js-static-modal-toggle-main')
+    .addEventListener('click', function() {
+      new Modal({el: document.getElementById('static-modal')}).show();
+    });
+  document.querySelector('.js-static-modal-toggle')
+    .addEventListener('click', function() {
+
+      new Modal({el: document.getElementById('static-modal')}).show();
+    });
+
+  document.querySelector('.js-dynamic-modal-toggle')
+    .addEventListener('click', function() {
+
+      // Here we create our dynamic modal
+      new Modal({
+        title: 'Hooray!',
+        content: 'My Very Dynamic Modal Content'
+      }).show();
+
+    });
+
+  document.querySelector('.js-alert-modal-toggle')
+    .addEventListener('click', function() {
+
+      // Here we create our dynamic modal
+      Modal.alert('My Custom Alert').show();
+
+    });
+
+  document.querySelector('.js-confirm-modal-toggle')
+    .addEventListener('click', function() {
+
+      // Here we create our dynamic modal
+      var cfrm = Modal.confirm('Are you sure?');
+      cfrm.on('hide', function() {
+        alert('Triggered hide event.');
+      });
+      cfrm.on('hidden', function() {
+        alert('Modal is hidden.');
+      });
+      cfrm.show();
+
+    });
+
+  document.querySelector('.js-confirm-event-modal-toggle')
+    .addEventListener('click', function() {
+
+      // Here we create our dynamic modal
+      var confirmModal = Modal.confirm('Are You Sure?');
+      confirmModal.show().once('dismiss', function(modal, ev, button) {
+        if (button && button.value) {
+          alert("You've clicked on an OK button.");
+        }
+      });
+
+    });
+
+</script>
+<script type="text/javascript">
+
+
+window.onload = function() {
+  // 서버에서 반환된 현재 페이지 번호입니다.
+  var currentPage = ${pageVO.pageNum};
+  // 페이지 링크들을 가져옵니다.
+  var pageLinks = document.querySelectorAll('.pagination li a');
+  
+  // 모든 페이지 링크들을 순회하면서, 
+  for (var i = 0; i < pageLinks.length; i++) {
+    // 페이지 링크의 번호를 가져옵니다.
+    var pageNum = parseInt(pageLinks[i].textContent);
+    
+    // 현재 페이지 번호와 링크의 페이지 번호가 일치하면,
+    if (pageNum === currentPage) {
+      // 해당 링크에 'active' 클래스를 추가합니다.
+      pageLinks[i].parentElement.classList.add('active');
+    }
+  }
+};
+
+</script>
+
+<script type="text/javascript">
+const updateBtn= () => {
+	const boardNo = '${BoardDetail.boardNo}';
+	  
+	location.href = "update?boardNo=" + boardNo ;
+}
+$('.tagTalk').click(function(){
+
+    $.ajax({
+        url: 'boardTalk',  // 데이터를 가져올 URL
+        type: 'GET',  // 요청 방식
+        dataType: 'json',  // 응답 데이터 형식
+        success: function(data) {
+        	$('.totalTitle').text('잡담 게시판');
+            var $tbody = $('tbody');  // <tbody> 요소를 선택
+            $tbody.empty();  // <tbody> 요소 내부의 모든 요소를 제거
+
+            // 서버에서 받아온 데이터를 순회하면서 <tr> 요소를 생성
+            $.each(data, function(i, board) {
+                var $tr = $('<tr>');  // <tr> 요소를 생성
+                $tr.append('<td class="boardNumber">' + board.boardNo + '</td>');
+
+                var $tdTitle = $('<td>').addClass('title');
+                var $divTag = $('<div>').addClass('tagtotal').attr('id', 'tag');
+                if(board.boardTag == 1) {
+                    $divTag.append('<span class="tagNotice">잡담</span>');
+                } else {
+                    $divTag.append('<span class="tagBasic">질문</span>');
+                }
+                $divTag.append('<a href="boardDetail?boardNo='+board.boardNo+'" class="titleA">' + board.boardTitle + '</a>');
+                $tdTitle.append($divTag);
+                $tr.append($tdTitle);
+
+                $tr.append('<td class="ninkName"><a class="blockBoxOpen">' + board.userNick + '</a></td>');
+                $tr.append('<td class="views">' + board.readCount + '</td>');
+                $tr.append('<td class="heart">' + board.boardLike + '</td>');
+
+                $tbody.append($tr);  // 생성한 <tr> 요소를 <tbody> 요소에 추가
+            });
+            
+       
+        },
+    
+        error: function(request, status, error) {
+            // AJAX 요청이 실패했을 때 실행될 함수
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });
+});
+
+$('.tagAll').click(function(){
+
+    $.ajax({
+        url: 'boardAll',  // 데이터를 가져올 URL
+        type: 'GET',  // 요청 방식
+        dataType: 'json',  // 응답 데이터 형식
+        success: function(data) {
+        	$('.totalTitle').text('전체 게시판');
+            var $tbody = $('tbody');  // <tbody> 요소를 선택
+            $tbody.empty();  // <tbody> 요소 내부의 모든 요소를 제거
+
+            // 서버에서 받아온 데이터를 순회하면서 <tr> 요소를 생성
+            $.each(data, function(i, board) {
+                var $tr = $('<tr>');  // <tr> 요소를 생성
+                $tr.append('<td class="boardNumber">' + board.boardNo + '</td>');
+
+                var $tdTitle = $('<td>').addClass('title');
+                var $divTag = $('<div>').addClass('tagtotal').attr('id', 'tag');
+                if(board.boardTag == 1) {
+                    $divTag.append('<span class="tagNotice">잡담</span>');
+                } else if(board.boardTag == 2) {
+                    $divTag.append('<span class="tagBasic">질문</span>');
+                } else {
+                	 $divTag.append('<span class="tagNotice">잡담</span>');
+                	  $divTag.append('<span class="tagBasic">질문</span>');
+                }
+                $divTag.append('<a href="boardDetail?boardNo='+board.boardNo+'" class="titleA">' + board.boardTitle + '</a>');
+                $tdTitle.append($divTag);
+                $tr.append($tdTitle);
+
+                $tr.append('<td class="ninkName"><a class="blockBoxOpen">' + board.userNick + '</a></td>');
+                $tr.append('<td class="views">' + board.readCount + '</td>');
+                $tr.append('<td class="heart">' + board.boardLike + '</td>');
+
+                $tbody.append($tr);  // 생성한 <tr> 요소를 <tbody> 요소에 추가
+            });
+            
+       
+        },
+    
+        error: function(request, status, error) {
+            // AJAX 요청이 실패했을 때 실행될 함수
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });
+});
+
+$('.tagQus').click(function(){
+
+    $.ajax({
+        url: 'boardQus',  // 데이터를 가져올 URL
+        type: 'GET',  // 요청 방식
+        dataType: 'json',  // 응답 데이터 형식
+        success: function(data) {
+        	$('.totalTitle').text('질문 게시판');
+            var $tbody = $('tbody');  // <tbody> 요소를 선택
+            $tbody.empty();  // <tbody> 요소 내부의 모든 요소를 제거
+
+            // 서버에서 받아온 데이터를 순회하면서 <tr> 요소를 생성
+            $.each(data, function(i, board) {
+                var $tr = $('<tr>');  // <tr> 요소를 생성
+                $tr.append('<td class="boardNumber">' + board.boardNo + '</td>');
+
+                var $tdTitle = $('<td>').addClass('title');
+                var $divTag = $('<div>').addClass('tagtotal').attr('id', 'tag');
+                if(board.boardTag == 1) {
+                    $divTag.append('<span class="tagNotice">잡담</span>');
+                } else {
+                    $divTag.append('<span class="tagBasic">질문</span>');
+                }
+                $divTag.append('<a href="boardDetail?boardNo='+board.boardNo+'" class="titleA">' + board.boardTitle + '</a>');
+                $tdTitle.append($divTag);
+                $tr.append($tdTitle);
+
+                $tr.append('<td class="ninkName"><a class="blockBoxOpen">' + board.userNick + '</a></td>');
+                $tr.append('<td class="views">' + board.readCount + '</td>');
+                $tr.append('<td class="heart">' + board.boardLike + '</td>');
+
+                $tbody.append($tr);  // 생성한 <tr> 요소를 <tbody> 요소에 추가
+            });
+            
+       
+        },
+    
+        error: function(request, status, error) {
+            // AJAX 요청이 실패했을 때 실행될 함수
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });
+});
+
+
+
+
+
+</script>
+<!-- <script type="text/javascript">
+    window.onload = function() {
+        var searchType = document.getElementById('nav-select').value;
+        var keyword = document.querySelector('input[name="keyword"]').value;
+        var paginationLinks = document.querySelectorAll('.pagination a');
+
+        paginationLinks.forEach(function(link) {
+            var href = link.href;
+            if (searchType !== '') {
+                href += '&searchType=' + encodeURIComponent(searchType);
+            }
+            if (keyword !== '') {
+                href += '&keyword=' + encodeURIComponent(keyword);
+            }
+            link.href = href;
+        });
+    }
+</script> -->
+<script type="text/javascript">
+
+var boardNo, bannedUserNo, bannedUserNick, userNo;
+$('.blockBoxOpen').click(function(e)
+{ 
+    var sWidth = window.innerWidth;
+    var sHeight = window.innerHeight;
+
+    var oWidth = $('#blocksModal').width();
+    var oHeight = $('#blocksModal').height();
+    
+	boardNo = $(this).data('boardno');
+  bannedUserNo = $(this).closest('td').find('input[name="bannedUserNo"]').val();
+  bannedUserNick = $(this).closest('td').find('input[name="bannedUserNick"]').val();
+  userNo = $(this).closest('td').find('input[name="userNo"]').val();
+    console.log("bannedUserNo"+ bannedUserNo); 
+  console.log("bannedUserNick"+ bannedUserNick); 
+    console.log("userNo"+ userNo); 
+  
+    // 레이어가 나타날 위치를 셋팅한다.
+    var divLeft = e.pageX+10; // e.pageX는 문서를 기준으로 한 마우스 위치입니다.
+    var divTop = e.pageY+20; // e.pageY는 문서를 기준으로 한 마우스 위치입니다.
+
+    // 레이어가 화면 크기를 벗어나면 위치를 바꾸어 배치한다.
+    if( divLeft + oWidth > sWidth ) divLeft -= (oWidth + 20); // 마우스와 레이어 사이의 간격을 고려합니다.
+    if( divTop + oHeight > sHeight ) divTop -= (oHeight + 20); // 마우스와 레이어 사이의 간격을 고려합니다.
+
+    // 레이어 위치를 바꾸었더니 상단기준점(0,0) 밖으로 벗어난다면 상단기준점(0,0)에 배치하자.
+    if( divLeft < 0 ) divLeft = 0;
+    if( divTop < 0 ) divTop = 0;
+
+    $('#blocksModal').css({
+        "top": divTop,
+        "left": divLeft,
+        "position": "absolute",
+        "display" :"block"
+    }).show();
+
+
+});
+
+$('.btn-primary[data-dismiss="modal"]').click(function(e) {
+    let loginUserCheck = document.getElementById('loginUserCheck').value;
+
+    if(loginUserCheck == "") { // 로그인하지 않은 경우
+        e.preventDefault(); // 폼의 기본 동작(페이지 이동 등)을 막습니다.
+        Swal.fire({
+            title: "BandArchive",
+            text: '로그인을 먼저 진행해주세요!',
+            icon: 'warning',
+        }).then(() => {
+            toLoginPage();
+        });
+    } else if(bannedUserNo==userNo) {
+        e.preventDefault(); // 폼의 기본 동작(페이지 이동 등)을 막습니다.
+        Swal.fire({
+            title: "BandArchive",
+            text: '자신은 신고할수없습니다!',
+            icon: 'warning',
+        });
+    } else { // 로그인한 경우
+        // AJAX를 사용하여 데이터를 컨트롤러로 전송합니다.
+        $.ajax({
+            type: 'POST', // 전송 방식 설정 (POST 또는 GET)
+            url: 'report', // 데이터를 전송할 컨트롤러 URL
+            data: {
+                bannedUserNo: bannedUserNo,
+                bannedUserNick: bannedUserNick,
+            },
+            success: function(response) {
+                alert("신고가 완료되었습니다");
+                console.log('Data successfully sent to the controller.');
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                // 데이터 전송 중 에러가 발생했을 때 실행할 동작을 작성합니다.
+                console.log('Error occurred while sending data to the controller.');
+                console.log('Status:', status);
+                console.log('Error:', error);
+            }
+        });
+    }
+});
+
+function toLoginPage(){
+    location.href="/fin/login?ref="+document.location.href;
+};
+
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

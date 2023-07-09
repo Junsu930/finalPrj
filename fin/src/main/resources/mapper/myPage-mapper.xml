@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myPageMapper">
+
+	<resultMap type="user" id="user_rm">
+  	
+  		<id property="userNo" column="USER_NO"/>
+  	
+  		<result property="userEmail" 		column="USER_EMAIL"/>
+		<result property="userPw" 		column="USER_PWD"/>
+		<result property="userNick" 	column="USER_NICK"/>
+		<result property="joinDate" 		column="JOIN_DATE"/>
+		<result property="secessionFl" 		column="SECESSION_FL"/>
+		<result property="matchFl" 		column="MATCHING_FL"/>
+		<result property="userType" 		column="USER_TYPE"/>
+		<result property="intro" 		column="INTRO_MENT"/>
+		<result property="banFl" 		column="BANNED_FL"/>
+		<result property="profileImg" 	column="IMAGE"/>
+
+  </resultMap>
+  
+  <resultMap type="searching" id="searching_rm">
+		<id property="matchingNo" column="MATCHING_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="career" column="YEARS_OF_EXP" />
+		<result property="inst" column="INST" />
+		<result property="genre" column="GENRE" />
+		<result property="gender" column="GENDER" />
+		<result property="region" column="REGION" />
+		<result property="userName" column="USER_NICK" />
+	</resultMap>
+	
+	<resultMap type="banList" id="banList_rm">
+		<id property="bannedNo" column="BANNED_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="bannedUserNo" column="BANNED_USER_NO" />
+		<result property="bannedUserNick" column="BANNED_USER_NICK" />
+	</resultMap>
+	
+	<resultMap type="band" id="band_rm">
+		<id property="bandNo" column="BAND_NO"/>
+		<result property="bandName" column="BAND_NAME" />
+		<result property="ment" column="MENT" />
+		<result property="leaderNo" column="LEADER_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="userNick" column="USER_NICK" />
+		<result property="leaderNick" column="LEADER_NICK" />
+	</resultMap>
+	
+	
+	<resultMap type="boardList" id="board_rm">
+		<id property="boardNo" column="BOARD_NO" />
+		<result property="boardTitle" column="BOARD_TITLE" />
+		<result property="boardContent" column="BOARD_CONTENT" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="readCount" column="READ_COUNT" />
+		<result property="boardSt" column="BOARD_ST" />
+		<result property="userNo" column="USER_NO" />
+		<result property="boardLike" column="BOARD_LIKE" />
+		<result property="boardTag" column="BOARD_TAG" />
+		<result property="userNick" column="USER_NICK" />
+	</resultMap>
+	
+	
+	<resultMap type="replyList" id="reply_rm">
+	
+		<id property="replyNo" column="REPLY_NO"/>
+		
+		<result property="replyContent" column="REPLY_CONTENT"/>
+		<result property="createDate" column="CREATE_DT"/>
+		<result property="boardNo" column="BOARD_NO"/>
+		<result property="replySt" column="REPLY_ST"/>
+		<result property="userNo" column="USER_NO"/>
+		<result property="userNick" column="USER_NICK"/>
+		<result property="parentReplyNo" column="PARENT_REPLY_NO"/>	
+	</resultMap>
+
+	<update id="updateInfo">
+		UPDATE "USER" SET
+		USER_NICK = #{newNick},
+		INTRO_MENT = #{newIntro}
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	<select id="checkBand" resultType="_int">
+		SELECT COUNT(*)
+		FROM BAND
+		WHERE LEADER_NO = ${userNo}
+	</select>
+	
+	
+	<select id="selectEncPw" resultType="string">
+		SELECT USER_PWD FROM "USER"
+		WHERE USER_NO = ${userNo}
+	</select>
+	
+	<update id="changePw">
+		UPDATE "USER" SET
+		USER_PWD = #{newPw}
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	<update id="updateImg">
+		UPDATE "USER" SET
+		IMAGE = #{profileImg}
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	<update id="updatePosition">
+		UPDATE MATCHING_INFO SET
+		INST = #{inst},
+		REGION = #{region},
+		GENRE = #{genre}
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	<insert id="insertPosition" parameterType="searching">
+		INSERT INTO MATCHING_INFO VALUES(
+  			MATCHING_SEQ.NEXTVAL,
+  			${userNo},
+  			#{inst},
+  			#{genre},
+  			#{region},
+  			#{gender},
+  			NULL
+  	)
+	</insert>
+	
+	<update id="secession">
+		UPDATE "USER" SET
+		SECESSION_FL = 'Y'
+		WHERE USER_NO = ${userNo}
+	</update>
+	
+	<select id="chBanList" resultMap="banList_rm">
+		SELECT BANNED_NO, USER_NO, BANNED_USER_NO, BANNED_USER_NICK 
+		FROM BOARD_BANNED 
+		WHERE USER_NO = ${userNo}
+	</select>
+	
+	<delete id="updateBan">
+		DELETE FROM BOARD_BANNED
+		WHERE BANNED_USER_NO = ${bannedUserNo}
+	</delete>
+		
+	<insert id="makeBand" parameterType="band">
+		INSERT INTO BAND VALUES(
+		MAKEBAND_SEQ.NEXTVAL,
+		#{bandName},
+		NULL,
+		#{ment},
+		${userNo},
+		#{userNick}
+	)
+	</insert>
+	
+	<select id="bandMem" resultMap="band_rm">
+		SELECT BAND_NO , BAND_NAME , LEADER_NO , USER_NO , USER_NICK , LEADER_NICK , MENT
+		FROM BAND_USER INNER JOIN BAND USING(BAND_NO)
+		JOIN  "USER" USING(USER_NO)
+		WHERE LEADER_NO = ${userNo} OR USER_NO = ${userNo}
+	</select>
+	
+	<insert id="makeBandUser" parameterType="band">
+		INSERT INTO BAND_USER VALUES(
+		${bandNo},
+		${userNo},
+		'T'	
+		)
+	</insert>
+	
+	<select id="bandNo" resultType="_int">
+		SELECT BAND_NO
+		FROM BAND
+		WHERE LEADER_NO = ${userNo}
+	</select>
+	
+	<delete id="exile">
+		DELETE FROM BAND_USER 
+		WHERE USER_NO = ${exileNo}
+	</delete>
+	
+	<delete id="dismiss">
+		DELETE FROM BAND
+		WHERE BAND_NO = ${bandNo}
+	</delete>
+	
+	<delete id="dismiss2">
+		DELETE FROM BAND_USER
+		WHERE BAND_NO = ${bandNo}
+	</delete>
+	
+	<update id="bandInfo">
+		UPDATE BAND SET
+		LEADER_NICK = #{newNick}
+		WHERE LEADER_NO =${userNo}
+	</update>
+	
+	<select id="boardList" resultMap="board_rm">
+	<![CDATA[
+		SELECT *
+		FROM (
+    	SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+    	BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    	BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    	FROM BOARD 
+    	JOIN "USER" USING(USER_NO)) A
+		WHERE USER_NO = ${userNo} AND BOARD_ST = 'N'
+		]]>
+	</select>
+	
+	<select id="getTotal" resultType="_int">
+    	select count(*) as total from Board
+    </select>
+    
+    <select id="replyList" resultMap="reply_rm">
+		SELECT LEVEL,  R.* FROM
+		    (SELECT REPLY_NO, REPLY_CONTENT,
+		        TO_CHAR(CREATE_DT, 'YY"." MM"." DD')  CREATE_DT,
+		        BOARD_NO, USER_NO, USER_NICK, PARENT_REPLY_NO, REPLY_ST
+		    FROM REPLY
+		    JOIN  "USER" USING(USER_NO)
+		    WHERE USER_NO = ${userNo}) R	
+		WHERE REPLY_ST = 'N'
+		START WITH PARENT_REPLY_NO IS NULL
+		CONNECT BY PRIOR REPLY_NO = PARENT_REPLY_NO
+		ORDER SIBLINGS BY REPLY_NO
+	</select>
+	
+	
+	<select id="getBandNo" resultType="string">
+    	SELECT BAND_NO
+		FROM BAND_USER
+		WHERE USER_NO = ${userNo}
+    </select>
+    
+    <select id="BandUserList" resultMap="band_rm">
+    	SELECT USER_NO, BAND_NO, USER_NICK, LEADER_NO
+		FROM BAND_USER JOIN "USER" USING(USER_NO) JOIN BAND USING(BAND_NO)
+		WHERE BAND_NO = ${bandNo} AND LEADER_FL = 'F'
+    </select>
+    
+    <select id="newloginUser" parameterType="user" resultMap="user_rm">
+  		SELECT USER_NO, USER_EMAIL, USER_PWD, USER_NICK ,USER_TYPE, 
+		MATCHING_FL, INTRO_MENT, TO_CHAR( JOIN_DATE , 'YYYY-MM-DD HH24:MI:SS') AS JOIN_DATE , IMAGE
+		FROM "USER"
+		WHERE USER_NO = #{userNo}
+		AND SECESSION_FL = 'N'
+  </select>
+    
+
+
+</mapper>

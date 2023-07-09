@@ -1,0 +1,179 @@
+.alarmSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    margin: 15em 0;
+}
+
+.alarmWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    width: 500px;
+    height: 350px;
+    background-color: var(--newBack-color);
+    box-shadow: 4px -2px 15px 0px rgba(0,0,0,0.25);
+    border-radius: 12px;
+}
+
+body.darkmode .alarmWrapper{
+    background-color: var(--newBack-dark-color);
+}
+
+
+
+.alarmWrapper > h1{
+    padding-left: 0;
+}
+
+.alarmWrapper > p:nth-of-type(1){
+    font-size: 1.5em;
+}
+
+.alarmBtnBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.alarmBtnBox form button{
+    width: 130px;
+    height: 50px;
+    border: none;
+    border-radius: .5em;
+    background-color: transparent;
+    box-shadow: 3px 1px 15px 0px rgba(0,0,0,0.25);
+    outline: none;
+    cursor: pointer;
+    font-size: 1.3em;
+    transition: .5s;
+}
+
+.alarmBtnBox form button:hover{
+    background-color: var(--accent-color);
+    color: var(--text-dark-color);
+}
+
+body.darkmode .alarmBtnBox form button:hover{
+    background-color: var(--accent-color);
+    color:var(--text-color);
+}
+
+body.darkmode .alarmBtnBox form button{
+    color: var(--text-dark-color);
+    box-shadow: 2px -2px 15px 0px rgb(170 170 170 / 25%);
+}
+
+
+#emptyInvitation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 40vh;
+}
+
+#emptyInvitation > p{
+    letter-spacing: .3em;
+    font-size: 2em;
+    transition: .5s;
+    padding: 1em 1em;
+}
+
+#emptyInvitation > p:hover{
+    animation: in .5s ease-out;
+}
+
+.js-static-modal-toggleInfoBandP{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 32px;
+    border-radius: 16px;
+    box-shadow: 3px 1px 15px 0px rgba(0,0,0,0.25);
+    font-size: 1.1em;
+    cursor: pointer;
+    color: #12b886;
+}
+
+body.darkmode .js-static-modal-toggleInfoBandP{
+    background-color: var(--newBack-dark-color);
+    box-shadow: 2px -2px 15px 0px rgb(170 170 170 / 25%);
+}
+
+@keyframes in{
+    0%{
+      letter-spacing: 0.3em;
+    }
+    50%{
+      letter-spacing: 0.6em
+    }
+    100%{
+      letter-spacing: 0.3em
+    }
+  }
+
+
+
+
+
+
+
+
+/* 밴드 정보 모달 */
+
+.bandInfoSec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 350px;
+    gap: 3em;
+}
+
+.bandNameInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+.bandNameInfo > h1{
+    padding-left: 0;
+    color: var(--text-color);
+}
+
+
+
+.bnadMentInfo > p{
+    font-size: 1.3em;
+    color: var(--text-color);
+    text-align: center;
+}
+
+@media screen and (min-width:22rem) and (max-width:26rem){
+    .alarmWrapper{
+        width: 350px;
+        height: 400px;
+    }
+    .alarmWrapper > p:nth-of-type(1){
+        font-size: 1em;
+    }
+}
+
+@media screen and (width:31.250rem) {
+    .alarmWrapper{
+        width: 450px;
+    }
+}
+

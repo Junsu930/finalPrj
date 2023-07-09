@@ -1,0 +1,217 @@
+
+/* 비밀번호 체크 */
+
+body{
+    min-height: 100vh;
+    position: relative;
+}
+
+.myPageSvgBox{
+    position: absolute;
+    width: 100%;
+    right: 10px;
+    top: 330px;
+}
+
+.myPageCheckPath{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-width: 2px;
+    stroke-dasharray: 2847.4453125;
+    animation: drawPath 1.7s linear, floating 3s linear infinite;
+}
+
+body.darkmode .myPageCheckPath{
+	stroke: var(--stroke-dark-color);
+}
+
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 2937.191650390625;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+.checkPwSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 10em;
+}
+
+.checkPwSection > h2{
+    margin-bottom: 3em;
+    color: var(--label-color);
+}
+
+body.darkmode .checkPwSection > h2{
+	color: var(--border-color);
+}
+
+
+.wrapperCheck{
+    position: relative;
+    width: 350px;
+    height: 330px;
+    background-color: transparent;
+    border: 2px soild rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: height .4s ease-out, 0.5s;
+}
+
+body.darkmode .wrapperCheck{
+	background-color: var(--border-color);
+}
+
+.wrapperCheck > p{
+    position: absolute;
+    top: 2em;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+body.darkmode .wrapperCheck > p{
+	color: var(--label-color);
+}
+
+
+.inputBoxCheck{
+    position: relative;
+    width: 80%;
+    height: 50px;
+    border-bottom: 2px solid #152c3d;
+    margin: 30px 0;
+}
+
+.inputBoxCheck label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: var(--label-color);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s;
+    padding: 0 2.3em 0 0.5em;
+    letter-spacing: 0.1em;
+}
+
+.inputBoxCheck input:focus~label,
+.inputBoxCheck input:valid~label {
+    top: -5px;
+}
+
+.inputBoxCheck input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline:  none;
+    font-size: 1em;
+    color: var(--label-color);
+    font-weight: 600;
+    padding: 0 2.3em 0 0.5em;
+}
+
+.inputBoxCheck .iconCheck{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: var(--border-color);
+    line-height: 57px;
+}
+
+#checkBtn{
+    position: absolute;
+    bottom: 50px;
+    width: 130px;
+    height: 45px;
+    background-color: #162938;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: var(--border-color);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+
+}
+
+#checkBtn:hover{
+    animation: btn .5s ease-out;
+}
+
+@keyframes btn{
+    0%{
+        letter-spacing: 0.1em
+    }50%{
+        letter-spacing: 0.4em;
+    }100%{
+        letter-spacing: 0.2em;
+    }
+}
+
+#labelCheck, #iconCheck{
+    color: var(--label-color);
+}
+
+/* pw check */
+
+
+/* media query */
+
+
+@media screen and (min-width:47.8rem) and (max-width:53rem) {
+    .myPageSvgBox{
+        top: 690px;
+    }
+}
+
+@media screen and (min-width:21rem) and (max-width:26rem) {
+    .myPageSvgBox{
+        top: 750px;
+    }
+    .wrapperCheck{
+        width: 300px;
+        height: 300px;
+    }
+}
+
+
+@media screen and (min-width:31rem) and (max-width:47rem){
+    .myPageSvgBox{
+        top: 600px;
+    }
+}

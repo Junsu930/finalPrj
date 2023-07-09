@@ -12,10 +12,58 @@
 	</settings>
 <!-- 별칭 작성 부분 -->
 <!-- VO클래스의 패키지명 + 클래스명 작성하는 것이 불편하기 때문에 짧은 별칭 부여 -->
+		
 	<typeAliases>
-	
+		<typeAlias type="edu.kh.fin.band.dbTest.DBTestVO" alias="dbTest"/>
+		<typeAlias type="edu.kh.fin.band.chatting.model.vo.TempUserVo" alias="tempUser"/>
+		<typeAlias type="edu.kh.fin.band.chatting.model.vo.ChatVo" alias="chat"/>
+		<typeAlias type="edu.kh.fin.band.chatting.model.vo.ChatMessageVo" alias="chatMessage"/>
+		<typeAlias type="edu.kh.fin.band.searching.model.vo.Searching" alias="searching"/>
+		<typeAlias type="edu.kh.fin.band.login.model.vo.User" alias="user"/>
+		<typeAlias type="edu.kh.fin.band.room.model.vo.Room" alias="pracRoom"/>
+		<typeAlias type="edu.kh.fin.band.message.model.vo.MessageBox" alias="msgBox"/>
+		<typeAlias type="edu.kh.fin.band.used.model.vo.UsedVo" alias="used"/>
+		<typeAlias type="edu.kh.fin.band.used.model.vo.UsedImage" alias="usedImage"/>
+		<typeAlias type="edu.kh.fin.band.lesson.model.vo.Lesson" alias="lesson"/>
+		<typeAlias type="edu.kh.fin.band.lesson.model.vo.LessonImage" alias="lessonImg"/>
+		<typeAlias type="edu.kh.fin.band.login.model.vo.Business" alias="Business"/>
+		<typeAlias type="edu.kh.fin.band.board.model.vo.Board" alias="board"/>
+		<typeAlias type="edu.kh.fin.band.board.model.vo.BoardDetail" alias="detail"/>
+		<typeAlias type="edu.kh.fin.band.board.model.vo.BoardImage" alias="boardImage"/>
+		<typeAlias type="edu.kh.fin.band.msgAlarm.model.vo.MsgAlarm" alias="msgAlarm"/>
+		<typeAlias type="edu.kh.fin.band.msgAlarm.model.vo.Invitation" alias="invi"/>
+		<typeAlias type="edu.kh.fin.band.socialLogin.model.vo.SocialInfo" alias="social"/>
+		<typeAlias type="edu.kh.fin.band.board.model.vo.Reply" alias="reply"/>
+		<typeAlias type="edu.kh.fin.band.board.model.vo.Criteria" alias="criteria"/>
+		<typeAlias type="edu.kh.fin.band.myBand.model.vo.MyBand" alias="myBand"/>
+		<typeAlias type="edu.kh.fin.band.myPage.model.vo.Ban" alias="banList"/>
+		<typeAlias type="edu.kh.fin.band.myPage.model.vo.Band" alias="band"/>
+		<typeAlias type="edu.kh.fin.band.myBand.model.vo.MyBandReply" alias="myBandReply"/>
+		<typeAlias type="edu.kh.fin.band.board.model.vo.Board" alias="boardList"/>
+		<typeAlias type="edu.kh.fin.band.board.model.vo.Reply" alias="replyList"/>
+		<typeAlias type="edu.kh.fin.band.login.model.vo.User" alias="findPw"/>
+		<typeAlias type="edu.kh.fin.band.myBand.model.vo.LikeLogic" alias="likeLogic"/>
+		<typeAlias type="edu.kh.fin.band.board.model.vo.BoardBanned" alias="boardBanned"/>
 	</typeAliases>
+	
 <!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
+		<mapper resource="/mapper/mapper.xml"/>
+		<mapper resource="/mapper/chat-mapper.xml"/>
+		<mapper resource="/mapper/searching-mapper.xml"/>
+		<mapper resource="/mapper/login-mapper.xml"/>
+		<mapper resource="/mapper/pracRoom-mapper.xml"/>
+		<mapper resource="/mapper/msgBox-mapper.xml"/>
+		<mapper resource="/mapper/usedBoard-mapper.xml"/>
+		<mapper resource="/mapper/lesson-mapper.xml"/>
+		<mapper resource="/mapper/business-mapper.xml"/>
+		<mapper resource="/mapper/board-mapper.xml"/>
+		<mapper resource="/mapper/msgAlarm-mapper.xml"/>
+		<mapper resource="/mapper/socialLogin-mapper.xml"/> 
+		<mapper resource="/mapper/myPage-mapper.xml"/>
+		<mapper resource="/mapper/reply-mapper.xml" />
+		<mapper resource="/mapper/myBand-mapper.xml"/>
+		<mapper resource="/mapper/signUpBand-mapper.xml"/>
+		<mapper resource="/mapper/findPw-mapper.xml"/>
 	</mappers>
 </configuration>

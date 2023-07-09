@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="alaramMapper">
+
+	<resultMap type="msgAlarm" id="msgAlarm_rm">
+		<id property="alarmNo" column="ALARM_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="msgNo" column="MSG_NO" />
+		<result property="alarmStatus" column="ALARM_STATUS" />
+		<result property="alarmReadStatus" column="ALARM_READ_STATUS" />
+	</resultMap>
+	
+	<!-- 쪽지 알람 목록 가져오기 리절트맵 -->
+	<resultMap type="msgAlarm" id="getUserNick_rm">
+		<id property="alarmNo" column="ALARM_NO"/>
+		<result property="userNick" column="USER_NICK" />
+		<result property="sendDay" column="SEND_DAY" />
+		<result property="sendMon" column="SEND_MON" />
+	</resultMap>
+	
+	<!-- 예약 알람 목록 가져오기 리절트맵 -->
+	<resultMap type="msgAlarm" id="getUserNick_room_rm">
+		<id property="alarmNo" column="ALARM_NO"/>
+		<result property="userNick" column="USER_NICK" />
+		<result property="sendDay" column="RESERVE_DAY" />
+		<result property="sendMon" column="RESERVE_MON" />
+		<result property="roomName" column="ROOM_NAME" />
+		<result property="alarmMon" column="ALARM_MON" />
+		<result property="alarmDay" column="ALARM_DAY" />
+	</resultMap>
+	
+	<!-- 초대장 목록 가져오기 리절트맵 -->
+	<resultMap type="invi" id="invi_rm">
+		<id property="inviNo" column="INVI_NO"/>
+		<result property="userNick" column="USER_NICK" />
+		<result property="bandName" column="BAND_NAME" />
+		<result property="bandNo" column="BAND_NO" />
+		<result property="sendMon" column="SEND_MON" />
+		<result property="sendDay" column="SEND_DAY" />
+	</resultMap>
+	
+	
+	<resultMap type="msgAlarm" id="getUserNick_reply_rm">
+		<id property="alarmNo" column="ALARM_NO"/>
+		<result property="userNick" column="USER_NICK" />
+		<result property="sendDay" column="SEND_DAY" />
+		<result property="sendMon" column="SEND_MON" />
+		<result property="replyNo" column="REPLY_NO" />
+		<result property="boardNo" column="BOARD_NO" />
+		<result property="likeNo" column="LIKE_NO" />
+	</resultMap>
+	
+	
+	
+	<insert id="insertAlarm" parameterType="msgAlarm">
+		INSERT INTO MSG_ALARM (ALARM_NO, USER_NO , MSG_NO, ALARM_STATUS, ALARM_READ_STATUS)
+		VALUES (MSG_ALARM_NO_SEQ.NEXTVAL, #{userNo}, #{msgNo}, DEFAULT, DEFAULT)
+	</insert>
+	
+	
+	<select id="getMsgAlarmCount" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) AS COUNT FROM MSG_ALARM WHERE USER_NO = #{loginUserNo} AND ALARM_STATUS = 'N' AND ALARM_READ_STATUS = 'N'
+	</select>
+	
+	<update id="deleteAlarm" parameterType="_int">
+		UPDATE MSG_ALARM SET ALARM_STATUS = 'Y' WHERE MSG_NO = #{msgNo}
+	</update>
+	
+	<select id="getUserNicks" parameterType="_int" resultMap="getUserNick_rm">
+		SELECT 
+		u.USER_NICK, 
+		TO_CHAR(mb.SEND_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
+		TO_CHAR(mb.SEND_DATE, 'DD"일"') AS SEND_DAY
+		FROM
+		MESSAGE_BOX mb
+		JOIN MSG_ALARM ma ON mb.MSG_NO = ma.MSG_NO
+		JOIN "USER" u ON u.USER_NO = mb.SEND_USER_NO
+		WHERE
+		mb.RECEIVER_USER_NO = #{loginUser}
+		AND ma.ALARM_STATUS = 'N'
+		AND ma.ALARM_READ_STATUS = 'N'
+	</select> 
+	
+	
+	<update id="disappearCount" parameterType="_int">
+		UPDATE MSG_ALARM SET ALARM_READ_STATUS = 'Y' WHERE USER_NO = #{loginUserNo}
+	</update>
+	
+	
+	<!-- 메세지 알람 -->
+	
+	
+	
+	
+	
+	
+	<select id="getUserNicksFromRoom" parameterType="_int" resultMap="getUserNick_room_rm">
+		SELECT 
+		u.USER_NICK,
+		p.ROOM_NAME,
+		TO_CHAR(TO_DATE(t.RESERVE_DAY, 'YY-MM-DD'), 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH')AS RESERVE_MON,
+		TO_CHAR(TO_DATE(t.RESERVE_DAY, 'YY-MM-DD'), 'DD"일"') AS RESERVE_DAY,
+		TO_CHAR(a.ALARM_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS ALARM_MON,
+		TO_CHAR(a.ALARM_DATE, 'DD"일"') AS ALARM_DAY
+		FROM ALARM a 
+		JOIN "USER" u ON u.USER_NO = a.FROM_USER_NO
+		JOIN PRACTICE_ROOM p ON p.ROOM_NO = a.ROOM_NO 
+		JOIN ROOM_TIME t ON t.ROOM_NO = a.ROOM_NO 
+		WHERE 
+		t.RESERVE_DAY 
+		BETWEEN TRUNC(SYSDATE , 'MM') 
+		AND 
+		LAST_DAY(SYSDATE)
+		AND 
+		a.ROOM_ALARM_READ_STATUS = 'N' 
+		AND 
+		a.TO_USER_NO = ${loginUserNo}
+		ORDER BY RESERVE_MON ASC, RESERVE_DAY DESC
+	</select>
+	
+	
+	
+	<select id="getAlarmCount" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) AS COUNT
+		FROM ALARM
+		WHERE 
+		TO_USER_NO = ${loginUserNo}
+		AND ROOM_ALARM_READ_STATUS = 'N'
+	</select>
+	
+	
+	<update id="alarmDisappearCount" parameterType="_int">
+		UPDATE ALARM
+		SET ROOM_ALARM_READ_STATUS = 'Y' 
+		WHERE TO_USER_NO = ${loginUserNo}
+	</update>
+	
+	
+	
+	<!-- 예약 알람 -->
+	
+	
+	<!-- 초대장 알람 -->
+	
+	<!-- 알람(게시글, 초대장, 좋아요) 총 갯수 가져오기 -->
+	<select id="totalAlarmGet" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) AS COUNT 
+		FROM TOTAL_ALARM ta
+		WHERE TO_USER_NO = ${userNo} AND
+		(INVI_READ_STATUS ='N' OR
+		REPLY_READ_STATUS = 'N' OR
+		LIKE_READ_STATUS = 'N')
+	</select>
+	
+	
+	<!-- 초대장 테이블에 값 세팅 -->
+	<select id="getBandNo" parameterType="hashmap" resultType="_int">
+		SELECT BAND_NO FROM BAND WHERE LEADER_NO = ${fromUserNo}
+	</select>
+	
+	
+	
+	<!-- 초대장 중복 체크 -->
+	<select id="dupCheckInvi" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM INVITATION WHERE BAND_NO = ${bandNo} AND TO_USER_NO = ${toUserNo}
+	</select>
+	
+	<insert id="insertInvitation" parameterType="hashmap">
+		<selectKey keyProperty="inviNo" resultType="_int" order="BEFORE">
+			SELECT INVI_NO_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO 
+		INVITATION (INVI_NO, TO_USER_NO, FROM_USER_NO, BAND_NO, INVI_ACCEPT_FL)
+		VALUES (${inviNo}, ${toUserNo}, ${fromUserNo}, ${bandNo}, DEFAULT)
+	</insert>
+	
+	<!-- 초대장 인서트 끝난 후, TOTAL_ALARM 테이블에 초대장 알람 세팅-->
+	
+	<insert id="insertInviAlarm" parameterType="hashmap">
+		INSERT INTO TOTAL_ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+		VALUES(TOTAL_ALARM_NO_SEQ.NEXTVAL, ${toUserNo}, ${fromUserNo}, ${inviNo}, NULL, NULL, DEFAULT, NULL, NULL)
+	</insert>
+	
+	
+	<!-- 초대장 보낸 사람 리스트 출력 -->
+	<select id="getInviList" parameterType="hashmap" resultMap="invi_rm">
+		SELECT u.USER_NICK, b.BAND_NAME, i.INVI_NO,
+		TO_CHAR(i.INVI_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
+		TO_CHAR(i.INVI_DATE, 'DD"일"') AS SEND_DAY
+		FROM INVITATION i
+		JOIN "USER" u ON u.USER_NO = i.FROM_USER_NO
+		LEFT JOIN BAND b ON b.BAND_NO = i.BAND_NO
+		WHERE TO_USER_NO = ${userNo}
+	</select>
+	
+	<!-- 알람페이지 이동 후,  초대장 목록 출력  -->
+	
+	<select id="selectInviAlarmPage" parameterType="_int" resultMap="invi_rm">
+		SELECT BAND_NO, BAND_NAME
+		FROM INVITATION
+		JOIN BAND USING (BAND_NO)
+		WHERE TO_USER_NO = ${loginUserNo} AND INVI_ACCEPT_FL = 'N'
+	</select>
+	
+	
+	
+	<!-- 알람 버튼 누르면 알람 카운트 삭제  -->
+	<update id="changeAlarmStatus" parameterType="_int">
+		UPDATE TOTAL_ALARM SET INVI_READ_STATUS ='Y', REPLY_READ_STATUS ='Y', LIKE_READ_STATUS ='Y'
+		WHERE TO_USER_NO = ${userNo}
+	</update>
+	
+	
+	<!-- 현재 로그인한 유저넘버 바탕으로 댓글을 누가 달았는지 보여주는 리스트 select구문 -->
+	<select id="getUserNicksFromReply" parameterType="_int" resultMap="getUserNick_reply_rm">
+		SELECT USER_NICK, 
+		TO_CHAR(r.CREATE_DT, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
+		TO_CHAR(r.CREATE_DT, 'DD"일"') AS SEND_DAY,
+		r.REPLY_NO, b.BOARD_NO
+		FROM REPLY r
+		JOIN "USER" u ON u.USER_NO = r.USER_NO
+		LEFT JOIN BOARD b ON b.BOARD_NO = r.BOARD_NO
+		WHERE b.USER_NO = ${userNo}
+		AND u.USER_NICK != (SELECT USER_NICK FROM "USER" WHERE USER_NO = ${userNo})
+		ORDER BY r.CREATE_DT DESC
+	</select>
+	
+	
+	<!-- 좋아요 알람 등록  -->
+	
+	<insert id="addLikeFromAlarm" parameterType="hashmap">
+	  <choose>
+	    <when test="userNo != loginUserNo">
+	      INSERT INTO TOTAL_ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+	      VALUES(TOTAL_ALARM_NO_SEQ.NEXTVAL, ${userNo}, ${loginUserNo}, NULL, NULL, ${boardNo}, NULL, NULL, DEFAULT)
+	    </when>
+	    <otherwise>
+	      INSERT INTO TOTAL_ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+	      VALUES(TOTAL_ALARM_NO_SEQ.NEXTVAL, NULL, ${loginUserNo}, NULL, NULL, ${boardNo}, NULL, NULL, NULL)
+	      -- 처음엔 SELECT구문으로 했으나, SELECT구문은 -1을 반환하기에, 
+	      -- 만약 INSERT구문이 실패했을 때와 구분하기가 어렵다 그래서 인서트 구문으로 NULL을 추가해서 int 1을 반환
+	    </otherwise>
+	  </choose>
+	</insert>
+	
+	
+	
+	<!-- 좋아요 알람 삭제 -->
+	<delete id="removeLikeFromLikeAlarm" parameterType="hashmap">
+		DELETE FROM TOTAL_ALARM WHERE BOARD_NO = ${boardNo} AND FROM_USER_NO = ${loginUserNo}
+	</delete>
+	
+	<select id="getUserNicksFromLike" parameterType="_int" resultMap="getUserNick_reply_rm">
+		SELECT USER_NICK, 
+		TO_CHAR(BOARD_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
+		TO_CHAR(BOARD_DATE, 'DD"일"') AS SEND_DAY,
+		bl.LIKE_NO, b.BOARD_NO
+		FROM BOARD_LIKE bl
+		JOIN "USER" u ON u.USER_NO = bl.USER_NO
+		LEFT JOIN BOARD b ON b.BOARD_NO = bl.BOARD_NO
+		WHERE b.USER_NO = ${userNo}
+		AND u.USER_NICK != (SELECT USER_NICK FROM "USER" WHERE USER_NO = ${userNo})
+		ORDER BY BOARD_DATE DESC
+	</select>
+	
+	
+	
+	
+
+
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pracRoom-mapper">
+	<resultMap type="pracRoom" id="pracRoom_rm">
+		<id property="pracRoomNo" column="ROOM_NO"/>
+		<result property="pricePerHour" column="PRICE_PER_HOUR"/>
+		<result property="roomImg" column="ROOM_IMG"/>
+		<result property="ownerNo" column="OWNER_NO"/>
+		<result property="region" column="REGION"/>
+		<result property="tag" column="TAG"/>
+		<result property="pracRoomName" column="ROOM_NAME"/>
+		<result property="introMent" column="INTRO_ROOM_MENT"/>
+		<result property="facilMent" column="FACILITY_MENT"/>
+		<result property="warnningMent" column="WARNNING_MENT"/>
+	</resultMap>
+	
+	<select id="roomList" resultMap="pracRoom_rm">
+		SELECT * FROM PRACTICE_ROOM
+	</select>
+	
+	<select id="roomDetail" resultMap="pracRoom_rm">
+		SELECT * FROM PRACTICE_ROOM WHERE ROOM_NO = ${pracRoomNo}
+	</select>
+	
+	<select id="searchingRoom" resultMap="pracRoom_rm">
+		SELECT * FROM PRACTICE_ROOM
+		WHERE (TAG LIKE #{searchingText} OR ROOM_NAME LIKE #{searchingText} 
+		OR INTRO_ROOM_MENT LIKE #{searchingText} 
+		OR WARNNING_MENT LIKE #{searchingText} 
+		OR FACILITY_MENT LIKE #{searchingText}
+		OR REGION LIKE #{searchingText})
+		<if test="region != '%REGION%'">
+		AND REGION LIKE #{region}
+		</if>
+	</select>
+	
+	<insert id="roomBook" parameterType="hashmap">
+		INSERT INTO ROOM_TIME VALUES(ROOM_TIME_SEQ.NEXTVAL, ${roomNo}, ${loginNo}, ${thisTime}, #{dayData})
+	</insert>
+	
+	<insert id="roomSetAlarm" parameterType="hashmap">
+		INSERT INTO ALARM (ALARM_NO, TO_USER_NO, FROM_USER_NO, ROOM_NO, ROOM_ALARM_READ_STATUS, ALARM_DATE)
+		VALUES(ALARM_NO_SEQ.NEXTVAL, ${ownerNo}, ${loginNo}, ${roomNo},  DEFAULT, DEFAULT)
+	</insert>
+	
+	<select id="selectOwnerNo" parameterType="hashmap" resultType="_int">
+		SELECT OWNER_NO
+		FROM PRACTICE_ROOM
+		WHERE ROOM_NO = ${roomNo}
+	</select>
+	
+	
+
+	<select id="checkBookingTime" parameterType="hashmap" resultType="_int">
+		SELECT RESERVE_TIME FROM ROOM_TIME WHERE ROOM_NO = ${roomNo} AND RESERVE_DAY = #{thisDay}
+	</select>
+	
+	
+	
+	
+</mapper>

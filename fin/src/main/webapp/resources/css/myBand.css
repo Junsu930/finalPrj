@@ -1,0 +1,435 @@
+.myBandContainer{
+	margin:auto;
+	margin-top : 150px;
+	height: 200vh;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 100px;
+}
+
+
+/*밴드 헤드*/
+.myBandContainer > div:nth-of-type(1){
+	flex-basis: 10%;
+	display : flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+/*밴드명 영역*/
+.myBandContainer > div:nth-of-type(1) >p {
+	margin-left: 20px;
+	margin-bottom: 10px;
+	font-size: 3em;
+} 
+/*내부 콘텐츠*/
+.myBandContainer > div:nth-of-type(2){
+	flex-basis: 90%;
+	display: flex;
+}
+
+
+.noPost{
+	font-size: 30px;
+}
+
+.paginations{
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.searchingMyBoardDiv{
+	display: flex;
+}
+
+#bandBoardSearch{
+	width : 90%;
+    border-radius: 19px;
+    border: solid 1px var( --grey-color);
+    box-sizing: border-box;
+    padding:15px;
+    display: flex;
+	margin: auto;
+	height: 10px;
+}
+
+
+/* 검색 버튼 */
+#s-btn{
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+	position: absolute;
+	right: 10%;
+	top : 5px;
+	
+}
+
+.selectBtn{
+	width: 80px;
+    height: 30px;
+    border: 1px solid #999;
+    border-radius: 1.5em;
+    font-size: 1em;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bandTitleDiv > p{
+	color: black;
+}
+
+.selectBtn > span{
+	font-size: 0.5em;
+	margin-right: 10px;
+}
+
+.selectTypeListUl{
+    width: 150px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 1.5em;
+    padding: 0.5em 0.5em;
+    margin-top: 0.3em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: var(--background-color);
+    z-index: 10;
+    position: absolute;
+}
+
+.disappearList{
+	display: none;
+}
+
+.selectTypeListUl li:hover{
+	background-color: var(--accent-color);
+	border-radius: 10px;
+}
+.selectTypeListUl li{
+	padding: 0.5em 0.5em;
+    cursor: pointer;
+    list-style: none;
+}
+
+/*왼쪽 멤버리스트바*/
+.leftSideBandMemberDiv{
+	flex-basis: 20%;
+	display: flex;	
+	align-items : center;
+	flex-direction: column;
+}
+
+
+.writeBandDiv{
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	margin-top: 40px;
+}
+
+/* 글쓰기 버튼 */
+#bandBoardWriteButton {
+	width: 150px;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/*멤버리스트 내용*/
+.bandInfoDiv{
+	width: 80%;
+	margin-top: 40px;
+	display: flex;
+	height: 300px;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	border-radius: 12px;
+	border: 0px;
+	box-shadow: 2px 2px 20px silver;
+	flex-direction: column;
+	align-items: center;
+}
+
+.darkmode .bandInfoDiv{
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ 	background-blend-mode: multiply,multiply;
+}
+
+/* 각각의 멤버 리스트*/
+.bandInfoDiv > div{
+	margin-top: 20px;
+	width: 70%;
+	color: black;
+}
+
+/* 밴드 제목 영역 */
+.bandTitleDiv{
+	width: 80%;
+    margin-top: 40px;
+    display: flex;
+    height: 100px;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    border-radius: 12px;
+    border: 0px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    box-shadow: 2px 2px 20px silver;
+	cursor: pointer;
+}
+
+.darkmode .bandTitleDiv{
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ 	background-blend-mode: multiply,multiply;
+}
+
+
+.memList{
+	margin-left: 4px;
+}
+
+.rightSideBandBoardDiv{
+	flex-basis: 80%;
+	display: flex;
+	justify-content: center;
+}
+
+.realBoardDiv{
+	
+	width: 95%;
+	height: 85%;
+	border-radius: 10px;
+	margin-top :40px;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	box-shadow: 2px 2px 20px silver;
+	display: flex;
+	flex-direction: column;
+	padding-top: 20px;
+}
+
+.darkmode .realBoardDiv{
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ 	background-blend-mode: multiply,multiply;
+}
+
+.replyCountForBandBoard{
+	font-size: 0.8em;
+	color: var(--accent-color);
+	font-weight : 600;
+	margin-left: 7px;
+}
+
+.eachBoardFormForBand{
+	width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+/* 각각 게시글 영역 */
+.realBoardDiv > div:first-of-type {
+	flex-basis: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: auto;
+}
+
+.realBoardDiv > div:last-of-type {
+	flex-basis: 10%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+#mainBoardMenuDiv{
+	display: flex;
+}
+
+.eachBoardDiv{
+	width: 90%;
+	height: 80px;
+	margin-top: 10px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid silver;
+	cursor: pointer;
+	color: black;
+}
+
+.searchBtnDivForMyBand{
+	position: relative;
+}
+
+.eachBoardDiv:hover{
+	background-color: #edf2f4;
+	
+}
+
+/* 공지글 */
+.notification{
+	background-color: #FFFAD7;
+}
+
+.notiSpan{
+	border-radius: 7px;
+	font-size: 0.6em;
+	margin-right: 10px;
+	padding: 3px;
+	background-color: var(--grr-color);
+
+}
+/* 제목 영역 */
+.eachBoardDiv > div:first-of-type {
+	flex-basis: 60%;
+	display: flex;
+	align-items: center;
+	margin-left: 20px;
+}
+
+/* 각종 조회수 댓글수 등 영역 */
+.eachBoardDiv > div:last-of-type {
+	flex-basis: 40%;
+	display : flex;
+	justify-content: flex-start;
+}
+
+/* 글쓴이 */
+.eachBoardDiv > div:last-of-type > div:nth-of-type(1) {
+	flex-basis: 13%;
+	font-size: 0.7em;
+	display: flex;
+	align-items: center;
+	margin-left: 20px;
+}
+
+/* 시간 */
+.eachBoardDiv > div:last-of-type > div:nth-of-type(2) {
+	flex-basis: 15%;
+	font-size: 0.7em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.eachBoardDiv > div:last-of-type > div:nth-of-type(2)> span{
+	margin-left: 5px;
+}
+
+/* 조회수 */
+.eachBoardDiv > div:last-of-type > div:nth-of-type(3) {
+	flex-basis: 10%;
+	font-size: 0.7em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.eachBoardDiv > div:last-of-type > div:nth-of-type(3)> span{
+	margin-left: 5px;
+}
+/* 좋아요 */
+.eachBoardDiv > div:last-of-type > div:nth-of-type(4) {
+	flex-basis: 10%;
+	font-size: 0.7em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.eachBoardDiv > div:last-of-type > div:nth-of-type(4)> span{
+	margin-left: 5px;
+}
+
+.paginations li {
+	list-style: none;
+	margin: 10px;
+	font-size: 1.2em;
+	
+}
+
+.paginations a{
+	color: black;
+	text-decoration: none;
+}
+
+.paginations a:hover{
+	color: var(--accent-color);
+}
+
+.darkmode .paginations a {
+	color: black;
+	text-decoration: none;
+}
+
+.darkmode .paginations a:hover{
+	color: var(--accent-color);
+}
+
+
+.loaderPath{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-miterlimit: 10;
+    stroke-width: 1.5px;
+    stroke-dasharray: 8477.296875;
+    animation: drawPath 2s linear, floating 3s linear infinite;
+}
+
+body.darkmode .loaderPath{
+	stroke: ghostwhite;
+}
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 8477.296875;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+
+@media (max-width:46.875rem){
+	
+	.leftSideBandMemberDiv{
+		display: none;
+	}
+	.rightSideBandBoardDiv{
+	
+		flex-basis: 100%;
+	}
+	
+	.eachBoardDiv > div:last-of-type > div:nth-of-type(2){
+		flex-basis: 45%;
+	}
+		
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:767px) {
+
+	
+}

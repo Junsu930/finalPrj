@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="alaramMapper">
+
+	<resultMap type="alarm" id="alarm_rm">
+		<id property="alarmNo" column="ALARM_NO"/>
+		<result property="userNo" column="USER_NO" />
+		<result property="alarmType" column="ALARM_TYPE" />
+		<result property="alarmStatus" column="ALARM_STATUS" />
+	</resultMap>
+
+	<insert id="insertMsgAlarm" parameterType="alarm">
+		INSERT INTO ALARM (ALARM_NO, USER_NO, ALARM_TYPE, ALARM_STATUS)
+		VALUES(1, #{userNo}, #{alarmType}, #{alarmStatus} )
+	</insert>
+	
+	
+
+
+</mapper>

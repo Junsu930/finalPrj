@@ -1,0 +1,1045 @@
+body.darkmode input:focus{
+	outline: none; 
+}
+
+
+
+.test_obj input[type="radio"] {
+    display: none;
+  }
+  
+  .test_obj input[type="radio"] + span {
+  display: inline-block;
+      margin: -2px;
+      padding: 4px 9px;
+      background-color: var(--background-color);
+      text-align: center;
+      cursor: pointer;
+      border-radius: 30px;
+  }
+  
+  .test_obj input[type="radio"]:checked + span {
+  background-color: var(--stroke-color);
+    color: var( --background-color);
+  }
+   
+
+.boardPath{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-width: 3px;
+    stroke-dasharray: 5055.95068359375;
+    animation: drawPath 2s linear, floating 3s linear infinite;
+}
+
+
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 5055.95068359375;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+
+
+
+.titleA:hover{
+    color:var(--stroke-color);
+}
+
+
+.totalTitle{
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 20px;
+    
+}
+.write{
+	margin-left: auto;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 13px;
+    color: #474554;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.boardContainer {
+	width: 75%;
+    margin: 0 auto;
+    padding: 20px;
+    
+    margin-bottom : 300px;
+  
+  }
+.boardSvgBox{
+	margin: auto;
+    margin-top: auto;
+	
+}
+.naviBar {
+    display: flex;
+    text-align: left;
+    margin-bottom: 20px;
+    flex-direction: column;
+
+}
+
+.naviBar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.naviBar li {
+  margin-right: 10px;
+}
+
+.naviBar li a {
+  display: inline-block;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 15px;
+  background-color: transparent;
+  font-size: 15px; 
+  border: none;
+  color: #474554;
+  cursor: pointer;
+}
+
+.naviBar li a.total {
+  background-color: #474554;
+  color: #ffffff;
+}
+
+.naviBar li a:hover {
+  background-color: #ffffff;
+  color: #474554;
+  border: 1px solid #edeeef;
+}
+
+.blockBox{
+    border: 1px solid #474554;
+    width: 100px;
+}
+
+.blockWriter{
+
+}
+
+table {
+	
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px; 
+    overflow: hidden; 
+    color: #474554;
+     
+}
+th {
+height: 46px;	
+}
+table, td, th {
+
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: center;
+   
+}
+  
+table td {
+	
+    font-weight: bold;
+    
+
+}
+th{
+    background-color: rgba(231, 239, 238, 0.5);
+    color: #868E96;
+}
+
+
+table thead,
+tbody tr {
+    border-bottom: 1px solid #edeeef; 
+}
+
+table {
+  border: 1px solid #edeeef;
+}
+
+
+.pagination-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+  
+.pagination {
+   
+}
+  
+.pagination a {
+    display: flex;
+
+    text-decoration: none;
+    margin:1px;
+    
+    justify-content: center;
+    align-items: center;
+        width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    background-color: #474554;
+    color: #ffffff;
+    text-decoration: none;
+}
+  
+.pagination a span {
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #474554;
+  color: #ffffff;
+  text-decoration: none; 
+ }
+ .pagination a.active span {
+    background-color: silver;
+    color: #ffffff;
+ }
+ 
+ .pagination li.active{
+  background-color:   #e94432;
+
+    color: #ffffff;
+ }
+ .search-box {
+    display: flex;
+    align-items: center;
+ }
+.search-box select{
+    width: 25%;
+     border: 1px solid silver;
+      padding: 5px;
+       text-align: center;
+}
+
+.search-box input[type="text"] {
+    padding: 5px;
+   
+    border: 1px solid silver;
+}
+  
+.search-box button {
+    padding: 5px 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 0;
+    background-color: transparent;
+    border:1px solid silver;
+    margin: 0;
+    box-sizing: border-box;
+    height: 30px; 
+    width: 75px;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.search-box select,
+.search-box input[type="text"] {
+  height: 30px; 
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  margin-right: 3px;
+
+}
+
+
+.search-box input[type="text"] {
+padding: 0.8em 0.5em;	
+}
+.tags{
+	width: 9%;
+}
+ .tagBasic, .tagHot, .tagNotice {
+    display: inline-block;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    background-color: #474554;
+    font-size : 12px;
+    margin-right: 10px;
+    
+    
+    color: #fff;
+  }
+  
+  
+.tagNotice{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size : 12px;
+  }
+ table th i {
+    margin-right: 10px; 
+    margin-left: 10px;
+ }
+
+ .title{
+    
+    font-weight: bold;
+    text-align: inherit;
+    letter-spacing: -0.5px;
+    font-size : 15px;
+    padding-left: 70px;
+ }
+ .boardNumber{
+    margin-right: 10px;
+  }
+  
+a {
+    text-decoration: none;
+    color: #474554;
+}
+
+thead, thead .title,
+thead .ninkName, 
+thead .heart,
+thead .views, 
+thead .boardNumber{
+	font-weight: 400;
+    font-size: 12px;
+    color: #868E96;
+}
+
+ .ninkName, 
+ .heart,
+ .views, 
+ .boardNumber
+ {
+    font-size: 13px;
+    color: #474554;
+    padding-left: 30px;
+    
+}
+.ninkName{
+
+
+cursor: pointer;
+
+}
+
+
+.reportTitle{
+    font-size: 19px;
+    text-align: center;
+    font-size: 19px;
+    line-height: 1.16;
+    letter-spacing: -0.53px;
+    font-weight: 700;
+}
+.reportReason{
+    border-bottom: 1px solid  var( --grr-color);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.56;
+    padding: 15px 54px 16px 0;
+    line-height: 1.31;
+  
+}
+.report_item_reason{
+    display: block;
+    padding-top: 20px;
+
+}
+.btn-primary {
+    background-color: var(--background-color);
+    border: 1px solid;
+    color: black;
+    padding: 3px;
+    font-size: 13px;
+    
+}
+.btn:hover{
+    background-color: var(--background-color);
+    border: 1px solid;
+    color: black;
+    padding: 3px;
+}
+
+:not(.btn-check)+.btn:active{
+	background-color: var(--background-color);
+    border: 1px solid;
+    color: black;
+    padding: 3px;
+}
+
+.searchBtn {
+    font-size: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+  /*Checkboxes styles*/
+  input[type="checkbox"] { display: none; }
+
+  input[type="checkbox"] + label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    font: 14px/20px 'Open Sans', Arial, sans-serif;
+    color: var(--stroke-color);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  input[type="checkbox"] + label:last-child {
+    
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 1.31;
+
+
+
+
+}
+  
+  input[type="checkbox"] + label:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ED820A;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: .6;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+  }
+  
+  input[type="checkbox"]:checked + label:before {
+    width: 10px;
+    top: -5px;
+    left: 5px;
+    border-radius: 0;
+    opacity: 1;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  /*radioboxes styles*/
+    input[type="radio"] { display: none; }
+  
+    input[type="radio"] + label {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 20px;
+      font: 14px/20px 'Open Sans', Arial, sans-serif;
+      color: var(--stroke-color);
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    
+    input[type="radio"] + label:last-child { margin-bottom: 0; }
+    
+    input[type="radio"] + label:before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #ED820A;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: .6;
+      -webkit-transition: all .12s, border-color .08s;
+      transition: all .12s, border-color .08s;
+    }
+    
+    input[type="radio"]:checked + label:before {
+      width: 10px;
+      top: -5px;
+      left: 5px;
+      border-radius: 0;
+      opacity: 1;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    } 
+    
+   
+
+
+body.darkmode  .write 
+{
+    background-color: var(  --silver-color );
+}      
+body.darkmode  .test_obj input[type="radio"]:checked + span
+{
+    background-color: var( --newBack-dark-color);
+}  
+
+body.darkmode  .test_obj input[type="radio"] + span
+{
+    background-color: transparent;
+}       
+
+body.darkmode  .titleA
+{
+    color: var(--text-dark-color);
+}   
+
+body.darkmode th.title a
+ {
+    color: var(--text-dark-color);
+}
+body.darkmode .title
+ {
+    color: var(--text-dark-color);
+}
+body.darkmode .ninkName
+ {
+    color: var(--text-dark-color);
+}
+body.darkmode .heart 
+ {
+    color: var(--text-dark-color);
+}
+
+body.darkmode .views
+ {
+    color: var(--text-dark-color);
+}
+body.darkmode .boardNumber
+ {
+    color: var(--text-dark-color);
+}
+ 
+
+body.darkmode .boardPath
+ {
+   stroke: var(--stroke-dark-color);
+}
+
+
+body.darkmode .search-box button{
+	background-color: var(--text-dark-color);
+	
+	
+}
+
+body.darkmode table {
+border: 1px solid var(--border-color);
+}
+
+
+#blocksModal {
+    display: none;
+   
+}
+
+.blockChooseModal {
+  position: fixed; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100vh; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+  display: none;
+
+}
+
+.blockChooseContent{
+padding: 100px;
+  border: 1px solid #777;
+  background-color: #fff;
+  border-radius: 5px;
+  font-size: 12px;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50% ,#777);
+  box-shadow: 0 0 15;
+  display: none;
+}
+
+.modal-content{
+
+    padding: 5px 6px;
+    margin: 0 auto;
+    border: 1px solid #777;
+    background-color: #fff;
+    border-radius: 5px;
+    font-size: 12px;
+  
+ 
+  }
+.tagtotal{
+    float: left;
+}
+
+
+.BlockQContent{
+    margin: auto;
+    display: flex;
+    justify-content: center;align-items: center;
+}
+.blockTitle{
+    margin: auto;
+    display: flex;
+    justify-content: center;align-items: center;
+}
+.close:not(:disabled):not(.disabled) {
+    cursor: pointer;
+
+}
+.modal-header .close {
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+}
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+.modal-header{
+border: none;
+}
+
+
+.close {
+    float: left;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+
+
+/*아이폰 SE*/
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 375px) {
+    
+    .naviBar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+    
+    .title {
+        font-weight: bold;
+        text-align: inherit;
+        letter-spacing: -0.5px;
+        font-size: 15px;
+        padding-left: 0px;
+        padding-right: 0px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    
+    .ninkName, .heart, .views, .boardNumber {
+        font-size: 10px;
+        color: #474554;
+        padding-left: 0px; 
+        /* display: none; */
+
+    }
+    .boardNumber{
+        display: none;
+    }   
+
+    thead .title{
+        text-align: center;
+        justify-content: center;
+    }
+
+
+    .naviBar li a {
+        display: inline-block;
+        padding: 5px;
+        text-decoration: none;
+        border-radius: 15px;
+        background-color: transparent;
+        font-size: 10px;
+        border: none;
+        color: #474554;
+        cursor: pointer;
+
+    }
+
+    .pagination-search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    .pagination {
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+    .searchBtn{
+	font-size: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    align-items: center;
+    }
+    #tag{
+        padding-bottom: 5px;
+        padding-top: 10px;
+    }
+
+    }
+    
+    
+    
+    
+    /*아이폰 12 pro*/
+    @media only screen and (min-device-width : 376px) and (max-device-width : 398px) {
+        .naviBar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .title {
+            font-weight: bold;
+            text-align: inherit;
+            letter-spacing: -0.5px;
+            font-size: 15px;
+            padding-left: 0px;
+            padding-right: 0px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+        
+        .ninkName, .heart, .views, .boardNumber {
+            font-size: 10px;
+            color: #474554;
+            padding-left: 0px; 
+            /* display: none; */
+    
+        }
+        .boardNumber{
+            display: none;
+        }   
+    
+        thead .title{
+            text-align: center;
+            justify-content: center;
+        }
+    
+    
+        .naviBar li a {
+            display: inline-block;
+            padding: 5px;
+            text-decoration: none;
+            border-radius: 15px;
+            background-color: transparent;
+            font-size: 10px;
+            border: none;
+            color: #474554;
+            cursor: pointer;
+    
+        }
+    
+        .pagination-search {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            flex-direction: column;
+        }
+    
+        .pagination {
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .searchBtn{
+            font-size: 5px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            align-items: center;
+        }
+        #tag{
+            padding-bottom: 5px;
+            padding-top: 10px;
+        }
+    
+    }
+
+/*아이폰 xr*/
+
+@media only screen and (min-device-width : 399px) and (max-device-width : 414px) {    
+    
+    .title {
+        font-weight: bold;
+        text-align: inherit;
+        letter-spacing: -0.5px;
+        font-size: 15px;
+        padding-left: 0px;
+        padding-right: 0px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    
+    .ninkName, .heart, .views, .boardNumber {
+        font-size: 10px;
+        color: #474554;
+        padding-left: 0px; 
+        /* display: none; */
+
+    }
+    .boardNumber{
+        display: none;
+    }   
+
+    thead .title{
+        text-align: center;
+        justify-content: center;
+    }
+
+
+    .naviBar li a {
+        display: inline-block;
+        padding: 5px;
+        text-decoration: none;
+        border-radius: 15px;
+        background-color: transparent;
+        font-size: 10px;
+        border: none;
+        color: #474554;
+        cursor: pointer;
+
+    }
+
+    .pagination-search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    .pagination {
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+    .searchBtn{
+        font-size: 5px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        align-items: center;
+    }
+    #tag{
+        padding-bottom: 5px;
+        padding-top: 10px;
+    }
+
+}
+
+@media only screen and (min-device-width : 415px) and (max-device-width : 825px) {    
+    
+    .title {
+        font-weight: bold;
+        text-align: inherit;
+        letter-spacing: -0.5px;
+        font-size: 15px;
+        padding-left: 0px;
+        padding-right: 0px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    
+    .ninkName, .heart, .views, .boardNumber {
+        font-size: 10px;
+        color: #474554;
+        padding-left: 0px; 
+        /* display: none; */
+
+    }
+    .boardNumber{
+        display: none;
+    }   
+
+    thead .title{
+        text-align: center;
+        justify-content: center;
+    }
+
+
+    .naviBar li a {
+        display: inline-block;
+        padding: 5px;
+        text-decoration: none;
+        border-radius: 15px;
+        background-color: transparent;
+        font-size: 10px;
+        border: none;
+        color: #474554;
+        cursor: pointer;
+
+    }
+
+    .pagination-search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    .pagination {
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+    .searchBtn{
+        font-size: 5px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        align-items: center;
+    }
+    #tag{
+        padding-bottom: 5px;
+        padding-top: 10px;
+    }
+
+}
+
+
+@media only screen and (min-device-width : 826px) and (max-device-width : 926px) {    
+    
+    .boardNumber{
+        padding-left:0px;
+    }   
+}
+
+
+
+
+
+@media (max-width:870px){
+	
+    .title {
+        font-weight: bold;
+        text-align: inherit;
+        letter-spacing: -0.5px;
+        font-size: 15px;
+       padding-left: 10px;
+        padding-right: 0px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    
+    .ninkName, .heart, .views, .boardNumber {
+        font-size: 10px;
+        color: #474554;
+        padding-left: 0px; 
+        /* display: none; */
+
+    }
+    .boardNumber{
+        display: none;
+        padding-left: 0px; 
+    }   
+
+    thead .title{
+        text-align: center;
+        justify-content: center;
+    }
+
+
+    .naviBar li a {
+        display: inline-block;
+        padding: 5px;
+        text-decoration: none;
+        border-radius: 15px;
+        background-color: transparent;
+        font-size: 13px;
+        border: none;
+        color: #474554;
+        cursor: pointer;
+
+    }
+
+    .pagination-search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    .pagination {
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+    .searchBtn{
+        font-size: 5px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        align-items: center;
+    }
+    #tag{
+        padding-bottom: 5px;
+        padding-top: 10px;
+    }
+	
+}
+    

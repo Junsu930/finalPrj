@@ -1,0 +1,409 @@
+.firstSec{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3em;
+    margin-top: 5em;
+    font-size: 1.5em;
+    font-family: var(--navFont-style-);
+}
+
+.titleBox{
+    padding: 1em 1em;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.lessonBackPath{
+    fill: none;
+    stroke: var(--stroke-color);
+    stroke-width: 2px;
+    stroke-dasharray: 8485.939453125;
+    animation: drawPath 1.7s linear, floating 3s linear infinite;
+    stroke-miterlimit: 10;
+}
+
+body.darkmode .lessonBackPath{
+	stroke: var(--stroke-dark-color);
+}
+
+
+
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 8485.939453125;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+
+
+
+
+/* 다크모드 모음 */
+
+body.darkmode .labelLesson > span, 
+body.darkmode .labelLesson >i,
+body.darkmode .labelLocation > span,
+body.darkmode .labelLocation > i,
+body.darkmode .list{
+    color: var(--text-dark-color);
+}
+
+body.darkmode .listBox{
+    background-color: var(--background-dark-color);
+}
+
+body.darkmode path{
+	stroke:var(--stroke-dark-color);
+}
+
+/* body.darkmode .filterSec > div:last-child > a, */
+body.darkmode .bi-pencil-square{
+    color: var(--text-dark-color);
+}
+
+
+
+/* 다크모드 모음 */
+
+
+
+
+/* filter */
+
+
+
+.displayNoneList{
+    display: none;
+}
+
+.filterSec{
+    display: flex;
+    align-content: center;
+    width: 100%;
+    padding-left: 5.5em;
+    margin-bottom: 3em;
+}
+
+#hr{
+    margin: auto;
+    width: 87%;
+    border: .5px solid var(--stroke-color);
+}
+
+body.darkmode #hr{
+    margin: auto;
+    width: 87%;
+    border: .5px solid var(--border-color);
+}
+
+.lessonList, 
+.locationListBtn{
+    width: 150px;
+    height: 40px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    font-size: 0.93em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+body.darkmode .lessonList, 
+body.darkmode .locationListBtn{
+    border: 1px solid var(--border-color);
+}
+
+
+.filterSec > div:nth-child(3){
+    margin-left: 3em;
+    font-size: 1.1em;
+}
+
+
+/* ====== */
+.labelLocation 
+.locationListBtn{
+    width: 150px;
+    height: 40px;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 0.5em 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    position: absolute;
+    right: 10%;
+}
+
+
+/* 
+body.darkmode .filterSec > div:last-child{
+    border: 1px solid var(--border-color);
+} */
+
+#writingBtn{
+    color: var(--text-color);
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    width: 150px;
+    height: 40px;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 0.5em 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    position: absolute;
+    right: 10%;
+    line-height: 1;
+}
+
+body.darkmode #writingBtn{
+    color: var(--text-dark-color);
+    border: 1px solid var(--border-color);
+}
+
+
+
+
+
+.filterSec > a:first-child{
+    font-size: 2em;
+    display: none;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+
+/* ===== */
+
+.lessonList > i, .locationListBtn > i{
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.listBox{
+    display: none;
+    width: 150px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    padding: 0.5em 0.5em;
+    margin-top: 0.3em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+
+.listBoxAdd{
+    display: block;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+}
+
+
+.listBox > li{
+    padding: 0.5em 0.5em;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.93em;
+}
+
+.listBox > li > button{
+    background-color: transparent;
+    border:none;
+}
+
+.listBox > li:hover , .locationListBox >li:hover{
+    background-color: var(--accent-color);
+    width: 100%;
+    border-radius: 0.5em;
+}
+
+.lessonList > i, .lessonList > span , 
+.locationListBtn > span, .locationListBtn > i{
+    padding: 0 0.6em;
+    letter-spacing: 0.1em;
+}
+
+
+/* location */
+
+
+/* filter */
+
+
+
+.secondSec{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-bottom: 10em;
+}
+
+.secondSec h1{
+    padding-left: 0;
+}
+
+.emptyDiv{
+    margin-top: 10em;
+}
+
+.imgCotentWrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 390px;
+    margin: 2em;
+    border-radius: 4px;
+    background-color: var(--newBack-color);
+    box-shadow: 4px -2px 15px 0px rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: transform ease-out 0.25s, box-shadow 0.1s ease-in 0s;
+}
+
+.imgCotentWrap:hover{
+    transform: translateY(-15px);
+    box-shadow:4px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+body.darkmode .imgCotentWrap{
+    background-color: var(--newBack-dark-color);
+}
+
+
+
+.imgBox{
+    width: 100%;
+    height: 250px;
+    overflow:hidden;
+    border-radius: 4px;
+}
+
+.imgBox > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px 4px 0 0;
+}
+
+.contentBox{
+    width: 100%;
+    height: 150px;
+}
+
+.contentBox > p:nth-of-type(2){
+    padding: 0.5em 1em;
+}
+.contentBox > span{
+    font-size: 0.8em;
+    padding: .5em 1.1em;
+}
+
+#scrollOver{
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: .5em .8em;
+}
+
+.contentBox > p:last-of-type{
+    font-size: .7em;
+    padding: .5em 1.2em;
+}
+
+
+
+
+.contentBox > span{
+    color: #868e96; 
+    /* 박스안 날짜 컬러 */
+}
+
+
+
+
+/* 미디어쿼리 */
+
+
+@media screen and (max-width:46.875rem) {
+    .imgCotentWrap{
+        width: 450px;
+        height: 450px;
+    }
+    .imgBox{
+        height: 300px;
+    }
+
+    .filterSec > div:last-child{
+        display: none;
+    }
+
+    .filterSec > a:first-child{
+        display: block;
+        position: absolute;
+        top: 15em;
+        left: 3em;
+    }
+}
+
+@media screen and (max-width:39.438rem) {
+    .filterSec > a:first-child{
+        display: block;
+        position: absolute;
+        top: 15em;
+        left: 3em;
+    }
+}
+
+@media screen and (max-width:35.625rem) {
+    .filterSec > a:first-child{
+        display: block;
+        position: absolute;
+        top: 13em;
+        left: 3em;
+    }
+    
+}
+
+/* 아이폰 12, se, 갤럭시 울트라 */
+@media screen and (min-width:22rem) and (max-width:26rem){
+    .filterSec > a:first-child{
+        display: block;
+        position: absolute;
+        top: 10.5em;
+        left: 1em;
+    }
+
+    .filterSec{
+        display: flex;
+        align-content: center;
+        width: 100%;
+        padding-left: 1em;
+        margin-bottom: 3em;
+    }
+
+    .filterSec > div:nth-child(3){
+        margin-left: 2em;
+    }
+}
+
+
+/* 갤럭시 8 */
+
+
+

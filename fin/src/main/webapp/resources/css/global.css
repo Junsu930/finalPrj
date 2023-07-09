@@ -1,0 +1,106 @@
+:root{
+    --text-color:#000; 
+    --background-color:#ffffff;
+    --newBack-color:#f6f6f6;
+    --grey-color:#868E96;
+    --accent-color: #f3b013;
+    --stroke-color: #474554;
+    --label-color:#162938;
+    --border-color:#EAE7E7;
+   
+    
+    --grey-color : #ccc;
+	--grr-color : #edeeef;
+	--scroll-background-color : #e7efee;
+    --scroll-dark-color: #e7c3c3;
+    
+    --background-dark-color:#000;
+    --newBack-dark-color: #1e1e1e;
+    --text-dark-color:#fff;
+    --accent-dark-color: #c3c3a4;
+    --stroke-dark-color:#FB4F93;
+    
+    --magenta-heart-color: #f06;
+    
+    --red-color : #ea0000;
+    --alert-div-color: #f11707;
+    
+    --silver-color : silver;
+
+	--chat-color : #ffffec;
+
+
+    --background-nav-color:#fff;
+    --text-nav-color:#000;
+    
+
+    
+    --maxFont-size:1.5em;    /*24*/
+    --mediumFont-size:1em;   /*16px*/
+    --smallFont-size:0.75em; /*12px*/
+    --tinyFont-size:0.625em; /*10px*/
+    --microFont-size: 0.5em; /*8px*/
+
+
+    --navFont-style-:'IBM Plex Sans', sans-serif;
+}
+
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+button:focus , a:focus{
+    outline: none !important;
+}
+
+body{
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    margin: 0 auto;
+    min-height: 100vh;
+    max-width: 100vw;
+}
+
+
+body::-webkit-scrollbar {
+    width: 3px;  /* 스크롤바의 너비 */
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: var(--grey-color); /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--scroll-background-color);  /*스크롤바 뒷 배경 색상*/
+    border-radius: 10px;
+}
+
+
+body.darkmode::-webkit-scrollbar-track{
+    background-color: transparent; /*다크모드 스크롤바 배경 투명색 == 검은색 */
+}
+
+body.darkmode::-webkit-scrollbar-thumb {
+    background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
+}
+
+
+
+
+
+
+
+
+
+

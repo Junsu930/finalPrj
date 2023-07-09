@@ -1,0 +1,389 @@
+.containerForBandBoardDetail{
+	padding: 20px;
+	margin:auto;
+    min-height: 100vh;
+	margin-top : 250px;
+	width: 65%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 2px 2px 20px silver;
+    position: relative;
+	
+}
+
+.darkmode .containerForBandBoardDetail{
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ 	background-blend-mode: multiply,multiply;
+}
+
+.realContentForBandBoard{
+	
+	width: 90%;
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+    color: black;
+    margin-bottom: 400px;
+	
+}
+
+.editAndDeleteBtnDiv{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+
+.editAndDeleteBtnDiv  button{
+	margin-left: 10px;
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+/*********************************************************/
+
+/* 댓글 영역*/
+.replyForBandBoardDetail{
+	margin:auto;
+	margin-top : 10px;
+	width: 65%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 200px;
+}
+
+/* 댓글 글씨 영역 */
+.replyForBandBoardDetail > div:nth-of-type(1){
+	font-size: 1.2em;
+	font-weight: 500;
+	border-bottom: 1px solid silver;
+	padding-bottom: 15px;
+}
+
+.replyNickDiv{
+	font-size:0.8em;
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+
+/* 댓글창과 버튼 영역 */
+.replyForBandBoardDetailBtnDiv{
+	position: relative;
+	margin-top: 10px;
+}
+
+.reReplyForBandBoardDetailBtnDiv{
+    position: relative;
+	margin-top: 10px;
+}
+
+/* 멤버가 아닐 경우 막을 div */
+#replyForBandBoardNotMem{
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-right: 20%;
+    background: var(--grr-color);
+	
+}
+
+.updateReplyForBandBoardBtn{
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reReplyForBandBoardBtn{
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eachFatherDiv{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid silver;
+}
+
+.childReply{
+    padding-left: 10px;
+}
+.pNickSpan{
+    margin-right: 5px;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+#replyForBandBoardBtnNotMem{
+	position: absolute;
+    right: 20px;
+    top: 30px;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: silver;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	
+}
+
+#replyForBandBoard{
+	resize: none;
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-right: 20%;
+}
+
+#reReplyForBandBoard{
+	resize: none;
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding-right: 20%;
+}
+
+#replyForBandBoardBtn{
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    width: 100px;
+    height: 60px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eachReplyDiv{
+	display: flex;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	
+}
+
+.eachReplyDiv > div:nth-of-type(1){
+	flex-basis: 80%;
+}
+
+.eachReplyDiv > div:nth-of-type(2){
+	flex-basis: 20%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: baseline;
+}
+
+.eachReplyDiv > div:nth-of-type(2) > button{
+	border : none;
+	margin-left: 5px;
+	background: none;
+	cursor: pointer; 
+	font-size: 0.7em;
+}
+
+/* *********************************************************** */
+/* 제목 영역 */
+.realContentForBandBoard > div:first-of-type {
+	flex-basis: 5%;
+	font-size: 1.5em;
+	margin-left: 10px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	font-weight: 600;
+	
+}
+
+/* 정보 영역 */
+.realContentForBandBoard > div:nth-of-type(2) {
+	flex-basis: 5%;
+	display: flex;
+	margin-bottom: 10px;
+	font-size: 0.8em;
+	position: relative;
+}
+
+/* 각각의 div */
+.realContentForBandBoard > div:nth-of-type(2) > div{
+	margin-left: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.realContentForBandBoard > div:nth-of-type(2) > div > span{
+	margin-left: 4px;
+}
+
+/* 컨텐츠 */
+.realContentForBandBoard > div:nth-of-type(3){
+	flex-basis : 70%;
+	margin: 40px  0 40px 20px;
+    
+}
+
+.realContentForBandBoard > div:nth-of-type(3) img{
+    width: 60%;
+}
+
+.realContentForBandBoard > div:nth-of-type(4) {
+	flex-basis: 10%;
+	margin-left: 10px;
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+}
+
+.underBarDiv{
+	display: flex;
+	justify-content: space-between;
+}
+
+.underBarDiv > div:last-of-type{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+}
+
+.darkmode .eachReplyDiv > div:nth-of-type(2) > button{
+    color:white;
+}
+
+#backButtonForBandBoard{
+	width: 150px;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#heart{
+    width: 60px; /*크기에 맞게 쓰세요*/
+    fill: var(--grey-color); /* #ccc 색깔코드 */
+    stroke: var(--magenta-heart-color); /* #f06 색깔코드*/
+    stroke-dasharray: 56.6;
+    stroke-dashoffset: 56.6;
+    cursor: pointer;
+}
+
+#heart.like{
+    animation: 1s ease-in forwards like, 
+    0.8s linear 1s 1 forwards beat;
+}
+
+#heart.unlike{
+    animation: 1s ease-out forwards unlike;
+}
+
+@keyframes like{
+    0%{
+        stroke-dashoffset: 56.6;
+    }
+    70%{
+        stroke-dashoffset: 0;
+        fill:var(--grey-color);
+    }
+    100%{
+        stroke-dashoffset: 0;
+        fill: var(--magenta-heart-color);
+    }
+}
+@keyframes beat {
+    0%{
+        transform: scale(1, 1);
+    }
+    50%{
+        transform: scale(0.9, 0.9);
+    }
+    100%{
+        transform: scale(1, 1);
+    } 
+}
+
+@keyframes unlike{
+    0%{
+        stroke-dashoffset: 0;
+        fill: var(--magenta-heart-color);
+    }
+    70%{
+        stroke-dashoffset: 0;
+        fill:var(--grey-color);
+    }
+    100%{
+        stroke-dashoffset: 56.6;
+    }
+}
+
+@media (max-width:46.875rem){
+	
+
+
+	.editAndDeleteBtnDiv{
+		top :35px;
+	}
+	
+	.realContentForBandBoard > div:nth-of-type(4) {
+		margin-left: 0;
+	}
+	
+	#backButtonForBandBoard{
+		width: 100px;
+	}
+	
+	#replyForBandBoardBtn{
+		width: 70px;
+	}
+		
+}

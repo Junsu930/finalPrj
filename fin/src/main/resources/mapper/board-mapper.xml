@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="boardMapper">
+	<resultMap type="board" id="board_rm">
+		<id property="boardNo" column="BOARD_NO" />
+		<result property="boardTitle" column="BOARD_TITLE" />
+		<result property="boardContent" column="BOARD_CONTENT" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="readCount" column="READ_COUNT" />
+		<result property="boardSt" column="BOARD_ST" />
+		<result property="userNo" column="USER_NO" />
+		<result property="loginUserNo" column="LOGIN_USER_NO" />
+		<result property="boardLike" column="BOARD_LIKE" />
+		<result property="boardTag" column="BOARD_TAG" />
+		<result property="userNick" column="USER_NICK" />
+	</resultMap>
+	
+	
+
+	
+	
+		<!-- 게시글 상세 조회용 resultMap -->
+	<resultMap type="detail" id="detail_rm">
+		<id property="boardNo" column="BOARD_NO" />
+		<result property="boardTitle" column="BOARD_TITLE" />
+		<result property="boardContent" column="BOARD_CONTENT" />
+		<result property="createDate" column="CREATE_DATE" />
+		<result property="readCount" column="READ_COUNT" />
+		<result property="userNo" column="USER_NO" />
+		<result property="boardLike" column="BOARD_LIKE" />
+		<result property="boardTag" column="BOARD_TAG" />
+		<result property="userNick" column="USER_NICK" />
+		<result property="replyCount" column="REPLY_COUNT" />
+		
+		
+	</resultMap>
+	
+	
+	<!-- 이미지 정보 조회용 resultMap -->
+	<resultMap type="boardImage" id="boardImage_rm">
+		<id property="imageNo" column="IMG_NO" />
+		<result property="imageReName" column="IMG_RENAME" />
+		<result property="imageOriginal" column="IMG_ORIGINAL" />
+		<result property="boardNo" column="BOARD_NO" />
+	</resultMap> 
+	
+	
+		<resultMap type="boardBanned" id="boardBanned_rm">
+		<id property="bannedNo" column="BANNED_NO" />
+		<result property="userNo" column="USER_NO" />
+		<result property="bannedUserNo" column="BANNED_USER_NO" />
+		<result property="bannedUserNick" column="BANNED_USER_NICK" />
+	</resultMap> 
+
+
+<select id="boardList"  parameterType="hashMap" resultMap="detail_rm">
+<![CDATA[
+SELECT *
+FROM (
+    SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+        BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+        FROM BOARD 
+        JOIN "USER" USING(USER_NO)
+        WHERE 1=1
+        AND BOARD_ST = 'N'
+    ]]>
+    <if test="searchType =='all'">
+        AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
+    <if test="searchType =='popular'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 1</if>
+    <if test="searchType =='notice'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 2</if>
+    AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED WHERE  USER_NO = #{loginUserNo})
+<![CDATA[
+    ) A
+    WHERE RN <= #{pageNum} * #{amount}
+) B
+WHERE RN > (#{pageNum}-1) * #{amount}
+]]>
+
+</select>
+
+
+<!-- 
+	<select id="boardList"  parameterType="hashMap" resultMap="detail_rm">
+	
+<![CDATA[
+
+SELECT *
+FROM (
+    SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+        BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+        FROM BOARD 
+        JOIN "USER" USING(USER_NO)
+    ) A
+    WHERE RN <= #{pageNum} * #{amount}
+    ]]>
+ <if test="searchType =='all'">
+ AND BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%'</if>
+<if test="searchType =='notice'">
+AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+AND BOARD_TAG = 1</if>
+<if test="searchType =='popular'">
+AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+AND BOARD_TAG = 2</if>
+
+
+<![CDATA[
+) B
+WHERE RN > (#{pageNum}-1) * #{amount}
+
+]]>
+
+    </select> 
+     -->
+    	
+	<select id="boardTalk" resultMap="detail_rm">
+	
+<![CDATA[
+SELECT *
+FROM (
+    SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+        BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+        FROM BOARD 
+        JOIN "USER" USING(USER_NO)
+        WHERE 1=1
+        AND BOARD_ST = 'N'
+        AND BOARD_TAG = 1
+        AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED)
+    ]]>
+    <if test="searchType =='all'">
+        AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
+    <if test="searchType =='popular'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 1</if>
+    <if test="searchType =='notice'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 2</if>
+<![CDATA[
+    ) A
+    WHERE RN <= #{pageNum} * #{amount}
+) B
+WHERE RN > (#{pageNum}-1) * #{amount}
+
+]]>
+
+    </select>
+    
+    
+    
+    
+	<select id="boardQus" resultMap="detail_rm">
+
+<![CDATA[
+SELECT *
+FROM (
+    SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+        BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+        FROM BOARD 
+        JOIN "USER" USING(USER_NO)
+        WHERE 1=1
+        AND BOARD_ST = 'N'
+        AND BOARD_TAG = 2
+        AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED)
+    ]]>
+    <if test="searchType =='all'">
+        AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
+    <if test="searchType =='popular'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 1</if>
+    <if test="searchType =='notice'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 2</if>
+<![CDATA[
+    ) A
+    WHERE RN <= #{pageNum} * #{amount}
+) B
+WHERE RN > (#{pageNum}-1) * #{amount}
+
+]]>
+
+    </select>
+    
+    
+    	<select id="boardAll" resultMap="detail_rm">
+
+<![CDATA[
+SELECT *
+FROM (
+    SELECT RN, BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+    BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+    FROM (
+        SELECT ROW_NUMBER() OVER (ORDER BY BOARD_NO DESC) AS RN,
+        BOARD_NO, BOARD_TITLE, BOARD_CONTENT, CREATE_DATE, READ_COUNT,
+        BOARD_ST, USER_NO, BOARD_LIKE, BOARD_TAG, USER_NICK
+        FROM BOARD 
+        JOIN "USER" USING(USER_NO)
+        WHERE 1=1
+        AND BOARD_ST = 'N'
+        AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED)
+    ]]>
+    <if test="searchType =='all'">
+        AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
+    <if test="searchType =='popular'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 1</if>
+    <if test="searchType =='notice'">
+        AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+        AND BOARD_TAG = 2</if>
+<![CDATA[
+    ) A
+    WHERE RN <= #{pageNum} * #{amount}
+) B
+WHERE RN > (#{pageNum}-1) * #{amount}
+
+]]>
+
+    </select>
+    
+    
+    <select id="getTotal" resultType= "int">
+    	select count(*) as total from Board
+    	
+ <if test="searchType =='all'">
+    	where (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
+ <if test="searchType =='popular'">
+where (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+AND BOARD_TAG = 1</if>
+   <if test="searchType =='notice'">
+where (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
+AND BOARD_TAG = 2</if>
+
+
+    </select>
+    
+    
+     <insert id="write" parameterType="board" >
+	INSERT INTO BOARD VALUES(
+   	SEQ_BOARD_NO.NEXTVAL,
+    #{boardTitle}, #{boardContent},DEFAULT, DEFAULT, DEFAULT, #{userNo}, DEFAULT,#{boardTag} 
+   )
+	</insert>
+	
+	
+		<!-- 게시글 상세 조회 -->
+	<select id="boardDetail" resultMap="detail_rm">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT,
+		TO_CHAR(CREATE_DATE, 'YY"." MM"." DD') CREATE_DATE,
+		READ_COUNT, USER_NO, BOARD_LIKE, BOARD_LIKE,
+		BOARD_TAG,USER_NICK, USER_NO
+		FROM BOARD b
+		JOIN "USER" USING(USER_NO)
+		WHERE BOARD_NO = #{boardNo}
+		AND BOARD_ST = 'N' 
+
+	</select>
+	
+	
+	
+	
+		<!-- 조회수 증가 -->
+	<update id="updateReadCount">
+		UPDATE BOARD SET
+		READ_COUNT = READ_COUNT + 1
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	
+	
+	<delete id="delete" parameterType="detail">
+	
+		UPDATE BOARD SET
+	BOARD_ST='Y'
+WHERE BOARD_NO = #{boardNo}
+	
+	</delete>
+	
+	
+	
+	<update id="boardUpdate" parameterType="detail">
+		UPDATE BOARD SET
+		BOARD_TITLE=#{boardTitle}, BOARD_CONTENT=#{boardContent}
+		WHERE BOARD_NO = #{boardNo}
+	</update> 
+	
+	
+	
+
+	   <insert id="reportUser" parameterType="boardBanned">
+        INSERT INTO BOARD_BANNED 
+        VALUES (
+        SEQ_BANNED_NO.NEXTVAL,#{userNo}, #{bannedUserNo}, #{bannedUserNick})
+    </insert> 
+	
+	<select id="bannedUserIds" parameterType="boardBanned" resultType="String">
+    SELECT BANNED_USER_NO
+    FROM BOARD_BANNED
+    WHERE USER_NO = #{userNo}
+</select>
+
+	<!-- 좋아요 등록 -->
+	<update id="boardDetailLike" parameterType="hashmap">
+		UPDATE BOARD SET BOARD_LIKE = BOARD_LIKE +1 WHERE BOARD_NO = ${boardNo}
+	</update>
+	
+	<!-- 좋아요 취소 -->
+	<update id="removeLike" parameterType="hashmap">
+		UPDATE BOARD SET BOARD_LIKE = BOARD_LIKE -1 WHERE BOARD_NO = ${boardNo}
+	</update>
+	
+	<!-- 좋아요 테이블 좋아요 등록 -->
+	<insert id="addLike" parameterType="hashmap">
+		INSERT INTO BOARD_LIKE VALUES(BOARD_LIKE_SEQ.NEXTVAL, ${boardNo}, ${loginUserNo}, DEFAULT)
+	</insert>
+	
+	<!-- 좋아요 테이블 좋아요 삭제 -->
+	<delete id="removeLikeFromLikeTable" parameterType="hashmap">
+		DELETE FROM BOARD_LIKE WHERE BOARD_NO = ${boardNo} AND USER_NO = ${loginUserNo}
+	</delete>
+	
+	<select id="countLike" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM BOARD_LIKE WHERE BOARD_NO = ${boardNo}
+	</select>
+	
+	<!-- 좋아요 한지 안한지 체크 -->
+	<select id="checkLike" parameterType="detail" resultType="_int">
+		SELECT COUNT(*) FROM BOARD_LIKE WHERE BOARD_NO = ${boardNo} AND USER_NO = ${loginUserNo}
+	</select>
+	
+</mapper>

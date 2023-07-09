@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper>
-  <cache-ref namespace=""/>
+<mapper namespace="testMapper">
+	<resultMap type="dbTest" id="dbTest_rm">
+		<id property="userNo" column="USER_NO" />
+		<result property="userEmail" column="USER_EMAIL" />
+		<result property="userPwd" column="USER_PWD" />
+		<result property="userDate" column="JOIN_DATE" />
+		<result property="secessionFl" column="SECESSION_FL" />
+		<result property="userName" column="USER_NICK" />
+		<result property="matchingFl" column="MATCHING_FL" />
+		<result property="userType" column="USER_TYPE" />
+		<result property="introMent" column="INTRO_MENT" />
+		<result property="inst" column="INST" />
+		<result property="genreFavor" column="GENRE" />
+		<result property="region" column="REGION" />
+		<result property="gender" column="GENDER" />
+		<result property="yoe" column="YEARS_OF_EXP" />
+		<result property="profileImg" column="IMAGE"/>
+	</resultMap>
+	
+	
+	
+	<select id="testSelect" resultMap="dbTest_rm" parameterType="_int">
+		SELECT * FROM "USER"u  LEFT JOIN MATCHING_INFO m ON (u.USER_NO = m.USER_NO) WHERE u.USER_NO = #{userNo}
+	</select>
+	
+	<select id="leaderCheck" parameterType="_int" resultType="_int">
+		SELECT count(*) FROM BAND_USER WHERE USER_NO = ${loginUserNo} AND LEADER_FL = 'T'
+	</select>
+	
+	<select id="inBandCheck" parameterType="_int" resultType="_int">
+		SELECT count(*) FROM BAND_USER WHERE USER_NO = ${userNo}
+	</select>
+	
 </mapper>

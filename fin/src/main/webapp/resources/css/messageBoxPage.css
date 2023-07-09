@@ -1,0 +1,202 @@
+
+.messageWrapper{
+    position: relative;
+    perspective: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 13em 0;
+    gap: 3em;
+    transition: 0.5s;
+}
+
+.messageWrapper li{
+    position: relative;
+    list-style: none;
+    width: 680px;
+    height: 150px;
+    padding:15px;
+    background-color: #eee;
+    gap: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 6px;
+    box-shadow: 7px -4px 15px 0px rgba(0,0,0,0.25);
+    transition: 0.5s;
+}
+
+
+
+body.darkmode .messageWrapper li{
+    background-color: var(--newBack-dark-color);
+    border: none;
+    /* box-shadow: 8px -7px 15px 2px rgb(209 204 204 / 25%); */
+}
+
+
+
+.messageWrapper li:hover{
+    transform: translateY(-8px);
+}
+
+
+
+
+
+.messageWrapper li img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.messageWrapper li .content{
+    width: 100%;
+    cursor: pointer;
+}
+
+.messageWrapper li .content h4{
+    font-weight: 600;
+    color: var(--stroke-color);
+    margin-bottom: 1em;
+}
+
+body.darkmode .messageWrapper li .content h4,
+body.darkmode .messageWrapper li .content p
+{
+    color: var(--border-color);
+}
+
+.messageWrapper li .content p{
+    position: relative;
+    color: var(--stroke-color);
+    line-height: 1em;
+    width: 100%;
+}
+
+.messageWrapper li .content p span{
+    position: absolute;
+    color: #888;
+    top: -36px;
+    right: 0;
+    font-size: 0.75em;
+}
+
+.messageWrapper li .content p .msgDeleteBtn {
+    position: absolute;
+    right: 5px;
+    top: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2em;
+}
+
+.messageWrapper li .content p .msgReplyBtn{
+    position: absolute;
+    right: 35px;
+    top: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2em;
+}
+
+body.darkmode .msgReplyBtn{
+    color: var(--text-dark-color);
+}
+
+body.darkmode .messageWrapper li .content p .msgDeleteBtn,
+body.darkmode .messageWrapper li .content p .msgSendBtn
+{
+    color: var(--text-dark-color);
+}
+
+
+.emptyMsgBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    margin: 10em 0;
+}
+
+.emptyMsgBox > p{
+    letter-spacing: .3em;
+    font-size: 2em;
+    transition: .5s;
+    padding: 1em 1em;
+}
+
+.emptyMsgBox > p:hover{
+    animation: in .5s ease-out;
+}
+
+@keyframes in{
+    0%{
+      letter-spacing: 0.3em;
+    }
+    50%{
+      letter-spacing: 0.6em
+    }
+    100%{
+      letter-spacing: 0.3em
+    }
+  }
+
+
+
+
+
+
+.sendMsgModalBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    margin-top: 2em;
+}
+
+.sendMsgModalBox>h1{
+    font-weight: 500;
+    padding-left: 0;
+}
+
+body.darkmode .sendMsgModalBox h1{
+    color:var(--text-color);
+}
+
+
+.sendMsgModalBox > textarea{
+    resize: none;
+    border-radius: 6px;
+    padding: 1em 1em;
+    width: 80%;
+    height: 150px;
+    outline: none;
+    font-size: 1em;
+    font-family: var(--navFont-style-);
+}
+
+.sendMsgModalBox button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+
+
+
+@media screen and (min-width:22.4rem) and (max-width:31.3rem) {
+    .messageWrapper li{
+        width: 350px;
+        height: 100px;
+    }
+    
+}

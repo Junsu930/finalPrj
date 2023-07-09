@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="replyMapper">
+
+	<resultMap type="reply" id="reply_rm">
+	
+		<id property="replyNo" column="REPLY_NO"/>
+		
+		<result property="replyContent" column="REPLY_CONTENT"/>
+		<result property="createDate" column="CREATE_DT"/>
+		<result property="boardNo" column="BOARD_NO"/>
+		<result property="replySt" column="REPLY_ST"/>
+		<result property="userNo" column="USER_NO"/>
+		<result property="userNick" column="USER_NICK"/>
+		<result property="parentReplyNo" column="PARENT_REPLY_NO"/>	
+	</resultMap>
+		
+	<!-- 
+	    계층형 쿼리( START WITH, CONNECT BY, ORDER SIBLINGS BY )
+	    
+	    - 상위 타입과 하위 타입간의 관계를 계층식으로 표현할 수 있게하는 질의어(SELECT)
+	    
+	    - START WITH : 상위 타입(최상위 부모)으로 사용될 행을 지정
+	
+		- CONNECT BY :
+			-> 상위 타입과 하위 타입 사이의 관계를 규정
+			-> PRIOR(이전의) 연산자와 같이 사용하여
+				현재 행 이전에 상위 타입 또는 하위 타입이 있을지 규정
+		
+			1) 부모 -> 자식 계층구조
+			CONNECT BY PRIOR 자식 컬럼 = 부모 컬럼
+			
+			2) 자식 -> 부모 계층구조
+			CONNECT BY PRIOR 부모 컬럼 = 자식 컬럼
+	
+	
+		- ORDER SIBLINGS BY : 계층 구조 정렬
+		
+		
+		
+		** 계층형 쿼리가 적용된 SELECT 해석 순서 **
+		
+		5 : SELECT
+		1 : FROM (+JOIN)
+		4 : WHERE
+		2 : START WITH
+		3 : CONNECT BY
+		6 : ORDER SIBLINGS BY
+		
+		
+		- WHERE 절이 계층형 쿼리보다 해석 순서가 늦기 때문에
+		먼저 조건을 반영하고 싶은 경우 FROM절 서브쿼리(인라인뷰)를 이용
+	 -->
+
+
+
+	<!-- 댓글 목록 조회(계층형 구조) -->
+	<select id="selectReplyList" resultMap="reply_rm">
+		SELECT LEVEL,  R.* FROM
+		    (SELECT REPLY_NO, REPLY_CONTENT,
+		        TO_CHAR(CREATE_DT, 'YY"." MM"." DD')  CREATE_DT,
+		        BOARD_NO, USER_NO, USER_NICK, PARENT_REPLY_NO, REPLY_ST
+		    FROM REPLY
+		    JOIN  "USER" USING(USER_NO)
+		    WHERE BOARD_NO = #{boardNo}) R
+		
+		WHERE REPLY_ST = 'N'
+		START WITH PARENT_REPLY_NO IS NULL
+		CONNECT BY PRIOR REPLY_NO = PARENT_REPLY_NO
+		ORDER SIBLINGS BY REPLY_NO
+	</select>
+
+
+
+	<!-- 댓글 등록 -->
+	<insert id="insertReply">
+		<selectKey keyProperty="replyNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_RNO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO REPLY VALUES(${replyNo}, #{boardNo}, #{replyContent}, DEFAULT, DEFAULT,#{userNo},
+			
+			<!-- 일반 댓글인 경우-->
+			<if test="parentReplyNo == 0">
+				NULL
+			</if>
+			
+			
+			
+			<!-- 답글인 경우 -->
+			<if test="parentReplyNo != 0">
+				#{parentReplyNo}
+			</if>
+			
+		)
+	</insert>
+	
+	<!-- 보더넘버를 바탕으로 글쓴 사람이 누군지 유저넘버 가져와야함 for 알람 테이블 -->
+	<select id="selectToUserNo" parameterType="_int" resultType="_int">
+		SELECT b.USER_NO
+		FROM BOARD b
+		JOIN REPLY r ON r.BOARD_NO = b.BOARD_NO
+		WHERE REPLY_NO = ${replyNo}
+	</select>
+	
+	
+	
+	<!-- 알람 테이블   -->
+	
+	<insert id="insertReplyAlarm" parameterType="reply">
+	  <choose>
+	    <when test="toUserNo != userNo">
+	      INSERT INTO TOTAL_ALARM
+	      (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+	      VALUES
+	      (TOTAL_ALARM_NO_SEQ.NEXTVAL, ${toUserNo}, ${userNo}, NULL, ${replyNo}, NULL, NULL, DEFAULT, NULL)
+	    </when>
+	    <otherwise>
+	      INSERT INTO TOTAL_ALARM
+	      (ALARM_NO, TO_USER_NO, FROM_USER_NO, INVI_NO, REPLY_NO, BOARD_NO, INVI_READ_STATUS, REPLY_READ_STATUS, LIKE_READ_STATUS)
+	      VALUES
+	      (TOTAL_ALARM_NO_SEQ.NEXTVAL, NULL, ${userNo}, NULL, ${replyNo}, NULL, NULL, NULL, NULL)
+	    </otherwise>
+	  </choose>
+	</insert>
+
+	
+	
+	
+	
+
+
+
+	<!-- 댓글 삭제 -->
+	<update id="deleteReply">
+		UPDATE REPLY SET
+		REPLY_ST = 'Y'
+		WHERE REPLY_NO = #{replyNo}
+	</update>
+	
+	
+	<!-- 댓글 수정 -->
+	<update id="updateReply">
+		UPDATE REPLY SET
+		REPLY_CONTENT = #{replyContent}
+		WHERE REPLY_NO = #{replyNo}
+	</update>
+	
+	
+	<!-- 보드 디테일 댓글 갯수 가져오기 -->
+	<select id="getReplyCount" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) FROM REPLY WHERE BOARD_NO = ${boardNo}
+	</select>
+	
+	
+</mapper>

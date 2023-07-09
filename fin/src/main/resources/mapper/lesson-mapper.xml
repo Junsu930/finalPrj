@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lessonMapper">
+
+	<!-- 메인글  게시글 가져오기-->
+	<resultMap type="lesson" id="lesson_rm">
+	  	<id property="lessonNo" column="LESSON_NO"/>
+	  	<result property="userNo" column="USER_NO"/>
+	  	<result property="userNick" 	column="USER_NICK"/>
+	  	<result property="region" column="REGION" />
+	  	<result property="socialSite" column="SOCIAL_SITE" />
+	  	<result property="motto" 	column="MOTTO"/>
+	  	<result property="detailment" column="DETAIL_MENT"/>
+		<result property="genre" column="GENRE" />
+		<result property="inst" column="INST" />
+		<result property="writingDate" 	column="WRITING_DATE"/>
+		<result property="imgSrc" 	column="IMG_RENAME"/>
+  </resultMap>
+  
+  
+  <resultMap type="lessonImg" id="lesson_img_rm">
+	  	<id property="imageNo" column="IMG_NO"/>
+	  	<result property="imageRename" column="IMG_RENAME"/>
+	  	<result property="imageOriginal" 	column="IMG_ORIGINAL"/>
+		<result property="lessonNo" 	column="LESSON_NO"/>
+		<result property="imageLevel" 	column="IMG_LEVEL"/>
+  </resultMap>
+  
+
+
+	<select id="lessonList" resultMap="lesson_rm">
+		SELECT 
+		li.USER_NICK,
+		li.MOTTO,
+		li.REGION,
+		li.INST,
+		TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"')AS WRITING_DATE,
+		li.LESSON_NO,
+		IMG_RENAME
+		FROM LESSON_INFO li
+		JOIN "USER" u USING(USER_NO)
+		LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO = li.LESSON_NO 
+		WHERE LESSON_FL = 'N' AND IMG_LEVEL = 0 AND IMG_FL ='N'
+		ORDER BY LESSON_NO DESC
+	</select>
+	
+	<select id="lessonFilter" parameterType="map" resultMap="lesson_rm">
+		
+		SELECT 
+		li.LESSON_NO, 
+		li.USER_NICK,
+		li.MOTTO, 
+		li.REGION, 
+		li.INST,
+		TO_CHAR(li.WRITING_DATE, 'YY"년 "MM"월 "DD"일"') AS WRITING_DATE,
+		IMG_RENAME
+		FROM LESSON_INFO li
+		JOIN "USER" u USING(USER_NO)
+		LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO = li.LESSON_NO
+		WHERE (REGION LIKE #{locText} OR INST LIKE #{lessonText}) AND (IMG_FL ='N' AND LESSON_FL = 'N')
+		ORDER BY CASE
+		    WHEN INST LIKE #{lessonText} THEN 0 
+		    WHEN REGION LIKE #{locText} THEN 1
+		    ELSE 2 
+		END
+		
+		
+	</select>
+	
+	
+	
+	<insert id="writeLessonForm" parameterType="map" useGeneratedKeys="true">
+	
+		<selectKey keyProperty="lessonNo" resultType="_int" order="BEFORE">
+			SELECT LESSON_NO_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO LESSON_INFO (LESSON_NO, USER_NO, USER_NICK, REGION, SOCIAL_SITE, MOTTO, DETAIL_MENT, GENRE, INST, WRITING_DATE)
+		VALUES (${lessonNo}, ${userNo}, #{userNick}, #{userRegion}, #{userSocial}, #{userMotto}, #{userDetailExplain}, #{genre}, #{inst}, SYSDATE)
+	</insert>
+	
+	<insert id="insertImageFile" parameterType="lessonImg">
+		INSERT INTO LESSON_IMG (IMG_NO, IMG_RENAME, IMG_ORIGINAL, LESSON_NO, IMG_LEVEL, IMG_FL)
+		VALUES(LESSON_IMG_SEQ.NEXTVAL, #{imageRename}, #{imageOriginal}, ${lessonNo}, ${imageLevel}, DEFAULT)
+	</insert>
+	
+	
+	<select id="selectDetail" parameterType="_int" resultMap="lesson_rm">
+		SELECT USER_NO, LESSON_NO, USER_NICK, MOTTO,INST, GENRE, REGION, SOCIAL_SITE, DETAIL_MENT
+		FROM LESSON_INFO
+		WHERE LESSON_NO = ${lessonNo}
+	</select>
+	
+	<select id="selectLessonImg" parameterType="_int" resultMap="lesson_img_rm">
+		SELECT *
+		FROM LESSON_IMG
+		WHERE LESSON_NO = ${lessonNo} AND IMG_FL ='N'
+	</select>
+	
+	<select id="lessonListRandom" resultMap="lesson_rm">
+		SELECT * FROM
+		(SELECT 
+		li.USER_NICK, 
+		li.INST,
+		li.GENRE,
+		li.LESSON_NO,
+		li2.IMG_RENAME
+		FROM LESSON_INFO li 
+		JOIN "USER" u USING(USER_NO)
+		LEFT JOIN LESSON_IMG li2 ON li2.LESSON_NO = li.LESSON_NO 
+		WHERE LESSON_FL = 'N' AND IMG_LEVEL = 0
+		ORDER BY DBMS_RANDOM.VALUE)
+		WHERE ROWNUM <![CDATA[<=]]> 7
+	</select>
+	
+	
+	<update id="deleteLesson" parameterType="_int">
+		UPDATE LESSON_INFO SET LESSON_FL = 'Y' WHERE LESSON_NO = ${lessonNo}
+	</update>
+	
+	<update id="deleteLessonImg" parameterType="_int">
+		UPDATE LESSON_IMG SET IMG_FL = 'Y' WHERE LESSON_NO = ${lessonNo}
+	</update>
+	
+	
+	
+</mapper>

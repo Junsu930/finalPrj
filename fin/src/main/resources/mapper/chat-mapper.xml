@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="chat-mapper">
+	<resultMap type="tempUser" id="tempUser_rm">
+		<id property="userNo" column="USER_NO" />
+		<result property="userEmail" column="USER_EMAIL" />
+		<result property="userPwd" column="USER_PWD" />
+		<result property="userDate" column="JOIN_DATE" />
+		<result property="secessionFl" column="SECESSION_FL" />
+		<result property="userName" column="USER_NICK" />
+		<result property="matchingFl" column="MATCHING_FL" />
+		<result property="userType" column="USER_TYPE" />
+		<result property="introMent" column="INTRO_MENT" />
+		<result property="bannedFl" column="BANNED_FL" />
+	</resultMap>
+	<resultMap type="chat" id="chat_rm">
+		<id property="chatRoomNo" column="CHAT_ROOM_NO"/>
+		<result property="chatTitle" column="TITLE"/>
+		<result property="chatMasterNo" column="USER_NO"/>
+		<result property="chatGuestNo" column="GUEST_NO"/>
+	</resultMap>
+	
+		<resultMap type="chat" id="chat_rm2">
+		<id property="chatRoomNo" column="CHAT_ROOM_NO"/>
+		<result property="chatTitle" column="TITLE"/>
+		<result property="chatMasterNo" column="USER_NO"/>
+		<result property="chatGuestNo" column="GUEST_NO"/>
+		<result property="chatOthersNick" column="OTHER_NICKNAME"/>
+		<result property="chatOthersImage" column="IMAGE"/>
+		<result property="lastchat" column="LAST_CHAT"/>
+	</resultMap>
+	
+	<resultMap type="chatMessage" id="chatMessage_rm">
+		<result property="chatRoomNo" column="CHAT_ROOM_NO"/>
+		<result property="message" column="MESSAGE"/>
+		<result property="userNo" column="USER_NO"/>
+		<result property="chatStaus" column="CHAT_STATUS"/>
+	</resultMap>
+	
+	
+	<select id="tempUser" resultMap="tempUser_rm" parameterType="_int">
+		SELECT * FROM "USER" WHERE USER_NO = ${nowUser}
+	</select>
+	<select id="roomList" resultMap="chat_rm2" parameterType="map">
+		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME, IMAGE, LAST_CHAT
+		FROM CHAT_ROOM c 
+		JOIN "USER" u ON (c.GUEST_NO = u.USER_NO) 
+		WHERE c.USER_NO = #{nowUser} 
+	    UNION
+		SELECT CHAT_ROOM_NO, TITLE, c.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME, IMAGE, LAST_CHAT
+		FROM CHAT_ROOM c
+		JOIN "USER" u ON (c.USER_NO = u.USER_NO)
+		WHERE c.GUEST_NO = #{nowUser}
+		MINUS 
+		SELECT CHAT_ROOM_NO, TITLE, cr.USER_NO, GUEST_NO, USER_NICK OTHER_NICKNAME, IMAGE, LAST_CHAT
+		FROM CHAT_ROOM cr 
+		JOIN "USER" u ON (cr.USER_NO = u.USER_NO)
+		WHERE STATUS = #{nowUser}
+		ORDER BY LAST_CHAT DESC NULLS LAST
+	</select>
+	
+	<insert id="saveMsg" parameterType="map">
+		INSERT INTO CHAT_MESSAGE 
+		VALUES(CHAT_MSG_NO_SEQ.NEXTVAL, #{chatRoomNo}, #{msg}, SYSDATE, ${sessionUserNo}, NULL)
+	</insert>
+	
+	<select id="loadMessage" parameterType="map" resultMap="chatMessage_rm">
+		SELECT CHAT_ROOM_NO, MESSAGE, USER_NO, CHAT_STATUS 
+		FROM CHAT_MESSAGE 
+		WHERE CHAT_ROOM_NO = #{chatRoomNo} AND (CHAT_STATUS IS NULL OR CHAT_STATUS != #{loginUserNo})  ORDER BY CHAT_DATE
+	</select>
+	
+	<update id="deleteChatRoom" parameterType="string">
+		UPDATE CHAT_ROOM SET STATUS = 'N' WHERE CHAT_ROOM_NO = #{chatRoomNo}
+	</update>
+	
+	<select id="dupCheck" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM CHAT_ROOM WHERE (CHAT_ROOM_NO = #{roomNo} OR CHAT_ROOM_NO = #{roomNoSub}) AND STATUS = 'Y'
+	</select>
+	
+
+	<select id="outCheck" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM CHAT_ROOM WHERE (CHAT_ROOM_NO = #{roomNo} OR CHAT_ROOM_NO = #{roomNoSub}) AND STATUS != 'Y'
+	</select>
+	
+	<insert id="chatStart" parameterType="hashmap">
+		INSERT INTO CHAT_ROOM VALUES(#{roomNo}, #{roomTitle}, 'Y', ${userNo}, ${withUser}, NULL)
+	</insert>
+	
+	<update id="returnY">
+		UPDATE CHAT_ROOM SET STATUS = 'Y' WHERE (CHAT_ROOM_NO = #{roomNo} OR CHAT_ROOM_NO = #{roomNoSub})
+	</update>
+	
+	<select id="withUserName" parameterType="_int" resultType="string">
+		SELECT USER_NICK FROM "USER" WHERE USER_NO = ${withUser}
+	</select>
+	
+	<delete id="deleteToStart" parameterType="hashmap">
+		DELETE FROM CHAT_ROOM WHERE CHAT_ROOM_NO = #{roomNo} AND STATUS = 'N'
+	</delete>
+	
+	<select id="withUserUsingRoomNo" parameterType="string" resultType="string">
+		SELECT USER_NICK FROM "USER" WHERE USER_NO = (SELECT GUEST_NO FROM CHAT_ROOM WHERE CHAT_ROOM_NO = #{chatRoomNo})
+	</select>
+	
+	<select id="chattingCheckImg" parameterType="_int" resultType="string">
+		SELECT IMAGE FROM "USER"  WHERE USER_NO = ${userNo}
+	</select>
+	
+	<select id="checkSt" parameterType="map" resultType="string">
+		SELECT STATUS FROM CHAT_ROOM WHERE CHAT_ROOM_NO = #{chatRoomNo}
+	</select>
+	
+	<update id="chatExitU" parameterType="map">
+		UPDATE CHAT_ROOM SET STATUS = #{loginUserNo} WHERE CHAT_ROOM_NO = #{chatRoomNo}
+	</update>
+	
+	<delete id="chatExitD" parameterType="map">
+		DELETE FROM CHAT_ROOM WHERE CHAT_ROOM_NO = #{chatRoomNo}
+	</delete>
+	
+	<update id="massageExitU" parameterType="map">
+		UPDATE CHAT_MESSAGE SET CHAT_STATUS = #{loginUserNo} WHERE CHAT_ROOM_NO = #{chatRoomNo}
+	</update>
+	
+	<delete id="massageExitD" parameterType="map">
+		DELETE CHAT_MESSAGE WHERE CHAT_ROOM_NO = #{chatRoomNo}
+	</delete>
+	
+	
+	<update id="lastChat" parameterType="map">
+		UPDATE CHAT_ROOM SET LAST_CHAT = SYSDATE WHERE CHAT_ROOM_NO = #{chatRoomNo}
+	</update>
+	
+	<update id="settingY" parameterType="map">
+		UPDATE CHAT_ROOM SET STATUS = 'Y' WHERE CHAT_ROOM_NO = #{chatRoomNo}
+	</update>
+	
+	
+</mapper>

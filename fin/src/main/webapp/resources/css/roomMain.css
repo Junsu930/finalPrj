@@ -1,0 +1,398 @@
+
+
+
+.reservationPath{
+    fill: none;
+    stroke: black;
+    stroke-width: 1.5px;
+    stroke-dasharray: 5478.7744140625;
+    animation: drawPath 2s linear, floating 3s linear infinite;
+}
+
+
+
+
+
+@keyframes drawPath {
+
+    0% {
+        stroke-dashoffset: 5478.7744140625;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+.content{
+	width: 80%;
+	margin: auto;
+	margin-top : 4em;
+	margin-bottom: 20em;
+	
+}
+
+/* 분류창 */
+.sorting-bar{
+	width : 90%;
+	height : 200px;
+	border-bottom: 1px solid;
+	border-bottom-color : var(--silver-color);
+	display: flex;
+	margin: auto;
+}
+
+
+/* 분류 메뉴 */
+.sorting-bar > div:first-of-type{
+	flex-basis: 30%;
+	display: flex;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.sorting-bar > div:last-of-type {
+	width : 65%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  	position: relative;
+}
+
+.regionBtn{
+	width: 150px;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.regionBtn > span{
+	font-size: 1.2em;
+	margin-right: 10px;
+}
+
+.regionListUl{
+    width: 150px;
+    border: 1px solid var(--stroke-color);
+    border-radius: 0.5em;
+    padding: 0.5em 0.5em;
+    margin-top: 0.3em;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+    background-color: var(--background-color);
+    z-index: 10;
+    position: absolute;
+    top: 8em;
+}
+
+.disappearList{
+	display: none;
+}
+
+.regionListUl li{
+	padding: 0.5em 0.5em;
+    cursor: pointer;
+    list-style: none;
+}
+
+.darkmode .regionListUl li{
+	
+	color: var(--text-color);
+}
+
+.regionListUl li:hover{
+	background-color: var(--accent-color);
+	border-radius: 10px;
+}
+
+.darkmode .regionBtn{
+	background-color: var(--background-nav-color);
+}
+/*
+select{
+	width: 200px; 
+	padding: .8em .5em; 
+	border: 1px solid #999;
+	font-family: inherit;    
+	-webkit-appearance: none; 
+	-moz-appearance: none;
+	appearance: none;
+	border-radius: 10px;
+}
+
+select::-ms-expand {
+    display: none;
+}
+*/
+/* 검색창 */
+#room-search{
+	width: 100%; 
+	padding: .8em 1.5em; 
+	height : 40px;
+	border: 1px solid #999;
+	border-radius: 10px;
+	-webkit-appearance: none; 
+	-moz-appearance: none;
+	appearance: none;
+	box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* 검색 버튼 */
+#s-btn{
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+	position: absolute;
+	right: 5%;
+	
+}
+
+/* 연습실 목록 뷰 */
+.main-card-sec{
+	width : 100%;
+	display: flex;
+	justify-content : space-between;
+	flex-wrap: wrap;
+	
+}
+
+/* 각각의 연습실*/
+.box-card{
+	width: 300px;
+	height: 300px;
+	margin: 1em;
+	border-radius: 10px;
+	border: 2px solid var(--silver-color);
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	transition :transform ease-out 0.25s, box-shadow 0.1s ease-in 0s;
+}
+.box-card:hover{
+    transform: translateY(-15px);
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.darkmode .box-card{
+	box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+
+
+body.darkmode .box-card{
+	border: 1px solid;
+	border-color: var(--background-color);
+}
+/* 사진 영역 */
+.box-card > div:nth-child(1) {
+	flex-basis: 50%;
+	/*background-image: url('../images/band.jpg');*/
+	background-size: cover;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin-bottom: 5px;
+}
+/* 제목 글씨 */
+.box-card > div:nth-child(2) {
+	flex-basis: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 크롬의 경우 input search기본 x 없애기 */
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration{
+    display:none;
+}
+
+.box-card > div:nth-child(3) {
+	flex-basis: 40%;
+}
+
+/* 상세 설명 영역 */
+.detail-part{
+	display: flex;
+}
+
+.detail-part > div:nth-child(1) {
+	flex-basis: 50%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* 지역 영역 */
+.detail-part > div:nth-child(1) > div:first-child{
+	flex-basis: 50%;
+	display: flex;
+	align-items: center;
+	margin-left: 15px;
+	font-size: 0.9em;
+}
+
+/* 구성 영역 */
+.detail-part > div:nth-child(1) > div:last-child{
+	flex-basis: 50%;
+	display: flex;
+	font-size: 0.7em;
+	margin-left: 15px;
+}
+
+/* 가격 영역 */
+.detail-part > div:nth-child(2) {
+	flex-basis: 50%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 1em;
+	align-items: center;
+}
+
+.detail-part > div:nth-child(2) > i{
+	margin: 10px;
+}
+
+
+#titleLogo{
+	animation: fill 0.3s ease forwards 0.6s;
+}
+
+
+
+#titleLogo path:nth-child(1){
+	stroke-dasharray: 549;
+	stroke-dashoffset: 549;
+	animation: line-anim 2s ease forwards;
+}
+
+#titleLogo path:nth-child(2){
+	stroke-dasharray: 55;
+	stroke-dashoffset: 55;
+	animation: line-anim 1.5s ease forwards;
+
+}
+
+#titleLogo path:nth-child(3){
+	stroke-dasharray: 463;
+	stroke-dashoffset: 463;
+	animation: line-anim 2.3s ease forwards;
+}
+
+#titleLogo path:nth-child(4){
+	stroke-dasharray: 55;
+	stroke-dashoffset: 55;
+	animation: line-anim 1.8s ease forwards;
+}
+
+#titleLogo path:nth-child(5){
+	stroke-dasharray: 453;
+	stroke-dashoffset: 453;
+	animation: line-anim 2.1s ease forwards;
+}
+
+.darkmode .reservationPath{
+	stroke: var(--stroke-dark-color);
+}
+
+body.darkmode #titleLogo path{
+	stroke: white;
+}
+
+body.darkmode #titleLogo{
+	animation: fill-dark 0.2s ease forwards 0.6s;
+}
+
+.space-name > p{
+	font-size: 1.3em;	
+}
+
+
+
+@keyframes line-anim{
+	to{
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes fill{
+	from{
+		fill:transparent;
+	}
+	to{
+		fill : black;
+	}
+}
+
+@keyframes fill-dark{
+	from{
+		fill:transparent;
+	}
+	to{
+		fill : white;
+	}
+}
+
+
+.noRoomP{
+	margin: auto;
+	font-size: 2em;
+	margin-top: 30px;
+}
+
+.logoDiv{
+	margin-left : 4em;
+}
+
+@media (max-width:46.875rem){
+	
+	.content{
+	
+		margin: auto;
+		margin-top: 100px;
+		margin-bottom: 100px;
+	
+	}
+	
+	#s-btn{
+		border: 0;
+		background-color: transparent;
+		cursor: pointer;
+		position: absolute;
+	
+	}
+	
+	#room-search {
+	
+		margin-left: 10px;
+	}
+}
+
+@media all and (max-width:415px) {
+	
+	.logoDiv{
+		margin-left: 0;
+	}
+	
+	.sorting-bar{
+		
+		flex-direction: column;
+		align-items: center;
+		margin-top: 20%;
+	}
+	
+}

@@ -1,0 +1,380 @@
+*{
+	box-sizing: border-box;
+}
+body{
+    margin: 0px;
+}
+.main{
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10em;
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+	
+}
+
+body.swal2-shown{
+	padding-right : 0 !important;
+	overflow: revert !important;
+}
+
+
+
+
+.topBox{
+	margin-top: 200px;
+	display: flex;
+	justify-content: center;
+  width: 80%;
+  height: 80%;
+}
+
+
+  .swiper {
+        text-align: center;
+        width: 70%;
+        height: 70%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 70%;
+        object-fit: cover;
+        margin: auto;
+      }
+      .swiper-button-next{
+    color: #474554 !important;
+      }
+      .swiper-button-prev{
+      color: #474554 !important;
+      }
+      
+      .swiper-pagination-bullet{
+      color: #474554 ;
+      }
+      
+.pictureBox{
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  
+}
+.picture{
+  width: 100%;
+  height: 100%;
+  position: relative;
+	 
+}
+
+.guitarImg{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+ 
+}
+
+.darkmode .swiper-slide{
+	background: black;
+	transition : 0.5s all;
+}
+
+
+.swiper-slide{
+	transition : 0.5s all;
+}
+
+.left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leftButton{
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+	 
+}
+.fa-sharp fa-solid fa-chevron-left{
+	 width: 100px;
+     height: 100px;
+}
+
+
+.right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rightButton{
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  color: #474554;
+}
+.nickName{
+	
+	margin-top:50px;
+  margin-bottom: 20px;
+  font-weight: 600;
+	
+}
+
+.fa-sharp fa-solid fa-chevron-right{
+	 width: 100px;
+     height: 100px;
+}
+.dealTitileBox{
+	display: flex;
+	margin-top: 10px;
+}
+.SaleOrSoldout{
+	color: var( --accent-color);
+    font-size : 20px;
+    font-weight: bold;
+    
+}
+.thingTitle{
+	    margin-left: 10px;
+	    font-size : 20px;
+}
+
+.price{
+	
+	font-weight: bold;
+	margin-top: 10px;
+    font-size: 25px;
+}
+.productDetailBox{
+	display: flex;
+	flex-direction: column
+}
+.productConditionDetailBox{
+	display: flex;
+}
+.productCondition{
+	margin-top: 10px;
+	color: var(  --grey-color);
+	
+}
+.ConditionResult{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.deliveryPriceDetailBox{
+	
+	display: flex;
+}
+
+.deliveryPrice{
+	margin-top: 10px;
+	color: var(  --grey-color);
+	
+}
+.PriceResult{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.tradingAreaDetailBox{
+  display: flex;
+}
+.tradingArea{
+  margin-top: 10px;
+  color: var(  --grey-color);
+	
+}
+.AreaResult{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.productInformationTitle{
+  margin-top: 20px;
+
+}
+.productInformationAnswer{
+  margin-top: 80px;
+}
+
+.QuestionChat{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.QuestionChatButton{
+  width: 150px;
+  height: 50px;
+  background-color: #ccc;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+  /* margin-right: 200px; */
+  margin-top: 80px;
+  /* margin-bottom: 200px;*/
+  cursor: pointer;
+}
+
+.QuestionChatButton > i{
+  margin-right: 5px;
+}
+
+
+
+.rightButton i, .leftButton i{
+	color: #474554;
+}
+
+.moreBox{
+	border: 1px solid;
+	width: 30%;
+}
+
+.moreProductImg{
+width: 150px;
+}
+
+.updateAndDeleteBtn{
+  display: flex;
+  margin-top: 30px;
+}
+
+
+.updateAndDeleteBtn button{
+  width: 85px;
+  height: 30px;
+  border: 1px solid #999;
+  border-radius: 0.5em;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+  background-color: transparent;
+  cursor: pointer;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-right: 10px;
+}
+
+
+
+
+body.darkmode .rightButton i {
+	color : var(--text-dark-color);
+}
+
+body.darkmode .leftButton i{
+	color:var(--text-dark-color);
+}
+
+
+/*아이폰 SE*/
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 375px) {
+
+.bottomBox {
+	margin-left: 10px;
+ 	width: 80%;
+}
+.QuestionChatButton{
+	width: 150px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    margin-left: 10px;
+    margin-top: 80px;
+    margin-bottom: 200px;
+    margin-right: 7px;
+}
+    
+
+
+	
+}
+
+
+/*아이폰 12 pro*/
+@media only screen and (min-device-width : 376px) and (max-device-width : 390px) {
+    
+.bottomBox {
+	margin-left: 10px;
+ 	width: 80%;
+}
+.QuestionChatButton{
+	width: 150px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    margin-left: 10px;
+    margin-top: 80px;
+    margin-bottom: 200px;
+    margin-right: 7px;
+}
+    
+    
+}
+/*아이폰 xr*/
+
+@media only screen and (min-device-width : 391px) and (max-device-width : 414px) {    
+    
+.bottomBox {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.QuestionChatButton{
+	width: 150px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    margin-left: 10px;
+    margin-top: 80px;
+    margin-bottom: 200px;
+    margin-right: 7px;
+}
+    
+    
+}
+
+
+/*아이패드 에어 */
+@media only screen (min-device-width : 769px)  and (max-device-width : 820px){ 
+	
+    
+}

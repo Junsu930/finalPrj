@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="businessMapper">
+
+<resultMap type="business" id="owner_rm">
+  	
+  	<id property="ownerNo" column="OWNER_NO"/>
+  	
+  	<result property="ownerEmail" 		column="OWNER_EMAIL"/>
+	<result property="ownerPw" 		column="OWNER_PWD"/>
+	<result property="ownerNick" 	column="OWNER_NICK"/>
+	<result property="secessionFl" 		column="SECESSION_FL"/>
+	<result property="regNo" 		column="COMP_REG_NO"/>
+  </resultMap>
+  
+  
+  <!-- 로그인 -->
+  <select id="businessLogin" parameterType="business" resultMap="owner_rm">
+  		SELECT OWNER_NO, OWNER_EMAIL, OWNER_PWD, SECESSION_FL, OWNER_NICK, COMP_REG_NO
+		FROM "ROOM_OWNER"
+		WHERE OWNER_EMAIL = #{ownerEmail}
+		AND SECESSION_FL = 'N'
+  </select>
+  
+  <!-- 이메일 중복 검사 -->
+  <select id="emailDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM "ROOM_OWNER"
+  		WHERE OWNER_EMAIL = #{ownerEmail}
+  		AND SECESSION_FL = 'N'
+  </select>
+  
+  <!-- 닉네임 중복 검사 -->
+  <select id="nicknameDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*) FROM "ROOM_OWNER"
+  		WHERE OWNER_NICK = #{ownerNick}
+  		AND SECESSION_FL = 'N'
+  </select>
+  
+  <!-- 회원 가입 -->
+  	<insert id="ownerSignUp" parameterType="business">
+  		INSERT INTO ROOM_OWNER VALUES(	
+  			OWNER_SEQ.NEXTVAL,
+  			#{ownerEmail},
+  			#{ownerPw},
+  			DEFAULT,
+  			#{ownerNick},
+  			#{regNo}
+  		)
+  	</insert>
+  
+  
+  
+  
+</mapper>

@@ -1,0 +1,180 @@
+
+
+.footerSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: cneter;
+    justify-content: space-around;
+}
+
+
+.firstUl, 
+.secondUl, 
+.thirdUl, 
+.forthUl{
+    list-style:none;
+}
+
+footer ul{
+    padding:0;
+}
+
+
+.footerSection i{
+    font-size: 1.5em;
+}
+
+.footer1-modal-toggle{
+    text-decoration: none;
+    color: var(--text-color); /*black*/
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+body.darkmode .footerDarkAtag{
+	color: var(--background-color);
+}
+
+body.darkmode .footer1-modal-toggle{
+	color: var(--background-color);
+}
+
+
+
+.footer2-modal-toggle{
+    text-decoration: none;
+    color: var(--text-color); /*black*/
+    cursor: pointer;
+    transition: 0.5s;	
+}
+
+body.darkmode .footer2-modal-toggle{
+	color: var(--background-color);
+}
+
+
+.footer3-modal-toggle{
+    text-decoration: none;
+    color: var(--text-color); /*black*/
+    cursor: pointer;
+    transition: 0.5s;	
+}
+
+body.darkmode .footer3-modal-toggle{
+	color: var(--background-color);
+}
+
+
+/* 평소 푸터 a태그 css */
+
+.footerDarkAtag{
+    text-decoration: none;
+    color: var(--text-color); /*white*/
+    cursor: pointer;
+}
+/* 다크모드일때 푸터 a태그 컬러 화이트로 입힐 용도 */
+
+
+.footerFirstSec{
+    width: 100%;
+    font-size: 1.5em;
+    padding: 1.5em;
+}
+
+.footerFirstSec > div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.displayNone{
+    display: none;
+}
+
+
+
+.footerSecSec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 1em 0 1em 3em
+}
+
+
+.firstUl > li ,
+.secondUl > li, 
+.thirdUl > li{
+    padding:0.5em;
+}
+
+
+.footerThirdSec{
+    width: 80%;
+    margin-bottom: 250px;
+}
+
+.socialdiv{
+    width: 50%;
+}
+
+.forthUl{
+    width: 35%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 1.3em;
+}
+
+.forthUl > li{
+    padding: 1em 1em;
+}
+
+
+
+/* footer media */
+
+@media screen and (max-width: 46.875rem){
+    .footerFirstSec > div{
+        flex-direction: column;
+    }
+
+    .footerFirstSec > div >span:not(.displayNone){
+        display: none;
+    }
+
+    .displayNone{
+        display: block;
+    }
+
+    .footerSecSec{
+        flex-direction: column;
+    }
+
+    .footerThirdSec,
+    .socialdiv,
+    .forthUl{
+        width: 100%;
+    }
+    
+    .firstDiv, .secondDiv, .thirdDiv{
+    padding: 1em 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

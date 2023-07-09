@@ -1,0 +1,415 @@
+
+html { 
+  scroll-behavior: smooth; 
+} 
+
+/*
+div{
+	border: 1px solid;
+	border-color: var(--text-color);
+}
+
+
+body.darkmode div{
+	border-color: var(--background-color);
+}
+*/
+
+body{
+	margin: 0px;
+}
+
+body.swal2-shown{
+	padding-right : 0 !important;
+	overflow: revert !important;
+}
+
+.content{
+	width: 80%;
+	margin: auto;
+	margin-top : 100px;
+	margin-bottom : 150px;
+	display: flex;
+	border-radius: 7px;
+	height: 320vh;
+}
+
+
+
+
+.leftSide{
+	flex-basis: 65%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* 사진 영역 */
+.leftSide > div:nth-child(1){
+	flex-basis: 17%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	
+}
+
+.leftSide > div:nth-child(2){
+	flex-basis: 8%;
+	padding-top: 2em;
+	padding-left: 2em;
+}
+
+.leftSide > div:nth-child(3){
+	flex-basis: 70%;
+}
+
+#pracImg{
+	width: 90%;
+	height: 90%;
+	border-radius: 10px;
+}
+
+.rightSide{
+	flex-basis: 35%;
+	height: 100%;
+}
+
+.titleArea > p:nth-of-type(1) {
+	font-size: 3rem;
+}
+.titleArea > p:nth-of-type(2) {
+	font-size: 1.3rem;
+	margin-bottom: 20px;
+	
+}
+
+
+.introduction{
+	display: flex;
+	flex-direction: column;
+}
+
+.introduction ul{
+	display: flex;
+	justify-content: space-around;
+}
+
+.introduction li{
+	list-style: none;
+	float: left;
+	width: 20%;
+	line-height: 60px;
+	text-align: center;
+	font-size: 1.4em;
+	border-bottom: 3px solid;
+	border-color: var(--grr-color);
+	
+}
+
+body.darkmode .introduction li{
+	background-color: var(--text-color);
+	
+}
+
+body.darkmode a{
+	color: var(--background-color);
+}
+
+.introduction a {
+	color: var(--text-color);
+	text-decoration: none;
+	width: 100%;
+    display: block;
+    transition-duration: 1s;
+
+}
+
+
+.introduction > div:nth-child(1) {
+	height: 60px;
+	
+}
+
+.introduction > div:nth-child(2) {
+	flex-basis: 93%;
+	
+}
+
+.introContent{
+	display: flex;
+	flex-direction: column;
+}
+
+.introContent > div:nth-child(1) {
+	flex-basis: 33.3%;
+	margin-top: 100px;
+	overflow: auto;
+}
+
+.introContent  h1{
+	margin: 0.4em;
+}
+
+.introContent > div:nth-child(2) {
+	flex-basis: 33.3%;
+	overflow: auto;
+}
+
+.introContent > div:nth-child(3) {
+	flex-basis: 33.3%;
+	overflow: auto;
+}
+
+
+.introContent p{
+	margin : 20px;
+	
+}
+
+.fc-day-past {
+    background-color: var(--grr-color);
+}
+
+body.darkmode .fc-day-past{
+	background-color: var(--grey-color);
+}
+
+.fc-bg-event{
+	cursor: pointer;
+}
+
+.calDiv{
+	margin: auto;
+	margin-top : 10px;
+	margin-bottom : 10px;
+	width: 90%;
+}
+
+
+.fc .fc-button-primary:disabled{
+	background-color: var(--grr-color);
+}
+
+.fc .fc-button-primary{
+	border:none;
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.fc-today-button{
+	display: none !important;
+}
+
+.fc .fc-button-primary:hover{
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.fc .fc-button-primary:hover{
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
+	background-color: var(--background-color);
+	color: var(--text-color);
+	border-color: none;
+}
+
+.calDiv p{
+	font-size : 2rem;
+	margin-bottom : 20px;
+	border-bottom : 2px solid;
+	border-color : var(--grey-color);
+	text-align: center;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+
+.days{
+	display : flex;
+	justify-content: center;
+	flex-direction : column;
+	align-items : center;
+	font-size: 2rem;
+	margin : auto;
+}
+
+.timeline {
+	
+	display: none;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.6em;
+
+}
+
+.timeline > button{
+	cursor : pointer;
+	border: none;
+	background-color: var(--grr-color);
+	width: 4rem;
+	height: 2rem;
+	border-radius: 5px;
+	margin: 10px;
+	margin-top: 5px;
+}
+
+.times.onTime{
+	background-color: var(--accent-color);
+}
+
+.submitDiv{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+}
+
+.submitDiv > button{
+	border: none;
+	width: 80%;
+	height: 40px;
+	border-radius: 10px;
+	cursor: pointer;
+	background-color: var(--grr-color);
+	display: none;
+	font-size: 1.3em;
+	margin-top: 2em;
+}
+
+.fc .fc-bg-event{
+	background-color: #D0F5BE;
+}
+
+.greenDay{
+	background-color: #98EECC !important;
+}
+
+.roomDetailPhoto{
+
+	display: none;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	margin-top: 20px;
+	
+}
+
+.picto{
+	width : 90%;
+	display: none;
+	justify-content: space-around;
+	align-items: center;
+	margin: auto;
+	margin-top: 20px;
+	flex-wrap: wrap;
+	border: 1px solid;
+	border-color : var(--grey-color);
+	border-radius: 7px;
+	padding: 1rem;
+}
+
+.picto i{
+	font-size: 2em;
+	color: var(--grey-color);
+}
+
+.eachPicto{
+	display: flex;
+	margin: 3px;
+	margin-top: 7px;
+}
+.eachPicto p {
+    line-height: 2em;
+    margin-left: 0.6em;
+    margin-right : 0.4em;
+    color: var(--grey-color);
+}
+
+#detailImages{
+	width: 90%;
+	border-radius: 10px;
+}
+
+.price-tag{
+	width: 90%;
+	margin: auto;
+	display: none;
+	margin-top: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	
+}
+
+.lineDiv{
+	border: 2px solid;
+	margin-left: 0.8em;
+	width: 20em;
+	border-color: var(--grr-color);
+}
+
+
+.fc-scroller::-webkit-scrollbar {
+    width: 4px;  /* 스크롤바의 너비 */
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: var(--grey-color); /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+.fc-scroller::-webkit-scrollbar-track {
+    background: var(--scroll-background-color);  /*스크롤바 뒷 배경 색상*/
+}
+
+.darkmode .fc-scroller::-webkit-scrollbar-track {
+    background: transparent;  /*스크롤바 뒷 배경 색상*/
+}
+
+.darkmode .fc-scroller::-webkit-scrollbar-thumb {
+    background: var(--scroll-dark-color); /* 다크모드 스크롤바 연한 핑크 */
+}
+
+@media (max-width:1200px){
+	
+	.content{
+		flex-direction: column;
+		height: 120%;
+
+	}
+	
+}
+		
+
+@media (max-width:46.875rem){
+	
+	.content{
+		width: 80%;
+		flex-direction: column;
+		height: 120%;
+	}
+
+	.leftSide > div:nth-child(1){
+		margin-top: 20px;
+	}
+		
+}
+
+/* 모바일 가로, 모바일 세로 (해상도 480px ~ 767px)*/
+@media all and (max-width:767px) {
+	.introduction li {
+		line-height: inherit;
+	
+	}
+	
+	.introduction ul{
+		margin-top: 20px;
+	}
+	
+}
