@@ -138,5 +138,18 @@ public class BoardServiceImpl implements BoardService{
 	public int checkLike(BoardDetail boardDetail) {
 		return dao.checkLike(boardDetail);
 	}
+
+	
+	
+	/**
+	 * 댓글 갯수 가져오기 서비스
+	 * @author lee
+	 * @param boardNo
+	 * @return
+	 */
+	@Override
+	public int getReplyCount(int boardNo) {
+		return dao.getReplyCount(boardNo);
+	}
 	
 }

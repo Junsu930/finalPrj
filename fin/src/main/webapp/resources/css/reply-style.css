@@ -83,17 +83,16 @@ body.darkmode .reply-btn-area > button {
 /* 댓글 작성 영역 */
 .reply-write-area{
     display: flex;
-    justify-content: center;
     min-height: 85px;
     margin: 30px 0;
 }
 
 /* 댓글 작성 내용 */
 #replyContent{
-   
     margin-right: 10px;
     resize: none;
     padding: 10px;
+    width: 1000px;
 }
 
 /* 댓글 등록 버튼 */
@@ -107,7 +106,7 @@ flex-basis: 8%;
     height: 87px;
     font-size: 15px;
     border-radius: 5px;
-    min-width: 30px;
+    min-width: 100px;
 }
 /* 
 #addReply:hover{

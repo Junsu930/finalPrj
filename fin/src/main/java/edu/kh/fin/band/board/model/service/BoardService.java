@@ -68,6 +68,14 @@ public interface BoardService {
 	 */
 	int checkLike(BoardDetail boardDetail);
 
+	/**
+	 * 댓글 갯수 가져오기 서비스
+	 * @author lee
+	 * @param boardNo
+	 * @return
+	 */
+	int getReplyCount(int boardNo);
+
 
 
 

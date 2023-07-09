@@ -137,7 +137,7 @@
 		
 		
 		<div class="backBox">
-			<button id="backBtn" type="button" onclick="location.href='${contextPath}/findingMember'">재검색</button>
+			<button id="backBtn" type="button" onclick="location.href='${contextPath}/findingMember'">Re-Searching</button>
 		</div>
 	</section>
 	

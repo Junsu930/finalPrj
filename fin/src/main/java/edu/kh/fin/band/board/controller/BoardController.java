@@ -207,6 +207,11 @@ public class BoardController {
 				    
 				    int result = service.checkLike(boardDetail);
 				    
+				    // reply 갯수 가져오기
+				    int replyCount = service.getReplyCount(boardNo);
+				    
+				    model.addAttribute("replyCount", replyCount);
+				    
 				    
 				    
 				    if(result > 0) {

@@ -37,6 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    gap: .2em;
 }
 
 
@@ -131,19 +132,22 @@
   
   .title-container {
     display: flex;
-	align-items: center;
+    align-items: center;
+    gap: 2em;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .tagsss {
     background-color: #474554;
     color: #ffffff;
+    min-width: 60px;
     padding: 5px 10px;
     border-radius: 5px;
-    margin-right: 10px;
     display: flex;
-    align-items: flex-end;
-    
-   
+    align-items: center;
+    justify-content: center;
   }
  .DetailViews{
     font-size: 20px;
@@ -151,9 +155,8 @@
   
   .BoardDetailTitle {
     font-weight: bold;
-    margin-top: 10px;
-     font-size: 40px;
-     margin-bottom: 10px;
+    margin: 10px 0;
+    font-size: 1.1em;
   }
   
   .info {
@@ -176,6 +179,7 @@ font-size: 20px;
   }
   .content {
     margin-top: 50px;
+    overflow: hidden;
   }
   .comment{
     font-weight: bold;
@@ -196,11 +200,13 @@ font-size: 20px;
     display: flex;
     align-items: center;
     margin-right: 10px; 
+    gap: .5em;
   }
-  .commentBox i{
+#replyImg{
     margin-top: 3px;
-  }
-  .commentBox i,
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
   .commentBox2 i {
     margin-right: 5px;
   }
@@ -209,7 +215,7 @@ font-size: 20px;
    font-size: 19px;
     color: #474554;
   }
-  .edit, .and, .delete{
+.and, .delete{
     margin-right: 10px;
   }
  .and{
@@ -227,7 +233,11 @@ font-size: 20px;
     font-weight: bold;
   }
   .divider {
-    border-bottom: 1px solid #edeeef;
+    border-bottom: 1px solid var(--stroke-color);
+  }
+
+  body.darkmode .divider{
+    border-bottom: 1px solid var(--border-color);
   }
   
   .author {
@@ -295,15 +305,29 @@ font-size: 20px;
 
   #btx {
     height: 85px;
-	
     background-color: transparent;
     border: none;
-  
-    margin: 0;
     cursor: pointer;
     font-weight: bold;
     padding: 2px;
   }
+
+ 
+
+  #btx2{
+    height: 85px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 2px;
+  }
+
+body.darkmode #btx,
+body.darkmode #btx2{
+    color: var(--text-dark-color);
+}
+
   .info {
     display: flex;
     align-items: center;
@@ -314,30 +338,13 @@ font-size: 20px;
   .left {
     display: flex;
     align-items: center;
+    gap: .5em;
   }
   
-  .nickname {
-    margin-right: 10px;
-  }
-  
-  .DetailViews {
-    margin-right: 10px;
-  }
-  .hearts{
-    margin-right: 20px;
-    
-  }
-  .date{
-    margin-right: 10px; 
-  
-  }
+
   
   
-  
-.right {
-  
-  margin-left: auto;
-}
+
 
 .author-reply{
     display: flex;
@@ -412,6 +419,7 @@ body.darkmode input:focus{
 
 body.darkmode textarea{
 	color: var(--text-dark-color);
+    border: 1px solid var(--border-color);
 }
 
 body.darkmode .report{
@@ -422,6 +430,19 @@ body.darkmode .report{
 
 
 
+#listBtn{
+    width: 80px;
+    height: 30px;
+    border: 1px solid var(--label-color);
+    background: transparent;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+}
+
+body.darkmode #listBtn{
+    border: 1px solid var(--border-color);
+}
 
 
 
@@ -931,6 +952,13 @@ textarea {
     }
 
 }
-body.darkmode .BoardDetailTitle, .ninkName, .heart, .DetailViews, .boardNumber {
+
+
+body.darkmode .BoardDetailTitle,
+body.darkmode .ninkName, 
+body.darkmode .heart,
+body.darkmode .DetailViews,
+body.darkmode .boardNumber {
     color: var(--text-dark-color);
+}
 }

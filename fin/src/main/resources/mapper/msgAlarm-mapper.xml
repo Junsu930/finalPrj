@@ -68,7 +68,7 @@
 	
 	<select id="getUserNicks" parameterType="_int" resultMap="getUserNick_rm">
 		SELECT 
-		u.USER_NICK,
+		u.USER_NICK, 
 		TO_CHAR(mb.SEND_DATE, 'Mon', 'NLS_DATE_LANGUAGE=ENGLISH') AS SEND_MON,
 		TO_CHAR(mb.SEND_DATE, 'DD"일"') AS SEND_DAY
 		FROM
@@ -222,7 +222,7 @@
 		LEFT JOIN BOARD b ON b.BOARD_NO = r.BOARD_NO
 		WHERE b.USER_NO = ${userNo}
 		AND u.USER_NICK != (SELECT USER_NICK FROM "USER" WHERE USER_NO = ${userNo})
-		ORDER BY r.REPLY_NO DESC
+		ORDER BY r.CREATE_DT DESC
 	</select>
 	
 	
@@ -260,7 +260,7 @@
 		LEFT JOIN BOARD b ON b.BOARD_NO = bl.BOARD_NO
 		WHERE b.USER_NO = ${userNo}
 		AND u.USER_NICK != (SELECT USER_NICK FROM "USER" WHERE USER_NO = ${userNo})
-		ORDER BY bl.LIKE_NO DESC
+		ORDER BY BOARD_DATE DESC
 	</select>
 	
 	

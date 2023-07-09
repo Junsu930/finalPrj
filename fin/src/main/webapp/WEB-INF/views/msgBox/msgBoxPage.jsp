@@ -49,7 +49,7 @@
         	<ul class="messageWrapper">
             <c:forEach items="${msgList}" var="msgList" varStatus="status">
               <li>
-                <img src="${contextPath}/resources/images/guitarduck.png" alt="">
+                <img src="${contextPath}${msgList.userImage}" alt="">
                 <div class="content">
                     <h4>${msgList.sendUserNick}</h4>
                     <p>
