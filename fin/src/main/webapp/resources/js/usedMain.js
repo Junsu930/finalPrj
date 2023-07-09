@@ -246,170 +246,181 @@ function searchingRoomAjax(){
     dataType : "json",
     success : function(data){
 
-      document.querySelector(".thingBoxWrap").innerHTML ="";
-      console.log(data);
-      boxCardList = data;
-      boxCardListLength = boxCardList.length; 
-      // 모든 박스 카드 길이
 
-      let countNum = boxCardListLength < 5 ? boxCardListLength : 5
-      // 모든 박스 카드 길이가 5보다 작으면 박스카드길이인 couontNum은 박스카드 길이고, 아니면 countNum은 5이다.
-      
-      // 최초 5개의 박스를 가져온다
-      for (let i = 0; i < countNum; i++) {            
-		// 가장 외부          
-		const $newBox = document.createElement("div");
-		$newBox.className = "thingBox";
+		if(data.length == 0){
 
-		$newBox.onclick = function(){location.href='/fin/usedDetail?usedBoard=' + boxCardList[i].usedBoardNo};
-		
-		// thingPicture
-		let thingPicture = document.createElement("div");
-		thingPicture.className = "thingPicture";
-		let thingImg = document.createElement("img");
-		thingImg.className ="usedPicture";
-		thingImg.src= '/fin' + boxCardList[i].imgSrc;
-
-		thingPicture.append(thingImg);
-
-		let thingSecondBox = document.createElement("div");
-		thingSecondBox.className="thingsecondbox";
-		let thingsSecondTop = document.createElement("div");
-		thingsSecondTop.className="thingssecondTop";
-		let saleOfsoldout = document.createElement("div");
-		saleOfsoldout.className="SaleOrSoldout";
-		let thingTitle = document.createElement("div");
-		thingTitle.className="thingTitle";
-
-		let status = (boxCardList[i].boardState == 'Y') ? '판매중':  '판매완료';
-		saleOfsoldout.innerHTML=  status
-		thingTitle.innerHTML= shortenWords(boxCardList[i].boardTitle, 30);
-
-		thingsSecondTop.append(saleOfsoldout);
-		thingsSecondTop.append(thingTitle);
-
-
-		let thingSecondBottomBox = document.createElement("div");
-		thingSecondBottomBox.className="thingsecondBottomBox";
-		let thingsecondBottom = document.createElement("div");
-		thingsecondBottom.className="thingsecondBottom";
-		let sellerName = document.createElement("div");
-		sellerName.className="sellerName";
-		sellerName.innerHTML = boxCardList[i].userNick + " · " + boxCardList[i].region;
-		thingsecondBottom.append(sellerName);
-
-		let priceTag = document.createElement("div");
-		priceTag.className="price";
-		priceTag.innerHTML= boxCardList[i].price.toLocaleString('ko-KR')+"원";
-		thingSecondBottomBox.append(thingsecondBottom);
-		thingSecondBottomBox.append(priceTag);
-
-
-		thingSecondBox.append(thingsSecondTop);
-		thingSecondBox.append(thingSecondBottomBox);
-  
-		$newBox.append(thingPicture);
-		$newBox.append(thingSecondBox);
+			$(".thingBoxWrap").html("");
+			let noRoomP = document.createElement("p");
+			noRoomP.className = "noRoomP"
+			noRoomP.innerHTML = "검색 결과가 없습니다."
+			document.querySelector(".thingBoxWrap").appendChild(noRoomP);
+		}else{
 	
-		document.querySelector(".thingBoxWrap").appendChild($newBox);
-      }
-      $lastBox = document.querySelector(".thingBox:last-child");
-      
-      // 현재 카운트넘은 5이다
-
-
-      let count = 5;
-      const obsever = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && count < boxCardListLength) {
-              
-              let toCount;
-
-              if(count + 5 <= boxCardListLength){
-                toCount = count + 5;
-              }else{
-                toCount = boxCardListLength;
-              }
-
-              for (let i = count; i < toCount; i++) {
-				
-				// 가장 외부          
-				const $newBox = document.createElement("div");
-				$newBox.className = "thingBox";
-		
-				$newBox.onclick = function(){location.href='/fin/usedDetail?usedBoard=' + boxCardList[i].usedBoardNo};
-				
-				// thingPicture
-				let thingPicture = document.createElement("div");
-				thingPicture.className = "thingPicture";
-				let thingImg = document.createElement("img");
-				thingImg.className ="usedPicture";
-				thingImg.src= '/fin' +  boxCardList[i].imgSrc;
-		
-				thingPicture.append(thingImg);
-		
-				let thingSecondBox = document.createElement("div");
-				thingSecondBox.className="thingsecondbox";
-				let thingsSecondTop = document.createElement("div");
-				thingsSecondTop.className="thingssecondTop";
-				let saleOfsoldout = document.createElement("div");
-				saleOfsoldout.className="SaleOrSoldout";
-				let thingTitle = document.createElement("div");
-				thingTitle.className="thingTitle";
-		
-				let status = (boxCardList[i].boardState == 'Y') ? '판매중':  '판매완료';
-				saleOfsoldout.innerHTML=  status
-				thingTitle.innerHTML= shortenWords(boxCardList[i].boardTitle, 30);
-		
-				thingsSecondTop.append(saleOfsoldout);
-				thingsSecondTop.append(thingTitle);
-		
-		
-				let thingSecondBottomBox = document.createElement("div");
-				thingSecondBottomBox.className="thingsecondBottomBox";
-				let thingsecondBottom = document.createElement("div");
-				thingsecondBottom.className="thingsecondBottom";
-				let sellerName = document.createElement("div");
-				sellerName.className="sellerName";
-				sellerName.innerHTML = boxCardList[i].userNick + " · " + boxCardList[i].region;
-				thingsecondBottom.append(sellerName);
-		
-				let priceTag = document.createElement("div");
-				priceTag.className="price";
-				priceTag.innerHTML= boxCardList[i].price.toLocaleString('ko-KR')+"원";
-				thingSecondBottomBox.append(thingsecondBottom);
-				thingSecondBottomBox.append(priceTag);
-		
-		
-				thingSecondBox.append(thingsSecondTop);
-				thingSecondBox.append(thingSecondBottomBox);
+			document.querySelector(".thingBoxWrap").innerHTML ="";
+			console.log(data);
+			boxCardList = data;
+			boxCardListLength = boxCardList.length; 
+			// 모든 박스 카드 길이
+	
+			let countNum = boxCardListLength < 5 ? boxCardListLength : 5
+			// 모든 박스 카드 길이가 5보다 작으면 박스카드길이인 couontNum은 박스카드 길이고, 아니면 countNum은 5이다.
 			
-				$newBox.append(thingPicture);
-				$newBox.append(thingSecondBox);
+			// 최초 5개의 박스를 가져온다
+			for (let i = 0; i < countNum; i++) {            
+			// 가장 외부          
+			const $newBox = document.createElement("div");
+			$newBox.className = "thingBox";
+	
+			$newBox.onclick = function(){location.href='/fin/usedDetail?usedBoard=' + boxCardList[i].usedBoardNo};
 			
-				document.querySelector(".thingBoxWrap").appendChild($newBox);
-
-				count ++;
-              }
-              let $lastBox = document.querySelector(".thingBox:last-child");
-
-                obsever.unobserve($lastBox);
-                $lastBox = document.querySelector(".thingBox:last-child");
-                obsever.observe($lastBox);
-              }
-            });
-          },
-          {
-            threshold: 0,
-          }
-      
-          );
-          if($lastBox!=null){
-            obsever.observe($lastBox);
-          }
-      }
-  });
+			// thingPicture
+			let thingPicture = document.createElement("div");
+			thingPicture.className = "thingPicture";
+			let thingImg = document.createElement("img");
+			thingImg.className ="usedPicture";
+			thingImg.src= '/fin' + boxCardList[i].imgSrc;
+	
+			thingPicture.append(thingImg);
+	
+			let thingSecondBox = document.createElement("div");
+			thingSecondBox.className="thingsecondbox";
+			let thingsSecondTop = document.createElement("div");
+			thingsSecondTop.className="thingssecondTop";
+			let saleOfsoldout = document.createElement("div");
+			saleOfsoldout.className="SaleOrSoldout";
+			let thingTitle = document.createElement("div");
+			thingTitle.className="thingTitle";
+	
+			let status = (boxCardList[i].boardState == 'Y') ? '판매중':  '판매완료';
+			saleOfsoldout.innerHTML=  status
+			thingTitle.innerHTML= shortenWords(boxCardList[i].boardTitle, 30);
+	
+			thingsSecondTop.append(saleOfsoldout);
+			thingsSecondTop.append(thingTitle);
+	
+	
+			let thingSecondBottomBox = document.createElement("div");
+			thingSecondBottomBox.className="thingsecondBottomBox";
+			let thingsecondBottom = document.createElement("div");
+			thingsecondBottom.className="thingsecondBottom";
+			let sellerName = document.createElement("div");
+			sellerName.className="sellerName";
+			sellerName.innerHTML = boxCardList[i].userNick + " · " + boxCardList[i].region;
+			thingsecondBottom.append(sellerName);
+	
+			let priceTag = document.createElement("div");
+			priceTag.className="price";
+			priceTag.innerHTML= boxCardList[i].price.toLocaleString('ko-KR')+"원";
+			thingSecondBottomBox.append(thingsecondBottom);
+			thingSecondBottomBox.append(priceTag);
+	
+	
+			thingSecondBox.append(thingsSecondTop);
+			thingSecondBox.append(thingSecondBottomBox);
+		
+			$newBox.append(thingPicture);
+			$newBox.append(thingSecondBox);
+		
+			document.querySelector(".thingBoxWrap").appendChild($newBox);
+			}
+			$lastBox = document.querySelector(".thingBox:last-child");
+			
+			// 현재 카운트넘은 5이다
+	
+	
+			let count = 5;
+			const obsever = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+				if (entry.isIntersecting && count < boxCardListLength) {
+					
+					let toCount;
+	
+					if(count + 5 <= boxCardListLength){
+					toCount = count + 5;
+					}else{
+					toCount = boxCardListLength;
+					}
+	
+					for (let i = count; i < toCount; i++) {
+					
+					// 가장 외부          
+					const $newBox = document.createElement("div");
+					$newBox.className = "thingBox";
+			
+					$newBox.onclick = function(){location.href='/fin/usedDetail?usedBoard=' + boxCardList[i].usedBoardNo};
+					
+					// thingPicture
+					let thingPicture = document.createElement("div");
+					thingPicture.className = "thingPicture";
+					let thingImg = document.createElement("img");
+					thingImg.className ="usedPicture";
+					thingImg.src= '/fin' +  boxCardList[i].imgSrc;
+			
+					thingPicture.append(thingImg);
+			
+					let thingSecondBox = document.createElement("div");
+					thingSecondBox.className="thingsecondbox";
+					let thingsSecondTop = document.createElement("div");
+					thingsSecondTop.className="thingssecondTop";
+					let saleOfsoldout = document.createElement("div");
+					saleOfsoldout.className="SaleOrSoldout";
+					let thingTitle = document.createElement("div");
+					thingTitle.className="thingTitle";
+			
+					let status = (boxCardList[i].boardState == 'Y') ? '판매중':  '판매완료';
+					saleOfsoldout.innerHTML=  status
+					thingTitle.innerHTML= shortenWords(boxCardList[i].boardTitle, 30);
+			
+					thingsSecondTop.append(saleOfsoldout);
+					thingsSecondTop.append(thingTitle);
+			
+			
+					let thingSecondBottomBox = document.createElement("div");
+					thingSecondBottomBox.className="thingsecondBottomBox";
+					let thingsecondBottom = document.createElement("div");
+					thingsecondBottom.className="thingsecondBottom";
+					let sellerName = document.createElement("div");
+					sellerName.className="sellerName";
+					sellerName.innerHTML = boxCardList[i].userNick + " · " + boxCardList[i].region;
+					thingsecondBottom.append(sellerName);
+			
+					let priceTag = document.createElement("div");
+					priceTag.className="price";
+					priceTag.innerHTML= boxCardList[i].price.toLocaleString('ko-KR')+"원";
+					thingSecondBottomBox.append(thingsecondBottom);
+					thingSecondBottomBox.append(priceTag);
+			
+			
+					thingSecondBox.append(thingsSecondTop);
+					thingSecondBox.append(thingSecondBottomBox);
+				
+					$newBox.append(thingPicture);
+					$newBox.append(thingSecondBox);
+				
+					document.querySelector(".thingBoxWrap").appendChild($newBox);
+	
+					count ++;
+					}
+					let $lastBox = document.querySelector(".thingBox:last-child");
+	
+					obsever.unobserve($lastBox);
+					$lastBox = document.querySelector(".thingBox:last-child");
+					obsever.observe($lastBox);
+					}
+				});
+				},
+				{
+				threshold: 0,
+				}
+			
+				);
+				if($lastBox!=null){
+				obsever.observe($lastBox);
+				}
+			}
+     	 }
+ 	 });
 };
 
 

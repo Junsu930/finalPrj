@@ -391,7 +391,7 @@
 }
 
 body.darkmode .loaderPath{
-	stroke: var(--stroke-dark-color);
+	stroke: ghostwhite;
 }
 
 @keyframes drawPath {

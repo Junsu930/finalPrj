@@ -302,6 +302,12 @@ body.swal2-shown{
 
 }
 
+.noRoomP{
+    margin: auto;
+    font-size: 2em;
+    margin-top: 30px;
+}
+
 .thingssecondTop{
     
     display: flex;
