@@ -1011,3 +1011,7 @@ body.darkmode #toBandBoard{
     height: 100%;
     border-radius: 50%;
 }
+
+.error {
+    color: red;
+}
