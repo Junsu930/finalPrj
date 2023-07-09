@@ -792,6 +792,20 @@ input[type="checkbox"]:checked + label:before {
     margin: 10px;
 
 }
+
+input[type="radio"] + label[for="MAN"]{ 
+    
+    margin: 40px;
+
+}
+
+input[type="radio"] + label[for="WOMAN"]{ 
+    
+    margin: 40px;
+
+}
+
+
   
   input[type="radio"] + label:before {
     content: '';
@@ -988,6 +1002,8 @@ input:focus {
     border-radius: 0.5em;
     width: 130px;
     height: 40px;
+    cursor: pointer;
+    background: transparent;
 }
 
 
