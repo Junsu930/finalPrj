@@ -13,6 +13,7 @@ public class Criteria {
 	private int amount;
 	private String searchType;
 	private String keyword;
+	private Integer loginUserNo;
 	
 	
 

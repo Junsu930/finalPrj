@@ -57,41 +57,72 @@ public class BoardController {
 	@Autowired
 	private ReplyService rService;   
 	
-	@GetMapping("/board")
 	
+	@GetMapping("/board")
 	public String BoardList(Model model, Criteria cri,
 							@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
-							@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
-							,HttpSession session,
+							@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword,
+							@RequestParam(value = "loginUserNo", required = false) Integer loginUserNo, // Change int to Integer and remove defaultValue
+							HttpSession session,
 							BoardBanned boardBanned) {
 	    int total = service.getTotal(cri);
-	
+
 	   
 	    PageVO pageVO = new PageVO(cri, total);
+	    
+	    User user =(User)session.getAttribute("loginUser");
+
+	    if(user != null) {
+	        boardBanned.setUserNo(user.getUserNo());
+	        List<String> bannedUserIds = service.bannedUserIds(boardBanned);
+	        model.addAttribute("bannedUserIds", bannedUserIds);
+	        cri.setLoginUserNo(user.getUserNo()); // Set loginUserNo in Criteria when user is logged in
+	    }
+
 	    List<BoardDetail> boardList = service.boardList(cri);
 	    
-	    
-		User user =(User)session.getAttribute("loginUser");
-
 	    model.addAttribute("boardList", boardList);
 	    model.addAttribute("pageVO", pageVO);
-	    if(user==null) {
-	    	
-	    	
-	    }else {
-	    boardBanned.setUserNo(user.getUserNo());
-	    List<String> bannedUserIds = service.bannedUserIds(boardBanned);
-	  	
-	  
-	   
-	    model.addAttribute("bannedUserIds", bannedUserIds);
-
-	    }
 	    
 	    return "board/boardMain";
-
-		
 	}
+	
+//	@GetMapping("/board")
+//	
+//	public String BoardList(Model model, Criteria cri,
+//							@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+//							@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword,
+//							@RequestParam(value = "loginUserNo", required = false, defaultValue = "0") int loginUserNo,
+//							HttpSession session,
+//							BoardBanned boardBanned) {
+//	    int total = service.getTotal(cri);
+//	
+//	   
+//	    PageVO pageVO = new PageVO(cri, total);
+//	    List<BoardDetail> boardList = service.boardList(cri);
+//	    
+//	    
+//		User user =(User)session.getAttribute("loginUser");
+//
+//	    model.addAttribute("boardList", boardList);
+//	    model.addAttribute("pageVO", pageVO);
+//	    if(user==null) {
+//	    	
+//	    	
+//	    }else {
+//	    boardBanned.setUserNo(user.getUserNo());
+//	    List<String> bannedUserIds = service.bannedUserIds(boardBanned);
+//	  	
+//	  
+//	   
+//	    model.addAttribute("bannedUserIds", bannedUserIds);
+//
+//	    }
+//	    
+//	    return "board/boardMain";
+//
+//		
+//	}
 
 
     @RequestMapping(value="/report", method=RequestMethod.POST)
