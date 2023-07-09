@@ -53,7 +53,6 @@
 
 
 <select id="boardList"  parameterType="hashMap" resultMap="detail_rm">
-	
 <![CDATA[
 SELECT *
 FROM (
@@ -67,8 +66,6 @@ FROM (
         JOIN "USER" USING(USER_NO)
         WHERE 1=1
         AND BOARD_ST = 'N'
-        
-        AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED)
     ]]>
     <if test="searchType =='all'">
         AND (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')</if>
@@ -78,12 +75,12 @@ FROM (
     <if test="searchType =='notice'">
         AND  (BOARD_TITLE LIKE '%'||#{keyword}||'%' OR BOARD_CONTENT LIKE '%'||#{keyword}||'%')
         AND BOARD_TAG = 2</if>
+    AND USER_NO NOT IN (SELECT BANNED_USER_NO FROM BOARD_BANNED WHERE  USER_NO = #{loginUserNo})
 <![CDATA[
     ) A
     WHERE RN <= #{pageNum} * #{amount}
 ) B
 WHERE RN > (#{pageNum}-1) * #{amount}
-
 ]]>
 
 </select>
